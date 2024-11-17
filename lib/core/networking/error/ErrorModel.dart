@@ -5,7 +5,6 @@
 class ErrorModel {
   ErrorModel({
     this.error,
-
     this.stack,});
 
   String? error;
