@@ -11,6 +11,8 @@ class CurvedButton extends StatelessWidget {
     required this.onTap,
     this.height,
     this.width,
+    this.colorBorderSide,
+    this.textColor,
   });
 
   final Color color;
@@ -18,6 +20,8 @@ class CurvedButton extends StatelessWidget {
   final VoidCallback onTap;
   final double? height;
   final double? width;
+  final Color? colorBorderSide;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +34,16 @@ class CurvedButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 24),
           backgroundColor: color,
           shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: colorBorderSide ?? Colors.transparent,
+            ),
             borderRadius: BorderRadius.circular(100),
           ),
         ),
         child: Text(
           title,
-          style: MyFonts.styleMedium500_16.copyWith(color: MyColors.white),
+          style: MyFonts.styleMedium500_16
+              .copyWith(color: textColor ?? MyColors.white),
         ),
       ),
     );
