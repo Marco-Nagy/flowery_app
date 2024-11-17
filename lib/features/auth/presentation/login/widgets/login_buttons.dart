@@ -19,7 +19,6 @@ class LoginButtons extends StatelessWidget {
     required this.formKey,
     required this.rememberMe,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<LoginViewModel>();
