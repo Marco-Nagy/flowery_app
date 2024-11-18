@@ -10,6 +10,7 @@ class MyColors {
   static const Color lightBlue_10 = Color(0xffCCD7EB);
   static const Color white = Color(0xffF9F9F9);
   static const Color black = Color(0xff0F0F0F);
+
   static const Color white60 = Color(0xffCFCFCF);
   static const Color white80 = Color(0xff7D7D7D);
   static const Color whiteBase = Color(0xffF9F9F9);
@@ -19,6 +20,5 @@ class MyColors {
   static const Color blackFlower = Color(0xff000000);
   static const Color blackBase = Color(0xff0C1015);
   static const Color lightPink = Color(0xffF9ECF0);
-
 
 }

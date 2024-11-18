@@ -1,3 +1,3 @@
 class SharedPrefKeys {
-  static const String token ='userToken';
+  static const String tokenKey = 'tokenKey';
 }

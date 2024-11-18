@@ -3,7 +3,7 @@ import 'dart:async';
 import 'common/api_result.dart';
 
 
-Future<ApiResult<T>> executeApi<T>(Future<T> Function() apiCall) async {
+Future<DataResult<T>> executeApi<T>(Future<T> Function() apiCall) async {
   try {
     var result = await apiCall.call();
     return Success(result);

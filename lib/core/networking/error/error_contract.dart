@@ -1,4 +1,3 @@
-
 import 'ErrorModel.dart';
 
 sealed class ErrorContract implements Exception{
