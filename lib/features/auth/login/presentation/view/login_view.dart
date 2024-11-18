@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/base_view.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_toast.dart';
 import 'package:flowery_e_commerce/di/di.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/login/manager/login_view_model_cubit.dart';
 
 import '../widgets/footer_sign_up.dart';
 import '../widgets/login_buttons.dart';
