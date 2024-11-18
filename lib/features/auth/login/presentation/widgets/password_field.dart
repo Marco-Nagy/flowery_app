@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/login/widgets/custom_text_form_field.dart';
 import 'package:flowery_e_commerce/core/utils/validators.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
+
+import 'custom_text_form_field.dart';
 
 class PasswordField extends StatefulWidget {
   final TextEditingController passwordController;

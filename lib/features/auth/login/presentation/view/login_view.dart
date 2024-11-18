@@ -1,11 +1,11 @@
 import 'package:flowery_e_commerce/core/utils/widgets/base/custom_app_bar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
+import 'package:flowery_e_commerce/features/auth/login/presentation/viewModel/login_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/base_view.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_toast.dart';
 import 'package:flowery_e_commerce/di/di.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/login/manager/login_view_model_cubit.dart';
 import '../widgets/login_buttons.dart';
 import '../widgets/login_form.dart';
 

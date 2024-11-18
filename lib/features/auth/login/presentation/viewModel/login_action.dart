@@ -1,4 +1,4 @@
-import '../../../domain/entities/request/login_request_entity.dart';
+import '../../domain/entities/request/login_request_entity.dart';
 
 sealed class LoginScreenAction {}
 
