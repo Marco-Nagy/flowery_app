@@ -9,6 +9,8 @@ import 'package:flowery_e_commerce/features/home/presentation/screens/home_scree
 
 import 'package:flutter/material.dart';
 
+import '../../features/home/presentation/screens/home_screen.dart';
+
 class AppRoutes {
   static const String login = '/';
   static const String register = 'register';
