@@ -21,7 +21,7 @@ class ErrorModel {
 
   factory ErrorModel.fromMap(Map<String, dynamic> map) {
     return ErrorModel(
-      error: map['message'] as String,
+      error: map['error'] as String,
       stack: map['stack'] as String,
     );
   }
