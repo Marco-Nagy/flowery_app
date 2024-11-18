@@ -16,15 +16,6 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../core/networking/api/api_manager.dart' as _i282;
 import '../core/networking/common/regestet_context_module.dart' as _i125;
 import '../core/networking/network_factory.dart' as _i377;
-import '../features/auth/data/datasources/contracts/auth_online_datasource.dart'
-    as _i851;
-import '../features/auth/data/datasources/implementation/auth_online_datasource_impl.dart'
-    as _i321;
-import '../features/auth/data/repositories/auth_repo_impl.dart' as _i990;
-import '../features/auth/domain/contracts/repo/auth_repo.dart' as _i843;
-import '../features/auth/domain/usecase/auth_usecase.dart' as _i610;
-import '../features/auth/presentation/signup/view_model/signup_cubit.dart'
-    as _i474;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -45,14 +36,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
     gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
-    gh.factory<_i851.AuthOnlineDatasource>(() =>
-        _i321.AuthOnlineDataSourceImpl(apiManager: gh<_i282.ApiManager>()));
-    gh.factory<_i843.AuthRepo>(
-        () => _i990.AuthRepositoryImpl(gh<_i851.AuthOnlineDatasource>()));
-    gh.factory<_i610.AuthUseCase>(
-        () => _i610.AuthUseCase(gh<_i843.AuthRepo>()));
-    gh.factory<_i474.SignupCubit>(
-        () => _i474.SignupCubit(gh<_i610.AuthUseCase>()));
     return this;
   }
 }
