@@ -28,6 +28,7 @@ class SignUpForm extends StatelessWidget {
             break;
           case SignupSuccess():
             CustomToast.showSuccessToast(message: "Sign up successfully");
+            context.pushNamed(AppRoutes.login);
             break;
           case SignupError():
             return CustomToast.showErrorToast(message: state.exception.error!);
