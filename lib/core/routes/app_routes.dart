@@ -1,5 +1,6 @@
 import 'package:flowery_e_commerce/core/routes/base_routes.dart';
 import 'package:flowery_e_commerce/core/utils/screens/under_build_screen.dart';
+import 'package:flowery_e_commerce/features/auth/presentation/signup/views/signup_view.dart';
 import 'package:flowery_e_commerce/features/home/presentation/screens/home_screen.dart';
 
 // import 'package:flowery_e_commerce/features/auth/login/presentation/screens/login_screen.dart';
@@ -25,9 +26,11 @@ class AppRoutes {
     switch (settings.name) {
       case AppRoutes.login:
         return BaseRoute(
-
           page: LoginView(),
-
+        );
+        case AppRoutes.register:
+        return BaseRoute(
+          page: SignUpView(),
         );
       case AppRoutes.homeScreen:
         return BaseRoute(
