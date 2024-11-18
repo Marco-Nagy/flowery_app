@@ -3,6 +3,8 @@ import 'package:flowery_e_commerce/core/utils/screens/under_build_screen.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/login/pages/login_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/home/presentation/screens/home_screen.dart';
+
 class AppRoutes {
   static const String login = '/';
   static const String register = 'register';
