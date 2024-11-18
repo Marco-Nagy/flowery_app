@@ -1,6 +1,5 @@
-import 'package:flowery_e_commerce/features/auth/login/presentation/widgets/email_field.dart';
 import 'package:flutter/material.dart';
-
+import 'email_field.dart';
 import 'password_field.dart';
 import 'remember_me_and_forgot_password.dart';
 

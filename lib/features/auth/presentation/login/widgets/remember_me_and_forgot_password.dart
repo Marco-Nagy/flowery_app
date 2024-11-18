@@ -1,6 +1,6 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
-import 'package:flowery_e_commerce/features/auth/login/presentation/widgets/remember_me_widget.dart';
+import 'package:flowery_e_commerce/features/auth/presentation/login/widgets/remember_me_widget.dart';
 import 'package:flutter/material.dart';
 
 class RememberMeAndForgotPassword extends StatelessWidget {

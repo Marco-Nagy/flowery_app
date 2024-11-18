@@ -16,19 +16,19 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../core/networking/api/api_manager.dart' as _i282;
 import '../core/networking/common/regestet_context_module.dart' as _i125;
 import '../core/networking/network_factory.dart' as _i377;
-import '../features/auth/login/data/data_sources/contracts/auth_online_data_source.dart'
-    as _i739;
-import '../features/auth/login/data/data_sources/contracts/offline_data_source.dart'
-    as _i239;
-import '../features/auth/login/data/data_sources/impl/auth_offline_data_source_impl.dart'
-    as _i1009;
-import '../features/auth/login/data/data_sources/impl/auth_online_data_source_impl.dart'
-    as _i250;
-import '../features/auth/login/data/repositories/auth_repo_impl.dart' as _i379;
-import '../features/auth/login/domain/contracts/auth_repo.dart' as _i816;
-import '../features/auth/login/domain/use_cases/auth_use_case.dart' as _i268;
-import '../features/auth/login/presentation/viewModel/login_view_model_cubit.dart'
-    as _i352;
+import '../features/auth/data/data_sources/contracts/auth_online_data_source.dart'
+    as _i901;
+import '../features/auth/data/data_sources/contracts/offline_data_source.dart'
+    as _i345;
+import '../features/auth/data/data_sources/impl/auth_offline_data_source_impl.dart'
+    as _i1036;
+import '../features/auth/data/data_sources/impl/auth_online_data_source_impl.dart'
+    as _i326;
+import '../features/auth/data/repositories/auth_repo_impl.dart' as _i990;
+import '../features/auth/domain/contracts/auth_repo.dart' as _i665;
+import '../features/auth/domain/use_cases/auth_use_case.dart' as _i839;
+import '../features/auth/presentation/login/viewModel/login_view_model_cubit.dart'
+    as _i690;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -49,16 +49,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
     gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
-    gh.factory<_i239.OfflineDataSource>(
-        () => _i1009.OfflineDataSourceImplementation());
-    gh.factory<_i739.AuthOnlineDataSource>(
-        () => _i250.AuthOnlineDataSourceImpl(gh<_i282.ApiManager>()));
-    gh.factory<_i816.AuthRepository>(
-        () => _i379.AuthRepositoryImpl(gh<_i739.AuthOnlineDataSource>()));
-    gh.factory<_i268.AuthUseCase>(
-        () => _i268.AuthUseCase(gh<_i816.AuthRepository>()));
-    gh.factory<_i352.LoginViewModel>(
-        () => _i352.LoginViewModel(gh<_i268.AuthUseCase>()));
+    gh.factory<_i901.AuthOnlineDataSource>(
+        () => _i326.AuthOnlineDataSourceImpl(gh<_i282.ApiManager>()));
+    gh.factory<_i345.OfflineDataSource>(
+        () => _i1036.OfflineDataSourceImplementation());
+    gh.factory<_i665.AuthRepository>(
+        () => _i990.AuthRepositoryImpl(gh<_i901.AuthOnlineDataSource>()));
+    gh.factory<_i839.AuthUseCase>(
+        () => _i839.AuthUseCase(gh<_i665.AuthRepository>()));
+    gh.factory<_i690.LoginViewModel>(
+        () => _i690.LoginViewModel(gh<_i839.AuthUseCase>()));
     return this;
   }
 }
