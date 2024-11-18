@@ -749,6 +749,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "9.1.5"
+  row_item:
+    dependency: "direct main"
+    description:
+      name: row_item
+      sha256: "3b4f393d4504fe7cd2f37dff75a24b3a25182afc67d09ec3f366f4eeec463abf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.1+1"
   shared_preferences:
     dependency: "direct main"
     description:

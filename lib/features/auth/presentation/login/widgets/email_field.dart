@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flowery_e_commerce/core/utils/validators.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/login/widgets/custom_text_form_field.dart';
+
+import 'custom_text_form_field.dart';
 
 class EmailField extends StatelessWidget {
   final TextEditingController emailController;

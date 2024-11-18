@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/login/widgets/email_field.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/login/widgets/password_field.dart';
+import 'email_field.dart';
+import 'password_field.dart';
 import 'remember_me_and_forgot_password.dart';
 
 class LoginForm extends StatefulWidget {

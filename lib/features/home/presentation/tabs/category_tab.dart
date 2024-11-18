@@ -12,8 +12,8 @@ class CategoriesTab extends StatelessWidget {
       child: Center(
           child: Text(
             "Categories Tab",
-            style: MyFonts.styleMedium500_20.copyWith(color: MyColors.baseColor),
-          )),
+        style: MyFonts.styleMedium500_20.copyWith(color: MyColors.baseColor),
+      )),
     );
   }
 }

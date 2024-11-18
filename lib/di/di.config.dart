@@ -31,6 +31,8 @@ import '../features/auth/presentation/login/manager/login_view_model_cubit.dart'
     as _i743;
 import '../features/auth/presentation/signup/view_model/signup_cubit.dart'
     as _i474;
+import '../features/auth/presentation/login/viewModel/login_view_model_cubit.dart'
+    as _i690;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -63,6 +65,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i743.LoginViewModel(gh<_i839.AuthUseCase>()));
     gh.factory<_i474.SignupCubit>(
         () => _i474.SignupCubit(gh<_i839.AuthUseCase>()));
+    gh.factory<_i690.LoginViewModel>(
+        () => _i690.LoginViewModel(gh<_i839.AuthUseCase>()));
     return this;
   }
 }

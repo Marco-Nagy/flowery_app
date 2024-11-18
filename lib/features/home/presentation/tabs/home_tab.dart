@@ -7,8 +7,10 @@ import 'package:flowery_e_commerce/features/home/presentation/widgets/discover_s
 import 'package:flowery_e_commerce/features/home/presentation/widgets/search_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class HomeTab extends StatelessWidget {
   const HomeTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,10 +25,7 @@ class HomeTab extends StatelessWidget {
             SizedBox(
               width: 20.w,
             ),
-           SizedBox(
-             width: 220.w,
-               height: 50.h,
-               child: SearchTextField()),
+            SizedBox(width: 220.w, height: 50.h, child: SearchTextField()),
           ],
         ),
       ),
@@ -40,12 +39,17 @@ class HomeTab extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Image.asset('assets/images/location_on.png'),
-                  Text('Deliver to 2XVP+XC - Sheikh Zayed ',style:MyFonts.styleMedium500_14.copyWith(color: MyColors.blackBase),),
+                  Text(
+                    'Deliver to 2XVP+XC - Sheikh Zayed ',
+                    style: MyFonts.styleMedium500_14
+                        .copyWith(color: MyColors.blackBase),
+                  ),
                   Image.asset('assets/images/arrow_back_ios.png'),
                 ],
               ),
             ),
-            SizedBox(height: 10.h,),
+            SizedBox(
+              height: 10.h,),
             Container(
               margin: EdgeInsets.only(left: 15.w),
               child: Text('Discover something now',
@@ -60,54 +64,63 @@ class HomeTab extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(left: 8.w),
                   child: Text('Categories',
-                    style: MyFonts.styleMedium500_18.copyWith(color: MyColors.blackBase)),
-        
+                      style: MyFonts.styleMedium500_18
+                          .copyWith(color: MyColors.blackBase)),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 15.w,right: 15.w),
+                  margin: EdgeInsets.only(left: 15.w, right: 15.w),
                   child: Text('View All',
-                    style: MyFonts.styleMedium500_14.copyWith(color: MyColors.baseColor,decoration: TextDecoration.underline)),
+                      style: MyFonts.styleMedium500_14.copyWith(
+                          color: MyColors.baseColor,
+                          decoration: TextDecoration.underline)),
                 ),
               ],
             ),
             const CustomCategoriesList(),
-            SizedBox(height: 10.h,),
+            SizedBox(
+              height: 10.h,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   margin: EdgeInsets.only(left: 8.w),
                   child: Text('Best seller',
-                    style: MyFonts.styleMedium500_18.copyWith(color: MyColors.blackBase)),
-        
+                      style: MyFonts.styleMedium500_18
+                          .copyWith(color: MyColors.blackBase)),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 15.w,right: 15.w),
+                  margin: EdgeInsets.only(left: 15.w, right: 15.w),
                   child: Text('View All',
-                     style: MyFonts.styleMedium500_12.copyWith(color: MyColors.baseColor,decoration: TextDecoration.underline)),
+                      style: MyFonts.styleMedium500_12.copyWith(
+                          color: MyColors.baseColor,
+                          decoration: TextDecoration.underline)),
                 ),
               ],
             ),
-           const CustomBestSellerList(),
-            SizedBox(height: 10.h,),
+            const CustomBestSellerList(),
+            SizedBox(
+              height: 10.h,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   margin: EdgeInsets.only(left: 8.w),
                   child: Text('Occasion',
-                    style:MyFonts.styleMedium500_18.copyWith(color: MyColors.blackBase)),
-        
+                      style: MyFonts.styleMedium500_18
+                          .copyWith(color: MyColors.blackBase)),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 15.w,right: 15.w),
+                  margin: EdgeInsets.only(left: 15.w, right: 15.w),
                   child: Text('View All',
-                    style: MyFonts.styleMedium500_12.copyWith(color: MyColors.baseColor,decoration: TextDecoration.underline)),
-        
+                      style: MyFonts.styleMedium500_12.copyWith(
+                          color: MyColors.baseColor,
+                          decoration: TextDecoration.underline)),
                 ),
               ],
             ),
-           const CustomOccasionList(),
+            const CustomOccasionList(),
           ],
         ),
       ),

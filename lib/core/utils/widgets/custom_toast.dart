@@ -7,7 +7,7 @@ class CustomToast {
     required String message,
     required Color backgroundColor,
     required ToastGravity gravity,
-    required dynamic icon,
+    required IconData icon,
   }) {
     Fluttertoast.showToast(
       msg: "$message",
