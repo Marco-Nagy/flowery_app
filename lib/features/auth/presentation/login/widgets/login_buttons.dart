@@ -27,7 +27,7 @@ class LoginButtons extends StatelessWidget {
       child: Column(
         children: [
           CurvedButton(
-            color: MyColors.primary,
+            color: MyColors.baseColor,
             title: "Login",
             onTap: () {
               if (formKey.currentState!.validate()) {
