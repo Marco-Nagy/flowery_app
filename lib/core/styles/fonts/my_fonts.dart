@@ -26,6 +26,10 @@ class MyFonts {
     fontWeight: FontWeight.w400,
     fontSize: 18,
   );
+ static TextStyle styleRegular400_20 = const TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: 20,
+  );
 
   static TextStyle styleMedium500_12 = const TextStyle(
     fontWeight: FontWeight.w500,
