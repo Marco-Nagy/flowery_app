@@ -39,10 +39,10 @@ class _RememberMeWidgetState extends State<RememberMeWidget> {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: isChecked ? Colors.blue : Colors.transparent,
+              color: isChecked ? MyColors.baseColor : Colors.transparent,
               borderRadius: BorderRadius.circular(5),
               border: Border.all(
-                color: MyColors.gray30,
+                color: isChecked ? Colors.transparent : MyColors.gray30,
                 width: 2,
               ),
             ),

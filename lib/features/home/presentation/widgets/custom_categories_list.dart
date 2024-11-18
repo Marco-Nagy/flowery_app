@@ -27,7 +27,7 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
                 width: 89.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.sp),
-                  color:  MyColors.lightPink,
+                  color: MyColors.lightPink,
                 ),
                 child: Center(
                   child: Image.asset(

@@ -2,7 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
 import 'package:flowery_e_commerce/core/networking/error/ErrorModel.dart';
 import 'package:flowery_e_commerce/core/networking/error/error_handler.dart';
+import 'package:flowery_e_commerce/core/routes/app_routes.dart';
+import 'package:flowery_e_commerce/core/utils/extension/navigations.dart';
 import 'package:flowery_e_commerce/di/di.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
@@ -25,11 +28,11 @@ class LoginViewModel extends Cubit<LoginViewModelState> {
   void doAction(LoginScreenAction action) {
     switch (action) {
       case LoginAction():
-        _login(action);
+        _login(action, action.context);
     }
   }
 
-  Future<void> _login(LoginAction action) async {
+  Future<void> _login(LoginAction action, BuildContext context) async {
     emit(LoginViewModelLoading());
     var result = await _authUseCase.login(action.request);
     switch (result) {
@@ -37,10 +40,9 @@ class LoginViewModel extends Cubit<LoginViewModelState> {
         {
           if (action.isRememberMe) {
             await _offlineDataSource.cacheToken(result.data.token ?? "");
-            print("token ${await _offlineDataSource.getToken()}");
           }
-
           emit(LoginViewModelSuccess(result.data));
+          context.pushReplacementNamed(AppRoutes.homeScreen);
         }
       case Fail<LoginResponseEntity>():
         emit(LoginViewModelError(ErrorHandler.handle(result.exception!)));

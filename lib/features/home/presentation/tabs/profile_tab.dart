@@ -10,10 +10,9 @@ class ProfileTab extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Center(
-          child: Text(
-            "Profile Tab",
-            style:  MyFonts.styleMedium500_20.copyWith(color: MyColors.baseColor))
-      ),
+          child: Text("Profile Tab",
+              style: MyFonts.styleMedium500_20
+                  .copyWith(color: MyColors.baseColor))),
     );
   }
 }

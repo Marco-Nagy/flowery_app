@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/base_view.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_toast.dart';
 import 'package:flowery_e_commerce/di/di.dart';
+
+import '../widgets/footer_sign_up.dart';
 import '../widgets/login_buttons.dart';
 import '../widgets/login_form.dart';
 
@@ -73,6 +75,10 @@ class _LoginViewState extends State<LoginView> {
                   formKey: formKey,
                   rememberMe: rememberMe, // Pass the rememberMe value
                 ),
+                SliverToBoxAdapter(
+                  child: verticalSpacing(20),
+                ),
+                const FooterSignUp(),
               ],
             ),
           );

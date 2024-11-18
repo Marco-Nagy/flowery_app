@@ -20,7 +20,6 @@ class LoginButtons extends StatelessWidget {
     required this.formKey,
     required this.rememberMe,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<LoginViewModel>();
@@ -29,7 +28,7 @@ class LoginButtons extends StatelessWidget {
       child: Column(
         children: [
           CurvedButton(
-            color: MyColors.primary,
+            color: MyColors.baseColor,
             title: "Login",
             onTap: () {
               if (formKey.currentState!.validate()) {
@@ -38,7 +37,8 @@ class LoginButtons extends StatelessWidget {
                     email: emailController.text.trim(),
                     password: passwordController.text.trim(),
                   ),
-                  rememberMe, // Pass the rememberMe value here
+                  rememberMe,
+                  context, // Pass the rememberMe value here
                 ));
               }
             },
