@@ -5,8 +5,8 @@ import '../../../../../core/utils/widgets/app_text_form_field.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
 import '../view_model/signup_cubit.dart';
 
-class SignupFields extends StatelessWidget {
-  const SignupFields({super.key, required this.cubit});
+class SignUpFields extends StatelessWidget {
+  const SignUpFields({super.key, required this.cubit});
 
   final SignupCubit cubit;
 

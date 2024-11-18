@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'signup_response_dto.g.dart';
 
 @JsonSerializable()
-class SignUPResponseDto {
+class SignUpResponseDto {
   @JsonKey(name: "message")
   final String? message;
   @JsonKey(name: "error")
@@ -13,19 +13,19 @@ class SignUPResponseDto {
   @JsonKey(name: "token")
   final String? token;
 
-  SignUPResponseDto ({
+  SignUpResponseDto({
     this.message,
     this.user,
     this.token,
     this.error,
   });
 
-  factory SignUPResponseDto.fromJson(Map<String, dynamic> json) {
-    return _$SignUPResponseDtoFromJson(json);
+  factory SignUpResponseDto.fromJson(Map<String, dynamic> json) {
+    return _$SignUpResponseDtoFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    return _$SignUPResponseDtoToJson(this);
+    return _$SignUpResponseDtoToJson(this);
   }
 }
 
@@ -50,7 +50,7 @@ class UserDto {
   @JsonKey(name: "createdAt")
   final String? createdAt;
 
-  UserDto ({
+  UserDto({
     this.firstName,
     this.lastName,
     this.email,
@@ -70,5 +70,3 @@ class UserDto {
     return _$UserDtoToJson(this);
   }
 }
-
-

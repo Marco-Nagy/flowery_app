@@ -6,8 +6,8 @@ import 'common/api_result.dart';
 Future<DataResult<T>> executeApi<T>(Future<T> Function() apiCall) async {
   try {
     var result = await apiCall.call();
-    return Success(data: result);
+    return Success(result);
   } on Exception catch (e) {
-    return Fail(exception: e);
+    return Fail(e);
   }
 }

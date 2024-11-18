@@ -3,8 +3,9 @@ import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flutter/material.dart';
 
 class AuthFooter extends StatelessWidget {
-  const AuthFooter({super.key, required this.question, required this.txt});
+  const AuthFooter({super.key, required this.question, required this.txt,required this.onPressed});
   final dynamic question, txt;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class AuthFooter extends StatelessWidget {
           style: MyFonts.styleRegular400_16
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: onPressed,
 
           child: Text(
             txt,

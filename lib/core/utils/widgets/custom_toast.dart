@@ -7,11 +7,7 @@ class CustomToast {
     required String message,
     required Color backgroundColor,
     required ToastGravity gravity,
-<<<<<<< HEAD
-    required IconData icon,
-=======
     required dynamic icon,
->>>>>>> development
   }) {
     Fluttertoast.showToast(
       msg: "$message",
@@ -54,8 +50,5 @@ class CustomToast {
       icon: Icons.check_circle,
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> development
+
