@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyColors {
-  static const gray= Color(0xff535353);
+  static const gray = Color(0xff535353);
   static const Color gray30 = Color(0xff878787);
   static const Color placeHolder = Color(0xffA6A6A6);
   static const Color red = Color(0xffCC1010);
@@ -20,5 +20,4 @@ class MyColors {
   static const Color blackFlower = Color(0xff000000);
   static const Color blackBase = Color(0xff0C1015);
   static const Color lightPink = Color(0xffF9ECF0);
-
 }

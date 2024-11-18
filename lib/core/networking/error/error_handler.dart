@@ -37,7 +37,7 @@ class ErrorHandler {
       case 408:
         return ErrorModel(
             error:
-                "Connection timed out. Please check your internet connection.");
+            "Connection timed out. Please check your internet connection.");
       default:
         return ErrorModel(
             error: "An unexpected error occurred. Please try again.");
@@ -55,7 +55,7 @@ class ErrorHandler {
       case 503:
         return ErrorModel(
             error:
-                "Service Unavailable. The server is currently unable to handle the request.");
+            "Service Unavailable. The server is currently unable to handle the request.");
       case 504:
         return ErrorModel(
             error: "Gateway Timeout. The server took too long to respond.");
@@ -70,4 +70,3 @@ class ErrorHandler {
     }
   }
 }
-

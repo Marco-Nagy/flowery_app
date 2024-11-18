@@ -77,7 +77,9 @@ class AppTextFormField extends StatelessWidget {
       maxLines: maxLines??1,
       readOnly: readOnly ?? false,
       maxLength: maxLength,
+
       decoration: InputDecoration(
+        floatingLabelBehavior: FloatingLabelBehavior.always,
         isDense: true,
         alignLabelWithHint: true,
         border: OutlineInputBorder(

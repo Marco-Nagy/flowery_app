@@ -25,7 +25,9 @@ class AppRoutes {
     switch (settings.name) {
       case AppRoutes.login:
         return BaseRoute(
+
           page: LoginView(),
+
         );
       case AppRoutes.homeScreen:
         return BaseRoute(

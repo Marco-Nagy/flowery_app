@@ -1,4 +1,5 @@
-import 'ErrorModel.dart';
+
+import 'error_model.dart';
 
 sealed class ErrorContract implements Exception{
 }

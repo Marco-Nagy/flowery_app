@@ -45,13 +45,13 @@ dependencies:
   flutter_screenutil: ^5.9.3
   shared_preferences: ^2.3.2
   build_runner: ^2.4.6
+  connectivity_plus:
 
   # Ui
   lottie: ^3.1.2
   flutter_hooks: ^0.20.5
   equatable: ^2.0.5
   shimmer: ^3.0.0
-
 
 
   # add injectable to your dependencies
@@ -63,6 +63,7 @@ dependencies:
   flutter_bloc:
   mockito: ^5.4.4
   bloc_test: ^9.1.7
+  auto_size_text: ^3.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
