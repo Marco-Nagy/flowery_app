@@ -51,7 +51,7 @@ class SignupCubit extends Cubit<SignupState> {
 
     switch (result) {
       case Success<SignUpResponseEntity>():
-        emit(SignupSuccess(result.data!));
+        emit(SignupSuccess(result.data));
         break;
       case Fail<SignUpResponseEntity>():
         final exception = result.exception;
