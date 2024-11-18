@@ -1,4 +1,4 @@
-import 'package:flowery_e_commerce/core/utils/extension/navigations.dart';
+import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
