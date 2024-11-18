@@ -1,6 +1,7 @@
 import 'package:flowery_e_commerce/core/utils/extension/navigations.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/styles/colors/my_colors.dart';
 import '../../../../../core/styles/fonts/my_fonts.dart';

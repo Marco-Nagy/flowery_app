@@ -8,6 +8,8 @@ import 'package:flowery_e_commerce/di/di.dart';
 
 import '../viewModel/login_view_model_cubit.dart';
 import '../widgets/footer_sign_up.dart';
+
+import '../widgets/footer_sign_up.dart';
 import '../widgets/login_buttons.dart';
 import '../widgets/login_form.dart';
 
