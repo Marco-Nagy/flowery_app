@@ -27,7 +27,7 @@ class CustomToast {
   static void showLoadingToast({required String message}) {
     showToast(
       message: message,
-      backgroundColor: MyColors.primary,
+      backgroundColor: MyColors.baseColor,
       gravity: ToastGravity.BOTTOM,
       icon: Icons.hourglass_bottom,
     );
