@@ -15,9 +15,13 @@ class AppRoutes {
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
-      case AppRoutes.homeScreen:
+      case AppRoutes.login:
         return BaseRoute(
           page: LoginView(),
+        );
+      case AppRoutes.homeScreen:
+        return BaseRoute(
+          page: HomeScreen(),
         );
       default:
         return BaseRoute(page: const PageUnderBuildScreen());

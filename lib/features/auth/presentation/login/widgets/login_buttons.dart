@@ -36,7 +36,8 @@ class LoginButtons extends StatelessWidget {
                     email: emailController.text.trim(),
                     password: passwordController.text.trim(),
                   ),
-                  rememberMe, // Pass the rememberMe value here
+                  rememberMe,
+                  context, // Pass the rememberMe value here
                 ));
               }
             },
