@@ -10,9 +10,9 @@ class CartTab extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Center(
-          child: Text(
-            "Cart Tab",
-            style:  MyFonts.styleMedium500_20.copyWith(color: MyColors.baseColor)),
+        child: Text("Cart Tab",
+            style:
+                MyFonts.styleMedium500_20.copyWith(color: MyColors.baseColor)),
       ),
     );
   }

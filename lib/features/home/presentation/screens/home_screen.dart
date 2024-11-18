@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const CartTab(),
     const ProfileTab(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
