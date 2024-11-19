@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 
-import 'ErrorModel.dart';
+import 'error_model.dart';
 
 class ErrorHandler {
   final String errorMessage;
@@ -38,6 +38,8 @@ class ErrorHandler {
         return ErrorModel(
             error:
             "Connection timed out. Please check your internet connection.");
+      case 409:
+        return ErrorModel(error: response.error ?? 'Unauthorized access');
       default:
         return ErrorModel(
             error: "An unexpected error occurred. Please try again.");

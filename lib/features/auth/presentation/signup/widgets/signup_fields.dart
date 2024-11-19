@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 import '../../../../../core/utils/validators.dart';
 import '../../../../../core/utils/widgets/app_text_form_field.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
-import '../view_model/signup_cubit.dart';
+import '../view_model/signup_view_model_cubit.dart';
 
 class SignUpFields extends StatelessWidget {
   const SignUpFields({super.key, required this.cubit});
 
-  final SignupCubit cubit;
+  final SignUpViewModel cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -88,9 +88,7 @@ class SignUpFields extends StatelessWidget {
           labelText: 'Phone number',
           validator: (value) => Validators.validatePhoneNumber(value),
         ),
-        verticalSpacing(
-          30,
-        ),
+
       ],
     );
   }
