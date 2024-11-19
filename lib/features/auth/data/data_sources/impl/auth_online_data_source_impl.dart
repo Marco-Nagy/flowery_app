@@ -7,8 +7,6 @@ import 'package:injectable/injectable.dart';
 import '../../../domain/entities/request/signup_request_entity.dart';
 import '../../../domain/entities/response/signup_response_entity.dart';
 import '../../mappers/auth_mapper.dart';
-import '../../models/request/signup_request_dto.dart';
-import '../../models/response/signup_response_dto.dart';
 import '../contracts/auth_online_data_source.dart';
 
 @Injectable(as: AuthOnlineDataSource)

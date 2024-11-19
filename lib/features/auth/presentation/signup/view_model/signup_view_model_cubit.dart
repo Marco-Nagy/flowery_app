@@ -1,19 +1,20 @@
 import 'package:bloc/bloc.dart';
-import 'package:flowery_e_commerce/features/auth/data/models/response/signup_response_dto.dart';
+import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
 import 'package:flowery_e_commerce/features/auth/domain/entities/response/signup_response_entity.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/signup_action.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import '../../../../../core/networking/common/api_result.dart';
+import '../../../../../core/networking/error/error_handler.dart';
 import '../../../domain/entities/request/signup_request_entity.dart';
-import '../../../domain/use_cases/auth_use_case.dart';
+import '../../../domain/use_cases/signup_use_case.dart';
 
-part 'signup_state.dart';
+part 'signup_view_model_state.dart';
 @injectable
-class SignupCubit extends Cubit<SignupState> {
-  SignupCubit(this._authUseCase) : super(SignupInitial());
-  final AuthUseCase _authUseCase;
+class SignUpViewModel extends Cubit<SignUpViewModelState> {
+  SignUpViewModel(this._signupUseCase) : super(SignupInitial());
+  final SignUpUseCase _signupUseCase;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -47,16 +48,15 @@ class SignupCubit extends Cubit<SignupState> {
 
   void _signUp(SignUpRequestEntity request) async {
     emit(SignupLoading());
-    var result = await _authUseCase.signUp(request);
+    var result = await _signupUseCase.signUp(request);
 
     switch (result) {
       case Success<SignUpResponseEntity>():
         emit(SignupSuccess(result.data));
         break;
       case Fail<SignUpResponseEntity>():
-        final exception = result.exception;
-        emit(SignupError( exception: exception));
-
+        final message = ErrorHandler.handle(result.exception!);
+        emit(SignupError(message));
         break;
     }
   }

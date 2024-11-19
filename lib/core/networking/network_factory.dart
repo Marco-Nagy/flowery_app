@@ -27,11 +27,13 @@ abstract class NetworkFactory {
         onError: (error, handler) {
           if (error.response!= null) {
             if ( error.response!.statusCode==401) {
+
               // Handle 400 or 401 error
               SharedPrefHelper().clearPreferences();
               // Navigate to login screen or handle error accordingly
             }
           }
+          return handler.next(error);
         },
       ),
     );

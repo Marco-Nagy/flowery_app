@@ -1,15 +1,11 @@
 import 'package:flowery_e_commerce/core/routes/base_routes.dart';
 import 'package:flowery_e_commerce/core/utils/screens/under_build_screen.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/signup/views/signup_view.dart';
-import 'package:flowery_e_commerce/features/home/presentation/screens/home_screen.dart';
-
-// import 'package:flowery_e_commerce/features/auth/login/presentation/screens/login_screen.dart';
-import 'package:flowery_e_commerce/features/home/presentation/screens/home_screen.dart';
-
+import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/signup_view_model_cubit.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../di/di.dart';
 import '../../features/auth/presentation/login/view/login_view.dart';
-
+import '../../features/auth/presentation/signup/view/signup_view.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 
 class AppRoutes {
@@ -28,9 +24,11 @@ class AppRoutes {
         return BaseRoute(
           page: LoginView(),
         );
-        case AppRoutes.register:
+      case AppRoutes.register:
         return BaseRoute(
-          page: SignUpView(),
+          page: BlocProvider(
+              create: (context) => getIt.get<SignUpViewModel>(),
+              child: const SignUpView()),
         );
       case AppRoutes.homeScreen:
         return BaseRoute(

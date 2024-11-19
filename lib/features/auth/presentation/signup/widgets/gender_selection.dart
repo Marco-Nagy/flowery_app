@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/widgets/spacing.dart';
 import '../view_model/signup_action.dart';
-import '../view_model/signup_cubit.dart';
+import '../view_model/signup_view_model_cubit.dart';
 
 
 class GenderSelection extends StatelessWidget {
   const GenderSelection({super.key, required this.cubit});
-  final SignupCubit cubit;
+  final SignUpViewModel cubit;
 
   @override
   Widget build(BuildContext context) {

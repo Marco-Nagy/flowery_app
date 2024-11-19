@@ -1,5 +1,6 @@
 
-import 'error_model.dart';
+import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
+
 
 sealed class ErrorContract implements Exception{
 }
