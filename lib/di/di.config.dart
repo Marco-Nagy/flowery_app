@@ -36,6 +36,8 @@ import '../features/categories/data/data_sources/contracts/categories_online_dat
     as _i518;
 import '../features/categories/data/data_sources/impl/categories_online_data_source_impl.dart'
     as _i1059;
+import '../features/categories/data/repositories/categories_repo_impl.dart'
+    as _i620;
 import '../features/categories/domain/repositories/categories_repo.dart'
     as _i590;
 import '../features/categories/domain/use_cases/categories_use_case.dart'
@@ -64,8 +66,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i326.AuthOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i345.OfflineDataSource>(
         () => _i1036.OfflineDataSourceImplementation());
-    gh.factory<_i777.CategoriesUseCase>(
-        () => _i777.CategoriesUseCase(gh<_i590.CategoriesRepository>()));
     gh.factory<_i518.CategoriesOnlineDataSource>(() =>
         _i1059.CategoriesOnlineDataSourceImplementation(
             gh<_i282.ApiManager>()));
@@ -75,10 +75,15 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i496.LoginUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i853.SignUpUseCase>(
         () => _i853.SignUpUseCase(gh<_i665.AuthRepository>()));
+    gh.factory<_i590.CategoriesRepository>(() =>
+        _i620.CategoriesRepositoryImplementation(
+            gh<_i518.CategoriesOnlineDataSource>()));
     gh.factory<_i690.LoginViewModel>(
         () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
     gh.factory<_i508.SignUpViewModel>(
         () => _i508.SignUpViewModel(gh<_i853.SignUpUseCase>()));
+    gh.factory<_i777.CategoriesUseCase>(
+        () => _i777.CategoriesUseCase(gh<_i590.CategoriesRepository>()));
     return this;
   }
 }
