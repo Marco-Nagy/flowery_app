@@ -15,6 +15,5 @@ final class GetCategoriesViewModelSuccess extends CategoriesViewModelState {
 
 final class GetCategoriesViewModelError extends CategoriesViewModelState {
   final ErrorModel error;
-
   GetCategoriesViewModelError({required this.error});
 }
