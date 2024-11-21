@@ -10,7 +10,6 @@ import 'di/di.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
-  // await SharedPreferences.getInstance();
   await SharedPrefHelper().instantiatePreferences();
   Bloc.observer = MyBlocObserver();
   runApp(FloweryEcommerce(),
