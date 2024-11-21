@@ -1,10 +1,10 @@
 class GetAllCategoriesResponseEntity {
-  final List<GetAllCategoriesResponseDtoCategoriesEntity?>? categories;
+  final List<GetAllCategoriesResponseCategoriesEntity?>? categories;
 
-  GetAllCategoriesResponseEntity(this.categories);
+  GetAllCategoriesResponseEntity({this.categories});
 }
 
-class GetAllCategoriesResponseDtoCategoriesEntity {
+class GetAllCategoriesResponseCategoriesEntity {
   final String? id;
   final String? name;
   final String? slug;
@@ -12,7 +12,12 @@ class GetAllCategoriesResponseDtoCategoriesEntity {
   final String? createdAt;
   final String? updatedAt;
 
-  GetAllCategoriesResponseDtoCategoriesEntity(this.id, this.name, this.slug,
-      this.image, this.createdAt, this.updatedAt);
+  GetAllCategoriesResponseCategoriesEntity(
+      {this.id,
+      this.name,
+      this.slug,
+      this.image,
+      this.createdAt,
+      this.updatedAt});
 
 }

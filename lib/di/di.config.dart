@@ -32,6 +32,14 @@ import '../features/auth/presentation/login/viewModel/login_view_model_cubit.dar
     as _i690;
 import '../features/auth/presentation/signup/view_model/signup_view_model_cubit.dart'
     as _i508;
+import '../features/categories/data/data_sources/contracts/categories_online_data_source.dart'
+    as _i518;
+import '../features/categories/data/data_sources/impl/categories_online_data_source_impl.dart'
+    as _i1059;
+import '../features/categories/domain/repositories/categories_repo.dart'
+    as _i590;
+import '../features/categories/domain/use_cases/categories_use_case.dart'
+    as _i777;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -56,6 +64,11 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i326.AuthOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i345.OfflineDataSource>(
         () => _i1036.OfflineDataSourceImplementation());
+    gh.factory<_i777.CategoriesUseCase>(
+        () => _i777.CategoriesUseCase(gh<_i590.CategoriesRepository>()));
+    gh.factory<_i518.CategoriesOnlineDataSource>(() =>
+        _i1059.CategoriesOnlineDataSourceImplementation(
+            gh<_i282.ApiManager>()));
     gh.factory<_i665.AuthRepository>(
         () => _i990.AuthRepositoryImpl(gh<_i901.AuthOnlineDataSource>()));
     gh.factory<_i496.LoginUseCase>(
