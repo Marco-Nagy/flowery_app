@@ -25,14 +25,16 @@ class CustomTabBar extends StatelessWidget {
             Tab(text: "Jewelry"),
           ],
         ),
-        Expanded(
+        Container(
+          height: 400,
           child: TabBarView(
             children: [
               for (int i = 0; i < 5; i++)
                 Center(
                   child: Text(
                     "Tab ${i + 1}",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
             ],

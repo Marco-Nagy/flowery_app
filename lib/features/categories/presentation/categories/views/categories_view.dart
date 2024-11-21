@@ -14,21 +14,23 @@ class CategoriesView extends StatelessWidget {
     return DefaultTabController(
       length: 5,
       child: BaseView(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: const CustomSearchCategories(),
-                ),
-                horizontalSpacing(12),
-                Expanded(flex: 1, child: const CustomFilterCategories()),
-              ],
-            ),
-            verticalSpacing(16),
-            const CustomTabBar(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: const CustomSearchCategories(),
+                  ),
+                  horizontalSpacing(12),
+                  Expanded(flex: 1, child: const CustomFilterCategories()),
+                ],
+              ),
+              verticalSpacing(16),
+              const CustomTabBar(),
+            ],
+          ),
         ),
       ),
     );
