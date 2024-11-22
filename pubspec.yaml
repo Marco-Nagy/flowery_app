@@ -46,7 +46,6 @@ dependencies:
   shared_preferences: ^2.3.2
   build_runner: ^2.4.6
   connectivity_plus:
-  cached_network_image:
 
   # Ui
   lottie: ^3.1.2
@@ -92,6 +91,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - lib/generated/assets.dart
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
