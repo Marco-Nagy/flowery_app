@@ -76,6 +76,7 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i906.ResetPasswordUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i642.VerifyResetCodeUseCase>(
         () => _i642.VerifyResetCodeUseCase(gh<_i665.AuthRepository>()));
+
     gh.factory<_i690.LoginViewModel>(
         () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
     gh.factory<_i508.SignUpViewModel>(
