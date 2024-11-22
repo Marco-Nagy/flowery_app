@@ -3,18 +3,20 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i6;
+import 'dart:async' as _i7;
 
-import 'package:flowery_e_commerce/core/networking/api/api_manager.dart' as _i5;
+import 'package:flowery_e_commerce/core/networking/api/api_manager.dart' as _i6;
 import 'package:flowery_e_commerce/features/auth/data/models/request/login_request_dto.dart'
-    as _i7;
-import 'package:flowery_e_commerce/features/auth/data/models/request/signup_request_dto.dart'
     as _i8;
+import 'package:flowery_e_commerce/features/auth/data/models/request/signup_request_dto.dart'
+    as _i9;
 import 'package:flowery_e_commerce/features/auth/data/models/response/login_response_dto.dart'
     as _i2;
 import 'package:flowery_e_commerce/features/auth/data/models/response/signup_response_dto.dart'
     as _i3;
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart'
+    as _i5;
+import 'package:flowery_e_commerce/features/generic/data/models/generic_response_dto.dart'
     as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -53,9 +55,20 @@ class _FakeSignUpResponseDto_1 extends _i1.SmartFake
         );
 }
 
-class _FakeGetAllCategoriesResponseDto_2 extends _i1.SmartFake
-    implements _i4.GetAllCategoriesResponseDto {
-  _FakeGetAllCategoriesResponseDto_2(
+class _FakeGenericResponseDto_2 extends _i1.SmartFake
+    implements _i4.GenericResponseDto {
+  _FakeGenericResponseDto_2(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeGetAllCategoriesResponseDto_3 extends _i1.SmartFake
+    implements _i5.GetAllCategoriesResponseDto {
+  _FakeGetAllCategoriesResponseDto_3(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -67,59 +80,76 @@ class _FakeGetAllCategoriesResponseDto_2 extends _i1.SmartFake
 /// A class which mocks [ApiManager].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiManager extends _i1.Mock implements _i5.ApiManager {
+class MockApiManager extends _i1.Mock implements _i6.ApiManager {
   MockApiManager() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i6.Future<_i2.LoginResponseDto> login(_i7.LoginRequestDto? request) =>
+  _i7.Future<_i2.LoginResponseDto> login(_i8.LoginRequestDto? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [request],
         ),
         returnValue:
-            _i6.Future<_i2.LoginResponseDto>.value(_FakeLoginResponseDto_0(
+            _i7.Future<_i2.LoginResponseDto>.value(_FakeLoginResponseDto_0(
           this,
           Invocation.method(
             #login,
             [request],
           ),
         )),
-      ) as _i6.Future<_i2.LoginResponseDto>);
+      ) as _i7.Future<_i2.LoginResponseDto>);
 
   @override
-  _i6.Future<_i3.SignUpResponseDto> signUp(_i8.SignUpRequestDto? request) =>
+  _i7.Future<_i3.SignUpResponseDto> signUp(_i9.SignUpRequestDto? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #signUp,
           [request],
         ),
         returnValue:
-            _i6.Future<_i3.SignUpResponseDto>.value(_FakeSignUpResponseDto_1(
+            _i7.Future<_i3.SignUpResponseDto>.value(_FakeSignUpResponseDto_1(
           this,
           Invocation.method(
             #signUp,
             [request],
           ),
         )),
-      ) as _i6.Future<_i3.SignUpResponseDto>);
+      ) as _i7.Future<_i3.SignUpResponseDto>);
 
   @override
-  _i6.Future<_i4.GetAllCategoriesResponseDto> getAllCategories() =>
+  _i7.Future<_i4.GenericResponseDto> getGenericProduct(String? resourceName) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getGenericProduct,
+          [resourceName],
+        ),
+        returnValue:
+            _i7.Future<_i4.GenericResponseDto>.value(_FakeGenericResponseDto_2(
+          this,
+          Invocation.method(
+            #getGenericProduct,
+            [resourceName],
+          ),
+        )),
+      ) as _i7.Future<_i4.GenericResponseDto>);
+
+  @override
+  _i7.Future<_i5.GetAllCategoriesResponseDto> getAllCategories() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllCategories,
           [],
         ),
-        returnValue: _i6.Future<_i4.GetAllCategoriesResponseDto>.value(
-            _FakeGetAllCategoriesResponseDto_2(
+        returnValue: _i7.Future<_i5.GetAllCategoriesResponseDto>.value(
+            _FakeGetAllCategoriesResponseDto_3(
           this,
           Invocation.method(
             #getAllCategories,
             [],
           ),
         )),
-      ) as _i6.Future<_i4.GetAllCategoriesResponseDto>);
+      ) as _i7.Future<_i5.GetAllCategoriesResponseDto>);
 }

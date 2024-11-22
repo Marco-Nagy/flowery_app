@@ -9,6 +9,7 @@ import '../../../features/auth/data/models/request/signup_request_dto.dart';
 import '../../../features/auth/data/models/response/signup_response_dto.dart';
 import '../../../features/auth/data/models/request/login_request_dto.dart';
 import '../../../features/auth/data/models/response/login_response_dto.dart';
+import '../../../features/generic/data/models/generic_response_dto.dart';
 import 'api_constants.dart';
 
 part 'api_manager.g.dart';
@@ -25,6 +26,10 @@ abstract class ApiManager {
 
   @POST(ApiConstants.registerApi)
   Future<SignUpResponseDto> signUp(@Body() SignUpRequestDto request);
+
+  @GET("api/v1/{resourceName}")
+  Future<GenericResponseDto> getGenericProduct(@Path("resourceName") String resourceName);
+
 
   @GET(ApiConstants.getAllCategories)
   Future<GetAllCategoriesResponseDto> getAllCategories();

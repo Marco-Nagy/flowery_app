@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../di/di.dart';
 import '../../features/auth/presentation/login/view/login_view.dart';
 import '../../features/auth/presentation/signup/view/signup_view.dart';
+import '../../features/generic/presentation/screens/occasion_view.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 
 class AppRoutes {
@@ -17,6 +18,7 @@ class AppRoutes {
   static const String resetPassWord = 'resetPassWord';
   static const String changePassWord = 'changePassWord';
   static const String homeScreen = 'homeScreen';
+  static const String occasionScreen = 'occasionScreen';
   static const String categoriesView = 'categoriesView';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
@@ -35,6 +37,10 @@ class AppRoutes {
       case AppRoutes.homeScreen:
         return BaseRoute(
           page: HomeScreen(),
+        );
+      case AppRoutes.occasionScreen:
+        return BaseRoute(
+          page: OccasionView(),
         );
       case AppRoutes.categoriesView:
         return BaseRoute(

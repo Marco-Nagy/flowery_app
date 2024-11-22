@@ -42,6 +42,17 @@ import '../features/categories/domain/repositories/categories_repo.dart'
     as _i590;
 import '../features/categories/domain/use_cases/categories_use_case.dart'
     as _i777;
+import '../features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart'
+    as _i80;
+import '../features/generic/data/data_sources/contracts/generic_online_data_source.dart'
+    as _i211;
+import '../features/generic/data/data_sources/impl/generic_online_data_source_impl.dart'
+    as _i854;
+import '../features/generic/data/repositories/generic_repo_impl.dart' as _i284;
+import '../features/generic/domain/contracts/generic_repo.dart' as _i565;
+import '../features/generic/domain/use_cases/generic_use_case.dart' as _i559;
+import '../features/generic/presentation/view_model/generic_view_model_cubit.dart'
+    as _i1070;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -66,11 +77,15 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i326.AuthOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i345.OfflineDataSource>(
         () => _i1036.OfflineDataSourceImplementation());
+    gh.factory<_i211.GenericOnlineDataSource>(
+        () => _i854.GenericOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i518.CategoriesOnlineDataSource>(() =>
         _i1059.CategoriesOnlineDataSourceImplementation(
             gh<_i282.ApiManager>()));
     gh.factory<_i665.AuthRepository>(
         () => _i990.AuthRepositoryImpl(gh<_i901.AuthOnlineDataSource>()));
+    gh.factory<_i565.GenericRepo>(
+        () => _i284.GenericRepositoryImpl(gh<_i211.GenericOnlineDataSource>()));
     gh.factory<_i496.LoginUseCase>(
         () => _i496.LoginUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i853.SignUpUseCase>(
@@ -82,8 +97,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
     gh.factory<_i508.SignUpViewModel>(
         () => _i508.SignUpViewModel(gh<_i853.SignUpUseCase>()));
+    gh.factory<_i559.GenericUseCase>(
+        () => _i559.GenericUseCase(gh<_i565.GenericRepo>()));
     gh.factory<_i777.CategoriesUseCase>(
         () => _i777.CategoriesUseCase(gh<_i590.CategoriesRepository>()));
+    gh.factory<_i80.CategoriesViewModelCubit>(
+        () => _i80.CategoriesViewModelCubit(gh<_i777.CategoriesUseCase>()));
+    gh.factory<_i1070.GenericViewModelCubit>(
+        () => _i1070.GenericViewModelCubit(gh<_i559.GenericUseCase>()));
     return this;
   }
 }
