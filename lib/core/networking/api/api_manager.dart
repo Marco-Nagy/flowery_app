@@ -1,5 +1,6 @@
 
 import 'package:dio/dio.dart';
+import 'package:flowery_e_commerce/features/generic/data/models/generic_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -24,4 +25,8 @@ abstract class ApiManager {
 
   @POST(ApiConstants.registerApi)
   Future<SignUpResponseDto> signUp(@Body() SignUpRequestDto request);
+
+  @GET("api/v1/{resourceName}")
+  Future<GenericResponseDto> getGenericProduct(@Path("resourceName") String resourceName);
+
 }

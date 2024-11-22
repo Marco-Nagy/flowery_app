@@ -46,6 +46,7 @@ dependencies:
   shared_preferences: ^2.3.2
   build_runner: ^2.4.6
   connectivity_plus:
+  cached_network_image:
 
   # Ui
   lottie: ^3.1.2

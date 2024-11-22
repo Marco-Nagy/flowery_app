@@ -32,6 +32,15 @@ import '../features/auth/presentation/login/viewModel/login_view_model_cubit.dar
     as _i690;
 import '../features/auth/presentation/signup/view_model/signup_view_model_cubit.dart'
     as _i508;
+import '../features/generic/data/data_sources/contracts/generic_online_data_source.dart'
+    as _i211;
+import '../features/generic/data/data_sources/impl/generic_online_data_source_impl.dart'
+    as _i854;
+import '../features/generic/data/repositories/generic_repo_impl.dart' as _i284;
+import '../features/generic/domain/contracts/generic_repo.dart' as _i565;
+import '../features/generic/domain/use_cases/generic_use_case.dart' as _i845;
+import '../features/generic/presentation/view_model/generic_view_model_cubit.dart'
+    as _i1070;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -56,8 +65,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i326.AuthOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i345.OfflineDataSource>(
         () => _i1036.OfflineDataSourceImplementation());
+    gh.factory<_i211.GenericOnlineDataSource>(
+        () => _i854.GenericOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i665.AuthRepository>(
         () => _i990.AuthRepositoryImpl(gh<_i901.AuthOnlineDataSource>()));
+    gh.factory<_i565.GenericRepo>(
+        () => _i284.GenericRepositoryImpl(gh<_i211.GenericOnlineDataSource>()));
     gh.factory<_i496.LoginUseCase>(
         () => _i496.LoginUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i853.SignUpUseCase>(
@@ -66,6 +79,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
     gh.factory<_i508.SignUpViewModel>(
         () => _i508.SignUpViewModel(gh<_i853.SignUpUseCase>()));
+    gh.factory<_i845.GenericUseCase>(
+        () => _i845.GenericUseCase(gh<_i565.GenericRepo>()));
+    gh.factory<_i1070.GenericViewModelCubit>(
+        () => _i1070.GenericViewModelCubit(gh<_i845.GenericUseCase>()));
     return this;
   }
 }
