@@ -1,6 +1,7 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BaseView extends StatelessWidget {
   const BaseView({super.key, required this.child});
@@ -13,7 +14,7 @@ class BaseView extends StatelessWidget {
         backgroundColor: MyColors.white,
         body: Padding(
           padding:
-              const EdgeInsets.only(top: 50, left: 16, right: 16, bottom: 8),
+              EdgeInsets.only(top: 50.h, left: 16.w, right: 16.w, bottom: 8.h),
           child: child,
         ));
   }
