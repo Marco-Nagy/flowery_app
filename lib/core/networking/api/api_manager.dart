@@ -1,5 +1,6 @@
 
 import 'package:dio/dio.dart';
+import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart';
 import 'package:flowery_e_commerce/features/generic/data/models/generic_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
@@ -29,4 +30,7 @@ abstract class ApiManager {
   @GET("api/v1/{resourceName}")
   Future<GenericResponseDto> getGenericProduct(@Path("resourceName") String resourceName);
 
+
+  @GET(ApiConstants.getAllCategories)
+  Future<GetAllCategoriesResponseDto> getAllCategories();
 }

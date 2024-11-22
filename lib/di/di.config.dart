@@ -41,6 +41,16 @@ import '../features/generic/domain/contracts/generic_repo.dart' as _i565;
 import '../features/generic/domain/use_cases/generic_use_case.dart' as _i845;
 import '../features/generic/presentation/view_model/generic_view_model_cubit.dart'
     as _i1070;
+import '../features/categories/data/data_sources/contracts/categories_online_data_source.dart'
+    as _i518;
+import '../features/categories/data/data_sources/impl/categories_online_data_source_impl.dart'
+    as _i1059;
+import '../features/categories/data/repositories/categories_repo_impl.dart'
+    as _i620;
+import '../features/categories/domain/repositories/categories_repo.dart'
+    as _i590;
+import '../features/categories/domain/use_cases/categories_use_case.dart'
+    as _i777;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -67,6 +77,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1036.OfflineDataSourceImplementation());
     gh.factory<_i211.GenericOnlineDataSource>(
         () => _i854.GenericOnlineDataSourceImpl(gh<_i282.ApiManager>()));
+    gh.factory<_i518.CategoriesOnlineDataSource>(() =>
+        _i1059.CategoriesOnlineDataSourceImplementation(
+            gh<_i282.ApiManager>()));
     gh.factory<_i665.AuthRepository>(
         () => _i990.AuthRepositoryImpl(gh<_i901.AuthOnlineDataSource>()));
     gh.factory<_i565.GenericRepo>(
@@ -75,6 +88,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i496.LoginUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i853.SignUpUseCase>(
         () => _i853.SignUpUseCase(gh<_i665.AuthRepository>()));
+    gh.factory<_i590.CategoriesRepository>(() =>
+        _i620.CategoriesRepositoryImplementation(
+            gh<_i518.CategoriesOnlineDataSource>()));
     gh.factory<_i690.LoginViewModel>(
         () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
     gh.factory<_i508.SignUpViewModel>(
@@ -83,6 +99,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i845.GenericUseCase(gh<_i565.GenericRepo>()));
     gh.factory<_i1070.GenericViewModelCubit>(
         () => _i1070.GenericViewModelCubit(gh<_i845.GenericUseCase>()));
+    gh.factory<_i777.CategoriesUseCase>(
+        () => _i777.CategoriesUseCase(gh<_i590.CategoriesRepository>()));
     return this;
   }
 }
