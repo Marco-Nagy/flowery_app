@@ -6,6 +6,7 @@ import 'package:flowery_e_commerce/features/auth/data/models/request/verify_rese
 import 'package:flowery_e_commerce/features/auth/data/models/response/forget_password_response_dto.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/response/reset_password_response_dto.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/response/verify_reset_code_response.dart';
+import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -13,6 +14,7 @@ import 'package:retrofit/http.dart';
 import '../../../features/auth/data/models/request/login_request_dto.dart';
 import '../../../features/auth/data/models/request/signup_request_dto.dart';
 import '../../../features/auth/data/models/response/login_response_dto.dart';
+import '../../../features/generic/data/models/generic_response_dto.dart';
 import '../../../features/auth/data/models/response/signup_response_dto.dart';
 import 'api_constants.dart';
 
@@ -42,4 +44,11 @@ abstract class ApiManager {
   @PUT(ApiConstants.resetPasswordApi)
   Future<ResetPasswordResponseDto> resetPassword(
       @Body() ResetPasswordRequestDto resetPassword);
+
+  @GET("api/v1/{resourceName}")
+  Future<GenericResponseDto> getGenericProduct(@Path("resourceName") String resourceName);
+
+
+  @GET(ApiConstants.getAllCategories)
+  Future<GetAllCategoriesResponseDto> getAllCategories();
 }

@@ -6,7 +6,7 @@ import '../../styles/colors/my_colors.dart';
 
 AppBar customAppBar({required String appBarTxt, bool showArrow = false, VoidCallback? navigation,required BuildContext context}) {
   return AppBar(
-    backgroundColor: MyColors.white,
+    backgroundColor: Colors.white,
     automaticallyImplyLeading: false,
     title:  Row(
       children: [
