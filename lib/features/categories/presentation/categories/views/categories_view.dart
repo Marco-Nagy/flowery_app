@@ -2,6 +2,7 @@ import 'package:flowery_e_commerce/core/utils/widgets/base/base_view.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../generic/presentation/screens/catalog_generic_screen.dart';
 import '../widgets/custom_filter_categories.dart';
 import '../widgets/custom_search_categories.dart';
 import '../widgets/custom_tab_bar.dart';
@@ -14,8 +15,7 @@ class CategoriesView extends StatelessWidget {
     return DefaultTabController(
       length: 5,
       child: BaseView(
-        child: SingleChildScrollView(
-          child: Column(
+        child: Column(
             children: [
               Row(
                 children: [
@@ -28,10 +28,9 @@ class CategoriesView extends StatelessWidget {
                 ],
               ),
               verticalSpacing(16),
-              const CustomTabBar(),
+              CatalogGenericScreen(resourceName: 'categories',),
             ],
           ),
-        ),
       ),
     );
   }
