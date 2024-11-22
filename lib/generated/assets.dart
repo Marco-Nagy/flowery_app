@@ -2,10 +2,12 @@
 class Assets {
   Assets._();
 
+  static const String generatedAssets = 'lib/generated/assets.dart';
   static const String imagesArrowBackIos = 'assets/images/arrow_back_ios.png';
   static const String imagesCardContent = 'assets/images/card_content.png';
   static const String imagesCategory = 'assets/images/category.png';
   static const String imagesDeliverTo = 'assets/images/deliver_to.png';
+  static const String imagesFilter = 'assets/images/filter.png';
   static const String imagesGraduation = 'assets/images/graduation.png';
   static const String imagesHome = 'assets/images/home.png';
   static const String imagesImage = 'assets/images/image.png';
