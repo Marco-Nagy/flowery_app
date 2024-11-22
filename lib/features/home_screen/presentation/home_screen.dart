@@ -1,9 +1,9 @@
 import 'package:flowery_e_commerce/core/styles/app_images.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/features/home/presentation/tabs/cart_tab.dart';
-import 'package:flowery_e_commerce/features/home/presentation/tabs/category_tab.dart';
-import 'package:flowery_e_commerce/features/home/presentation/tabs/home_tab.dart';
-import 'package:flowery_e_commerce/features/home/presentation/tabs/profile_tab.dart';
+import 'package:flowery_e_commerce/features/home_screen/presentation/tabs/cart_tab.dart';
+import 'package:flowery_e_commerce/features/home_screen/presentation/tabs/category_tab.dart';
+import 'package:flowery_e_commerce/features/home_screen/presentation/tabs/home_tab.dart';
+import 'package:flowery_e_commerce/features/home_screen/presentation/tabs/profile_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentTabIndex = 0;
   List<Widget> tabs = [
-    const HomeTab(),
+     HomeTab(),
     const CategoriesTab(),
     const CartTab(),
     const ProfileTab(),
