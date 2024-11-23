@@ -1,5 +1,6 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/categories_cubit/categories_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/categories_cubit/categories_states.dart';
 import 'package:flutter/material.dart';
@@ -18,11 +19,11 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 150.h,
-      child: BlocBuilder<CategoriesCubit, CategoriesState>(
+      child: BlocBuilder<CategoriesViewModelCubit, CategoriesViewModelState>(
         builder: (context, state) {
-          if(state is GetCategoriesSuccessState){
+          if(state is GetCategoriesViewModelSuccess){
             return ListView.builder(
-              itemCount:10,
+              itemCount:state.categories.categories!.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Column(
@@ -37,14 +38,14 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
                       ),
                       child: Center(
                         child: Image.network(
-                          state.categories[index].image,
+                          '${state.categories.categories?[index]!.image}',
                           width: 35.w,
                           height: 35.h,
                         ),
                       ),
                     ),
                     SizedBox(height: 8.h,),
-                    Text(state.categories[index].name, style: MyFonts.styleRegular400_14.copyWith(
+                    Text('${state.categories.categories?[index]!.name}', style: MyFonts.styleRegular400_14.copyWith(
                         color: MyColors.blackBase)),
                   ],
                 );
