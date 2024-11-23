@@ -134,12 +134,17 @@ class HomeTab extends StatelessWidget {
                         style: MyFonts.styleMedium500_18
                             .copyWith(color: MyColors.blackBase)),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(left: 15.w, right: 15.w),
-                    child: Text('View All',
-                        style: MyFonts.styleMedium500_12.copyWith(
-                            color: MyColors.baseColor,
-                            decoration: TextDecoration.underline)),
+                  InkWell(
+                    onTap: (){
+                      context.pushNamed(AppRoutes.occasionScreen);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(left: 15.w, right: 15.w),
+                      child: Text('View All',
+                          style: MyFonts.styleMedium500_12.copyWith(
+                              color: MyColors.baseColor,
+                              decoration: TextDecoration.underline)),
+                    ),
                   ),
                 ],
               ),
