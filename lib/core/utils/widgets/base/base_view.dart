@@ -13,8 +13,7 @@ class BaseView extends StatelessWidget {
     return Scaffold(
         backgroundColor: MyColors.white,
         body: Padding(
-          padding:
-              EdgeInsets.only(top: 50.h, left: 16.w, right: 16.w, bottom: 8.h),
+          padding: EdgeInsets.only(top: 50.h, left: 16.w, right: 16.w),
           child: child,
         ));
   }

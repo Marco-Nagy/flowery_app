@@ -5,6 +5,7 @@ import 'package:flowery_e_commerce/features/auth/presentation/forget_password/vi
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/reset_password.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/signup_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/categories/views/categories_view.dart';
+import 'package:flowery_e_commerce/features/categories/presentation/products/views/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../di/di.dart';
@@ -24,6 +25,7 @@ class AppRoutes {
   static const String homeScreen = 'homeScreen';
   static const String occasionScreen = 'occasionScreen';
   static const String categoriesView = 'categoriesView';
+  static const String productsDetails = 'productsDetails';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -69,6 +71,8 @@ class AppRoutes {
         return BaseRoute(
           page: CategoriesView(),
         );
+      case AppRoutes.productsDetails:
+        return BaseRoute(page: ProductDetails());
 
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
