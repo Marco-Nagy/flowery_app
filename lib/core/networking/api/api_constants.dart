@@ -8,6 +8,5 @@ class ApiConstants {
   static const String getAllCategories = "api/v1/categories";
   static const String getHomeApi = "api/v1/home";
   static String genericApi(String resourceName) => "api/v1/$resourceName";
-
-
+  static const String getAllProducts = "api/v1/products";
 }
