@@ -20,6 +20,8 @@ import 'package:flowery_e_commerce/features/categories/data/models/response/get_
     as _i6;
 import 'package:flowery_e_commerce/features/generic/data/models/generic_response_dto.dart'
     as _i4;
+import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart'
+    as _i6;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -82,6 +84,17 @@ class _FakeGetAllCategoriesResponseDto_3 extends _i1.SmartFake
 class _FakeGetAllProductsRsponseDto_4 extends _i1.SmartFake
     implements _i6.GetAllProductsRsponseDto {
   _FakeGetAllProductsRsponseDto_4(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeHomeResponseModelEntity_4 extends _i1.SmartFake
+    implements _i6.HomeResponseModelEntity {
+  _FakeHomeResponseModelEntity_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -182,4 +195,21 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
           ),
         )),
       ) as _i8.Future<_i6.GetAllProductsRsponseDto>);
+
+
+  @override
+  _i8.Future<_i6.HomeResponseModelEntity> getHome() => (super.noSuchMethod(
+        Invocation.method(
+          #getHome,
+          [],
+        ),
+        returnValue: _i8.Future<_i6.HomeResponseModelEntity>.value(
+            _FakeHomeResponseModelEntity_4(
+          this,
+          Invocation.method(
+            #getHome,
+            [],
+          ),
+        )),
+      ) as _i8.Future<_i6.HomeResponseModelEntity>);
 }
