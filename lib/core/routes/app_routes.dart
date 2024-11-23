@@ -4,6 +4,7 @@ import 'package:flowery_e_commerce/features/auth/presentation/forget_password/Vi
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/email_verification.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/reset_password.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/signup_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/best_seller/presentation/screens/most_selling_screen.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/categories/views/categories_view.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_screen.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/products/views/product_details.dart';
@@ -26,6 +27,7 @@ class AppRoutes {
   static const String occasionScreen = 'occasionScreen';
   static const String categoriesView = 'categoriesView';
   static const String productsDetails = 'productsDetails';
+  static const String mostSellingScreen = 'mostSellingScreen';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -70,6 +72,10 @@ class AppRoutes {
       case AppRoutes.categoriesView:
         return BaseRoute(
           page: CategoriesView(),
+        );
+        case AppRoutes.mostSellingScreen:
+        return BaseRoute(
+          page: MostSellingScreen(),
         );
       case AppRoutes.productsDetails:
         return BaseRoute(page: ProductDetails());
