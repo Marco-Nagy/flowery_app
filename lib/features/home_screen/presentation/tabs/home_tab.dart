@@ -1,5 +1,7 @@
+import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/best_seller_cubit/best_seller_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/occasions_cubit/occasions_cubit.dart';
@@ -108,12 +110,17 @@ class HomeTab extends StatelessWidget {
                         style: MyFonts.styleMedium500_18
                             .copyWith(color: MyColors.blackBase)),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(left: 15.w, right: 15.w),
-                    child: Text('View All',
-                        style: MyFonts.styleMedium500_12.copyWith(
-                            color: MyColors.baseColor,
-                            decoration: TextDecoration.underline)),
+                  InkWell(
+                    onTap: (){
+                      context.pushNamed(AppRoutes.mostSellingScreen);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(left: 15.w, right: 15.w),
+                      child: Text('View All',
+                          style: MyFonts.styleMedium500_12.copyWith(
+                              color: MyColors.baseColor,
+                              decoration: TextDecoration.underline)),
+                    ),
                   ),
                 ],
               ),

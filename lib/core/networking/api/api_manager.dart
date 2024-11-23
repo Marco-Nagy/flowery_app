@@ -1,5 +1,6 @@
 
 import 'package:dio/dio.dart';
+import 'package:flowery_e_commerce/features/best_seller/data/models/best_seller_response_model_entity.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart';
 import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart';
 import 'package:injectable/injectable.dart';
@@ -36,4 +37,6 @@ abstract class ApiManager {
   Future<GetAllCategoriesResponseDto> getAllCategories();
   @GET(ApiConstants.getHomeApi)
   Future<HomeResponseModelEntity> getHome();
+  @GET(ApiConstants.mostSellingProductsApi)
+  Future<BestSellerResponseModelEntity> getMostSellingProducts();
 }

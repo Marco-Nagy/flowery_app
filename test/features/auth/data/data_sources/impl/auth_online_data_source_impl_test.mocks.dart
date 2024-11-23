@@ -3,17 +3,19 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i8;
+import 'dart:async' as _i9;
 
-import 'package:flowery_e_commerce/core/networking/api/api_manager.dart' as _i7;
+import 'package:flowery_e_commerce/core/networking/api/api_manager.dart' as _i8;
 import 'package:flowery_e_commerce/features/auth/data/models/request/login_request_dto.dart'
-    as _i9;
-import 'package:flowery_e_commerce/features/auth/data/models/request/signup_request_dto.dart'
     as _i10;
+import 'package:flowery_e_commerce/features/auth/data/models/request/signup_request_dto.dart'
+    as _i11;
 import 'package:flowery_e_commerce/features/auth/data/models/response/login_response_dto.dart'
     as _i2;
 import 'package:flowery_e_commerce/features/auth/data/models/response/signup_response_dto.dart'
     as _i3;
+import 'package:flowery_e_commerce/features/best_seller/data/models/best_seller_response_model_entity.dart'
+    as _i7;
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart'
     as _i5;
 import 'package:flowery_e_commerce/features/generic/data/models/generic_response_dto.dart'
@@ -90,73 +92,84 @@ class _FakeHomeResponseModelEntity_4 extends _i1.SmartFake
         );
 }
 
+class _FakeBestSellerResponseModelEntity_5 extends _i1.SmartFake
+    implements _i7.BestSellerResponseModelEntity {
+  _FakeBestSellerResponseModelEntity_5(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [ApiManager].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiManager extends _i1.Mock implements _i7.ApiManager {
+class MockApiManager extends _i1.Mock implements _i8.ApiManager {
   MockApiManager() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i8.Future<_i2.LoginResponseDto> login(_i9.LoginRequestDto? request) =>
+  _i9.Future<_i2.LoginResponseDto> login(_i10.LoginRequestDto? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [request],
         ),
         returnValue:
-            _i8.Future<_i2.LoginResponseDto>.value(_FakeLoginResponseDto_0(
+            _i9.Future<_i2.LoginResponseDto>.value(_FakeLoginResponseDto_0(
           this,
           Invocation.method(
             #login,
             [request],
           ),
         )),
-      ) as _i8.Future<_i2.LoginResponseDto>);
+      ) as _i9.Future<_i2.LoginResponseDto>);
 
   @override
-  _i8.Future<_i3.SignUpResponseDto> signUp(_i10.SignUpRequestDto? request) =>
+  _i9.Future<_i3.SignUpResponseDto> signUp(_i11.SignUpRequestDto? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #signUp,
           [request],
         ),
         returnValue:
-            _i8.Future<_i3.SignUpResponseDto>.value(_FakeSignUpResponseDto_1(
+            _i9.Future<_i3.SignUpResponseDto>.value(_FakeSignUpResponseDto_1(
           this,
           Invocation.method(
             #signUp,
             [request],
           ),
         )),
-      ) as _i8.Future<_i3.SignUpResponseDto>);
+      ) as _i9.Future<_i3.SignUpResponseDto>);
 
   @override
-  _i8.Future<_i4.GenericResponseDto> getGenericProduct(String? resourceName) =>
+  _i9.Future<_i4.GenericResponseDto> getGenericProduct(String? resourceName) =>
       (super.noSuchMethod(
         Invocation.method(
           #getGenericProduct,
           [resourceName],
         ),
         returnValue:
-            _i8.Future<_i4.GenericResponseDto>.value(_FakeGenericResponseDto_2(
+            _i9.Future<_i4.GenericResponseDto>.value(_FakeGenericResponseDto_2(
           this,
           Invocation.method(
             #getGenericProduct,
             [resourceName],
           ),
         )),
-      ) as _i8.Future<_i4.GenericResponseDto>);
+      ) as _i9.Future<_i4.GenericResponseDto>);
 
   @override
-  _i8.Future<_i5.GetAllCategoriesResponseDto> getAllCategories() =>
+  _i9.Future<_i5.GetAllCategoriesResponseDto> getAllCategories() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllCategories,
           [],
         ),
-        returnValue: _i8.Future<_i5.GetAllCategoriesResponseDto>.value(
+        returnValue: _i9.Future<_i5.GetAllCategoriesResponseDto>.value(
             _FakeGetAllCategoriesResponseDto_3(
           this,
           Invocation.method(
@@ -164,15 +177,15 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
             [],
           ),
         )),
-      ) as _i8.Future<_i5.GetAllCategoriesResponseDto>);
+      ) as _i9.Future<_i5.GetAllCategoriesResponseDto>);
 
   @override
-  _i8.Future<_i6.HomeResponseModelEntity> getHome() => (super.noSuchMethod(
+  _i9.Future<_i6.HomeResponseModelEntity> getHome() => (super.noSuchMethod(
         Invocation.method(
           #getHome,
           [],
         ),
-        returnValue: _i8.Future<_i6.HomeResponseModelEntity>.value(
+        returnValue: _i9.Future<_i6.HomeResponseModelEntity>.value(
             _FakeHomeResponseModelEntity_4(
           this,
           Invocation.method(
@@ -180,5 +193,22 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
             [],
           ),
         )),
-      ) as _i8.Future<_i6.HomeResponseModelEntity>);
+      ) as _i9.Future<_i6.HomeResponseModelEntity>);
+
+  @override
+  _i9.Future<_i7.BestSellerResponseModelEntity> getMostSellingProducts() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getMostSellingProducts,
+          [],
+        ),
+        returnValue: _i9.Future<_i7.BestSellerResponseModelEntity>.value(
+            _FakeBestSellerResponseModelEntity_5(
+          this,
+          Invocation.method(
+            #getMostSellingProducts,
+            [],
+          ),
+        )),
+      ) as _i9.Future<_i7.BestSellerResponseModelEntity>);
 }
