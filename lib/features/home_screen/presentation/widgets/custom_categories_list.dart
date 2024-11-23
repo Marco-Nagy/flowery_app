@@ -30,8 +30,8 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
                   children: [
                     Container(
                       margin: EdgeInsets.all(5.sp),
-                      height: 89.h,
-                      width: 89.w,
+                      height: 64.h,
+                      width: 68.w,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.sp),
                         color: MyColors.lightPink,
@@ -39,8 +39,8 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
                       child: Center(
                         child: Image.network(
                           '${state.categories.categories?[index]!.image}',
-                          width: 35.w,
-                          height: 35.h,
+                          width: 24.w,
+                          height: 24.h,
                         ),
                       ),
                     ),

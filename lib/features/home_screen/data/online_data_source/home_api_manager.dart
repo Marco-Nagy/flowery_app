@@ -18,18 +18,6 @@ class HomeApiManager implements HomeOnlineDataSource {
       return HomeMappers.toBestSellerEntity(response);
     },);
   }
-
-  @override
-  Future<DataResult<List<Category>>> getCategories() {
-    return executeApi(() {
-      return Future.delayed(Duration(milliseconds: 5));
-    },);
-    // return executeApi(() async{
-    //   var response = await apiManager.getHome();
-    //   return HomeMappers.toCategoriesEntity(response);
-    // },);
-  }
-
   @override
   Future<DataResult<List<Occasions>>> getOccasions() {
     return executeApi(() async{
