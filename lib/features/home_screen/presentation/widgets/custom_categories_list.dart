@@ -23,7 +23,7 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
         builder: (context, state) {
           if(state is GetCategoriesViewModelSuccess){
             return ListView.builder(
-              itemCount:state.categories.categories!.length,
+              itemCount:state.categories!.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Column(
@@ -38,14 +38,14 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
                       ),
                       child: Center(
                         child: Image.network(
-                          '${state.categories.categories?[index]!.image}',
+                          '${state.categories?[index]!.image}',
                           width: 24.w,
                           height: 24.h,
                         ),
                       ),
                     ),
                     SizedBox(height: 8.h,),
-                    Text('${state.categories.categories?[index]!.name}', style: MyFonts.styleRegular400_14.copyWith(
+                    Text('${state.categories?[index]!.name}', style: MyFonts.styleRegular400_14.copyWith(
                         color: MyColors.blackBase)),
                   ],
                 );

@@ -195,7 +195,7 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
           ),
         )),
       ) as _i8.Future<_i6.GetAllProductsRsponseDto>);
-      ) as _i8.Future<_i5.GetAllCategoriesResponseDto>);
+
 
   @override
   _i8.Future<_i6.HomeResponseModelEntity> getHome() => (super.noSuchMethod(

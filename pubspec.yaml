@@ -36,7 +36,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   fluttertoast: ^8.2.8
-  cached_network_image: ^3.4.1
   row_item: ^2.2.1+1
   dio:
   retrofit: ^4.4.1
