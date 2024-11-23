@@ -26,8 +26,16 @@ import '../features/auth/data/data_sources/impl/auth_online_data_source_impl.dar
     as _i326;
 import '../features/auth/data/repositories/auth_repo_impl.dart' as _i990;
 import '../features/auth/domain/contracts/auth_repo.dart' as _i665;
+import '../features/auth/domain/use_cases/forgot_password_use_case.dart'
+    as _i301;
 import '../features/auth/domain/use_cases/login_use_case.dart' as _i496;
+import '../features/auth/domain/use_cases/reset_password_use_case.dart'
+    as _i906;
 import '../features/auth/domain/use_cases/signup_use_case.dart' as _i853;
+import '../features/auth/domain/use_cases/verify_reset_code_use_case.dart'
+    as _i642;
+import '../features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart'
+    as _i60;
 import '../features/auth/presentation/login/viewModel/login_view_model_cubit.dart'
     as _i690;
 import '../features/auth/presentation/signup/view_model/signup_view_model_cubit.dart'
@@ -42,6 +50,17 @@ import '../features/categories/domain/repositories/categories_repo.dart'
     as _i590;
 import '../features/categories/domain/use_cases/categories_use_case.dart'
     as _i777;
+import '../features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart'
+    as _i80;
+import '../features/generic/data/data_sources/contracts/generic_online_data_source.dart'
+    as _i211;
+import '../features/generic/data/data_sources/impl/generic_online_data_source_impl.dart'
+    as _i854;
+import '../features/generic/data/repositories/generic_repo_impl.dart' as _i284;
+import '../features/generic/domain/contracts/generic_repo.dart' as _i565;
+import '../features/generic/domain/use_cases/generic_use_case.dart' as _i559;
+import '../features/generic/presentation/view_model/generic_view_model_cubit.dart'
+    as _i1070;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -66,11 +85,15 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i326.AuthOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i345.OfflineDataSource>(
         () => _i1036.OfflineDataSourceImplementation());
+    gh.factory<_i211.GenericOnlineDataSource>(
+        () => _i854.GenericOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i518.CategoriesOnlineDataSource>(() =>
         _i1059.CategoriesOnlineDataSourceImplementation(
             gh<_i282.ApiManager>()));
     gh.factory<_i665.AuthRepository>(
         () => _i990.AuthRepositoryImpl(gh<_i901.AuthOnlineDataSource>()));
+    gh.factory<_i565.GenericRepo>(
+        () => _i284.GenericRepositoryImpl(gh<_i211.GenericOnlineDataSource>()));
     gh.factory<_i496.LoginUseCase>(
         () => _i496.LoginUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i853.SignUpUseCase>(
@@ -78,12 +101,31 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i590.CategoriesRepository>(() =>
         _i620.CategoriesRepositoryImplementation(
             gh<_i518.CategoriesOnlineDataSource>()));
+    gh.factory<_i301.ForgotPasswordUseCase>(
+        () => _i301.ForgotPasswordUseCase(gh<_i665.AuthRepository>()));
+    gh.factory<_i906.ResetPasswordUseCase>(
+        () => _i906.ResetPasswordUseCase(gh<_i665.AuthRepository>()));
+    gh.factory<_i642.VerifyResetCodeUseCase>(
+        () => _i642.VerifyResetCodeUseCase(gh<_i665.AuthRepository>()));
+
     gh.factory<_i690.LoginViewModel>(
         () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
     gh.factory<_i508.SignUpViewModel>(
         () => _i508.SignUpViewModel(gh<_i853.SignUpUseCase>()));
+    gh.factory<_i60.ForgetPasswordViewModelCubit>(
+        () => _i60.ForgetPasswordViewModelCubit(
+              gh<_i301.ForgotPasswordUseCase>(),
+              gh<_i642.VerifyResetCodeUseCase>(),
+              gh<_i906.ResetPasswordUseCase>(),
+            ));
+    gh.factory<_i559.GenericUseCase>(
+        () => _i559.GenericUseCase(gh<_i565.GenericRepo>()));
     gh.factory<_i777.CategoriesUseCase>(
         () => _i777.CategoriesUseCase(gh<_i590.CategoriesRepository>()));
+    gh.factory<_i80.CategoriesViewModelCubit>(
+        () => _i80.CategoriesViewModelCubit(gh<_i777.CategoriesUseCase>()));
+    gh.factory<_i1070.GenericViewModelCubit>(
+        () => _i1070.GenericViewModelCubit(gh<_i559.GenericUseCase>()));
     return this;
   }
 }

@@ -30,6 +30,7 @@ class ErrorHandler {
       case 401:
       case 402:
       case 403:
+      case 404:
         return ErrorModel(error: response.error ?? 'Unauthorized access');
       case 404:
         return ErrorModel(

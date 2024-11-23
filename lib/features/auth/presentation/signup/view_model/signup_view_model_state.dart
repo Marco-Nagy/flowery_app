@@ -13,7 +13,7 @@ final class SignupSuccess extends SignUpViewModelState {
   SignupSuccess(this.response);
 }
 
-class SignupError<T> extends SignUpViewModelState {
+class SignupError extends SignUpViewModelState {
   final ErrorModel message;
 
   SignupError(this.message);
