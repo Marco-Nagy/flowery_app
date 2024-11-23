@@ -7,6 +7,5 @@ class ApiConstants {
   static const String resetPasswordApi = "api/v1/auth/resetPassword";
   static const String getAllCategories = "api/v1/categories";
   static String genericApi(String resourceName) => "api/v1/$resourceName";
-
-
+  static const String getAllProducts = "api/v1/products";
 }

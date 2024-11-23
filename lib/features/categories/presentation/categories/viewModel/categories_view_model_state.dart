@@ -8,7 +8,7 @@ final class CategoriesViewModelInitial extends CategoriesViewModelState {}
 final class GetCategoriesViewModelLoading extends CategoriesViewModelState {}
 
 final class GetCategoriesViewModelSuccess extends CategoriesViewModelState {
-  final GetAllCategoriesResponseEntity categories;
+  final List<GetAllCategoriesResponseCategoriesEntity?>? categories;
 
   GetCategoriesViewModelSuccess({required this.categories});
 }
