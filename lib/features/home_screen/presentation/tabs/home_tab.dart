@@ -113,18 +113,7 @@ class HomeTab extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: (){
-                   // context.pushNamed(AppRoutes.bestSellerScreen);
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(left: 15.w, right: 15.w),
-                      child: Text('View All',
-                          style: MyFonts.styleMedium500_12.copyWith(
-                              color: MyColors.baseColor,
-                              decoration: TextDecoration.underline)),
-                    ),
-                  InkWell(
-                    onTap: (){
-                      context.pushNamed(AppRoutes.mostSellingScreen);
+                    context.pushNamed(AppRoutes.mostSellingScreen);
                     },
                     child: Container(
                       margin: EdgeInsets.only(left: 15.w, right: 15.w),
@@ -134,7 +123,7 @@ class HomeTab extends StatelessWidget {
                               decoration: TextDecoration.underline)),
                     ),
                   ),
-                ],
+      ],
               ),
               const CustomBestSellerList(),
               Row(
