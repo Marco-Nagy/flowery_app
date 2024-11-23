@@ -31,7 +31,8 @@ class CategoriesViewModelCubit extends Cubit<CategoriesViewModelState> {
     final result = await _categoriesUseCase.getAllCategories();
     switch (result) {
       case Success<GetAllCategoriesResponseEntity>():
-        emit(GetCategoriesViewModelSuccess(categories: result.data));
+        emit(GetCategoriesViewModelSuccess(
+            categories: result.data.categories ?? []));
       case Fail<GetAllCategoriesResponseEntity>():
         emit(GetCategoriesViewModelError(
             error: ErrorHandler.handle(result.exception!)));

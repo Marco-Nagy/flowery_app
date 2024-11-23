@@ -8,6 +8,8 @@ class Assets {
   static const String imagesCardContent = 'assets/images/card_content.png';
   static const String imagesCategory = 'assets/images/category.png';
   static const String imagesDeliverTo = 'assets/images/deliver_to.png';
+  static const String imagesDribbleFlowers =
+      'assets/images/dribble_flowers.gif';
   static const String imagesFilter = 'assets/images/filter.png';
   static const String imagesFlower = 'assets/images/flower.png';
   static const String imagesGraduation = 'assets/images/graduation.png';
@@ -16,6 +18,7 @@ class Assets {
   static const String imagesLoading = 'assets/images/loading.json';
   static const String imagesLocationOn = 'assets/images/location_on.png';
   static const String imagesLogo = 'assets/images/logo.png';
+  static const String imagesNetworrk = 'assets/images/networrk.png';
   static const String imagesOccasion = 'assets/images/occasion.png';
   static const String imagesPerson = 'assets/images/person.png';
   static const String imagesPlace = 'assets/images/place.png';

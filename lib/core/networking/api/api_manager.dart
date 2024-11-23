@@ -1,6 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart';
+import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_products_rsponse_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -33,4 +34,7 @@ abstract class ApiManager {
 
   @GET(ApiConstants.getAllCategories)
   Future<GetAllCategoriesResponseDto> getAllCategories();
+
+  @GET(ApiConstants.getAllProducts)
+  Future<GetAllProductsRsponseDto> getAllProducts();
 }
