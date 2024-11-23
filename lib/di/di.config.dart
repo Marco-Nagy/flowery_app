@@ -93,8 +93,6 @@ import '../features/home_screen/domain/repository/home_repo.dart' as _i765;
 import '../features/home_screen/domain/uses_cases/home_use_case.dart' as _i720;
 import '../features/home_screen/presentation/home_cubit/best_seller_cubit/best_seller_cubit.dart'
     as _i233;
-import '../features/home_screen/presentation/home_cubit/categories_cubit/categories_cubit.dart'
-    as _i174;
 import '../features/home_screen/presentation/home_cubit/occasions_cubit/occasions_cubit.dart'
     as _i851;
 
@@ -123,12 +121,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1036.OfflineDataSourceImplementation());
     gh.factory<_i937.ProductsOnlineDataSource>(
         () => _i838.ProductsOnlineDataSourceImpl(gh<_i282.ApiManager>()));
-    gh.factory<_i598.ProductsRepo>(
-        () => _i160.ProductsRepoImpl(gh<_i937.ProductsOnlineDataSource>()));
     gh.lazySingleton<_i603.HomeOnlineDataSource>(
         () => _i507.HomeApiManager(gh<_i282.ApiManager>()));
     gh.lazySingleton<_i765.HomeRepository>(
         () => _i178.HomeRepoImpl(gh<_i603.HomeOnlineDataSource>()));
+    gh.factory<_i598.ProductsRepo>(
+        () => _i160.ProductsRepoImpl(gh<_i937.ProductsOnlineDataSource>()));
     gh.lazySingleton<_i475.MostSellingProductsOnlineDataSource>(
         () => _i480.MostSellingProductsApiManager(gh<_i282.ApiManager>()));
     gh.factory<_i211.GenericOnlineDataSource>(
@@ -141,36 +139,31 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i643.MostSellingProductsRepository>(() =>
         _i221.MostSellingProductsRepoImpl(
             gh<_i475.MostSellingProductsOnlineDataSource>()));
-    gh.factory<_i720.HomeUseCase>(
-        () => _i720.HomeUseCase(gh<_i765.HomeRepository>()));
     gh.factory<_i98.ProductsUseCase>(
         () => _i98.ProductsUseCase(gh<_i598.ProductsRepo>()));
+    gh.factory<_i720.HomeUseCase>(
+        () => _i720.HomeUseCase(gh<_i765.HomeRepository>()));
     gh.factory<_i565.GenericRepo>(
         () => _i284.GenericRepositoryImpl(gh<_i211.GenericOnlineDataSource>()));
     gh.factory<_i496.LoginUseCase>(
         () => _i496.LoginUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i853.SignUpUseCase>(
         () => _i853.SignUpUseCase(gh<_i665.AuthRepository>()));
-    gh.factory<_i233.BestSellerCubit>(
-        () => _i233.BestSellerCubit(gh<_i720.HomeUseCase>()));
-    gh.factory<_i174.CategoriesCubit>(
-        () => _i174.CategoriesCubit(gh<_i720.HomeUseCase>()));
-    gh.factory<_i851.OccasionsCubit>(
-        () => _i851.OccasionsCubit(gh<_i720.HomeUseCase>()));
-    gh.factory<_i590.CategoriesRepository>(() =>
-        _i620.CategoriesRepositoryImplementation(
-            gh<_i518.CategoriesOnlineDataSource>()));
-
-    gh.factory<_i559.ProductsViewModelCubit>(
-        () => _i559.ProductsViewModelCubit(gh<_i98.ProductsUseCase>()));
     gh.factory<_i301.ForgotPasswordUseCase>(
         () => _i301.ForgotPasswordUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i906.ResetPasswordUseCase>(
         () => _i906.ResetPasswordUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i642.VerifyResetCodeUseCase>(
         () => _i642.VerifyResetCodeUseCase(gh<_i665.AuthRepository>()));
-
-
+    gh.factory<_i233.BestSellerCubit>(
+        () => _i233.BestSellerCubit(gh<_i720.HomeUseCase>()));
+    gh.factory<_i851.OccasionsCubit>(
+        () => _i851.OccasionsCubit(gh<_i720.HomeUseCase>()));
+    gh.factory<_i590.CategoriesRepository>(() =>
+        _i620.CategoriesRepositoryImplementation(
+            gh<_i518.CategoriesOnlineDataSource>()));
+    gh.factory<_i559.ProductsViewModelCubit>(
+        () => _i559.ProductsViewModelCubit(gh<_i98.ProductsUseCase>()));
     gh.factory<_i972.MostSellingProductsUseCase>(() =>
         _i972.MostSellingProductsUseCase(
             gh<_i643.MostSellingProductsRepository>()));
@@ -178,14 +171,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
     gh.factory<_i508.SignUpViewModel>(
         () => _i508.SignUpViewModel(gh<_i853.SignUpUseCase>()));
+    gh.factory<_i559.GenericUseCase>(
+        () => _i559.GenericUseCase(gh<_i565.GenericRepo>()));
     gh.factory<_i60.ForgetPasswordViewModelCubit>(
         () => _i60.ForgetPasswordViewModelCubit(
               gh<_i301.ForgotPasswordUseCase>(),
               gh<_i642.VerifyResetCodeUseCase>(),
               gh<_i906.ResetPasswordUseCase>(),
             ));
-    gh.factory<_i559.GenericUseCase>(
-        () => _i559.GenericUseCase(gh<_i565.GenericRepo>()));
     gh.factory<_i777.CategoriesUseCase>(
         () => _i777.CategoriesUseCase(gh<_i590.CategoriesRepository>()));
     gh.factory<_i372.MostSellerCubit>(

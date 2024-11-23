@@ -9,10 +9,22 @@ import 'package:flowery_e_commerce/core/networking/common/api_result.dart'
     as _i4;
 import 'package:flowery_e_commerce/features/auth/data/data_sources/contracts/auth_online_data_source.dart'
     as _i2;
+import 'package:flowery_e_commerce/features/auth/data/models/response/reset_password_response_dto.dart'
+    as _i14;
+import 'package:flowery_e_commerce/features/auth/data/models/response/verify_reset_code_response.dart'
+    as _i12;
+import 'package:flowery_e_commerce/features/auth/domain/entities/request/forget_password_request_entity.dart'
+    as _i11;
 import 'package:flowery_e_commerce/features/auth/domain/entities/request/login_request_entity.dart'
     as _i6;
+import 'package:flowery_e_commerce/features/auth/domain/entities/request/reset_password_request_entity.dart'
+    as _i15;
 import 'package:flowery_e_commerce/features/auth/domain/entities/request/signup_request_entity.dart'
     as _i9;
+import 'package:flowery_e_commerce/features/auth/domain/entities/request/verify_reset_code_request_entity.dart'
+    as _i13;
+import 'package:flowery_e_commerce/features/auth/domain/entities/response/forget_password_response_entity.dart'
+    as _i10;
 import 'package:flowery_e_commerce/features/auth/domain/entities/response/login_response_entity.dart'
     as _i5;
 import 'package:flowery_e_commerce/features/auth/domain/entities/response/signup_response_entity.dart'
@@ -79,4 +91,67 @@ class MockAuthOnlineDataSource extends _i1.Mock
           ),
         )),
       ) as _i3.Future<_i4.DataResult<_i8.SignUpResponseEntity>>);
+
+  @override
+  _i3.Future<_i4.DataResult<_i10.ForgetPasswordResponseEntity>> forgetPassword(
+          {required _i11.ForgetPasswordRequestEntity? request}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #forgetPassword,
+          [],
+          {#request: request},
+        ),
+        returnValue: _i3
+            .Future<_i4.DataResult<_i10.ForgetPasswordResponseEntity>>.value(
+            _i7.dummyValue<_i4.DataResult<_i10.ForgetPasswordResponseEntity>>(
+          this,
+          Invocation.method(
+            #forgetPassword,
+            [],
+            {#request: request},
+          ),
+        )),
+      ) as _i3.Future<_i4.DataResult<_i10.ForgetPasswordResponseEntity>>);
+
+  @override
+  _i3.Future<_i4.DataResult<_i12.VerifyResetCodeResponseDto>> verifyResetCode(
+          {required _i13.VerifyResetCodeRequestEntity? request}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #verifyResetCode,
+          [],
+          {#request: request},
+        ),
+        returnValue:
+            _i3.Future<_i4.DataResult<_i12.VerifyResetCodeResponseDto>>.value(
+                _i7.dummyValue<_i4.DataResult<_i12.VerifyResetCodeResponseDto>>(
+          this,
+          Invocation.method(
+            #verifyResetCode,
+            [],
+            {#request: request},
+          ),
+        )),
+      ) as _i3.Future<_i4.DataResult<_i12.VerifyResetCodeResponseDto>>);
+
+  @override
+  _i3.Future<_i4.DataResult<_i14.ResetPasswordResponseDto>> resetPassword(
+          {required _i15.ResetPasswordRequestEntity? request}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #resetPassword,
+          [],
+          {#request: request},
+        ),
+        returnValue:
+            _i3.Future<_i4.DataResult<_i14.ResetPasswordResponseDto>>.value(
+                _i7.dummyValue<_i4.DataResult<_i14.ResetPasswordResponseDto>>(
+          this,
+          Invocation.method(
+            #resetPassword,
+            [],
+            {#request: request},
+          ),
+        )),
+      ) as _i3.Future<_i4.DataResult<_i14.ResetPasswordResponseDto>>);
 }
