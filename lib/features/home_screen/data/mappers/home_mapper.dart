@@ -1,18 +1,9 @@
 import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart';
 import 'package:flowery_e_commerce/features/home_screen/domain/entities/best_seller_entity.dart';
-import 'package:flowery_e_commerce/features/home_screen/domain/entities/categories_entity.dart';
 import 'package:flowery_e_commerce/features/home_screen/domain/entities/occasions_entity.dart';
 
 class HomeMappers {
-  // static List<Category> toCategoriesEntity(
-  //     HomeResponseModelEntity categoriesResponse) {
-  //   if (categoriesResponse.categories == null) return [];
-  //   return categoriesResponse.categories!
-  //       .map(
-  //         (e) => Category(name: e!.name!,image: e!.image),
-  //   )
-  //       .toList();
-  // }
+
   static List<BestSeller> toBestSellerEntity(
       HomeResponseModelEntity bestSellerResponse) {
     if (bestSellerResponse.bestSeller == null) return [];

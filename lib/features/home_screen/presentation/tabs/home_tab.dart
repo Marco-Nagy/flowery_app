@@ -3,6 +3,8 @@ import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/di/di.dart';
+import 'package:flowery_e_commerce/features/categories/presentation/categories/viewModel/categories_action.dart';
+import 'package:flowery_e_commerce/features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/best_seller_cubit/best_seller_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/occasions_cubit/occasions_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/widgets/custom_best_seller_list.dart';
@@ -21,7 +23,7 @@ class HomeTab extends StatelessWidget {
     ..getOccasions();
   BestSellerCubit bestSellerCubit = getIt.get<BestSellerCubit>()
     ..getBestSellers();
-
+   CategoriesViewModelCubit categoriesCubit = getIt.get<CategoriesViewModelCubit>()..doAction( GetCategoriesAction());
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -31,6 +33,9 @@ class HomeTab extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => bestSellerCubit,
+        ),
+        BlocProvider(
+          create: (context) => categoriesCubit,
         ),
       ],
       child: Scaffold(
@@ -69,15 +74,6 @@ class HomeTab extends StatelessWidget {
                   ],
                 ),
               ),
-              /*SizedBox(
-            height: 10.h,),
-          Container(
-            margin: EdgeInsets.only(left: 15.w),
-            child: Text('Discover something now',
-              style: MyFonts.styleMedium500_18.copyWith(color:MyColors.blackFlower,
-              )),
-          ),
-          const DiscoverSomethingList(),*/
               SizedBox(height: 10.h,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,16 +84,21 @@ class HomeTab extends StatelessWidget {
                         style: MyFonts.styleMedium500_18
                             .copyWith(color: MyColors.blackBase)),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(left: 15.w, right: 15.w),
-                    child: Text('View All',
-                        style: MyFonts.styleMedium500_14.copyWith(
-                            color: MyColors.baseColor,
-                            decoration: TextDecoration.underline)),
+                  InkWell(
+                    onTap: (){
+                      context.pushNamed(AppRoutes.categoriesView);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(left: 15.w, right: 15.w),
+                      child: Text('View All',
+                          style: MyFonts.styleMedium500_14.copyWith(
+                              color: MyColors.baseColor,
+                              decoration: TextDecoration.underline)),
+                    ),
                   ),
                 ],
               ),
-             // const CustomCategoriesList(),
+              const CustomCategoriesList(),
               SizedBox(
                 height: 10.h,
               ),
@@ -110,6 +111,17 @@ class HomeTab extends StatelessWidget {
                         style: MyFonts.styleMedium500_18
                             .copyWith(color: MyColors.blackBase)),
                   ),
+                  InkWell(
+                    onTap: (){
+                   // context.pushNamed(AppRoutes.bestSellerScreen);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(left: 15.w, right: 15.w),
+                      child: Text('View All',
+                          style: MyFonts.styleMedium500_12.copyWith(
+                              color: MyColors.baseColor,
+                              decoration: TextDecoration.underline)),
+                    ),
                   InkWell(
                     onTap: (){
                       context.pushNamed(AppRoutes.mostSellingScreen);

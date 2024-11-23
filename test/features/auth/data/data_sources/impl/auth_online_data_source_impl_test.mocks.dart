@@ -18,6 +18,8 @@ import 'package:flowery_e_commerce/features/best_seller/data/models/best_seller_
     as _i7;
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart'
     as _i5;
+import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_products_rsponse_dto.dart'
+    as _i6;
 import 'package:flowery_e_commerce/features/generic/data/models/generic_response_dto.dart'
     as _i4;
 import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart'
@@ -73,6 +75,17 @@ class _FakeGenericResponseDto_2 extends _i1.SmartFake
 class _FakeGetAllCategoriesResponseDto_3 extends _i1.SmartFake
     implements _i5.GetAllCategoriesResponseDto {
   _FakeGetAllCategoriesResponseDto_3(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeGetAllProductsRsponseDto_4 extends _i1.SmartFake
+    implements _i6.GetAllProductsRsponseDto {
+  _FakeGetAllProductsRsponseDto_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -178,6 +191,24 @@ class MockApiManager extends _i1.Mock implements _i8.ApiManager {
           ),
         )),
       ) as _i9.Future<_i5.GetAllCategoriesResponseDto>);
+
+  @override
+  _i8.Future<_i6.GetAllProductsRsponseDto> getAllProducts() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllProducts,
+          [],
+        ),
+        returnValue: _i8.Future<_i6.GetAllProductsRsponseDto>.value(
+            _FakeGetAllProductsRsponseDto_4(
+          this,
+          Invocation.method(
+            #getAllProducts,
+            [],
+          ),
+        )),
+      ) as _i8.Future<_i6.GetAllProductsRsponseDto>);
+
 
   @override
   _i9.Future<_i6.HomeResponseModelEntity> getHome() => (super.noSuchMethod(
