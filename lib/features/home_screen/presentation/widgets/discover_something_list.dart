@@ -21,20 +21,20 @@ class _DiscoverSomethingListState extends State<DiscoverSomethingList> {
         itemBuilder: (context, index) {
           return Stack(
             children: [
-              Container(
-                  margin: EdgeInsets.all(5.sp),
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(18.sp),
-                      child: Image.asset('assets/images/graduation.png'))),
-              Container(
-                margin: EdgeInsets.all(5.sp),
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: Image.asset(
-                    'assets/images/card_content.png',
-                  ),
-                ),
-              ),
+              // Container(
+              //     margin: EdgeInsets.all(5.sp),
+              //     child: ClipRRect(
+              //         borderRadius: BorderRadius.circular(18.sp),
+              //         child: Image.asset('assets/images/graduation.png'))),
+              // Container(
+              //   margin: EdgeInsets.all(5.sp),
+              //   child: Align(
+              //     alignment: Alignment.bottomRight,
+              //     child: Image.asset(
+              //       'assets/images/card_content.png',
+              //     ),
+              //   ),
+              // ),
             ],
           );
         },

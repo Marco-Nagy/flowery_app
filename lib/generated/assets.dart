@@ -29,5 +29,6 @@ class Assets {
   static const String imagesPlace = 'assets/images/place.png';
   static const String imagesSearch = 'assets/images/search.png';
   static const String imagesShoppingCart = 'assets/images/shopping_cart.png';
+  static const String imagesSplash = 'assets/images/splash.png';
 
 }
