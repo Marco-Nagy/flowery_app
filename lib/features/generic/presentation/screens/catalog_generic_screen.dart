@@ -2,7 +2,7 @@ import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/view_model/generic_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/styles/colors/my_colors.dart';
+import '../../../../core/utils/widgets/base/app_loader.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import '../view_model/generic_view_model_cubit.dart';
 import '../widgets/grid_builder_widget.dart';
@@ -35,9 +35,8 @@ class CatalogGenericScreen extends StatelessWidget {
           // Using switch to handle different states
           switch (state.runtimeType) {
             case GenericItemLoadedState:
-              return Center(
-                child: CircularProgressIndicator(color: MyColors.baseColor),
-              );
+              return AppLoader();
+
 
             case GenericItemErrorState:
               final errorState = state as GenericItemErrorState;
@@ -73,9 +72,8 @@ class CatalogGenericScreen extends StatelessWidget {
               );
 
             default:
-              return Center(
-                child: CircularProgressIndicator(color: MyColors.baseColor),
-              );
+              return AppLoader();
+
           }
         },
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/styles/colors/my_colors.dart';
+import '../../../../../core/utils/widgets/base/app_loader.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
 import '../../../../../di/di.dart';
 import '../widget/no_products_widget.dart';
@@ -33,11 +33,8 @@ class GenericItemScreen extends StatelessWidget {
 
             case GetItemsLoading:
             case GetProductLoading:
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: MyColors.baseColor,
-                ),
-              );
+            return AppLoader();
+
 
             case GetItemsSuccess:
             case FilteredProductsState:
