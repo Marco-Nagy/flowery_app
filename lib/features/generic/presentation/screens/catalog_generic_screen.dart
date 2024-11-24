@@ -1,3 +1,4 @@
+import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +33,7 @@ class CatalogGenericScreen extends StatelessWidget {
 
           if (state is GenericItemLoadedState ) {
             return Center(
-              child: CircularProgressIndicator(color: MyColors.baseColor),
+              child: AppLoader(),
             );
           }
 
@@ -61,9 +62,7 @@ class CatalogGenericScreen extends StatelessWidget {
             );
           }
 
-          return Center(
-            child: CircularProgressIndicator(color: MyColors.baseColor),
-          );
+          return AppLoader();
         },
       ),
     );

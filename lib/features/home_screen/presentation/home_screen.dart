@@ -38,11 +38,13 @@ class _HomeScreenState extends State<HomeScreen> {
               backgroundColor: MyColors.white60,
               showSelectedLabels: true,
               showUnselectedLabels: true,
-              unselectedItemColor: MyColors.white80,
+              elevation: 11,
+               unselectedItemColor: MyColors.white80,
               selectedItemColor: MyColors.baseColor,
               items: [
                 BottomNavigationBarItem(
                   icon: Image.asset(
+                    color: currentTabIndex== 0?MyColors.baseColor:MyColors.white80,
                     AppImages.home,
                     width: 24.w,
                     height: 24.h,
@@ -51,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 BottomNavigationBarItem(
                   icon: Image.asset(
+                    color: currentTabIndex== 1?MyColors.baseColor:MyColors.white80,
                     AppImages.category,
                     width: 24.w,
                     height: 24.h,
@@ -59,6 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 BottomNavigationBarItem(
                   icon: Image.asset(
+                    color: currentTabIndex== 2?MyColors.baseColor:MyColors.white80,
+
                     AppImages.cart,
                     width: 24.w,
                     height: 24.h,
@@ -67,6 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 BottomNavigationBarItem(
                   icon: Image.asset(
+                    color: currentTabIndex== 3?MyColors.baseColor:MyColors.white80,
                     AppImages.profile,
                     width: 24.w,
                     height: 24.h,

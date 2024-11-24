@@ -18,11 +18,12 @@ class BuildItem extends StatelessWidget {
     return BlocBuilder<MostSellerCubit, MostSellerStates>(
       builder: (context, state) {
         if(state is GetMostSellerSuccessState){
-          return GridView.builder( gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          return GridView.builder( gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 0.8,
-            mainAxisSpacing: 10,
             crossAxisSpacing: 10,
+            mainAxisSpacing: 20,
+            childAspectRatio: 3 / 4,
+            mainAxisExtent: 275.h,
           ),
             physics: const NeverScrollableScrollPhysics(),
              shrinkWrap: true,
