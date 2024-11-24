@@ -93,8 +93,6 @@ import '../features/home_screen/domain/repository/home_repo.dart' as _i765;
 import '../features/home_screen/domain/uses_cases/home_use_case.dart' as _i720;
 import '../features/home_screen/presentation/home_cubit/best_seller_cubit/best_seller_cubit.dart'
     as _i233;
-import '../features/home_screen/presentation/home_cubit/categories_cubit/categories_cubit.dart'
-    as _i174;
 import '../features/home_screen/presentation/home_cubit/occasions_cubit/occasions_cubit.dart'
     as _i851;
 
@@ -159,8 +157,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i642.VerifyResetCodeUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i233.BestSellerCubit>(
         () => _i233.BestSellerCubit(gh<_i720.HomeUseCase>()));
-    gh.factory<_i174.CategoriesCubit>(
-        () => _i174.CategoriesCubit(gh<_i720.HomeUseCase>()));
     gh.factory<_i851.OccasionsCubit>(
         () => _i851.OccasionsCubit(gh<_i720.HomeUseCase>()));
     gh.factory<_i590.CategoriesRepository>(() =>
