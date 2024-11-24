@@ -3,27 +3,40 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i9;
+import 'dart:async' as _i13;
 
-import 'package:flowery_e_commerce/core/networking/api/api_manager.dart' as _i8;
+import 'package:flowery_e_commerce/core/networking/api/api_manager.dart'
+    as _i12;
+import 'package:flowery_e_commerce/features/auth/data/models/request/forget_password_request_dto.dart'
+    as _i16;
 import 'package:flowery_e_commerce/features/auth/data/models/request/login_request_dto.dart'
-    as _i10;
+    as _i14;
+import 'package:flowery_e_commerce/features/auth/data/models/request/reset_password_request_dto.dart'
+    as _i18;
 import 'package:flowery_e_commerce/features/auth/data/models/request/signup_request_dto.dart'
-    as _i11;
+    as _i15;
+import 'package:flowery_e_commerce/features/auth/data/models/request/verify_reset_code_request_dto.dart'
+    as _i17;
+import 'package:flowery_e_commerce/features/auth/data/models/response/forget_password_response_dto.dart'
+    as _i4;
 import 'package:flowery_e_commerce/features/auth/data/models/response/login_response_dto.dart'
     as _i2;
+import 'package:flowery_e_commerce/features/auth/data/models/response/reset_password_response_dto.dart'
+    as _i6;
 import 'package:flowery_e_commerce/features/auth/data/models/response/signup_response_dto.dart'
     as _i3;
-import 'package:flowery_e_commerce/features/best_seller/data/models/best_seller_response_model_entity.dart'
-    as _i7;
-import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart'
+import 'package:flowery_e_commerce/features/auth/data/models/response/verify_reset_code_response.dart'
     as _i5;
+import 'package:flowery_e_commerce/features/best_seller/data/models/best_seller_response_model_entity.dart'
+    as _i11;
+import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart'
+    as _i8;
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_products_rsponse_dto.dart'
-    as _i6;
+    as _i10;
 import 'package:flowery_e_commerce/features/generic/data/models/generic_response_dto.dart'
-    as _i4;
+    as _i7;
 import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart'
-    as _i6;
+    as _i9;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -61,9 +74,9 @@ class _FakeSignUpResponseDto_1 extends _i1.SmartFake
         );
 }
 
-class _FakeGenericResponseDto_2 extends _i1.SmartFake
-    implements _i4.GenericResponseDto {
-  _FakeGenericResponseDto_2(
+class _FakeForgetPasswordResponseDto_2 extends _i1.SmartFake
+    implements _i4.ForgetPasswordResponseDto {
+  _FakeForgetPasswordResponseDto_2(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -72,9 +85,9 @@ class _FakeGenericResponseDto_2 extends _i1.SmartFake
         );
 }
 
-class _FakeGetAllCategoriesResponseDto_3 extends _i1.SmartFake
-    implements _i5.GetAllCategoriesResponseDto {
-  _FakeGetAllCategoriesResponseDto_3(
+class _FakeVerifyResetCodeResponseDto_3 extends _i1.SmartFake
+    implements _i5.VerifyResetCodeResponseDto {
+  _FakeVerifyResetCodeResponseDto_3(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -83,9 +96,9 @@ class _FakeGetAllCategoriesResponseDto_3 extends _i1.SmartFake
         );
 }
 
-class _FakeGetAllProductsRsponseDto_4 extends _i1.SmartFake
-    implements _i6.GetAllProductsRsponseDto {
-  _FakeGetAllProductsRsponseDto_4(
+class _FakeResetPasswordResponseDto_4 extends _i1.SmartFake
+    implements _i6.ResetPasswordResponseDto {
+  _FakeResetPasswordResponseDto_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -94,9 +107,9 @@ class _FakeGetAllProductsRsponseDto_4 extends _i1.SmartFake
         );
 }
 
-class _FakeHomeResponseModelEntity_4 extends _i1.SmartFake
-    implements _i6.HomeResponseModelEntity {
-  _FakeHomeResponseModelEntity_4(
+class _FakeGenericResponseDto_5 extends _i1.SmartFake
+    implements _i7.GenericResponseDto {
+  _FakeGenericResponseDto_5(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -105,9 +118,42 @@ class _FakeHomeResponseModelEntity_4 extends _i1.SmartFake
         );
 }
 
-class _FakeBestSellerResponseModelEntity_5 extends _i1.SmartFake
-    implements _i7.BestSellerResponseModelEntity {
-  _FakeBestSellerResponseModelEntity_5(
+class _FakeGetAllCategoriesResponseDto_6 extends _i1.SmartFake
+    implements _i8.GetAllCategoriesResponseDto {
+  _FakeGetAllCategoriesResponseDto_6(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeHomeResponseModelEntity_7 extends _i1.SmartFake
+    implements _i9.HomeResponseModelEntity {
+  _FakeHomeResponseModelEntity_7(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeGetAllProductsRsponseDto_8 extends _i1.SmartFake
+    implements _i10.GetAllProductsRsponseDto {
+  _FakeGetAllProductsRsponseDto_8(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeBestSellerResponseModelEntity_9 extends _i1.SmartFake
+    implements _i11.BestSellerResponseModelEntity {
+  _FakeBestSellerResponseModelEntity_9(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -119,127 +165,180 @@ class _FakeBestSellerResponseModelEntity_5 extends _i1.SmartFake
 /// A class which mocks [ApiManager].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiManager extends _i1.Mock implements _i8.ApiManager {
+class MockApiManager extends _i1.Mock implements _i12.ApiManager {
   MockApiManager() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i9.Future<_i2.LoginResponseDto> login(_i10.LoginRequestDto? request) =>
+  _i13.Future<_i2.LoginResponseDto> login(_i14.LoginRequestDto? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [request],
         ),
         returnValue:
-            _i9.Future<_i2.LoginResponseDto>.value(_FakeLoginResponseDto_0(
+            _i13.Future<_i2.LoginResponseDto>.value(_FakeLoginResponseDto_0(
           this,
           Invocation.method(
             #login,
             [request],
           ),
         )),
-      ) as _i9.Future<_i2.LoginResponseDto>);
+      ) as _i13.Future<_i2.LoginResponseDto>);
 
   @override
-  _i9.Future<_i3.SignUpResponseDto> signUp(_i11.SignUpRequestDto? request) =>
+  _i13.Future<_i3.SignUpResponseDto> signUp(_i15.SignUpRequestDto? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #signUp,
           [request],
         ),
         returnValue:
-            _i9.Future<_i3.SignUpResponseDto>.value(_FakeSignUpResponseDto_1(
+            _i13.Future<_i3.SignUpResponseDto>.value(_FakeSignUpResponseDto_1(
           this,
           Invocation.method(
             #signUp,
             [request],
           ),
         )),
-      ) as _i9.Future<_i3.SignUpResponseDto>);
+      ) as _i13.Future<_i3.SignUpResponseDto>);
 
   @override
-  _i9.Future<_i4.GenericResponseDto> getGenericProduct(String? resourceName) =>
+  _i13.Future<_i4.ForgetPasswordResponseDto> forgetPassword(
+          _i16.ForgetPasswordRequestDto? request) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #forgetPassword,
+          [request],
+        ),
+        returnValue: _i13.Future<_i4.ForgetPasswordResponseDto>.value(
+            _FakeForgetPasswordResponseDto_2(
+          this,
+          Invocation.method(
+            #forgetPassword,
+            [request],
+          ),
+        )),
+      ) as _i13.Future<_i4.ForgetPasswordResponseDto>);
+
+  @override
+  _i13.Future<_i5.VerifyResetCodeResponseDto> verifyResetCode(
+          _i17.VerifyResetCodeRequestDto? resetCode) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #verifyResetCode,
+          [resetCode],
+        ),
+        returnValue: _i13.Future<_i5.VerifyResetCodeResponseDto>.value(
+            _FakeVerifyResetCodeResponseDto_3(
+          this,
+          Invocation.method(
+            #verifyResetCode,
+            [resetCode],
+          ),
+        )),
+      ) as _i13.Future<_i5.VerifyResetCodeResponseDto>);
+
+  @override
+  _i13.Future<_i6.ResetPasswordResponseDto> resetPassword(
+          _i18.ResetPasswordRequestDto? resetPassword) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #resetPassword,
+          [resetPassword],
+        ),
+        returnValue: _i13.Future<_i6.ResetPasswordResponseDto>.value(
+            _FakeResetPasswordResponseDto_4(
+          this,
+          Invocation.method(
+            #resetPassword,
+            [resetPassword],
+          ),
+        )),
+      ) as _i13.Future<_i6.ResetPasswordResponseDto>);
+
+  @override
+  _i13.Future<_i7.GenericResponseDto> getGenericProduct(String? resourceName) =>
       (super.noSuchMethod(
         Invocation.method(
           #getGenericProduct,
           [resourceName],
         ),
         returnValue:
-            _i9.Future<_i4.GenericResponseDto>.value(_FakeGenericResponseDto_2(
+            _i13.Future<_i7.GenericResponseDto>.value(_FakeGenericResponseDto_5(
           this,
           Invocation.method(
             #getGenericProduct,
             [resourceName],
           ),
         )),
-      ) as _i9.Future<_i4.GenericResponseDto>);
+      ) as _i13.Future<_i7.GenericResponseDto>);
 
   @override
-  _i9.Future<_i5.GetAllCategoriesResponseDto> getAllCategories() =>
+  _i13.Future<_i8.GetAllCategoriesResponseDto> getAllCategories() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllCategories,
           [],
         ),
-        returnValue: _i9.Future<_i5.GetAllCategoriesResponseDto>.value(
-            _FakeGetAllCategoriesResponseDto_3(
+        returnValue: _i13.Future<_i8.GetAllCategoriesResponseDto>.value(
+            _FakeGetAllCategoriesResponseDto_6(
           this,
           Invocation.method(
             #getAllCategories,
             [],
           ),
         )),
-      ) as _i9.Future<_i5.GetAllCategoriesResponseDto>);
+      ) as _i13.Future<_i8.GetAllCategoriesResponseDto>);
 
   @override
-  _i8.Future<_i6.GetAllProductsRsponseDto> getAllProducts() =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getAllProducts,
-          [],
-        ),
-        returnValue: _i8.Future<_i6.GetAllProductsRsponseDto>.value(
-            _FakeGetAllProductsRsponseDto_4(
-          this,
-          Invocation.method(
-            #getAllProducts,
-            [],
-          ),
-        )),
-      ) as _i8.Future<_i6.GetAllProductsRsponseDto>);
-
-
-  @override
-  _i9.Future<_i6.HomeResponseModelEntity> getHome() => (super.noSuchMethod(
+  _i13.Future<_i9.HomeResponseModelEntity> getHome() => (super.noSuchMethod(
         Invocation.method(
           #getHome,
           [],
         ),
-        returnValue: _i9.Future<_i6.HomeResponseModelEntity>.value(
-            _FakeHomeResponseModelEntity_4(
+        returnValue: _i13.Future<_i9.HomeResponseModelEntity>.value(
+            _FakeHomeResponseModelEntity_7(
           this,
           Invocation.method(
             #getHome,
             [],
           ),
         )),
-      ) as _i9.Future<_i6.HomeResponseModelEntity>);
+      ) as _i13.Future<_i9.HomeResponseModelEntity>);
 
   @override
-  _i9.Future<_i7.BestSellerResponseModelEntity> getMostSellingProducts() =>
+  _i13.Future<_i10.GetAllProductsRsponseDto> getAllProducts() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllProducts,
+          [],
+        ),
+        returnValue: _i13.Future<_i10.GetAllProductsRsponseDto>.value(
+            _FakeGetAllProductsRsponseDto_8(
+          this,
+          Invocation.method(
+            #getAllProducts,
+            [],
+          ),
+        )),
+      ) as _i13.Future<_i10.GetAllProductsRsponseDto>);
+
+  @override
+  _i13.Future<_i11.BestSellerResponseModelEntity> getMostSellingProducts() =>
       (super.noSuchMethod(
         Invocation.method(
           #getMostSellingProducts,
           [],
         ),
-        returnValue: _i9.Future<_i7.BestSellerResponseModelEntity>.value(
-            _FakeBestSellerResponseModelEntity_5(
+        returnValue: _i13.Future<_i11.BestSellerResponseModelEntity>.value(
+            _FakeBestSellerResponseModelEntity_9(
           this,
           Invocation.method(
             #getMostSellingProducts,
             [],
           ),
         )),
-      ) as _i9.Future<_i7.BestSellerResponseModelEntity>);
+      ) as _i13.Future<_i11.BestSellerResponseModelEntity>);
 }
