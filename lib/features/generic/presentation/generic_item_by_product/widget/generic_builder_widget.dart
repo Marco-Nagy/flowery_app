@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../domain/entities/response/generic_product_response_entity.dart';
+import '../../../../product/domain/entities/product_response_entity.dart';
 import 'generic_build_item.dart';
 
 class GenericBuilderWidget extends StatelessWidget {

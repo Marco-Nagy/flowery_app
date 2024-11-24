@@ -1,10 +1,10 @@
-import '../../domain/entities/response/generic_product_response_entity.dart';
-import '../models/response/generic_products_response_dto.dart';
+import '../../domain/entities/product_response_entity.dart';
+import '../models/response/product_response_dto.dart';
 
-class GenericProductsMapper {
-  static GenericProductResponseEntity toEntity(
-      GenericProductsResponseDto response) {
-    return GenericProductResponseEntity(
+class ProductMapper {
+  static ProductResponseEntity toEntity(
+      ProductResponseDto response) {
+    return ProductResponseEntity(
       products: response.products!.map((e) => toProductsEntity(e!)).toList(),
     );
   }

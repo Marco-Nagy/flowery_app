@@ -7,8 +7,9 @@ import '../../../../../core/networking/error/error_handler.dart';
 import '../../../../../core/networking/error/error_model.dart';
 import '../../../../generic/domain/entity/generic_response_entity.dart';
 import '../../../../generic/domain/use_cases/generic_use_case.dart';
-import '../../../domain/entities/response/generic_product_response_entity.dart';
-import '../../../domain/use_cases/generic_product_use_case.dart';
+
+import '../../../../product/domain/entities/product_response_entity.dart';
+import '../../../../product/domain/use_cases/product_use_case.dart';
 import 'generic_item_action.dart';
 
 part 'generic_item_view_model_state.dart';
@@ -16,7 +17,7 @@ part 'generic_item_view_model_state.dart';
 @injectable
 class GenericItemViewModelCubit extends Cubit<GenericItemViewModeState> {
   final GenericUseCase _itemsUseCase;
-  final GenericProductsUseCase _productsUseCase;
+  final ProductUseCase _productsUseCase;
   List<ProductEntity> allProducts = [];
   List<Items> items = [];
   String itemField = 'category';
@@ -62,13 +63,13 @@ class GenericItemViewModelCubit extends Cubit<GenericItemViewModeState> {
     final result = await _productsUseCase.getAllProducts();
 
     switch (result) {
-      case Success<GenericProductResponseEntity>():
+      case Success<ProductResponseEntity>():
         allProducts = result.data.products;
         print("Products fetched successfully: ${allProducts.length} products");
         emit(GetProductSuccess(products: allProducts));
         break;
 
-      case Fail<GenericProductResponseEntity>():
+      case Fail<ProductResponseEntity>():
         final error = ErrorHandler.handle(result.exception!);
         print("Failed to fetch products: $error");
         emit(GetProductError(error: error));

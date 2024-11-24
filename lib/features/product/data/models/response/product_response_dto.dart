@@ -1,18 +1,18 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'generic_products_response_dto.g.dart';
+part 'product_response_dto.g.dart';
 
 @JsonSerializable()
-class GenericProductsResponseDto {
+class ProductResponseDto {
   final String? message;
   final List<ProductDto?>? products;
 
-  GenericProductsResponseDto(this.message, this.products);
+  ProductResponseDto(this.message, this.products);
 
-  factory GenericProductsResponseDto.fromJson(Map<String, dynamic> json) =>
-      _$GenericProductsResponseDtoFromJson(json);
+  factory ProductResponseDto.fromJson(Map<String, dynamic> json) =>
+      _$ProductResponseDtoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$GenericProductsResponseDtoToJson(this);
+  Map<String, dynamic> toJson() => _$ProductResponseDtoToJson(this);
 }
 
 @JsonSerializable()

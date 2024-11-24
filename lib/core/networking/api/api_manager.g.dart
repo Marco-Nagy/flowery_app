@@ -362,12 +362,12 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<GenericProductsResponseDto> getProduct() async {
+  Future<ProductResponseDto> getProduct() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<GenericProductsResponseDto>(Options(
+    final _options = _setStreamType<ProductResponseDto>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -384,9 +384,9 @@ class _ApiManager implements ApiManager {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late GenericProductsResponseDto _value;
+    late ProductResponseDto _value;
     try {
-      _value = GenericProductsResponseDto.fromJson(_result.data!);
+      _value = ProductResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

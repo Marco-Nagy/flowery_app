@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/styles/colors/my_colors.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
 import '../../../../../di/di.dart';
-import '../../../../categories/presentation/categories/widgets/no_products_widget.dart';
+import '../widget/no_products_widget.dart';
 import '../../../../generic/presentation/widgets/tab_bar_widget.dart';
 import '../viewModel/generic_item_action.dart';
 import '../viewModel/generic_item_view_model_cubit.dart';

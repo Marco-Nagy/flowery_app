@@ -35,10 +35,10 @@ import 'package:flowery_e_commerce/features/categories/data/models/response/get_
     as _i10;
 import 'package:flowery_e_commerce/features/generic/data/models/generic_response_dto.dart'
     as _i7;
-import 'package:flowery_e_commerce/features/generic_product/data/models/response/generic_products_response_dto.dart'
-    as _i12;
 import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart'
     as _i9;
+import 'package:flowery_e_commerce/features/product/data/models/response/product_response_dto.dart'
+    as _i12;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -164,9 +164,9 @@ class _FakeBestSellerResponseModelEntity_9 extends _i1.SmartFake
         );
 }
 
-class _FakeGenericProductsResponseDto_10 extends _i1.SmartFake
-    implements _i12.GenericProductsResponseDto {
-  _FakeGenericProductsResponseDto_10(
+class _FakeProductResponseDto_10 extends _i1.SmartFake
+    implements _i12.ProductResponseDto {
+  _FakeProductResponseDto_10(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -356,19 +356,18 @@ class MockApiManager extends _i1.Mock implements _i13.ApiManager {
       ) as _i14.Future<_i11.BestSellerResponseModelEntity>);
 
   @override
-  _i14.Future<_i12.GenericProductsResponseDto> getProduct() =>
-      (super.noSuchMethod(
+  _i14.Future<_i12.ProductResponseDto> getProduct() => (super.noSuchMethod(
         Invocation.method(
           #getProduct,
           [],
         ),
-        returnValue: _i14.Future<_i12.GenericProductsResponseDto>.value(
-            _FakeGenericProductsResponseDto_10(
+        returnValue: _i14.Future<_i12.ProductResponseDto>.value(
+            _FakeProductResponseDto_10(
           this,
           Invocation.method(
             #getProduct,
             [],
           ),
         )),
-      ) as _i14.Future<_i12.GenericProductsResponseDto>);
+      ) as _i14.Future<_i12.ProductResponseDto>);
 }

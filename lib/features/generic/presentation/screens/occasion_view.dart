@@ -3,7 +3,7 @@ import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/utils/widgets/spacing.dart';
-import '../../../generic_product/presentation/generic_item/views/generic_item_screen.dart';
+import '../generic_item_by_product/views/generic_item_screen.dart';
 import 'catalog_generic_screen.dart';
 
 class OccasionView extends StatelessWidget {
@@ -27,6 +27,6 @@ class OccasionView extends StatelessWidget {
         ],
       ),
 
-    );
+   );
   }
 }

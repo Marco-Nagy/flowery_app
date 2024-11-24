@@ -19,7 +19,7 @@ import '../../../features/auth/data/models/request/signup_request_dto.dart';
 import '../../../features/auth/data/models/response/login_response_dto.dart';
 import '../../../features/generic/data/models/generic_response_dto.dart';
 import '../../../features/auth/data/models/response/signup_response_dto.dart';
-import '../../../features/generic_product/data/models/response/generic_products_response_dto.dart';
+import '../../../features/product/data/models/response/product_response_dto.dart';
 import 'api_constants.dart';
 
 part 'api_manager.g.dart';
@@ -64,5 +64,5 @@ abstract class ApiManager {
   Future<BestSellerResponseModelEntity> getMostSellingProducts();
 
   @GET(ApiConstants.getAllProducts)
-  Future<GenericProductsResponseDto> getProduct();
+  Future<ProductResponseDto> getProduct();
 }
