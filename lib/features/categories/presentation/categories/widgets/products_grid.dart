@@ -1,7 +1,9 @@
 import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../products/viewModel/products_view_model_cubit.dart';
 import '../../products/widgets/product_card.dart';
@@ -17,7 +19,7 @@ class ProductsGrid extends StatelessWidget {
     return BlocBuilder<ProductsViewModelCubit, ProductsViewModelState>(
       builder: (context, state) {
         if (state is GetProductsViewModelLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return AppLoader();
         } else if (state is GetProductsViewModelSuccess) {
           final products = selectedCategoryId == null
               ? state.data.products
@@ -31,11 +33,11 @@ class ProductsGrid extends StatelessWidget {
 
           return GridView.builder(
             padding: EdgeInsets.zero,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 0.7,
+              crossAxisSpacing: 10.h,
+              mainAxisSpacing: 10.w,
+              childAspectRatio: .55.sp,
             ),
             itemCount: products.length,
             itemBuilder: (context, index) {

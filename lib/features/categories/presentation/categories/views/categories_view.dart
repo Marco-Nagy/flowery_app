@@ -1,5 +1,6 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/utils/screens/no_network_screen.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/base_view.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/products/viewModel/products_view_model_cubit.dart';
 import 'package:flutter/material.dart';
@@ -52,10 +53,8 @@ class _CategoriesViewState extends State<CategoriesView> {
         builder: (context, state) {
           switch (state) {
             case GetCategoriesViewModelLoading loadingState:
-              return const BaseView(
-                  child: Center(
-                      child: CircularProgressIndicator(
-                          color: MyColors.baseColor)));
+              return  BaseView(
+                  child: AppLoader());
             case GetCategoriesViewModelSuccess successState:
               final categories = successState.categories ?? [];
               return DefaultTabController(

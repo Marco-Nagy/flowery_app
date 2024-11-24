@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flowery_e_commerce/core/styles/animated_image.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -32,35 +33,30 @@ class _AppLoaderState extends State<AppLoader>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return Center(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Expanded(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Lottie.asset(
-                AnimatedImage.loader,
-                height: MediaQuery.of(context).size.height * .3,
+          Lottie.asset(
+            Assets.imagesFloweryLoader,
+            height: MediaQuery.of(context).size.height * .2,
+            alignment: Alignment.bottomCenter,
+            fit: BoxFit.scaleDown
 
-              ),
-            ),
           ),
           verticalSpacing(15),
-          Expanded(
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: AnimatedTextKit(
-                repeatForever: true,
-                animatedTexts: [
-                  ScaleAnimatedText('Flowery',
-                      textStyle: MyFonts.styleBold700_24.copyWith(
-                          fontFamily: 'oronteus', color: MyColors.baseColor),
-                      scalingFactor: 2,
-                      textAlign: TextAlign.center),
-                ],
-              ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: AnimatedTextKit(
+              repeatForever: true,
+              animatedTexts: [
+                ScaleAnimatedText('Flowery',
+                    textStyle: MyFonts.styleBold700_24.copyWith(
+                        fontFamily: 'oronteus', color: MyColors.baseColor),
+                    scalingFactor: 2,
+                    textAlign: TextAlign.center),
+              ],
             ),
           ),
         ],
