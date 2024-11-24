@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../products/viewModel/products_view_model_cubit.dart';
 import '../../products/widgets/product_card.dart';
-import 'no_products_widget.dart';
+import '../../../../generic/presentation/generic_item_by_product/widget/no_products_widget.dart';
 
 class ProductsGrid extends StatelessWidget {
   final String? selectedCategoryId;
