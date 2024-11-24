@@ -16,6 +16,31 @@ class BuildItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MostSellerCubit, MostSellerStates>(
       builder: (context, state) {
+        if(state is GetMostSellerSuccessState){
+          return GridView.builder( gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 20,
+            childAspectRatio: 3 / 4,
+            mainAxisExtent: 275.h,
+          ),
+            physics: const NeverScrollableScrollPhysics(),
+             shrinkWrap: true,
+             itemCount: state.mostSeller.length,
+             itemBuilder: (BuildContext context, int index) {
+            return Container(
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8.0),
+                border: Border.all(color: MyColors.white70),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 140.h,
+                    child: CachedNetworkWidget(
         if (state is GetMostSellerSuccessState) {
           return GridView.builder(
             physics: const NeverScrollableScrollPhysics(),

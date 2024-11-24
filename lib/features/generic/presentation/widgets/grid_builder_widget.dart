@@ -1,3 +1,4 @@
+import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -27,9 +28,7 @@ class GridBuilderWidget extends StatelessWidget {
       itemCount: state.items.length + (cubit.isFetching ? 1 : 0),
       itemBuilder: (context, index) {
         if (index >= state.items.length) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return  AppLoader();
         }
 
         final item = state.items[index];

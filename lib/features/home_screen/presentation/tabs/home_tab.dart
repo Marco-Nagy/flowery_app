@@ -11,6 +11,7 @@ import 'package:flowery_e_commerce/features/home_screen/presentation/widgets/cus
 import 'package:flowery_e_commerce/features/home_screen/presentation/widgets/custom_categories_list.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/widgets/custom_occasion_list.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/widgets/search_textfield.dart';
+import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -62,7 +63,7 @@ class HomeTab extends StatelessWidget {
                 margin: EdgeInsets.all(15.sp),
                 child: Row(
                   children: [
-                    Image.asset('assets/images/location_on.png'),
+                    Image.asset(Assets.imagesLocationOn,height: 20.h,width: 20.w,),
                     SizedBox(width: 2.w,),
                     Text(
                       'Deliver to 2XVP+XC - Sheikh Zayed ',
@@ -70,7 +71,7 @@ class HomeTab extends StatelessWidget {
                           .copyWith(color: MyColors.blackBase),
                     ),
                     SizedBox(width: 2.w,),
-                    Image.asset('assets/images/arrow_back_ios.png'),
+                    Image.asset(Assets.imagesArrowDownIos,height: 16.h,width: 16.w,),
                   ],
                 ),
               ),
