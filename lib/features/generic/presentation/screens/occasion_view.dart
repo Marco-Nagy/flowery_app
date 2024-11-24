@@ -20,7 +20,7 @@ class OccasionView extends StatelessWidget {
             ,style: MyFonts.styleMedium500_14.copyWith(color: MyColors.gray),),
 
           verticalSpacing(20),
-          CatalogGenericScreen(resourceName: 'categories',),
+          CatalogGenericScreen(resourceName: 'occasions',),
 
         ],
       ),
