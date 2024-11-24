@@ -63,7 +63,7 @@ class AppRoutes {
         );
       case AppRoutes.homeScreen:
         return BaseRoute(
-          page: HomeScreen(),
+          page: const HomeScreen(),
         );
       case AppRoutes.occasionScreen:
         return BaseRoute(

@@ -2,8 +2,8 @@ import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../core/utils/widgets/spacing.dart';
+import '../../../generic_product/presentation/generic_item/views/generic_item_screen.dart';
 import 'catalog_generic_screen.dart';
 
 class OccasionView extends StatelessWidget {
@@ -20,7 +20,9 @@ class OccasionView extends StatelessWidget {
             ,style: MyFonts.styleMedium500_14.copyWith(color: MyColors.gray),),
 
           verticalSpacing(20),
-          CatalogGenericScreen(resourceName: 'occasions',),
+         // CatalogGenericScreen(resourceName: 'occasions',),
+          GenericItemScreen(resourceName: 'occasions', field: 'occasion'),
+
 
         ],
       ),

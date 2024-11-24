@@ -83,6 +83,18 @@ import '../features/generic/domain/contracts/generic_repo.dart' as _i565;
 import '../features/generic/domain/use_cases/generic_use_case.dart' as _i559;
 import '../features/generic/presentation/view_model/generic_view_model_cubit.dart'
     as _i1070;
+import '../features/generic_product/data/data_sources/contracts/generic_products_online_data_source.dart'
+    as _i1042;
+import '../features/generic_product/data/data_sources/impl/generic_products_online_data_source_impl.dart'
+    as _i61;
+import '../features/generic_product/data/repositories/generic_products_repo_impl.dart'
+    as _i626;
+import '../features/generic_product/domain/repositories/generic_products_repo.dart'
+    as _i15;
+import '../features/generic_product/domain/use_cases/generic_product_use_case.dart'
+    as _i756;
+import '../features/generic_product/presentation/generic_item/viewModel/generic_item_view_model_cubit.dart'
+    as _i349;
 import '../features/home_screen/data/online_data_source/home_api_manager.dart'
     as _i507;
 import '../features/home_screen/data/online_data_source/home_online_data_source.dart'
@@ -129,6 +141,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i160.ProductsRepoImpl(gh<_i937.ProductsOnlineDataSource>()));
     gh.lazySingleton<_i475.MostSellingProductsOnlineDataSource>(
         () => _i480.MostSellingProductsApiManager(gh<_i282.ApiManager>()));
+    gh.factory<_i1042.GenericProductsOnlineDataSource>(
+        () => _i61.GenericProductsOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i211.GenericOnlineDataSource>(
         () => _i854.GenericOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i518.CategoriesOnlineDataSource>(() =>
@@ -136,6 +150,8 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i282.ApiManager>()));
     gh.factory<_i665.AuthRepository>(
         () => _i990.AuthRepositoryImpl(gh<_i901.AuthOnlineDataSource>()));
+    gh.factory<_i15.GenericProductsRepo>(() => _i626.GenericProductsRepoImpl(
+        gh<_i1042.GenericProductsOnlineDataSource>()));
     gh.lazySingleton<_i643.MostSellingProductsRepository>(() =>
         _i221.MostSellingProductsRepoImpl(
             gh<_i475.MostSellingProductsOnlineDataSource>()));
@@ -145,6 +161,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i720.HomeUseCase(gh<_i765.HomeRepository>()));
     gh.factory<_i565.GenericRepo>(
         () => _i284.GenericRepositoryImpl(gh<_i211.GenericOnlineDataSource>()));
+    gh.factory<_i756.GenericProductsUseCase>(
+        () => _i756.GenericProductsUseCase(gh<_i15.GenericProductsRepo>()));
     gh.factory<_i496.LoginUseCase>(
         () => _i496.LoginUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i853.SignUpUseCase>(
@@ -178,6 +196,11 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i301.ForgotPasswordUseCase>(),
               gh<_i642.VerifyResetCodeUseCase>(),
               gh<_i906.ResetPasswordUseCase>(),
+            ));
+    gh.factory<_i349.GenericItemViewModelCubit>(
+        () => _i349.GenericItemViewModelCubit(
+              gh<_i559.GenericUseCase>(),
+              gh<_i756.GenericProductsUseCase>(),
             ));
     gh.factory<_i777.CategoriesUseCase>(
         () => _i777.CategoriesUseCase(gh<_i590.CategoriesRepository>()));

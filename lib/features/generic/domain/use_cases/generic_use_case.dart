@@ -10,7 +10,7 @@ class GenericUseCase {
   @factoryMethod
   GenericUseCase(this._genericRepo);
 
-  Future<DataResult<GenericResponseEntity>> getAllOccasions(String resourceName) async {
+  Future<DataResult<GenericResponseEntity>> getAllItems(String resourceName) async {
     return await _genericRepo.getAll(resourceName);
   }
 }

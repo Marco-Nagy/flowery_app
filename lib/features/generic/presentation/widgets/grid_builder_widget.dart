@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../generated/assets.dart';
 import '../view_model/generic_view_model_cubit.dart';
@@ -16,12 +17,12 @@ class GridBuilderWidget extends StatelessWidget {
       controller: controller,
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.all(10),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 10,
         mainAxisSpacing: 20,
         childAspectRatio: 3 / 4,
-        mainAxisExtent: 248,
+        mainAxisExtent: 248.h,
       ),
       itemCount: state.items.length + (cubit.isFetching ? 1 : 0),
       itemBuilder: (context, index) {
