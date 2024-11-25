@@ -15,7 +15,6 @@ void main() {
 
   T provideDummy<T>() {
     if (T == DataResult<ProductResponseEntity>) {
-      // Manually create a Success result for the missing DataResult<ProductResponseEntity>
       return Success<ProductResponseEntity>(ProductResponseEntity(
         products: [
           ProductEntity(
@@ -37,18 +36,15 @@ void main() {
     throw Exception('No dummy value for $T');
   }
 
-  // Setup before each test
   setUp(() {
     mockOnlineDataSource = MockProductOnlineDataSource();
     productRepo = ProductRepoImpl(mockOnlineDataSource);
 
-    // Provide dummy values for mock setup
     provideDummy<DataResult<ProductResponseEntity>>();
   });
 
   group('ProductRepoImpl', () {
     test('should return Success<ProductResponseEntity> when API call is successful', () async {
-      // Arrange: Create the response entity
       final responseEntity = ProductResponseEntity(
         products: [
           ProductEntity(
@@ -70,13 +66,10 @@ void main() {
       // Manually create a Success result
       final successResult = Success<ProductResponseEntity>(responseEntity);
 
-      // Mock the online data source
       when(mockOnlineDataSource.getAllProducts()).thenAnswer((_) async => successResult);
 
-      // Act: Call the method under test
       final result = await productRepo.getAllProducts();
 
-      // Assert: Check that the result is of type Success and contains the expected data
       expect(result, isA<Success<ProductResponseEntity>>());
       final success = result as Success<ProductResponseEntity>;
       expect(success.data.products.first.id, '1');
@@ -84,16 +77,12 @@ void main() {
     });
 
     test('should return Fail<ProductResponseEntity> when API call fails', () async {
-      // Arrange: Create a Fail result with an exception
       final failResult = Fail<ProductResponseEntity>(Exception('Error'));
 
-      // Mock the online data source
       when(mockOnlineDataSource.getAllProducts()).thenAnswer((_) async => failResult);
 
-      // Act: Call the method under test
       final result = await productRepo.getAllProducts();
 
-      // Assert: Check that the result is of type Fail and contains the expected exception
       expect(result, isA<Fail<ProductResponseEntity>>());
       final fail = result as Fail<ProductResponseEntity>;
       expect(fail.exception, isA<Exception>());

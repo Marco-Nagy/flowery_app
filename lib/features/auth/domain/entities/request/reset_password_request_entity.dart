@@ -1,5 +1,5 @@
-
 class ResetPasswordRequestEntity {
+
   final String? email;
   final String? newPassword;
 

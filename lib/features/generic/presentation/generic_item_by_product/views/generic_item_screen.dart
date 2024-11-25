@@ -33,8 +33,7 @@ class GenericItemScreen extends StatelessWidget {
 
             case GetItemsLoading:
             case GetProductLoading:
-            return AppLoader();
-
+              return Center(child: AppLoader());
 
             case GetItemsSuccess:
             case FilteredProductsState:

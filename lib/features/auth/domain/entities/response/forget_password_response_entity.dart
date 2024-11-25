@@ -1,7 +1,7 @@
-
 import 'package:equatable/equatable.dart';
 
-class ForgetPasswordResponseEntity extends Equatable{
+
+class ForgetPasswordResponseEntity extends Equatable {
   final String? message;
   final String? info;
 

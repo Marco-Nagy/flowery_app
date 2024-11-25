@@ -17,7 +17,7 @@ class GenericBuilderWidget extends StatelessWidget {
     return GridView.builder(
       controller: controller,
       physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.only(top: 0, bottom: 10, left: 10, right: 10),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 10,
