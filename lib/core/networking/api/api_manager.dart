@@ -6,8 +6,10 @@ import 'package:flowery_e_commerce/features/auth/data/models/request/verify_rese
 import 'package:flowery_e_commerce/features/auth/data/models/response/forget_password_response_dto.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/response/reset_password_response_dto.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/response/verify_reset_code_response.dart';
+import 'package:flowery_e_commerce/features/best_seller/data/models/best_seller_response_model_entity.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_products_rsponse_dto.dart';
+import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -17,6 +19,7 @@ import '../../../features/auth/data/models/request/signup_request_dto.dart';
 import '../../../features/auth/data/models/response/login_response_dto.dart';
 import '../../../features/generic/data/models/generic_response_dto.dart';
 import '../../../features/auth/data/models/response/signup_response_dto.dart';
+import '../../../features/product/data/models/response/product_response_dto.dart';
 import 'api_constants.dart';
 
 part 'api_manager.g.dart';
@@ -52,7 +55,14 @@ abstract class ApiManager {
 
   @GET(ApiConstants.getAllCategories)
   Future<GetAllCategoriesResponseDto> getAllCategories();
+  @GET(ApiConstants.getHomeApi)
+  Future<HomeResponseModelEntity> getHome();
 
   @GET(ApiConstants.getAllProducts)
   Future<GetAllProductsRsponseDto> getAllProducts();
+  @GET(ApiConstants.mostSellingProductsApi)
+  Future<BestSellerResponseModelEntity> getMostSellingProducts();
+
+  @GET(ApiConstants.getAllProducts)
+  Future<ProductResponseDto> getProduct();
 }

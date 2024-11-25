@@ -36,7 +36,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   fluttertoast: ^8.2.8
-  cached_network_image: ^3.4.1
   row_item: ^2.2.1+1
   dio:
   retrofit: ^4.4.1
@@ -66,6 +65,7 @@ dependencies:
   mockito: ^5.4.4
   bloc_test: ^9.1.7
   auto_size_text: ^3.0.0
+  cached_network_image: ^3.4.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -77,6 +77,7 @@ dev_dependencies:
   json_serializable: ^6.8.0
   dartz: ^0.10.1
   test: ^1.25.7
+  flutter_native_splash:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -92,7 +93,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    - assets/json/
     - assets/fonts/
     - lib/generated/assets.dart
   #   - images/a_dot_ham.jpeg

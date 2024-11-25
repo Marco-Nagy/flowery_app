@@ -7,6 +7,7 @@ import '../../../../core/networking/common/api_result.dart';
 import '../../../../core/networking/error/error_handler.dart';
 import '../../../../core/networking/error/error_model.dart';
 import '../../domain/use_cases/generic_use_case.dart';
+import 'generic_action.dart';
 
 part 'generic_view_model_state.dart';
 
@@ -19,25 +20,36 @@ class GenericViewModelCubit extends Cubit<GenericViewModelState> {
 
   List<Items> _allItems = [];
   List<Items> _visibleItems = [];
-  Set<String> categories = {};
-  String _currentCategory = 'All';
+  Set<String> items = {};
+  String _currentItem = 'All';
   final int _pageSize = 5;
   bool isFetching = false;
 
-  void gitData(String resourceName) async {
+  void doAction(GenericAction action) {
+    switch (action) {
+      case getData():
+        _gitData(action.resourceName);
+      case fetchNextPage():
+        _fetchNextPage();
+      case setCategory():
+        _setCategory(action.category);
+    }
+  }
+
+  void _gitData(String resourceName) async {
     emit(GenericItemLoadedState());
     _allItems.clear();
     _visibleItems.clear();
-    categories.clear();
+    items.clear();
 
     try {
-      var result = await _genericUseCase.getAllOccasions(resourceName);
+      var result = await _genericUseCase.getAllItems(resourceName);
 
       switch (result) {
         case Success<GenericResponseEntity>():
           _allItems = result.data.items ?? [];
-          categories.add('All');
-          categories
+          items.add('All');
+          items
               .addAll(_allItems.map((item) => item.name ?? 'Unknown').toSet());
           _updateVisibleItems();
           break;
@@ -51,7 +63,7 @@ class GenericViewModelCubit extends Cubit<GenericViewModelState> {
     }
   }
 
-  void fetchNextPage() {
+  void _fetchNextPage() {
     if (isFetching || _visibleItems.length >= _allItems.length) return;
 
     isFetching = true;
@@ -62,15 +74,15 @@ class GenericViewModelCubit extends Cubit<GenericViewModelState> {
     });
   }
 
-  void setCategory(String category) {
-    _currentCategory = category;
+  void _setCategory(String category) {
+    _currentItem = category;
     _updateVisibleItems();
   }
 
   void _updateVisibleItems() {
-    final filteredItems = _currentCategory == 'All'
+    final filteredItems = _currentItem == 'All'
         ? _allItems
-        : _allItems.where((item) => item.name == _currentCategory).toList();
+        : _allItems.where((item) => item.name == _currentItem).toList();
 
     int nextCount =
         (_visibleItems.length + _pageSize).clamp(0, filteredItems.length);
