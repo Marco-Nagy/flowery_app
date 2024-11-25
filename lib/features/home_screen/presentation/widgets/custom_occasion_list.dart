@@ -37,6 +37,7 @@ class CustomOccasionListState extends State<CustomOccasionList> {
                     child: CachedNetworkWidget(
                       imageUrl:
                         state.occasions[index].image,
+                      fit: BoxFit.fill,
                       ),
                     ),
                       SizedBox(height: 5.h,),
