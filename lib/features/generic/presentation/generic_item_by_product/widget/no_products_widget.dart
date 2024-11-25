@@ -3,6 +3,8 @@ import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/widgets/spacing.dart';
+
 class NoProductsWidget extends StatelessWidget {
   const NoProductsWidget({Key? key}) : super(key: key);
 
@@ -14,9 +16,9 @@ class NoProductsWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(Assets.imagesDribbleFlowers, width: 150),
-          const SizedBox(height: 16),
+          verticalSpacing(16),
           Text(
-            'No products available in this category.',
+            'No products available.',
             style: MyFonts.styleMedium500_18.copyWith(color: MyColors.black),
           ),
         ],

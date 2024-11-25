@@ -23,7 +23,7 @@ class GridBuilderWidget extends StatelessWidget {
         crossAxisSpacing: 10,
         mainAxisSpacing: 20,
         childAspectRatio: 3 / 4,
-        mainAxisExtent: 248.w,
+        mainAxisExtent: 248.h,
       ),
       itemCount: state.items.length + (cubit.isFetching ? 1 : 0),
       itemBuilder: (context, index) {
