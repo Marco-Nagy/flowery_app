@@ -22,10 +22,7 @@ class Assets {
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesNetwork = 'assets/images/network.jpg';
   static const String imagesLogout = 'assets/images/logout.png';
-  static const String imagesNetwork = 'assets/images/network.jpg';
   static const String imagesNetworrk = 'assets/images/networrk.png';
-  static const String imagesNoNetwork = 'assets/images/noNetwork.png';
-  static const String imagesNotNetwork = 'assets/images/Not_network.png';
   static const String imagesNoNetwork = 'assets/images/noNetwork.png';
   static const String imagesNotNetwork = 'assets/images/Not_network.png';
   static const String imagesPerson = 'assets/images/person.png';

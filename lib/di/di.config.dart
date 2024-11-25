@@ -170,11 +170,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i906.ResetPasswordUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i642.VerifyResetCodeUseCase>(
         () => _i642.VerifyResetCodeUseCase(gh<_i665.AuthRepository>()));
-    gh.factory<_i590.CategoriesRepository>(() =>
-        _i620.CategoriesRepositoryImplementation(
-            gh<_i518.CategoriesOnlineDataSource>()));
-    gh.factory<_i559.ProductsViewModelCubit>(
-        () => _i559.ProductsViewModelCubit(gh<_i98.ProductsUseCase>()));
     gh.factory<_i233.BestSellerCubit>(
         () => _i233.BestSellerCubit(gh<_i720.HomeUseCase>()));
     gh.factory<_i851.OccasionsCubit>(
