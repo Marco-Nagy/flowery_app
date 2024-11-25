@@ -27,7 +27,7 @@ class ForgetPasswordViewModelCubit extends Cubit<ForgetPasswordViewModelState> {
   final ResetPasswordUseCase resetPasswordUseCase;
    TextEditingController emailController = TextEditingController();
   String fullCode = '';
-  int time=0;
+  int time = 0;
   Timer? _timer;
   late ValueNotifier<String> timeMessage = ValueNotifier<String>("00:00");
 
@@ -79,13 +79,14 @@ class ForgetPasswordViewModelCubit extends Cubit<ForgetPasswordViewModelState> {
         emit(ResetPasswordFailed(ErrorHandler.handle(result.exception!)));
     }
   }
-initTimer(){
- time = 10;
-  _timer = Timer.periodic(
-    const Duration(seconds: 1),
-    startCountdown,
-  );
-}
+
+  initTimer() {
+    time = 10;
+    _timer = Timer.periodic(
+      const Duration(seconds: 1),
+      startCountdown,
+    );
+  }
   void startCountdown(Timer timer) {
     _timer?.cancel();
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {

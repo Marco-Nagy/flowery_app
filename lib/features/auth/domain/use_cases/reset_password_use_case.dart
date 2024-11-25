@@ -11,7 +11,8 @@ class ResetPasswordUseCase {
 
   ResetPasswordUseCase(this.authRepository);
 
-  Future<DataResult<ResetPasswordResponseDto>> call(ResetPasswordRequestEntity body) {
+  Future<DataResult<ResetPasswordResponseDto>> call(
+      ResetPasswordRequestEntity body) {
     return authRepository.resetPassword(request: body);
   }
 }
