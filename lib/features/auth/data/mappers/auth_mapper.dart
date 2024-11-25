@@ -1,13 +1,20 @@
-import '../../domain/entities/request/login_request_entity.dart';
-import '../../domain/entities/response/login_response_entity.dart';
-import '../models/request/login_request_dto.dart';
-import 'package:flowery_e_commerce/features/auth/data/models/request/login_request_dto.dart';
+import 'package:flowery_e_commerce/features/auth/data/models/request/reset_password_request_dto.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/request/signup_request_dto.dart';
+import 'package:flowery_e_commerce/features/auth/data/models/request/verify_reset_code_request_dto.dart';
+import 'package:flowery_e_commerce/features/auth/data/models/response/forget_password_response_dto.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/response/signup_response_dto.dart';
-import 'package:flowery_e_commerce/features/auth/domain/entities/request/login_request_entity.dart';
-import 'package:flowery_e_commerce/features/auth/domain/entities/response/login_response_entity.dart';
+import 'package:flowery_e_commerce/features/auth/data/models/response/verify_reset_code_response.dart';
+import 'package:flowery_e_commerce/features/auth/domain/entities/request/forget_password_request_entity.dart';
+import 'package:flowery_e_commerce/features/auth/domain/entities/request/reset_password_request_entity.dart';
+import 'package:flowery_e_commerce/features/auth/domain/entities/request/verify_reset_code_request_entity.dart';
+import 'package:flowery_e_commerce/features/auth/domain/entities/response/forget_password_response_entity.dart';
+
+import '../../domain/entities/request/login_request_entity.dart';
 import '../../domain/entities/request/signup_request_entity.dart';
+import '../../domain/entities/response/login_response_entity.dart';
 import '../../domain/entities/response/signup_response_entity.dart';
+import '../models/request/forget_password_request_dto.dart';
+import '../models/request/login_request_dto.dart';
 import '../models/response/login_response_dto.dart';
 
 class AuthMapper {
@@ -52,6 +59,46 @@ class AuthMapper {
       role: userDto.role,
       id: userDto.Id,
       createdAt: userDto.createdAt,
+    );
+  }
+
+  static ForgetPasswordResponseDto toForgetPasswordToDto(
+      ForgetPasswordResponseEntity request) {
+    return ForgetPasswordResponseDto(
+      message: request.message,
+      info: request.info,
+    );
+  }
+
+  static ForgetPasswordRequestDto forgetPasswordToDto(
+      ForgetPasswordRequestEntity request) {
+    return ForgetPasswordRequestDto(email: request.email);
+  }
+  static ForgetPasswordResponseEntity forgetPasswordToEntity(
+      ForgetPasswordResponseDto request) {
+    return ForgetPasswordResponseEntity(message: request.message,info:  request.info);
+  }
+
+  static VerifyResetCodeRequestDto verifyResetCodeToDto(
+      VerifyResetCodeRequestEntity request) {
+    return VerifyResetCodeRequestDto(
+      resetCode: request.resetCode,
+    );
+
+  }
+
+  static VerifyResetCodeResponseDto verifyResetCodeToEntity(
+      VerifyResetCodeResponseDto request) {
+    return VerifyResetCodeResponseDto(
+      status: request.status,
+    );
+  }
+
+  static ResetPasswordRequestDto toResetPasswordRequestDto(
+      ResetPasswordRequestEntity request) {
+    return ResetPasswordRequestDto(
+      email: request.email,
+      newPassword: request.newPassword,
     );
   }
 }
