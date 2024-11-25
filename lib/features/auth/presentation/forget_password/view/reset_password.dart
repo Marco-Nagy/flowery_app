@@ -28,7 +28,9 @@ class ResetPassword extends HookWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: MyColors.white,
-        appBar:  customAppBar(appBarTxt: 'Password',     context: context,
+        appBar: customAppBar(
+            appBarTxt: 'Password',
+            context: context,
             showArrow: true,
             navigation: () {
               return null;
@@ -80,7 +82,8 @@ class ResetPassword extends HookWidget {
                       onTap: () {
                         if (formKye.currentState!.validate()) {
                           context.read<ForgetPasswordViewModelCubit>().doAction(
-                                  ResetPasswordAction(ResetPasswordRequestEntity(
+                                  ResetPasswordAction(
+                                      ResetPasswordRequestEntity(
                                 email: emailController.text,
                                 newPassword: passwordController.text,
                               )));

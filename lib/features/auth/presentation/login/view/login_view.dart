@@ -6,6 +6,7 @@ import 'package:flowery_e_commerce/core/utils/widgets/base/base_view.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_toast.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 
+import '../../../../../core/utils/widgets/base/snack_bar.dart';
 import '../viewModel/login_view_model_cubit.dart';
 import '../widgets/footer_sign_up.dart';
 
@@ -88,15 +89,28 @@ class _LoginViewState extends State<LoginView> {
         listener: (context, state) {
           switch (state) {
             case LoginViewModelLoading():
-              CustomToast.showLoadingToast(message: "Loading...");
+              aweSnackBar(
+                context: context,
+                msg: "Loading...",
+                type: MessageTypeConst.help,
+                title: "Loading",
+              );
               break;
             case LoginViewModelSuccess():
-              CustomToast.showSuccessToast(message: "Success");
+              aweSnackBar(
+                context: context,
+                msg: "Login successful!",
+                type: MessageTypeConst.success,
+                title: "Success",
+              );
               break;
             case LoginViewModelError():
-              debugPrint(state.errorMessage.error);
-              return CustomToast.showErrorToast(
-                  message: state.errorMessage.error!);
+              aweSnackBar(
+                context: context,
+                msg: state.errorMessage.error ?? "An error occurred!",
+                type: MessageTypeConst.failure,
+                title: "Error",
+              );
             default:
               return null;
           }

@@ -40,6 +40,7 @@ class HomeTab extends StatelessWidget {
         ),
       ],
       child: Scaffold(
+        backgroundColor: MyColors.white,
         appBar: AppBar(
           title: Row(
             children: [
