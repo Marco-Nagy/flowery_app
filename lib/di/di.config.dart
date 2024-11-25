@@ -114,32 +114,29 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i496.LoginUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i853.SignUpUseCase>(
         () => _i853.SignUpUseCase(gh<_i665.AuthRepository>()));
-    gh.factory<_i590.CategoriesRepository>(() =>
-        _i620.CategoriesRepositoryImplementation(
-            gh<_i518.CategoriesOnlineDataSource>()));
-
-    gh.factory<_i559.ProductsViewModelCubit>(
-        () => _i559.ProductsViewModelCubit(gh<_i98.ProductsUseCase>()));
     gh.factory<_i301.ForgotPasswordUseCase>(
         () => _i301.ForgotPasswordUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i906.ResetPasswordUseCase>(
         () => _i906.ResetPasswordUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i642.VerifyResetCodeUseCase>(
         () => _i642.VerifyResetCodeUseCase(gh<_i665.AuthRepository>()));
-
-
+    gh.factory<_i590.CategoriesRepository>(() =>
+        _i620.CategoriesRepositoryImplementation(
+            gh<_i518.CategoriesOnlineDataSource>()));
+    gh.factory<_i559.ProductsViewModelCubit>(
+        () => _i559.ProductsViewModelCubit(gh<_i98.ProductsUseCase>()));
     gh.factory<_i690.LoginViewModel>(
         () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
     gh.factory<_i508.SignUpViewModel>(
         () => _i508.SignUpViewModel(gh<_i853.SignUpUseCase>()));
+    gh.factory<_i559.GenericUseCase>(
+        () => _i559.GenericUseCase(gh<_i565.GenericRepo>()));
     gh.factory<_i60.ForgetPasswordViewModelCubit>(
         () => _i60.ForgetPasswordViewModelCubit(
               gh<_i301.ForgotPasswordUseCase>(),
               gh<_i642.VerifyResetCodeUseCase>(),
               gh<_i906.ResetPasswordUseCase>(),
             ));
-    gh.factory<_i559.GenericUseCase>(
-        () => _i559.GenericUseCase(gh<_i565.GenericRepo>()));
     gh.factory<_i777.CategoriesUseCase>(
         () => _i777.CategoriesUseCase(gh<_i590.CategoriesRepository>()));
     gh.factory<_i80.CategoriesViewModelCubit>(

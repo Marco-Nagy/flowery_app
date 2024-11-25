@@ -18,13 +18,4 @@ abstract class AuthRepository {
   Future<DataResult<ForgetPasswordResponseEntity>> forgetPassword({required ForgetPasswordRequestEntity request});
   Future<DataResult<VerifyResetCodeResponseDto>> verifyResetCode({required VerifyResetCodeRequestEntity request});
   Future<DataResult<ResetPasswordResponseDto>> resetPassword({required ResetPasswordRequestEntity request});
-
-  Future<DataResult<ForgetPasswordResponseEntity>> forgetPassword(
-      {required ForgetPasswordRequestEntity request});
-
-  Future<DataResult<VerifyResetCodeResponseDto>> verifyResetCode(
-      {required VerifyResetCodeRequestEntity request});
-
-  Future<DataResult<ResetPasswordResponseDto>> resetPassword(
-      {required ResetPasswordRequestEntity request});
 }
