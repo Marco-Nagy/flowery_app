@@ -1,5 +1,7 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/widgets/cached_network_widget.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +22,17 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
       height: 150.h,
       child: BlocBuilder<CategoriesViewModelCubit, CategoriesViewModelState>(
         builder: (context, state) {
-          if(state is GetCategoriesViewModelSuccess){
-            return ListView.builder(
+          switch (state) {
+            case GetCategoriesViewModelLoading():
+              return AppLoader();
+            case GetCategoriesViewModelError():
+              aweSnackBar(
+                  msg: state.error.error ?? '',
+                  context: context,
+                  type: MessageTypeConst.failure);
+
+            case GetCategoriesViewModelSuccess():
+              return ListView.builder(
               itemCount:state.categories!.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
@@ -52,9 +63,9 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
                 );
               },
             );
-          }else {
-            return SizedBox();
+            case CategoriesViewModelInitial():
           }
+          return Container();
         },
       ),
     );

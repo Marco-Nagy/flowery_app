@@ -1,14 +1,11 @@
+import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_seller_states.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_selling_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/widget/generic_build_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/styles/colors/my_colors.dart';
-import '../../../../core/styles/fonts/my_fonts.dart';
-import '../../../../core/utils/widgets/buttons/row_button.dart';
-import '../../../../core/utils/widgets/spacing.dart';
-import 'cached_network_widget.dart';
 
 
 class BuildItem extends StatelessWidget {
@@ -17,28 +14,39 @@ class BuildItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MostSellerCubit, MostSellerStates>(
       builder: (context, state) {
-        if(state is GetMostSellerSuccessState){
-          return GridView.builder( gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 20,
-            childAspectRatio: 3 / 4,
-            mainAxisExtent: 275.h,
-          ),
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: state.mostSeller.length,
-            itemBuilder: (BuildContext context, int index) {
-              return GenericBuildItem(
-                imageCover: state.mostSeller[index].imageCover,
-                title: state.mostSeller[index].title,
-                price: state.mostSeller[index].price.toString(),
-                priceAfterDiscount: state.mostSeller[index].priceAfterDiscount.toString(),
-              );
-            },);
-        }else{
-          return SizedBox();
+        switch (state) {
+          case GetMostSellerLoadingState():
+            return AppLoader();
+          case GetMostSellerSuccessState():
+            return GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 20,
+                childAspectRatio: 3 / 4,
+                mainAxisExtent: 275.h,
+              ),
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: state.mostSeller.length,
+              itemBuilder: (BuildContext context, int index) {
+                return GenericBuildItem(
+                  imageCover: state.mostSeller[index].imageCover,
+                  title: state.mostSeller[index].title,
+                  price: state.mostSeller[index].price.toString(),
+                  priceAfterDiscount:
+                      state.mostSeller[index].priceAfterDiscount.toString(),
+                );
+              },
+            );
+          case GetMostSellerErrorState():
+            aweSnackBar(
+                msg: state.errorModel.error ?? '',
+                context: context,
+                type: MessageTypeConst.failure);
+          case MostSellerInitialState():
         }
+        return Container();
       },
     );
   }
