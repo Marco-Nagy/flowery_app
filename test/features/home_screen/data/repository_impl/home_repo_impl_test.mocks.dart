@@ -11,9 +11,8 @@ import 'package:flowery_e_commerce/features/home_screen/data/online_data_source/
     as _i2;
 import 'package:flowery_e_commerce/features/home_screen/domain/entities/best_seller_entity.dart'
     as _i5;
-
 import 'package:flowery_e_commerce/features/home_screen/domain/entities/occasions_entity.dart'
-    as _i8;
+    as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;
 
@@ -57,19 +56,19 @@ class MockHomeOnlineDataSource extends _i1.Mock
       ) as _i3.Future<_i4.DataResult<List<_i5.BestSeller>>>);
 
   @override
-  _i3.Future<_i4.DataResult<List<_i8.Occasions>>> getOccasions() =>
+  _i3.Future<_i4.DataResult<List<_i7.Occasions>>> getOccasions() =>
       (super.noSuchMethod(
         Invocation.method(
           #getOccasions,
           [],
         ),
-        returnValue: _i3.Future<_i4.DataResult<List<_i8.Occasions>>>.value(
-            _i6.dummyValue<_i4.DataResult<List<_i8.Occasions>>>(
+        returnValue: _i3.Future<_i4.DataResult<List<_i7.Occasions>>>.value(
+            _i6.dummyValue<_i4.DataResult<List<_i7.Occasions>>>(
           this,
           Invocation.method(
             #getOccasions,
             [],
           ),
         )),
-      ) as _i3.Future<_i4.DataResult<List<_i8.Occasions>>>);
+      ) as _i3.Future<_i4.DataResult<List<_i7.Occasions>>>);
 }
