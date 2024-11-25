@@ -1,5 +1,6 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/widgets/cached_network_widget.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/best_seller_cubit/best_seller_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/best_seller_cubit/best_seller_states.dart';
 import 'package:flutter/material.dart';
@@ -30,11 +31,12 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network(
-                        state.bestSeller[index].imageCover,
-                         width: 170.w,
-                         height: 180.h,
-                        fit: BoxFit.cover,
+                      SizedBox(
+                        width: 170.w,
+                        height: 180.h,
+                        child: CachedNetworkWidget(
+                          imageUrl: state.bestSeller[index].imageCover,
+                        ),
                       ),
                       SizedBox(height: 8.h,),
                       SizedBox(
