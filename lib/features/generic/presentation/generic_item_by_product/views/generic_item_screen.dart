@@ -72,7 +72,7 @@ class GenericItemScreen extends StatelessWidget {
               );
 
             default:
-               return const SizedBox.shrink();
+              return AppLoader();
 
           }
         },

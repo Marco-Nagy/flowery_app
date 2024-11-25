@@ -32,12 +32,9 @@ class CatalogGenericScreen extends StatelessWidget {
             }
           });
 
-          // Using switch to handle different states
           switch (state.runtimeType) {
             case GenericItemLoadedState:
               return AppLoader();
-
-
             case GenericItemErrorState:
               final errorState = state as GenericItemErrorState;
               return Center(child: Text(errorState.message.error!));
