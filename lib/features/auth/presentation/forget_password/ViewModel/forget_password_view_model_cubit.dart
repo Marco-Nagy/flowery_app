@@ -25,7 +25,7 @@ class ForgetPasswordViewModelCubit extends Cubit<ForgetPasswordViewModelState> {
   final ForgotPasswordUseCase forgotPasswordUseCase;
   final VerifyResetCodeUseCase verifyResetCodeUseCase;
   final ResetPasswordUseCase resetPasswordUseCase;
-  TextEditingController emailController = TextEditingController();
+   TextEditingController emailController = TextEditingController();
   String fullCode = '';
   int time = 0;
   Timer? _timer;
@@ -34,6 +34,7 @@ class ForgetPasswordViewModelCubit extends Cubit<ForgetPasswordViewModelState> {
   void doAction(ForgetPasswordBaseActions action) {
     switch (action) {
       case ForgetPasswordAction():
+
         _forgotPassword(action);
       case VerifyResetCodeAction():
         _verifyResetCode(action);
@@ -49,6 +50,7 @@ class ForgetPasswordViewModelCubit extends Cubit<ForgetPasswordViewModelState> {
     var result = await forgotPasswordUseCase(action.body);
     switch (result) {
       case Success<ForgetPasswordResponseEntity>():
+
         emit(ForgetPasswordSuccess(result.data));
 
       case Fail<ForgetPasswordResponseEntity>():
@@ -85,7 +87,6 @@ class ForgetPasswordViewModelCubit extends Cubit<ForgetPasswordViewModelState> {
       startCountdown,
     );
   }
-
   void startCountdown(Timer timer) {
     _timer?.cancel();
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {

@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+
 class ForgetPasswordResponseEntity extends Equatable {
   final String? message;
   final String? info;
@@ -9,4 +10,5 @@ class ForgetPasswordResponseEntity extends Equatable {
   @override
   // TODO: implement props
   List<Object?> get props => [message, info];
+
 }

@@ -14,8 +14,10 @@ import '../entities/response/signup_response_entity.dart';
 abstract class AuthRepository {
   Future<DataResult<LoginResponseEntity>> login(LoginRequestEntity request);
 
-  Future<DataResult<SignUpResponseEntity>> signUp(
-      {required SignUpRequestEntity request});
+  Future<DataResult<SignUpResponseEntity>> signUp({required SignUpRequestEntity request});
+  Future<DataResult<ForgetPasswordResponseEntity>> forgetPassword({required ForgetPasswordRequestEntity request});
+  Future<DataResult<VerifyResetCodeResponseDto>> verifyResetCode({required VerifyResetCodeRequestEntity request});
+  Future<DataResult<ResetPasswordResponseDto>> resetPassword({required ResetPasswordRequestEntity request});
 
   Future<DataResult<ForgetPasswordResponseEntity>> forgetPassword(
       {required ForgetPasswordRequestEntity request});

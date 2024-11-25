@@ -12,7 +12,6 @@ class ForgetPasswordBlocListener extends StatelessWidget {
   const ForgetPasswordBlocListener({super.key, this.email});
 
   final String? email;
-
   @override
   Widget build(BuildContext context) {
     return BlocListener<ForgetPasswordViewModelCubit,
@@ -22,6 +21,7 @@ class ForgetPasswordBlocListener extends StatelessWidget {
             case VerifyResetCodeTimeOut():
               break;
             case ForgetPasswordSuccess():
+
               return aweSnackBar(
                   msg: state.response.info!,
                   context: context,
@@ -32,33 +32,28 @@ class ForgetPasswordBlocListener extends StatelessWidget {
               return aweSnackBar(
                   msg: state.response.status!,
                   context: context,
-                  type: MessageTypeConst.success,
-                  title: "Success");
+                  type: MessageTypeConst.success, title: "Success");
             case ResetPasswordSuccess():
               context.pushReplacementNamed(AppRoutes.login);
               return aweSnackBar(
                   msg: state.response.message!,
                   context: context,
-                  type: MessageTypeConst.success,
-                  title: "Success");
+                  type: MessageTypeConst.success, title: "Success");
             case VerifyResetCodeFailed():
-              return aweSnackBar(
-                  msg: state.errorModel.error!,
-                  context: context,
-                  type: MessageTypeConst.failure,
-                  title: 'Error');
+            return aweSnackBar(
+                msg: state.errorModel.error!,
+                context: context,
+                type: MessageTypeConst.failure, title: 'Error');
             case ForgetPasswordFailed():
-              return aweSnackBar(
-                  msg: state.errorModel.error!,
-                  context: context,
-                  type: MessageTypeConst.failure,
-                  title: 'Error');
+            return aweSnackBar(
+                msg: state.errorModel.error!,
+                context: context,
+                type: MessageTypeConst.failure, title: 'Error');
             case ResetPasswordFailed():
-              return aweSnackBar(
-                  msg: state.errorModel.error!,
-                  context: context,
-                  type: MessageTypeConst.failure,
-                  title: 'Error');
+           return aweSnackBar(
+                msg: state.errorModel.error!,
+                context: context,
+                type: MessageTypeConst.failure, title: 'Error');
             case ForgetPasswordLoading():
             case VerifyResetCodeLoading():
             case ResetPasswordLoading():

@@ -53,8 +53,7 @@ class VerificationCode extends HookWidget {
             margin: const EdgeInsets.symmetric(horizontal: 5),
             child: AppTextFormField(
               maxLength: 1,
-              autofocus: index == 0,
-              // Autofocus only on the first field
+              autofocus: index == 0, // Autofocus only on the first field
               keyboardType: TextInputType.number,
               width: 50,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],

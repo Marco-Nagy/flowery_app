@@ -11,4 +11,5 @@ class ForgetPasswordResponseDto {
 
   factory ForgetPasswordResponseDto.fromJson(Map<String, dynamic> json) =>
       _$ForgetPasswordResponseDtoFromJson(json);
+
 }

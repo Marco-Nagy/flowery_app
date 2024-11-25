@@ -11,4 +11,6 @@ class ResetPasswordResponseDto {
 
   factory ResetPasswordResponseDto.fromJson(Map<String, dynamic> json) =>
       _$ResetPasswordResponseDtoFromJson(json);
+
+
 }

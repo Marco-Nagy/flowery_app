@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+
 class ForgetPasswordRequestEntity extends Equatable {
   final String? email;
 

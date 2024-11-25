@@ -1,4 +1,5 @@
 import 'package:flowery_e_commerce/features/auth/data/models/response/reset_password_response_dto.dart';
+
 import 'package:flowery_e_commerce/features/auth/data/models/response/verify_reset_code_response.dart';
 import 'package:flowery_e_commerce/features/auth/domain/entities/response/forget_password_response_entity.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,6 +31,7 @@ class VerifyResetCodeLoading extends ForgetPasswordViewModelState {}
 
 class VerifyResetCodeTimeOut extends ForgetPasswordViewModelState {}
 
+
 class VerifyResetCodeSuccess extends ForgetPasswordViewModelState {
   final VerifyResetCodeResponseDto response;
 
@@ -56,3 +58,4 @@ class ResetPasswordFailed extends ForgetPasswordViewModelState {
 
   ResetPasswordFailed(this.errorModel);
 }
+

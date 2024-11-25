@@ -43,6 +43,7 @@ class _AppLoaderState extends State<AppLoader>
               child: Lottie.asset(
                 AnimatedImage.loader,
                 height: MediaQuery.of(context).size.height * .3,
+
               ),
             ),
           ),
