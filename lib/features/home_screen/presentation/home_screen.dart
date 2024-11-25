@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
-              backgroundColor: MyColors.white60,
+              backgroundColor: MyColors.whiteBase,
               showSelectedLabels: true,
               showUnselectedLabels: true,
               elevation: 11,

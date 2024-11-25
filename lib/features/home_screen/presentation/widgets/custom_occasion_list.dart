@@ -1,5 +1,6 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/widgets/cached_network_widget.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/occasions_cubit/occasions_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/occasions_cubit/occasions_states.dart';
 import 'package:flutter/material.dart';
@@ -30,12 +31,14 @@ class CustomOccasionListState extends State<CustomOccasionList> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network(
+                    SizedBox(
+                    width: 161.w,
+                    height: 181.h,
+                    child: CachedNetworkWidget(
+                      imageUrl:
                         state.occasions[index].image,
-                        width: 161.w,
-                        height: 181.h,
-                        fit: BoxFit.fill,
                       ),
+                    ),
                       SizedBox(height: 5.h,),
                       Text(state.occasions[index].name, style: MyFonts.styleMedium500_14.copyWith(
                           color: MyColors.blackBase)),
