@@ -2,14 +2,14 @@
 class Assets {
   Assets._();
 
+  static const String fontsOronteusFinaeus = 'assets/fonts/oronteus_finaeus.ttf';
   static const String generatedAssets = 'lib/generated/assets.dart';
   static const String imagesArrowBackIos = 'assets/images/arrow_back_ios.png';
   static const String imagesButtomFilter = 'assets/images/buttom_filter.png';
   static const String imagesCardContent = 'assets/images/card_content.png';
   static const String imagesCategory = 'assets/images/category.png';
   static const String imagesDeliverTo = 'assets/images/deliver_to.png';
-  static const String imagesDribbleFlowers =
-      'assets/images/dribble_flowers.gif';
+  static const String imagesDribbleFlowers = 'assets/images/dribble_flowers.gif';
   static const String imagesFilter = 'assets/images/filter.png';
   static const String imagesFlower = 'assets/images/flower.png';
   static const String imagesGraduation = 'assets/images/graduation.png';
@@ -18,12 +18,16 @@ class Assets {
   static const String imagesLoading = 'assets/images/loading.json';
   static const String imagesLocationOn = 'assets/images/location_on.png';
   static const String imagesLogo = 'assets/images/logo.png';
+  static const String imagesNetwork = 'assets/images/network.jpg';
   static const String imagesNetworrk = 'assets/images/networrk.png';
+  static const String imagesNoNetwork = 'assets/images/noNetwork.png';
+  static const String imagesNotNetwork = 'assets/images/Not_network.png';
   static const String imagesOccasion = 'assets/images/occasion.png';
   static const String imagesPerson = 'assets/images/person.png';
   static const String imagesPlace = 'assets/images/place.png';
   static const String imagesShoppingCart = 'assets/images/shopping_cart.png';
   static const String imagesTulip = 'assets/images/tulip.png';
   static const String imagesVector = 'assets/images/vector.png';
+  static const String jsonFloweryLoader = 'assets/json/flowery_loader.json';
 
 }
