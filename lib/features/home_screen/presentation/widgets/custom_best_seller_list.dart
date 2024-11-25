@@ -1,5 +1,8 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/widgets/cached_network_widget.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/best_seller_cubit/best_seller_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/best_seller_cubit/best_seller_states.dart';
 import 'package:flutter/material.dart';
@@ -20,44 +23,52 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
       height: 270.h,
       child: BlocBuilder<BestSellerCubit, BestSellerStates>(
         builder: (context, state) {
-          if(state is GetBestSellerSuccessState){
-            return ListView.builder(
-              itemCount: state.bestSeller.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.all(3.sp),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.network(
-                        state.bestSeller[index].imageCover,
-                         width: 170.w,
-                         height: 180.h,
-                        fit: BoxFit.cover,
-                      ),
-                      SizedBox(height: 8.h,),
-                      SizedBox(
-                        width: 170.w,
-                        child: Text(state.bestSeller[index].title,
-                            style: MyFonts.styleRegular400_14.copyWith(
-                            color: MyColors.blackBase,
-                              overflow: TextOverflow.visible
-                            ),
-                          maxLines: 2,
-                        ),
-                      ),
-                      SizedBox(height: 3.h,),
-                      Text('${state.bestSeller[index].price}' , style: MyFonts.styleMedium500_14.copyWith(
-                          color: MyColors.blackBase)),
-                    ],
-                  ),
-                );
-              },
-            );
-          }else{
-            return SizedBox();
-          }
+         switch(state){
+
+           case GetBestSellerSuccessState():
+           return ListView.builder(
+             itemCount: state.bestSeller.length,
+             scrollDirection: Axis.horizontal,
+             itemBuilder: (context, index) {
+               return Container(
+                 margin: EdgeInsets.all(3.sp),
+                 child: Column(
+                   crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+                     SizedBox(
+                       width: 170.w,
+                       height: 180.h,
+                       child: CachedNetworkWidget(
+                         imageUrl: state.bestSeller[index].imageCover,
+                       ),
+                     ),
+                     SizedBox(height: 8.h,),
+                     SizedBox(
+                       width: 170.w,
+                       child: Text(state.bestSeller[index].title,
+                         style: MyFonts.styleRegular400_14.copyWith(
+                             color: MyColors.blackBase,
+                             overflow: TextOverflow.visible
+                         ),
+                         maxLines: 2,
+                       ),
+                     ),
+                     SizedBox(height: 3.h,),
+                     Text('${state.bestSeller[index].price}' , style: MyFonts.styleMedium500_14.copyWith(
+                         color: MyColors.blackBase)),
+                   ],
+                 ),
+               );
+             },
+           );
+           case GetBestSellerErrorState():
+             aweSnackBar(msg: state.errorModel.error??'', context: context, type: MessageTypeConst.failure);
+           case GetBestSellerLoadingState():
+             return AppLoader();
+           case BestSellerInitialState():
+             default:null;
+         }
+         return Container();
         },
       ),
     );

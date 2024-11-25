@@ -1,97 +1,52 @@
+import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_seller_states.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_selling_cubit.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/widget/generic_build_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/styles/colors/my_colors.dart';
-import '../../../../core/styles/fonts/my_fonts.dart';
-import '../../../../core/utils/widgets/buttons/row_button.dart';
-import '../../../../core/utils/widgets/spacing.dart';
-import 'cached_network_widget.dart';
 
 
 class BuildItem extends StatelessWidget {
   BuildItem({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MostSellerCubit, MostSellerStates>(
       builder: (context, state) {
-        if(state is GetMostSellerSuccessState){
-          return GridView.builder( gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 20,
-            childAspectRatio: 3 / 4,
-            mainAxisExtent: 275.h,
-          ),
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: state.mostSeller.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                padding: const EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8.0),
-                  border: Border.all(color: MyColors.white70),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 140.h,
-                      child: CachedNetworkWidget(
-                        imageUrl: state.mostSeller[index].imageCover,
-                      ),
-                    ),
-                    verticalSpacing(8.h),
-                    Align(
-                      alignment: Alignment.center,
-                      widthFactor: 1.7,
-                      child: Text(
-                        state.mostSeller[index].title,
-                        style: MyFonts.styleRegular400_14.copyWith(
-                            color: MyColors.black),
-                      ),
-                    ),
-                    verticalSpacing(6.h),
-                    RichText(
-                      text: TextSpan(
-                        text: 'EGP ${state.mostSeller[index].price}',
-                        style: MyFonts.styleMedium500_14.copyWith(
-                            color: MyColors.black),
-                        children: [
-                          WidgetSpan(child: horizontalSpacing(5.w)),
-                          TextSpan(
-                            text: '${state.mostSeller[index].priceAfterDiscount}',
-                            style: MyFonts.styleRegular400_12.copyWith(
-                              color: MyColors.gray,
-                              decoration: TextDecoration.lineThrough,
-                            ),
-                          ),
-                          WidgetSpan(child: horizontalSpacing(5.w)),
-                          TextSpan(
-                            text: '20%',
-                            style: MyFonts.styleRegular400_12.copyWith(
-                                color: MyColors.green),
-                          ),
-                        ],
-                      ),
-                    ),
-                    verticalSpacing(8.h),
-                    Align(
-                        alignment: Alignment.bottomCenter,
-                        child: SizedBox(
-                            width: 150.w,
-                            child: RowButton(onTap: () {}))),
-                  ],
-                ),
-              );
-            },);
-        }else{
-          return SizedBox();
+        switch (state) {
+          case GetMostSellerLoadingState():
+            return AppLoader();
+          case GetMostSellerSuccessState():
+            return GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 20,
+                childAspectRatio: 3 / 4,
+                mainAxisExtent: 275.h,
+              ),
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: state.mostSeller.length,
+              itemBuilder: (BuildContext context, int index) {
+                return GenericBuildItem(
+                  imageCover: state.mostSeller[index].imageCover,
+                  title: state.mostSeller[index].title,
+                  price: state.mostSeller[index].price.toString(),
+                  priceAfterDiscount:
+                      state.mostSeller[index].priceAfterDiscount.toString(),
+                );
+              },
+            );
+          case GetMostSellerErrorState():
+            aweSnackBar(
+                msg: state.errorModel.error ?? '',
+                context: context,
+                type: MessageTypeConst.failure);
+          case MostSellerInitialState():
         }
+        return Container();
       },
     );
   }

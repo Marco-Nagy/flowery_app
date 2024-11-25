@@ -18,7 +18,8 @@ void main() {
     mockAuthRepository = MockAuthRepository();
     signUpUseCase = SignUpUseCase(mockAuthRepository);
 
-    provideDummy<DataResult<SignUpResponseEntity>>(Success(SignUpResponseEntity()));
+    provideDummy<DataResult<SignUpResponseEntity>>(
+        Success(SignUpResponseEntity()));
   });
 
   group('SignUpUseCase', () {
@@ -48,7 +49,8 @@ void main() {
       ),
     );
 
-    test('should return successful response when signUp is successful', () async {
+    test('should return successful response when signUp is successful',
+        () async {
       when(mockAuthRepository.signUp(request: requestEntity))
           .thenAnswer((_) async => Success(responseEntity));
 

@@ -44,7 +44,8 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
   Future<DataResult<ForgetPasswordResponseEntity>> forgetPassword(
       {required ForgetPasswordRequestEntity request}) async {
     return await executeApi(() async {
-      var response = await _apiManager.forgetPassword(AuthMapper.forgetPasswordToDto(request));
+      var response = await _apiManager
+          .forgetPassword(AuthMapper.forgetPasswordToDto(request));
       return AuthMapper.forgetPasswordToEntity(response);
     });
   }

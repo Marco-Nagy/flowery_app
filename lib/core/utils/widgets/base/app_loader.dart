@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flowery_e_commerce/core/styles/animated_image.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/animated_status_dialog.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -40,7 +41,7 @@ class _AppLoaderState extends State<AppLoader>
         children: [
           Lottie.asset(
             Assets.imagesFloweryLoader,
-            height: MediaQuery.of(context).size.height * .2,
+            height: MediaQuery.of(context).size.height * .12,
             alignment: Alignment.bottomCenter,
             fit: BoxFit.scaleDown
 
@@ -54,7 +55,7 @@ class _AppLoaderState extends State<AppLoader>
                 ScaleAnimatedText('Flowery',
                     textStyle: MyFonts.styleBold700_24.copyWith(
                         fontFamily: 'oronteus', color: MyColors.baseColor),
-                    scalingFactor: 2,
+                    scalingFactor: 1.5,
                     textAlign: TextAlign.center),
               ],
             ),

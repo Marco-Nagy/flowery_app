@@ -15,7 +15,8 @@ void main() {
   late AuthRepositoryImpl authRepository;
 
   setUpAll(() {
-    provideDummy<DataResult<SignUpResponseEntity>>(Success(SignUpResponseEntity()));
+    provideDummy<DataResult<SignUpResponseEntity>>(
+        Success(SignUpResponseEntity()));
   });
 
   setUp(() {
