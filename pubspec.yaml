@@ -77,7 +77,6 @@ dev_dependencies:
   json_serializable: ^6.8.0
   dartz: ^0.10.1
   test: ^1.25.7
-  flutter_native_splash:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -93,6 +92,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/json/
     - assets/fonts/
     - lib/generated/assets.dart
   #   - images/a_dot_ham.jpeg
