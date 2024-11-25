@@ -1,7 +1,9 @@
+import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/routes/app_routes.dart';
 import '../../../domain/entities/request/login_request_entity.dart';
 import '../viewModel/login_action.dart';
 import '../viewModel/login_view_model_cubit.dart';
@@ -46,7 +48,9 @@ class LoginButtons extends StatelessWidget {
           CurvedButton(
             color: MyColors.white,
             title: "Continue as guest",
-            onTap: () {},
+            onTap: () {
+              context.pushReplacementNamed(AppRoutes.homeScreen);
+            },
             colorBorderSide: MyColors.gray,
             textColor: MyColors.gray,
           ),
