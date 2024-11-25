@@ -4,5 +4,4 @@ class AnimatedImage {
   static String success ='assets/json/success.json';
   static const String loader = 'assets/json/flowery_loader.json';
   static const String noData = 'assets/json/no_data.json';
-
 }

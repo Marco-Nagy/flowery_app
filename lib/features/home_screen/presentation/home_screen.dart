@@ -1,5 +1,6 @@
 import 'package:flowery_e_commerce/core/styles/app_images.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
+import 'package:flowery_e_commerce/features/categories/presentation/categories/views/categories_view.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/tabs/cart_tab.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/tabs/category_tab.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/tabs/home_tab.dart';
@@ -18,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentTabIndex = 0;
   List<Widget> tabs = [
      HomeTab(),
-     CategoriesTab(),
+    CategoriesView(),
     const CartTab(),
     const ProfileTab(),
   ];
