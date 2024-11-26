@@ -11,7 +11,7 @@ import '../view_model/signup_view_model_cubit.dart';
 class GenderSelection extends StatelessWidget {
   const GenderSelection({super.key, this.cubit});
 
-  final dynamic cubit;
+  final SignUpViewModel? cubit;
 
   @override
   Widget build(BuildContext context) {
