@@ -1,7 +1,7 @@
 sealed class SignupAction {}
 
 class GenderSelected extends SignupAction {
-  final String gender;
+  final dynamic gender;
 
   GenderSelected(this.gender);
 }
