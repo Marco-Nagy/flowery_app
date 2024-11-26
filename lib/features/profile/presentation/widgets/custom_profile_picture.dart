@@ -54,8 +54,8 @@ class _ProfilePicState extends State<ProfilePic> {
                   : CircleAvatar(
                       backgroundImage: FileImage(_image!) as ImageProvider),
               Positioned(
-                right: -12,
-                bottom: 10,
+                right: -18,
+                bottom: 2,
                 child: SizedBox(
                   height: 46,
                   width: 46,
@@ -63,10 +63,10 @@ class _ProfilePicState extends State<ProfilePic> {
                     style: TextButton.styleFrom(
                       foregroundColor: MyColors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
+                        borderRadius: BorderRadius.circular(6),
                         side: const BorderSide(color: MyColors.white),
                       ),
-                      backgroundColor: Colors.lightBlue,
+                      backgroundColor: MyColors.lightPink,
                     ),
                     onPressed: () {
                       // showImagePickerSheet(context, (File? image) {
@@ -83,7 +83,7 @@ class _ProfilePicState extends State<ProfilePic> {
                     },
                     child: Icon(
                       Icons.camera_alt_outlined,
-                      color: MyColors.white,
+                      color: MyColors.gray,
                       size: 22,
                     ),
                   ),
