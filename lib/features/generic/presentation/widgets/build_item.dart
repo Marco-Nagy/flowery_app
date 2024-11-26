@@ -1,3 +1,15 @@
+import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_seller_states.dart';
+import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_selling_cubit.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/styles/colors/my_colors.dart';
+import '../../../../core/styles/fonts/my_fonts.dart';
+import '../../../../core/utils/widgets/buttons/row_button.dart';
+import '../../../../core/utils/widgets/spacing.dart';
+import 'cached_network_widget.dart';
+
+
 import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_seller_states.dart';
@@ -19,6 +31,7 @@ class BuildItem extends StatelessWidget {
             return AppLoader();
           case GetMostSellerSuccessState():
             return GridView.builder(
+              padding: const EdgeInsets.only(top: 0, bottom: 10, left: 10, right: 10),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 10,
@@ -35,7 +48,7 @@ class BuildItem extends StatelessWidget {
                   title: state.mostSeller[index].title,
                   price: state.mostSeller[index].price.toString(),
                   priceAfterDiscount:
-                      state.mostSeller[index].priceAfterDiscount.toString(),
+                  state.mostSeller[index].priceAfterDiscount.toString(),
                 );
               },
             );
