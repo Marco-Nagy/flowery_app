@@ -1,6 +1,9 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/widgets/cached_network_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,9 +22,18 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
       height: 150.h,
       child: BlocBuilder<CategoriesViewModelCubit, CategoriesViewModelState>(
         builder: (context, state) {
-          if(state is GetCategoriesViewModelSuccess){
-            return ListView.builder(
-              itemCount:state.categories!.length,
+          switch (state) {
+            case GetCategoriesViewModelLoading():
+              return AppLoader();
+            case GetCategoriesViewModelError():
+              aweSnackBar(
+                  msg: state.error.error ?? '',
+                  context: context,
+                  type: MessageTypeConst.failure);
+
+            case GetCategoriesViewModelSuccess():
+              return ListView.builder(
+                itemCount:state.categories!.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Column(
@@ -35,11 +47,13 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
                         color: MyColors.lightPink,
                       ),
                       child: Center(
-                        child: Image.network(
-                          '${state.categories?[index]!.image}',
-                          width: 24.w,
+                          child: SizedBox(
+                            width: 24.w,
                           height: 24.h,
-                        ),
+                            child: CachedNetworkWidget(
+                              imageUrl: '${state.categories?[index]!.image}',
+                            ),
+                          ),
                       ),
                     ),
                     SizedBox(height: 8.h,),
@@ -49,9 +63,9 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
                 );
               },
             );
-          }else {
-            return SizedBox();
+            case CategoriesViewModelInitial():
           }
+          return Container();
         },
       ),
     );

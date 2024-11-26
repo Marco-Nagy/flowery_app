@@ -26,7 +26,8 @@ class VerificationCode extends HookWidget {
       fullCode = pinControllers.map((controller) => controller.text).join();
       print('full Code ==>> $fullCode');
     }
-    handleOnChange(value,index){
+
+    handleOnChange(value, index) {
       // Move focus forward when the current field is filled
       if (value.length == 1 && index < 5) {
         FocusScope.of(context).nextFocus();
@@ -43,8 +44,7 @@ class VerificationCode extends HookWidget {
       // Update the full code when the last field is filled
       if (index == 5) {
         updateFullCode();
-        context.pushReplacementNamed(
-            AppRoutes.resetPassWord);
+        context.pushReplacementNamed(AppRoutes.resetPassWord);
       }
     }
 
@@ -56,16 +56,17 @@ class VerificationCode extends HookWidget {
             margin: const EdgeInsets.symmetric(horizontal: 5),
             child: AppTextFormField(
               maxLength: 1,
-              autofocus: index == 0, // Autofocus only on the first field
+              autofocus: index == 0,
+              // Autofocus only on the first field
               keyboardType: TextInputType.number,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
 
-              onChanged: (value) async{
-                handleOnChange(value,index);
-                if(fullCode.length==6) {
+              onChanged: (value) async {
+                handleOnChange(value, index);
+                if (fullCode.length == 6) {
                   context.read<ForgetPasswordViewModelCubit>().doAction(
-                    VerifyResetCodeAction(VerifyResetCodeRequestEntity(
-                        resetCode: fullCode)));
+                      VerifyResetCodeAction(
+                          VerifyResetCodeRequestEntity(resetCode: fullCode)));
                 }
               },
               controller: pinControllers[index],

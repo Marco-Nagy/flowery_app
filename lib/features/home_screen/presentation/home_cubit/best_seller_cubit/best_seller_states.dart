@@ -1,7 +1,8 @@
 import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
 import 'package:flowery_e_commerce/features/home_screen/domain/entities/best_seller_entity.dart';
 
-abstract class BestSellerStates{}
+sealed class BestSellerStates {}
+
 class BestSellerInitialState extends BestSellerStates {}
 
 class GetBestSellerLoadingState extends BestSellerStates {}

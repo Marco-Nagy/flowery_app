@@ -1,7 +1,8 @@
 import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
 import 'package:flowery_e_commerce/features/home_screen/domain/entities/occasions_entity.dart';
 
-abstract class OccasionsStates {}
+sealed class OccasionsStates {}
+
 class OccasionsInitialState extends OccasionsStates {}
 
 class GetOccasionsLoadingState extends OccasionsStates {}

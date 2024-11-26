@@ -64,8 +64,7 @@ void main() {
     );
 
     test('should return correct data when signUp is successful', () async {
-      when(mockApiManager.signUp(any))
-          .thenAnswer((_) async => responseDto);
+      when(mockApiManager.signUp(any)).thenAnswer((_) async => responseDto);
 
       final result = await authOnlineDataSource.signUp(request: requestEntity);
 
@@ -75,8 +74,7 @@ void main() {
 
     test('should return an error when signUp fails', () async {
       final exception = Exception('Sign-up failed');
-      when(mockApiManager.signUp(any))
-          .thenThrow(exception);
+      when(mockApiManager.signUp(any)).thenThrow(exception);
 
       final result = await authOnlineDataSource.signUp(request: requestEntity);
 

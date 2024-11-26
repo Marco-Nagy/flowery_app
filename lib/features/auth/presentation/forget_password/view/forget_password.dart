@@ -36,8 +36,7 @@ class ForgetPassword extends HookWidget {
             navigation: () {
               context.pop();
             }),
-        body:
-        Padding(
+        body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Center(
             child: Form(
@@ -45,7 +44,9 @@ class ForgetPassword extends HookWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                   ForgetPasswordBlocListener(email: emailController.text.trim(),),
+                  ForgetPasswordBlocListener(
+                    email: emailController.text.trim(),
+                  ),
                   verticalSpacing(40),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 50.0),
@@ -79,8 +80,8 @@ class ForgetPassword extends HookWidget {
                             ForgetPasswordAction(ForgetPasswordRequestEntity(
                                 email: emailController.text.trim())));
 
-
-                        context.pushNamed(AppRoutes.emailVerification,arguments: emailController.text.trim());
+                        context.pushNamed(AppRoutes.emailVerification,
+                            arguments: emailController.text.trim());
                       }
                     },
                   ),

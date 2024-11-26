@@ -1,4 +1,3 @@
-
 class VerifyResetCodeRequestEntity {
   final String? resetCode;
 

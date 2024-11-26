@@ -9,8 +9,9 @@ import '../../../../../core/utils/widgets/base/snack_bar.dart';
 import '../ViewModel/forget_password_view_model_state.dart';
 
 class ForgetPasswordBlocListener extends StatelessWidget {
-  const ForgetPasswordBlocListener({super.key,  this.email});
-final String? email;
+  const ForgetPasswordBlocListener({super.key, this.email});
+
+  final String? email;
   @override
   Widget build(BuildContext context) {
     return BlocListener<ForgetPasswordViewModelCubit,
@@ -22,9 +23,10 @@ final String? email;
             case ForgetPasswordSuccess():
 
               return aweSnackBar(
-                msg: state.response.info!,
-                context: context,
-                type: MessageTypeConst.success, title: "Success");
+                  msg: state.response.info!,
+                  context: context,
+                  type: MessageTypeConst.success,
+                  title: "Success");
             case VerifyResetCodeSuccess():
               context.pushReplacementNamed(AppRoutes.resetPassWord);
               return aweSnackBar(

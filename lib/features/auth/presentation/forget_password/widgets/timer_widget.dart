@@ -10,9 +10,11 @@ import '../ViewModel/forget_password_base_actions.dart';
 
 
 class TimerWidget extends StatefulWidget {
- final String email;
+  final String email;
+
   const TimerWidget({
-    super.key, required this.email,
+    super.key,
+    required this.email,
   });
 
   @override
@@ -20,13 +22,10 @@ class TimerWidget extends StatefulWidget {
 }
 
 class _TimerWidgetState extends State<TimerWidget> {
-
-
-
-
   @override
   Widget build(BuildContext context) {
-    ForgetPasswordViewModelCubit cubit = context.read<ForgetPasswordViewModelCubit>();
+    ForgetPasswordViewModelCubit cubit =
+        context.read<ForgetPasswordViewModelCubit>();
 
     return ValueListenableBuilder(
       valueListenable: cubit.timeMessage,
@@ -36,25 +35,27 @@ class _TimerWidgetState extends State<TimerWidget> {
           child: Row(
             children: [
               const SizedBox(width: 5),
-              cubit.time==0 ? InkWell(
-                onTap: ()async{
-                 await context.read<ForgetPasswordViewModelCubit>().initTimer();
-                  context.read<ForgetPasswordViewModelCubit>().doAction(
-                      ForgetPasswordAction(ForgetPasswordRequestEntity(
-                          email: widget.email)));
-
-                },
-                child: Text("Resend" ,
-                  textAlign: TextAlign.center,
-                  style: MyFonts.styleRegular400_16.copyWith(color: MyColors.blue),
-                ),
-              ):Text(
-                cubit.timeMessage.value,
-                style: TextStyle(
-                    color:  MyColors.baseColor,
-                    fontSize: 16),
-              ),
-
+              cubit.time == 0
+                  ? InkWell(
+                      onTap: () async {
+                        await context
+                            .read<ForgetPasswordViewModelCubit>()
+                            .initTimer();
+                        context.read<ForgetPasswordViewModelCubit>().doAction(
+                            ForgetPasswordAction(ForgetPasswordRequestEntity(
+                                email: widget.email)));
+                      },
+                      child: Text(
+                        "Resend",
+                        textAlign: TextAlign.center,
+                        style: MyFonts.styleRegular400_16
+                            .copyWith(color: MyColors.blue),
+                      ),
+                    )
+                  : Text(
+                      cubit.timeMessage.value,
+                      style: TextStyle(color: MyColors.baseColor, fontSize: 16),
+                    ),
             ],
           ),
         );
