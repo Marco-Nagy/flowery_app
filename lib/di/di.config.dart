@@ -104,6 +104,15 @@ import '../features/product/data/data_sources/impl/product_online_data_source_im
 import '../features/product/data/repositories/product_repo_impl.dart' as _i986;
 import '../features/product/domain/repositories/product_repo.dart' as _i733;
 import '../features/product/domain/use_cases/product_use_case.dart' as _i414;
+import '../features/profile/data/data_sources/contracts/profile_online_data_source.dart'
+    as _i46;
+import '../features/profile/data/data_sources/impl/profile_online_data_source_impl.dart'
+    as _i74;
+import '../features/profile/data/repositories/profile_repo_impl.dart' as _i933;
+import '../features/profile/domain/repositories/profile_repo.dart' as _i49;
+import '../features/profile/domain/use_cases/profile_use_case.dart' as _i804;
+import '../features/profile/presentation/viewModel/profile_view_model_cubit.dart'
+    as _i907;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -134,6 +143,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i507.HomeApiManager(gh<_i282.ApiManager>()));
     gh.lazySingleton<_i765.HomeRepository>(
         () => _i178.HomeRepoImpl(gh<_i603.HomeOnlineDataSource>()));
+    gh.factory<_i46.ProfileOnlineDataSource>(
+        () => _i74.ProfileOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i598.ProductsRepo>(
         () => _i160.ProductsRepoImpl(gh<_i937.ProductsOnlineDataSource>()));
     gh.lazySingleton<_i475.MostSellingProductsOnlineDataSource>(
@@ -145,6 +156,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i518.CategoriesOnlineDataSource>(() =>
         _i1059.CategoriesOnlineDataSourceImplementation(
             gh<_i282.ApiManager>()));
+    gh.factory<_i49.ProfileRepo>(
+        () => _i933.ProfileRepoImpl(gh<_i46.ProfileOnlineDataSource>()));
     gh.factory<_i665.AuthRepository>(
         () => _i990.AuthRepositoryImpl(gh<_i901.AuthOnlineDataSource>()));
     gh.factory<_i733.ProductRepo>(
@@ -160,6 +173,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i720.HomeUseCase(gh<_i765.HomeRepository>()));
     gh.factory<_i565.GenericRepo>(
         () => _i284.GenericRepositoryImpl(gh<_i211.GenericOnlineDataSource>()));
+    gh.factory<_i804.ProfileUseCase>(
+        () => _i804.ProfileUseCase(gh<_i49.ProfileRepo>()));
     gh.factory<_i496.LoginUseCase>(
         () => _i496.LoginUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i853.SignUpUseCase>(
@@ -182,6 +197,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i972.MostSellingProductsUseCase>(() =>
         _i972.MostSellingProductsUseCase(
             gh<_i643.MostSellingProductsRepository>()));
+    gh.factory<_i907.ProfileViewModelCubit>(
+        () => _i907.ProfileViewModelCubit(gh<_i804.ProfileUseCase>()));
     gh.factory<_i690.LoginViewModel>(
         () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
     gh.factory<_i508.SignUpViewModel>(
