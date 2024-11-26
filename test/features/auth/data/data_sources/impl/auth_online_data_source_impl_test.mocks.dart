@@ -3,20 +3,20 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i15;
+import 'dart:async' as _i16;
 
 import 'package:flowery_e_commerce/core/networking/api/api_manager.dart'
-    as _i14;
+    as _i15;
 import 'package:flowery_e_commerce/features/auth/data/models/request/forget_password_request_dto.dart'
-    as _i18;
-import 'package:flowery_e_commerce/features/auth/data/models/request/login_request_dto.dart'
-    as _i16;
-import 'package:flowery_e_commerce/features/auth/data/models/request/reset_password_request_dto.dart'
-    as _i20;
-import 'package:flowery_e_commerce/features/auth/data/models/request/signup_request_dto.dart'
-    as _i17;
-import 'package:flowery_e_commerce/features/auth/data/models/request/verify_reset_code_request_dto.dart'
     as _i19;
+import 'package:flowery_e_commerce/features/auth/data/models/request/login_request_dto.dart'
+    as _i17;
+import 'package:flowery_e_commerce/features/auth/data/models/request/reset_password_request_dto.dart'
+    as _i21;
+import 'package:flowery_e_commerce/features/auth/data/models/request/signup_request_dto.dart'
+    as _i18;
+import 'package:flowery_e_commerce/features/auth/data/models/request/verify_reset_code_request_dto.dart'
+    as _i20;
 import 'package:flowery_e_commerce/features/auth/data/models/response/forget_password_response_dto.dart'
     as _i4;
 import 'package:flowery_e_commerce/features/auth/data/models/response/login_response_dto.dart'
@@ -39,6 +39,8 @@ import 'package:flowery_e_commerce/features/home_screen/data/models/home_respons
     as _i9;
 import 'package:flowery_e_commerce/features/product/data/models/response/product_response_dto.dart'
     as _i12;
+import 'package:flowery_e_commerce/features/profile/data/models/response/edit_profile_response_dto.dart'
+    as _i14;
 import 'package:flowery_e_commerce/features/profile/data/models/response/get_logged_user_data_response_dto.dart'
     as _i13;
 import 'package:mockito/mockito.dart' as _i1;
@@ -188,57 +190,68 @@ class _FakeGetLoggedUserDataResponseDto_11 extends _i1.SmartFake
         );
 }
 
+class _FakeEditProfileResponseDto_12 extends _i1.SmartFake
+    implements _i14.EditProfileResponseDto {
+  _FakeEditProfileResponseDto_12(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [ApiManager].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiManager extends _i1.Mock implements _i14.ApiManager {
+class MockApiManager extends _i1.Mock implements _i15.ApiManager {
   MockApiManager() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i15.Future<_i2.LoginResponseDto> login(_i16.LoginRequestDto? request) =>
+  _i16.Future<_i2.LoginResponseDto> login(_i17.LoginRequestDto? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [request],
         ),
         returnValue:
-            _i15.Future<_i2.LoginResponseDto>.value(_FakeLoginResponseDto_0(
+            _i16.Future<_i2.LoginResponseDto>.value(_FakeLoginResponseDto_0(
           this,
           Invocation.method(
             #login,
             [request],
           ),
         )),
-      ) as _i15.Future<_i2.LoginResponseDto>);
+      ) as _i16.Future<_i2.LoginResponseDto>);
 
   @override
-  _i15.Future<_i3.SignUpResponseDto> signUp(_i17.SignUpRequestDto? request) =>
+  _i16.Future<_i3.SignUpResponseDto> signUp(_i18.SignUpRequestDto? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #signUp,
           [request],
         ),
         returnValue:
-            _i15.Future<_i3.SignUpResponseDto>.value(_FakeSignUpResponseDto_1(
+            _i16.Future<_i3.SignUpResponseDto>.value(_FakeSignUpResponseDto_1(
           this,
           Invocation.method(
             #signUp,
             [request],
           ),
         )),
-      ) as _i15.Future<_i3.SignUpResponseDto>);
+      ) as _i16.Future<_i3.SignUpResponseDto>);
 
   @override
-  _i15.Future<_i4.ForgetPasswordResponseDto> forgetPassword(
-          _i18.ForgetPasswordRequestDto? request) =>
+  _i16.Future<_i4.ForgetPasswordResponseDto> forgetPassword(
+          _i19.ForgetPasswordRequestDto? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #forgetPassword,
           [request],
         ),
-        returnValue: _i15.Future<_i4.ForgetPasswordResponseDto>.value(
+        returnValue: _i16.Future<_i4.ForgetPasswordResponseDto>.value(
             _FakeForgetPasswordResponseDto_2(
           this,
           Invocation.method(
@@ -246,17 +259,17 @@ class MockApiManager extends _i1.Mock implements _i14.ApiManager {
             [request],
           ),
         )),
-      ) as _i15.Future<_i4.ForgetPasswordResponseDto>);
+      ) as _i16.Future<_i4.ForgetPasswordResponseDto>);
 
   @override
-  _i15.Future<_i5.VerifyResetCodeResponseDto> verifyResetCode(
-          _i19.VerifyResetCodeRequestDto? resetCode) =>
+  _i16.Future<_i5.VerifyResetCodeResponseDto> verifyResetCode(
+          _i20.VerifyResetCodeRequestDto? resetCode) =>
       (super.noSuchMethod(
         Invocation.method(
           #verifyResetCode,
           [resetCode],
         ),
-        returnValue: _i15.Future<_i5.VerifyResetCodeResponseDto>.value(
+        returnValue: _i16.Future<_i5.VerifyResetCodeResponseDto>.value(
             _FakeVerifyResetCodeResponseDto_3(
           this,
           Invocation.method(
@@ -264,17 +277,17 @@ class MockApiManager extends _i1.Mock implements _i14.ApiManager {
             [resetCode],
           ),
         )),
-      ) as _i15.Future<_i5.VerifyResetCodeResponseDto>);
+      ) as _i16.Future<_i5.VerifyResetCodeResponseDto>);
 
   @override
-  _i15.Future<_i6.ResetPasswordResponseDto> resetPassword(
-          _i20.ResetPasswordRequestDto? resetPassword) =>
+  _i16.Future<_i6.ResetPasswordResponseDto> resetPassword(
+          _i21.ResetPasswordRequestDto? resetPassword) =>
       (super.noSuchMethod(
         Invocation.method(
           #resetPassword,
           [resetPassword],
         ),
-        returnValue: _i15.Future<_i6.ResetPasswordResponseDto>.value(
+        returnValue: _i16.Future<_i6.ResetPasswordResponseDto>.value(
             _FakeResetPasswordResponseDto_4(
           this,
           Invocation.method(
@@ -282,33 +295,33 @@ class MockApiManager extends _i1.Mock implements _i14.ApiManager {
             [resetPassword],
           ),
         )),
-      ) as _i15.Future<_i6.ResetPasswordResponseDto>);
+      ) as _i16.Future<_i6.ResetPasswordResponseDto>);
 
   @override
-  _i15.Future<_i7.GenericResponseDto> getGenericProduct(String? resourceName) =>
+  _i16.Future<_i7.GenericResponseDto> getGenericProduct(String? resourceName) =>
       (super.noSuchMethod(
         Invocation.method(
           #getGenericProduct,
           [resourceName],
         ),
         returnValue:
-            _i15.Future<_i7.GenericResponseDto>.value(_FakeGenericResponseDto_5(
+            _i16.Future<_i7.GenericResponseDto>.value(_FakeGenericResponseDto_5(
           this,
           Invocation.method(
             #getGenericProduct,
             [resourceName],
           ),
         )),
-      ) as _i15.Future<_i7.GenericResponseDto>);
+      ) as _i16.Future<_i7.GenericResponseDto>);
 
   @override
-  _i15.Future<_i8.GetAllCategoriesResponseDto> getAllCategories() =>
+  _i16.Future<_i8.GetAllCategoriesResponseDto> getAllCategories() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllCategories,
           [],
         ),
-        returnValue: _i15.Future<_i8.GetAllCategoriesResponseDto>.value(
+        returnValue: _i16.Future<_i8.GetAllCategoriesResponseDto>.value(
             _FakeGetAllCategoriesResponseDto_6(
           this,
           Invocation.method(
@@ -316,15 +329,15 @@ class MockApiManager extends _i1.Mock implements _i14.ApiManager {
             [],
           ),
         )),
-      ) as _i15.Future<_i8.GetAllCategoriesResponseDto>);
+      ) as _i16.Future<_i8.GetAllCategoriesResponseDto>);
 
   @override
-  _i15.Future<_i9.HomeResponseModelEntity> getHome() => (super.noSuchMethod(
+  _i16.Future<_i9.HomeResponseModelEntity> getHome() => (super.noSuchMethod(
         Invocation.method(
           #getHome,
           [],
         ),
-        returnValue: _i15.Future<_i9.HomeResponseModelEntity>.value(
+        returnValue: _i16.Future<_i9.HomeResponseModelEntity>.value(
             _FakeHomeResponseModelEntity_7(
           this,
           Invocation.method(
@@ -332,16 +345,16 @@ class MockApiManager extends _i1.Mock implements _i14.ApiManager {
             [],
           ),
         )),
-      ) as _i15.Future<_i9.HomeResponseModelEntity>);
+      ) as _i16.Future<_i9.HomeResponseModelEntity>);
 
   @override
-  _i15.Future<_i10.GetAllProductsRsponseDto> getAllProducts() =>
+  _i16.Future<_i10.GetAllProductsRsponseDto> getAllProducts() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
           [],
         ),
-        returnValue: _i15.Future<_i10.GetAllProductsRsponseDto>.value(
+        returnValue: _i16.Future<_i10.GetAllProductsRsponseDto>.value(
             _FakeGetAllProductsRsponseDto_8(
           this,
           Invocation.method(
@@ -349,16 +362,16 @@ class MockApiManager extends _i1.Mock implements _i14.ApiManager {
             [],
           ),
         )),
-      ) as _i15.Future<_i10.GetAllProductsRsponseDto>);
+      ) as _i16.Future<_i10.GetAllProductsRsponseDto>);
 
   @override
-  _i15.Future<_i11.BestSellerResponseModelEntity> getMostSellingProducts() =>
+  _i16.Future<_i11.BestSellerResponseModelEntity> getMostSellingProducts() =>
       (super.noSuchMethod(
         Invocation.method(
           #getMostSellingProducts,
           [],
         ),
-        returnValue: _i15.Future<_i11.BestSellerResponseModelEntity>.value(
+        returnValue: _i16.Future<_i11.BestSellerResponseModelEntity>.value(
             _FakeBestSellerResponseModelEntity_9(
           this,
           Invocation.method(
@@ -366,15 +379,15 @@ class MockApiManager extends _i1.Mock implements _i14.ApiManager {
             [],
           ),
         )),
-      ) as _i15.Future<_i11.BestSellerResponseModelEntity>);
+      ) as _i16.Future<_i11.BestSellerResponseModelEntity>);
 
   @override
-  _i15.Future<_i12.ProductResponseDto> getProduct() => (super.noSuchMethod(
+  _i16.Future<_i12.ProductResponseDto> getProduct() => (super.noSuchMethod(
         Invocation.method(
           #getProduct,
           [],
         ),
-        returnValue: _i15.Future<_i12.ProductResponseDto>.value(
+        returnValue: _i16.Future<_i12.ProductResponseDto>.value(
             _FakeProductResponseDto_10(
           this,
           Invocation.method(
@@ -382,17 +395,17 @@ class MockApiManager extends _i1.Mock implements _i14.ApiManager {
             [],
           ),
         )),
-      ) as _i15.Future<_i12.ProductResponseDto>);
+      ) as _i16.Future<_i12.ProductResponseDto>);
 
   @override
-  _i15.Future<_i13.GetLoggedUserDataResponseDto> getLoggedUserData(
+  _i16.Future<_i13.GetLoggedUserDataResponseDto> getLoggedUserData(
           String? token) =>
       (super.noSuchMethod(
         Invocation.method(
           #getLoggedUserData,
           [token],
         ),
-        returnValue: _i15.Future<_i13.GetLoggedUserDataResponseDto>.value(
+        returnValue: _i16.Future<_i13.GetLoggedUserDataResponseDto>.value(
             _FakeGetLoggedUserDataResponseDto_11(
           this,
           Invocation.method(
@@ -400,5 +413,31 @@ class MockApiManager extends _i1.Mock implements _i14.ApiManager {
             [token],
           ),
         )),
-      ) as _i15.Future<_i13.GetLoggedUserDataResponseDto>);
+      ) as _i16.Future<_i13.GetLoggedUserDataResponseDto>);
+
+  @override
+  _i16.Future<_i14.EditProfileResponseDto> editProfile(
+    String? token,
+    Map<String, dynamic>? body,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #editProfile,
+          [
+            token,
+            body,
+          ],
+        ),
+        returnValue: _i16.Future<_i14.EditProfileResponseDto>.value(
+            _FakeEditProfileResponseDto_12(
+          this,
+          Invocation.method(
+            #editProfile,
+            [
+              token,
+              body,
+            ],
+          ),
+        )),
+      ) as _i16.Future<_i14.EditProfileResponseDto>);
 }

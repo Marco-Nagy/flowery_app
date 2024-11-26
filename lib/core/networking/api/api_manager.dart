@@ -21,6 +21,7 @@ import '../../../features/auth/data/models/response/login_response_dto.dart';
 import '../../../features/generic/data/models/generic_response_dto.dart';
 import '../../../features/auth/data/models/response/signup_response_dto.dart';
 import '../../../features/product/data/models/response/product_response_dto.dart';
+import '../../../features/profile/data/models/response/edit_profile_response_dto.dart';
 import 'api_constants.dart';
 
 part 'api_manager.g.dart';
@@ -71,4 +72,8 @@ abstract class ApiManager {
   Future<GetLoggedUserDataResponseDto> getLoggedUserData(
     @Header("Authorization") String token,
   );
+
+  @PUT(ApiConstants.editProfile)
+  Future<EditProfileResponseDto> editProfile(
+      @Header("Authorization") String token, @Body() Map<String, dynamic> body);
 }
