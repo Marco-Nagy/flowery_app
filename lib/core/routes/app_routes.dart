@@ -8,6 +8,7 @@ import 'package:flowery_e_commerce/features/best_seller/presentation/screens/mos
 import 'package:flowery_e_commerce/features/categories/presentation/categories/views/categories_view.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_screen.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/products/views/product_details.dart';
+import 'package:flowery_e_commerce/features/profile_main_screen/presentation/profile_main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../di/di.dart';
@@ -28,6 +29,7 @@ class AppRoutes {
   static const String categoriesView = 'categoriesView';
   static const String productsDetails = 'productsDetails';
   static const String mostSellingScreen = 'mostSellingScreen';
+  static const String profileMainScreen = 'profileMainScreen';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -79,7 +81,8 @@ class AppRoutes {
         );
       case AppRoutes.productsDetails:
         return BaseRoute(page: ProductDetails());
-
+      case AppRoutes.profileMainScreen:
+        return BaseRoute(page: ProfileMainScreen());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

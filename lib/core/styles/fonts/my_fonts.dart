@@ -34,6 +34,9 @@ class MyFonts {
   static TextStyle styleMedium500_12 = const TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 12,
+  ); static TextStyle styleMedium500_11 = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: 11,
   );
   static TextStyle styleMedium500_13 = const TextStyle(
     fontWeight: FontWeight.w500,
