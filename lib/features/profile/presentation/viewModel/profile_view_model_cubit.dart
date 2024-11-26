@@ -26,6 +26,8 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
     switch (action) {
       case GetLoggedUserData():
         _getLoggedUserData();
+      case EditProfile():
+        _editProfile(action.profileData);
     }
   }
 
@@ -39,6 +41,18 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
       case Fail<GetLoggedUserDataResponseEntity>():
         emit(GetLoggedUserDataError(
             error: ErrorHandler.handle(result.exception!)));
+    }
+  }
+
+  Future<void> _editProfile(Map<String, dynamic> profileData) async {
+    emit(ProfileViewModelInitial());
+    String? token = await _offlineDataSource.getToken();
+    final result = await _useCase.editProfile(token ?? '', profileData);
+    switch (result) {
+      case Success<EditProfileResponseEntity>():
+        emit(EditProfileSuccess(data: result.data));
+      case Fail<EditProfileResponseEntity>():
+        emit(EditProfileError(error: ErrorHandler.handle(result.exception!)));
     }
   }
 }
