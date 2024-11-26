@@ -9,6 +9,7 @@ import '../../../../core/networking/error/error_handler.dart';
 import '../../../../core/networking/error/error_model.dart';
 import '../../../../di/di.dart';
 import '../../../auth/data/data_sources/contracts/offline_data_source.dart';
+import '../../domain/entities/response/edit_profile_response_entity.dart';
 import '../../domain/entities/response/get_logged_user_data_response_entity.dart';
 
 part 'profile_view_model_state.dart';

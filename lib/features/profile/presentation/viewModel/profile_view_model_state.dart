@@ -18,3 +18,17 @@ final class GetLoggedUserDataError extends ProfileViewModelState {
 
   GetLoggedUserDataError({required this.error});
 }
+
+final class EditProfileLoading extends ProfileViewModelState {}
+
+final class EditProfileSuccess extends ProfileViewModelState {
+  final EditProfileResponseEntity data;
+
+  EditProfileSuccess({required this.data});
+}
+
+final class EditProfileError extends ProfileViewModelState {
+  final ErrorModel error;
+
+  EditProfileError({required this.error});
+}
