@@ -23,7 +23,7 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
       height: 270.h,
       child: BlocBuilder<BestSellerCubit, BestSellerStates>(
         builder: (context, state) {
-          switch (state) {
+         switch (state) {
             case GetBestSellerSuccessState():
               return ListView.builder(
                 itemCount: state.bestSeller.length,
@@ -76,7 +76,7 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
             default:
               null;
           }
-          return Container();
+         return Container();
         },
       ),
     );

@@ -98,6 +98,7 @@ class _LoginViewState extends State<LoginView> {
         },
         listener: (context, state) {
           switch (state) {
+
             case LoginViewModelSuccess():
               context.pushReplacementNamed(AppRoutes.homeScreen);
               aweSnackBar(
@@ -121,4 +122,4 @@ class _LoginViewState extends State<LoginView> {
       ),
     );
   }
-}
+  }
