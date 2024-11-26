@@ -19,6 +19,7 @@ class BuildItem extends StatelessWidget {
             return AppLoader();
           case GetMostSellerSuccessState():
             return GridView.builder(
+              padding: const EdgeInsets.only(top: 0, bottom: 10, left: 10, right: 10),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 10,
@@ -35,7 +36,7 @@ class BuildItem extends StatelessWidget {
                   title: state.mostSeller[index].title,
                   price: state.mostSeller[index].price.toString(),
                   priceAfterDiscount:
-                      state.mostSeller[index].priceAfterDiscount.toString(),
+                  state.mostSeller[index].priceAfterDiscount.toString(),
                 );
               },
             );
