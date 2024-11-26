@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/utils/widgets/spacing.dart';
+
 class MostSellingScreen extends StatelessWidget {
    MostSellingScreen({super.key});
 
@@ -21,6 +23,7 @@ class MostSellingScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => mostSellerCubit,
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: customAppBar(
           appBarTxt: 'Best seller',
           context: context,
@@ -30,12 +33,14 @@ class MostSellingScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                margin: EdgeInsets.all(5.sp),
+              Padding(
+                padding: const EdgeInsets.only(left: 40),
                 child: Text('Bloom with our exquisite best sellers',style:MyFonts.styleMedium500_14.copyWith(
                   color: MyColors.grey,
                 ) ,),
               ),
+              verticalSpacing(20),
+
               BuildItem(),
             ],
           ),

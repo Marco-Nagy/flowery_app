@@ -46,6 +46,7 @@ class GenericItemScreen extends StatelessWidget {
                 length: items.length + 1,
                 child: Expanded(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       tabBarWidget(
                         tabs: [
