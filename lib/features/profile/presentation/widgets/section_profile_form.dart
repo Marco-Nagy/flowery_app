@@ -1,10 +1,11 @@
+import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_actions.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/profile_form.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../di/di.dart';
 
@@ -26,7 +27,6 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
 
   bool isModified = false;
 
-  String? oldUsername;
   String? oldFirstName;
   String? oldLastName;
   String? oldEmail;
@@ -63,8 +63,7 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
 
   void _checkIfModified() {
     setState(() {
-      // Check if any field has been modified compared to the old values
-      firstNameController.text != oldFirstName ||
+      isModified = firstNameController.text != oldFirstName ||
           lastNameController.text != oldLastName ||
           emailController.text != oldEmail ||
           phoneNumberController.text != oldPhone;
@@ -77,25 +76,61 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
       create: (context) => profileViewModel,
       child: BlocConsumer<ProfileViewModelCubit, ProfileViewModelState>(
         listener: (context, state) {
-          if (state is GetLoggedUserDataSuccess) {
-            oldFirstName = state.data.user?.firstName ?? "";
-            oldLastName = state.data.user?.lastName ?? "";
-            oldEmail = state.data.user?.email ?? "";
-            oldPhone = state.data.user?.phone ?? "";
+          switch (state) {
+            case GetLoggedUserDataSuccess():
+              oldFirstName = state.data.user?.firstName ?? "";
+              oldLastName = state.data.user?.lastName ?? "";
+              oldEmail = state.data.user?.email ?? "";
+              oldPhone = state.data.user?.phone ?? "";
 
-            firstNameController.text = oldFirstName!;
-            lastNameController.text = oldLastName!;
-            emailController.text = oldEmail!;
-            phoneNumberController.text = oldPhone!;
+              firstNameController.text = oldFirstName!;
+              lastNameController.text = oldLastName!;
+              emailController.text = oldEmail!;
+              phoneNumberController.text = oldPhone!;
 
-            // Reset isModified state after successful data load
-            setState(() {
-              isModified = false;
-            });
-          } else if (state is GetLoggedUserDataError) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text("Error: ${state.error}")),
-            );
+              setState(() {
+                isModified = false;
+              });
+              break;
+            case GetLoggedUserDataError():
+              aweSnackBar(
+                  msg: state.error.toString(),
+                  context: context,
+                  type: MessageTypeConst.failure,
+                  title: 'Error');
+              break;
+            case EditProfileLoading():
+              aweSnackBar(
+                  msg: 'Loading...',
+                  context: context,
+                  type: MessageTypeConst.help,
+                  title: 'Loading');
+              break;
+            case EditProfileSuccess():
+              aweSnackBar(
+                  msg: 'Profile updated successfully',
+                  context: context,
+                  type: MessageTypeConst.success,
+                  title: 'Success');
+
+              // update old values
+              setState(() {
+                oldFirstName = firstNameController.text;
+                oldLastName = lastNameController.text;
+                oldEmail = emailController.text;
+                oldPhone = phoneNumberController.text;
+                isModified = false;
+              });
+              break;
+            case EditProfileError():
+              aweSnackBar(
+                  msg: state.error.error.toString(),
+                  context: context,
+                  type: MessageTypeConst.failure,
+                  title: 'Error');
+              break;
+            default:
+              break;
           }
         },
         builder: (context, state) {
@@ -110,7 +145,9 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                 formKey: formKey,
               ),
               const SizedBox(height: 30),
-              GestureDetector(
+              CurvedButton(
+                title: "Update",
+                color: MyColors.baseColor,
                 onTap: isModified
                     ? () {
                         if (formKey.currentState!.validate()) {
@@ -120,31 +157,11 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                             'email': emailController.text,
                             'phone': phoneNumberController.text,
                           };
-                          // profileViewModel.doAction(EditProfile(
-                          //   context: context,
-                          //   profileData: profileData,
-                          // ));
+
+                          profileViewModel.doAction(EditProfile(profileData));
                         }
                       }
-                    : null,
-                child: CurvedButton(
-                    title: "Update",
-                    color: MyColors.baseColor,
-                    onTap: () {
-                      // if (formKey.currentState!.validate()) {
-                      //   Map<String, dynamic> profileData = {
-                      //     'username': usernameController.text,
-                      //     'firstName': firstNameController.text,
-                      //     'lastName': lastNameController.text,
-                      //     'email': emailController.text,
-                      //     'phone': phoneNumberController.text,
-                      //   };
-                      //   profileViewModel.doAction(EditProfile(
-                      //     context: context,
-                      //     profileData: profileData,
-                      //   ));
-                      // }
-                    }),
+                    : () {},
               ),
             ],
           );

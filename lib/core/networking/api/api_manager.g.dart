@@ -446,7 +446,7 @@ class _ApiManager implements ApiManager {
     )
         .compose(
           _dio.options,
-          'v1/auth/editProfile',
+          'api/v1/auth/editProfile',
           queryParameters: queryParameters,
           data: _data,
         )

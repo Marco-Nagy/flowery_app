@@ -32,7 +32,7 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
   }
 
   Future<void> _getLoggedUserData() async {
-    emit(ProfileViewModelInitial());
+    emit(GetLoggedUserDataLoading());
     String? token = await _offlineDataSource.getToken();
     final result = await _useCase.getProfileData(token ?? '');
     switch (result) {
@@ -45,7 +45,7 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
   }
 
   Future<void> _editProfile(Map<String, dynamic> profileData) async {
-    emit(ProfileViewModelInitial());
+    emit(EditProfileLoading());
     String? token = await _offlineDataSource.getToken();
     final result = await _useCase.editProfile(token ?? '', profileData);
     switch (result) {
