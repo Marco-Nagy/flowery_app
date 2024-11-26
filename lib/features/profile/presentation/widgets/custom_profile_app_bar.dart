@@ -1,0 +1,31 @@
+import 'package:badges/badges.dart' as badges;
+import 'package:flutter/material.dart';
+
+import '../../../../core/styles/colors/my_colors.dart';
+import '../../../../core/utils/widgets/base/custom_app_bar.dart';
+
+class CustomProfileAppBar extends StatelessWidget {
+  const CustomProfileAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        CustomAppBar(appBarTxt: "Edit Profile", showArrow: true),
+        badges.Badge(
+          badgeContent: Text(
+            ' ',
+            style: const TextStyle(color: Colors.white),
+          ),
+          position: badges.BadgePosition.topEnd(top: -10, end: -2),
+          child: Icon(
+            Icons.notifications,
+            size: 30,
+            color: MyColors.gray,
+          ),
+        ),
+      ],
+    );
+  }
+}
