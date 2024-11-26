@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
+import '../../../../core/utils/widgets/spacing.dart';
 
 class CustomSectionGender extends StatelessWidget {
   final String selectedGender;
@@ -27,7 +28,7 @@ class CustomSectionGender extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(width: 15),
+        horizontalSpacing(15),
         Expanded(
           flex: 3,
           child: Row(
