@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_view_model_cubit.dart';
+import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../di/di.dart';
-import 'image_picker_sheet.dart';
 
 class ProfilePic extends StatefulWidget {
   const ProfilePic({Key? key}) : super(key: key);
@@ -49,7 +49,7 @@ class _ProfilePicState extends State<ProfilePic> {
             children: [
               _image == null
                   ? CircleAvatar(
-                      backgroundImage: AssetImage("Assets.imageProfileImage"),
+                      backgroundImage: AssetImage(Assets.imagesProfile),
                     )
                   : CircleAvatar(
                       backgroundImage: FileImage(_image!) as ImageProvider),
