@@ -24,7 +24,6 @@ void main() {
 
   group('getAllProducts', () {
     test('should return Success when API call is successful', () async {
-      // Arrange
       final responseDto = ProductResponseDto(
         'Success',
         [
@@ -67,10 +66,8 @@ void main() {
 
       when(mockApiManager.getProduct()).thenAnswer((_) async => responseDto);
 
-      // Act
       final result = await dataSource.getAllProducts();
 
-      // Assert
       expect(result, isA<Success<ProductResponseEntity>>());
       final successResult = result as Success<ProductResponseEntity>;
       expect(successResult.data, expectedEntity);
