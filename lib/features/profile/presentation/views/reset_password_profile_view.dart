@@ -9,29 +9,6 @@ class ResetPasswordProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MyColors.white,
-      body: Padding(
-        padding: const EdgeInsets.only(top: 56, left: 16, right: 16),
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  CustomAppBar(
-                    appBarTxt: 'Reset Password',
-                    showArrow: true,
-                  ),
-                  const SizedBox(
-                    height: 34,
-                  ),
-                  const SectionResetPasswordForm(),
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+    return Scaffold();
   }
 }
