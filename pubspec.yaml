@@ -66,6 +66,8 @@ dependencies:
   bloc_test: ^9.1.7
   auto_size_text: ^3.0.0
   cached_network_image: ^3.4.1
+  badges: ^3.1.2
+  load_switch: ^2.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -16,6 +16,8 @@ import '../../features/auth/presentation/forget_password/view/forget_password.da
 import '../../features/auth/presentation/login/view/login_view.dart';
 import '../../features/auth/presentation/signup/view/signup_view.dart';
 import '../../features/generic/presentation/screens/occasion_view.dart';
+import '../../features/profile/presentation/views/profile_view.dart';
+import '../../features/profile/presentation/views/reset_password_profile_view.dart';
 
 class AppRoutes {
   static const String login = '/';
@@ -30,6 +32,8 @@ class AppRoutes {
   static const String productsDetails = 'productsDetails';
   static const String mostSellingScreen = 'mostSellingScreen';
   static const String profileMainScreen = 'profileMainScreen';
+  static const String profileView = "profileView";
+  static const String resetPasswordProfileView = 'resetPasswordProfileView';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -83,6 +87,10 @@ class AppRoutes {
         return BaseRoute(page: ProductDetails());
       case AppRoutes.profileMainScreen:
         return BaseRoute(page: ProfileMainScreen());
+      case AppRoutes.profileView:
+        return BaseRoute(page: const ProfileView());
+      case AppRoutes.resetPasswordProfileView:
+        return BaseRoute(page: const ResetPasswordProfileView());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }
