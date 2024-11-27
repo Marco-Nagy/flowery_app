@@ -100,6 +100,10 @@ class MyFonts {
     fontWeight: FontWeight.w700,
     fontSize: 18,
   );
+  static TextStyle styleBold700_20 = const TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: 20,
+  );
   static TextStyle styleBold700_24 = const TextStyle(
     fontWeight: FontWeight.w700,
     fontSize: 24,
