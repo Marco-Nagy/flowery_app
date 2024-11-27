@@ -7,7 +7,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../../../../core/styles/colors/my_colors.dart';
 import '../../../../../core/styles/fonts/my_fonts.dart';
-import '../../../../../core/utils/widgets/buttons/row_button.dart';
+import '../../../../../core/utils/widgets/buttons/add_cart_button.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
 import '../../../../../generated/assets.dart';
 
@@ -111,7 +111,7 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
               verticalSpacing(8.h),
-              RowButton(onTap: () {}),
+              AddCartButton(onTap: () {}),
             ],
           ),
         ),
