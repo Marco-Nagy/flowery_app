@@ -18,66 +18,61 @@ class GenericItemScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return BlocProvider(
-      create: (context) => getIt.get<GenericItemViewModelCubit>()
-        ..doAction(GetItemAction(resourceName))
-        ..doAction(GetProductAction()),
-      child: BlocBuilder<GenericItemViewModelCubit, GenericItemViewModeState>(
-        builder: (context, state) {
-          final cubit = context.read<GenericItemViewModelCubit>();
+    return BlocBuilder<GenericItemViewModelCubit, GenericItemViewModeState>(
+      builder: (context, state) {
+        final cubit = context.read<GenericItemViewModelCubit>();
 
-          switch (state.runtimeType) {
-            case GetProductError:
-              final errorState = state as GetProductError;
-              return Text(errorState.error.error.toString());
+        switch (state.runtimeType) {
+          case GetProductError:
+            final errorState = state as GetProductError;
+            return Text(errorState.error.error.toString());
 
-            case GetItemsLoading:
-            case GetProductLoading:
-              return Center(child: AppLoader());
+          case GetItemsLoading:
+          case GetProductLoading:
+            return Center(child: AppLoader());
 
-            case GetItemsSuccess:
-            case FilteredProductsState:
-              final items = cubit.items;
-              final filteredProducts = state is FilteredProductsState
-                  ? state.filteredProducts
-                  : cubit.allProducts;
+          case GetItemsSuccess:
+          case FilteredProductsState:
+            final items = cubit.items;
+            final filteredProducts = state is FilteredProductsState
+                ? state.filteredProducts
+                : cubit.allProducts;
 
-              return DefaultTabController(
-                length: items.length + 1,
-                child: Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      tabBarWidget(
-                        tabs: [
-                          const Tab(text: 'All'),
-                          ...items.map((item) => Tab(text: item.name)).toList(),
-                        ],
-                        onTap: (index) {
-                          cubit.doAction(FilterProductsAction(
-                            index,
-                            field: field,
-                          ));
-                        },
-                      ),
-                      verticalSpacing(20),
-                      Expanded(
-                        child: filteredProducts.isEmpty
-                            ? const NoProductsWidget()
-                            : GenericBuilderWidget(
-                            filteredProducts: filteredProducts),
-                      ),
-                    ],
-                  ),
+            return DefaultTabController(
+              length: items.length + 1,
+              child: Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    tabBarWidget(
+                      tabs: [
+                        const Tab(text: 'All'),
+                        ...items.map((item) => Tab(text: item.name)).toList(),
+                      ],
+                      onTap: (index) {
+                        cubit.doAction(FilterProductsAction(
+                          index,
+                          field: field,
+                        ));
+                      },
+                    ),
+                    verticalSpacing(20),
+                    Expanded(
+                      child: filteredProducts.isEmpty
+                          ? const NoProductsWidget()
+                          : GenericBuilderWidget(
+                          filteredProducts: filteredProducts),
+                    ),
+                  ],
                 ),
-              );
+              ),
+            );
 
-            default:
-              return AppLoader();
+          default:
+            return AppLoader();
 
-          }
-        },
-      ),
+        }
+      },
     );
   }
 }

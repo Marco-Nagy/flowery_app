@@ -1,4 +1,7 @@
+import 'package:flowery_e_commerce/core/routes/app_routes.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/styles/colors/my_colors.dart';
@@ -8,7 +11,7 @@ import '../../../../../core/utils/widgets/spacing.dart';
 import '../../../../generic/presentation/widgets/cached_network_widget.dart';
 
 class GenericBuildItem extends StatelessWidget {
-  const GenericBuildItem(
+  GenericBuildItem(
       {super.key,
       required this.imageCover,
       required this.title,
@@ -16,6 +19,7 @@ class GenericBuildItem extends StatelessWidget {
       required this.priceAfterDiscount});
 
   final String imageCover, title, price, priceAfterDiscount;
+  final GlobalKey widgetKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +77,14 @@ class GenericBuildItem extends StatelessWidget {
           verticalSpacing(8.h),
           Align(
               alignment: Alignment.bottomCenter,
-              child: SizedBox(width: 150.w, child: RowButton(onTap: () {}))),
+              child: SizedBox(
+                  width: 150.w,
+                  child: RowButton(
+                    onTap: (widgetKey) => context
+                        .read<GenericItemViewModelCubit>()
+                        .listClick(widgetKey),
+                    widgetKey: widgetKey,
+                  ))),
         ],
       ),
     );

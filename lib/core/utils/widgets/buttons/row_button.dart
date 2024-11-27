@@ -9,13 +9,13 @@ import '../spacing.dart';
 class RowButton extends StatelessWidget {
   const RowButton({
     super.key,
-
     required this.onTap,
-
+    required this.widgetKey,
   });
 
 
-  final VoidCallback onTap;
+  final void Function(GlobalKey) onTap ;
+  final GlobalKey widgetKey ;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class RowButton extends StatelessWidget {
       height:40.h,
       width:double.infinity,
       child: ElevatedButton(
-        onPressed: onTap,
+        onPressed: () => onTap(widgetKey),
         style: ElevatedButton.styleFrom(
           padding:  EdgeInsets.symmetric(vertical: 10.h,horizontal: 24.w),
           backgroundColor: MyColors.baseColor ,

@@ -4,7 +4,13 @@ import 'package:flutter/material.dart';
 import '../../styles/colors/my_colors.dart';
 
 
-AppBar customAppBar({required String appBarTxt, bool showArrow = false, VoidCallback? navigation,required BuildContext context}) {
+AppBar customAppBar({
+  required String appBarTxt,
+  bool showArrow = false,
+  VoidCallback? navigation,
+  required BuildContext context,
+  List<Widget>? actions
+}) {
   return AppBar(
     backgroundColor: Colors.white,
     automaticallyImplyLeading: false,
@@ -31,6 +37,8 @@ AppBar customAppBar({required String appBarTxt, bool showArrow = false, VoidCall
 
         ),
       ],
-    )
-  );
+      ),
+      elevation: 0.0,
+      centerTitle: true,
+      actions: actions);
 }

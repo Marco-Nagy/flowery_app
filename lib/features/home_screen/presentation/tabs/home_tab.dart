@@ -88,7 +88,7 @@ class HomeTab extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: (){
-                      context.pushNamed(AppRoutes.categoriesView);
+                      context.pushNamed(AppRoutes.categoriesView, arguments: 'categories');
                     },
                     child: Container(
                       margin: EdgeInsets.only(left: 15.w, right: 15.w),
@@ -115,7 +115,7 @@ class HomeTab extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: (){
-                    context.pushNamed(AppRoutes.mostSellingScreen);
+                    context.pushNamed(AppRoutes.mostSellingScreen,arguments: '');
                     },
                     child: Container(
                       margin: EdgeInsets.only(left: 15.w, right: 15.w),
@@ -139,7 +139,7 @@ class HomeTab extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: (){
-                      context.pushNamed(AppRoutes.occasionScreen);
+                      context.pushNamed(AppRoutes.occasionScreen,arguments: 'occasions');
                     },
                     child: Container(
                       margin: EdgeInsets.only(left: 15.w, right: 15.w),

@@ -1,7 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flowery_e_commerce/core/utils/extension/mediaQueryValues.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
@@ -12,7 +14,7 @@ import '../../../../../core/utils/widgets/spacing.dart';
 import '../../../../../generated/assets.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({
+   ProductCard({
     super.key,
     required this.name,
     required this.image,
@@ -24,6 +26,7 @@ class ProductCard extends StatelessWidget {
   final int price;
   final int priceAfterDiscount;
   final String image;
+  final GlobalKey widgetKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +114,12 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
               verticalSpacing(8.h),
-              RowButton(onTap: () {}),
+          RowButton(
+            onTap: (widgetKey) => context
+                .read<GenericItemViewModelCubit>()
+                .listClick(widgetKey),
+            widgetKey: widgetKey,
+          ),
             ],
           ),
         ),

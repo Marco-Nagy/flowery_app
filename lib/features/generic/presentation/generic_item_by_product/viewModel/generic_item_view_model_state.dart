@@ -38,6 +38,7 @@ class FilteredProductsState extends GenericItemViewModeState {
 }
 
 class FilteredItemsLoading extends GenericItemViewModeState {}
+class AddToCart extends GenericItemViewModeState {}
 class errorMassage extends GenericItemViewModeState {
   final String error;
   errorMassage({required this.error});

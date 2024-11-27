@@ -7,7 +7,8 @@ import '../../../../core/utils/widgets/spacing.dart';
 import 'cached_network_widget.dart';
 
 class GenericItem extends StatelessWidget {
-  const GenericItem({super.key, required this.name, required this.image});
+   GenericItem({super.key, required this.name, required this.image});
+  final GlobalKey widgetKey = GlobalKey();
 
  final String name;
  final String image;
@@ -24,6 +25,7 @@ class GenericItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
+            key: widgetKey,
             height: 150.h,
             width: double.infinity,
             child: CachedNetworkWidget(
@@ -36,7 +38,9 @@ class GenericItem extends StatelessWidget {
             style: MyFonts.styleRegular400_14.copyWith(color: MyColors.black),
           ),
           verticalSpacing(11.h),
-          RowButton(onTap: () {}),
+          RowButton(onTap: (widgetKey) {
+
+          }, widgetKey: widgetKey,),
         ],
       ),
     );
