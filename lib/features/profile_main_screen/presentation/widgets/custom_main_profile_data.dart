@@ -18,7 +18,6 @@ class CustomMainProfileData extends StatefulWidget {
 }
 
 class _CustomMainProfileDataState extends State<CustomMainProfileData> {
-  GetLoggedUserData getLoggedUserData = getIt.get<GetLoggedUserData>();
   @override
   Widget build(BuildContext context) {
    return  Column(
@@ -34,7 +33,7 @@ class _CustomMainProfileDataState extends State<CustomMainProfileData> {
                 ),
               ),
               SizedBox(
-                width: 8.w,
+                width: 2.w,
               ),
               InkWell(
                 onTap: () {
