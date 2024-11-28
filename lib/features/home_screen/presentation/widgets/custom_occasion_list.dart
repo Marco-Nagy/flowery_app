@@ -50,6 +50,7 @@ class CustomOccasionListState extends State<CustomOccasionList> {
                             style: MyFonts.styleMedium500_14
                                 .copyWith(color: MyColors.blackBase)),
                       ],
+
                     ),
                   );
                 },

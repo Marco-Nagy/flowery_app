@@ -5,6 +5,7 @@ import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profi
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../di/di.dart';
 
 class ProfilePic extends StatefulWidget {
@@ -41,8 +42,8 @@ class _ProfilePicState extends State<ProfilePic> {
           // }
         },
         child: SizedBox(
-          height: 115,
-          width: 115,
+          height: 115.h,
+          width: 115.w,
           child: Stack(
             fit: StackFit.expand,
             clipBehavior: Clip.none,
@@ -54,11 +55,11 @@ class _ProfilePicState extends State<ProfilePic> {
                   : CircleAvatar(
                       backgroundImage: FileImage(_image!) as ImageProvider),
               Positioned(
-                right: -18,
-                bottom: 2,
+                right: -18.w,
+                bottom: 2.h,
                 child: SizedBox(
-                  height: 46,
-                  width: 46,
+                  height: 46.h,
+                  width: 46.w,
                   child: TextButton(
                     style: TextButton.styleFrom(
                       foregroundColor: MyColors.white,
@@ -84,7 +85,7 @@ class _ProfilePicState extends State<ProfilePic> {
                     child: Icon(
                       Icons.camera_alt_outlined,
                       color: MyColors.gray,
-                      size: 22,
+                      size: 22.sp,
                     ),
                   ),
                 ),

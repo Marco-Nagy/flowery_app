@@ -9,8 +9,9 @@ import '../view_model/signup_view_model_cubit.dart';
 
 
 class GenderSelection extends StatelessWidget {
-  const GenderSelection({super.key, required this.cubit});
-  final SignUpViewModel cubit;
+  const GenderSelection({super.key, this.cubit});
+
+  final SignUpViewModel? cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +37,9 @@ class GenderSelection extends StatelessWidget {
               maxLines: 1,
             ),
             value: "female",
-            groupValue: cubit.selectedGender,
+            groupValue: cubit?.selectedGender,
             onChanged: (value) {
-              cubit.doAction(GenderSelected(value!));
+              cubit?.doAction(GenderSelected(value!));
             },
             activeColor: MyColors.baseColor,
           ),
@@ -56,9 +57,9 @@ class GenderSelection extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
             value: "male",
-            groupValue: cubit.selectedGender,
+            groupValue: cubit?.selectedGender,
             onChanged: (value) {
-              cubit.doAction(GenderSelected(value!));
+              cubit?.doAction(GenderSelected(value!));
             },
             activeColor: MyColors.baseColor,
           ),

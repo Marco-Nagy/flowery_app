@@ -1,13 +1,17 @@
-import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_actions.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/profile_form.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/styles/fonts/my_fonts.dart';
+import '../../../../core/utils/widgets/spacing.dart';
 import '../../../../di/di.dart';
+import 'custom_section_gender.dart';
 
 class SectionProfileForm extends StatefulWidget {
   const SectionProfileForm({super.key});
@@ -31,6 +35,7 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
   String? oldLastName;
   String? oldEmail;
   String? oldPhone;
+  String? selectedGender;
 
   @override
   void initState() {
@@ -82,6 +87,7 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
               oldLastName = state.data.user?.lastName ?? "";
               oldEmail = state.data.user?.email ?? "";
               oldPhone = state.data.user?.phone ?? "";
+              selectedGender = state.data.user?.gender ?? "";
 
               firstNameController.text = oldFirstName!;
               lastNameController.text = oldLastName!;
@@ -113,12 +119,12 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                   type: MessageTypeConst.success,
                   title: 'Success');
 
-              // update old values
               setState(() {
                 oldFirstName = firstNameController.text;
                 oldLastName = lastNameController.text;
                 oldEmail = emailController.text;
                 oldPhone = phoneNumberController.text;
+                selectedGender = state.data.user?.gender ?? "";
                 isModified = false;
               });
               break;
@@ -134,6 +140,9 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
           }
         },
         builder: (context, state) {
+          if (state is GetLoggedUserDataSuccess) {
+            selectedGender = state.data.user?.gender ?? "";
+          }
           return Column(
             children: [
               ProfileForm(
@@ -144,7 +153,16 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                 phoneNumberController: phoneNumberController,
                 formKey: formKey,
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 24),
+              CustomSectionGender(
+                selectedGender: selectedGender ?? "",
+                onChanged: (value) {
+                  setState(() {
+                    selectedGender = value;
+                    _checkIfModified();
+                  });
+                },
+              ),
               CurvedButton(
                 title: "Update",
                 color: MyColors.baseColor,
@@ -157,7 +175,6 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                             'email': emailController.text,
                             'phone': phoneNumberController.text,
                           };
-
                           profileViewModel.doAction(EditProfile(profileData));
                         }
                       }

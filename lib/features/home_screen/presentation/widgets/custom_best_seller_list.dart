@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/routes/app_routes.dart';
+
 class CustomBestSellerList extends StatefulWidget {
   const CustomBestSellerList({super.key});
 
@@ -29,7 +31,9 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
                 itemCount: state.bestSeller.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return Container(
+                  return GestureDetector(
+                 onTap: () => Navigator.pushNamed(context, AppRoutes.productsDetailsView, arguments: state.bestSeller[index]),
+                 child:Container(
                     margin: EdgeInsets.all(3.sp),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +42,7 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
                           width: 170.w,
                           height: 180.h,
                           child: CachedNetworkWidget(
-                            imageUrl: state.bestSeller[index].imageCover,
+                            imageUrl: state.bestSeller[index].imgCover??'',
                           ),
                         ),
                         SizedBox(
@@ -47,11 +51,11 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
                         SizedBox(
                           width: 170.w,
                           child: Text(
-                            state.bestSeller[index].title,
+                            state.bestSeller[index].title??'',
                             style: MyFonts.styleRegular400_14.copyWith(
                                 color: MyColors.blackBase,
                                 overflow: TextOverflow.visible),
-                            maxLines: 2,
+                              maxLines: 2,
                           ),
                         ),
                         SizedBox(
@@ -60,7 +64,8 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
                         Text('${state.bestSeller[index].price}',
                             style: MyFonts.styleMedium500_14
                                 .copyWith(color: MyColors.blackBase)),
-                      ],
+                     ],
+                      ),
                     ),
                   );
                 },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
 import '../../../../core/utils/validators.dart';
 import '../../../auth/presentation/login/widgets/custom_text_form_field.dart';
 import 'change_text.dart';
@@ -56,7 +57,7 @@ class ProfileForm extends StatelessWidget {
             labelText: 'Email',
             validator: (value) => Validators.validateEmail(value),
           ),
-          const SizedBox(height: 20),
+          verticalSpacing(20),
           CustomTextFormField(
             suffix: ChangeText(),
             isPassword: true,
@@ -65,8 +66,7 @@ class ProfileForm extends StatelessWidget {
             labelText: 'Password',
             // validator: (value) => Validators.validatePassword(value, context),
           ),
-          const SizedBox(width: 20),
-          const SizedBox(height: 20),
+          verticalSpacing(20),
           CustomTextFormField(
             controller: phoneNumberController,
             hintText: 'Phone Number',

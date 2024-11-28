@@ -15,9 +15,13 @@ class OccasionView extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: customAppBar(appBarTxt: 'Occasion', context: context, showArrow: true),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Bloom with our exquisite best sellers'
-            ,style: MyFonts.styleMedium500_14.copyWith(color: MyColors.gray),),
+          Padding(
+            padding: const EdgeInsets.only(left: 40),
+            child: Text('Bloom with our exquisite best sellers'
+              ,style: MyFonts.styleMedium500_14.copyWith(color: MyColors.gray),),
+          ),
 
           verticalSpacing(20),
          // CatalogGenericScreen(resourceName: 'occasions',),
