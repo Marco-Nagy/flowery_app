@@ -1,7 +1,6 @@
 import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'core/Services/connectivity_controller.dart';
 import 'core/Services/shared_preference/shared_pref_keys.dart';
 import 'core/Services/shared_preference/shared_preference_helper.dart';
