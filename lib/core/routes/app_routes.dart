@@ -92,12 +92,6 @@ class AppRoutes {
         return BaseRoute(page: const ProfileView());
       case AppRoutes.resetPasswordProfileView:
         return BaseRoute(page: const ResetPasswordProfileView());
-      case AppRoutes.productsDetails:
-        return BaseRoute(page: ProductDetails());
-      case AppRoutes.profileView:
-        return BaseRoute(page: const ProfileView());
-      case AppRoutes.resetPasswordProfileView:
-        return BaseRoute(page: const ResetPasswordProfileView());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }
