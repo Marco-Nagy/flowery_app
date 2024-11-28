@@ -1,10 +1,15 @@
-class ProductResponseEntity {
+import 'package:equatable/equatable.dart';
+
+class ProductResponseEntity extends Equatable {
   final List<ProductEntity> products;
 
   ProductResponseEntity({required this.products});
+
+  @override
+  List<Object?> get props => [products];
 }
 
-class ProductEntity {
+class ProductEntity extends Equatable {
   final String? id;
   final String? title;
   final String? slug;
@@ -30,4 +35,19 @@ class ProductEntity {
     this.category,
     this.occasion,
   });
+
+  @override
+  List<Object?> get props => [
+        id,
+        title,
+        slug,
+        description,
+        imgCover,
+        images,
+        price,
+        priceAfterDiscount,
+        quantity,
+        category,
+        occasion,
+      ];
 }

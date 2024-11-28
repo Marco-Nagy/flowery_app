@@ -20,16 +20,17 @@ class Assets {
   static const String imagesLoading = 'assets/images/loading.json';
   static const String imagesLocationOn = 'assets/images/location_on.png';
   static const String imagesLogo = 'assets/images/logo.png';
-  static const String imagesNetwork = 'assets/images/network.jpg';
   static const String imagesLogout = 'assets/images/logout.png';
+  static const String imagesNetwork = 'assets/images/network.jpg';
   static const String imagesNetworrk = 'assets/images/networrk.png';
   static const String imagesNoNetwork = 'assets/images/noNetwork.png';
   static const String imagesNotNetwork = 'assets/images/Not_network.png';
+  static const String imagesNotification = 'assets/images/notification.png';
   static const String imagesPerson = 'assets/images/person.png';
   static const String imagesPlace = 'assets/images/place.png';
+  static const String imagesProfile = 'assets/images/profile.png';
   static const String imagesSearch = 'assets/images/search.png';
   static const String imagesShoppingCart = 'assets/images/shopping_cart.png';
   static const String imagesSplash = 'assets/images/splash.png';
-  static const String jsonFloweryLoader = 'assets/json/flowery_loader.json';
-
+  static const String jsonFloweryLoader = 'assets/json/flowery_loader.json~';
 }

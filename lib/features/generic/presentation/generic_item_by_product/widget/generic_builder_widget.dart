@@ -1,6 +1,8 @@
+import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/routes/app_routes.dart';
 import '../../../../product/domain/entities/product_response_entity.dart';
 import 'generic_build_item.dart';
 
@@ -28,11 +30,15 @@ class GenericBuilderWidget extends StatelessWidget {
       itemCount: filteredProducts.length,
       itemBuilder: (context, index) {
         final product = filteredProducts[index];
-        return GenericBuildItem(
-          title: product.title ?? '',
-          imageCover: product.imgCover ?? '',
-          price: product.price?.toString() ?? '',
-          priceAfterDiscount: product.priceAfterDiscount?.toString() ?? '',
+        return GestureDetector(
+          onTap: () => context.pushNamed(AppRoutes.productsDetailsView,
+              arguments: product),
+          child: GenericBuildItem(
+            title: product.title ?? '',
+            imageCover: product.imgCover ?? '',
+            price: product.price?.toString() ?? '',
+            priceAfterDiscount: product.priceAfterDiscount?.toString() ?? '',
+          ),
         );
       },
     );

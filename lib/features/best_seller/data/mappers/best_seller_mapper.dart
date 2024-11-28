@@ -9,8 +9,17 @@ class MostSellingMapper{
      if (bestSellerResponse.bestSeller == null) return [];
      return bestSellerResponse.bestSeller!
          .map(
-           (e) => MostSellingProducts( title: e!.title!, imageCover: e.imgCover!,price: e.price!,priceAfterDiscount: e.priceAfterDiscount!),
-     )
-         .toList();
+          (e) => MostSellingProducts(
+            id: e?.id,
+            title: e?.title,
+            imgCover: e?.imgCover,
+            price: e?.price,
+            priceAfterDiscount: e?.priceAfterDiscount,
+            quantity: e?.quantity,
+            images: e?.images,
+            description: e?.description,
+          ),
+        )
+        .toList();
    }
  }

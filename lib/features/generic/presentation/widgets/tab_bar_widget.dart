@@ -8,8 +8,11 @@ Widget tabBarWidget({
 }) {
   return TabBar(
     isScrollable: true,
+    tabAlignment: TabAlignment.start,
     dividerColor: Colors.transparent,
     padding: EdgeInsets.zero,
+    indicatorSize: TabBarIndicatorSize.label,
+    indicatorPadding: EdgeInsets.zero,
     indicatorColor: MyColors.baseColor,
     labelColor: MyColors.baseColor,
     unselectedLabelColor: MyColors.white70,

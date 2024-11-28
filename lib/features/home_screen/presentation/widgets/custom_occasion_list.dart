@@ -24,7 +24,6 @@ class CustomOccasionListState extends State<CustomOccasionList> {
       child: BlocBuilder<OccasionsCubit, OccasionsStates>(
         builder: (context, state) {
           switch (state) {
-
             case GetOccasionsLoadingState():
               AppLoader();
             case GetOccasionsSuccessState():
