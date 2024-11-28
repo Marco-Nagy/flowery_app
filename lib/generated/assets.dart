@@ -38,5 +38,5 @@ class Assets {
   static const String imagesSplash = 'assets/images/splash.png';
   static const String imagesSwitch = 'assets/images/switch.png';
   static const String imagesTermsConditions = 'assets/images/terms_conditions.png';
-
+  static const String jsonFloweryLoader = 'assets/json/flowery_loader.json~';
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
-import '../../../../core/utils/widgets/buttons/row_button.dart';
+import '../../../../core/utils/widgets/buttons/add_cart_button.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import 'cached_network_widget.dart';
 
@@ -36,7 +36,7 @@ class GenericItem extends StatelessWidget {
             style: MyFonts.styleRegular400_14.copyWith(color: MyColors.black),
           ),
           verticalSpacing(11.h),
-          RowButton(onTap: () {}),
+          AddCartButton(onTap: () {}),
         ],
       ),
     );
