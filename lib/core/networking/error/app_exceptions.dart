@@ -11,38 +11,30 @@ class AppException implements Exception {
 }
 
 class BadRequestException extends AppException {
-  BadRequestException({String? message} )
-      : super(message: message);
+  BadRequestException({super.message} );
 }
 class UnauthorizedException extends AppException {
-  UnauthorizedException({String? message})
-      : super(message: message);
+  UnauthorizedException({super.message});
 }
 
 class NoInternetException extends AppException {
-  NoInternetException({String? message})
-      : super(message: message);
+  NoInternetException({super.message});
 }
 
 class ServerError extends AppException {
-  ServerError({String? message , String? details})
-      : super(message: message, details: details);
+  ServerError({super.message , super.details});
 }
 class ConflictException extends AppException {
-  ConflictException({String? message})
-      : super(message: message);
+  ConflictException({super.message});
 }
 class NotFound extends AppException {
-  NotFound({String? message})
-      : super(message: message);
+  NotFound({super.message});
 }
 
 class ParsingError extends AppException {
-  ParsingError({String? message})
-      : super(message: message);
+  ParsingError({super.message});
 }
 
 class UnknownErrorException extends AppException {
-  UnknownErrorException({String? message})
-      : super(message: message);
+  UnknownErrorException({super.message});
 }

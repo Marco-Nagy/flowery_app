@@ -50,7 +50,7 @@ class GenericBuildItem extends StatelessWidget {
           verticalSpacing(6.h),
           RichText(
             text: TextSpan(
-              text: 'EGP ${price}',
+              text: 'EGP $price',
               style: MyFonts.styleMedium500_14.copyWith(color: MyColors.black),
               children: [
                 WidgetSpan(child: horizontalSpacing(5.w)),

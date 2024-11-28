@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
 
 class VisibilityIcon extends StatefulWidget {
-   VisibilityIcon({super.key, required this.isVisible });
+  const VisibilityIcon({super.key, required this.isVisible});
 
-late final bool isVisible ;
+  final bool isVisible;
 
   @override
-  _VisibilityIconState createState() => _VisibilityIconState();
+  VisibilityIconState createState() => VisibilityIconState();
 }
 
-class _VisibilityIconState extends State<VisibilityIcon> {
+class VisibilityIconState extends State<VisibilityIcon> {
+  late bool _isVisible;
+
+  @override
+  void initState() {
+    super.initState();
+    _isVisible = widget.isVisible;
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () {
-          setState(() {
-           widget.isVisible = !widget.isVisible;
-          });
-        },
-        child: Icon(widget.isVisible
-            ? Icons.visibility_off_rounded
-            : Icons.visibility_rounded));
+      onTap: () {
+        setState(() {
+          _isVisible = !_isVisible;
+        });
+      },
+      child: Icon(
+        _isVisible ? Icons.visibility_off_rounded : Icons.visibility_rounded,
+      ),
+    );
   }
 }

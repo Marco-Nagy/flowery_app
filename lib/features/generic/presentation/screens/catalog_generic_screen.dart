@@ -32,13 +32,13 @@ class CatalogGenericScreen extends StatelessWidget {
           });
 
           switch (state.runtimeType) {
-            case GenericItemLoadedState _:
+            case const (GenericItemLoadedState) :
               return const AppLoader();
-            case GenericItemErrorState _:
+            case const (GenericItemErrorState) :
               final errorState = state as GenericItemErrorState;
               return Center(child: Text(errorState.message.error!));
 
-            case GenericItemSuccessState _:
+            case const (GenericItemSuccessState) :
               final successState = state as GenericItemSuccessState;
               return DefaultTabController(
                 length: cubit.items.length,

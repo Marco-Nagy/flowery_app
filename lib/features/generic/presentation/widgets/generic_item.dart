@@ -23,7 +23,7 @@ class GenericItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
+          SizedBox(
             height: 150.h,
             width: double.infinity,
             child: CachedNetworkWidget(

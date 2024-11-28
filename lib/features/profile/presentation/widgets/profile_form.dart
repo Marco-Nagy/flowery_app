@@ -59,7 +59,7 @@ class ProfileForm extends StatelessWidget {
           ),
           verticalSpacing(20),
           CustomTextFormField(
-            suffix: ChangeText(),
+            suffix: const ChangeText(),
             isPassword: true,
             controller: passwordController,
             hintText: '******',

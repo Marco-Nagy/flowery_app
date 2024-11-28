@@ -15,7 +15,7 @@ class ProductDetailsView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Stack(children: [
           ProductDetailsWidget(product: product),
-          ArrowBackWidget(context),
+          arrowBackWidget(context),
         ]),
       ),
     );

@@ -40,9 +40,9 @@ class FloweryEcommerce extends StatelessWidget {
             ),
           );
         }else{
-          return MaterialApp(
+          return const MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: const NoNetworkScreen(),
+            home: NoNetworkScreen(),
           );
         }
       },

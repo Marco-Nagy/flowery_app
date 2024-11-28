@@ -9,9 +9,9 @@ class RememberMeAndForgotPassword extends StatelessWidget {
   final ValueChanged<bool> onRememberMeChanged;
 
   const RememberMeAndForgotPassword({
-    Key? key,
+    super.key,
     required this.onRememberMeChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

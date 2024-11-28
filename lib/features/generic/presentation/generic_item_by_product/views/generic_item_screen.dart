@@ -11,8 +11,7 @@ import '../widget/generic_builder_widget.dart';
 
 class GenericItemScreen extends StatelessWidget {
   const GenericItemScreen(
-      {Key? key, required this.resourceName, required this.field})
-      : super(key: key);
+      {super.key, required this.resourceName, required this.field});
   final String resourceName, field;
 
   @override
@@ -27,16 +26,16 @@ class GenericItemScreen extends StatelessWidget {
           final cubit = context.read<GenericItemViewModelCubit>();
 
           switch (state.runtimeType) {
-            case GetProductError:
+            case const (GetProductError):
               final errorState = state as GetProductError;
               return Text(errorState.error.error.toString());
 
-            case GetItemsLoading:
-            case GetProductLoading:
-              return Center(child: AppLoader());
+            case const (GetItemsLoading):
+            case const (GetProductLoading):
+              return const Center(child: AppLoader());
 
-            case GetItemsSuccess:
-            case FilteredProductsState:
+            case const (GetItemsSuccess):
+            case const (FilteredProductsState):
               final items = cubit.items;
               final filteredProducts = state is FilteredProductsState
                   ? state.filteredProducts
@@ -51,7 +50,7 @@ class GenericItemScreen extends StatelessWidget {
                       tabBarWidget(
                         tabs: [
                           const Tab(text: 'All'),
-                          ...items.map((item) => Tab(text: item.name)).toList(),
+                          ...items.map((item) => Tab(text: item.name)),
                         ],
                         onTap: (index) {
                           cubit.doAction(FilterProductsAction(
@@ -73,7 +72,7 @@ class GenericItemScreen extends StatelessWidget {
               );
 
             default:
-              return AppLoader();
+              return const AppLoader();
 
           }
         },

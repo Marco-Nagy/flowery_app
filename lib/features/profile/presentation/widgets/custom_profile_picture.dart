@@ -20,7 +20,7 @@ class _ProfilePicState extends State<ProfilePic> {
   late final ProfileViewModelCubit profileViewModel;
 
   @override
-  initState() {
+ void initState() {
     super.initState();
     profileViewModel = getIt.get<ProfileViewModelCubit>();
     // profileViewModel.doAction(GetCachedProfileImage());

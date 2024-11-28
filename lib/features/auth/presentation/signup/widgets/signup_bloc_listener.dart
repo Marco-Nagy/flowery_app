@@ -16,7 +16,7 @@ class SignUpBlocListener extends StatelessWidget {
       listener: (context, state) {
         switch (state) {
           case SignupLoading():
-            AppLoader();
+            const AppLoader();
             break;
           case SignupSuccess():
              aweSnackBar(
@@ -31,7 +31,7 @@ class SignUpBlocListener extends StatelessWidget {
                 context: context,
                 type: MessageTypeConst.failure, title: 'Error');
             default:
-            return null;
+            return ;
         }
       },
       child: Container(),

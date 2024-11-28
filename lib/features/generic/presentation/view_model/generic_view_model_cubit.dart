@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flowery_e_commerce/features/generic/domain/entity/generic_response_entity.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
-
 import '../../../../core/networking/common/api_result.dart';
 import '../../../../core/networking/error/error_handler.dart';
 import '../../../../core/networking/error/error_model.dart';

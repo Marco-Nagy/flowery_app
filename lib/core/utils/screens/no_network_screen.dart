@@ -26,7 +26,7 @@ class NoNetworkScreen extends StatelessWidget {
                 height: 200,
               ),
               const SizedBox(height: 30),
-              Text(
+              const Text(
                 "Oops! No Internet Connection",
                 style: TextStyle(
                   fontSize: 24,
@@ -43,7 +43,7 @@ class NoNetworkScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 15),
-              Text(
+              const Text(
                 "It seems like you're offline. Please check your connection and try again.",
                 style: TextStyle(
                   fontSize: 16,
