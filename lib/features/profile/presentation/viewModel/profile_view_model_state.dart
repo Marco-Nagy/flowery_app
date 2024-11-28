@@ -32,3 +32,17 @@ final class EditProfileError extends ProfileViewModelState {
 
   EditProfileError({required this.error});
 }
+
+final class ChangePasswordLoading extends ProfileViewModelState {}
+
+final class ChangePasswordSuccess extends ProfileViewModelState {
+  final ChangePasswordResponseEntity data;
+
+  ChangePasswordSuccess({required this.data});
+}
+
+final class ChangePasswordError extends ProfileViewModelState {
+  final ErrorModel error;
+
+  ChangePasswordError({required this.error});
+}

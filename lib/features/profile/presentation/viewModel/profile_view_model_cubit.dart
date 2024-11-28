@@ -9,6 +9,8 @@ import '../../../../core/networking/error/error_handler.dart';
 import '../../../../core/networking/error/error_model.dart';
 import '../../../../di/di.dart';
 import '../../../auth/data/data_sources/contracts/offline_data_source.dart';
+import '../../domain/entities/request/change_password_request_entity.dart';
+import '../../domain/entities/response/change_password_respose_entity.dart';
 import '../../domain/entities/response/edit_profile_response_entity.dart';
 import '../../domain/entities/response/get_logged_user_data_response_entity.dart';
 
@@ -28,6 +30,8 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
         _getLoggedUserData();
       case EditProfile():
         _editProfile(action.profileData);
+      case ChangePassword():
+        _changePassword(action.request);
     }
   }
 
@@ -53,6 +57,19 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
         emit(EditProfileSuccess(data: result.data));
       case Fail<EditProfileResponseEntity>():
         emit(EditProfileError(error: ErrorHandler.handle(result.exception!)));
+    }
+  }
+
+  Future<void> _changePassword(ChangePasswordRequestEntity request) async {
+    emit(ChangePasswordLoading());
+    String? token = await _offlineDataSource.getToken();
+    final result = await _useCase.changePassword(token ?? '', request);
+    switch (result) {
+      case Success<ChangePasswordResponseEntity>():
+        emit(ChangePasswordSuccess(data: result.data));
+      case Fail<ChangePasswordResponseEntity>():
+        emit(
+            ChangePasswordError(error: ErrorHandler.handle(result.exception!)));
     }
   }
 }
