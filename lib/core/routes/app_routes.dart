@@ -8,7 +8,7 @@ import 'package:flowery_e_commerce/features/best_seller/presentation/screens/mos
 import 'package:flowery_e_commerce/features/categories/presentation/categories/views/categories_view.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_screen.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/products/views/product_details.dart';
-import 'package:flowery_e_commerce/features/profile_main_screen/presentation/profile_main_screen.dart';
+import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../di/di.dart';

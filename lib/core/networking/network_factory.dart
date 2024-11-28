@@ -20,8 +20,8 @@ abstract class NetworkFactory {
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {
-          options.headers['token'] =
-              '${SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey)}';
+          options.headers['Authorization'] =
+              'Bearer ${SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey)}';
           return handler.next(options);
         },
         onError: (error, handler) {

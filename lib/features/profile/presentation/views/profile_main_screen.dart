@@ -1,9 +1,9 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
-import 'package:flowery_e_commerce/features/profile_main_screen/presentation/widgets/custom_app_bar_of_profile_main_screen.dart';
-import 'package:flowery_e_commerce/features/profile_main_screen/presentation/widgets/custom_main_profile_data.dart';
-import 'package:flowery_e_commerce/features/profile_main_screen/presentation/widgets/custom_switch_icon.dart';
-import 'package:flowery_e_commerce/features/profile_main_screen/presentation/widgets/logout_dialog.dart';
+import 'package:flowery_e_commerce/features/auth/presentation/logout/widgets/logout_dialog.dart';
+import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_app_bar_of_profile_main_screen.dart';
+import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_main_profile_data.dart';
+import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_switch_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -64,7 +64,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(right:30.sp,left: 29.sp),
+              margin: EdgeInsets.only(right: 30.sp, left: 29.sp),
               child: Row(
                 children: [
                   SizedBox(
@@ -121,27 +121,38 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                           width: 20.w,
                           height: 20.w,
                           child: Image.asset('assets/images/language.png')),
-                      SizedBox(width: 5.w,),
-                      Text('Language',style: MyFonts.styleRegular400_16.copyWith(
-                        color: MyColors.blackBase,
-                      ),),
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      Text(
+                        'Language',
+                        style: MyFonts.styleRegular400_16.copyWith(
+                          color: MyColors.blackBase,
+                        ),
+                      ),
                       Spacer(),
                       InkWell(
-                        onTap: (){
-
-                        },
-                        child: Text('English',style: MyFonts.styleRegular400_14.copyWith(
-                          color: MyColors.baseColor,
-                        ),),
+                        onTap: () {},
+                        child: Text(
+                          'English',
+                          style: MyFonts.styleRegular400_14.copyWith(
+                            color: MyColors.baseColor,
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 25.h,),
+                  SizedBox(
+                    height: 25.h,
+                  ),
                   Row(
                     children: [
-                      Text('About us',style: MyFonts.styleRegular400_16.copyWith(
-                        color: MyColors.blackBase,
-                      ),),
+                      Text(
+                        'About us',
+                        style: MyFonts.styleRegular400_16.copyWith(
+                          color: MyColors.blackBase,
+                        ),
+                      ),
                       Spacer(),
                       InkWell(
                         onTap: () {},
@@ -154,12 +165,17 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 25.h,),
+                  SizedBox(
+                    height: 25.h,
+                  ),
                   Row(
                     children: [
-                      Text('Terms & conditions',style: MyFonts.styleRegular400_16.copyWith(
-                        color: MyColors.blackBase,
-                      ),),
+                      Text(
+                        'Terms & conditions',
+                        style: MyFonts.styleRegular400_16.copyWith(
+                          color: MyColors.blackBase,
+                        ),
+                      ),
                       Spacer(),
                       InkWell(
                         onTap: () {},
@@ -175,7 +191,9 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 3.h,),
+            SizedBox(
+              height: 3.h,
+            ),
             Container(
               width: double.infinity,
               height: 1.h,
@@ -186,17 +204,22 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
               child: Row(
                 children: [
                   SizedBox(
-                    width:18.sp,
+                      width: 18.sp,
                       height: 18.sp,
                       child: Image.asset('assets/images/logout_black.png')),
-                  SizedBox(width: 5.w,),
-                  Text('Logout',style: MyFonts.styleRegular400_16.copyWith(
-                    color: MyColors.blackBase,
-                  ),),
+                  SizedBox(
+                    width: 5.w,
+                  ),
+                  Text(
+                    'Logout',
+                    style: MyFonts.styleRegular400_16.copyWith(
+                      color: MyColors.blackBase,
+                    ),
+                  ),
                   Spacer(),
                   InkWell(
                     onTap: () {
-                     ShowLogoutDialog(context);
+                      ShowLogoutDialog(context);
                     },
                     child: SizedBox(
                         width: 30.w,
@@ -208,10 +231,13 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 10.h,),
-            Text('v 6.3.0 - (446)',style: MyFonts.styleRegular400_12.copyWith(
-              color: MyColors.grey
-            ),),
+            SizedBox(
+              height: 10.h,
+            ),
+            Text(
+              'v 6.3.0 - (446)',
+              style: MyFonts.styleRegular400_12.copyWith(color: MyColors.grey),
+            ),
           ],
         ),
       ),

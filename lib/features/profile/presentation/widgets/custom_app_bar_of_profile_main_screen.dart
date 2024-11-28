@@ -17,8 +17,12 @@ class CustomAppBarOfProfileMainScreen extends StatelessWidget {
           SizedBox(
               width: 89.w,
               height: 25.h,
-              child: Image.asset('assets/images/logo.png',width: 98.w,height: 25.h,
-              fit: BoxFit.fitWidth,)),
+              child: Image.asset(
+                'assets/images/logo.png',
+                width: 98.w,
+                height: 25.h,
+                fit: BoxFit.fitWidth,
+              )),
           badges.Badge(
             badgeContent: Text(
               '3',
