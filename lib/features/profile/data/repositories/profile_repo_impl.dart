@@ -1,4 +1,6 @@
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
+import 'package:flowery_e_commerce/features/profile/domain/entities/request/change_password_request_entity.dart';
+import 'package:flowery_e_commerce/features/profile/domain/entities/response/change_password_respose_entity.dart';
 import 'package:flowery_e_commerce/features/profile/domain/entities/response/edit_profile_response_entity.dart';
 import 'package:flowery_e_commerce/features/profile/domain/entities/response/get_logged_user_data_response_entity.dart';
 import 'package:flowery_e_commerce/features/profile/domain/repositories/profile_repo.dart';
@@ -23,5 +25,11 @@ class ProfileRepoImpl implements ProfileRepo {
   Future<DataResult<EditProfileResponseEntity>> editProfile(
       String token, Map<String, dynamic> profileData) async {
     return await _onlineDataSource.editProfile(token, profileData);
+  }
+
+  @override
+  Future<DataResult<ChangePasswordResponseEntity>> changePassword(
+      String token, ChangePasswordRequestEntity request) async {
+    return await _onlineDataSource.changePassword(token, request);
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flowery_e_commerce/core/networking/api/api_manager.dart';
 import 'package:flowery_e_commerce/core/networking/api_execute.dart';
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
+import 'package:flowery_e_commerce/features/profile/domain/entities/request/change_password_request_entity.dart';
+import 'package:flowery_e_commerce/features/profile/domain/entities/response/change_password_respose_entity.dart';
 import 'package:injectable/injectable.dart';
 import '../../../domain/entities/product_response_entity.dart';
 import '../../mappers/product_mappers.dart';
