@@ -2,6 +2,7 @@ import 'package:flowery_e_commerce/core/utils/widgets/base/base_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/widgets/base/custom_app_bar.dart';
+import '../widgets/section_reset_password_form.dart';
 
 class ResetPasswordProfileView extends StatelessWidget {
   const ResetPasswordProfileView({super.key});
@@ -23,7 +24,7 @@ class ResetPasswordProfileView extends StatelessWidget {
                   const SizedBox(
                     height: 34,
                   ),
-                  // const SectionResetPasswordForm(),
+                  const SectionResetPasswordForm(),
                 ],
               ),
             )

@@ -15,5 +15,5 @@ class EditProfile extends ProfileActions {
 class ChangePassword extends ProfileActions {
   final ChangePasswordRequestEntity request;
 
-  ChangePassword(this.request);
+  ChangePassword({required this.request});
 }
