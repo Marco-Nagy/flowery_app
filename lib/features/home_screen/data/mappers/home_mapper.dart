@@ -9,8 +9,17 @@ class HomeMappers {
     if (bestSellerResponse.bestSeller == null) return [];
     return bestSellerResponse.bestSeller!
         .map(
-          (e) => BestSeller( title: e!.title!, imageCover: e.imgCover!,price: e.price!),
-        )
+          (e) => BestSeller(
+            id: e?.id,
+            title: e?.title,
+            imgCover: e?.imgCover,
+            price: e?.price,
+            priceAfterDiscount: e?.priceAfterDiscount,
+            quantity: e?.quantity,
+            images: e?.images,
+            description: e?.description,
+          ),
+    )
         .toList();
   }
   static List<Occasions> toOccasionsEntity(

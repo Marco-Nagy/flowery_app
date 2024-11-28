@@ -24,7 +24,6 @@ class CustomOccasionListState extends State<CustomOccasionList> {
       child: BlocBuilder<OccasionsCubit, OccasionsStates>(
         builder: (context, state) {
           switch (state) {
-
             case GetOccasionsLoadingState():
               AppLoader();
             case GetOccasionsSuccessState():
@@ -51,6 +50,7 @@ class CustomOccasionListState extends State<CustomOccasionList> {
                             style: MyFonts.styleMedium500_14
                                 .copyWith(color: MyColors.blackBase)),
                       ],
+
                     ),
                   );
                 },
