@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   fluttertoast: ^8.2.8
   badges: ^3.1.2
+  flutter_image_slideshow: ^0.1.6
   row_item: ^2.2.1+1
   dio:
   retrofit: ^4.4.1
