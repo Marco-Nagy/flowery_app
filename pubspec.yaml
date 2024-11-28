@@ -60,7 +60,6 @@ dependencies:
 
   # add injectable to your dependencies
   injectable:
-  # add get_it
   get_it:
 
   # state Manager
