@@ -14,9 +14,6 @@ class BestSellerCubit extends Cubit<BestSellerStates> {
     var response = await homeUseCase.callBestSellers();
     switch (response) {
       case Success<List<BestSeller>>():
-        print("====================${response.data.map(
-              (e) => e.title,
-        ).toList()}");
         emit(GetBestSellerSuccessState(response.data));
       case Fail():
         emit(GetBestSellerErrorState(ErrorHandler.handle(response.exception!)));

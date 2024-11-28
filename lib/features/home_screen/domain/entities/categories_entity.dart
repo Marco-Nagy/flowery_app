@@ -1,6 +1,6 @@
 class Category {
-  String name;
-  String image;
+ final String? name;
+ final String? image;
 
   Category({
     required this.name,

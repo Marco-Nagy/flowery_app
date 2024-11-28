@@ -1,10 +1,10 @@
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/styles/colors/my_colors.dart';
+import '../../../../core/styles/colors/my_colors.dart';
 
 class FilterChipButton extends StatelessWidget {
-  const FilterChipButton({Key? key, required this.onPressed}) : super(key: key);
+  const FilterChipButton({super.key, required this.onPressed});
 
   final VoidCallback onPressed;
 
@@ -12,11 +12,11 @@ class FilterChipButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ActionChip(
       onPressed: onPressed,
-      label: Row(
+      label: const Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           ImageIcon(
-            AssetImage(Assets.imagesButtomFilter),
+            AssetImage(Assets.imagesButtonFilter),
             size: 18,
             color: MyColors.white,
           ),
@@ -33,7 +33,7 @@ class FilterChipButton extends StatelessWidget {
       ),
       backgroundColor: MyColors.baseColor,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: MyColors.baseColor),
+        side: const BorderSide(color: MyColors.baseColor),
         borderRadius: BorderRadius.circular(20),
       ),
       elevation: 4,

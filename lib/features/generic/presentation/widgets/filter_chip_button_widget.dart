@@ -1,11 +1,10 @@
-import 'package:flowery_e_commerce/features/categories/presentation/categories/widgets/filter_chip_button.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/widgets/filter_chip_button.dart';
 import 'package:flutter/material.dart';
 
 class FilterChipButtonWidget extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const FilterChipButtonWidget({Key? key, required this.onPressed})
-      : super(key: key);
+  const FilterChipButtonWidget({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

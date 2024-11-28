@@ -13,14 +13,14 @@ class ProfileForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;
 
   const ProfileForm({
-    Key? key,
+    super.key,
     required this.firstNameController,
     required this.lastNameController,
     required this.emailController,
     required this.passwordController,
     required this.phoneNumberController,
     required this.formKey,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

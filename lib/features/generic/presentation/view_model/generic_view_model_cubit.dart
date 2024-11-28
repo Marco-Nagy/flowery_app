@@ -27,11 +27,11 @@ class GenericViewModelCubit extends Cubit<GenericViewModelState> {
 
   void doAction(GenericAction action) {
     switch (action) {
-      case getData():
+      case GetData():
         _gitData(action.resourceName);
-      case fetchNextPage():
+      case FetchNextPage():
         _fetchNextPage();
-      case setCategory():
+      case SetCategory():
         _setCategory(action.category);
     }
   }

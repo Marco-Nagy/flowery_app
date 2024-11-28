@@ -9,27 +9,28 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../di/di.dart';
 
 class ProfilePic extends StatefulWidget {
-  const ProfilePic({Key? key}) : super(key: key);
+  const ProfilePic({super.key});
 
   @override
   State<ProfilePic> createState() => _ProfilePicState();
 }
 
 class _ProfilePicState extends State<ProfilePic> {
-  File? _image = null;
-  late final profileViewModel;
+  File? _image;
+  late final ProfileViewModelCubit profileViewModel;
 
+  @override
   initState() {
     super.initState();
     profileViewModel = getIt.get<ProfileViewModelCubit>();
     // profileViewModel.doAction(GetCachedProfileImage());
   }
 
-  void _setImage(File? image) {
-    setState(() {
-      _image = image;
-    });
-  }
+  // void _setImage(File? image) {
+  //   setState(() {
+  //     _image = image;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class _ProfilePicState extends State<ProfilePic> {
             clipBehavior: Clip.none,
             children: [
               _image == null
-                  ? CircleAvatar(
+                  ? const CircleAvatar(
                       backgroundImage: AssetImage(Assets.imagesProfile),
                     )
                   : CircleAvatar(

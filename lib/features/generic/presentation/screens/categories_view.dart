@@ -1,10 +1,10 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/utils/extension/mediaQueryValues.dart';
-import 'package:flowery_e_commerce/features/categories/presentation/categories/widgets/filter_chip_button.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/widgets/filter_chip_button.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/widgets/spacing.dart';
-import '../../../../generic/presentation/generic_item_by_product/views/generic_item_screen.dart';
+import '../../../../core/utils/widgets/spacing.dart';
+import '../generic_item_by_product/views/generic_item_screen.dart';
 import '../widgets/custom_filter_categories.dart';
 import '../widgets/custom_search_categories.dart';
 
@@ -30,7 +30,7 @@ class CategoriesView extends StatelessWidget {
                 ),
               ),
               verticalSpacing(16),
-              GenericItemScreen(resourceName: 'categories', field: 'category'),
+              const GenericItemScreen(resourceName: 'categories', field: 'category'),
             ],
           ),
           Positioned(
