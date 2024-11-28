@@ -11,16 +11,18 @@ import '../widget/generic_builder_widget.dart';
 
 class GenericItemScreen extends StatelessWidget {
   const GenericItemScreen(
-      {Key? key, required this.resourceName, required this.field})
+      {Key? key, required this.resourceName, required this.field,  this.onClick})
       : super(key: key);
   final String resourceName, field;
+  final void Function(GlobalKey)? onClick;
+
 
   @override
   Widget build(BuildContext context) {
-
+    GenericItemViewModelCubit  cubit = getIt.get<GenericItemViewModelCubit>();
     return BlocBuilder<GenericItemViewModelCubit, GenericItemViewModeState>(
       builder: (context, state) {
-        final cubit = context.read<GenericItemViewModelCubit>();
+        // final cubit = context.read<GenericItemViewModelCubit>();
 
         switch (state.runtimeType) {
           case GetProductError:
@@ -61,7 +63,7 @@ class GenericItemScreen extends StatelessWidget {
                       child: filteredProducts.isEmpty
                           ? const NoProductsWidget()
                           : GenericBuilderWidget(
-                          filteredProducts: filteredProducts),
+                          filteredProducts: filteredProducts, onClick: onClick!,),
                     ),
                   ],
                 ),

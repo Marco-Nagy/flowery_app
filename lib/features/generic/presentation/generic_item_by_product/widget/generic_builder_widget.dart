@@ -1,4 +1,7 @@
+import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
+import 'package:flowery_e_commerce/di/di.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,11 +11,13 @@ import 'generic_build_item.dart';
 
 class GenericBuilderWidget extends StatelessWidget {
   const GenericBuilderWidget(
-      {super.key, required this.filteredProducts, this.controller});
+      {super.key, required this.filteredProducts, this.controller, required this.onClick});
 
   final ScrollController? controller;
 
   final List<ProductEntity> filteredProducts;
+  final void Function(GlobalKey) onClick;
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +41,7 @@ class GenericBuilderWidget extends StatelessWidget {
             title: product.title ?? '',
             imageCover: product.imgCover ?? '',
             price: product.price?.toString() ?? '',
-            priceAfterDiscount: product.priceAfterDiscount?.toString() ?? '',
+            priceAfterDiscount: product.priceAfterDiscount?.toString() ?? '', onClick:  onClick ,
           ),
         );
       },

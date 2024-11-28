@@ -24,9 +24,7 @@ class GenericItemViewModelCubit extends Cubit<GenericItemViewModeState> {
   List<Items> items = [];
   String itemField = 'category';
   bool isFetching = false;
-  GlobalKey<CartIconKey> cartKey = GlobalKey<CartIconKey>();
-   late Function(GlobalKey) runAddToCartAnimation;
-  var _cartQuantityItems = 0;
+
 
   @factoryMethod
   GenericItemViewModelCubit(this._itemsUseCase, this._productsUseCase)
@@ -94,13 +92,5 @@ class GenericItemViewModelCubit extends Cubit<GenericItemViewModeState> {
 
     emit(FilteredProductsState(filteredProducts: filtered));
   }
-
-  void listClick(GlobalKey widgetKey) async {
-    await runAddToCartAnimation(widgetKey);
-    await cartKey.currentState!
-        .runCartAnimation((_cartQuantityItems++).toString());
-    emit(AddToCart());
-    }
-
 
 }
