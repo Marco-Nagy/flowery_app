@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     CategoriesView(),
     const CartTab(),
     const ProfileMainScreen(),
+    const ProfileView(),
   ];
 
   @override

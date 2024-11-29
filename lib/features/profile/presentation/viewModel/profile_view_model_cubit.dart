@@ -40,6 +40,7 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
       case Success<GetLoggedUserDataResponseEntity>():
         emit(GetLoggedUserDataSuccess(data: result.data));
         debugPrint('returnedData : ${result.data}');
+        print('returnedData : ${result.data}');
       case Fail<GetLoggedUserDataResponseEntity>():
         emit(GetLoggedUserDataError(
             error: ErrorHandler.handle(result.exception!)));

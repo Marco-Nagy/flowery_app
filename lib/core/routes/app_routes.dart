@@ -31,9 +31,10 @@ class AppRoutes {
   static const String categoriesView = 'categoriesView';
   static const String productsDetailsView = 'productsDetailsView';
   static const String mostSellingScreen = 'mostSellingScreen';
+  static const String profileMainScreen = 'profileMainScreen';
+
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
-  static const String profileMainScreen = 'profileMainScreen';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -83,11 +84,14 @@ class AppRoutes {
         return BaseRoute(
           page: MostSellingScreen(),
         );
+      case AppRoutes.profileMainScreen:
+        return BaseRoute(page: ProfileMainScreen());
       case AppRoutes.productsDetailsView:
         return BaseRoute(page: ProductDetailsView(
           product: args  as dynamic,
 
         ));
+
       case AppRoutes.profileView:
         return BaseRoute(page: const ProfileView());
       case AppRoutes.resetPasswordProfileView:
