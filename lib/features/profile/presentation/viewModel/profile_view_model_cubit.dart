@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
 import 'package:flowery_e_commerce/features/profile/domain/use_cases/profile_use_case.dart';
@@ -11,6 +13,7 @@ import '../../../../di/di.dart';
 import '../../../auth/data/data_sources/contracts/offline_data_source.dart';
 import '../../domain/entities/response/edit_profile_response_entity.dart';
 import '../../domain/entities/response/get_logged_user_data_response_entity.dart';
+import '../../domain/entities/response/upload_photo_response_entity.dart';
 
 part 'profile_view_model_state.dart';
 
@@ -28,6 +31,8 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
         _getLoggedUserData();
       case EditProfile():
         _editProfile(action.profileData);
+      case UploadPhoto():
+        _uploadPhoto(action.photo);
     }
   }
 
@@ -53,6 +58,18 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
         emit(EditProfileSuccess(data: result.data));
       case Fail<EditProfileResponseEntity>():
         emit(EditProfileError(error: ErrorHandler.handle(result.exception!)));
+    }
+  }
+
+  Future<void> _uploadPhoto(File photo) async {
+    emit(UploadPhotoLoading());
+    String? token = await _offlineDataSource.getToken();
+    final result = await _useCase.uploadPhoto(token ?? '', photo);
+    switch (result) {
+      case Success<UploadPhotoResponseEntity>():
+        emit(UploadPhotoSuccess(data: result.data));
+      case Fail<UploadPhotoResponseEntity>():
+        emit(UploadPhotoError(error: ErrorHandler.handle(result.exception!)));
     }
   }
 }
