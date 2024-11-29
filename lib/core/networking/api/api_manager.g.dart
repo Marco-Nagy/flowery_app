@@ -466,6 +466,51 @@ class _ApiManager implements ApiManager {
     return _value;
   }
 
+  @override
+  Future<UploadPhotoResponseDto> uploadPhoto(
+    String token,
+    File photo,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = FormData();
+    _data.files.add(MapEntry(
+      'photo',
+      MultipartFile.fromFileSync(
+        photo.path,
+        filename: photo.path.split(Platform.pathSeparator).last,
+      ),
+    ));
+    final _options = _setStreamType<UploadPhotoResponseDto>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
+    )
+        .compose(
+          _dio.options,
+          'api/v1/auth/upload-photo',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late UploadPhotoResponseDto _value;
+    try {
+      _value = UploadPhotoResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||
