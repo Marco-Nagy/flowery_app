@@ -7,9 +7,7 @@ import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/
 import 'package:flowery_e_commerce/features/best_seller/presentation/screens/most_selling_screen.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/categories/views/categories_view.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_screen.dart';
-import 'package:flowery_e_commerce/features/categories/presentation/products/views/product_details.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
-import 'package:flowery_e_commerce/features/product/domain/entities/product_response_entity.dart';
 import 'package:flowery_e_commerce/features/product/presentision/view/product_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +15,6 @@ import '../../di/di.dart';
 import '../../features/auth/presentation/forget_password/view/forget_password.dart';
 import '../../features/auth/presentation/login/view/login_view.dart';
 import '../../features/auth/presentation/signup/view/signup_view.dart';
-import '../../features/best_seller/domain/entities/most_selling_entity.dart';
 import '../../features/generic/presentation/screens/occasion_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/profile/presentation/views/reset_password_profile_view.dart';
@@ -37,8 +34,6 @@ class AppRoutes {
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
   static const String profileMainScreen = 'profileMainScreen';
-  static const String profileView = "profileView";
-  static const String resetPasswordProfileView = 'resetPasswordProfileView';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -97,8 +92,6 @@ class AppRoutes {
         return BaseRoute(page: const ProfileView());
       case AppRoutes.resetPasswordProfileView:
         return BaseRoute(page: const ResetPasswordProfileView());
-      case AppRoutes.productsDetails:
-        return BaseRoute(page: ProductDetails());
       case AppRoutes.profileMainScreen:
         return BaseRoute(page: ProfileMainScreen());
       case AppRoutes.profileView:
