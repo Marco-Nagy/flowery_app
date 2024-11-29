@@ -10,4 +10,6 @@ class VerifyResetCodeResponseDto {
 
   factory VerifyResetCodeResponseDto.fromJson(Map<String, dynamic> json) =>
       _$VerifyResetCodeResponseDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$VerifyResetCodeResponseDtoToJson(this);
 }

@@ -3,40 +3,33 @@ import 'email_field.dart';
 import 'password_field.dart';
 import 'remember_me_and_forgot_password.dart';
 
-class LoginForm extends StatefulWidget {
-  final formKey;
+class LoginForm extends StatelessWidget {
+  final GlobalKey<FormState> formKey;
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final void Function(bool) onRememberMeChanged;
 
   const LoginForm({
-    Key? key,
-    required this.onRememberMeChanged,
+    super.key,
     required this.formKey,
     required this.emailController,
     required this.passwordController,
-  }) : super(key: key);
-
-  @override
-  _LoginFormState createState() => _LoginFormState();
-}
-
-class _LoginFormState extends State<LoginForm> {
-  bool rememberMe = false;
+    required this.onRememberMeChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Form(
-        key: widget.formKey,
+        key: formKey,
         child: Column(
           children: [
-            EmailField(emailController: widget.emailController),
+            EmailField(emailController: emailController),
             const SizedBox(height: 30),
-            PasswordField(passwordController: widget.passwordController),
+            PasswordField(passwordController: passwordController),
             const SizedBox(height: 16),
             RememberMeAndForgotPassword(
-              onRememberMeChanged: widget.onRememberMeChanged,
+              onRememberMeChanged: onRememberMeChanged,
             ),
           ],
         ),

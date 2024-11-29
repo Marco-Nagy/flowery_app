@@ -1,12 +1,12 @@
 class BestSeller {
-  String? id;
-  String? title;
-  String? description;
-  String? imgCover;
-  List<String?>? images;
-  int? price;
-  int? priceAfterDiscount;
-  int? quantity;
+ final String? id;
+ final String? title;
+ final String? description;
+ final String? imgCover;
+ final List<String?>? images;
+ final int? price;
+ final int? priceAfterDiscount;
+ final int? quantity;
 
   BestSeller({
     this.id,
