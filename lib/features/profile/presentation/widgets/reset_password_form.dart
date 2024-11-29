@@ -53,7 +53,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
           verticalSpacing(20),
           CustomTextFormField(
             isPassword: !_newPasswordVisible,
-            controller: widget.passwordController,
+            controller: widget.newPasswordController,
             hintText: 'New Password',
             labelText: 'New Password',
             validator: (value) => Validators.validatePassword(value),

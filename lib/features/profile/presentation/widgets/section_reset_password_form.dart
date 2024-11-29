@@ -79,18 +79,25 @@ class _SectionResetPasswordFormState extends State<SectionResetPasswordForm> {
                 break;
               case ChangePasswordSuccess():
                 aweSnackBar(
-                    msg: 'Success',
+                    msg: 'Password changed successfully',
                     context: context,
                     type: MessageTypeConst.success,
                     title: 'Success');
                 context.pushReplacementNamed(AppRoutes.profileView);
                 break;
               case ChangePasswordError():
-                aweSnackBar(
-                    msg: '${state.error.error.toString()}',
-                    context: context,
-                    type: MessageTypeConst.success,
-                    title: 'Error');
+                state.error.error.toString() == 'incorrect email or password'
+                    ? aweSnackBar(
+                        msg: 'Old password is incorrect, Please try again',
+                        context: context,
+                        type: MessageTypeConst.failure,
+                        title: 'Error')
+                    : aweSnackBar(
+                        msg: '${state.error.error.toString()}',
+                        context: context,
+                        type: MessageTypeConst.success,
+                        title: 'Error');
+
                 break;
               default:
             }

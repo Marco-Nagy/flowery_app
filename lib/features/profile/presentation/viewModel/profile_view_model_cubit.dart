@@ -66,6 +66,7 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
     final result = await _useCase.changePassword(token ?? '', request);
     switch (result) {
       case Success<ChangePasswordResponseEntity>():
+        await _offlineDataSource.cacheToken(result.data.token ?? "");
         emit(ChangePasswordSuccess(data: result.data));
       case Fail<ChangePasswordResponseEntity>():
         emit(
