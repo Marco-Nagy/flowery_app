@@ -34,48 +34,52 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.8
-  fluttertoast: ^8.2.8
-  row_item: ^2.2.1+1
+  cupertino_icons:
+  fluttertoast:
+  badges:
+  row_item:
   dio:
-  retrofit: ^4.4.1
-  logger: ^2.5.0  # for logging purpose
-  pretty_dio_logger: ^1.4.0
-  json_annotation: ^4.9.0
-  flutter_screenutil: ^5.9.3
-  shared_preferences: ^2.3.2
-  build_runner: ^2.4.13
+  retrofit:
+  logger:   # for logging purpose
+  pretty_dio_logger:
+  json_annotation:
+  flutter_screenutil:
+  shared_preferences:
+  build_runner:
   awesome_snackbar_content:
   connectivity_plus:
 
   # Ui
-  lottie: ^3.1.2
-  flutter_hooks: ^0.20.5
-  equatable: ^2.0.5
-  shimmer: ^3.0.0
-  animated_text_kit: ^4.2.2
+  lottie:
+  flutter_hooks:
+  equatable:
+  shimmer:
+  animated_text_kit:
+  flutter_image_slideshow:
+
 
   # add injectable to your dependencies
   injectable:
-  # add get_it
   get_it:
 
   # state Manager
   flutter_bloc:
-  mockito: ^5.4.4
-  bloc_test: ^9.1.7
-  auto_size_text: ^3.0.0
+  bloc:
+  mockito:
+  bloc_test:
+  auto_size_text:
+  cached_network_image:
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^3.0.0
-  # add the generator to your dev_dependencies
+  flutter_lints:
   injectable_generator:
-  retrofit_generator: '>=8.0.0 <10.0.0' # for Dart 3.3 use ^9.0.0
-  json_serializable: ^6.8.0
-  dartz: ^0.10.1
-  test: ^1.25.7
+  retrofit_generator:
+  json_serializable:
+  dartz:
+  test:
+  flutter_native_splash:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -91,7 +95,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    - assets/json/
     - assets/fonts/
     - lib/generated/assets.dart
   #   - images/a_dot_ham.jpeg
