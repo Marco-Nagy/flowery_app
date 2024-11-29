@@ -1,5 +1,6 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,13 +20,38 @@ class _CustomSwitchIconState extends State<CustomSwitchIcon> {
       margin: EdgeInsets.all(12.sp),
       child: Row(
         children: [
-          SizedBox(
-            width: 80.w,
-            height: 40.h,
-            child: Image.asset('assets/images/switch.png'),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isSwitched = !isSwitched;
+              });
+            },
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              width: 60.w,
+              height: 30.h,
+              padding: EdgeInsets.symmetric(horizontal: 4.sp),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30.sp),
+                color: isSwitched ? MyColors.baseColor : Colors.grey,
+              ),
+              child: AnimatedAlign(
+                duration: Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+                alignment: isSwitched ? Alignment.centerRight : Alignment.centerLeft,
+                child: Container(
+                  width: 22.w,
+                  height: 22.h,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: MyColors.whiteBase,
+                  ),
+                ),
+              ),
+            ),
           ),
           SizedBox(
-            width: 3.sp,
+            width: 4.sp,
           ),
           Text(
             'Notification',
@@ -41,7 +67,7 @@ class _CustomSwitchIconState extends State<CustomSwitchIcon> {
                 width: 20.w,
                 height: 20.w,
                 child: Image.asset(
-                  'assets/images/drop_down_arrow.png',
+                  Assets.imagesDropDownArrow,
                 )),
           ),
         ],

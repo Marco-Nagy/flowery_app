@@ -4,6 +4,7 @@ import 'package:flowery_e_commerce/features/auth/presentation/logout/widgets/log
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_app_bar_of_profile_main_screen.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_main_profile_data.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_switch_icon.dart';
+import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -38,7 +39,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                     width: 20.w,
                     height: 20.h,
                     child: Image.asset(
-                      'assets/images/terms_conditions.png',
+                      Assets.imagesTermsConditions,
                     ),
                   ),
                   SizedBox(
@@ -57,7 +58,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                         width: 20.w,
                         height: 20.w,
                         child: Image.asset(
-                          'assets/images/drop_down_arrow.png',
+                          Assets.imagesDropDownArrow,
                         )),
                   ),
                 ],
@@ -71,7 +72,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                     width: 20.w,
                     height: 20.h,
                     child: Image.asset(
-                      'assets/images/location.png',
+                      Assets.imagesLocation,
                     ),
                   ),
                   SizedBox(
@@ -90,7 +91,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                         width: 20.w,
                         height: 20.w,
                         child: Image.asset(
-                          'assets/images/drop_down_arrow.png',
+                          Assets.imagesDropDownArrow,
                         )),
                   ),
                 ],
@@ -120,7 +121,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                       SizedBox(
                           width: 20.w,
                           height: 20.w,
-                          child: Image.asset('assets/images/language.png')),
+                          child: Image.asset(Assets.imagesLanguage)),
                       SizedBox(
                         width: 5.w,
                       ),
@@ -160,7 +161,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                             width: 20.w,
                             height: 20.w,
                             child: Image.asset(
-                              'assets/images/drop_down_arrow.png',
+                              Assets.imagesDropDownArrow,
                             )),
                       ),
                     ],
@@ -183,7 +184,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                             width: 20.w,
                             height: 20.w,
                             child: Image.asset(
-                              'assets/images/drop_down_arrow.png',
+                              Assets.imagesDropDownArrow,
                             )),
                       ),
                     ],
@@ -206,7 +207,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                   SizedBox(
                       width: 18.sp,
                       height: 18.sp,
-                      child: Image.asset('assets/images/logout_black.png')),
+                      child: Image.asset(Assets.imagesLogoutBlack)),
                   SizedBox(
                     width: 5.w,
                   ),
@@ -225,7 +226,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                         width: 30.w,
                         height: 30.w,
                         child: Image.asset(
-                          'assets/images/logout.png',
+                          Assets.imagesLogout,
                         )),
                   ),
                 ],

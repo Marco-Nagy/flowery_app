@@ -1,8 +1,10 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomAppBarOfProfileMainScreen extends StatelessWidget {
   const CustomAppBarOfProfileMainScreen({super.key});
@@ -18,7 +20,7 @@ class CustomAppBarOfProfileMainScreen extends StatelessWidget {
               width: 89.w,
               height: 25.h,
               child: Image.asset(
-                'assets/images/logo.png',
+                Assets.imagesLogo,
                 width: 98.w,
                 height: 25.h,
                 fit: BoxFit.fitWidth,
@@ -34,7 +36,6 @@ class CustomAppBarOfProfileMainScreen extends StatelessWidget {
             child: Icon(
               Icons.notifications,
               size: 30.sp,
-              color: MyColors.gray,
             ),
           ),
         ],

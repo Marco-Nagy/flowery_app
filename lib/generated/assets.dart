@@ -24,6 +24,7 @@ class Assets {
   static const String imagesLocationOn = 'assets/images/location_on.png';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesLogout = 'assets/images/logout.png';
+  static const String imagesLogoutBlack = 'assets/images/logout_black.png';
   static const String imagesNetwork = 'assets/images/network.jpg';
   static const String imagesNetworrk = 'assets/images/networrk.png';
   static const String imagesNoNetwork = 'assets/images/noNetwork.png';
@@ -36,7 +37,6 @@ class Assets {
   static const String imagesSearch = 'assets/images/search.png';
   static const String imagesShoppingCart = 'assets/images/shopping_cart.png';
   static const String imagesSplash = 'assets/images/splash.png';
-  static const String jsonFloweryLoader = 'assets/json/flowery_loader.json~';
   static const String imagesSwitch = 'assets/images/switch.png';
   static const String imagesTermsConditions = 'assets/images/terms_conditions.png';
 
