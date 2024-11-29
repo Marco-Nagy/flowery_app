@@ -75,6 +75,7 @@ dev_dependencies:
 
   flutter_lints: ^3.0.0
   # add the generator to your dev_dependencies
+  mockito: ^5.4.4
   injectable_generator:
   retrofit_generator: '>=8.0.0 <10.0.0' # for Dart 3.3 use ^9.0.0
   json_serializable: ^6.8.0
