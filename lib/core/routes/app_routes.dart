@@ -84,7 +84,7 @@ class AppRoutes {
         );
         case AppRoutes.mostSellingScreen:
         return BaseRoute(
-          page: const MostSellingScreen(),
+          page:  MostSellingScreen(),
         );
       case AppRoutes.productsDetailsView:
         return BaseRoute(page: ProductDetailsView(
