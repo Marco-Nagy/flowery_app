@@ -10,5 +10,8 @@ class ResetPasswordRequestDto {
   ResetPasswordRequestDto({this.email, this.newPassword});
 
 
+  factory ResetPasswordRequestDto.fromJson(Map<String, dynamic> json) =>
+      _$ResetPasswordRequestDtoFromJson(json);
+
   Map<String, dynamic> toJson() => _$ResetPasswordRequestDtoToJson(this);
 }

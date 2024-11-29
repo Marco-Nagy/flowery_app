@@ -19,7 +19,7 @@ void main() {
     signUpUseCase = SignUpUseCase(mockAuthRepository);
 
     provideDummy<DataResult<SignUpResponseEntity>>(
-        Success(SignUpResponseEntity()));
+        Success(const SignUpResponseEntity()));
   });
 
   group('SignUpUseCase', () {
@@ -33,7 +33,7 @@ void main() {
       gender: 'female',
     );
 
-    final responseEntity = SignUpResponseEntity(
+    const responseEntity = SignUpResponseEntity(
       message: 'Sign-up successful',
       error: null,
       token: 'token',

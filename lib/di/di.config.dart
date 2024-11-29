@@ -72,8 +72,6 @@ import '../features/categories/domain/use_cases/categories_use_case.dart'
 import '../features/categories/domain/use_cases/products_use_case.dart' as _i98;
 import '../features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart'
     as _i80;
-import '../features/categories/presentation/products/viewModel/products_view_model_cubit.dart'
-    as _i559;
 import '../features/generic/data/data_sources/contracts/generic_online_data_source.dart'
     as _i211;
 import '../features/generic/data/data_sources/impl/generic_online_data_source_impl.dart'
@@ -192,8 +190,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i590.CategoriesRepository>(() =>
         _i620.CategoriesRepositoryImplementation(
             gh<_i518.CategoriesOnlineDataSource>()));
-    gh.factory<_i559.ProductsViewModelCubit>(
-        () => _i559.ProductsViewModelCubit(gh<_i98.ProductsUseCase>()));
     gh.factory<_i972.MostSellingProductsUseCase>(() =>
         _i972.MostSellingProductsUseCase(
             gh<_i643.MostSellingProductsRepository>()));

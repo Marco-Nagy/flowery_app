@@ -2,7 +2,7 @@ import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flutter/material.dart';
 
-aweSnackBar({
+void aweSnackBar({
   required String msg,
   required BuildContext context,
   required String type,
@@ -28,7 +28,7 @@ aweSnackBar({
     ..showSnackBar(snackBar);
 }
 
-bannerSnackBar(
+void bannerSnackBar(
     {required String msg,
     required String title,
     required BuildContext context,

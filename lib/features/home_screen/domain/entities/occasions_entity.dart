@@ -1,6 +1,6 @@
 class Occasions {
-  String name;
-  String image;
+ final String name;
+ final String image;
 
   Occasions({
     required this.name,

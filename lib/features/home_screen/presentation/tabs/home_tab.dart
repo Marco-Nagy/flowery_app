@@ -16,17 +16,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class HomeTab extends StatelessWidget {
-  HomeTab({super.key});
+  const HomeTab({super.key});
 
-  OccasionsCubit occasionsCubit = getIt.get<OccasionsCubit>()
-    ..getOccasions();
-  BestSellerCubit bestSellerCubit = getIt.get<BestSellerCubit>()
-    ..getBestSellers();
-   CategoriesViewModelCubit categoriesCubit = getIt.get<CategoriesViewModelCubit>()..doAction( GetCategoriesAction());
   @override
   Widget build(BuildContext context) {
+    OccasionsCubit occasionsCubit = getIt.get<OccasionsCubit>()..getOccasions();
+    BestSellerCubit bestSellerCubit = getIt.get<BestSellerCubit>()
+      ..getBestSellers();
+    CategoriesViewModelCubit categoriesCubit =
+        getIt.get<CategoriesViewModelCubit>()..doAction(GetCategoriesAction());
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -64,19 +63,33 @@ class HomeTab extends StatelessWidget {
                 margin: EdgeInsets.all(15.sp),
                 child: Row(
                   children: [
-                    Image.asset(Assets.imagesLocationOn,height: 20.h,width: 20.w,),
-                    SizedBox(width: 2.w,),
+                    Image.asset(
+                      Assets.imagesLocationOn,
+                      height: 20.h,
+                      width: 20.w,
+                    ),
+                    SizedBox(
+                      width: 2.w,
+                    ),
                     Text(
                       'Deliver to 2XVP+XC - Sheikh Zayed ',
                       style: MyFonts.styleMedium500_14
                           .copyWith(color: MyColors.blackBase),
                     ),
-                    SizedBox(width: 2.w,),
-                    Image.asset(Assets.imagesArrowDownIos,height: 16.h,width: 16.w,),
+                    SizedBox(
+                      width: 2.w,
+                    ),
+                    Image.asset(
+                      Assets.imagesArrowDownIos,
+                      height: 16.h,
+                      width: 16.w,
+                    ),
                   ],
                 ),
               ),
-              SizedBox(height: 10.h,),
+              SizedBox(
+                height: 10.h,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -87,7 +100,7 @@ class HomeTab extends StatelessWidget {
                             .copyWith(color: MyColors.blackBase)),
                   ),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       context.pushNamed(AppRoutes.categoriesView);
                     },
                     child: Container(
@@ -114,8 +127,8 @@ class HomeTab extends StatelessWidget {
                             .copyWith(color: MyColors.blackBase)),
                   ),
                   InkWell(
-                    onTap: (){
-                    context.pushNamed(AppRoutes.mostSellingScreen);
+                    onTap: () {
+                      context.pushNamed(AppRoutes.mostSellingScreen);
                     },
                     child: Container(
                       margin: EdgeInsets.only(left: 15.w, right: 15.w),
@@ -125,7 +138,7 @@ class HomeTab extends StatelessWidget {
                               decoration: TextDecoration.underline)),
                     ),
                   ),
-      ],
+                ],
               ),
               const CustomBestSellerList(),
               Row(
@@ -138,7 +151,7 @@ class HomeTab extends StatelessWidget {
                             .copyWith(color: MyColors.blackBase)),
                   ),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       context.pushNamed(AppRoutes.occasionScreen);
                     },
                     child: Container(

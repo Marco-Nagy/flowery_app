@@ -9,4 +9,7 @@ class VerifyResetCodeRequestDto {
   VerifyResetCodeRequestDto({this.resetCode});
 
   Map<String, dynamic> toJson() => _$VerifyResetCodeRequestDtoToJson(this);
+  factory VerifyResetCodeRequestDto.fromJson(Map<String, dynamic> json) =>
+      _$VerifyResetCodeRequestDtoFromJson(json);
+
 }

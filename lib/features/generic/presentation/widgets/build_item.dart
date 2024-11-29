@@ -11,7 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/routes/app_routes.dart';
 
 class BuildItem extends StatelessWidget {
-  BuildItem({super.key});
+  const BuildItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class BuildItem extends StatelessWidget {
       builder: (context, state) {
         switch (state) {
           case GetMostSellerLoadingState():
-            return AppLoader();
+            return const AppLoader();
           case GetMostSellerSuccessState():
             return GridView.builder(
               padding: const EdgeInsets.only(

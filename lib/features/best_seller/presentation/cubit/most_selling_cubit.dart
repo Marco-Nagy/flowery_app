@@ -14,9 +14,6 @@ class MostSellerCubit extends Cubit<MostSellerStates> {
     var response = await mostSellingProductsUseCase.call();
     switch (response) {
       case Success<List<MostSellingProducts>>():
-        print("====================${response.data.map(
-              (e) => e.title,
-        ).toList()}");
         emit(GetMostSellerSuccessState(response.data));
       case Fail():
         emit(GetMostSellerErrorState(ErrorHandler.handle(response.exception!)));

@@ -19,7 +19,7 @@ void main() {
 
     provideDummy<DataResult<ProductResponseEntity>>(
         Success(
-      ProductResponseEntity(
+      const ProductResponseEntity(
         products: [
           ProductEntity(
             id: '1',
@@ -41,7 +41,7 @@ void main() {
 
   group('ProductUseCase Tests', () {
     test('should return Success when repo call is successful', () async {
-      final responseEntity = ProductResponseEntity(
+      const responseEntity = ProductResponseEntity(
         products: [
           ProductEntity(
             id: '1',

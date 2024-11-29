@@ -7,16 +7,16 @@ class RememberMeWidget extends StatefulWidget {
   final bool initialValue;
 
   const RememberMeWidget({
-    Key? key,
+    super.key,
     required this.onChanged,
     this.initialValue = false,
-  }) : super(key: key);
+  });
 
   @override
-  _RememberMeWidgetState createState() => _RememberMeWidgetState();
+  RememberMeWidgetState createState() => RememberMeWidgetState();
 }
 
-class _RememberMeWidgetState extends State<RememberMeWidget> {
+class RememberMeWidgetState extends State<RememberMeWidget> {
   late bool isChecked;
 
   @override

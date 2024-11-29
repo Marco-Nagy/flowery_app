@@ -28,7 +28,7 @@ class GridBuilderWidget extends StatelessWidget {
       itemCount: state.items.length + (cubit.isFetching ? 1 : 0),
       itemBuilder: (context, index) {
         if (index >= state.items.length) {
-          return  AppLoader();
+          return  const AppLoader();
         }
 
         final item = state.items[index];
