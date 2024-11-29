@@ -42,12 +42,12 @@ void main() {
         gender: 'female',
         phone: '1234567890',
         role: 'user',
-        Id: 'user-id',
+        id: 'user-id',
         createdAt: '2024-11-19',
       ),
     );
 
-    final responseEntity = SignUpResponseEntity(
+    const responseEntity = SignUpResponseEntity(
       message: 'Sign-up successful',
       error: null,
       token: 'token',

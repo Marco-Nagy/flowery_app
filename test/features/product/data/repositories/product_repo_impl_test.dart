@@ -21,7 +21,7 @@ void main() {
 
     provideDummy<DataResult<ProductResponseEntity>>(
           Success(
-        ProductResponseEntity(
+        const ProductResponseEntity(
           products: [],
         ),
       ),
@@ -30,7 +30,7 @@ void main() {
 
   group('ProductRepoImpl', () {
     test('should return Success<ProductResponseEntity> when API call is successful', () async {
-      final responseEntity = ProductResponseEntity(
+      const responseEntity = ProductResponseEntity(
         products: [
           ProductEntity(
             id: '1',

@@ -22,7 +22,7 @@ class BuildItem extends StatelessWidget {
       builder: (context, state) {
         switch (state) {
           case GetMostSellerLoadingState():
-            return AppLoader();
+            return const AppLoader();
           case GetMostSellerSuccessState():
             return GridView.builder(
               padding: const EdgeInsets.only(

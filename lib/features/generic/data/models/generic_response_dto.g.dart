@@ -41,7 +41,7 @@ Map<String, dynamic> _$MetadataToJson(Metadata instance) => <String, dynamic>{
     };
 
 ItemModel _$ItemModelFromJson(Map<String, dynamic> json) => ItemModel(
-      Id: json['_id'] as String?,
+      id: json['_id'] as String?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
       image: json['image'] as String?,
@@ -50,7 +50,7 @@ ItemModel _$ItemModelFromJson(Map<String, dynamic> json) => ItemModel(
     );
 
 Map<String, dynamic> _$ItemModelToJson(ItemModel instance) => <String, dynamic>{
-      '_id': instance.Id,
+      '_id': instance.id,
       'name': instance.name,
       'slug': instance.slug,
       'image': instance.image,

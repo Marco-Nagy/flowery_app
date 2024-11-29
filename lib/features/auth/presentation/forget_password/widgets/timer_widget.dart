@@ -38,7 +38,7 @@ class _TimerWidgetState extends State<TimerWidget> {
               cubit.time == 0
                   ? InkWell(
                       onTap: () async {
-                        await context
+                        context
                             .read<ForgetPasswordViewModelCubit>()
                             .initTimer();
                         context.read<ForgetPasswordViewModelCubit>().doAction(
@@ -54,7 +54,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                     )
                   : Text(
                       cubit.timeMessage.value,
-                      style: TextStyle(color: MyColors.baseColor, fontSize: 16),
+                      style: const TextStyle(color: MyColors.baseColor, fontSize: 16),
                     ),
             ],
           ),

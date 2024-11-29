@@ -5,19 +5,17 @@ import 'package:flowery_e_commerce/features/auth/presentation/forget_password/vi
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/reset_password.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/signup_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/screens/most_selling_screen.dart';
-import 'package:flowery_e_commerce/features/categories/presentation/categories/views/categories_view.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/screens/categories_view.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_screen.dart';
-import 'package:flowery_e_commerce/features/product/domain/entities/product_response_entity.dart';
-import 'package:flowery_e_commerce/features/product/presentision/view/product_details_view.dart';
+import 'package:flowery_e_commerce/features/product/presentation/view/product_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../di/di.dart';
 import '../../features/auth/presentation/forget_password/view/forget_password.dart';
 import '../../features/auth/presentation/login/view/login_view.dart';
 import '../../features/auth/presentation/signup/view/signup_view.dart';
-import '../../features/best_seller/domain/entities/most_selling_entity.dart';
 import '../../features/generic/presentation/screens/occasion_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/profile/presentation/views/reset_password_profile_view.dart';
@@ -42,7 +40,7 @@ class AppRoutes {
     switch (settings.name) {
       case AppRoutes.login:
         return BaseRoute(
-          page: LoginView(),
+          page: const LoginView(),
         );
       case AppRoutes.register:
         return BaseRoute(
@@ -82,11 +80,11 @@ class AppRoutes {
         );
       case AppRoutes.categoriesView:
         return BaseRoute(
-          page: CategoriesView(),
+          page: const CategoriesView(),
         );
         case AppRoutes.mostSellingScreen:
         return BaseRoute(
-          page: MostSellingScreen(),
+          page: const MostSellingScreen(),
         );
       case AppRoutes.productsDetailsView:
         return BaseRoute(page: ProductDetailsView(

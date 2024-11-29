@@ -1,7 +1,7 @@
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
+import 'package:flowery_e_commerce/features/auth/domain/entities/request/signup_request_entity.dart';
 import 'package:injectable/injectable.dart';
 import '../contracts/auth_repo.dart';
-import '../entities/request/signup_request_entity.dart';
 import '../entities/response/signup_response_entity.dart';
 
 @injectable
