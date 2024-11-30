@@ -5,15 +5,13 @@ import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_icon_badge.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/widgets/spacing.dart';
 import '../generic_item_by_product/views/generic_item_screen.dart';
 
 class OccasionView extends StatefulWidget {
-  OccasionView({super.key});
+  const OccasionView({super.key});
 
   @override
   State<OccasionView> createState() => _OccasionViewState();

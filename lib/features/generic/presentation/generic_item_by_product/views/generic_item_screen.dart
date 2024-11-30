@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../../core/utils/widgets/base/app_loader.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
-import '../../../../../di/di.dart';
-import '../widget/no_products_widget.dart';
 import '../../../../generic/presentation/widgets/tab_bar_widget.dart';
 import '../viewModel/generic_item_action.dart';
 import '../viewModel/generic_item_view_model_cubit.dart';
 import '../widget/generic_builder_widget.dart';
+import '../widget/no_products_widget.dart';
 
 class GenericItemScreen extends StatelessWidget {
   const GenericItemScreen(
-      {Key? key, required this.resourceName, required this.field,  this.onClick})
-      : super(key: key);
+      {super.key, required this.resourceName, required this.field,  this.onClick});
   final String resourceName, field;
   final void Function(GlobalKey)? onClick;
 
@@ -24,16 +23,16 @@ class GenericItemScreen extends StatelessWidget {
         final cubit = context.read<GenericItemViewModelCubit>();
 
         switch (state.runtimeType) {
-          case GetProductError:
+          case const (GetProductError):
             final errorState = state as GetProductError;
             return Text(errorState.error.error.toString());
 
-          case GetItemsLoading:
-          case GetProductLoading:
-            return Center(child: AppLoader());
+          case const (GetItemsLoading):
+          case const (GetProductLoading):
+            return const Center(child: AppLoader());
 
-          case GetItemsSuccess:
-          case FilteredProductsState:
+          case const (GetItemsSuccess):
+          case const (FilteredProductsState):
             final items = cubit.items;
             final filteredProducts = state is FilteredProductsState
                 ? state.filteredProducts
@@ -48,7 +47,7 @@ class GenericItemScreen extends StatelessWidget {
                     tabBarWidget(
                       tabs: [
                         const Tab(text: 'All'),
-                        ...items.map((item) => Tab(text: item.name)).toList(),
+                        ...items.map((item) => Tab(text: item.name)),
                       ],
                       onTap: (index) {
                         cubit.doAction(FilterProductsAction(
@@ -70,7 +69,7 @@ class GenericItemScreen extends StatelessWidget {
             );
 
           default:
-            return AppLoader();
+            return const AppLoader();
 
         }
       },
