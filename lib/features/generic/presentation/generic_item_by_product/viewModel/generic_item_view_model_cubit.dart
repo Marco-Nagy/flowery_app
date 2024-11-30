@@ -1,5 +1,7 @@
+import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/networking/error/error_handler.dart';
 import '../../../../../core/networking/error/error_model.dart';
@@ -84,7 +86,5 @@ class GenericItemViewModelCubit extends Cubit<GenericItemViewModeState> {
 
     emit(FilteredProductsState(filteredProducts: filtered));
   }
-
-
 
 }
