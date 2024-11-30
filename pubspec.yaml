@@ -48,6 +48,7 @@ dependencies:
   build_runner:
   awesome_snackbar_content:
   connectivity_plus:
+  add_to_cart_animation:
 
   # Ui
   lottie:
@@ -56,7 +57,7 @@ dependencies:
   shimmer:
   animated_text_kit:
   flutter_image_slideshow:
-  add_to_cart_animation:
+
 
   # add injectable to your dependencies
   injectable:
