@@ -1,13 +1,11 @@
-import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../../core/networking/error/error_handler.dart';
 import '../../../../../core/networking/error/error_model.dart';
 import '../../../../generic/domain/entity/generic_response_entity.dart';
 import '../../../../generic/domain/use_cases/generic_use_case.dart';
-
 import '../../../../product/domain/entities/product_response_entity.dart';
 import '../../../../product/domain/use_cases/product_use_case.dart';
 import 'generic_item_action.dart';

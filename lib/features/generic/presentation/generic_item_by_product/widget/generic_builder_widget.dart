@@ -1,7 +1,4 @@
-import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
-import 'package:flowery_e_commerce/di/di.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

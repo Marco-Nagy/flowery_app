@@ -9,7 +9,7 @@ import 'package:flowery_e_commerce/features/auth/data/data_sources/contracts/off
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void ShowLogoutDialog(BuildContext context) {
+void showLogoutDialog(BuildContext context) {
   final OfflineDataSource offlineDataSource = getIt<OfflineDataSource>();
 
   showDialog(

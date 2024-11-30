@@ -6,13 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CategoriesTab extends StatelessWidget {
-   CategoriesTab({super.key});
-  CategoriesViewModelCubit categoriesViewModelCubit = getIt.get<CategoriesViewModelCubit>();
+ const  CategoriesTab({super.key});
   @override
   Widget build(BuildContext context) {
+    CategoriesViewModelCubit categoriesViewModelCubit = getIt.get<CategoriesViewModelCubit>();
+
     return BlocProvider(
       create: (context) => categoriesViewModelCubit,
-      child: BaseView(child: CategoriesView()),
+      child: const BaseView(child: CategoriesView()),
     );
   }
 }
