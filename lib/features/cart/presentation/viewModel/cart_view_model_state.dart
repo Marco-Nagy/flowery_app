@@ -8,17 +8,3 @@ final class CartViewModelInitial extends CartViewModelState {
   @override
   List<Object> get props => [];
 }
-
-final class CartViewModelLoading extends CartViewModelState {
-  @override
-  List<Object> get props => [];
-}
-
-final class AddCarItemSuccess extends CartViewModelState {
- final bool visibility;
-
-  const AddCarItemSuccess({required this.visibility });
-  @override
-  // TODO: implement props
-  List<Object?> get props =>[visibility];
-}

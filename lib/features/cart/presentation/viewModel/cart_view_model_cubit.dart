@@ -9,16 +9,13 @@ part 'cart_view_model_state.dart';
 class CartViewModelCubit extends Cubit<CartViewModelState> {
   CartViewModelCubit() : super(CartViewModelInitial());
   final cartKey = GlobalKey<CartIconKey>();
-  bool cartVisibility = false;
   Function(GlobalKey)? addToCartAnimation;
-  int cartQuantityItems = 0;
+  int cartQuantityItems = 60;
 
   Future<void> addToCart() async {
     cartQuantityItems;
     await cartKey.currentState!
         .runCartAnimation((++cartQuantityItems).toString());
-    cartVisibility = true;
-    emit(AddCarItemSuccess(visibility: cartVisibility));
   }
   void updateCartCount() {
     if (cartKey.currentState != null) {
