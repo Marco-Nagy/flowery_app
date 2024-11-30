@@ -4,6 +4,7 @@ import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_icon_badge.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,26 +12,41 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import '../generic_item_by_product/views/generic_item_screen.dart';
 
-class OccasionView extends StatelessWidget {
-   OccasionView({super.key});
+class OccasionView extends StatefulWidget {
+  OccasionView({super.key});
 
+  @override
+  State<OccasionView> createState() => _OccasionViewState();
+}
+
+class _OccasionViewState extends State<OccasionView> {
   // final cartKey = GlobalKey<CartIconKey>();
   late Function(GlobalKey) addToCartAnimation;
-   final cartKey = GlobalKey<CartIconKey>();
-  CartViewModelCubit   viewModelCubit= getIt.get<CartViewModelCubit>();
+
+  CartViewModelCubit cartViewModelCubit = getIt.get<CartViewModelCubit>();
 
   void listClick(GlobalKey widgetKey) async {
     await addToCartAnimation(widgetKey);
-    await cartKey.currentState!.runCartAnimation(viewModelCubit.cartQuantityItems.toString());
+    await cartViewModelCubit.cartKey.currentState!
+        .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the cart count to 20
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // viewModelCubit.cartQuantityItems = 20;
+      cartViewModelCubit.updateCartCount();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-
     // Function(GlobalKey) onClick =
     // Key for Cart Icon
     return AddToCartAnimation(
-      cartKey: cartKey,
+      cartKey: cartViewModelCubit.cartKey,
       height: 30,
       width: 30,
       opacity: 0.85,
@@ -40,7 +56,6 @@ class OccasionView extends StatelessWidget {
       jumpAnimation: const JumpAnimationOptions(),
       createAddToCartAnimation: (runAddToCartAnimation) {
         addToCartAnimation = runAddToCartAnimation;
-
 
         // return (GlobalKey) => addToCartAnimation(GlobalKey(cartKey));
       },
@@ -52,13 +67,8 @@ class OccasionView extends StatelessWidget {
             showArrow: true,
             actions: [
               const SizedBox(width: 16),
-              AddToCartIcon(
-                key: cartKey,
-                icon: const Icon(Icons.shopping_cart),
-                badgeOptions: const BadgeOptions(
-                  active: true,
-                  backgroundColor: Colors.red,
-                ),
+              CartIconBadge(
+                cartKey: cartViewModelCubit.cartKey,
               ),
               const SizedBox(
                 width: 16,
@@ -77,11 +87,13 @@ class OccasionView extends StatelessWidget {
 
             verticalSpacing(20),
             // CatalogGenericScreen(resourceName: 'occasions',),
-            GenericItemScreen(resourceName: 'occasions', field: 'occasion', onClick:(widgetKey)=>listClick(widgetKey))
+            GenericItemScreen(
+                resourceName: 'occasions',
+                field: 'occasion',
+                onClick: (widgetKey) => listClick(widgetKey))
           ],
         ),
       ),
     );
-
   }
 }
