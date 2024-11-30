@@ -3,6 +3,7 @@ import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/screens/categories_view.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/tabs/cart_tab.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/tabs/home_tab.dart';
+import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const HomeTab(),
     const CategoriesView(),
     const CartTab(),
+    const ProfileMainScreen(),
     const ProfileView(),
   ];
 

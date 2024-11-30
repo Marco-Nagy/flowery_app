@@ -23,4 +23,5 @@ class MyColors {
   static const Color lightPink = Color(0xffF9ECF0);
   static const Color green = Color(0xff0CB359);
   static const Color grey = Color(0xff535353);
+  static const Color error = Color(0xffCC1010);
 }
