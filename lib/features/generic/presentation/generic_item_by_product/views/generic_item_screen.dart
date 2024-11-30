@@ -19,9 +19,10 @@ class GenericItemScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GenericItemViewModelCubit  cubit = getIt.get<GenericItemViewModelCubit>();
     return BlocBuilder<GenericItemViewModelCubit, GenericItemViewModeState>(
       builder: (context, state) {
-        final cubit = context.read<GenericItemViewModelCubit>();
+        // final cubit = context.read<GenericItemViewModelCubit>();
 
         switch (state.runtimeType) {
           case GetProductError:
