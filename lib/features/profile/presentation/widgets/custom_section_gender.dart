@@ -10,10 +10,10 @@ class CustomSectionGender extends StatelessWidget {
   final ValueChanged<String> onChanged;
 
   const CustomSectionGender({
-    Key? key,
+    super.key,
     required this.selectedGender,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

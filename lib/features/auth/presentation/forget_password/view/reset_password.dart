@@ -33,7 +33,7 @@ class ResetPassword extends HookWidget {
             context: context,
             showArrow: true,
             navigation: () {
-              return null;
+              return;
             }),
         body: Padding(
           padding: const EdgeInsets.all(16.0),

@@ -1,6 +1,5 @@
 part of 'generic_view_model_cubit.dart';
 
-@immutable
 sealed class GenericViewModelState {}
 
 final class GenericViewModelInitial extends GenericViewModelState {}

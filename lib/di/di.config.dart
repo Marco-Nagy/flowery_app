@@ -52,6 +52,8 @@ import '../features/best_seller/domain/use_cases/most_selling_use_case.dart'
     as _i972;
 import '../features/best_seller/presentation/cubit/most_selling_cubit.dart'
     as _i372;
+import '../features/cart/presentation/viewModel/cart_view_model_cubit.dart'
+    as _i1043;
 import '../features/categories/data/data_sources/contracts/categories_online_data_source.dart'
     as _i518;
 import '../features/categories/data/data_sources/contracts/products_online_data_source.dart'
@@ -72,8 +74,6 @@ import '../features/categories/domain/use_cases/categories_use_case.dart'
 import '../features/categories/domain/use_cases/products_use_case.dart' as _i98;
 import '../features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart'
     as _i80;
-import '../features/categories/presentation/products/viewModel/products_view_model_cubit.dart'
-    as _i559;
 import '../features/generic/data/data_sources/contracts/generic_online_data_source.dart'
     as _i211;
 import '../features/generic/data/data_sources/impl/generic_online_data_source_impl.dart'
@@ -129,6 +129,7 @@ extension GetItInjectableX on _i174.GetIt {
     final registerModule = _$RegisterModule();
     gh.factory<_i361.LogInterceptor>(
         () => networkFactory.providerInterceptor());
+    gh.factory<_i1043.CartViewModelCubit>(() => _i1043.CartViewModelCubit());
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
@@ -192,8 +193,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i590.CategoriesRepository>(() =>
         _i620.CategoriesRepositoryImplementation(
             gh<_i518.CategoriesOnlineDataSource>()));
-    gh.factory<_i559.ProductsViewModelCubit>(
-        () => _i559.ProductsViewModelCubit(gh<_i98.ProductsUseCase>()));
     gh.factory<_i972.MostSellingProductsUseCase>(() =>
         _i972.MostSellingProductsUseCase(
             gh<_i643.MostSellingProductsRepository>()));

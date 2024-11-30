@@ -1,8 +1,8 @@
+import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
-
 import '../../../../../core/networking/error/error_handler.dart';
 import '../../../../../core/networking/error/error_model.dart';
 import '../../../../generic/domain/entity/generic_response_entity.dart';
@@ -46,13 +46,11 @@ class GenericItemViewModelCubit extends Cubit<GenericItemViewModeState> {
     switch (result) {
       case Success<GenericResponseEntity>():
         items = result.data.items ?? [];
-        print("Items fetched successfully: ${items.length} items");
         emit(GetItemsSuccess(items: items));
         break;
 
       case Fail<GenericResponseEntity>():
         final error = ErrorHandler.handle(result.exception!);
-        print("Failed to fetch items: $error");
         emit(GetItemsError(error: error));
         break;
     }
@@ -65,13 +63,11 @@ class GenericItemViewModelCubit extends Cubit<GenericItemViewModeState> {
     switch (result) {
       case Success<ProductResponseEntity>():
         allProducts = result.data.products;
-        print("Products fetched successfully: ${allProducts.length} products");
         emit(GetProductSuccess(products: allProducts));
         break;
 
       case Fail<ProductResponseEntity>():
         final error = ErrorHandler.handle(result.exception!);
-        print("Failed to fetch products: $error");
         emit(GetProductError(error: error));
         break;
     }
@@ -90,7 +86,5 @@ class GenericItemViewModelCubit extends Cubit<GenericItemViewModeState> {
 
     emit(FilteredProductsState(filteredProducts: filtered));
   }
-
-
 
 }

@@ -32,9 +32,6 @@ class ErrorHandler {
       case 403:
       case 404:
         return ErrorModel(error: response.error ?? 'Unauthorized access');
-      case 404:
-        return ErrorModel(
-            error: "Resource not found. Please check the URL and try again.");
       case 408:
         return ErrorModel(
             error:

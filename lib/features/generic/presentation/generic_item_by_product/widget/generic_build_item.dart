@@ -8,15 +8,17 @@ import '../../../../../core/utils/widgets/spacing.dart';
 import '../../../../generic/presentation/widgets/cached_network_widget.dart';
 
 class GenericBuildItem extends StatelessWidget {
-  const GenericBuildItem(
+  GenericBuildItem(
       {super.key,
       required this.imageCover,
       required this.title,
       required this.price,
-      required this.priceAfterDiscount});
+      required this.priceAfterDiscount,
+      required this.onClick});
 
   final String imageCover, title, price, priceAfterDiscount;
-
+  final GlobalKey widgetKey = GlobalKey();
+  final void Function(GlobalKey) onClick; // Key for triggering the animation
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +31,8 @@ class GenericBuildItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          Container(
+            key: widgetKey,
             height: 140.h,
             child: CachedNetworkWidget(
               imageUrl: imageCover,
@@ -50,7 +53,7 @@ class GenericBuildItem extends StatelessWidget {
           verticalSpacing(6.h),
           RichText(
             text: TextSpan(
-              text: 'EGP ${price}',
+              text: 'EGP $price',
               style: MyFonts.styleMedium500_14.copyWith(color: MyColors.black),
               children: [
                 WidgetSpan(child: horizontalSpacing(5.w)),
@@ -73,7 +76,9 @@ class GenericBuildItem extends StatelessWidget {
           verticalSpacing(8.h),
           Align(
               alignment: Alignment.bottomCenter,
-              child: SizedBox(width: 150.w, child: AddCartButton(onTap: () {}))),
+              child: SizedBox(
+                  width: 150.w,
+                  child: AddCartButton(onTap:()=> onClick(widgetKey)))),
         ],
       ),
     );

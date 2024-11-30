@@ -17,7 +17,7 @@ void main() {
   setUpAll(() {
     provideDummy<DataResult<GenericResponseEntity>>(
       Success(
-        GenericResponseEntity(
+        const GenericResponseEntity(
           metadata: Metadata(
             limit: 1,
             currentPage: 1,
@@ -39,7 +39,7 @@ void main() {
 
   group('GenericRepositoryImpl Tests', () {
     const resourceName = 'testResource';
-    final mockEntity = GenericResponseEntity(
+    const mockEntity = GenericResponseEntity(
       metadata: Metadata(
         limit: 1,
         currentPage: 10,

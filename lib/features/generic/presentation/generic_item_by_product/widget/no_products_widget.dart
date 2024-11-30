@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
 
 class NoProductsWidget extends StatelessWidget {
-  const NoProductsWidget({Key? key}) : super(key: key);
+  const NoProductsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

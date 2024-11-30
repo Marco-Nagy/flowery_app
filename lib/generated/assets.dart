@@ -7,7 +7,7 @@ class Assets {
   static const String imagesAdd = 'assets/images/add.png';
   static const String imagesArrowBackIos = 'assets/images/arrow_back_ios.png';
   static const String imagesArrowDownIos = 'assets/images/arrow_down_ios.png';
-  static const String imagesButtomFilter = 'assets/images/buttom_filter.png';
+  static const String imagesButtonFilter = 'assets/images/buttom_filter.png';
   static const String imagesCancel = 'assets/images/cancel.png';
   static const String imagesCategory = 'assets/images/category.png';
   static const String imagesDelete = 'assets/images/delete.png';

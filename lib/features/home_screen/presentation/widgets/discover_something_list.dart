@@ -1,5 +1,3 @@
-import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,7 +17,7 @@ class _DiscoverSomethingListState extends State<DiscoverSomethingList> {
         itemCount: 10,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return Stack(
+          return const Stack(
             children: [
               // Container(
               //     margin: EdgeInsets.all(5.sp),

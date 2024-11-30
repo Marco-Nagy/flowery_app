@@ -14,6 +14,14 @@ packages:
     description: dart
     source: sdk
     version: "0.3.2"
+  add_to_cart_animation:
+    dependency: "direct main"
+    description:
+      name: add_to_cart_animation
+      sha256: f4b3d1097fb3e44da960023594b32c249802fd6acf68a32405b7e85222d0f220
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.4"
   analyzer:
     dependency: transitive
     description:
@@ -87,7 +95,7 @@ packages:
     source: hosted
     version: "3.1.2"
   bloc:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: bloc
       sha256: "106842ad6569f0b60297619e9e0b1885c2fb9bf84812935490e6c5275777804e"

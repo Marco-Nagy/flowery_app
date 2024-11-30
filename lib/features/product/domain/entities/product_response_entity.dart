@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 class ProductResponseEntity extends Equatable {
   final List<ProductEntity> products;
 
-  ProductResponseEntity({required this.products});
+  const ProductResponseEntity({required this.products});
 
   @override
   List<Object?> get props => [products];}
@@ -21,7 +21,7 @@ class ProductEntity extends Equatable {
   final String? category;
   final String? occasion;
 
-  ProductEntity({
+  const ProductEntity({
     this.id,
     this.title,
     this.slug,

@@ -68,7 +68,7 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
            case GetBestSellerErrorState():
              aweSnackBar(msg: state.errorModel.error??'', context: context, type: MessageTypeConst.failure);
            case GetBestSellerLoadingState():
-             return AppLoader();
+             return const AppLoader();
            case BestSellerInitialState():
              default:null;
          }
