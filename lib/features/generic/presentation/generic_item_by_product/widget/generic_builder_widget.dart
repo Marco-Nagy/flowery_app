@@ -1,12 +1,10 @@
-import 'package:add_to_cart_animation/add_to_cart_icon.dart';
+import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
-import 'package:flowery_e_commerce/di/di.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/product/domain/entities/product_response_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/routes/app_routes.dart';
-import '../../../../product/domain/entities/product_response_entity.dart';
+
 import 'generic_build_item.dart';
 
 class GenericBuilderWidget extends StatelessWidget {
@@ -30,7 +28,7 @@ class GenericBuilderWidget extends StatelessWidget {
         crossAxisSpacing: 10,
         mainAxisSpacing: 20,
         childAspectRatio: 3 / 4,
-        mainAxisExtent: 270.h,
+        mainAxisExtent: 270.w,
       ),
       itemCount: filteredProducts.length,
       itemBuilder: (context, index) {

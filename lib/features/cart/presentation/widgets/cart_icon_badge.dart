@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 class CartIconBadge extends StatefulWidget {
   const CartIconBadge({
-    Key? key,
+    super.key,
     required this.cartKey,
     // required this.cartVisibility,
-  }) : super(key: key);
+  });
   final GlobalKey<CartIconKey> cartKey;
   // final bool cartVisibility;
 
@@ -21,11 +21,11 @@ class _CartIconBadgeState extends State<CartIconBadge> {
   Widget build(BuildContext context) {
     return AddToCartIcon(
       key: widget.cartKey,
-      icon: Icon(
+      icon: const Icon(
         Icons.shopping_cart,
         color: MyColors.baseColor,
       ),
-      badgeOptions: BadgeOptions(
+      badgeOptions: const BadgeOptions(
         foregroundColor:MyColors.baseColor,
         active: true,
         backgroundColor:  MyColors.lightPink,
