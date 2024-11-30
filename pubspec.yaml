@@ -65,7 +65,6 @@ dependencies:
 
   # state Manager
   flutter_bloc:
-  mockito: ^5.4.4
   bloc_test: ^9.1.7
   auto_size_text: ^3.0.0
   cached_network_image: ^3.4.1
