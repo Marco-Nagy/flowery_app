@@ -24,7 +24,7 @@ class _CustomPictureMainScreenState extends State<CustomPictureMainScreen> {
         clipBehavior: Clip.none,
         children: [
           _image == null
-              ? CircleAvatar(
+              ? const CircleAvatar(
                   backgroundImage: AssetImage(Assets.imagesProfile),
                 )
               : CircleAvatar(
