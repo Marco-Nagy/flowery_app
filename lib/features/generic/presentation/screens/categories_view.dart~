@@ -5,9 +5,11 @@ import 'package:flowery_e_commerce/core/utils/extension/mediaQueryValues.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_icon_badge.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/categories/viewModel/categories_action.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/categories/widgets/filter_chip_button.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,13 +29,13 @@ class CategoriesView extends StatefulWidget {
 class _CategoriesViewState extends State<CategoriesView> {
   late Function(GlobalKey) addToCartAnimation;
   final cartKey = GlobalKey<CartIconKey>();
-  CartViewModelCubit viewModelCubit = getIt.get<CartViewModelCubit>();
+  CartViewModelCubit cartViewModelCubit = getIt.get<CartViewModelCubit>();
 
   void listClick(GlobalKey widgetKey) async {
     await addToCartAnimation(widgetKey);
-    await viewModelCubit.addToCart();
-    await viewModelCubit.cartKey.currentState!
-        .runCartAnimation(viewModelCubit.cartQuantityItems.toString());
+    await cartViewModelCubit.addToCart();
+    await cartViewModelCubit.cartKey.currentState!
+        .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
   }
 
   @override
@@ -42,7 +44,7 @@ class _CategoriesViewState extends State<CategoriesView> {
     // Initialize the cart count to 20
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // viewModelCubit.cartQuantityItems = 20;
-      viewModelCubit.updateCartCount();
+      cartViewModelCubit.updateCartCount();
     });
   }
 
@@ -54,14 +56,17 @@ class _CategoriesViewState extends State<CategoriesView> {
           create: (context) => getIt.get<CategoriesViewModelCubit>(),
         ),
         BlocProvider(
-          create: (context) => getIt.get<GenericItemViewModelCubit>(),
+          create: (context) => cartViewModelCubit,
         ),
+
         BlocProvider(
-          create: (context) => getIt.get<GenericItemViewModelCubit>(),
+          create: (context) =>  getIt.get<GenericItemViewModelCubit>()
+            ..doAction(GetItemAction('categories'))
+            ..doAction(GetProductAction()),
         ),
       ],
       child: AddToCartAnimation(
-        cartKey: viewModelCubit.cartKey,
+        cartKey: cartViewModelCubit.cartKey,
         height: 30,
         width: 30,
         opacity: 0.85,
@@ -76,24 +81,6 @@ class _CategoriesViewState extends State<CategoriesView> {
         },
         child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: customAppBar(
-              appBarTxt: '',
-              context: context,
-              showArrow: false,
-              actions: [
-                const SizedBox(width: 16),
-                AddToCartIcon(
-                  key: viewModelCubit.cartKey,
-                  icon: const Icon(Icons.shopping_cart),
-                  badgeOptions: const BadgeOptions(
-                    active: true,
-                    backgroundColor: Colors.red,
-                  ),
-                ),
-                const SizedBox(
-                  width: 16,
-                )
-              ]),
           body: Stack(
             children: [
               Column(
@@ -108,12 +95,18 @@ class _CategoriesViewState extends State<CategoriesView> {
                         horizontalSpacing(12),
                         const Expanded(
                             flex: 1, child: CustomFilterCategories()),
+                        CartIconBadge(cartKey: cartViewModelCubit.cartKey,),
                       ],
                     ),
                   ),
                   verticalSpacing(16),
                   GenericItemScreen(
-                      resourceName: 'categories', field: 'category',onClick:(widgetKey)=>listClick(widgetKey)),
+                      resourceName: 'categories', field: 'category',onClick:(widgetKey) {
+                        listClick(widgetKey);
+                        setState(() {
+
+                        });
+                      }),
                 ],
               ),
               Positioned(
