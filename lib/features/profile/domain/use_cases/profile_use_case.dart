@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flowery_e_commerce/features/profile/domain/repositories/profile_repo.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,15 +16,13 @@ class ProfileUseCase {
   @factoryMethod
   ProfileUseCase(this._repository);
 
-  Future<DataResult<GetLoggedUserDataResponseEntity>> getProfileData(
-          String token) =>
-      _repository.getProfileData(token);
+  Future<DataResult<GetLoggedUserDataResponseEntity>> getProfileData() =>
+      _repository.getProfileData();
 
   Future<DataResult<EditProfileResponseEntity>> editProfile(
-          String token, Map<String, dynamic> profileData) =>
-      _repository.editProfile(token, profileData);
+          Map<String, dynamic> profileData) =>
+      _repository.editProfile(profileData);
 
-  Future<DataResult<UploadPhotoResponseEntity>> uploadPhoto(
-          String token, File photo) =>
-      _repository.uploadPhoto(token, photo);
+  Future<DataResult<UploadPhotoResponseEntity>> uploadPhoto(File photo) =>
+      _repository.uploadPhoto(photo);
 }

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flowery_e_commerce/core/networking/api/api_manager.dart';
 import 'package:flowery_e_commerce/core/networking/api_execute.dart';
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
@@ -20,29 +21,26 @@ class ProfileOnlineDataSourceImpl implements ProfileOnlineDataSource {
   ProfileOnlineDataSourceImpl(this._apiManager);
 
   @override
-  Future<DataResult<GetLoggedUserDataResponseEntity>> getProfileData(
-      String token) {
+  Future<DataResult<GetLoggedUserDataResponseEntity>> getProfileData() {
     return executeApi(() async {
-      var response = await _apiManager.getLoggedUserData("Bearer $token");
+      var response = await _apiManager.getLoggedUserData();
       return ProfileMapper.getLoggedResponseToEntity(response);
     });
   }
 
   @override
   Future<DataResult<EditProfileResponseEntity>> editProfile(
-      String token, Map<String, dynamic> profileData) {
+      Map<String, dynamic> profileData) {
     return executeApi(() async {
-      var response =
-          await _apiManager.editProfile("Bearer $token", profileData);
+      var response = await _apiManager.editProfile(profileData);
       return ProfileMapper.editProfileResponseToEntity(response);
     });
   }
 
   @override
-  Future<DataResult<UploadPhotoResponseEntity>> uploadPhoto(
-      String token, File photo) {
+  Future<DataResult<UploadPhotoResponseEntity>> uploadPhoto(File photo) {
     return executeApi(() async {
-      var response = await _apiManager.uploadPhoto("Bearer $token", photo);
+      var response = await _apiManager.uploadPhoto(photo);
       return ProfileMapper.uploadPhotoResponseToEntity(response);
     });
   }

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
 import 'package:flowery_e_commerce/features/profile/domain/use_cases/profile_use_case.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_actions.dart';
@@ -39,7 +40,7 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
   Future<void> _getLoggedUserData() async {
     emit(GetLoggedUserDataLoading());
     String? token = await _offlineDataSource.getToken();
-    final result = await _useCase.getProfileData(token ?? '');
+    final result = await _useCase.getProfileData();
     switch (result) {
       case Success<GetLoggedUserDataResponseEntity>():
         emit(GetLoggedUserDataSuccess(data: result.data));
@@ -52,7 +53,7 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
   Future<void> _editProfile(Map<String, dynamic> profileData) async {
     emit(EditProfileLoading());
     String? token = await _offlineDataSource.getToken();
-    final result = await _useCase.editProfile(token ?? '', profileData);
+    final result = await _useCase.editProfile(profileData);
     switch (result) {
       case Success<EditProfileResponseEntity>():
         emit(EditProfileSuccess(data: result.data));
@@ -64,7 +65,7 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
   Future<void> _uploadPhoto(File photo) async {
     emit(UploadPhotoLoading());
     String? token = await _offlineDataSource.getToken();
-    final result = await _useCase.uploadPhoto(token ?? '', photo);
+    final result = await _useCase.uploadPhoto(photo);
     switch (result) {
       case Success<UploadPhotoResponseEntity>():
         emit(UploadPhotoSuccess(data: result.data));

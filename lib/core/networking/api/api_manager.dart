@@ -72,17 +72,18 @@ abstract class ApiManager {
 
   @GET(ApiConstants.getLoggedUserData)
   Future<GetLoggedUserDataResponseDto> getLoggedUserData(
-    @Header("Authorization") String token,
   );
 
   @PUT(ApiConstants.editProfile)
-  Future<EditProfileResponseDto> editProfile(
-      @Header("Authorization") String token, @Body() Map<String, dynamic> body);
+  Future<EditProfileResponseDto> editProfile(@Body() Map<String, dynamic> body);
 
-  @POST(ApiConstants.uploadPhoto)
+  @PUT(ApiConstants.uploadPhoto)
   @MultiPart()
-  Future<UploadPhotoResponseDto> uploadPhoto(
-    @Header("Authorization") String token,
-    @Part(name: "photo") File photo,
+  Future<UploadPhotoResponseDto> uploadPhoto(@Part(name: "photo") File photo,
   );
+
+// @PUT(ApiConstants.uploadPhoto)
+// @MultiPart()
+// Future<UploadPhotoResponseDto> uploadPhoto(
+// @Body() File formData,);
 }

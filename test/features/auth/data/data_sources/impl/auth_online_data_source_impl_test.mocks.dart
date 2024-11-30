@@ -412,71 +412,53 @@ class MockApiManager extends _i1.Mock implements _i16.ApiManager {
       ) as _i17.Future<_i12.ProductResponseDto>);
 
   @override
-  _i17.Future<_i13.GetLoggedUserDataResponseDto> getLoggedUserData(
-          String? token) =>
+  _i17.Future<_i13.GetLoggedUserDataResponseDto> getLoggedUserData() =>
       (super.noSuchMethod(
         Invocation.method(
           #getLoggedUserData,
-          [token],
+          [],
         ),
         returnValue: _i17.Future<_i13.GetLoggedUserDataResponseDto>.value(
             _FakeGetLoggedUserDataResponseDto_11(
           this,
           Invocation.method(
             #getLoggedUserData,
-            [token],
+            [],
           ),
         )),
       ) as _i17.Future<_i13.GetLoggedUserDataResponseDto>);
 
   @override
   _i17.Future<_i14.EditProfileResponseDto> editProfile(
-    String? token,
-    Map<String, dynamic>? body,
-  ) =>
+          Map<String, dynamic>? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #editProfile,
-          [
-            token,
-            body,
-          ],
+          [body],
         ),
         returnValue: _i17.Future<_i14.EditProfileResponseDto>.value(
             _FakeEditProfileResponseDto_12(
           this,
           Invocation.method(
             #editProfile,
-            [
-              token,
-              body,
-            ],
+            [body],
           ),
         )),
       ) as _i17.Future<_i14.EditProfileResponseDto>);
 
   @override
-  _i17.Future<_i15.UploadPhotoResponseDto> uploadPhoto(
-    String? token,
-    _i23.File? photo,
-  ) =>
+  _i17.Future<_i15.UploadPhotoResponseDto> uploadPhoto(_i23.File? photo) =>
       (super.noSuchMethod(
         Invocation.method(
           #uploadPhoto,
-          [
-            token,
-            photo,
-          ],
+          [photo],
         ),
         returnValue: _i17.Future<_i15.UploadPhotoResponseDto>.value(
             _FakeUploadPhotoResponseDto_13(
           this,
           Invocation.method(
             #uploadPhoto,
-            [
-              token,
-              photo,
-            ],
+            [photo],
           ),
         )),
       ) as _i17.Future<_i15.UploadPhotoResponseDto>);

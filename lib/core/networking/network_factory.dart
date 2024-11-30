@@ -20,8 +20,8 @@ abstract class NetworkFactory {
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {
-          options.headers['token'] =
-              '${SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey)}';
+          options.headers['Authorization'] =
+              'Bearer ${SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey)}';
           return handler.next(options);
         },
         onError: (error, handler) {
@@ -29,7 +29,7 @@ abstract class NetworkFactory {
             if ( error.response!.statusCode==401) {
 
               // Handle 400 or 401 error
-              SharedPrefHelper().clearPreferences();
+              // SharedPrefHelper().clearPreferences();
               // Navigate to login screen or handle error accordingly
             }
           }
