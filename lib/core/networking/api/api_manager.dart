@@ -1,3 +1,4 @@
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/request/forget_password_request_dto.dart';
@@ -7,10 +8,15 @@ import 'package:flowery_e_commerce/features/auth/data/models/response/forget_pas
 import 'package:flowery_e_commerce/features/auth/data/models/response/reset_password_response_dto.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/response/verify_reset_code_response.dart';
 import 'package:flowery_e_commerce/features/best_seller/data/models/best_seller_response_model_entity.dart';
+import 'package:flowery_e_commerce/features/cart/data/models/request/add_product_to_cart_request_dto.dart';
+import 'package:flowery_e_commerce/features/cart/data/models/request/update_cart_product_quantity_request_dto.dart';
+import 'package:flowery_e_commerce/features/cart/data/models/response/add_to_cart_response_dto.dart';
+import 'package:flowery_e_commerce/features/cart/data/models/response/cart_response_dto.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_products_rsponse_dto.dart';
 import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart';
 import 'package:flowery_e_commerce/features/profile/data/models/response/get_logged_user_data_response_dto.dart';
+import 'package:flowery_e_commerce/features/profile/data/models/response/upload_photo_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -70,10 +76,33 @@ abstract class ApiManager {
 
   @GET(ApiConstants.getLoggedUserData)
   Future<GetLoggedUserDataResponseDto> getLoggedUserData(
-    @Header("Authorization") String token,
   );
 
-  @PUT(ApiConstants.editProfile)
-  Future<EditProfileResponseDto> editProfile(
-      @Header("Authorization") String token, @Body() Map<String, dynamic> body);
+  @POST(ApiConstants.cart)
+  Future<AddToCartResponseDto> addProductToCart(
+      @Body() AddProductToCartRequestDto body);
+
+  @PUT("${ApiConstants.cart}{id}")
+  Future<CartResponseDto> updateCartQuantity(
+      @Path("id") String id, @Body() UpdateCartProductQuantityRequestDto body);
+
+  @DELETE("${ApiConstants.cart}{id}")
+  Future<CartResponseDto> removeProductFromCart(@Path("id") String id);
+
+  @GET(ApiConstants.cart)
+  Future<CartResponseDto> getCartData();
+
+  @DELETE(ApiConstants.cart)
+  Future<String> clearCartItems();
+  Future<EditProfileResponseDto> editProfile(@Body() Map<String, dynamic> body);
+
+  @PUT(ApiConstants.uploadPhoto)
+  @MultiPart()
+  Future<UploadPhotoResponseDto> uploadPhoto(@Part(name: "photo") File photo,
+  );
+
+// @PUT(ApiConstants.uploadPhoto)
+// @MultiPart()
+// Future<UploadPhotoResponseDto> uploadPhoto(
+// @Body() File formData,);
 }
