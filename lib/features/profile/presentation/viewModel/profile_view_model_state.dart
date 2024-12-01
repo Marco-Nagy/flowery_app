@@ -31,3 +31,17 @@ final class EditProfileError extends ProfileViewModelState {
 
   EditProfileError({required this.error});
 }
+
+final class UploadPhotoLoading extends ProfileViewModelState {}
+
+final class UploadPhotoSuccess extends ProfileViewModelState {
+  final UploadPhotoResponseEntity data;
+
+  UploadPhotoSuccess({required this.data});
+}
+
+final class UploadPhotoError extends ProfileViewModelState {
+  final ErrorModel error;
+
+  UploadPhotoError({required this.error});
+}
