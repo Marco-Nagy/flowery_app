@@ -225,14 +225,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i559.GenericUseCase(gh<_i565.GenericRepo>()));
     gh.factory<_i426.AddToCartUseCase>(
         () => _i426.AddToCartUseCase(gh<_i647.CartRepository>()));
-    gh.factory<_i138.UpdateProductQuantityUseCase>(
-        () => _i138.UpdateProductQuantityUseCase(gh<_i647.CartRepository>()));
-    gh.factory<_i974.RemoveProductFromCartUseCase>(
-        () => _i974.RemoveProductFromCartUseCase(gh<_i647.CartRepository>()));
-    gh.factory<_i510.GetUserCartDataUseCase>(
-        () => _i510.GetUserCartDataUseCase(gh<_i647.CartRepository>()));
     gh.factory<_i170.ClearUserCartDataUseCase>(
         () => _i170.ClearUserCartDataUseCase(gh<_i647.CartRepository>()));
+    gh.factory<_i510.GetUserCartDataUseCase>(
+        () => _i510.GetUserCartDataUseCase(gh<_i647.CartRepository>()));
+    gh.factory<_i974.RemoveProductFromCartUseCase>(
+        () => _i974.RemoveProductFromCartUseCase(gh<_i647.CartRepository>()));
+    gh.factory<_i138.UpdateProductQuantityUseCase>(
+        () => _i138.UpdateProductQuantityUseCase(gh<_i647.CartRepository>()));
     gh.factory<_i60.ForgetPasswordViewModelCubit>(
         () => _i60.ForgetPasswordViewModelCubit(
               gh<_i301.ForgotPasswordUseCase>(),
