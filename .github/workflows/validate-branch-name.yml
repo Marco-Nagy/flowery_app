@@ -1,5 +1,4 @@
 name: Validate Branch Name
-
 on:
   pull_request: # Trigger on pull requests
     branches:
