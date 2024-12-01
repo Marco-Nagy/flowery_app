@@ -52,6 +52,22 @@ import '../features/best_seller/domain/use_cases/most_selling_use_case.dart'
     as _i972;
 import '../features/best_seller/presentation/cubit/most_selling_cubit.dart'
     as _i372;
+import '../features/cart/data/data_sources/contracts/cart_online_data_source.dart'
+    as _i181;
+import '../features/cart/data/data_sources/impl/cart_online_data_source_impl.dart'
+    as _i1032;
+import '../features/cart/data/repositories/cart_repository_impl.dart' as _i625;
+import '../features/cart/domain/repositories/contracts/cart_repository.dart'
+    as _i647;
+import '../features/cart/domain/use_cases/add_to_cart_use_case.dart' as _i426;
+import '../features/cart/domain/use_cases/clear_user_cart_data_use_case.dart'
+    as _i170;
+import '../features/cart/domain/use_cases/get_user_cart_data_use_case.dart'
+    as _i510;
+import '../features/cart/domain/use_cases/remove_product_from_cart_use_case.dart'
+    as _i974;
+import '../features/cart/domain/use_cases/update_product_quantity_use_case.dart'
+    as _i138;
 import '../features/cart/presentation/viewModel/cart_view_model_cubit.dart'
     as _i1043;
 import '../features/categories/data/data_sources/contracts/categories_online_data_source.dart'
@@ -129,7 +145,6 @@ extension GetItInjectableX on _i174.GetIt {
     final registerModule = _$RegisterModule();
     gh.factory<_i361.LogInterceptor>(
         () => networkFactory.providerInterceptor());
-    gh.factory<_i1043.CartViewModelCubit>(() => _i1043.CartViewModelCubit());
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
@@ -154,6 +169,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i877.ProductOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i211.GenericOnlineDataSource>(
         () => _i854.GenericOnlineDataSourceImpl(gh<_i282.ApiManager>()));
+    gh.factory<_i181.CartOnlineDataSource>(
+        () => _i1032.CartOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i518.CategoriesOnlineDataSource>(() =>
         _i1059.CategoriesOnlineDataSourceImplementation(
             gh<_i282.ApiManager>()));
@@ -176,6 +193,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i284.GenericRepositoryImpl(gh<_i211.GenericOnlineDataSource>()));
     gh.factory<_i804.ProfileUseCase>(
         () => _i804.ProfileUseCase(gh<_i49.ProfileRepo>()));
+    gh.factory<_i647.CartRepository>(
+        () => _i625.CartRepositoryImpl(gh<_i181.CartOnlineDataSource>()));
     gh.factory<_i496.LoginUseCase>(
         () => _i496.LoginUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i853.SignUpUseCase>(
@@ -204,6 +223,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i508.SignUpViewModel(gh<_i853.SignUpUseCase>()));
     gh.factory<_i559.GenericUseCase>(
         () => _i559.GenericUseCase(gh<_i565.GenericRepo>()));
+    gh.factory<_i426.AddToCartUseCase>(
+        () => _i426.AddToCartUseCase(gh<_i647.CartRepository>()));
+    gh.factory<_i138.UpdateProductQuantityUseCase>(
+        () => _i138.UpdateProductQuantityUseCase(gh<_i647.CartRepository>()));
+    gh.factory<_i974.RemoveProductFromCartUseCase>(
+        () => _i974.RemoveProductFromCartUseCase(gh<_i647.CartRepository>()));
+    gh.factory<_i510.GetUserCartDataUseCase>(
+        () => _i510.GetUserCartDataUseCase(gh<_i647.CartRepository>()));
+    gh.factory<_i170.ClearUserCartDataUseCase>(
+        () => _i170.ClearUserCartDataUseCase(gh<_i647.CartRepository>()));
     gh.factory<_i60.ForgetPasswordViewModelCubit>(
         () => _i60.ForgetPasswordViewModelCubit(
               gh<_i301.ForgotPasswordUseCase>(),
@@ -217,6 +246,13 @@ extension GetItInjectableX on _i174.GetIt {
             ));
     gh.factory<_i777.CategoriesUseCase>(
         () => _i777.CategoriesUseCase(gh<_i590.CategoriesRepository>()));
+    gh.factory<_i1043.CartViewModelCubit>(() => _i1043.CartViewModelCubit(
+          gh<_i426.AddToCartUseCase>(),
+          gh<_i510.GetUserCartDataUseCase>(),
+          gh<_i138.UpdateProductQuantityUseCase>(),
+          gh<_i974.RemoveProductFromCartUseCase>(),
+          gh<_i170.ClearUserCartDataUseCase>(),
+        ));
     gh.factory<_i372.MostSellerCubit>(
         () => _i372.MostSellerCubit(gh<_i972.MostSellingProductsUseCase>()));
     gh.factory<_i80.CategoriesViewModelCubit>(

@@ -29,6 +29,7 @@ class Assets {
   static const String imagesPerson = 'assets/images/person.png';
   static const String imagesPlace = 'assets/images/place.png';
   static const String imagesProfile = 'assets/images/profile.png';
+  static const String imagesRemove = 'assets/images/remove.png';
   static const String imagesSearch = 'assets/images/search.png';
   static const String imagesShoppingCart = 'assets/images/shopping_cart.png';
   static const String imagesSplash = 'assets/images/splash.png';

@@ -7,6 +7,10 @@ import 'package:flowery_e_commerce/features/auth/data/models/response/forget_pas
 import 'package:flowery_e_commerce/features/auth/data/models/response/reset_password_response_dto.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/response/verify_reset_code_response.dart';
 import 'package:flowery_e_commerce/features/best_seller/data/models/best_seller_response_model_entity.dart';
+import 'package:flowery_e_commerce/features/cart/data/models/request/add_product_to_cart_request_dto.dart';
+import 'package:flowery_e_commerce/features/cart/data/models/request/update_cart_product_quantity_request_dto.dart';
+import 'package:flowery_e_commerce/features/cart/data/models/response/add_to_cart_response_dto.dart';
+import 'package:flowery_e_commerce/features/cart/data/models/response/cart_response_dto.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_products_rsponse_dto.dart';
 import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart';
@@ -76,4 +80,21 @@ abstract class ApiManager {
   @PUT(ApiConstants.editProfile)
   Future<EditProfileResponseDto> editProfile(
       @Header("Authorization") String token, @Body() Map<String, dynamic> body);
+
+  @POST(ApiConstants.cart)
+  Future<AddToCartResponseDto> addProductToCart(
+      @Body() AddProductToCartRequestDto body);
+
+  @PUT("${ApiConstants.cart}{id}")
+  Future<CartResponseDto> updateCartQuantity(
+      @Path("id") String id, @Body() UpdateCartProductQuantityRequestDto body);
+
+  @DELETE("${ApiConstants.cart}{id}")
+  Future<CartResponseDto> removeProductFromCart(@Path("id") String id);
+
+  @GET(ApiConstants.cart)
+  Future<CartResponseDto> getCartData();
+
+  @DELETE(ApiConstants.cart)
+  Future<String> clearCartItems();
 }

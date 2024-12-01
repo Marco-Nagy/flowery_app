@@ -36,6 +36,7 @@ class GenericBuilderWidget extends StatelessWidget {
         return GestureDetector(
           onTap: () => context.pushNamed(AppRoutes.productsDetailsView,arguments: product ),
           child: GenericBuildItem(
+            id: product.id??'',
             title: product.title ?? '',
             imageCover: product.imgCover ?? '',
             price: product.price?.toString() ?? '',

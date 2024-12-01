@@ -12,4 +12,6 @@ class ApiConstants {
   static const String getAllProducts = "api/v1/products";
   static const String getLoggedUserData = "api/v1/auth/profile-data";
   static const String editProfile = "api/v1/auth/editProfile";
+  static const String cart = "api/v1/cart";
+
 }

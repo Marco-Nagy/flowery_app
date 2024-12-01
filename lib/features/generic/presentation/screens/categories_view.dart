@@ -1,6 +1,7 @@
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/di/di.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_icon_badge.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart';
@@ -29,7 +30,6 @@ class _CategoriesViewState extends State<CategoriesView> {
 
   void listClick(GlobalKey widgetKey) async {
     await addToCartAnimation(widgetKey);
-    await cartViewModelCubit.addToCart();
     await cartViewModelCubit.cartKey.currentState!
         .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
   }
@@ -39,7 +39,6 @@ class _CategoriesViewState extends State<CategoriesView> {
     super.initState();
     // Initialize the cart count to 20
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      // viewModelCubit.cartQuantityItems = 20;
       cartViewModelCubit.updateCartCount();
     });
   }
@@ -52,7 +51,7 @@ class _CategoriesViewState extends State<CategoriesView> {
           create: (context) => getIt.get<CategoriesViewModelCubit>(),
         ),
         BlocProvider(
-          create: (context) => cartViewModelCubit,
+          create: (context) => cartViewModelCubit..doAction(GetUserCartDataAction()),
         ),
 
         BlocProvider(
@@ -97,12 +96,10 @@ class _CategoriesViewState extends State<CategoriesView> {
                   ),
                   verticalSpacing(16),
                   GenericItemScreen(
-                      resourceName: 'categories', field: 'category',onClick:(widgetKey) {
-                    listClick(widgetKey);
-                    setState(() {
-
-                    });
-                  }),
+                    resourceName: 'categories',
+                    field: 'category',
+                    onClick: (widgetKey) => listClick(widgetKey),
+                  ),
                 ],
               ),
               Positioned(

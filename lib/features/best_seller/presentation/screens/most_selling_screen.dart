@@ -4,8 +4,10 @@ import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_selling_cubit.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_icon_badge.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_bloc_listener_widget.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/widgets/build_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,16 +22,17 @@ class MostSellingScreen extends StatefulWidget {
 }
 
 class _MostSellingScreenState extends State<MostSellingScreen> {
-  MostSellerCubit mostSellerCubit = getIt.get<MostSellerCubit>()
-    ..getMostSellers();
 
    late Function(GlobalKey) addToCartAnimation;
   final cartKey = GlobalKey<CartIconKey>();
   CartViewModelCubit cartViewModelCubit = getIt.get<CartViewModelCubit>();
 
   void listClick(GlobalKey widgetKey) async {
-    await addToCartAnimation(widgetKey);
-    await cartViewModelCubit.addToCart();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await addToCartAnimation(widgetKey);
+
+      cartViewModelCubit.updateCartCount();
+    });
     await cartViewModelCubit.cartKey.currentState!
         .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
   }
@@ -45,8 +48,15 @@ class _MostSellingScreenState extends State<MostSellingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => mostSellerCubit,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt.get<MostSellerCubit>()..getMostSellers(),
+        ),
+        BlocProvider(
+            create: (context) =>
+                cartViewModelCubit..doAction(GetUserCartDataAction())),
+      ],
       child: AddToCartAnimation(
         cartKey: cartViewModelCubit.cartKey,
         height: 30,
@@ -55,7 +65,9 @@ class _MostSellingScreenState extends State<MostSellingScreen> {
         dragAnimation: const DragToCartAnimationOptions(
           rotation: true,
         ),
-        jumpAnimation: const JumpAnimationOptions(),
+        jumpAnimation: const JumpAnimationOptions(
+          active: true,
+        ),
         createAddToCartAnimation: (runAddToCartAnimation) {
           addToCartAnimation = runAddToCartAnimation;
         },
@@ -67,7 +79,10 @@ class _MostSellingScreenState extends State<MostSellingScreen> {
             showArrow: true,
               actions: [
                 const SizedBox(width: 16),
-                CartIconBadge(cartKey: cartViewModelCubit.cartKey, ),
+                const CartBlocListenerWidget(),
+                CartIconBadge(
+                  cartKey: cartViewModelCubit.cartKey,
+                ),
                 const SizedBox(
                   width: 16,
                 )
