@@ -1,3 +1,10 @@
+import 'package:flowery_e_commerce/core/routes/app_routes.dart';
+import 'package:flowery_e_commerce/core/services/shared_preference/shared_pref_keys.dart';
+import 'package:flowery_e_commerce/core/services/shared_preference/shared_preference_helper.dart';
+import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
+import 'package:flowery_e_commerce/di/di.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,6 +36,7 @@ class GenericBuildItem extends StatelessWidget {
           Container(
             key: widgetKey,
             height: 140.h,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
             child: CachedNetworkWidget(
               imageUrl: product.imgCover ?? '',
             ),
@@ -73,7 +81,16 @@ class GenericBuildItem extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: SizedBox(
                   width: 150.w,
-                  child: AddCartButton(onTap: () => onClick(widgetKey)))),
+                  child: AddCartButton(onTap: ()  {
+                    onClick(widgetKey);
+                    final token =  SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey);
+                    if (token != null) {
+                      getIt.get<CartViewModelCubit>().doAction(AddToCartAction(product.id?.toString() ?? ''));
+                    }else{
+                      context.pushNamed(AppRoutes.login);
+                    }
+
+                  }))),
         ],
       ),
     );
