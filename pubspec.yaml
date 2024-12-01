@@ -49,6 +49,7 @@ dependencies:
   awesome_snackbar_content:
   connectivity_plus:
   cached_network_image:
+
   # Ui
   lottie:
   flutter_hooks:
@@ -57,6 +58,8 @@ dependencies:
   animated_text_kit:
   flutter_image_slideshow:
   add_to_cart_animation:
+  auto_size_text:
+  image_picker:
 
   # add injectable to your dependencies
   injectable:
@@ -77,6 +80,7 @@ dev_dependencies:
   dartz:
   test:
   flutter_native_splash:
+  mockito:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

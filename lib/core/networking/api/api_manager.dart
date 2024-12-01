@@ -78,10 +78,6 @@ abstract class ApiManager {
   Future<GetLoggedUserDataResponseDto> getLoggedUserData(
   );
 
-  @PUT(ApiConstants.editProfile)
-  Future<EditProfileResponseDto> editProfile(
-      @Header("Authorization") String token, @Body() Map<String, dynamic> body);
-
   @POST(ApiConstants.cart)
   Future<AddToCartResponseDto> addProductToCart(
       @Body() AddProductToCartRequestDto body);
