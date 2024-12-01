@@ -50,7 +50,6 @@ dependencies:
   mockito:
   bloc_test:
   auto_size_text:
-  cached_network_image:
 dev_dependencies:
   flutter_test:
     sdk: flutter
