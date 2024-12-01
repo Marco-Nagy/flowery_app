@@ -1,3 +1,10 @@
+import 'package:flowery_e_commerce/core/routes/app_routes.dart';
+import 'package:flowery_e_commerce/core/services/shared_preference/shared_pref_keys.dart';
+import 'package:flowery_e_commerce/core/services/shared_preference/shared_preference_helper.dart';
+import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
+import 'package:flowery_e_commerce/di/di.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,13 +17,14 @@ import '../../../../generic/presentation/widgets/cached_network_widget.dart';
 class GenericBuildItem extends StatelessWidget {
   GenericBuildItem(
       {super.key,
+      required this.id,
       required this.imageCover,
       required this.title,
       required this.price,
       required this.priceAfterDiscount,
       required this.onClick});
 
-  final String imageCover, title, price, priceAfterDiscount;
+  final String id, imageCover, title, price, priceAfterDiscount;
   final GlobalKey widgetKey = GlobalKey();
   final void Function(GlobalKey) onClick; // Key for triggering the animation
   @override
@@ -31,9 +39,10 @@ class GenericBuildItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          Container(
             key: widgetKey,
             height: 140.h,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
             child: CachedNetworkWidget(
               imageUrl: imageCover,
             ),
@@ -78,7 +87,16 @@ class GenericBuildItem extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: SizedBox(
                   width: 150.w,
-                  child: AddCartButton(onTap:()=> onClick(widgetKey)))),
+                  child: AddCartButton(onTap: ()  {
+                    onClick(widgetKey);
+                    final token =  SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey);
+                    if (token != null) {
+                      getIt.get<CartViewModelCubit>().doAction(AddToCartAction(id));
+                    }else{
+                      context.pushNamed(AppRoutes.login);
+                    }
+
+                  }))),
         ],
       ),
     );

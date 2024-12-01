@@ -40,6 +40,7 @@ class BuildItem extends StatelessWidget {
                   onTap: () => context.pushNamed(AppRoutes.productsDetailsView,
                       arguments: state.mostSeller[index]),
                   child: GenericBuildItem(
+                    id: state.mostSeller[index].id??'',
                     imageCover: state.mostSeller[index].imgCover ?? '',
                     title: state.mostSeller[index].title ?? '',
                     price: state.mostSeller[index].price.toString(),
