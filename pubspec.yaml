@@ -66,10 +66,6 @@ dependencies:
   flutter_bloc:
   flutter_svg: ^2.0.16
   bloc:
-  mockito:
-  bloc_test:
-  auto_size_text:
-  cached_network_image:
 dev_dependencies:
   flutter_test:
     sdk: flutter
