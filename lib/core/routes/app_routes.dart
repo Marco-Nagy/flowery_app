@@ -6,7 +6,10 @@ import 'package:flowery_e_commerce/features/auth/presentation/forget_password/vi
 import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/signup_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/screens/most_selling_screen.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/screens/categories_view.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_screen.dart';
+import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flowery_e_commerce/features/product/presentation/view/product_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,6 +33,8 @@ class AppRoutes {
   static const String categoriesView = 'categoriesView';
   static const String productsDetailsView = 'productsDetailsView';
   static const String mostSellingScreen = 'mostSellingScreen';
+  static const String profileMainScreen = 'profileMainScreen';
+
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
 
@@ -71,7 +76,10 @@ class AppRoutes {
         );
       case AppRoutes.occasionScreen:
         return BaseRoute(
-          page: const OccasionView(),
+          page: BlocProvider(
+              create: (context) => getIt.get<GenericItemViewModelCubit>()
+                ..doAction(GetItemAction(args as String))
+                ..doAction(GetProductAction()),child: const OccasionView()),
         );
       case AppRoutes.categoriesView:
         return BaseRoute(
@@ -79,13 +87,16 @@ class AppRoutes {
         );
         case AppRoutes.mostSellingScreen:
         return BaseRoute(
-          page: const MostSellingScreen(),
+          page:  const MostSellingScreen(),
         );
+      case AppRoutes.profileMainScreen:
+        return BaseRoute(page: const ProfileMainScreen());
       case AppRoutes.productsDetailsView:
         return BaseRoute(page: ProductDetailsView(
           product: args  as dynamic,
 
         ));
+
       case AppRoutes.profileView:
         return BaseRoute(page: const ProfileView());
       case AppRoutes.resetPasswordProfileView:

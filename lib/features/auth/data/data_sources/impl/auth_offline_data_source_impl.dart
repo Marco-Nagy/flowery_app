@@ -19,4 +19,9 @@ class OfflineDataSourceImplementation implements OfflineDataSource {
   Future<String?> getToken() async {
     return SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey) ?? "";
   }
+
+  @override
+  Future<void> deleteCachedToken() {
+   return SharedPrefHelper().removePreference(key: SharedPrefKeys.tokenKey);
+  }
 }

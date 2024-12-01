@@ -56,7 +56,7 @@ dependencies:
   shimmer:
   animated_text_kit:
   flutter_image_slideshow:
-
+  add_to_cart_animation:
 
   # add injectable to your dependencies
   injectable:
@@ -64,11 +64,8 @@ dependencies:
 
   # state Manager
   flutter_bloc:
+  flutter_svg: ^2.0.16
   bloc:
-  mockito:
-  bloc_test:
-  auto_size_text:
-  cached_network_image:
 dev_dependencies:
   flutter_test:
     sdk: flutter

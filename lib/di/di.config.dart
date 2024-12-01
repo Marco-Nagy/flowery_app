@@ -52,6 +52,8 @@ import '../features/best_seller/domain/use_cases/most_selling_use_case.dart'
     as _i972;
 import '../features/best_seller/presentation/cubit/most_selling_cubit.dart'
     as _i372;
+import '../features/cart/presentation/viewModel/cart_view_model_cubit.dart'
+    as _i1043;
 import '../features/categories/data/data_sources/contracts/categories_online_data_source.dart'
     as _i518;
 import '../features/categories/data/data_sources/contracts/products_online_data_source.dart'
@@ -127,6 +129,7 @@ extension GetItInjectableX on _i174.GetIt {
     final registerModule = _$RegisterModule();
     gh.factory<_i361.LogInterceptor>(
         () => networkFactory.providerInterceptor());
+    gh.factory<_i1043.CartViewModelCubit>(() => _i1043.CartViewModelCubit());
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());

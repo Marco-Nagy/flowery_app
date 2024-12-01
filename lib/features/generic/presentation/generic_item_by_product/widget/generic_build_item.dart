@@ -8,14 +8,11 @@ import '../../../../../core/utils/widgets/spacing.dart';
 import '../../../../generic/presentation/widgets/cached_network_widget.dart';
 
 class GenericBuildItem extends StatelessWidget {
-  const GenericBuildItem(
-      {super.key,
-      required this.imageCover,
-      required this.title,
-      required this.price,
-      required this.priceAfterDiscount});
+  GenericBuildItem({super.key, required this.product, required this.onClick});
 
-  final String imageCover, title, price, priceAfterDiscount;
+  final GlobalKey widgetKey = GlobalKey();
+  final void Function(GlobalKey) onClick; // Key for triggering the animation
+  final dynamic product;
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +26,11 @@ class GenericBuildItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          Container(
+            key: widgetKey,
             height: 140.h,
             child: CachedNetworkWidget(
-              imageUrl: imageCover,
+              imageUrl: product.imgCover ?? '',
             ),
           ),
           verticalSpacing(8.h),
@@ -40,7 +38,7 @@ class GenericBuildItem extends StatelessWidget {
             alignment: Alignment.center,
             widthFactor: 1.7,
             child: Text(
-              title,
+              product.title ?? '',
               textAlign: TextAlign.center,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -50,12 +48,12 @@ class GenericBuildItem extends StatelessWidget {
           verticalSpacing(6.h),
           RichText(
             text: TextSpan(
-              text: 'EGP $price',
+              text: 'EGP ${product.price?.toString() ?? ''}',
               style: MyFonts.styleMedium500_14.copyWith(color: MyColors.black),
               children: [
                 WidgetSpan(child: horizontalSpacing(5.w)),
                 TextSpan(
-                  text: priceAfterDiscount,
+                  text: product.priceAfterDiscount?.toString() ?? '',
                   style: MyFonts.styleRegular400_12.copyWith(
                     color: MyColors.gray,
                     decoration: TextDecoration.lineThrough,
@@ -73,7 +71,9 @@ class GenericBuildItem extends StatelessWidget {
           verticalSpacing(8.h),
           Align(
               alignment: Alignment.bottomCenter,
-              child: SizedBox(width: 150.w, child: AddCartButton(onTap: () {}))),
+              child: SizedBox(
+                  width: 150.w,
+                  child: AddCartButton(onTap: () => onClick(widgetKey)))),
         ],
       ),
     );
