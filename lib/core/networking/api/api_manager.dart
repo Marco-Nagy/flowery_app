@@ -1,3 +1,4 @@
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/request/forget_password_request_dto.dart';
@@ -15,6 +16,7 @@ import 'package:flowery_e_commerce/features/categories/data/models/response/get_
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_products_rsponse_dto.dart';
 import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart';
 import 'package:flowery_e_commerce/features/profile/data/models/response/get_logged_user_data_response_dto.dart';
+import 'package:flowery_e_commerce/features/profile/data/models/response/upload_photo_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -74,7 +76,6 @@ abstract class ApiManager {
 
   @GET(ApiConstants.getLoggedUserData)
   Future<GetLoggedUserDataResponseDto> getLoggedUserData(
-    @Header("Authorization") String token,
   );
 
   @PUT(ApiConstants.editProfile)
@@ -97,4 +98,15 @@ abstract class ApiManager {
 
   @DELETE(ApiConstants.cart)
   Future<String> clearCartItems();
+  Future<EditProfileResponseDto> editProfile(@Body() Map<String, dynamic> body);
+
+  @PUT(ApiConstants.uploadPhoto)
+  @MultiPart()
+  Future<UploadPhotoResponseDto> uploadPhoto(@Part(name: "photo") File photo,
+  );
+
+// @PUT(ApiConstants.uploadPhoto)
+// @MultiPart()
+// Future<UploadPhotoResponseDto> uploadPhoto(
+// @Body() File formData,);
 }
