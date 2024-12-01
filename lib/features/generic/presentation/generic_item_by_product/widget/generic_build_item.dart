@@ -15,18 +15,12 @@ import '../../../../../core/utils/widgets/spacing.dart';
 import '../../../../generic/presentation/widgets/cached_network_widget.dart';
 
 class GenericBuildItem extends StatelessWidget {
-  GenericBuildItem(
-      {super.key,
-      required this.id,
-      required this.imageCover,
-      required this.title,
-      required this.price,
-      required this.priceAfterDiscount,
-      required this.onClick});
+  GenericBuildItem({super.key, required this.product, required this.onClick});
 
-  final String id, imageCover, title, price, priceAfterDiscount;
   final GlobalKey widgetKey = GlobalKey();
   final void Function(GlobalKey) onClick; // Key for triggering the animation
+  final dynamic product;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,7 +38,7 @@ class GenericBuildItem extends StatelessWidget {
             height: 140.h,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
             child: CachedNetworkWidget(
-              imageUrl: imageCover,
+              imageUrl: product.imgCover ?? '',
             ),
           ),
           verticalSpacing(8.h),
@@ -52,7 +46,7 @@ class GenericBuildItem extends StatelessWidget {
             alignment: Alignment.center,
             widthFactor: 1.7,
             child: Text(
-              title,
+              product.title ?? '',
               textAlign: TextAlign.center,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -62,12 +56,12 @@ class GenericBuildItem extends StatelessWidget {
           verticalSpacing(6.h),
           RichText(
             text: TextSpan(
-              text: 'EGP $price',
+              text: 'EGP ${product.price?.toString() ?? ''}',
               style: MyFonts.styleMedium500_14.copyWith(color: MyColors.black),
               children: [
                 WidgetSpan(child: horizontalSpacing(5.w)),
                 TextSpan(
-                  text: priceAfterDiscount,
+                  text: product.priceAfterDiscount?.toString() ?? '',
                   style: MyFonts.styleRegular400_12.copyWith(
                     color: MyColors.gray,
                     decoration: TextDecoration.lineThrough,
@@ -91,7 +85,7 @@ class GenericBuildItem extends StatelessWidget {
                     onClick(widgetKey);
                     final token =  SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey);
                     if (token != null) {
-                      getIt.get<CartViewModelCubit>().doAction(AddToCartAction(id));
+                      getIt.get<CartViewModelCubit>().doAction(AddToCartAction(product.id?.toString() ?? ''));
                     }else{
                       context.pushNamed(AppRoutes.login);
                     }

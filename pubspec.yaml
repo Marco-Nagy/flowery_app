@@ -29,8 +29,7 @@ dependencies:
   build_runner:
   awesome_snackbar_content:
   connectivity_plus:
-  add_to_cart_animation:
-
+  cached_network_image:
   # Ui
   lottie:
   flutter_hooks:
@@ -38,7 +37,7 @@ dependencies:
   shimmer:
   animated_text_kit:
   flutter_image_slideshow:
-
+  add_to_cart_animation:
 
   # add injectable to your dependencies
   injectable:
@@ -46,6 +45,7 @@ dependencies:
 
   # state Manager
   flutter_bloc:
+  flutter_svg: ^2.0.16
   bloc:
   mockito:
   bloc_test:
