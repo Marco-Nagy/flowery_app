@@ -29,7 +29,7 @@ abstract class NetworkFactory {
             if ( error.response!.statusCode==401) {
 
               // Handle 400 or 401 error
-              SharedPrefHelper().clearPreferences();
+              // SharedPrefHelper().clearPreferences();
               // Navigate to login screen or handle error accordingly
             }
           }
