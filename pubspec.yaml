@@ -48,7 +48,7 @@ dependencies:
   build_runner:
   awesome_snackbar_content:
   connectivity_plus:
-
+  cached_network_image:
   # Ui
   lottie:
   flutter_hooks:
