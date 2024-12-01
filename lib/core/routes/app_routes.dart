@@ -79,7 +79,7 @@ class AppRoutes {
           page: BlocProvider(
               create: (context) => getIt.get<GenericItemViewModelCubit>()
                 ..doAction(GetItemAction(args as String))
-                ..doAction(GetProductAction()),child: OccasionView()),
+                ..doAction(GetProductAction()),child: const OccasionView()),
         );
       case AppRoutes.categoriesView:
         return BaseRoute(
@@ -87,7 +87,7 @@ class AppRoutes {
         );
         case AppRoutes.mostSellingScreen:
         return BaseRoute(
-          page:  MostSellingScreen(),
+          page:  const MostSellingScreen(),
         );
       case AppRoutes.profileMainScreen:
         return BaseRoute(page: const ProfileMainScreen());

@@ -7,7 +7,7 @@ class Assets {
   static const String imagesAdd = 'assets/images/add.png';
   static const String imagesArrowBackIos = 'assets/images/arrow_back_ios.png';
   static const String imagesArrowDownIos = 'assets/images/arrow_down_ios.png';
-  static const String imagesButtonFilter = 'assets/images/buttom_filter.png';
+  static const String imagesButtonFilter = 'assets/images/button_filter.png';
   static const String imagesCancel = 'assets/images/cancel.png';
   static const String imagesCategory = 'assets/images/category.png';
   static const String imagesDelete = 'assets/images/delete.png';
@@ -29,7 +29,7 @@ class Assets {
   static const String imagesNetworrk = 'assets/images/networrk.png';
   static const String imagesNoNetwork = 'assets/images/noNetwork.png';
   static const String imagesNotNetwork = 'assets/images/Not_network.png';
-  static const String imagesNotification = 'assets/images/notification.png';
+  static const String imagesNotification = 'assets/images/notification.svg';
   static const String imagesPen = 'assets/images/pen.png';
   static const String imagesPerson = 'assets/images/person.png';
   static const String imagesPlace = 'assets/images/place.png';
@@ -39,5 +39,5 @@ class Assets {
   static const String imagesSplash = 'assets/images/splash.png';
   static const String imagesSwitch = 'assets/images/switch.png';
   static const String imagesTermsConditions = 'assets/images/terms_conditions.png';
-  static const String jsonFloweryLoader = 'assets/json/flowery_loader.json~';
+
 }

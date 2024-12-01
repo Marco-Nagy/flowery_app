@@ -13,7 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 
 class MostSellingScreen extends StatefulWidget {
-   MostSellingScreen({super.key});
+  const MostSellingScreen({super.key});
 
   @override
   State<MostSellingScreen> createState() => _MostSellingScreenState();
