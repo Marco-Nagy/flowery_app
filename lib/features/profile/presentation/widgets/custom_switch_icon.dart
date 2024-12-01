@@ -27,7 +27,7 @@ class _CustomSwitchIconState extends State<CustomSwitchIcon> {
               });
             },
             child: AnimatedContainer(
-              duration: Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 300),
               width: 60.w,
               height: 30.h,
               padding: EdgeInsets.symmetric(horizontal: 4.sp),
@@ -36,13 +36,13 @@ class _CustomSwitchIconState extends State<CustomSwitchIcon> {
                 color: isSwitched ? MyColors.baseColor : Colors.grey,
               ),
               child: AnimatedAlign(
-                duration: Duration(milliseconds: 300),
+                duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
                 alignment: isSwitched ? Alignment.centerRight : Alignment.centerLeft,
                 child: Container(
                   width: 22.w,
                   height: 22.h,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: MyColors.whiteBase,
                   ),
@@ -59,7 +59,7 @@ class _CustomSwitchIconState extends State<CustomSwitchIcon> {
               color: MyColors.blackBase,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           InkWell(
             onTap: () {},
             child: Container(

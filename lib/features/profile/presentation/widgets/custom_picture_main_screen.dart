@@ -12,7 +12,7 @@ class CustomPictureMainScreen extends StatefulWidget {
 }
 
 class _CustomPictureMainScreenState extends State<CustomPictureMainScreen> {
-  File? _image = null;
+  final File? _image = null;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,11 +24,11 @@ class _CustomPictureMainScreenState extends State<CustomPictureMainScreen> {
         clipBehavior: Clip.none,
         children: [
           _image == null
-              ? CircleAvatar(
+              ? const CircleAvatar(
                   backgroundImage: AssetImage(Assets.imagesProfile),
                 )
               : CircleAvatar(
-                  backgroundImage: FileImage(_image!) as ImageProvider),
+                  backgroundImage: FileImage(_image) as ImageProvider),
         ],
       ),
     );

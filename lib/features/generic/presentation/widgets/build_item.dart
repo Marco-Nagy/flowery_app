@@ -1,10 +1,8 @@
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
-import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_seller_states.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_selling_cubit.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/widget/generic_build_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +11,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/routes/app_routes.dart';
 
 class BuildItem extends StatelessWidget {
-  BuildItem({super.key, this.onClick});
+  const BuildItem({super.key, this.onClick});
+
   final void Function(GlobalKey)? onClick;
 
   @override
@@ -42,12 +41,8 @@ class BuildItem extends StatelessWidget {
                   onTap: () => context.pushNamed(AppRoutes.productsDetailsView,
                       arguments: state.mostSeller[index]),
                   child: GenericBuildItem(
-                    imageCover: state.mostSeller[index].imgCover ?? '',
-                    title: state.mostSeller[index].title ?? '',
-                    price: state.mostSeller[index].price.toString(),
-                    priceAfterDiscount:
-                        state.mostSeller[index].priceAfterDiscount.toString(),
-                    onClick:  onClick! ,
+                    product: state.mostSeller[index],
+                    onClick: onClick!,
                   ),
                 );
               },

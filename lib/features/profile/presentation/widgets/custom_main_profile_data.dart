@@ -35,11 +35,11 @@ class _CustomMainProfileDataState extends State<CustomMainProfileData> {
            case ProfileViewModelInitial():
              // TODO: Handle this case.
            case GetLoggedUserDataLoading():
-             AppLoader();
+             const AppLoader();
            case GetLoggedUserDataSuccess():
              return Column(
                children: [
-                 CustomPictureMainScreen(),
+                 const CustomPictureMainScreen(),
                  Row(
                    mainAxisAlignment: MainAxisAlignment.center,
                    children: [

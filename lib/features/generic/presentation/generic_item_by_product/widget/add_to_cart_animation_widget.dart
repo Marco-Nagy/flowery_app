@@ -1,16 +1,15 @@
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 
 class AddToCartAnimationWidget extends StatefulWidget {
   final Widget child;
 
-  AddToCartAnimationWidget(
-     {Key? key,
+  const AddToCartAnimationWidget(
+     {super.key,
     required this.child,
-  }) : super(key: key);
+  });
 
   @override
   State<AddToCartAnimationWidget> createState() => _AddToCartAnimationWidgetState();

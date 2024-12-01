@@ -19,17 +19,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class HomeTab extends StatelessWidget {
-  HomeTab({super.key});
+ const HomeTab({super.key});
 
-  OccasionsCubit occasionsCubit = getIt.get<OccasionsCubit>()
-    ..getOccasions();
-  BestSellerCubit bestSellerCubit = getIt.get<BestSellerCubit>()
-    ..getBestSellers();
-   CategoriesViewModelCubit categoriesCubit = getIt.get<CategoriesViewModelCubit>()..doAction( GetCategoriesAction());
-  GenericItemViewModelCubit genericCubit=  getIt.get<GenericItemViewModelCubit>();
+
 
   @override
   Widget build(BuildContext context) {
+    OccasionsCubit occasionsCubit = getIt.get<OccasionsCubit>()
+      ..getOccasions();
+    BestSellerCubit bestSellerCubit = getIt.get<BestSellerCubit>()
+      ..getBestSellers();
+    CategoriesViewModelCubit categoriesCubit = getIt.get<CategoriesViewModelCubit>()..doAction( GetCategoriesAction());
+    GenericItemViewModelCubit genericCubit=  getIt.get<GenericItemViewModelCubit>();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
