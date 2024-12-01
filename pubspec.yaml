@@ -34,11 +34,6 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.8
-  fluttertoast: ^8.2.8
-  image_picker: ^1.1.2
-  badges: ^3.1.2
-  row_item: ^2.2.1+1
   cupertino_icons:
   fluttertoast:
   badges:
@@ -53,6 +48,7 @@ dependencies:
   build_runner:
   awesome_snackbar_content:
   connectivity_plus:
+  cached_network_image:
 
   # Ui
   lottie:
@@ -62,6 +58,8 @@ dependencies:
   animated_text_kit:
   flutter_image_slideshow:
   add_to_cart_animation:
+  auto_size_text:
+  image_picker:
 
   # add injectable to your dependencies
   injectable:
@@ -82,6 +80,7 @@ dev_dependencies:
   dartz:
   test:
   flutter_native_splash:
+  mockito:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

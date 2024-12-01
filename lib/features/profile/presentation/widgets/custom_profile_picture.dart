@@ -19,11 +19,10 @@ class ProfilePic extends StatefulWidget {
 }
 
 class _ProfilePicState extends State<ProfilePic> {
-  File? _image = null;
-  final ImagePicker _picker = ImagePicker();
-  late final profileViewModel;
   File? _image;
-  late final ProfileViewModelCubit profileViewMod
+  final ImagePicker _picker = ImagePicker();
+  late final ProfileViewModelCubit profileViewModel;
+
   @override
  void initState() {
     super.initState();
@@ -52,7 +51,7 @@ class _ProfilePicState extends State<ProfilePic> {
         return Container(
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(30),
               topRight: Radius.circular(30),
             ),
@@ -60,7 +59,7 @@ class _ProfilePicState extends State<ProfilePic> {
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
                 blurRadius: 20,
-                offset: Offset(0, -5),
+                offset: const Offset(0, -5),
               ),
             ],
           ),
@@ -80,7 +79,7 @@ class _ProfilePicState extends State<ProfilePic> {
                 SizedBox(height: 10.h),
                 Divider(thickness: 1, color: Colors.grey[300]),
                 ListTile(
-                  leading: Icon(Icons.camera_alt_outlined, color: Colors.green),
+                  leading: const Icon(Icons.camera_alt_outlined, color: Colors.green),
                   title: Text(
                     "Take a photo",
                     style: TextStyle(color: Colors.black, fontSize: 16.sp),
@@ -91,9 +90,9 @@ class _ProfilePicState extends State<ProfilePic> {
                     Navigator.pop(context);
                   },
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
-                  leading: Icon(Icons.photo_library, color: Colors.blue),
+                  leading: const Icon(Icons.photo_library, color: Colors.blue),
                   title: Text(
                     "Pick from gallery",
                     style: TextStyle(color: Colors.black, fontSize: 16.sp),
@@ -125,7 +124,6 @@ class _ProfilePicState extends State<ProfilePic> {
       },
     );
   }
-=======
   // void _setImage(File? image) {
   //   setState(() {
   //     _image = image;

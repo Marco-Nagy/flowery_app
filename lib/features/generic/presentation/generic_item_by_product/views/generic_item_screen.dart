@@ -7,6 +7,7 @@ import '../../../../generic/presentation/widgets/tab_bar_widget.dart';
 import '../viewModel/generic_item_action.dart';
 import '../viewModel/generic_item_view_model_cubit.dart';
 import '../widget/generic_builder_widget.dart';
+import '../widget/no_products_widget.dart';
 
 class GenericItemScreen extends StatelessWidget {
   const GenericItemScreen(
