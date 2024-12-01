@@ -12,6 +12,7 @@ import '../../../../core/routes/app_routes.dart';
 
 class BuildItem extends StatelessWidget {
   const BuildItem({super.key, this.onClick});
+
   final void Function(GlobalKey)? onClick;
 
   @override
@@ -40,12 +41,8 @@ class BuildItem extends StatelessWidget {
                   onTap: () => context.pushNamed(AppRoutes.productsDetailsView,
                       arguments: state.mostSeller[index]),
                   child: GenericBuildItem(
-                    imageCover: state.mostSeller[index].imgCover ?? '',
-                    title: state.mostSeller[index].title ?? '',
-                    price: state.mostSeller[index].price.toString(),
-                    priceAfterDiscount:
-                        state.mostSeller[index].priceAfterDiscount.toString(),
-                    onClick:  onClick! ,
+                    product: state.mostSeller[index],
+                    onClick: onClick!,
                   ),
                 );
               },

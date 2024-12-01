@@ -4,6 +4,7 @@ import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CustomAppBarOfProfileMainScreen extends StatelessWidget {
   const CustomAppBarOfProfileMainScreen({super.key});
@@ -32,11 +33,9 @@ class CustomAppBarOfProfileMainScreen extends StatelessWidget {
               ),
             ),
             position: badges.BadgePosition.topEnd(top: -10.h, end: -2.w),
-            child: Icon(
-              Icons.notifications,
-              size: 30.sp,
-            ),
-          ),
+            child: SvgPicture.asset(Assets.imagesNotification),
+
+    ),
         ],
       ),
     );

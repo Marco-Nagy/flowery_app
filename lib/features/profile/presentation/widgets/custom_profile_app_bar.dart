@@ -2,8 +2,9 @@ import 'package:badges/badges.dart' as badges;
 import 'package:flowery_e_commerce/core/utils/widgets/base/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../core/styles/colors/my_colors.dart';
+import '../../../../generated/assets.dart';
 
 class CustomProfileAppBar extends StatelessWidget {
   const CustomProfileAppBar({super.key});
@@ -20,11 +21,7 @@ class CustomProfileAppBar extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
           position: badges.BadgePosition.topEnd(top: -10.h, end: -2.w),
-          child: const Icon(
-            Icons.notifications,
-            size: 30,
-            color: MyColors.gray,
-          ),
+          child: SvgPicture.asset(Assets.imagesNotification),
         ),
       ],
     );
