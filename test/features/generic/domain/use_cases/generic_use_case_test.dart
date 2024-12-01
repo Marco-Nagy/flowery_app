@@ -20,7 +20,7 @@ void main() {
 
     provideDummy<DataResult<GenericResponseEntity>>(
       Success(
-      GenericResponseEntity(
+      const GenericResponseEntity(
         message: '',
         items: [],
       ),
@@ -32,7 +32,7 @@ void main() {
     const resourceName = 'occasions';
 
     test('should return Success when API call is successful', () async {
-      final responseEntity = GenericResponseEntity(
+      const responseEntity = GenericResponseEntity(
         message: 'Success',
         items: [
           Items(

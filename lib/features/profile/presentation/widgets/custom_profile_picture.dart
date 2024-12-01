@@ -12,7 +12,7 @@ import '../../../../di/di.dart';
 import '../viewModel/profile_actions.dart';
 
 class ProfilePic extends StatefulWidget {
-  const ProfilePic({Key? key}) : super(key: key);
+  const ProfilePic({super.key});
 
   @override
   State<ProfilePic> createState() => _ProfilePicState();
@@ -22,8 +22,10 @@ class _ProfilePicState extends State<ProfilePic> {
   File? _image = null;
   final ImagePicker _picker = ImagePicker();
   late final profileViewModel;
-
-  initState() {
+  File? _image;
+  late final ProfileViewModelCubit profileViewMod
+  @override
+ void initState() {
     super.initState();
     profileViewModel = getIt.get<ProfileViewModelCubit>();
   }
@@ -123,6 +125,12 @@ class _ProfilePicState extends State<ProfilePic> {
       },
     );
   }
+=======
+  // void _setImage(File? image) {
+  //   setState(() {
+  //     _image = image;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -163,7 +171,7 @@ class _ProfilePicState extends State<ProfilePic> {
             clipBehavior: Clip.none,
             children: [
               _image == null
-                  ? CircleAvatar(
+                  ? const CircleAvatar(
                       backgroundImage: AssetImage(Assets.imagesProfile),
                     )
                   : CircleAvatar(

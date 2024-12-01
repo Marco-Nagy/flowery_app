@@ -11,15 +11,14 @@ import '../widgets/tab_bar_widget.dart';
 class CatalogGenericScreen extends StatelessWidget {
   final String resourceName;
 
-  const CatalogGenericScreen({Key? key, required this.resourceName})
-      : super(key: key);
+  const CatalogGenericScreen({super.key, required this.resourceName});
 
   @override
   Widget build(BuildContext context) {
     final ScrollController scrollController = ScrollController();
     return BlocProvider(
       create: (context) =>
-      getIt.get<GenericViewModelCubit>()..doAction(getData(resourceName)),
+      getIt.get<GenericViewModelCubit>()..doAction(GetData(resourceName)),
       child: BlocBuilder<GenericViewModelCubit, GenericViewModelState>(
         builder: (context, state) {
           final cubit = context.read<GenericViewModelCubit>();
@@ -27,19 +26,19 @@ class CatalogGenericScreen extends StatelessWidget {
           scrollController.addListener(() {
             if (scrollController.position.pixels >=
                 scrollController.position.maxScrollExtent &&
-                !(state is GenericItemLoadedState)) {
-              cubit.doAction(fetchNextPage());
+                state is! GenericItemLoadedState) {
+              cubit.doAction(FetchNextPage());
             }
           });
 
           switch (state.runtimeType) {
-            case GenericItemLoadedState:
-              return AppLoader();
-            case GenericItemErrorState:
+            case const (GenericItemLoadedState) :
+              return const AppLoader();
+            case const (GenericItemErrorState) :
               final errorState = state as GenericItemErrorState;
               return Center(child: Text(errorState.message.error!));
 
-            case GenericItemSuccessState:
+            case const (GenericItemSuccessState) :
               final successState = state as GenericItemSuccessState;
               return DefaultTabController(
                 length: cubit.items.length,
@@ -52,7 +51,7 @@ class CatalogGenericScreen extends StatelessWidget {
                             .toList(),
                         onTap: (index) {
                           final selectedCategory = cubit.items.elementAt(index);
-                          cubit.doAction(setCategory(selectedCategory));
+                          cubit.doAction(SetCategory(selectedCategory));
                         },
                       ),
                       verticalSpacing(20),
@@ -69,7 +68,7 @@ class CatalogGenericScreen extends StatelessWidget {
               );
 
             default:
-              return AppLoader();
+              return const AppLoader();
 
           }
         },

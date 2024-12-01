@@ -5,9 +5,8 @@ import 'package:dio/dio.dart';
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
 import 'package:flowery_e_commerce/features/profile/domain/use_cases/profile_use_case.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_actions.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
-
 import '../../../../core/networking/error/error_handler.dart';
 import '../../../../core/networking/error/error_model.dart';
 import '../../../../di/di.dart';
@@ -44,6 +43,7 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
     switch (result) {
       case Success<GetLoggedUserDataResponseEntity>():
         emit(GetLoggedUserDataSuccess(data: result.data));
+        debugPrint('returnedData : ${result.data}');
       case Fail<GetLoggedUserDataResponseEntity>():
         emit(GetLoggedUserDataError(
             error: ErrorHandler.handle(result.exception!)));

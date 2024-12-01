@@ -8,11 +8,15 @@ import 'generic_build_item.dart';
 
 class GenericBuilderWidget extends StatelessWidget {
   const GenericBuilderWidget(
-      {super.key, required this.filteredProducts, this.controller});
+      {super.key,
+      required this.filteredProducts,
+      this.controller,
+      required this.onClick});
 
   final ScrollController? controller;
 
   final List<ProductEntity> filteredProducts;
+  final void Function(GlobalKey) onClick;
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +35,11 @@ class GenericBuilderWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         final product = filteredProducts[index];
         return GestureDetector(
-          onTap: () => context.pushNamed(AppRoutes.productsDetailsView,arguments: product ),
+          onTap: () => context.pushNamed(AppRoutes.productsDetailsView,
+              arguments: product),
           child: GenericBuildItem(
-            title: product.title ?? '',
-            imageCover: product.imgCover ?? '',
-            price: product.price?.toString() ?? '',
-            priceAfterDiscount: product.priceAfterDiscount?.toString() ?? '',
+            product: product,
+            onClick: onClick,
           ),
         );
       },

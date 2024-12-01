@@ -25,6 +25,8 @@ class ProfileOnlineDataSourceImpl implements ProfileOnlineDataSource {
     return executeApi(() async {
       var response = await _apiManager.getLoggedUserData();
       return ProfileMapper.getLoggedResponseToEntity(response);
+      var response = await _apiManager.getLoggedUserData("Bearer$token");
+      return ProfileMapper.toEntity(response);
     });
   }
 

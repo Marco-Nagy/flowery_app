@@ -43,6 +43,7 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
                          height: 180.h,
                          child: CachedNetworkWidget(
                            imageUrl: state.bestSeller[index].imgCover??'',
+                           fit: BoxFit.cover,
                          ),
                        ),
                        SizedBox(height: 8.h,),
@@ -68,7 +69,7 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
            case GetBestSellerErrorState():
              aweSnackBar(msg: state.errorModel.error??'', context: context, type: MessageTypeConst.failure);
            case GetBestSellerLoadingState():
-             return AppLoader();
+             return const AppLoader();
            case BestSellerInitialState():
              default:null;
          }

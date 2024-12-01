@@ -11,7 +11,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/routes/app_routes.dart';
 
 class BuildItem extends StatelessWidget {
-  BuildItem({super.key});
+  const BuildItem({super.key, this.onClick});
+
+  final void Function(GlobalKey)? onClick;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class BuildItem extends StatelessWidget {
       builder: (context, state) {
         switch (state) {
           case GetMostSellerLoadingState():
-            return AppLoader();
+            return const AppLoader();
           case GetMostSellerSuccessState():
             return GridView.builder(
               padding: const EdgeInsets.only(
@@ -39,11 +41,8 @@ class BuildItem extends StatelessWidget {
                   onTap: () => context.pushNamed(AppRoutes.productsDetailsView,
                       arguments: state.mostSeller[index]),
                   child: GenericBuildItem(
-                    imageCover: state.mostSeller[index].imgCover ?? '',
-                    title: state.mostSeller[index].title ?? '',
-                    price: state.mostSeller[index].price.toString(),
-                    priceAfterDiscount:
-                        state.mostSeller[index].priceAfterDiscount.toString(),
+                    product: state.mostSeller[index],
+                    onClick: onClick!,
                   ),
                 );
               },
