@@ -1,8 +1,6 @@
 import 'package:flowery_e_commerce/core/services/shared_preference/shared_preference_helper.dart';
 import 'package:flowery_e_commerce/core/services/shared_preference/shared_pref_keys.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../../../../core/Services/shared_preference/shared_preference_helper.dart';
-import '../../../../../../../core/Services/shared_preference/shared_pref_keys.dart';
 import '../contracts/offline_data_source.dart';
 
 @Injectable(as: OfflineDataSource)
