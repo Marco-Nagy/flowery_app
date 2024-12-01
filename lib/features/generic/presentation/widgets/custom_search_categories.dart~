@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/styles/colors/my_colors.dart';
-import '../../../../../core/styles/fonts/my_fonts.dart';
+import '../../../../core/styles/colors/my_colors.dart';
+import '../../../../core/styles/fonts/my_fonts.dart';
 
 class CustomSearchCategories extends StatelessWidget {
   const CustomSearchCategories({super.key});
@@ -22,7 +22,7 @@ class CustomSearchCategories extends StatelessWidget {
           hintStyle:
               MyFonts.styleMedium500_14.copyWith(color: MyColors.placeHolder),
           border: InputBorder.none,
-          prefixIcon: Icon(
+          prefixIcon: const Icon(
             Icons.search,
             color: MyColors.placeHolder,
           ),

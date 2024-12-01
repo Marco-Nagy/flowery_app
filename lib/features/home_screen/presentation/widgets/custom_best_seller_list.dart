@@ -43,6 +43,7 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
                          height: 180.h,
                          child: CachedNetworkWidget(
                            imageUrl: state.bestSeller[index].imgCover??'',
+                           fit: BoxFit.cover,
                          ),
                        ),
                        SizedBox(height: 8.h,),

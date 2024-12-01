@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../core/utils/widgets/base/app_loader.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
+import '../widget/no_products_widget.dart';
 import '../../../../generic/presentation/widgets/tab_bar_widget.dart';
 import '../viewModel/generic_item_action.dart';
 import '../viewModel/generic_item_view_model_cubit.dart';
@@ -31,7 +31,7 @@ class GenericItemScreen extends StatelessWidget {
           case const (GetProductLoading):
             return const Center(child: AppLoader());
 
-          case const (GetItemsSuccess):
+          case const ( GetItemsSuccess):
           case const (FilteredProductsState):
             final items = cubit.items;
             final filteredProducts = state is FilteredProductsState

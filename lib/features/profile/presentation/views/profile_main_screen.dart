@@ -19,7 +19,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
+        actions: const [
           CustomAppBarOfProfileMainScreen(),
         ],
       ),
@@ -27,7 +27,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CustomMainProfileData(),
+            const CustomMainProfileData(),
             SizedBox(
               height: 20.h,
             ),
@@ -51,7 +51,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                       color: MyColors.blackBase,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   InkWell(
                     onTap: () {},
                     child: SizedBox(
@@ -84,7 +84,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                       color: MyColors.blackBase,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   InkWell(
                     onTap: () {},
                     child: SizedBox(
@@ -105,7 +105,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
               height: 1.h,
               color: MyColors.white70,
             ),
-            CustomSwitchIcon(),
+            const CustomSwitchIcon(),
             Container(
               width: double.infinity,
               height: 1.h,
@@ -131,7 +131,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                           color: MyColors.blackBase,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       InkWell(
                         onTap: () {},
                         child: Text(
@@ -154,7 +154,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                           color: MyColors.blackBase,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       InkWell(
                         onTap: () {},
                         child: SizedBox(
@@ -177,7 +177,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                           color: MyColors.blackBase,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       InkWell(
                         onTap: () {},
                         child: SizedBox(
@@ -217,10 +217,10 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                       color: MyColors.blackBase,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   InkWell(
                     onTap: () {
-                      ShowLogoutDialog(context);
+                      showLogoutDialog(context);
                     },
                     child: SizedBox(
                         width: 30.w,
