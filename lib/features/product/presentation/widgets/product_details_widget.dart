@@ -1,5 +1,8 @@
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/add_cart_button.dart';
+import 'package:flowery_e_commerce/di/di.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors/my_colors.dart';
@@ -46,7 +49,7 @@ class ProductDetailsWidget extends StatelessWidget {
                   )),
               verticalSpacing(8.h),
               Text(
-                '${product.quantity} ${product.title}',
+                '${product.cartItemQuantity} ${product.title}',
                 style: MyFonts.styleMedium500_16,
               ),
               verticalSpacing(24.h),
@@ -66,12 +69,15 @@ class ProductDetailsWidget extends StatelessWidget {
               ),
               verticalSpacing(8.h),
               Text('${product.title}:${product.quantity}',
+              Text('${product.title}:${product.cartItemQuantity}',
                   style: MyFonts.styleRegular400_14),
               verticalSpacing(4.h),
               Text('White wrap', style: MyFonts.styleRegular400_14),
               verticalSpacing(24.h),
               AddCartButton(
-                onTap: () {},
+                onTap: () {
+                  getIt.get<CartViewModelCubit>().doAction(AddToCartAction(product.id));
+                },
                 height: 48.h,
                 showRow: false,
               ),

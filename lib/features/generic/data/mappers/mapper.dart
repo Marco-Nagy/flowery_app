@@ -23,7 +23,7 @@ class Mapper {
 
   static Items _mapItemModelToItems(ItemModel itemModel) {
     return Items(
-      id: itemModel.Id,
+      id: itemModel.id,
       name: itemModel.name,
       slug: itemModel.slug,
       image: itemModel.image,

@@ -19,7 +19,7 @@ class HomeMappers {
             images: e?.images,
             description: e?.description,
           ),
-        )
+    )
         .toList();
   }
   static List<Occasions> toOccasionsEntity(

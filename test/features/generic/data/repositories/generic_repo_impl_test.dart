@@ -9,6 +9,7 @@ import 'package:mockito/mockito.dart';
 import 'generic_repo_impl_test.mocks.dart';
 
 @GenerateMocks([GenericOnlineDataSource])
+
 void main() {
   late MockGenericOnlineDataSource mockOnlineDataSource;
   late GenericRepositoryImpl genericRepository;
@@ -16,7 +17,7 @@ void main() {
   setUpAll(() {
     provideDummy<DataResult<GenericResponseEntity>>(
       Success(
-        GenericResponseEntity(
+        const GenericResponseEntity(
           metadata: Metadata(
             limit: 1,
             currentPage: 1,
@@ -29,6 +30,8 @@ void main() {
     );
   });
 
+
+
   setUp(() {
     mockOnlineDataSource = MockGenericOnlineDataSource();
     genericRepository = GenericRepositoryImpl(mockOnlineDataSource);
@@ -36,7 +39,7 @@ void main() {
 
   group('GenericRepositoryImpl Tests', () {
     const resourceName = 'testResource';
-    final mockEntity = GenericResponseEntity(
+    const mockEntity = GenericResponseEntity(
       metadata: Metadata(
         limit: 1,
         currentPage: 10,
@@ -70,8 +73,7 @@ void main() {
       final exception = Exception('Data source error');
       when(mockOnlineDataSource.getAll(resourceName)).thenThrow(exception);
 
-      expect(() => genericRepository.getAll(resourceName),
-          throwsA(isA<Exception>()));
+      expect(() => genericRepository.getAll(resourceName), throwsA(isA<Exception>()));
       verify(mockOnlineDataSource.getAll(resourceName)).called(1);
     });
   });

@@ -21,21 +21,21 @@ class HomeResponseModelEntity {
 @JsonSerializable()
 class HomeResponseModelProductsEntity {
   @JsonKey(name: '_id')
-  String? id;
-  String? title;
-  String? slug;
-  String? description;
-  String? imgCover;
-  List<String?>? images;
-  int? price;
-  int? priceAfterDiscount;
-  int? quantity;
-  String? category;
-  String? occasion;
-  String? createdAt;
-  String? updatedAt;
+ final String? id;
+  final String? title;
+  final String? slug;
+  final String? description;
+  final String? imgCover;
+  final List<String?>? images;
+  final int? price;
+  final int? priceAfterDiscount;
+  final int? quantity;
+  final String? category;
+  final String? occasion;
+  final String? createdAt;
+  final String? updatedAt;
   @JsonKey(name: '__v')
-  int? v;
+  final  int? v;
 
 
   HomeResponseModelProductsEntity(
@@ -65,21 +65,21 @@ class HomeResponseModelProductsEntity {
 @JsonSerializable()
 class HomeResponseModelBestSellerEntity {
   @JsonKey(name: '_id')
-  String? id;
-  String? title;
-  String? slug;
-  String? description;
-  String? imgCover;
-  List<String?>? images;
-  int? price;
-  int? priceAfterDiscount;
-  int? quantity;
-  String? category;
-  String? occasion;
-  String? createdAt;
-  String? updatedAt;
+  final String? id;
+  final String? title;
+  final String? slug;
+  final String? description;
+  final String? imgCover;
+  final List<String?>? images;
+  final int? price;
+  final int? priceAfterDiscount;
+  final int? quantity;
+  final String? category;
+  final String? occasion;
+  final String? createdAt;
+  final String? updatedAt;
   @JsonKey(name: '__v')
-  int? v;
+  final int? v;
 
   HomeResponseModelBestSellerEntity(
       this.id,
@@ -109,12 +109,12 @@ class HomeResponseModelBestSellerEntity {
 @JsonSerializable()
 class HomeResponseModelOccasionsEntity {
   @JsonKey(name: '_id')
-  String? id;
-  String? name;
-  String? slug;
-  String? image;
-  String? createdAt;
-  String? updatedAt;
+  final String? id;
+  final String? name;
+  final String? slug;
+  final String? image;
+  final String? createdAt;
+  final String? updatedAt;
 
   HomeResponseModelOccasionsEntity(this.id, this.name, this.slug, this.image,
       this.createdAt, this.updatedAt);

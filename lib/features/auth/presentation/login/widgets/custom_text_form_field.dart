@@ -30,19 +30,19 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       obscureText: widget.isPassword ?? false,
       controller: widget.controller,
       decoration: InputDecoration(
-        suffix: widget.suffix ?? SizedBox(),
+        suffix: widget.suffix ?? const SizedBox(),
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        labelText: '${widget.labelText ?? ''}',
+        labelText: widget.labelText ?? '',
         labelStyle: MyFonts.styleRegular400_12.copyWith(color: MyColors.gray),
-        hintText: '${widget.hintText ?? ''}',
+        hintText: widget.hintText ?? '',
         hintStyle:
             MyFonts.styleRegular400_14.copyWith(color: MyColors.placeHolder),
-        border: OutlineInputBorder(),
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: MyColors.gray),
+        border: const OutlineInputBorder(),
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: MyColors.gray),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: MyColors.gray),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: MyColors.gray),
         ),
       ),
       validator: widget.validator,

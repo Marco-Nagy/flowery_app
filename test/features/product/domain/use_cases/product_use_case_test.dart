@@ -17,8 +17,9 @@ void main() {
     mockProductRepo = MockProductRepo();
     productUseCase = ProductUseCase(mockProductRepo);
 
-    provideDummy<DataResult<ProductResponseEntity>>(Success(
-      ProductResponseEntity(
+    provideDummy<DataResult<ProductResponseEntity>>(
+        Success(
+      const ProductResponseEntity(
         products: [
           ProductEntity(
             id: '1',
@@ -40,7 +41,7 @@ void main() {
 
   group('ProductUseCase Tests', () {
     test('should return Success when repo call is successful', () async {
-      final responseEntity = ProductResponseEntity(
+      const responseEntity = ProductResponseEntity(
         products: [
           ProductEntity(
             id: '1',
@@ -59,8 +60,7 @@ void main() {
       );
       final successResult = Success<ProductResponseEntity>(responseEntity);
 
-      when(mockProductRepo.getAllProducts())
-          .thenAnswer((_) async => successResult);
+      when(mockProductRepo.getAllProducts()).thenAnswer((_) async => successResult);
 
       final result = await productUseCase.getAllProducts();
 
@@ -75,8 +75,7 @@ void main() {
       final exception = Exception('Error fetching products');
       final failResult = Fail<ProductResponseEntity>(exception);
 
-      when(mockProductRepo.getAllProducts())
-          .thenAnswer((_) async => failResult);
+      when(mockProductRepo.getAllProducts()).thenAnswer((_) async => failResult);
 
       final result = await productUseCase.getAllProducts();
 

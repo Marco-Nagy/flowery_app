@@ -22,13 +22,12 @@ void main() {
   group('getAll', () {
     const resourceName = 'occasions';
 
-    test('should return GenericResponseEntity when API call is successful',
-        () async {
+    test('should return GenericResponseEntity when API call is successful', () async {
       final responseDto = GenericResponseDto(
         message: 'Success',
         occasions: [
           ItemModel(
-            Id: '1',
+            id: '1',
             name: 'Occasion',
             slug: 'occasion',
             image: 'image.png',
@@ -45,7 +44,9 @@ void main() {
       expect(result, isA<Success<GenericResponseEntity>>());
       final successResult = result as Success<GenericResponseEntity>;
       expect(successResult.data.message, 'Success');
+
     });
+
 
     test('should return Fail when API call fails', () async {
       when(mockApiManager.getGenericProduct(resourceName))
@@ -58,5 +59,7 @@ void main() {
       expect(failResult.exception, isA<Exception>());
       expect(failResult.exception?.toString(), 'Exception: Error');
     });
+
   });
 }
+

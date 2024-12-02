@@ -48,7 +48,7 @@ class AuthMapper {
   }
 
   static User mapUserFromDtoToEntity(UserDto? userDto) {
-    if (userDto == null) return User();
+    if (userDto == null) return const User();
     return User(
       firstName: userDto.firstName,
       lastName: userDto.lastName,
@@ -57,7 +57,7 @@ class AuthMapper {
       phone: userDto.phone,
       photo: userDto.photo,
       role: userDto.role,
-      id: userDto.Id,
+      id: userDto.id,
       createdAt: userDto.createdAt,
     );
   }

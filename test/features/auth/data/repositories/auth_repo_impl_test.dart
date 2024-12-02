@@ -16,7 +16,7 @@ void main() {
 
   setUpAll(() {
     provideDummy<DataResult<SignUpResponseEntity>>(
-        Success(SignUpResponseEntity()));
+        Success(const SignUpResponseEntity()));
   });
 
   setUp(() {
@@ -35,7 +35,7 @@ void main() {
       gender: 'female',
     );
 
-    final responseEntity = SignUpResponseEntity(
+    const responseEntity = SignUpResponseEntity(
       message: 'Sign-up successful',
       error: null,
       token: 'token',

@@ -1,4 +1,3 @@
-import 'package:flowery_e_commerce/features/auth/domain/entities/request/signup_request_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'signup_request_dto.g.dart';

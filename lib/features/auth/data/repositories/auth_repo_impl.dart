@@ -27,7 +27,7 @@ class AuthRepositoryImpl implements AuthRepository {
     var result = await _onlineDataSource.login(request);
     return result;
   }
-
+  @override
   Future<DataResult<SignUpResponseEntity>> signUp(
       {required SignUpRequestEntity request}) async {
     var result = await _onlineDataSource.signUp(request: request);

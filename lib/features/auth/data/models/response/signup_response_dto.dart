@@ -46,7 +46,7 @@ class UserDto {
   @JsonKey(name: "role")
   final String? role;
   @JsonKey(name: "_id")
-  final String? Id;
+  final String? id;
   @JsonKey(name: "createdAt")
   final String? createdAt;
 
@@ -58,7 +58,7 @@ class UserDto {
     this.phone,
     this.photo,
     this.role,
-    this.Id,
+    this.id,
     this.createdAt,
   });
 

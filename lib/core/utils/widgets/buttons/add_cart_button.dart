@@ -10,7 +10,7 @@ class AddCartButton extends StatelessWidget {
     super.key,
     required this.onTap,
     this.showRow = true,
-    this.height,
+    this.height ,
   });
 
   final VoidCallback onTap;
@@ -28,7 +28,7 @@ class AddCartButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 24.w),
           backgroundColor: MyColors.baseColor,
           shape: RoundedRectangleBorder(
-            side: BorderSide(
+            side: const BorderSide(
               color: Colors.transparent,
             ),
             borderRadius: BorderRadius.circular(100),
@@ -37,7 +37,7 @@ class AddCartButton extends StatelessWidget {
         child: showRow
             ? Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.shopping_cart_outlined,
                     color: MyColors.white,
                     size: 19,

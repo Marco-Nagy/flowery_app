@@ -1,15 +1,15 @@
 sealed class GenericAction {}
 
 
-class getData extends GenericAction {
+class GetData extends GenericAction {
   final String resourceName;
 
-  getData(this.resourceName);
+  GetData(this.resourceName);
 }
 
-class fetchNextPage extends GenericAction {}
-class setCategory extends GenericAction {
+class FetchNextPage extends GenericAction {}
+class SetCategory extends GenericAction {
   final String category;
 
-  setCategory(this.category);
+  SetCategory(this.category);
 }

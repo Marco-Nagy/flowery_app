@@ -31,6 +31,8 @@ flutter_native_splash:
 #    background_image: assets/images/core/launcher_background.png
     image: assets/images/splash.png
     color: "#D21E6A" # Fallback color (required)
+    image_dark: assets/images/splash.png
+    icon_background_color_dark: "#121212"
     android: true
     ios: true
     web: true

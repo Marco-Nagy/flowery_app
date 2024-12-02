@@ -6,7 +6,7 @@ import 'custom_text_form_field.dart';
 class EmailField extends StatelessWidget {
   final TextEditingController emailController;
 
-  const EmailField({Key? key, required this.emailController}) : super(key: key);
+  const EmailField({super.key, required this.emailController});
 
   @override
   Widget build(BuildContext context) {

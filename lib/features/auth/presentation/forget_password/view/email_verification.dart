@@ -24,8 +24,10 @@ class EmailVerification extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useEffect(
-      () => context.read<ForgetPasswordViewModelCubit>().initTimer(),
-    );
+            () {
+          context.read<ForgetPasswordViewModelCubit>().initTimer();
+          return null;
+        }    );
 
     return SafeArea(
         child: Scaffold(
