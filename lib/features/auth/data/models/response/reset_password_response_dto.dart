@@ -13,4 +13,5 @@ class ResetPasswordResponseDto {
       _$ResetPasswordResponseDtoFromJson(json);
 
 
+  Map<String, dynamic> toJson() => _$ResetPasswordResponseDtoToJson(this);
 }

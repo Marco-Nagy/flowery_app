@@ -32,6 +32,7 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
     });
   }
 
+  @override
   Future<DataResult<SignUpResponseEntity>> signUp(
       {required SignUpRequestEntity request}) {
     return executeApi(() async {

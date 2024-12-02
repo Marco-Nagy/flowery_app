@@ -8,6 +8,7 @@ import '../widgets/slider_image.dart';
 
 class ProductDetailsWidget extends StatelessWidget {
   const ProductDetailsWidget({super.key, this.product});
+
   final dynamic product;
 
   @override

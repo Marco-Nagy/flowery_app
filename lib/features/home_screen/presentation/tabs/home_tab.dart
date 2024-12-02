@@ -5,6 +5,7 @@ import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/categories/viewModel/categories_action.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/best_seller_cubit/best_seller_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/occasions_cubit/occasions_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/widgets/custom_best_seller_list.dart';
@@ -18,25 +19,24 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class HomeTab extends StatelessWidget {
-  HomeTab({super.key});
+  const HomeTab({super.key});
 
-  OccasionsCubit occasionsCubit = getIt.get<OccasionsCubit>()
-    ..getOccasions();
-  BestSellerCubit bestSellerCubit = getIt.get<BestSellerCubit>()
-    ..getBestSellers();
-   CategoriesViewModelCubit categoriesCubit = getIt.get<CategoriesViewModelCubit>()..doAction( GetCategoriesAction());
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => occasionsCubit,
+          create: (context) => getIt.get<OccasionsCubit>()..getOccasions(),
         ),
         BlocProvider(
-          create: (context) => bestSellerCubit,
+          create: (context) => getIt.get<BestSellerCubit>()..getBestSellers(),
         ),
         BlocProvider(
-          create: (context) => categoriesCubit,
+          create: (context) => getIt.get<CategoriesViewModelCubit>()
+            ..doAction(GetCategoriesAction()),
+        ),
+        BlocProvider(
+          create: (context) => getIt.get<GenericItemViewModelCubit>(),
         ),
       ],
       child: Scaffold(
@@ -88,7 +88,7 @@ class HomeTab extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: (){
-                      context.pushNamed(AppRoutes.categoriesView);
+                      context.pushNamed(AppRoutes.categoriesView, arguments: 'categories');
                     },
                     child: Container(
                       margin: EdgeInsets.only(left: 15.w, right: 15.w),
@@ -115,7 +115,7 @@ class HomeTab extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: (){
-                    context.pushNamed(AppRoutes.mostSellingScreen);
+                    context.pushNamed(AppRoutes.mostSellingScreen,arguments: '');
                     },
                     child: Container(
                       margin: EdgeInsets.only(left: 15.w, right: 15.w),
@@ -139,7 +139,7 @@ class HomeTab extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: (){
-                      context.pushNamed(AppRoutes.occasionScreen);
+                      context.pushNamed(AppRoutes.occasionScreen,arguments: 'occasions');
                     },
                     child: Container(
                       margin: EdgeInsets.only(left: 15.w, right: 15.w),

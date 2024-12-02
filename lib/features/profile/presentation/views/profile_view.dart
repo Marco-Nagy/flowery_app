@@ -16,7 +16,7 @@ class ProfileView extends StatelessWidget {
         padding: EdgeInsets.only(top: 56.h, left: 16.w, right: 16.w),
         child: Column(
           children: [
-            CustomProfileAppBar(),
+            const CustomProfileAppBar(),
             verticalSpacing(24),
             const ProfilePic(),
             verticalSpacing(24),

@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class GenericResponseEntity extends Equatable {
-  GenericResponseEntity({
+  const GenericResponseEntity({
     this.message,
     this.metadata,
     this.items,
@@ -16,7 +16,7 @@ class GenericResponseEntity extends Equatable {
 }
 
 class Items extends Equatable {
-  Items({
+  const Items({
     this.id,
     this.name,
     this.slug,
@@ -37,7 +37,7 @@ class Items extends Equatable {
 }
 
 class Metadata extends Equatable {
-  Metadata({
+  const Metadata({
     this.currentPage,
     this.numberOfPages,
     this.limit,

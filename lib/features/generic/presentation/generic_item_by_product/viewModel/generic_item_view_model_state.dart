@@ -1,6 +1,5 @@
 part of 'generic_item_view_model_cubit.dart';
 
-@immutable
 sealed class GenericItemViewModeState {}
 
 final class GetItemsInitial extends GenericItemViewModeState {}
@@ -38,7 +37,7 @@ class FilteredProductsState extends GenericItemViewModeState {
 }
 
 class FilteredItemsLoading extends GenericItemViewModeState {}
-class errorMassage extends GenericItemViewModeState {
+class ErrorMessage extends GenericItemViewModeState {
   final String error;
-  errorMassage({required this.error});
+  ErrorMessage({required this.error});
 }

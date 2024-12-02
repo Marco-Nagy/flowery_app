@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class AddCartButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 24.w),
           backgroundColor: MyColors.baseColor,
           shape: RoundedRectangleBorder(
-            side: BorderSide(
+            side: const BorderSide(
               color: Colors.transparent,
             ),
             borderRadius: BorderRadius.circular(100),
@@ -37,13 +38,13 @@ class AddCartButton extends StatelessWidget {
         child: showRow
             ? Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.shopping_cart_outlined,
                     color: MyColors.white,
                     size: 19,
                   ),
                   horizontalSpacing(8.w),
-                  Text(
+                  AutoSizeText(
                     'Add to cart',
                     style: MyFonts.styleMedium500_13
                         .copyWith(color: MyColors.white),
@@ -51,7 +52,7 @@ class AddCartButton extends StatelessWidget {
                 ],
               )
             : Center(
-                child: Text(
+                child: AutoSizeText(
                   'Add to cart',
                   style:
                       MyFonts.styleMedium500_16.copyWith(color: MyColors.white),

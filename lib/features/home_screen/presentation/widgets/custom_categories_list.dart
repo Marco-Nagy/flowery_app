@@ -24,7 +24,7 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
         builder: (context, state) {
           switch (state) {
             case GetCategoriesViewModelLoading():
-              return AppLoader();
+              return const AppLoader();
             case GetCategoriesViewModelError():
               aweSnackBar(
                   msg: state.error.error ?? '',

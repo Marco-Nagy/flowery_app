@@ -55,7 +55,7 @@ class Metadata {
 @JsonSerializable()
 class ItemModel {
   @JsonKey(name: "_id")
-  final String? Id;
+  final String? id;
   @JsonKey(name: "name")
   final String? name;
   @JsonKey(name: "slug")
@@ -68,7 +68,7 @@ class ItemModel {
   final String? updatedAt;
 
   ItemModel ({
-    this.Id,
+    this.id,
     this.name,
     this.slug,
     this.image,
