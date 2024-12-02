@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:dio/dio.dart';
+import 'package:flowery_e_commerce/features/profile/domain/entities/request/change_password_request_entity.dart';
+import 'package:flowery_e_commerce/features/profile/domain/entities/response/change_password_respose_entity.dart';
 import 'package:flowery_e_commerce/features/profile/domain/repositories/profile_repo.dart';
 import 'package:injectable/injectable.dart';
 
@@ -25,4 +26,6 @@ class ProfileUseCase {
 
   Future<DataResult<UploadPhotoResponseEntity>> uploadPhoto(File photo) =>
       _repository.uploadPhoto(photo);
+  Future<DataResult<ChangePasswordResponseEntity>> changePassword(ChangePasswordRequestEntity request) =>
+      _repository.changePassword( request);
 }

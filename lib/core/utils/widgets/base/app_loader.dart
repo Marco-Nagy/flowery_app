@@ -3,6 +3,7 @@ import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
 import '../spacing.dart';
@@ -41,7 +42,7 @@ class AppLoaderState extends State<AppLoader> with SingleTickerProviderStateMixi
         children: [
           Lottie.asset(
             Assets.imagesFloweryLoader,
-            height: MediaQuery.of(context).size.height * .12,
+            height: 80.sp,
             alignment: Alignment.bottomCenter,
             fit: BoxFit.scaleDown,
           ),

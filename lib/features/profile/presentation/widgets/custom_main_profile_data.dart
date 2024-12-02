@@ -33,7 +33,7 @@ class _CustomMainProfileDataState extends State<CustomMainProfileData> {
         builder: (context, state) {
          switch(state) {
            case ProfileViewModelInitial():
-             // TODO: Handle this case.
+             
            case GetLoggedUserDataLoading():
              const AppLoader();
            case GetLoggedUserDataSuccess():
@@ -77,17 +77,23 @@ class _CustomMainProfileDataState extends State<CustomMainProfileData> {
            case GetLoggedUserDataError():
              aweSnackBar(msg: 'Error', context: context, type:MessageTypeConst.failure);
            case EditProfileLoading():
-             // TODO: Handle this case.
+             
            case EditProfileSuccess():
-             // TODO: Handle this case.
+             
            case EditProfileError():
-             // TODO: Handle this case.
+             
            case UploadPhotoLoading():
-             // TODO: Handle this case.
+             
            case UploadPhotoSuccess():
-             // TODO: Handle this case.
+             
+           case ChangePasswordLoading():
+             
+           case ChangePasswordSuccess():
+             
            case UploadPhotoError():
-             // TODO: Handle this case.
+             
+           case ChangePasswordError():
+             
          }
          return Container();
         },
