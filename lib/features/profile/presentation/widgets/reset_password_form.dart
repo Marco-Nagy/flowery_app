@@ -19,10 +19,10 @@ class ResetPasswordForm extends StatefulWidget {
   });
 
   @override
-  _ResetPasswordFormState createState() => _ResetPasswordFormState();
+  ResetPasswordFormState createState() => ResetPasswordFormState();
 }
 
-class _ResetPasswordFormState extends State<ResetPasswordForm> {
+class ResetPasswordFormState extends State<ResetPasswordForm> {
   bool _passwordVisible = false;
   bool _newPasswordVisible = false;
   bool _confirmPasswordVisible = false;
