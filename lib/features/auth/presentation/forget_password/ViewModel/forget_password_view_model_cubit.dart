@@ -80,7 +80,7 @@ class ForgetPasswordViewModelCubit extends Cubit<ForgetPasswordViewModelState> {
     }
   }
 
-  initTimer() {
+   void initTimer() {
     time = 10;
     _timer = Timer.periodic(
       const Duration(seconds: 1),

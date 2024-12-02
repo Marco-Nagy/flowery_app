@@ -6,7 +6,7 @@ class SignUpResponseEntity extends Equatable {
   final User? user;
   final String? token;
 
-  SignUpResponseEntity({
+  const SignUpResponseEntity({
     this.message,
     this.error,
     this.user,
@@ -28,7 +28,7 @@ class User extends Equatable {
   final String? id;
   final String? createdAt;
 
-  User({
+  const User({
     this.firstName,
     this.lastName,
     this.email,

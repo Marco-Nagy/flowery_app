@@ -10,5 +10,6 @@ class ForgetPasswordRequestDto {
 
 
 
+  factory ForgetPasswordRequestDto.fromJson(Map<String, dynamic> json) => _$ForgetPasswordRequestDtoFromJson(json);
   Map<String, dynamic> toJson() => _$ForgetPasswordRequestDtoToJson(this);
 }

@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
@@ -8,8 +7,6 @@ import 'package:flowery_e_commerce/features/profile/presentation/widgets/profile
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/styles/fonts/my_fonts.dart';
-import '../../../../core/utils/widgets/spacing.dart';
 import '../../../../di/di.dart';
 import 'custom_section_gender.dart';
 

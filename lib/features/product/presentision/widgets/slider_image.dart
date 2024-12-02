@@ -6,7 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SliderImage extends StatelessWidget {
   const SliderImage({super.key, required this.imageUrls});
-  final List<String?>imageUrls;
+
+  final List<String?> imageUrls;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,9 @@ class SliderImage extends StatelessWidget {
       isLoop: true,
       autoPlayInterval: null,
       children: imageUrls.map((url) {
-        return CachedNetworkWidget(imageUrl: url!,);
+        return CachedNetworkWidget(
+          imageUrl: url!,
+        );
       }).toList(),
     );
   }

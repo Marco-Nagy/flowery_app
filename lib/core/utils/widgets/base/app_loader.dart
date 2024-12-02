@@ -1,29 +1,30 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:flowery_e_commerce/core/styles/animated_image.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/animated_status_dialog.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
 import '../spacing.dart';
 
 class AppLoader extends StatefulWidget {
-  const AppLoader({Key? key}) : super(key: key);
+  const AppLoader({super.key});
 
   @override
-  _AppLoaderState createState() => _AppLoaderState();
+  AppLoaderState createState() => AppLoaderState();
 }
 
-class _AppLoaderState extends State<AppLoader>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
+class AppLoaderState extends State<AppLoader> with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
 
   @override
   void initState() {
-    _controller = AnimationController(vsync: this);
     super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..repeat();
   }
 
   @override
@@ -41,10 +42,9 @@ class _AppLoaderState extends State<AppLoader>
         children: [
           Lottie.asset(
             Assets.imagesFloweryLoader,
-              height: MediaQuery.of(context).size.height * .12,
+              height: 80.sp,
               alignment: Alignment.bottomCenter,
-            fit: BoxFit.scaleDown
-
+            fit: BoxFit.scaleDown,
           ),
           verticalSpacing(15),
           Align(
@@ -52,11 +52,15 @@ class _AppLoaderState extends State<AppLoader>
             child: AnimatedTextKit(
               repeatForever: true,
               animatedTexts: [
-                ScaleAnimatedText('Flowery',
-                    textStyle: MyFonts.styleBold700_24.copyWith(
-                        fontFamily: 'oronteus', color: MyColors.baseColor),
-                    scalingFactor: 1.5,
-                    textAlign: TextAlign.center),
+                ScaleAnimatedText(
+                  'Flowery',
+                  textStyle: MyFonts.styleBold700_24.copyWith(
+                    fontFamily: 'oronteus',
+                    color: MyColors.baseColor,
+                  ),
+                  scalingFactor: 1.5,
+                  textAlign: TextAlign.center,
+                ),
               ],
             ),
           ),

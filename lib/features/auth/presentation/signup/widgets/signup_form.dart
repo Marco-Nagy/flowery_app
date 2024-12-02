@@ -25,7 +25,7 @@ class SignUpForm extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SignUpBlocListener(),
+          const SignUpBlocListener(),
           BlocBuilder<SignUpViewModel, SignUpViewModelState>(
               builder: (context, state) {
             return Column(

@@ -25,7 +25,7 @@ class CustomOccasionListState extends State<CustomOccasionList> {
         builder: (context, state) {
           switch (state) {
             case GetOccasionsLoadingState():
-              AppLoader();
+              const AppLoader();
             case GetOccasionsSuccessState():
               return ListView.builder(
                 itemCount: state.occasions.length,
@@ -41,6 +41,7 @@ class CustomOccasionListState extends State<CustomOccasionList> {
                           height: 181.h,
                           child: CachedNetworkWidget(
                             imageUrl: state.occasions[index].image,
+                            fit: BoxFit.fill,
                           ),
                         ),
                         SizedBox(
