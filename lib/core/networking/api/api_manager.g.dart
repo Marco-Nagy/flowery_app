@@ -479,7 +479,7 @@ class _ApiManager implements ApiManager {
     )
         .compose(
           _dio.options,
-          'api/v1/cart${id}',
+          'api/v1/cart/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -512,7 +512,7 @@ class _ApiManager implements ApiManager {
     )
         .compose(
           _dio.options,
-          'api/v1/cart${id}',
+          'api/v1/cart/${id}',
           queryParameters: queryParameters,
           data: _data,
         )

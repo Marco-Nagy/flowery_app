@@ -19,19 +19,29 @@ class CartMappers {
   }
 
   CartProductEntity toCartProductEntity(CartItemsDto product) {
-    return CartProductEntity(
-        id: product.id,
-        title: product.product!.title ?? "",
-        quantity: product.quantity,
-        price: product.price,
-        cartItemQuantity: product.product!.quantity,
-        imgCover: product.product!.imgCover);
+    if (product.product == null) {
+      return  CartProductEntity(id: '', title: '', imgCover: '', price: 0, quantity: 0, cartItemQuantity: 0);
+    }else{
+      return CartProductEntity(
+          id: product.product!.id.toString(),
+          title: product.product!.title ?? "",
+          quantity: product.quantity??0,
+          price: product.price??0,
+          cartItemQuantity: product.product!.quantity??0,
+          imgCover: product.product!.imgCover??'');
+    }
+
   }
 
   List<CartProductEntity> toCartItemsList(CartResponseDto cartResponse) {
-    return cartResponse.cart!.cartItems!
-        .map((product) => toCartProductEntity(product!))
-        .toList();
+    if (cartResponse.cart == null||  cartResponse.cart!.cartItems==null){
+      return [];
+    }else{
+      return cartResponse.cart!.cartItems!
+          .map((product) => toCartProductEntity(product!))
+          .toList();
+    }
+
   }
 
   CartEntity toCartEntity(CartResponseDto cartResponse) {
