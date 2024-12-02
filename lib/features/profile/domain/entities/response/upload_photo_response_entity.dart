@@ -1,5 +1,12 @@
-class UploadPhotoResponseEntity {
+import 'package:equatable/equatable.dart';
+
+class UploadPhotoResponseEntity extends Equatable {
   final String? message;
 
-  UploadPhotoResponseEntity({this.message});
+  const UploadPhotoResponseEntity({this.message});
+
+  @override
+  List<Object?> get props => [
+        message,
+  ];
 }
