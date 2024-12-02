@@ -15,6 +15,8 @@ import 'package:flowery_e_commerce/features/cart/data/models/response/cart_respo
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_products_rsponse_dto.dart';
 import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart';
+import 'package:flowery_e_commerce/features/profile/data/models/request/change_password_request_dto.dart';
+import 'package:flowery_e_commerce/features/profile/data/models/response/change_password_response_dto.dart';
 import 'package:flowery_e_commerce/features/profile/data/models/response/get_logged_user_data_response_dto.dart';
 import 'package:flowery_e_commerce/features/profile/data/models/response/upload_photo_response_dto.dart';
 import 'package:injectable/injectable.dart';
@@ -94,12 +96,16 @@ abstract class ApiManager {
 
   @DELETE(ApiConstants.cart)
   Future<String> clearCartItems();
+  @PUT(ApiConstants.editProfile)
   Future<EditProfileResponseDto> editProfile(@Body() Map<String, dynamic> body);
 
   @PUT(ApiConstants.uploadPhoto)
   @MultiPart()
   Future<UploadPhotoResponseDto> uploadPhoto(@Part(name: "photo") File photo,
   );
+  @PATCH(ApiConstants.changePassword)
+  Future<ChangePasswordResponseDto> changePassword(
+      @Body() ChangePasswordRequestDto request);
 
 // @PUT(ApiConstants.uploadPhoto)
 // @MultiPart()
