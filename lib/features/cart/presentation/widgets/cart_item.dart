@@ -1,4 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_response_entity.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/plus_minus_buttons.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/widgets/cached_network_widget.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
@@ -9,12 +13,18 @@ import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 
-class CartItem extends StatelessWidget {
+class CartItem extends StatefulWidget {
   const CartItem({super.key, required this.product,});
  final CartProductEntity product;
 
   @override
+  State<CartItem> createState() => _CartItemState();
+}
+
+class _CartItemState extends State<CartItem> {
+  @override
   Widget build(BuildContext context) {
+    CartViewModelCubit cartViewModelCubit =getIt.get<CartViewModelCubit>();
     return  Card(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       margin: const EdgeInsets.all(8),
@@ -37,46 +47,79 @@ class CartItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8)
               ),
               child: CachedNetworkWidget(
-                  imageUrl: product.imgCover.toString(),
+                  imageUrl: widget.product.imgCover.toString(),
               ),
             ),
             horizontalSpacing(8.w),
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Text(
-                          product.title.toString(),
+            Expanded(
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AutoSizeText(
+                              widget.product.title.toString(),
+                              textAlign: TextAlign.left,
+                              overflow: TextOverflow.fade,
+                              maxLines: 1,
+                              style: MyFonts.styleMedium500_16.copyWith(color: MyColors.black),
+                            ),
+                            AutoSizeText(
+                              '${widget.product.quantity} ${widget.product.title}',
+                              overflow: TextOverflow.fade,
+                              maxLines: 1,
+                              style: MyFonts.styleRegular400_13.copyWith(color: MyColors.gray),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: InkWell(
+                            onTap: () {
+                              cartViewModelCubit.doAction(RemoveFromCartAction(widget.product.id.toString()));
+                            },
+                            child: Image.asset(
+                              Assets.imagesDelete,
+                              height: 24.h,
+                              width: 24.w,
+                              color: MyColors.baseColor,
+                              alignment: Alignment.centerRight,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  Row(
+
+                    children: [
+                      Expanded(
+                        child: AutoSizeText(
+                          'EGP ${widget.product.price}',
                           style: MyFonts.styleMedium500_16.copyWith(color: MyColors.black),
                         ),
-                        Text(
-                          '${product.quantity} ${product.title}',
-                          style: MyFonts.styleRegular400_13.copyWith(color: MyColors.gray),
-                        ),
-                      ],
-                    ),
-                    Image.asset(Assets.imagesDelete)
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      ),
+                      PlusMinusButtons(addQuantity: () {
+                        setState(() {
 
-                  children: [
-                    Text(
-                      'EGP ${product.price}',
-                      style: MyFonts.styleMedium500_16.copyWith(color: MyColors.black),
-                    ),
-                    PlusMinusButtons(addQuantity: () {
+                        });
+                        cartViewModelCubit.doAction(UpdateQuantityAction(widget.product.id.toString(), (widget.product.quantity!).toInt()+1));
+                      }, deleteQuantity: () {
+                        setState(() {
 
-                    }, deleteQuantity: () {
-
-                    }, text: product.cartItemQuantity.toString())
-                  ],
-                ),
-              ],
+                        });
+                        cartViewModelCubit.doAction(UpdateQuantityAction(widget.product.id.toString(), (widget.product.quantity!).toInt()-1));
+                      }, text: widget.product.quantity.toString())
+                    ],
+                  ),
+                ],
+              ),
             ),
 
           ],

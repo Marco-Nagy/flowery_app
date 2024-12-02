@@ -35,7 +35,7 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
   bool cartVisibility = false;
   Function(GlobalKey)? addToCartAnimation;
   int cartQuantityItems = 0;
-
+ late CartEntity cartData;
   Future<void> doAction(CartBaseAction action) async {
     switch (action) {
       case AddToCartAction():
@@ -43,11 +43,12 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
       case GetUserCartDataAction():
         _getCartData();
       case UpdateQuantityAction():
-      
+        _updateProductQuantity(action);
+      case RemoveFromCartAction():
+        _removeProductFromCart(action);
       case ClearCartAction():
       
-      case RemoveFromCartAction():
-      
+
     }
   }
 
@@ -78,7 +79,6 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
       case Success<CartEntity>():
       cartVisibility = true;
       cartQuantityItems = result.data.numOfCartItems;
-      updateCartCount();
       emit(
         GetUserCartDataSuccess(
              cartData: result.data),
@@ -91,6 +91,38 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
     }
   }
 
+  Future<void> _updateProductQuantity(UpdateQuantityAction action) async {
+    emit(CartViewModelLoading());
+    var result = await updateProductQuantityUseCase(
+        id: action.productId, quantity: action.quantity);
+    switch (result) {
+      case Success<CartEntity>():
+        _getCartData();
+
+        emit(
+          UpdateCartProductQuantitySuccess(cartData: result.data),
+        );
+
+      case Fail<CartEntity>():
+        emit(CartViewModelError(
+            errorModel: ErrorHandler.handle(result.exception!)));
+    }
+  }
+  Future<void> _removeProductFromCart(RemoveFromCartAction action) async {
+    emit(CartViewModelLoading());
+    var result = await removeProductFromCartUseCase(id: action.productId);
+    switch (result) {
+      case Success<CartEntity>():
+        _getCartData();
+        emit(
+          RemoveProductFromCartSuccess(cartData: result.data),
+        );
+      case Fail<CartEntity>():
+        emit(CartViewModelError(
+            errorModel: ErrorHandler.handle(result.exception!)));
+    }
+  }
+
   void updateCartCount() {
     if (cartKey.currentState != null) {
       cartKey.currentState!.runCartAnimation(
@@ -98,5 +130,4 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
       );
     }
   }
-
 }
