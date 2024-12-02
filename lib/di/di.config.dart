@@ -215,12 +215,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i972.MostSellingProductsUseCase>(() =>
         _i972.MostSellingProductsUseCase(
             gh<_i643.MostSellingProductsRepository>()));
-    gh.factory<_i907.ProfileViewModelCubit>(
-        () => _i907.ProfileViewModelCubit(gh<_i804.ProfileUseCase>()));
     gh.factory<_i690.LoginViewModel>(
         () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
     gh.factory<_i508.SignUpViewModel>(
         () => _i508.SignUpViewModel(gh<_i853.SignUpUseCase>()));
+    gh.factory<_i907.ProfileViewModelCubit>(() => _i907.ProfileViewModelCubit(
+          gh<_i804.ProfileUseCase>(),
+          gh<_i345.OfflineDataSource>(),
+        ));
     gh.factory<_i559.GenericUseCase>(
         () => _i559.GenericUseCase(gh<_i565.GenericRepo>()));
     gh.factory<_i426.AddToCartUseCase>(

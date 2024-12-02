@@ -43,11 +43,11 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
       case GetUserCartDataAction():
         _getCartData();
       case UpdateQuantityAction():
-      // TODO: Handle this case.
+      
       case ClearCartAction():
-      // TODO: Handle this case.
+      
       case RemoveFromCartAction():
-      // TODO: Handle this case.
+      
     }
   }
 

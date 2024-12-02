@@ -93,7 +93,7 @@ class _SectionResetPasswordFormState extends State<SectionResetPasswordForm> {
                         type: MessageTypeConst.failure,
                         title: 'Error')
                     : aweSnackBar(
-                        msg: '${state.error.error.toString()}',
+                        msg: state.error.error.toString(),
                         context: context,
                         type: MessageTypeConst.success,
                         title: 'Error');

@@ -9,7 +9,7 @@ class ResetPasswordProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseView(
+    return const BaseView(
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -19,10 +19,10 @@ class ResetPasswordProfileView extends StatelessWidget {
                   appBarTxt: 'Reset Password',
                   showArrow: true,
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 34,
                 ),
-                const SectionResetPasswordForm(),
+                SectionResetPasswordForm(),
               ],
             ),
           )
