@@ -16,7 +16,7 @@ final CartEntity cart;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.white,
+      backgroundColor: Colors.white,
       appBar: customAppBar(
         appBarTxt: 'Cart (${cart.numOfCartItems} Items) ',
         showArrow: true,
@@ -60,7 +60,6 @@ final CartEntity cart;
                 itemBuilder: (context, index) {
                   return FadeInLeft(
                       curve: Curves.linear,
-                      from: -200,
                       duration: Duration(milliseconds: 150 * (index + 1)),
                       child: CartItem(
                         product: cart.cartList[index],
@@ -112,7 +111,7 @@ final CartEntity cart;
                              .copyWith(color: MyColors.black),
                        ),
                        Text(
-                         '${cart.totalPriceAfterDiscount} \$',
+                         '${cart.totalPrice} \$',
                          style: MyFonts.styleMedium500_18
                              .copyWith(color: MyColors.black),
                        ),

@@ -3,6 +3,7 @@ import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flowery_e_commerce/di/di.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_icon_badge.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +25,11 @@ class _OccasionViewState extends State<OccasionView> {
   CartViewModelCubit cartViewModelCubit = getIt.get<CartViewModelCubit>();
 
   void listClick(GlobalKey widgetKey) async {
-    await addToCartAnimation(widgetKey);
-    await cartViewModelCubit.cartKey.currentState!
+    cartViewModelCubit.doAction(GetUserCartDataAction());
+
+     addToCartAnimation(widgetKey);
+
+     cartViewModelCubit.cartKey.currentState!
         .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
   }
 
@@ -33,9 +37,10 @@ class _OccasionViewState extends State<OccasionView> {
   void initState() {
     super.initState();
     // Initialize the cart count to 20
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      // viewModelCubit.cartQuantityItems = 20;
-      cartViewModelCubit.updateCartCount();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+     await cartViewModelCubit.doAction(GetUserCartDataAction());
+      // cartViewModelCubit.updateCartCount();
+
     });
   }
 

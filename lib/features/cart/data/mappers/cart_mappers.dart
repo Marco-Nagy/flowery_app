@@ -20,15 +20,15 @@ class CartMappers {
 
   CartProductEntity toCartProductEntity(CartItemsDto product) {
     if (product.product == null) {
-      return const CartProductEntity();
+      return  CartProductEntity(id: '', title: '', imgCover: '', price: 0, quantity: 0, cartItemQuantity: 0);
     }else{
       return CartProductEntity(
-          id: product.product?.id.toString(),
+          id: product.product!.id.toString(),
           title: product.product!.title ?? "",
-          quantity: product.quantity,
-          price: product.price,
-          cartItemQuantity: product.product!.quantity,
-          imgCover: product.product!.imgCover);
+          quantity: product.quantity??0,
+          price: product.price??0,
+          cartItemQuantity: product.product!.quantity??0,
+          imgCover: product.product!.imgCover??'');
     }
 
   }

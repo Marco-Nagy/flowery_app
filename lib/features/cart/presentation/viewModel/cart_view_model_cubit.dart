@@ -34,7 +34,7 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
   final cartKey = GlobalKey<CartIconKey>();
   bool cartVisibility = false;
   Function(GlobalKey)? addToCartAnimation;
-  int cartQuantityItems = 0;
+  late int cartQuantityItems;
  late CartEntity cartData;
   Future<void> doAction(CartBaseAction action) async {
     switch (action) {
@@ -57,8 +57,10 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
     var result = await addToCartUseCase(productId: action.productId);
     switch (result) {
       case Success<int>():
-        cartQuantityItems = result.data.toInt();
-        updateCartCount();
+
+     await   cartKey.currentState!
+            .runCartAnimation(result.data.toString());
+        cartQuantityItems = result.data;
         cartVisibility = true;
 
         emit(
@@ -78,7 +80,10 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
 
       case Success<CartEntity>():
       cartVisibility = true;
-      cartQuantityItems = result.data.numOfCartItems;
+      if(cartKey.currentState!= null) {
+        cartKey.currentState!
+          .runCartAnimation(result.data.numOfCartItems.toString());
+      }
       emit(
         GetUserCartDataSuccess(
              cartData: result.data),
@@ -97,8 +102,7 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
         id: action.productId, quantity: action.quantity);
     switch (result) {
       case Success<CartEntity>():
-        _getCartData();
-
+        debugPrint('cart quantity : ${result.data.cartList.map((e) => e.quantity,)}');
         emit(
           UpdateCartProductQuantitySuccess(cartData: result.data),
         );
@@ -123,7 +127,8 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
     }
   }
 
-  void updateCartCount() {
+  void updateCartCount(cartQuantityItems) {
+
     if (cartKey.currentState != null) {
       cartKey.currentState!.runCartAnimation(
         cartQuantityItems.toString(),

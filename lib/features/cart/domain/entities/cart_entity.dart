@@ -1,11 +1,11 @@
 import 'cart_response_entity.dart';
 
 class CartEntity {
-  int numOfCartItems;
+  late int numOfCartItems;
   List<CartProductEntity> cartList;
-  num totalPrice;
+  late num totalPrice;
   num discount;
-  num totalPriceAfterDiscount;
+  late num totalPriceAfterDiscount;
 
   CartEntity({
     required this.numOfCartItems,
