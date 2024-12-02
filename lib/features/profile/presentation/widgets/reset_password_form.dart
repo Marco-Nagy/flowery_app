@@ -11,12 +11,12 @@ class ResetPasswordForm extends StatefulWidget {
   final GlobalKey<FormState> formKey;
 
   const ResetPasswordForm({
-    Key? key,
+    super.key,
     this.confirmPasswordController,
     required this.passwordController,
     required this.newPasswordController,
     required this.formKey,
-  }) : super(key: key);
+  });
 
   @override
   _ResetPasswordFormState createState() => _ResetPasswordFormState();

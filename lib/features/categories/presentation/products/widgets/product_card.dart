@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flowery_e_commerce/core/utils/extension/mediaQueryValues.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
@@ -30,7 +30,7 @@ class ProductCard extends StatelessWidget {
     final discountPercentage =
         ((price - priceAfterDiscount) / price * 100).round();
 
-    return Container(
+    return SizedBox(
       width: context.width * 0.45,
       height: context.height * 0.35, // زيادة الارتفاع لتناسب إضافة النص الجديد
       child: InkWell(
@@ -55,7 +55,7 @@ class ProductCard extends StatelessWidget {
                   fit: BoxFit.cover,
                   placeholder: (context, url) =>
                       Center(child: Lottie.asset(Assets.imagesLoading)),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
               verticalSpacing(8.h),

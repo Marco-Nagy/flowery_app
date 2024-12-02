@@ -15,10 +15,13 @@ class EditProfile extends ProfileActions {
 }
 
 class ChangePassword extends ProfileActions {
+
   final ChangePasswordRequestEntity request;
+  ChangePassword({required this.request});
+}
+
 class UploadPhoto extends ProfileActions {
   final File photo;
 
-  ChangePassword({required this.request});
   UploadPhoto(this.photo);
 }

@@ -68,7 +68,7 @@ class ProductDetailsWidget extends StatelessWidget {
                 style: MyFonts.styleMedium500_16,
               ),
               verticalSpacing(8.h),
-              Text('${product.title}:${product.quantity}',
+              Text('${product.title}:${product.quantity}',),
               Text('${product.title}:${product.cartItemQuantity}',
                   style: MyFonts.styleRegular400_14),
               verticalSpacing(4.h),

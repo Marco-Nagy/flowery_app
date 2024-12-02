@@ -12,7 +12,6 @@ import '../models/response/get_logged_user_data_response_dto.dart';
 
 class ProfileMapper {
   static GetLoggedUserDataResponseEntity getLoggedResponseToEntity(
-  static GetLoggedUserDataResponseEntity toEntity(
       GetLoggedUserDataResponseDto dto) {
     return GetLoggedUserDataResponseEntity(
       user: toUserEntity(dto.user!),
@@ -60,6 +59,8 @@ class ProfileMapper {
   static ChangePasswordRequestDto toPasswordRequestDto(
       ChangePasswordRequestEntity entity) {
     return ChangePasswordRequestDto(entity.password, entity.newPassword);
+  }
+
   static UploadPhotoResponseEntity uploadPhotoResponseToEntity(
       UploadPhotoResponseDto dto) {
     return UploadPhotoResponseEntity(dto.message);
