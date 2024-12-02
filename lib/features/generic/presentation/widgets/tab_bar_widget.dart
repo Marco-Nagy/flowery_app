@@ -20,5 +20,6 @@ Widget tabBarWidget({
     labelStyle: MyFonts.styleRegular400_16,
     tabs: tabs,
     onTap: onTap,
+
   );
 }

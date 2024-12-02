@@ -17,7 +17,7 @@ class SignUpView extends StatelessWidget {
           context: context,
           showArrow: true,
           navigation: () {
-            return null;
+            return ;
           }),
       body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),

@@ -18,8 +18,9 @@ class CachedNetworkWidget extends StatelessWidget {
       imageUrl: imageUrl,
       fit: BoxFit.cover,
       width: double.infinity,
+      fit: fit ?? BoxFit.fitWidth,
       placeholder: (context, url) => Lottie.asset(Assets.imagesLoading),
-      errorWidget: (context, url, error) => Icon(Icons.error),
+      errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }
 }

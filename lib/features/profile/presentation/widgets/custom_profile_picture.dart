@@ -1,35 +1,134 @@
 import 'dart:io';
 
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_view_model_cubit.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../../di/di.dart';
+import '../viewModel/profile_actions.dart';
 
 class ProfilePic extends StatefulWidget {
-  const ProfilePic({Key? key}) : super(key: key);
+  const ProfilePic({super.key});
 
   @override
   State<ProfilePic> createState() => _ProfilePicState();
 }
 
 class _ProfilePicState extends State<ProfilePic> {
-  File? _image = null;
-  late final profileViewModel;
+  File? _image;
+  final ImagePicker _picker = ImagePicker();
+  late final ProfileViewModelCubit profileViewModel;
 
-  initState() {
+  @override
+ void initState() {
     super.initState();
     profileViewModel = getIt.get<ProfileViewModelCubit>();
-    // profileViewModel.doAction(GetCachedProfileImage());
   }
 
-  void _setImage(File? image) {
-    setState(() {
-      _image = image;
-    });
+  Future<void> _pickImage(ImageSource imageSource) async {
+    final pickedFile = await _picker.pickImage(source: imageSource);
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+        profileViewModel.doAction(UploadPhoto(_image!));
+        debugPrint("*******************************************");
+        debugPrint(_image.toString());
+        debugPrint("*******************************************");
+      });
+    }
   }
+
+  void _showCustomBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext context) {
+        return Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(30),
+              topRight: Radius.circular(30),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                blurRadius: 20,
+                offset: const Offset(0, -5),
+              ),
+            ],
+          ),
+          child: Padding(
+            padding: EdgeInsets.all(20.sp),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Select a Photo",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+                SizedBox(height: 10.h),
+                Divider(thickness: 1, color: Colors.grey[300]),
+                ListTile(
+                  leading: const Icon(Icons.camera_alt_outlined, color: Colors.green),
+                  title: Text(
+                    "Take a photo",
+                    style: TextStyle(color: Colors.black, fontSize: 16.sp),
+                  ),
+                  onTap: () {
+                    _pickImage(ImageSource.camera);
+                    setState(() {});
+                    Navigator.pop(context);
+                  },
+                ),
+                const Divider(),
+                ListTile(
+                  leading: const Icon(Icons.photo_library, color: Colors.blue),
+                  title: Text(
+                    "Pick from gallery",
+                    style: TextStyle(color: Colors.black, fontSize: 16.sp),
+                  ),
+                  onTap: () {
+                    setState(() {});
+                    _pickImage(ImageSource.gallery);
+                    Navigator.pop(context);
+                  },
+                ),
+                SizedBox(height: 15.h),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    "Cancel",
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+  // void _setImage(File? image) {
+  //   setState(() {
+  //     _image = image;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +136,30 @@ class _ProfilePicState extends State<ProfilePic> {
       create: (context) => profileViewModel,
       child: BlocListener<ProfileViewModelCubit, ProfileViewModelState>(
         listener: (context, state) {
-          // if (state is CachedProfileImageLoadedState) {
-          //   _setImage(state.imageFile);
-          // }
+          switch (state) {
+            case UploadPhotoLoading():
+              aweSnackBar(
+                  msg: 'Loading...',
+                  context: context,
+                  type: MessageTypeConst.help,
+                  title: 'Loading');
+              break;
+            case UploadPhotoSuccess():
+              aweSnackBar(
+                  msg: state.data.message.toString(),
+                  context: context,
+                  type: MessageTypeConst.success,
+                  title: 'Success');
+              break;
+            case UploadPhotoError():
+              aweSnackBar(
+                  msg: state.error.error.toString(),
+                  context: context,
+                  type: MessageTypeConst.failure,
+                  title: 'Error');
+              break;
+            default:
+          }
         },
         child: SizedBox(
           height: 115.h,
@@ -49,7 +169,7 @@ class _ProfilePicState extends State<ProfilePic> {
             clipBehavior: Clip.none,
             children: [
               _image == null
-                  ? CircleAvatar(
+                  ? const CircleAvatar(
                       backgroundImage: AssetImage(Assets.imagesProfile),
                     )
                   : CircleAvatar(
@@ -70,17 +190,7 @@ class _ProfilePicState extends State<ProfilePic> {
                       backgroundColor: MyColors.lightPink,
                     ),
                     onPressed: () {
-                      // showImagePickerSheet(context, (File? image) {
-                      //   if (image != null) {
-                      //     profileViewModel
-                      //         .doAction(CacheProfileImage(imageFile: image));
-                      //     _setImage(image);
-                      //     setState(() {}); // Cache the image path
-                      //   } else {
-                      //     _setImage(null);
-                      //     setState(() {}); // Remove the image if null is passed
-                      //   }
-                      // });
+                      _showCustomBottomSheet(context);
                     },
                     child: Icon(
                       Icons.camera_alt_outlined,

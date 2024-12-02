@@ -1,12 +1,13 @@
 import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/base_view.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/custom_app_bar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
+import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/base/base_view.dart';
-import 'package:flowery_e_commerce/di/di.dart';
+
 import '../../../../../core/utils/widgets/base/snack_bar.dart';
 import '../viewModel/login_view_model_cubit.dart';
 import '../widgets/footer_sign_up.dart';
@@ -22,8 +23,8 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   late LoginViewModel viewModel;
-  late var emailController;
-  late var passwordController;
+  dynamic emailController;
+  dynamic passwordController;
   final formKey = GlobalKey<FormState>();
   bool rememberMe = false;
 
@@ -51,14 +52,14 @@ class _LoginViewState extends State<LoginView> {
         builder: (context, state) {
           switch (state) {
             case LoginViewModelLoading():
-              return AppLoader();
+              return const AppLoader();
             case LoginViewModelInitial():
             case LoginViewModelSuccess():
             case LoginViewModelError():
               return BaseView(
                 child: CustomScrollView(
                   slivers: [
-                    SliverToBoxAdapter(
+                    const SliverToBoxAdapter(
                       child: CustomAppBar(appBarTxt: "Login"),
                     ),
                     SliverToBoxAdapter(
@@ -94,7 +95,6 @@ class _LoginViewState extends State<LoginView> {
         },
         listener: (context, state) {
           switch (state) {
-
             case LoginViewModelSuccess():
               context.pushReplacementNamed(AppRoutes.homeScreen);
               aweSnackBar(
@@ -108,13 +108,14 @@ class _LoginViewState extends State<LoginView> {
               aweSnackBar(
                   msg: state.errorMessage.error!,
                   context: context,
-                  type: MessageTypeConst.failure, title: 'Error');
+                  type: MessageTypeConst.failure,
+                  title: 'Error');
             case LoginViewModelLoading():
             default:
-              return null;
+              return;
           }
         },
       ),
     );
   }
-  }
+}

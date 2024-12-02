@@ -1,17 +1,16 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
-import 'package:flutter/src/painting/text_style.dart';
 
 class MyFonts {
   // style Text Styles
   static TextStyle styleRegular400_12 = const TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: 12,
-  );  static TextStyle styleRegular400_13 = const TextStyle(
+  );
+  static TextStyle styleRegular400_13 = const TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: 13,
   );
-
   static TextStyle styleRegular400_14 = const TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: 14,
@@ -34,6 +33,9 @@ class MyFonts {
   static TextStyle styleMedium500_12 = const TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 12,
+  ); static TextStyle styleMedium500_11 = const TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: 11,
   );
   static TextStyle styleMedium500_13 = const TextStyle(
     fontWeight: FontWeight.w500,

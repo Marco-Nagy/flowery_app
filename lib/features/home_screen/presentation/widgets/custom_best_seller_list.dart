@@ -31,51 +31,45 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
              itemCount: state.bestSeller.length,
              scrollDirection: Axis.horizontal,
              itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () => Navigator.pushNamed(
-                        context, AppRoutes.productsDetailsView,
-                        arguments: state.bestSeller[index]),
-                    child: Container(
-                      margin: EdgeInsets.all(3.sp),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: 170.w,
-                            height: 180.h,
-                            child: CachedNetworkWidget(
-                              imageUrl: state.bestSeller[index].imgCover ?? '',
-                            ),
-                          ),
-                          SizedBox(
-                            height: 8.h,
-                          ),
-                          SizedBox(
-                            width: 170.w,
-                            child: Text(
-                              state.bestSeller[index].title ?? '',
-                              style: MyFonts.styleRegular400_14.copyWith(
-                                  color: MyColors.blackBase,
-                                  overflow: TextOverflow.visible),
-                              maxLines: 2,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 3.h,
-                          ),
-                          Text('${state.bestSeller[index].price}',
-                              style: MyFonts.styleMedium500_14
-                                  .copyWith(color: MyColors.blackBase)),
-                        ],
-                      ),
-                    ),
+               return GestureDetector(
+                 onTap: () => Navigator.pushNamed(context, AppRoutes.productsDetailsView, arguments: state.bestSeller[index]),
+                 child: Container(
+                   margin: EdgeInsets.all(3.sp),
+                   child: Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                       SizedBox(
+                         width: 170.w,
+                         height: 180.h,
+                         child: CachedNetworkWidget(
+                           imageUrl: state.bestSeller[index].imgCover??'',
+                           fit: BoxFit.cover,
+                         ),
+                       ),
+                       SizedBox(height: 8.h,),
+                       SizedBox(
+                         width: 170.w,
+                         child: Text(state.bestSeller[index].title??'',
+                           style: MyFonts.styleRegular400_14.copyWith(
+                               color: MyColors.blackBase,
+                               overflow: TextOverflow.visible
+                           ),
+                           maxLines: 2,
+                         ),
+                       ),
+                       SizedBox(height: 3.h,),
+                       Text('${state.bestSeller[index].price}' , style: MyFonts.styleMedium500_14.copyWith(
+                           color: MyColors.blackBase)),
+                     ],
+                   ),
+                 ),
                );
              },
            );
            case GetBestSellerErrorState():
              aweSnackBar(msg: state.errorModel.error??'', context: context, type: MessageTypeConst.failure);
            case GetBestSellerLoadingState():
-             return AppLoader();
+             return const AppLoader();
            case BestSellerInitialState():
              default:null;
          }

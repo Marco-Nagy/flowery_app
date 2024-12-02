@@ -41,7 +41,11 @@ class LoginViewModel extends Cubit<LoginViewModelState> {
             print("${_offlineDataSource.getToken()}");
           }
           emit(LoginViewModelSuccess(result.data));
-          context.pushReplacementNamed(AppRoutes.homeScreen);
+         // context.pushReplacementNamed(AppRoutes.homeScreen);
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            context.pushReplacementNamed(AppRoutes.homeScreen);
+          });
+
         }
       case Fail<LoginResponseEntity>():
         emit(LoginViewModelError(ErrorHandler.handle(result.exception!)));

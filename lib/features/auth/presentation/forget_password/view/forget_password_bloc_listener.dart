@@ -57,7 +57,7 @@ class ForgetPasswordBlocListener extends StatelessWidget {
             case ForgetPasswordLoading():
             case VerifyResetCodeLoading():
             case ResetPasswordLoading():
-              AppLoader();
+              const AppLoader();
             case ForgetPasswordInitial():
           }
         },

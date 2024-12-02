@@ -1,13 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
+import 'package:flowery_e_commerce/features/auth/domain/entities/request/signup_request_entity.dart';
 import 'package:flowery_e_commerce/features/auth/domain/entities/response/signup_response_entity.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/signup_action.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 import '../../../../../core/networking/common/api_result.dart';
 import '../../../../../core/networking/error/error_handler.dart';
-import '../../../domain/entities/request/signup_request_entity.dart';
 import '../../../domain/use_cases/signup_use_case.dart';
 
 part 'signup_view_model_state.dart';

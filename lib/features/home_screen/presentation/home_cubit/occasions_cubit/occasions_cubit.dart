@@ -14,9 +14,6 @@ class OccasionsCubit extends Cubit<OccasionsStates> {
     var response = await homeUseCase.callOccasions();
     switch (response) {
       case Success<List<Occasions>>():
-        print("====================${response.data.map(
-              (e) => e.name,
-            ).toList()}");
         emit(GetOccasionsSuccessState(response.data));
       case Fail():
         emit(GetOccasionsErrorState(ErrorHandler.handle(response.exception!)));

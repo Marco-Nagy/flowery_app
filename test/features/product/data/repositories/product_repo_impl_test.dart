@@ -8,6 +8,8 @@ import 'package:mockito/mockito.dart';
 
 import 'product_repo_impl_test.mocks.dart';
 
+
+
 @GenerateMocks([ProductOnlineDataSource])
 void main() {
   late ProductRepoImpl productRepo;
@@ -18,8 +20,8 @@ void main() {
     productRepo = ProductRepoImpl(mockOnlineDataSource);
 
     provideDummy<DataResult<ProductResponseEntity>>(
-      Success(
-        ProductResponseEntity(
+          Success(
+        const ProductResponseEntity(
           products: [],
         ),
       ),
@@ -27,10 +29,8 @@ void main() {
   });
 
   group('ProductRepoImpl', () {
-    test(
-        'should return Success<ProductResponseEntity> when API call is successful',
-        () async {
-      final responseEntity = ProductResponseEntity(
+    test('should return Success<ProductResponseEntity> when API call is successful', () async {
+      const responseEntity = ProductResponseEntity(
         products: [
           ProductEntity(
             id: '1',
@@ -49,8 +49,7 @@ void main() {
       );
       final successResult = Success<ProductResponseEntity>(responseEntity);
 
-      when(mockOnlineDataSource.getAllProducts())
-          .thenAnswer((_) async => successResult);
+      when(mockOnlineDataSource.getAllProducts()).thenAnswer((_) async => successResult);
 
       final result = await productRepo.getAllProducts();
 
@@ -63,8 +62,7 @@ void main() {
     test('should return Fail when API call fails', () async {
       final failResult = Fail<ProductResponseEntity>(Exception('Error'));
 
-      when(mockOnlineDataSource.getAllProducts())
-          .thenAnswer((_) async => failResult);
+      when(mockOnlineDataSource.getAllProducts()).thenAnswer((_) async => failResult);
 
       final result = await productRepo.getAllProducts();
 

@@ -19,10 +19,10 @@ void main() {
 
     provideDummy<DataResult<GenericResponseEntity>>(
       Success(
-        GenericResponseEntity(
-          message: '',
-          items: [],
-        ),
+      const GenericResponseEntity(
+        message: '',
+        items: [],
+      ),
       ),
     );
   });
@@ -31,7 +31,7 @@ void main() {
     const resourceName = 'occasions';
 
     test('should return Success when API call is successful', () async {
-      final responseEntity = GenericResponseEntity(
+      const responseEntity = GenericResponseEntity(
         message: 'Success',
         items: [
           Items(
@@ -56,6 +56,7 @@ void main() {
       expect(successResult.data.items?.first.name, 'Occasion');
     });
 
+
     test('should return Fail when API call fails', () async {
       when(mockGenericRepo.getAll('occasions'))
           .thenAnswer((_) async => Fail(Exception('Error')));
@@ -67,5 +68,9 @@ void main() {
       expect(failResult.exception, isA<Exception>());
       expect(failResult.exception?.toString(), 'Exception: Error');
     });
+
   });
 }
+
+
+

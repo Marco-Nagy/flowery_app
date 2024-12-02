@@ -24,10 +24,9 @@ class VerificationCode extends HookWidget {
     // Method to concatenate the code
     void updateFullCode() {
       fullCode = pinControllers.map((controller) => controller.text).join();
-      print('full Code ==>> $fullCode');
     }
 
-    handleOnChange(value, index) {
+   void handleOnChange(value, index) {
       // Move focus forward when the current field is filled
       if (value.length == 1 && index < 5) {
         FocusScope.of(context).nextFocus();
