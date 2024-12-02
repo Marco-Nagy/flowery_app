@@ -23,7 +23,7 @@ class CartMappers {
       return const CartProductEntity();
     }else{
       return CartProductEntity(
-          id: product.id,
+          id: product.product?.id.toString(),
           title: product.product!.title ?? "",
           quantity: product.quantity,
           price: product.price,
