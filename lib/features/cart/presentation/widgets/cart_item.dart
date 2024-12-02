@@ -109,12 +109,12 @@ class _CartItemState extends State<CartItem> {
                         setState(() {
 
                         });
-                        cartViewModelCubit.doAction(UpdateQuantityAction(widget.product.id.toString(), (widget.product.quantity!).toInt()+1));
+                        cartViewModelCubit.doAction(UpdateQuantityAction(widget.product.id.toString(), (widget.product.quantity++)));
                       }, deleteQuantity: () {
                         setState(() {
 
                         });
-                        cartViewModelCubit.doAction(UpdateQuantityAction(widget.product.id.toString(), (widget.product.quantity!).toInt()-1));
+                        cartViewModelCubit.doAction(UpdateQuantityAction(widget.product.id.toString(), (widget.product.quantity--)));
                       }, text: widget.product.quantity.toString())
                     ],
                   ),

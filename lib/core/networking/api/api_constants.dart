@@ -17,5 +17,4 @@ class ApiConstants {
   static const String cart = "api/v1/cart";
   static const String updateProductCartQuantity = "api/v1/cart/";
   static const String deleteProductFromCart = "api/v1/cart/";
-
 }
