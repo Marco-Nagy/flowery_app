@@ -28,12 +28,12 @@ class CartBlocListenerWidget extends StatelessWidget {
             break;
           case ClearUserCartDataSuccess():
           case CartViewModelInitial():
-            // TODO: Handle this case.
+            
           case CartViewModelLoading():
-            // TODO: Handle this case.
+            
           case CartViewModelError():
-            // TODO: Handle this case.
-            // TODO: Handle this case.
+            
+            
         }
       },
       child: Container(),

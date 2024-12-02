@@ -1,5 +1,6 @@
 part of 'profile_view_model_cubit.dart';
 
+@immutable
 sealed class ProfileViewModelState {}
 
 final class ProfileViewModelInitial extends ProfileViewModelState {}
@@ -33,6 +34,7 @@ final class EditProfileError extends ProfileViewModelState {
 }
 
 final class UploadPhotoLoading extends ProfileViewModelState {}
+final class ChangePasswordLoading extends ProfileViewModelState {}
 
 final class UploadPhotoSuccess extends ProfileViewModelState {
   final UploadPhotoResponseEntity data;
@@ -40,8 +42,20 @@ final class UploadPhotoSuccess extends ProfileViewModelState {
   UploadPhotoSuccess({required this.data});
 }
 
+final class ChangePasswordSuccess extends ProfileViewModelState {
+  final ChangePasswordResponseEntity data;
+
+  ChangePasswordSuccess({required this.data});
+}
+
 final class UploadPhotoError extends ProfileViewModelState {
   final ErrorModel error;
 
   UploadPhotoError({required this.error});
+}
+
+final class ChangePasswordError extends ProfileViewModelState {
+  final ErrorModel error;
+
+  ChangePasswordError({required this.error});
 }
