@@ -13,7 +13,6 @@ void main() {
   late GenericUseCase useCase;
   late MockGenericRepo mockGenericRepo;
 
-
   setUp(() {
     mockGenericRepo = MockGenericRepo();
     useCase = GenericUseCase(mockGenericRepo);
