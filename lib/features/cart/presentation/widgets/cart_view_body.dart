@@ -1,8 +1,9 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_item.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
@@ -15,8 +16,9 @@ final CartEntity cart;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MyColors.white,
       appBar: customAppBar(
-        appBarTxt: 'Cart ( ${cart.numOfCartItems}) ',
+        appBarTxt: 'Cart (${cart.numOfCartItems} Items) ',
         showArrow: true,
         context: context,
       ),
@@ -51,13 +53,20 @@ final CartEntity cart;
             ),
           ),
            Expanded(
-             child:cart.cartList.isEmpty?AppLoader(): ListView.builder(
-               shrinkWrap: true,
-               itemCount: cart.cartList.length,
-               itemBuilder: (context, index) {
-               return CartItem(product: cart.cartList[index],);
-
-             },),
+            child: SizedBox(
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: cart.cartList.length,
+                itemBuilder: (context, index) {
+                  return FadeInLeft(
+                      curve: Curves.linear,
+                      from: -200,
+                      duration: Duration(milliseconds: 150 * (index + 1)),
+                      child: CartItem(
+                        product: cart.cartList[index],
+                      ));
+                },),
+             ),
            ),
           SizedBox(
               child: Padding(
@@ -109,6 +118,13 @@ final CartEntity cart;
                        ),
 
                      ],),
+                   verticalSpacing(16),
+                   CurvedButton(title:'Checkout', onTap: () {
+
+                   },
+                   color: MyColors.baseColor,),
+                   verticalSpacing(16),
+
                  ],
                 ),
               )),
