@@ -38,6 +38,7 @@ class LoginViewModel extends Cubit<LoginViewModelState> {
         {
           if (action.isRememberMe) {
             await _offlineDataSource.cacheToken(result.data.token ?? "");
+            debugPrint("${_offlineDataSource.getToken()}");
           }
           emit(LoginViewModelSuccess(result.data));
          // context.pushReplacementNamed(AppRoutes.homeScreen);

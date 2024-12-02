@@ -5,7 +5,8 @@ import '../../../../generated/assets.dart';
 
 
 class CachedNetworkWidget extends StatelessWidget {
-  const CachedNetworkWidget({super.key, required this.imageUrl,  this.height,this.fit});
+  const CachedNetworkWidget(
+      {super.key, required this.imageUrl, this.height, this.fit});
   final String imageUrl;
   final double? height;
   final BoxFit? fit;
