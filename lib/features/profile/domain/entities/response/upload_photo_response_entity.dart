@@ -1,5 +1,5 @@
 class UploadPhotoResponseEntity {
   final String? message;
 
-  UploadPhotoResponseEntity(this.message);
+  UploadPhotoResponseEntity({this.message});
 }
