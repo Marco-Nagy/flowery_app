@@ -4,15 +4,22 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
+import 'dart:io' as _i9;
 
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart'
-as _i4;
+    as _i4;
+import 'package:flowery_e_commerce/features/profile/domain/entities/request/change_password_request_entity.dart'
+    as _i11;
+import 'package:flowery_e_commerce/features/profile/domain/entities/response/change_password_respose_entity.dart'
+    as _i10;
 import 'package:flowery_e_commerce/features/profile/domain/entities/response/edit_profile_response_entity.dart'
-as _i7;
+    as _i7;
 import 'package:flowery_e_commerce/features/profile/domain/entities/response/get_logged_user_data_response_entity.dart'
-as _i5;
+    as _i5;
+import 'package:flowery_e_commerce/features/profile/domain/entities/response/upload_photo_response_entity.dart'
+    as _i8;
 import 'package:flowery_e_commerce/features/profile/domain/repositories/profile_repo.dart'
-as _i2;
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;
 
@@ -39,47 +46,78 @@ class MockProfileRepo extends _i1.Mock implements _i2.ProfileRepo {
 
   @override
   _i3.Future<
-      _i4.DataResult<_i5.GetLoggedUserDataResponseEntity>> getProfileData(
-      String? token) =>
+      _i4.DataResult<
+          _i5.GetLoggedUserDataResponseEntity>> getProfileData() =>
       (super.noSuchMethod(
         Invocation.method(
           #getProfileData,
-          [token],
+          [],
         ),
         returnValue: _i3
             .Future<_i4.DataResult<_i5.GetLoggedUserDataResponseEntity>>.value(
             _i6.dummyValue<_i4.DataResult<_i5.GetLoggedUserDataResponseEntity>>(
-              this,
-              Invocation.method(
-                #getProfileData,
-                [token],
-              ),
-            )),
+          this,
+          Invocation.method(
+            #getProfileData,
+            [],
+          ),
+        )),
       ) as _i3.Future<_i4.DataResult<_i5.GetLoggedUserDataResponseEntity>>);
 
   @override
   _i3.Future<_i4.DataResult<_i7.EditProfileResponseEntity>> editProfile(
-      String? token,
-      Map<String, dynamic>? profileData,) =>
+          Map<String, dynamic>? profileData) =>
       (super.noSuchMethod(
         Invocation.method(
           #editProfile,
-          [
-            token,
-            profileData,
-          ],
+          [profileData],
         ),
         returnValue:
-        _i3.Future<_i4.DataResult<_i7.EditProfileResponseEntity>>.value(
-            _i6.dummyValue<_i4.DataResult<_i7.EditProfileResponseEntity>>(
-              this,
-              Invocation.method(
-                #editProfile,
-                [
-                  token,
-                  profileData,
-                ],
-              ),
-            )),
+            _i3.Future<_i4.DataResult<_i7.EditProfileResponseEntity>>.value(
+                _i6.dummyValue<_i4.DataResult<_i7.EditProfileResponseEntity>>(
+          this,
+          Invocation.method(
+            #editProfile,
+            [profileData],
+          ),
+        )),
       ) as _i3.Future<_i4.DataResult<_i7.EditProfileResponseEntity>>);
+
+  @override
+  _i3.Future<_i4.DataResult<_i8.UploadPhotoResponseEntity>> uploadPhoto(
+          _i9.File? photo) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #uploadPhoto,
+          [photo],
+        ),
+        returnValue:
+            _i3.Future<_i4.DataResult<_i8.UploadPhotoResponseEntity>>.value(
+                _i6.dummyValue<_i4.DataResult<_i8.UploadPhotoResponseEntity>>(
+          this,
+          Invocation.method(
+            #uploadPhoto,
+            [photo],
+          ),
+        )),
+      ) as _i3.Future<_i4.DataResult<_i8.UploadPhotoResponseEntity>>);
+
+  @override
+  _i3.Future<_i4.DataResult<_i10.ChangePasswordResponseEntity>> changePassword(
+          _i11.ChangePasswordRequestEntity? request) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #changePassword,
+          [request],
+        ),
+        returnValue: _i3
+            .Future<_i4.DataResult<_i10.ChangePasswordResponseEntity>>.value(
+            _i6.dummyValue<_i4.DataResult<_i10.ChangePasswordResponseEntity>>(
+          this,
+          Invocation.method(
+            #changePassword,
+            [request],
+          ),
+        )),
+      ) as _i3.Future<_i4.DataResult<_i10.ChangePasswordResponseEntity>>);
 }

@@ -206,28 +206,6 @@ class _FakeGetLoggedUserDataResponseDto_11 extends _i1.SmartFake
         );
 }
 
-class _FakeEditProfileResponseDto_12 extends _i1.SmartFake
-    implements _i14.EditProfileResponseDto {
-  _FakeEditProfileResponseDto_12(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeGetLoggedUserDataResponseDto_11 extends _i1.SmartFake
-    implements _i13.GetLoggedUserDataResponseDto {
-  _FakeGetLoggedUserDataResponseDto_11(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
 class _FakeAddToCartResponseDto_12 extends _i1.SmartFake
     implements _i14.AddToCartResponseDto {
   _FakeAddToCartResponseDto_12(
