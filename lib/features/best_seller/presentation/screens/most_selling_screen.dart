@@ -29,8 +29,8 @@ class _MostSellingScreenState extends State<MostSellingScreen> {
 
   void listClick(GlobalKey widgetKey) async {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      addToCartAnimation(widgetKey);
-      await cartViewModelCubit.cartKey.currentState!
+     await addToCartAnimation(widgetKey);
+    await  cartViewModelCubit.cartKey.currentState!
           .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
     });
 
@@ -40,7 +40,8 @@ class _MostSellingScreenState extends State<MostSellingScreen> {
   void initState() {
     super.initState();
     cartViewModelCubit.doAction(GetUserCartDataAction());
-
+    cartViewModelCubit.cartKey.currentState!
+        .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
     // Initialize the cart count to latest count
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // cartViewModelCubit.updateCartCount();
@@ -56,7 +57,7 @@ class _MostSellingScreenState extends State<MostSellingScreen> {
         ),
         BlocProvider(
             create: (context) =>
-                cartViewModelCubit,)
+                getIt.get<CartViewModelCubit>(),)
       ],
       child: AddToCartAnimation(
         cartKey: cartViewModelCubit.cartKey,
@@ -80,7 +81,6 @@ class _MostSellingScreenState extends State<MostSellingScreen> {
             showArrow: true,
               actions: [
                 const SizedBox(width: 16),
-                const CartBlocListenerWidget(),
                 CartIconBadge(
                   cartKey: cartViewModelCubit.cartKey,
                 ),

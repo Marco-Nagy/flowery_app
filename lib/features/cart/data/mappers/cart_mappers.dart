@@ -48,10 +48,10 @@ class CartMappers {
     return CartEntity(
       numOfCartItems: cartResponse.numOfCartItems??0,
       cartList: toCartItemsList(cartResponse),
-      discount: cartResponse.cart!.discount??0.0,
-      totalPrice: cartResponse.cart!.totalPrice??0.0,
+      discount: cartResponse.cart!.discount??0,
+      totalPrice: cartResponse.cart!.totalPrice??0,
       totalPriceAfterDiscount:
-          cartResponse.cart!.totalPriceAfterDiscount??0.0,
+          cartResponse.cart!.totalPriceAfterDiscount??0,
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/styles/colors/my_colors.dart';
@@ -85,7 +86,7 @@ class GenericBuildItem extends StatelessWidget {
                     onClick(widgetKey);
                     final token =  SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey);
                     if (token != null) {
-                      getIt.get<CartViewModelCubit>().doAction(AddToCartAction(product.id?.toString() ?? ''));
+                      context.read<CartViewModelCubit>().doAction(AddToCartAction(product.id?.toString() ?? ''));
                     }else{
                       context.pushNamed(AppRoutes.login);
                     }
