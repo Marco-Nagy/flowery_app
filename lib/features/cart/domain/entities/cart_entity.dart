@@ -1,11 +1,14 @@
+import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
+
 import 'cart_response_entity.dart';
 
-class CartEntity {
-  late int numOfCartItems;
+class CartEntity extends Equatable {
+  int numOfCartItems;
   List<CartProductEntity> cartList;
-  late num totalPrice;
-  num discount;
-  late num totalPriceAfterDiscount;
+  int totalPrice;
+  int discount;
+  int totalPriceAfterDiscount;
 
   CartEntity({
     required this.numOfCartItems,
@@ -14,4 +17,14 @@ class CartEntity {
     required this.discount,
     required this.totalPriceAfterDiscount,
   });
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+        numOfCartItems,
+        cartList,
+        totalPrice,
+        discount,
+        totalPriceAfterDiscount,
+      ];
 }

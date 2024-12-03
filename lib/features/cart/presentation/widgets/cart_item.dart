@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_response_entity.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
@@ -7,6 +8,7 @@ import 'package:flowery_e_commerce/features/cart/presentation/widgets/plus_minus
 import 'package:flowery_e_commerce/features/generic/presentation/widgets/cached_network_widget.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/styles/colors/my_colors.dart';
@@ -82,7 +84,7 @@ class _CartItemState extends State<CartItem> {
                           alignment: Alignment.centerRight,
                           child: InkWell(
                             onTap: () {
-                              cartViewModelCubit.doAction(RemoveFromCartAction(widget.product.id.toString()));
+                              context.read<CartViewModelCubit>().doAction(RemoveFromCartAction(widget.product.id.toString()));
                             },
                             child: Image.asset(
                               Assets.imagesDelete,
@@ -106,16 +108,18 @@ class _CartItemState extends State<CartItem> {
                         ),
                       ),
                       PlusMinusButtons(addQuantity: () {
-                        setState(() {
 
-                        });
-                        cartViewModelCubit.doAction(UpdateQuantityAction(widget.product.id.toString(), (widget.product.quantity++)));
-                      }, deleteQuantity: () {
-                        setState(() {
+                            context.read<CartViewModelCubit>().doAction(
+                                UpdateQuantityAction(
+                                    widget.product.id.toString(),
+                                    (widget.product.quantity+1)));
+                          }, deleteQuantity: () {
 
-                        });
-                        cartViewModelCubit.doAction(UpdateQuantityAction(widget.product.id.toString(), (widget.product.quantity--)));
-                      }, text: widget.product.quantity.toString())
+                            context.read<CartViewModelCubit>().doAction(
+                                UpdateQuantityAction(
+                                    widget.product.id.toString(),
+                                    (widget.product.quantity-1)));
+                          }, text: widget.product.quantity.toString())
                     ],
                   ),
                 ],
