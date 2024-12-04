@@ -34,8 +34,8 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
   final cartKey = GlobalKey<CartIconKey>();
   bool cartVisibility = false;
   Function(GlobalKey)? addToCartAnimation;
-  int cartQuantityItems = 0;
-
+  late int cartQuantityItems;
+ late CartEntity cartData;
   Future<void> doAction(CartBaseAction action) async {
     switch (action) {
       case AddToCartAction():
@@ -43,11 +43,12 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
       case GetUserCartDataAction():
         _getCartData();
       case UpdateQuantityAction():
-      
+        _updateProductQuantity(action);
+      case RemoveFromCartAction():
+        _removeProductFromCart(action);
       case ClearCartAction():
       
-      case RemoveFromCartAction():
-      
+
     }
   }
 
@@ -56,8 +57,10 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
     var result = await addToCartUseCase(productId: action.productId);
     switch (result) {
       case Success<int>():
-        cartQuantityItems = result.data.toInt();
-        updateCartCount();
+
+     await   cartKey.currentState!
+            .runCartAnimation(result.data.toString());
+        cartQuantityItems = result.data;
         cartVisibility = true;
 
         emit(
@@ -77,8 +80,10 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
 
       case Success<CartEntity>():
       cartVisibility = true;
-      cartQuantityItems = result.data.numOfCartItems;
-      updateCartCount();
+      if(cartKey.currentState!= null) {
+        cartKey.currentState!
+          .runCartAnimation(result.data.numOfCartItems.toString());
+      }
       emit(
         GetUserCartDataSuccess(
              cartData: result.data),
@@ -91,12 +96,43 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
     }
   }
 
-  void updateCartCount() {
+  Future<void> _updateProductQuantity(UpdateQuantityAction action) async {
+    emit(CartViewModelLoading());
+    var result = await updateProductQuantityUseCase(
+        id: action.productId, quantity: action.quantity);
+    switch (result) {
+      case Success<CartEntity>():
+        debugPrint('cart quantity : ${result.data.cartList.map((e) => e.quantity,)}');
+        emit(
+          UpdateCartProductQuantitySuccess(cartData: result.data),
+        );
+
+      case Fail<CartEntity>():
+        emit(CartViewModelError(
+            errorModel: ErrorHandler.handle(result.exception!)));
+    }
+  }
+  Future<void> _removeProductFromCart(RemoveFromCartAction action) async {
+    emit(CartViewModelLoading());
+    var result = await removeProductFromCartUseCase(id: action.productId);
+    switch (result) {
+      case Success<CartEntity>():
+        _getCartData();
+        emit(
+          RemoveProductFromCartSuccess(cartData: result.data),
+        );
+      case Fail<CartEntity>():
+        emit(CartViewModelError(
+            errorModel: ErrorHandler.handle(result.exception!)));
+    }
+  }
+
+  void updateCartCount(cartQuantityItems) {
+
     if (cartKey.currentState != null) {
       cartKey.currentState!.runCartAnimation(
         cartQuantityItems.toString(),
       );
     }
   }
-
 }

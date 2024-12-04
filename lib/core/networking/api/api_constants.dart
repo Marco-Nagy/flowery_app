@@ -15,5 +15,6 @@ class ApiConstants {
   static const String changePassword = "api/v1/auth/change-password";
   static const String uploadPhoto = "api/v1/auth/upload-photo";
   static const String cart = "api/v1/cart";
-
+  static const String updateProductCartQuantity = "api/v1/cart/";
+  static const String deleteProductFromCart = "api/v1/cart/";
 }
