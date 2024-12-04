@@ -1,16 +1,15 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
 
 import 'cart_response_entity.dart';
 
 class CartEntity extends Equatable {
-  int numOfCartItems;
-  List<CartProductEntity> cartList;
-  int totalPrice;
-  int discount;
-  int totalPriceAfterDiscount;
+  final int numOfCartItems;
+  final List<CartProductEntity> cartList;
+  final int totalPrice;
+  final int discount;
+  final int totalPriceAfterDiscount;
 
-  CartEntity({
+  const CartEntity({
     required this.numOfCartItems,
     required this.cartList,
     required this.totalPrice,
