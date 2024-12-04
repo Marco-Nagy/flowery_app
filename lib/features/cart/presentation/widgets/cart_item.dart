@@ -1,6 +1,4 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flowery_e_commerce/core/routes/app_routes.dart';
-import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_response_entity.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
@@ -26,7 +24,6 @@ class CartItem extends StatefulWidget {
 class _CartItemState extends State<CartItem> {
   @override
   Widget build(BuildContext context) {
-    CartViewModelCubit cartViewModelCubit =getIt.get<CartViewModelCubit>();
     return  Card(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       margin: const EdgeInsets.all(8),
