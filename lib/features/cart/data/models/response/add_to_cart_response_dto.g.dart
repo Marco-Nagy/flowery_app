@@ -32,7 +32,6 @@ AddToCartDto _$AddToCartDtoFromJson(Map<String, dynamic> json) => AddToCartDto(
     );
 
 
-
 AddToCartItemsDto _$AddToCartItemsDtoFromJson(Map<String, dynamic> json) =>
     AddToCartItemsDto(
       json['product'] as String?,
@@ -41,4 +40,10 @@ AddToCartItemsDto _$AddToCartItemsDtoFromJson(Map<String, dynamic> json) =>
       json['_id'] as String?,
     );
 
-
+Map<String, dynamic> _$AddToCartItemsDtoToJson(AddToCartItemsDto instance) =>
+    <String, dynamic>{
+      'product': instance.product,
+      'price': instance.price,
+      'quantity': instance.quantity,
+      '_id': instance.id,
+    };
