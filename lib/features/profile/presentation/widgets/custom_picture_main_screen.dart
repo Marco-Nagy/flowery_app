@@ -55,6 +55,18 @@ class _CustomPictureMainScreenState extends State<CustomPictureMainScreen> {
              // TODO: Handle this case.
            case EditProfileError():
              // TODO: Handle this case.
+           case UploadPhotoLoading():
+             // TODO: Handle this case.
+           case ChangePasswordLoading():
+             // TODO: Handle this case.
+           case UploadPhotoSuccess():
+             // TODO: Handle this case.
+           case ChangePasswordSuccess():
+             // TODO: Handle this case.
+           case UploadPhotoError():
+             // TODO: Handle this case.
+           case ChangePasswordError():
+             // TODO: Handle this case.
          }
          return Container();
         },
