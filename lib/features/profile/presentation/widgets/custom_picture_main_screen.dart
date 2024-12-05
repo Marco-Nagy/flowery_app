@@ -55,7 +55,8 @@ class _CustomPictureMainScreenState extends State<CustomPictureMainScreen> {
              // TODO: Handle this case.
            case EditProfileError():
              // TODO: Handle this case.
-         }
+            default:
+          }
          return Container();
         },
       ),
