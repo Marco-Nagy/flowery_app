@@ -1,9 +1,9 @@
 import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/di/di.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_view_body.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/widgets/empty_cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,14 +28,14 @@ class _CartViewState extends State<CartView> {
       builder: (context, state) {
         switch (state) {
           case GetUserCartDataSuccess():
-         return   CartViewBody(
+            return state.cartData.cartList.isNotEmpty? CartViewBody(
               cart: state.cartData,
-            );
-          case UpdateCartProductQuantitySuccess():
-       return     CartViewBody(
-              cart: state.cartData,
-            );
+            ):const EmptyCartScreen();          case UpdateCartProductQuantitySuccess():
+            break;
           case RemoveProductFromCartSuccess():
+            return state.cartData.cartList.isNotEmpty? CartViewBody(
+              cart: state.cartData,
+            ):const EmptyCartScreen();
           case AddProductToCartSuccess():
             break;
           case ClearUserCartDataSuccess():
@@ -45,27 +45,17 @@ class _CartViewState extends State<CartView> {
             break;
           case CartViewModelInitial():
         }
-        return Container();
+        return  CartViewBody(
+          cart: context.read<CartViewModelCubit>().cartData!,
+        );
       }, listener: (BuildContext context, CartViewModelState state) {
-      switch (state) {
-        case CartViewModelError():
+        if (state is CartViewModelError) {
           return aweSnackBar(
               msg: state.errorModel.error!,
               context: context,
               type: MessageTypeConst.failure, title: 'Error');
-        case AddProductToCartSuccess():
-          cartViewModel.cartKey.currentState!
-              .runCartAnimation(state.numOfCartItems.toString());
-        case GetUserCartDataSuccess():
-        case UpdateCartProductQuantitySuccess():
-          getIt.get<CartViewModelCubit>().doAction(GetUserCartDataAction());
-        case RemoveProductFromCartSuccess():
-          getIt.get<CartViewModelCubit>().doAction(GetUserCartDataAction());
-        case ClearUserCartDataSuccess():
-        case CartViewModelLoading():
-        case CartViewModelInitial():
-      }
-    },
+        }
+      },
     );
   }
 }
