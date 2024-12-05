@@ -1,17 +1,17 @@
 class CartProductEntity {
-  final String? id;
-  final String? title;
-  final String? imgCover;
-  final int? price;
-  final int? quantity;
-  final int? cartItemQuantity;
+  final String id;
+  final String title;
+  final String imgCover;
+  final int price;
+  late  int quantity;
+  final int cartItemQuantity;
 
-  const CartProductEntity({
-    this.id,
-    this.title,
-    this.imgCover,
-    this.price,
-    this.quantity,
-    this.cartItemQuantity,
+   CartProductEntity({
+    required this.id,
+    required this.title,
+    required this.imgCover,
+    required this.price,
+    required this.quantity,
+    required this.cartItemQuantity,
   });
 }

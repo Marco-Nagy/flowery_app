@@ -1,0 +1,15 @@
+#!/bin/sh
+
+echo "Executing unit tests for project"
+
+result=$(flutter test)
+exitCode=$? # If the exitCode is zero, then command executed successfully.
+
+if [ $exitCode  -ne 0 ]; then
+  echo "$result"
+  printf "Flutter tests found issues, please fix them."
+  exit 1
+fi
+printf "Finished running flutter test command."
+
+exit 0

@@ -61,6 +61,7 @@ dependencies:
   add_to_cart_animation:
   auto_size_text:
   image_picker:
+  animate_do:
 
   # add injectable to your dependencies
   injectable:
@@ -70,6 +71,8 @@ dependencies:
   flutter_bloc:
   flutter_svg: ^2.0.16
   bloc:
+  auto_size_text: ^3.0.0
+  cached_network_image: ^3.4.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
