@@ -87,23 +87,3 @@ CartItemProductDto _$CartItemProductDtoFromJson(Map<String, dynamic> json) =>
       (json['sold'] as num?)?.toInt(),
       (json['discount'] as num?)?.toInt(),
     );
-
-Map<String, dynamic> _$CartItemProductDtoToJson(CartItemProductDto instance) =>
-    <String, dynamic>{
-      '_id': instance.id,
-      'title': instance.title,
-      'slug': instance.slug,
-      'description': instance.description,
-      'imgCover': instance.imgCover,
-      'images': instance.images,
-      'price': instance.price,
-      'priceAfterDiscount': instance.priceAfterDiscount,
-      'quantity': instance.quantity,
-      'category': instance.category,
-      'occasion': instance.occasion,
-      'createdAt': instance.createdAt,
-      'updatedAt': instance.updatedAt,
-      '__v': instance.v,
-      'sold': instance.sold,
-      'discount': instance.discount,
-    };

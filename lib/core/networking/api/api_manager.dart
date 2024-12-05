@@ -84,11 +84,11 @@ abstract class ApiManager {
   Future<AddToCartResponseDto> addProductToCart(
       @Body() AddProductToCartRequestDto body);
 
-  @PUT("${ApiConstants.cart}{id}")
+  @PUT("${ApiConstants.updateProductCartQuantity}{id}")
   Future<CartResponseDto> updateCartQuantity(
       @Path("id") String id, @Body() UpdateCartProductQuantityRequestDto body);
 
-  @DELETE("${ApiConstants.cart}{id}")
+  @DELETE("${ApiConstants.deleteProductFromCart}{id}")
   Future<CartResponseDto> removeProductFromCart(@Path("id") String id);
 
   @GET(ApiConstants.cart)

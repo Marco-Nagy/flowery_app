@@ -35,36 +35,39 @@ class AppLoaderState extends State<AppLoader> with SingleTickerProviderStateMixi
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Lottie.asset(
-            Assets.imagesFloweryLoader,
+    return Container(
+      color: Colors.white,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Lottie.asset(
+              Assets.imagesFloweryLoader,
               height: 80.sp,
               alignment: Alignment.bottomCenter,
-            fit: BoxFit.scaleDown,
-          ),
-          verticalSpacing(15),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: AnimatedTextKit(
-              repeatForever: true,
-              animatedTexts: [
-                ScaleAnimatedText(
-                  'Flowery',
-                  textStyle: MyFonts.styleBold700_24.copyWith(
-                    fontFamily: 'oronteus',
-                    color: MyColors.baseColor,
-                  ),
-                  scalingFactor: 1.5,
-                  textAlign: TextAlign.center,
-                ),
-              ],
+              fit: BoxFit.scaleDown,
             ),
-          ),
-        ],
+            verticalSpacing(15),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: AnimatedTextKit(
+                repeatForever: true,
+                animatedTexts: [
+                  ScaleAnimatedText(
+                    'Flowery',
+                    textStyle: MyFonts.styleBold700_24.copyWith(
+                      fontFamily: 'oronteus',
+                      color: MyColors.baseColor,
+                    ),
+                    scalingFactor: 1.5,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
