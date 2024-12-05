@@ -1,5 +1,7 @@
+import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/logout/widgets/logout_dialog.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_app_bar_of_profile_main_screen.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_main_profile_data.dart';
@@ -86,7 +88,9 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                   ),
                   const Spacer(),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      context.pushNamed(AppRoutes.savedAddressScreen);
+                    },
                     child: SizedBox(
                         width: 20.w,
                         height: 20.w,
