@@ -49,7 +49,6 @@ dependencies:
   build_runner:
   awesome_snackbar_content:
   connectivity_plus:
-  cached_network_image:
 
   # Ui
   lottie:
@@ -59,7 +58,6 @@ dependencies:
   animated_text_kit:
   flutter_image_slideshow:
   add_to_cart_animation:
-  auto_size_text:
   image_picker:
   animate_do:
 
