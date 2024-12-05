@@ -2,12 +2,12 @@ import 'package:equatable/equatable.dart';
 
 
 class ErrorModel extends Equatable {
-  ErrorModel({
+  const ErrorModel({
     this.error,
     this.stack,});
 
-  String? error;
-  String? stack;
+  final String? error;
+  final String? stack;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

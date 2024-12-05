@@ -25,7 +25,7 @@ void main() {
     profileRepo = ProfileRepoImpl(profileOnlineDataSource);
 
     provideDummy<DataResult<GetLoggedUserDataResponseEntity>>(Success(
-      GetLoggedUserDataResponseEntity(
+      const GetLoggedUserDataResponseEntity(
           user: GetLoggedUserDataResponseUserEntity(
             id: "1",
             firstName: "Yasmin",
@@ -39,7 +39,7 @@ void main() {
     ));
 
     provideDummy<DataResult<EditProfileResponseEntity>>(Success(
-      EditProfileResponseEntity(
+      const EditProfileResponseEntity(
         user: EditProfileResponseUserEntity(
           id: '1',
           firstName: 'Yasmin',
@@ -54,13 +54,13 @@ void main() {
     ));
 
     provideDummy<DataResult<UploadPhotoResponseEntity>>(Success(
-      UploadPhotoResponseEntity(
+      const UploadPhotoResponseEntity(
         message: 'message'
       )
     ));
 
     provideDummy<DataResult<ChangePasswordResponseEntity>>(Success(
-        ChangePasswordResponseEntity(
+        const ChangePasswordResponseEntity(
             token: 'token'
         )
     ));
@@ -69,7 +69,7 @@ void main() {
   group('profile repo test', () {
      test('should return success when get profile data is successful', () async {
 
-       var responseEntity = GetLoggedUserDataResponseEntity(
+       var responseEntity = const GetLoggedUserDataResponseEntity(
            user: GetLoggedUserDataResponseUserEntity(
              id: "1",
              firstName: "Yasmin",
@@ -119,7 +119,7 @@ void main() {
          "photo": "test",
          "role": "user",
        };
-       var responseEntity = EditProfileResponseEntity(
+       var responseEntity = const EditProfileResponseEntity(
            user: EditProfileResponseUserEntity(
              id: "1",
              firstName: "Yasmin",
@@ -170,7 +170,7 @@ void main() {
      test('should return success when upload photo is successful', () async {
        var photo = File('path');
 
-       var responseEntity = UploadPhotoResponseEntity(
+       var responseEntity = const UploadPhotoResponseEntity(
          message: 'message'
        );
 
@@ -198,12 +198,12 @@ void main() {
      });
 
      test('should return success when change password is successful', () async{
-       var request = ChangePasswordRequestEntity(
+       var request = const ChangePasswordRequestEntity(
          password: '1234',
          newPassword: '12345',
        );
 
-       var responseEntity = ChangePasswordResponseEntity(
+       var responseEntity = const ChangePasswordResponseEntity(
          token: 'token'
        );
 
@@ -217,7 +217,7 @@ void main() {
      });
 
      test('should return fail when change password is failed', () async{
-       var request = ChangePasswordRequestEntity(
+       var request = const ChangePasswordRequestEntity(
          password: '1234',
          newPassword: '12345',
        );
