@@ -1,17 +1,29 @@
+import 'package:equatable/equatable.dart';
+
 import 'cart_response_entity.dart';
 
-class CartEntity {
-  late int numOfCartItems;
-  List<CartProductEntity> cartList;
-  late num totalPrice;
-  num discount;
-  late num totalPriceAfterDiscount;
+class CartEntity extends Equatable {
+  final int numOfCartItems;
+  final List<CartProductEntity> cartList;
+  final int totalPrice;
+  final int discount;
+  final int totalPriceAfterDiscount;
 
-  CartEntity({
+  const CartEntity({
     required this.numOfCartItems,
     required this.cartList,
     required this.totalPrice,
     required this.discount,
     required this.totalPriceAfterDiscount,
   });
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+        numOfCartItems,
+        cartList,
+        totalPrice,
+        discount,
+        totalPriceAfterDiscount,
+      ];
 }

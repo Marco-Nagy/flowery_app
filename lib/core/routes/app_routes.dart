@@ -4,7 +4,10 @@ import 'package:flowery_e_commerce/features/auth/presentation/forget_password/Vi
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/email_verification.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/reset_password.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/signup_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_selling_cubit.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/screens/most_selling_screen.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/screens/categories_view.dart';
@@ -77,10 +80,17 @@ class AppRoutes {
         );
       case AppRoutes.occasionScreen:
         return BaseRoute(
-          page: BlocProvider(
-              create: (context) => getIt.get<GenericItemViewModelCubit>()
-                ..doAction(GetItemAction(args as String))
-                ..doAction(GetProductAction()),child: const OccasionView()),
+          page: MultiBlocProvider(providers: [
+            BlocProvider(
+                create: (context) => getIt.get<GenericItemViewModelCubit>()
+                  ..doAction(GetItemAction(args as String))
+                  ..doAction(GetProductAction())),
+            BlocProvider(
+                create: (context) => getIt.get<CartViewModelCubit>()
+                  ..doAction(
+                    GetUserCartDataAction(),
+                  )),
+          ], child: const OccasionView()),
         );
       case AppRoutes.categoriesView:
         return BaseRoute(
@@ -88,7 +98,17 @@ class AppRoutes {
         );
         case AppRoutes.mostSellingScreen:
         return BaseRoute(
-          page:  const MostSellingScreen(),
+          page: MultiBlocProvider(providers: [
+            BlocProvider(
+              create: (context) =>
+                  getIt.get<MostSellerCubit>()..getMostSellers(),
+            ),
+            BlocProvider(
+                create: (context) => getIt.get<CartViewModelCubit>()
+                  ..doAction(
+                    GetUserCartDataAction(),
+                  )),
+          ], child: const MostSellingScreen()),
         );
       case AppRoutes.profileMainScreen:
         return BaseRoute(page: const ProfileMainScreen());

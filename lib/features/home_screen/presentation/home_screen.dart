@@ -25,7 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
     const HomeTab(),
     const CategoriesView(),
     BlocProvider(
-      create: (context) => getIt.get<CartViewModelCubit>()..doAction(GetUserCartDataAction()),
+      create: (context) => getIt.get<CartViewModelCubit>()
+        ..doAction(
+          GetUserCartDataAction(),
+        ),
       child: const CartView(),
     ),
     const ProfileMainScreen(),

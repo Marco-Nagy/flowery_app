@@ -2,11 +2,11 @@ import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
-import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_icon_badge.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/widgets/spacing.dart';
 import '../generic_item_by_product/views/generic_item_screen.dart';
@@ -19,12 +19,12 @@ class OccasionView extends StatefulWidget {
 }
 
 class _OccasionViewState extends State<OccasionView> {
-  // final cartKey = GlobalKey<CartIconKey>();
   late Function(GlobalKey) addToCartAnimation;
 
-  CartViewModelCubit cartViewModelCubit = getIt.get<CartViewModelCubit>();
 
   void listClick(GlobalKey widgetKey) async {
+    CartViewModelCubit cartViewModelCubit = context.read<CartViewModelCubit>();
+
     cartViewModelCubit.doAction(GetUserCartDataAction());
 
      addToCartAnimation(widgetKey);
@@ -36,16 +36,21 @@ class _OccasionViewState extends State<OccasionView> {
   @override
   void initState() {
     super.initState();
+    CartViewModelCubit cartViewModelCubit = context.read<CartViewModelCubit>();
+
     // Initialize the cart count to 20
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-     await cartViewModelCubit.doAction(GetUserCartDataAction());
-      // cartViewModelCubit.updateCartCount();
+      cartViewModelCubit.doAction(GetUserCartDataAction());
+      cartViewModelCubit.cartKey.currentState!
+          .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
 
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    CartViewModelCubit cartViewModelCubit = context.read<CartViewModelCubit>();
+
     // Function(GlobalKey) onClick =
     // Key for Cart Icon
     return AddToCartAnimation(
