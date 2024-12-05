@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
+import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/profile/domain/use_cases/profile_use_case.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_actions.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +26,7 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
   final OfflineDataSource _offlineDataSource;
 
   @factoryMethod
-  ProfileViewModelCubit(this._useCase, this._offlineDataSource, ) : super(ProfileViewModelInitial());
+  ProfileViewModelCubit(this._useCase, this._offlineDataSource ) : super(ProfileViewModelInitial());
 
   void doAction(ProfileActions action) {
     switch (action) {

@@ -33,7 +33,7 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
 
             case GetCategoriesViewModelSuccess():
               return ListView.builder(
-              itemCount:state.categories!.length,
+                itemCount:state.categories!.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Column(
@@ -47,13 +47,13 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
                         color: MyColors.lightPink,
                       ),
                       child: Center(
-                        child: SizedBox(
-                          width: 24.w,
+                          child: SizedBox(
+                            width: 24.w,
                           height: 24.h,
-                          child: CachedNetworkWidget(
-                            imageUrl: '${state.categories?[index]!.image}',
+                            child: CachedNetworkWidget(
+                              imageUrl: '${state.categories?[index]!.image}',
+                            ),
                           ),
-                        ),
                       ),
                     ),
                     SizedBox(height: 8.h,),
