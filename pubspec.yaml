@@ -49,6 +49,7 @@ dependencies:
   awesome_snackbar_content:
   connectivity_plus:
   cached_network_image:
+  animate_do:
 
   # Ui
   lottie:
