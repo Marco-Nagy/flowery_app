@@ -35,7 +35,7 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
   bool cartVisibility = false;
   Function(GlobalKey)? addToCartAnimation;
   late int cartQuantityItems;
- late CartEntity cartData;
+  CartEntity? cartData;
   Future<void> doAction(CartBaseAction action) async {
     switch (action) {
       case AddToCartAction():
@@ -65,7 +65,7 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
 
         emit(
           AddProductToCartSuccess(
-              visibility: cartVisibility, numOfCartItems: cartQuantityItems),
+              visibility: cartVisibility, numOfCartItems: result.data),
         );
       case Fail<int>():
         emit(CartViewModelError(
@@ -86,7 +86,7 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
       }
       emit(
         GetUserCartDataSuccess(
-             cartData: result.data),
+             cartData: cartData= result.data),
       );
      break;
       case Fail<CartEntity>():
@@ -102,9 +102,11 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
         id: action.productId, quantity: action.quantity);
     switch (result) {
       case Success<CartEntity>():
-        debugPrint('cart quantity : ${result.data.cartList.map((e) => e.quantity,)}');
+        cartData = result.data;
+
+        debugPrint('cart quantity : ${cartData!.cartList.map((e) => e.quantity,)}');
         emit(
-          UpdateCartProductQuantitySuccess(cartData: result.data),
+          UpdateCartProductQuantitySuccess(cartData:cartData= result.data),
         );
 
       case Fail<CartEntity>():
@@ -119,7 +121,7 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
       case Success<CartEntity>():
         _getCartData();
         emit(
-          RemoveProductFromCartSuccess(cartData: result.data),
+          RemoveProductFromCartSuccess(cartData: cartData= result.data),
         );
       case Fail<CartEntity>():
         emit(CartViewModelError(

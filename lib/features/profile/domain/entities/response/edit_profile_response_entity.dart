@@ -20,7 +20,7 @@ class EditProfileResponseUserEntity extends Equatable{
   final String? photo;
   final String? role;
 
-  EditProfileResponseUserEntity({
+  const EditProfileResponseUserEntity({
     this.id,
     this.firstName,
     this.lastName,

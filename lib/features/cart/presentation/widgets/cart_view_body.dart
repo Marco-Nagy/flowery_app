@@ -60,7 +60,7 @@ final CartEntity cart;
                 itemBuilder: (context, index) {
                   return FadeInLeft(
                       curve: Curves.linear,
-                      duration: Duration(milliseconds: 150 * (index + 1)),
+                      duration: Duration(milliseconds: 100 * (index + 5)),
                       child: CartItem(
                         product: cart.cartList[index],
                       ));

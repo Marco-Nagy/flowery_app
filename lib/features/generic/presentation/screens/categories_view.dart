@@ -41,9 +41,9 @@ class _CategoriesViewState extends State<CategoriesView> {
     super.initState();
     // Initialize the cart count to 20
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-     await cartViewModelCubit.doAction(GetUserCartDataAction());
-      // cartViewModelCubit.updateCartCount();
-
+      cartViewModelCubit.doAction(GetUserCartDataAction());
+     cartViewModelCubit.cartKey.currentState!
+         .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
     });
   }
 
