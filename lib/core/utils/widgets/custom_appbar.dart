@@ -40,5 +40,6 @@ AppBar customAppBar({
       ),
       elevation: 0.0,
       centerTitle: true,
-      actions: actions);
+      actions: actions
+  );
 }
