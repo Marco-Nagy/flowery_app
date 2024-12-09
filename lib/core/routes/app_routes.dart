@@ -6,6 +6,8 @@ import 'package:flowery_e_commerce/features/auth/presentation/forget_password/vi
 import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/signup_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_selling_cubit.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/screens/most_selling_screen.dart';
+import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/screens/checkout_screen.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
@@ -41,6 +43,7 @@ class AppRoutes {
 
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
+  static const String checkoutScreen = 'checkoutScreen';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -119,6 +122,8 @@ class AppRoutes {
         return BaseRoute(page: const ProfileView());
       case AppRoutes.resetPasswordProfileView:
         return BaseRoute(page: const ResetPasswordProfileView());
+        case AppRoutes.checkoutScreen:
+        return BaseRoute(page: CheckoutScreen(cart: args as CartEntity));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }
