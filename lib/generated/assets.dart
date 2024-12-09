@@ -5,6 +5,7 @@ class Assets {
   static const String assetsImagesNotification = 'assets/images/notification.svg';
   static const String fontsOronteusFinaeus = 'assets/fonts/oronteus_finaeus.ttf';
   static const String generatedAssets = 'lib/generated/assets.dart';
+  static const String imagesAboutAppImage = 'assets/images/about_app_image.gif';
   static const String imagesAdd = 'assets/images/add.png';
   static const String imagesArrowBackIos = 'assets/images/arrow_back_ios.png';
   static const String imagesArrowDownIos = 'assets/images/arrow_down_ios.png';
