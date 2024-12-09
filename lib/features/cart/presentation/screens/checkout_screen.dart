@@ -1,15 +1,16 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/app_text_form_field.dart';
+import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_total_amount.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/address_card.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/custom_gift_switch.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/payment_option.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/gift_widget.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/payment_widget.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/section_title.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class CheckoutScreen extends StatefulWidget {
   final CartEntity cart;
@@ -21,29 +22,20 @@ class CheckoutScreen extends StatefulWidget {
 }
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
-  bool isGift = false;
-  late TextEditingController _nameController;
-  late TextEditingController _phoneController;
+  ValueNotifier<String> selectedValueNotifier = ValueNotifier('Credit card');
+
   List<Map<String, String>> addresses = [
     {'title': 'Home', 'address': '2XVP+XC - Sheikh Zayed'},
     {'title': 'Office', 'address': '2XVP+XC - Sheikh Zayed'},
   ];
-  @override
-  void initState() {
-    super.initState();
-    _nameController = TextEditingController();
-    _phoneController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _nameController.dispose();
-    _phoneController.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
+    final now = DateTime.now();
+    final arriveDate =
+        DateTime(now.year, now.month, now.day + 3, now.hour, now.minute);
+    final formattedDate = DateFormat("dd MMM yyyy HH:mm a").format(arriveDate);
+    final arriveMessage = 'Arrive by $formattedDate';
     return Scaffold(
       appBar: customAppBar(
         appBarTxt: 'Checkout',
@@ -59,14 +51,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               // Delivery Time Section
               const SectionTitle(title: 'Delivery time', action: 'Schedule'),
               const SizedBox(height: 8),
-              const Row(
+              Row(
                 children: [
-                  Icon(Icons.access_time, color: Colors.black54),
-                  SizedBox(width: 8),
-                  Text('Instant, '),
+                  const Icon(Icons.access_time, color: Colors.black54),
+                  const SizedBox(width: 8),
+                   Text('Instant, ',style:MyFonts.styleMedium500_14,),
                   Text(
-                    'Arrive by 03 Sep 2024, 11:00 AM',
-                    style: TextStyle(color: Colors.green),
+                    ' $arriveMessage',
+                    style: const TextStyle(color: Colors.green),
                   ),
                 ],
               ),
@@ -86,53 +78,21 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   );
                 },
               ),
+              verticalSpacing(16),
 
-              TextButton.icon(
-                onPressed: () {},
-                icon: const Icon(Icons.add, color: Colors.pink),
-                label: const Text(
-                  'Add new',
-                  style: TextStyle(color: Colors.pink),
-                ),
+              CurvedButton(
+                title: ' + Add New',
+                onTap: () {},
+                color: MyColors.white,
+                textColor: MyColors.baseColor,
+                colorBorderSide: MyColors.baseColor,
               ),
-              const Divider(height: 32),
+              verticalSpacing(24),
 
               // Payment Method Section
-              const SectionTitle(title: 'Payment method'),
-              const PaymentOption(title: 'Cash on delivery', isSelected: true),
-              const PaymentOption(title: 'Credit card'),
-              const Divider(height: 32),
+              const PaymentWidget(),
 
-              // Gift Option Section
-              CustomGiftSwitch(
-                value: isGift,
-
-              ),
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-                height: isGift ? 150 : 0,
-                child: isGift
-                    ? Column(
-                        children: [
-                          AppTextFormField(
-                            hintText: 'Name',
-                            controller: _nameController,
-                            labelText: 'Name',
-                            keyboardType: TextInputType.phone,
-                          ),
-                          const SizedBox(height: 16),
-                          AppTextFormField(
-                            hintText: 'Phone number',
-                            controller: _phoneController,
-                            labelText: 'Phone number',
-                             keyboardType: TextInputType.phone,
-                          ),
-                        ],
-                      )
-                    : Container(),
-              ),
-              const Divider(height: 32),
+              const GiftWidget(),
 
               CartTotalAmount(cart: widget.cart),
               verticalSpacing(16),

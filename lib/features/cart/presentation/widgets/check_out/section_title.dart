@@ -1,3 +1,5 @@
+import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
+import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flutter/material.dart';
 
 class SectionTitle extends StatelessWidget {
@@ -13,12 +15,12 @@ class SectionTitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          style: MyFonts.styleMedium500_18,
         ),
         if (action != null)
           Text(
             action!,
-            style: const TextStyle(color: Colors.pink),
+              style: MyFonts.styleSemiBold600_18.copyWith(color: MyColors.baseColor),
           ),
       ],
     );
