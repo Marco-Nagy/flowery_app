@@ -40,10 +40,7 @@ class AppRoutes {
   static const String mostSellingScreen = 'mostSellingScreen';
   static const String profileMainScreen = 'profileMainScreen';
   static const String aboutAppView = 'aboutAppView';
-
   static const String termsAndConditionsPage = 'TermsAndConditionsPage';
-  static const String aboutAppView = 'aboutAppView';
-
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
 
