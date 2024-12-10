@@ -1,5 +1,7 @@
 import 'package:flowery_e_commerce/core/routes/base_routes.dart';
 import 'package:flowery_e_commerce/core/utils/screens/under_build_screen.dart';
+import 'package:flowery_e_commerce/features/address/presentation/view/address_screen.dart';
+import 'package:flowery_e_commerce/features/address/presentation/view/saved_address_screen.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/email_verification.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/reset_password.dart';
@@ -17,6 +19,7 @@ import 'package:flowery_e_commerce/features/profile/presentation/views/profile_m
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../di/di.dart';
+import '../../features/about_app/presentation/views/about_app_view.dart';
 import '../../features/auth/presentation/forget_password/view/forget_password.dart';
 import '../../features/auth/presentation/login/view/login_view.dart';
 import '../../features/auth/presentation/signup/view/signup_view.dart';
@@ -38,7 +41,11 @@ class AppRoutes {
   static const String productsDetailsView = 'productsDetailsView';
   static const String mostSellingScreen = 'mostSellingScreen';
   static const String profileMainScreen = 'profileMainScreen';
+  static const String aboutAppView = 'aboutAppView';
   static const String termsAndConditionsPage = 'TermsAndConditionsPage';
+  static const String savedAddressScreen = 'savedAddressScreen';
+  static const String addressScreen = 'addressScreen';
+
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
 
@@ -119,6 +126,12 @@ class AppRoutes {
         return BaseRoute(page: const ProfileView());
       case AppRoutes.resetPasswordProfileView:
         return BaseRoute(page: const ResetPasswordProfileView());
+        case AppRoutes.savedAddressScreen:
+        return BaseRoute(page: const SavedAddressScreen());
+        case AppRoutes.addressScreen:
+        return BaseRoute(page: const AddressScreen());
+      case AppRoutes.aboutAppView:
+        return BaseRoute(page: const AboutAppView());
       case AppRoutes.termsAndConditionsPage:
         return BaseRoute(page: const TermsAndConditionsPage());
       default:
