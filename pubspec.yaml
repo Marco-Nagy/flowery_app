@@ -68,9 +68,9 @@ dependencies:
 
   # state Manager
   flutter_bloc:
-  flutter_svg: ^2.0.16
+  flutter_svg:
   bloc:
-  cached_network_image: ^3.4.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
