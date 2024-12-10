@@ -16,6 +16,10 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../core/networking/api/api_manager.dart' as _i282;
 import '../core/networking/common/regestet_context_module.dart' as _i125;
 import '../core/networking/network_factory.dart' as _i377;
+import '../features/address_details/data/data_sources/contracts/add_address_online_data_source.dart'
+    as _i700;
+import '../features/address_details/data/data_sources/impl/add_address_online_data_source_impl.dart'
+    as _i172;
 import '../features/auth/data/data_sources/contracts/auth_online_data_source.dart'
     as _i901;
 import '../features/auth/data/data_sources/contracts/offline_data_source.dart'
@@ -155,6 +159,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1036.OfflineDataSourceImplementation());
     gh.factory<_i937.ProductsOnlineDataSource>(
         () => _i838.ProductsOnlineDataSourceImpl(gh<_i282.ApiManager>()));
+    gh.factory<_i700.AddAddressOnlineDataSource>(
+        () => _i172.AddAddressOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.lazySingleton<_i603.HomeOnlineDataSource>(
         () => _i507.HomeApiManager(gh<_i282.ApiManager>()));
     gh.lazySingleton<_i765.HomeRepository>(
