@@ -1,6 +1,7 @@
 import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/logout/widgets/logout_dialog.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_app_bar_of_profile_main_screen.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_main_profile_data.dart';
@@ -8,6 +9,7 @@ import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class ProfileMainScreen extends StatefulWidget {
   const ProfileMainScreen({super.key});
@@ -19,6 +21,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MyColors.white,
       appBar: AppBar(
         actions: const [
           CustomAppBarOfProfileMainScreen(),
@@ -87,7 +90,9 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                   ),
                   const Spacer(),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      context.pushNamed(AppRoutes.savedAddressScreen);
+                    },
                     child: SizedBox(
                         width: 20.w,
                         height: 20.w,
@@ -149,10 +154,15 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                   ),
                   Row(
                     children: [
-                      Text(
-                        'About us',
-                        style: MyFonts.styleRegular400_16.copyWith(
-                          color: MyColors.blackBase,
+                      GestureDetector(
+                        onTap: () {
+                          context.pushNamed(AppRoutes.aboutAppView);
+                        },
+                        child: Text(
+                          'About App',
+                          style: MyFonts.styleRegular400_16.copyWith(
+                            color: MyColors.blackBase,
+                          ),
                         ),
                       ),
                       const Spacer(),

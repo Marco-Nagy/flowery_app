@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flowery_e_commerce/features/address/data/models/response/saved_address_response_entity_dto_entity.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/request/forget_password_request_dto.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/request/reset_password_request_dto.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/request/verify_reset_code_request_dto.dart';
@@ -12,6 +13,7 @@ import 'package:flowery_e_commerce/features/cart/data/models/request/add_product
 import 'package:flowery_e_commerce/features/cart/data/models/request/update_cart_product_quantity_request_dto.dart';
 import 'package:flowery_e_commerce/features/cart/data/models/response/add_to_cart_response_dto.dart';
 import 'package:flowery_e_commerce/features/cart/data/models/response/cart_response_dto.dart';
+import 'package:flowery_e_commerce/features/cart/data/models/response/remove_from_cart_response_dto.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_products_rsponse_dto.dart';
 import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart';
@@ -89,10 +91,13 @@ abstract class ApiManager {
       @Path("id") String id, @Body() UpdateCartProductQuantityRequestDto body);
 
   @DELETE("${ApiConstants.deleteProductFromCart}{id}")
-  Future<CartResponseDto> removeProductFromCart(@Path("id") String id);
+  Future<RemoveFromCartResponseDto> removeProductFromCart(@Path("id") String id);
 
   @GET(ApiConstants.cart)
   Future<CartResponseDto> getCartData();
+
+  @GET(ApiConstants.getLoggedUserAddresses)
+  Future<SavedAddressResponseEntityDtoEntity> getSavedAddresses();
 
   @DELETE(ApiConstants.cart)
   Future<String> clearCartItems();
