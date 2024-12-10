@@ -1,14 +1,15 @@
-class AddAddressResponseDto {
-  final List<AddAddressResponseDtoAddress?>? address;
+class AddAddressResponseEntity {
+  final List<AddAddressResponseEntityAddress?>? address;
 
-  AddAddressResponseDto({this.address});
+  AddAddressResponseEntity({this.address});
 }
 
-class AddAddressResponseDtoAddress {
+class AddAddressResponseEntityAddress {
   final String? street;
   final String? phone;
   final String? city;
   final String? id;
 
-  AddAddressResponseDtoAddress({this.street, this.phone, this.city, this.id});
+  AddAddressResponseEntityAddress(
+      {this.street, this.phone, this.city, this.id});
 }
