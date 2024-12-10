@@ -2,7 +2,6 @@ import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/email_verification.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/logout/widgets/logout_dialog.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_app_bar_of_profile_main_screen.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_main_profile_data.dart';
@@ -11,7 +10,6 @@ import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/routes/app_routes.dart';
 
 class ProfileMainScreen extends StatefulWidget {
   const ProfileMainScreen({super.key});

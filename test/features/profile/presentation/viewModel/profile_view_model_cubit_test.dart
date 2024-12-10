@@ -45,7 +45,7 @@ void main() {
     ));
 
     provideDummy<DataResult<EditProfileResponseEntity>>(Success(
-      EditProfileResponseEntity(
+      const EditProfileResponseEntity(
         user: EditProfileResponseUserEntity(
           id: "1",
           firstName: "Yasmin",
@@ -125,7 +125,7 @@ void main() {
     expect: () => <ProfileViewModelState>[
       GetLoggedUserDataLoading(),
       GetLoggedUserDataError(
-          error: ErrorModel(
+          error: const ErrorModel(
               error: 'An unknown error occurred. Please try again.')),
     ],
     verify: (_) => verify(profileUseCase.getProfileData()).called(1),
@@ -142,7 +142,7 @@ void main() {
           "phone": "+20123456789",
           "photo": "test",
         };
-        var result = Success(EditProfileResponseEntity(
+        var result = Success(const EditProfileResponseEntity(
             user: EditProfileResponseUserEntity(
           id: '1',
           firstName: 'Yasmin',
@@ -172,7 +172,7 @@ void main() {
       expect: () => <ProfileViewModelState>[
             EditProfileLoading(),
             EditProfileSuccess(
-                data: EditProfileResponseEntity(
+                data: const EditProfileResponseEntity(
                     user: EditProfileResponseUserEntity(
               id: '1',
               firstName: 'Yasmin',
@@ -215,7 +215,7 @@ void main() {
       expect: () => <ProfileViewModelState>[
             EditProfileLoading(),
             EditProfileError(
-                error: ErrorModel(
+                error: const ErrorModel(
                     error: 'An unknown error occurred. Please try again.')),
           ],
       verify: (_) => verify(profileUseCase.editProfile(any)).called(1));
@@ -250,7 +250,7 @@ void main() {
       expect: () => <ProfileViewModelState>[
             UploadPhotoLoading(),
             UploadPhotoError(
-                error: ErrorModel(
+                error: const ErrorModel(
                     error: 'An unknown error occurred. Please try again.')),
           ],
       verify: (_) => verify(profileUseCase.uploadPhoto(any)).called(1));
@@ -298,7 +298,7 @@ void main() {
       expect: () => <ProfileViewModelState>[
             ChangePasswordLoading(),
             ChangePasswordError(
-                error: ErrorModel(
+                error: const ErrorModel(
                     error: 'An unknown error occurred. Please try again.')),
           ],
       verify: (_) => verify(profileUseCase.changePassword(any)).called(1));
