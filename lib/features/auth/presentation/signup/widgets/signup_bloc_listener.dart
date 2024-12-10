@@ -22,14 +22,16 @@ class SignUpBlocListener extends StatelessWidget {
              aweSnackBar(
                 msg: state.response.message!,
                 context: context,
-                type: MessageTypeConst.success, title: "Success");
+                type: MessageTypeConst.success,
+                title: "Success");
             context.pushNamed(AppRoutes.login);
             break;
           case SignupError():
             return aweSnackBar(
                 msg: state.message.error!,
                 context: context,
-                type: MessageTypeConst.failure, title: 'Error');
+                type: MessageTypeConst.failure,
+                title: 'Error');
             default:
             return ;
         }
