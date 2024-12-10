@@ -1,11 +1,15 @@
 import 'package:flowery_e_commerce/core/styles/app_images.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
+import 'package:flowery_e_commerce/di/di.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/screens/categories_view.dart';
-import 'package:flowery_e_commerce/features/home_screen/presentation/tabs/cart_tab.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/screens/cart_view.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/tabs/home_tab.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,7 +24,13 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> tabs = [
     const HomeTab(),
     const CategoriesView(),
-    const CartTab(),
+    BlocProvider(
+      create: (context) => getIt.get<CartViewModelCubit>()
+        ..doAction(
+          GetUserCartDataAction(),
+        ),
+      child: const CartView(),
+    ),
     const ProfileMainScreen(),
     const ProfileView(),
   ];
@@ -41,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Image.asset(
               color:
-                  currentTabIndex == 0 ? MyColors.baseColor : MyColors.white80,
+              currentTabIndex == 0 ? MyColors.baseColor : MyColors.white80,
               AppImages.home,
               width: 24.w,
               height: 24.h,
@@ -51,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Image.asset(
               color:
-                  currentTabIndex == 1 ? MyColors.baseColor : MyColors.white80,
+              currentTabIndex == 1 ? MyColors.baseColor : MyColors.white80,
               AppImages.category,
               width: 24.w,
               height: 24.h,
@@ -61,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Image.asset(
               color:
-                  currentTabIndex == 2 ? MyColors.baseColor : MyColors.white80,
+              currentTabIndex == 2 ? MyColors.baseColor : MyColors.white80,
               AppImages.cart,
               width: 24.w,
               height: 24.h,
@@ -71,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Image.asset(
               color:
-                  currentTabIndex == 3 ? MyColors.baseColor : MyColors.white80,
+              currentTabIndex == 3 ? MyColors.baseColor : MyColors.white80,
               AppImages.profile,
               width: 24.w,
               height: 24.h,

@@ -1,10 +1,13 @@
-class ErrorModel {
-  ErrorModel({
+import 'package:equatable/equatable.dart';
+
+
+class ErrorModel extends Equatable {
+  const ErrorModel({
     this.error,
     this.stack,});
 
-  String? error;
-  String? stack;
+  final String? error;
+  final String? stack;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -21,4 +24,7 @@ class ErrorModel {
       stack: map['stack'] != null ? map['stack'].toString() : 'stack',
     );
   }
+
+  @override
+  List<Object?> get props =>[error, stack];
 }
