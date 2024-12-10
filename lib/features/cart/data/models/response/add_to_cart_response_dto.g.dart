@@ -17,6 +17,7 @@ AddToCartResponseDto _$AddToCartResponseDtoFromJson(
     );
 
 
+
 AddToCartDto _$AddToCartDtoFromJson(Map<String, dynamic> json) => AddToCartDto(
       json['_id'] as String?,
       json['user'] as String?,
@@ -39,3 +40,4 @@ AddToCartItemsDto _$AddToCartItemsDtoFromJson(Map<String, dynamic> json) =>
       (json['quantity'] as num?)?.toInt(),
       json['_id'] as String?,
     );
+
