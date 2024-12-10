@@ -10,8 +10,5 @@ class AddAddressRequestDto {
 
   AddAddressRequestDto(this.street, this.phone, this.city);
 
-  factory AddAddressRequestDto.fromJson(Map<String, dynamic> json) =>
-      _$AddAddressRequestDtoFromJson(json);
-
   Map<String, dynamic> toJson() => _$AddAddressRequestDtoToJson(this);
 }
