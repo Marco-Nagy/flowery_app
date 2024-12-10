@@ -63,6 +63,6 @@ class ProfileMapper {
 
   static UploadPhotoResponseEntity uploadPhotoResponseToEntity(
       UploadPhotoResponseDto dto) {
-    return UploadPhotoResponseEntity(dto.message);
+    return UploadPhotoResponseEntity(message: dto.message);
   }
 }

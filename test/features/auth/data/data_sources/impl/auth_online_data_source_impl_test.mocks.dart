@@ -10,6 +10,7 @@ import 'package:flowery_e_commerce/core/networking/api/api_manager.dart'
     as _i20;
 import 'package:flowery_e_commerce/features/address/data/models/response/saved_address_response_entity_dto_entity.dart'
     as _i16;
+    as _i20;
 import 'package:flowery_e_commerce/features/auth/data/models/request/forget_password_request_dto.dart'
     as _i24;
 import 'package:flowery_e_commerce/features/auth/data/models/request/login_request_dto.dart'
@@ -40,6 +41,8 @@ import 'package:flowery_e_commerce/features/cart/data/models/response/add_to_car
     as _i14;
 import 'package:flowery_e_commerce/features/cart/data/models/response/cart_response_dto.dart'
     as _i15;
+import 'package:flowery_e_commerce/features/cart/data/models/response/remove_from_cart_response_dto.dart'
+    as _i16;
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart'
     as _i8;
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_products_rsponse_dto.dart'
@@ -230,6 +233,9 @@ class _FakeCartResponseDto_13 extends _i1.SmartFake
         );
 }
 
+class _FakeRemoveFromCartResponseDto_14 extends _i1.SmartFake
+    implements _i16.RemoveFromCartResponseDto {
+  _FakeRemoveFromCartResponseDto_14(
 class _FakeSavedAddressResponseEntityDtoEntity_14 extends _i1.SmartFake
     implements _i16.SavedAddressResponseEntityDtoEntity {
   _FakeSavedAddressResponseEntityDtoEntity_14(
@@ -532,21 +538,22 @@ class MockApiManager extends _i1.Mock implements _i20.ApiManager {
       ) as _i21.Future<_i15.CartResponseDto>);
 
   @override
-  _i21.Future<_i15.CartResponseDto> removeProductFromCart(String? id) =>
+  _i21.Future<_i16.RemoveFromCartResponseDto> removeProductFromCart(
+          String? id) =>
       (super.noSuchMethod(
         Invocation.method(
           #removeProductFromCart,
           [id],
         ),
-        returnValue:
-            _i21.Future<_i15.CartResponseDto>.value(_FakeCartResponseDto_13(
+        returnValue: _i21.Future<_i16.RemoveFromCartResponseDto>.value(
+            _FakeRemoveFromCartResponseDto_14(
           this,
           Invocation.method(
             #removeProductFromCart,
             [id],
           ),
         )),
-      ) as _i21.Future<_i15.CartResponseDto>);
+      ) as _i21.Future<_i16.RemoveFromCartResponseDto>);
 
   @override
   _i21.Future<_i15.CartResponseDto> getCartData() => (super.noSuchMethod(
@@ -583,6 +590,7 @@ class MockApiManager extends _i1.Mock implements _i20.ApiManager {
       ) as _i21.Future<_i16.SavedAddressResponseEntityDtoEntity>);
 
   @override
+  _i21.Future<String> clearCartItems() => (super.noSuchMethod(
   _i21.Future<String> clearCartItems() => (super.noSuchMethod(
         Invocation.method(
           #clearCartItems,
