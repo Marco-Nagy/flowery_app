@@ -19,6 +19,5 @@ class ListTileWidget extends StatelessWidget {
       ),
       subtitle: Text(info),
     );
-    ;
   }
 }

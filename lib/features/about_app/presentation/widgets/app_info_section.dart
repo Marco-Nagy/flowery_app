@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../core/styles/colors/my_colors.dart';
 import '../widgets/list_tile_widget.dart';
 
 class AppInfoSection extends StatelessWidget {
