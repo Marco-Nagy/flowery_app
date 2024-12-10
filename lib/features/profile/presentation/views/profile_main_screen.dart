@@ -1,3 +1,4 @@
+import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
@@ -189,7 +190,9 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                       ),
                       const Spacer(),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context,AppRoutes.termsAndConditionsPage);
+                        },
                         child: SizedBox(
                             width: 20.w,
                             height: 20.w,

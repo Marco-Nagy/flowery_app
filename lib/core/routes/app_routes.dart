@@ -16,7 +16,6 @@ import 'package:flowery_e_commerce/features/product/presentation/view/product_de
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../di/di.dart';
 import '../../features/about_app/presentation/views/about_app_view.dart';
 import '../../features/auth/presentation/forget_password/view/forget_password.dart';
@@ -25,6 +24,7 @@ import '../../features/auth/presentation/signup/view/signup_view.dart';
 import '../../features/generic/presentation/screens/occasion_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/profile/presentation/views/reset_password_profile_view.dart';
+import '../../features/profile/presentation/widgets/terms_conditions_page.dart';
 
 class AppRoutes {
   static const String login = '/';
@@ -41,6 +41,7 @@ class AppRoutes {
   static const String profileMainScreen = 'profileMainScreen';
   static const String aboutAppView = 'aboutAppView';
 
+  static const String termsAndConditionsPage = 'TermsAndConditionsPage';
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
 
@@ -123,6 +124,8 @@ class AppRoutes {
         return BaseRoute(page: const ResetPasswordProfileView());
       case AppRoutes.aboutAppView:
         return BaseRoute(page: const AboutAppView());
+      case AppRoutes.termsAndConditionsPage:
+        return BaseRoute(page: const TermsAndConditionsPage());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

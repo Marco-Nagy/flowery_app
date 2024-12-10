@@ -2,8 +2,10 @@ import 'package:flowery_e_commerce/features/cart/data/models/request/add_product
 import 'package:flowery_e_commerce/features/cart/data/models/request/update_cart_product_quantity_request_dto.dart';
 import 'package:flowery_e_commerce/features/cart/data/models/response/add_to_cart_response_dto.dart';
 import 'package:flowery_e_commerce/features/cart/data/models/response/cart_response_dto.dart';
+import 'package:flowery_e_commerce/features/cart/data/models/response/remove_from_cart_response_dto.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_response_entity.dart';
+import 'package:flowery_e_commerce/features/cart/domain/entities/delete_from_cart_entity.dart';
 
 class CartMappers {
   AddProductToCartRequestDto toCrtRequestDto(String id) {
@@ -52,6 +54,14 @@ class CartMappers {
       totalPrice: cartResponse.cart!.totalPrice??0,
       totalPriceAfterDiscount:
           cartResponse.cart!.totalPriceAfterDiscount??0,
+    );
+  }
+
+  RemoveFromCartEntity toRemoveFromCartEntity(
+      RemoveFromCartResponseDto cartResponse) {
+    return RemoveFromCartEntity(
+      numOfCartItems: cartResponse.numOfCartItems ?? 0,
+      totalPrice: cartResponse.cart!.totalPrice ?? 0,
     );
   }
 }
