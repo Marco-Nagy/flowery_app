@@ -20,7 +20,6 @@ class CartBlocListenerWidget extends StatelessWidget {
           case UpdateCartProductQuantitySuccess():
             cartViewModelCubit.cartQuantityItems =state.cartData.numOfCartItems;
           case RemoveProductFromCartSuccess():
-            cartViewModelCubit.cartQuantityItems =state.cartData.numOfCartItems;
           case ClearUserCartDataSuccess():
           case CartViewModelInitial():
             

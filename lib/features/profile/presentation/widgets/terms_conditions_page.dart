@@ -14,27 +14,27 @@ class TermsAndConditionsPage extends StatelessWidget {
       {
         'title': '1. Introduction',
         'description':
-            'Flowery is an online marketplace where you can purchase floral products and gifts. These terms apply to all users of the app.',
+        'Flowery is an online marketplace where you can purchase floral products and gifts. These terms apply to all users of the app.',
       },
       {
         'title': '2. Payment Terms',
         'description':
-            'All payments are processed securely. Please ensure that your payment details are accurate to avoid disruptions.',
+        'All payments are processed securely. Please ensure that your payment details are accurate to avoid disruptions.',
       },
       {
         'title': '3. Refund Policy',
         'description':
-            'Refunds are issued in accordance with our refund policy. Products must be returned in their original condition.',
+        'Refunds are issued in accordance with our refund policy. Products must be returned in their original condition.',
       },
       {
         'title': '4. Privacy Policy',
         'description':
-            'We take your privacy seriously. Your data is protected and will not be shared with third parties.',
+        'We take your privacy seriously. Your data is protected and will not be shared with third parties.',
       },
       {
         'title': '5. Contact Us',
         'description':
-            'If you have any questions or concerns, please contact us at [Your Contact Information].',
+        'If you have any questions or concerns, please contact us at [Your Contact Information].',
       },
     ];
 
