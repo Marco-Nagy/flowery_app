@@ -17,6 +17,7 @@ import 'package:flowery_e_commerce/features/profile/presentation/views/profile_m
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../di/di.dart';
+import '../../features/about_app/presentation/views/about_app_view.dart';
 import '../../features/auth/presentation/forget_password/view/forget_password.dart';
 import '../../features/auth/presentation/login/view/login_view.dart';
 import '../../features/auth/presentation/signup/view/signup_view.dart';
@@ -38,6 +39,7 @@ class AppRoutes {
   static const String productsDetailsView = 'productsDetailsView';
   static const String mostSellingScreen = 'mostSellingScreen';
   static const String profileMainScreen = 'profileMainScreen';
+  static const String aboutAppView = 'aboutAppView';
   static const String termsAndConditionsPage = 'TermsAndConditionsPage';
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
@@ -119,6 +121,8 @@ class AppRoutes {
         return BaseRoute(page: const ProfileView());
       case AppRoutes.resetPasswordProfileView:
         return BaseRoute(page: const ResetPasswordProfileView());
+      case AppRoutes.aboutAppView:
+        return BaseRoute(page: const AboutAppView());
       case AppRoutes.termsAndConditionsPage:
         return BaseRoute(page: const TermsAndConditionsPage());
       default:
