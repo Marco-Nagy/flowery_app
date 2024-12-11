@@ -9,6 +9,9 @@ import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import '../../../../core/models/language.dart';
+import '../../../../core/provider/language_provider.dart';
 
 
 class ProfileMainScreen extends StatefulWidget {
@@ -122,33 +125,42 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
               height: 150.h,
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      SizedBox(
-                          width: 20.w,
-                          height: 20.w,
-                          child: Image.asset(Assets.imagesLanguage)),
-                      SizedBox(
-                        width: 5.w,
+              Row(
+              children: [
+              SizedBox(
+              width: 20.w,
+                height: 20.w,
+                child: Image.asset(Assets.imagesLanguage),
+              ),
+              SizedBox(width: 5.w),
+              Text(
+                'AppLocalizations.of(context)!.language,',
+                style: MyFonts.styleRegular400_16.copyWith(
+                  color: MyColors.blackBase,
+                ),
+              ),
+              const Spacer(),
+              InkWell(
+                onTap: () {
+                  final currentLanguage = context.read<LanguageProvider>().selectedLanguage;
+                  final newLanguage = currentLanguage.code == 'en'
+                      ? Language(code: 'ar') // Switch to Arabic
+                      : Language(code: 'en'); // Switch to English
+                  context.read<LanguageProvider>().changeLanguage(newLanguage);
+                },
+                child: Consumer<LanguageProvider>(
+                  builder: (context, provider, _) {
+                    return Text(
+                      provider.selectedLanguage.code == 'en' ? 'English' : 'Arabic',
+                      style: MyFonts.styleRegular400_14.copyWith(
+                        color: MyColors.baseColor,
                       ),
-                      Text(
-                        'Language',
-                        style: MyFonts.styleRegular400_16.copyWith(
-                          color: MyColors.blackBase,
-                        ),
-                      ),
-                      const Spacer(),
-                      InkWell(
-                        onTap: () {},
-                        child: Text(
-                          'English',
-                          style: MyFonts.styleRegular400_14.copyWith(
-                            color: MyColors.baseColor,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                    );
+                  },
+                ),
+              ),
+              ],
+            ),
                   SizedBox(
                     height: 25.h,
                   ),
