@@ -18,4 +18,6 @@ class ApiConstants {
   static const String updateProductCartQuantity = "api/v1/cart/";
   static const String deleteProductFromCart = "api/v1/cart/";
   static const String addAddress = "api/v1/addresses";
+  static const String getLoggedUserAddresses = "api/v1/addresses";
+
 }

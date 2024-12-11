@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flowery_e_commerce/features/address_details/data/models/response/add_address_response_dto.dart';
+import 'package:flowery_e_commerce/features/address/data/models/response/saved_address_response_entity_dto_entity.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/request/forget_password_request_dto.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/request/reset_password_request_dto.dart';
 import 'package:flowery_e_commerce/features/auth/data/models/request/verify_reset_code_request_dto.dart';
@@ -96,6 +97,9 @@ abstract class ApiManager {
 
   @GET(ApiConstants.cart)
   Future<CartResponseDto> getCartData();
+
+  @GET(ApiConstants.getLoggedUserAddresses)
+  Future<SavedAddressResponseEntityDtoEntity> getSavedAddresses();
 
   @DELETE(ApiConstants.cart)
   Future<String> clearCartItems();
