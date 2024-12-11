@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
@@ -42,18 +43,21 @@ class HomeTab extends StatelessWidget {
       child: Scaffold(
         backgroundColor: MyColors.white,
         appBar: AppBar(
-          title: Row(
-            children: [
-              Image.asset(
-                'assets/images/logo.png',
-                width: 89.w,
-                height: 35.h,
-              ),
-              SizedBox(
-                width: 20.w,
-              ),
-              SizedBox(width: 220.w, height: 50.h, child: SearchTextField()),
-            ],
+          title: FadeInDown(
+            duration: const Duration(milliseconds:700),
+            child: Row(
+              children: [
+                Image.asset(
+                  'assets/images/logo.png',
+                  width: 89.w,
+                  height: 35.h,
+                ),
+                SizedBox(
+                  width: 20.w,
+                ),
+                SizedBox(width: 220.w, height: 50.h, child: SearchTextField()),
+              ],
+            ),
           ),
         ),
         body: SingleChildScrollView(
@@ -62,18 +66,21 @@ class HomeTab extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsets.all(15.sp),
-                child: Row(
-                  children: [
-                    Image.asset(Assets.imagesLocationOn,height: 20.h,width: 20.w,),
-                    SizedBox(width: 2.w,),
-                    Text(
-                      'Deliver to 2XVP+XC - Sheikh Zayed ',
-                      style: MyFonts.styleMedium500_14
-                          .copyWith(color: MyColors.blackBase),
-                    ),
-                    SizedBox(width: 2.w,),
-                    Image.asset(Assets.imagesArrowDownIos,height: 16.h,width: 16.w,),
-                  ],
+                child: FadeInDown(
+                  duration: const Duration(milliseconds:700),
+                  child: Row(
+                    children: [
+                      Image.asset(Assets.imagesLocationOn,height: 20.h,width: 20.w,),
+                      SizedBox(width: 2.w,),
+                      Text(
+                        'Deliver to 2XVP+XC - Sheikh Zayed ',
+                        style: MyFonts.styleMedium500_14
+                            .copyWith(color: MyColors.blackBase),
+                      ),
+                      SizedBox(width: 2.w,),
+                      Image.asset(Assets.imagesArrowDownIos,height: 16.h,width: 16.w,),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 10.h,),
