@@ -90,7 +90,9 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                   ),
                   const Spacer(),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      context.pushNamed(AppRoutes.savedAddressScreen);
+                    },
                     child: SizedBox(
                         width: 20.w,
                         height: 20.w,
