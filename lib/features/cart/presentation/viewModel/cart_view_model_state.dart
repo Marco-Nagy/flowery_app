@@ -55,12 +55,11 @@ final class UpdateCartProductQuantitySuccess extends CartViewModelState {
 }
 
 final class RemoveProductFromCartSuccess extends CartViewModelState {
-  final CartEntity cartData;
 
-  const RemoveProductFromCartSuccess({required this.cartData});
+  const RemoveProductFromCartSuccess();
 
   @override
-  List<Object?> get props => [cartData];
+  List<Object?> get props => [];
 }
 
 class ClearUserCartDataSuccess extends CartViewModelState {

@@ -6,7 +6,6 @@ part of 'add_product_to_cart_request_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-
 Map<String, dynamic> _$AddProductToCartRequestDtoToJson(
         AddProductToCartRequestDto instance) =>
     <String, dynamic>{

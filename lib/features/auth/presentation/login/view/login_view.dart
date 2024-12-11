@@ -2,7 +2,7 @@ import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/base_view.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/base/custom_app_bar.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flutter/material.dart';
@@ -59,8 +59,8 @@ class _LoginViewState extends State<LoginView> {
               return BaseView(
                 child: CustomScrollView(
                   slivers: [
-                    const SliverToBoxAdapter(
-                      child: CustomAppBar(appBarTxt: "Login"),
+                     SliverToBoxAdapter(
+                      child: customAppBar(appBarTxt: "Login",context: context),
                     ),
                     SliverToBoxAdapter(
                       child: verticalSpacing(20),
