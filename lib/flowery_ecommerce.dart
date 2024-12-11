@@ -24,7 +24,7 @@ class FloweryEcommerce extends StatelessWidget {
             minTextAdapt: true,
             splitScreenMode: true,
             builder: (_, child) => MaterialApp(
-              initialRoute: _getInitialRoute(),
+              initialRoute: AppRoutes.addressScreen,
               debugShowCheckedModeBanner: false,
               builder: (context, child) =>
                   Scaffold(
