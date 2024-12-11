@@ -26,6 +26,8 @@ import '../features/address_details/domain/contracts/add_address_repo.dart'
     as _i497;
 import '../features/address_details/domain/use_cases/add_address_usecase.dart'
     as _i248;
+import '../features/address_details/presentation/viewModel/add_address_view_model_cubit.dart'
+    as _i526;
 import '../features/auth/data/data_sources/contracts/auth_online_data_source.dart'
     as _i901;
 import '../features/auth/data/data_sources/contracts/offline_data_source.dart'
@@ -201,6 +203,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i643.MostSellingProductsRepository>(() =>
         _i221.MostSellingProductsRepoImpl(
             gh<_i475.MostSellingProductsOnlineDataSource>()));
+    gh.factory<_i526.AddAddressViewModelCubit>(
+        () => _i526.AddAddressViewModelCubit(gh<_i248.AddAddressUseCase>()));
     gh.factory<_i98.ProductsUseCase>(
         () => _i98.ProductsUseCase(gh<_i598.ProductsRepo>()));
     gh.factory<_i720.HomeUseCase>(
