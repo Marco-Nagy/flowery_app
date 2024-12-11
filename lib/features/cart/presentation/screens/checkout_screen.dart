@@ -1,11 +1,13 @@
+import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_total_amount.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/address_card.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/addresses_list.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/gift_widget.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/payment_widget.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/section_title.dart';
@@ -24,11 +26,6 @@ class CheckoutScreen extends StatefulWidget {
 class _CheckoutScreenState extends State<CheckoutScreen> {
   ValueNotifier<String> selectedValueNotifier = ValueNotifier('Credit card');
 
-  List<Map<String, String>> addresses = [
-    {'title': 'Home', 'address': '2XVP+XC - Sheikh Zayed'},
-    {'title': 'Office', 'address': '2XVP+XC - Sheikh Zayed'},
-  ];
-
   @override
   Widget build(BuildContext context) {
     final now = DateTime.now();
@@ -37,6 +34,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     final formattedDate = DateFormat("dd MMM yyyy HH:mm a").format(arriveDate);
     final arriveMessage = 'Arrive by $formattedDate';
     return Scaffold(
+      backgroundColor: MyColors.white,
       appBar: customAppBar(
         appBarTxt: 'Checkout',
         showArrow: true,
@@ -67,25 +65,15 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               // Delivery Address Section
               const SectionTitle(title: 'Delivery address'),
               const SizedBox(height: 8),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: addresses.length,
-                itemBuilder: (context, index) {
-                  return AddressCard(
-                    title: addresses[index]['title']!,
-                    address: addresses[index]['address']!,
-                    isSelected: index == 0, // Example: Select the first address
-                  );
-                },
-              ),
+              AddressesList(),
               verticalSpacing(16),
 
               CurvedButton(
                 title: ' + Add New',
-                onTap: () {},
+                onTap: () => context.pushNamed(AppRoutes.addressScreen),
                 color: MyColors.white,
                 textColor: MyColors.baseColor,
-                colorBorderSide: MyColors.baseColor,
+                colorBorderSide: MyColors.gray30,
               ),
               verticalSpacing(24),
 
