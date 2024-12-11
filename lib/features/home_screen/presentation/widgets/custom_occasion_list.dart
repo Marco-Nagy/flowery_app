@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
@@ -31,7 +32,9 @@ class CustomOccasionListState extends State<CustomOccasionList> {
                 itemCount: state.occasions.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return Container(
+                  return  FadeInRight(
+                      duration: Duration(milliseconds: 100 * (index + 5)),
+                    child: Container(
                     margin: EdgeInsets.all(5.sp),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +56,7 @@ class CustomOccasionListState extends State<CustomOccasionList> {
                       ],
 
                     ),
-                  );
+                    ) );
                 },
               );
             case GetOccasionsErrorState():
