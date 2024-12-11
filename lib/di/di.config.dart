@@ -16,6 +16,15 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../core/networking/api/api_manager.dart' as _i282;
 import '../core/networking/common/regestet_context_module.dart' as _i125;
 import '../core/networking/network_factory.dart' as _i377;
+import '../features/address/data/data_sources/contracts/address_online_data_source.dart'
+    as _i92;
+import '../features/address/data/data_sources/impl/address_online_data_source_impl.dart'
+    as _i112;
+import '../features/address/data/repository/address_repo_impl.dart' as _i305;
+import '../features/address/domain/repository/address_repo.dart' as _i917;
+import '../features/address/domain/uses_cases/address_use_case.dart' as _i87;
+import '../features/address/presentation/view_model/address_cubit.dart'
+    as _i253;
 import '../features/auth/data/data_sources/contracts/auth_online_data_source.dart'
     as _i901;
 import '../features/auth/data/data_sources/contracts/offline_data_source.dart'
@@ -149,6 +158,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
     gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
+    gh.factory<_i92.AddressOnlineDataSource>(
+        () => _i112.AddressOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i901.AuthOnlineDataSource>(
         () => _i326.AuthOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i345.OfflineDataSource>(
@@ -157,6 +168,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i838.ProductsOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.lazySingleton<_i603.HomeOnlineDataSource>(
         () => _i507.HomeApiManager(gh<_i282.ApiManager>()));
+    gh.factory<_i917.AddressRepo>(
+        () => _i305.AddressRepoImpl(gh<_i92.AddressOnlineDataSource>()));
     gh.lazySingleton<_i765.HomeRepository>(
         () => _i178.HomeRepoImpl(gh<_i603.HomeOnlineDataSource>()));
     gh.factory<_i46.ProfileOnlineDataSource>(
@@ -189,12 +202,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i98.ProductsUseCase(gh<_i598.ProductsRepo>()));
     gh.factory<_i720.HomeUseCase>(
         () => _i720.HomeUseCase(gh<_i765.HomeRepository>()));
+    gh.factory<_i87.AddressUseCase>(
+        () => _i87.AddressUseCase(gh<_i917.AddressRepo>()));
     gh.factory<_i565.GenericRepo>(
         () => _i284.GenericRepositoryImpl(gh<_i211.GenericOnlineDataSource>()));
     gh.factory<_i804.ProfileUseCase>(
         () => _i804.ProfileUseCase(gh<_i49.ProfileRepo>()));
     gh.factory<_i647.CartRepository>(
         () => _i625.CartRepositoryImpl(gh<_i181.CartOnlineDataSource>()));
+    gh.factory<_i253.AddressViewModel>(
+        () => _i253.AddressViewModel(gh<_i87.AddressUseCase>()));
     gh.factory<_i496.LoginUseCase>(
         () => _i496.LoginUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i853.SignUpUseCase>(
