@@ -16,6 +16,15 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../core/networking/api/api_manager.dart' as _i282;
 import '../core/networking/common/regestet_context_module.dart' as _i125;
 import '../core/networking/network_factory.dart' as _i377;
+import '../features/address/data/data_sources/contracts/address_online_data_source.dart'
+    as _i92;
+import '../features/address/data/data_sources/impl/address_online_data_source_impl.dart'
+    as _i112;
+import '../features/address/data/repository/address_repo_impl.dart' as _i305;
+import '../features/address/domain/repository/address_repo.dart' as _i917;
+import '../features/address/domain/uses_cases/address_use_case.dart' as _i87;
+import '../features/address/presentation/view_model/address_cubit.dart'
+    as _i253;
 import '../features/address_details/data/data_sources/contracts/add_address_online_data_source.dart'
     as _i700;
 import '../features/address_details/data/data_sources/impl/add_address_online_data_source_impl.dart'
