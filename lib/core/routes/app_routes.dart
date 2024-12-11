@@ -20,6 +20,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../di/di.dart';
 import '../../features/about_app/presentation/views/about_app_view.dart';
+import '../../features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
 import '../../features/auth/presentation/forget_password/view/forget_password.dart';
 import '../../features/auth/presentation/login/view/login_view.dart';
 import '../../features/auth/presentation/signup/view/signup_view.dart';
@@ -129,7 +130,10 @@ class AppRoutes {
         case AppRoutes.savedAddressScreen:
         return BaseRoute(page: const SavedAddressScreen());
         case AppRoutes.addressScreen:
-        return BaseRoute(page: const AddressScreen());
+        return BaseRoute(
+            page: BlocProvider(
+                create: (context) => getIt.get<AddAddressViewModelCubit>(),
+                child: const AddressScreen()));
       case AppRoutes.aboutAppView:
         return BaseRoute(page: const AboutAppView());
       case AppRoutes.termsAndConditionsPage:
