@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
@@ -36,7 +37,9 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
                 itemCount:state.categories!.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return Column(
+                return FadeInRight(
+                    duration: Duration(milliseconds: 100 * (index + 5)),
+                 child:  Column(
                   children: [
                     Container(
                       margin: EdgeInsets.all(5.sp),
@@ -60,7 +63,7 @@ class _CustomCategoriesListState extends State<CustomCategoriesList> {
                     Text('${state.categories?[index]!.name}', style: MyFonts.styleRegular400_14.copyWith(
                         color: MyColors.blackBase)),
                   ],
-                );
+                 ));
               },
             );
             case CategoriesViewModelInitial():

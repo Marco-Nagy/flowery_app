@@ -1,6 +1,5 @@
 import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
-import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_view_body.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/empty_cart_screen.dart';
@@ -15,7 +14,6 @@ class CartView extends StatefulWidget {
 }
 
 class _CartViewState extends State<CartView> {
-  CartViewModelCubit cartViewModel = getIt.get<CartViewModelCubit>();
 
   @override
   void initState() {
@@ -24,8 +22,12 @@ class _CartViewState extends State<CartView> {
 
   @override
   Widget build(BuildContext context) {
+    CartViewModelCubit cartViewModel = context.read<CartViewModelCubit>();
+
     return BlocConsumer<CartViewModelCubit, CartViewModelState>(
+
       builder: (context, state) {
+
         switch (state) {
           case GetUserCartDataSuccess():
             return state.cartData.cartList.isNotEmpty? CartViewBody(
@@ -33,8 +35,8 @@ class _CartViewState extends State<CartView> {
             ):const EmptyCartScreen();          case UpdateCartProductQuantitySuccess():
             break;
           case RemoveProductFromCartSuccess():
-            return state.cartData.cartList.isNotEmpty? CartViewBody(
-              cart: state.cartData,
+            return cartViewModel.cartData!.cartList.isNotEmpty? CartViewBody(
+              cart: cartViewModel.cartData!,
             ):const EmptyCartScreen();
           case AddProductToCartSuccess():
             break;
