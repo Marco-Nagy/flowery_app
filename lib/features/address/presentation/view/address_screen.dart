@@ -14,11 +14,32 @@ class AddressScreen extends StatefulWidget {
 }
 
 class _AddressScreenState extends State<AddressScreen> {
-  var addressController = TextEditingController();
-  var phoneController = TextEditingController();
-  var recipientController = TextEditingController();
-  var cityController = TextEditingController();
-  var areaController = TextEditingController();
+  late final addressController;
+  late final phoneController;
+  late final recipientController;
+  late final cityController;
+  late final areaController;
+
+  @override
+  void initState() {
+    addressController = TextEditingController();
+    phoneController = TextEditingController();
+    recipientController = TextEditingController();
+    cityController = TextEditingController();
+    areaController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    addressController.dispose();
+    phoneController.dispose();
+    recipientController.dispose();
+    cityController.dispose();
+    areaController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
