@@ -1,5 +1,6 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view_model/address_cubit.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view_model/address_states.dart';
@@ -25,17 +26,14 @@ class _CustomCardItemState extends State<CustomCardItem> {
       child: BlocBuilder<AddressViewModel, AddressStates>(
         builder: (context, state) {
           switch(state) {
-            case GetSavedAddressesInitialState():
-              // TODO: Handle this case.
-            case GetSavedAddressesLoadingState():
-              // TODO: Handle this case.
+
             case GetSavedAddressesSuccessState():
-            return SingleChildScrollView(
+             SingleChildScrollView(
               child: SizedBox(
                 height: 300.h,
                 child: ListView.builder(
                   scrollDirection: Axis.vertical,
-                  itemCount:2,
+                  itemCount:state.addresses.length,
                   itemBuilder: (context, index) {
                     return SizedBox(
                       height: 130.h,
@@ -61,7 +59,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
                                       width: 6.w,
                                     ),
                                     Text(
-                                      'Cairo',
+                                      state.addresses[index].street!,
                                       style: MyFonts.styleMedium500_16
                                           .copyWith(color: MyColors.blackBase),
                                     ),
@@ -85,7 +83,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
                                   height: 14.h,
                                 ),
                                 Text(
-                                  '2XVP+XC - Sheikh Zayed',
+                                  '${state.addresses[index].city} - ${state.addresses[index].street}',
                                   style: MyFonts.styleRegular400_14.copyWith(
                                     color: MyColors.gray,
                                   ),
@@ -100,8 +98,11 @@ class _CustomCardItemState extends State<CustomCardItem> {
                 ),
               ),
             );
+
+            case GetSavedAddressesLoadingState():
+            return const AppLoader();
+            case GetSavedAddressesInitialState():
             case GetSavedAddressesErrorState():
-              // TODO: Handle this case.
           }
           return Container();
         },
