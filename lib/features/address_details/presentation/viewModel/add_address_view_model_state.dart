@@ -14,7 +14,7 @@ final class AddAddressViewModelSuccess extends AddAddressViewModelState {
 }
 
 final class AddAddressViewModelError extends AddAddressViewModelState {
-  final String message;
+  final ErrorModel message;
 
   AddAddressViewModelError(this.message);
 }
