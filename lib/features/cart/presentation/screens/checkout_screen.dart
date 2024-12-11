@@ -60,7 +60,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   ),
                 ],
               ),
-              const Divider(height: 32),
+              const Divider(height: 60,thickness: 24,color: MyColors.white60,),
 
               // Delivery Address Section
               const SectionTitle(title: 'Delivery address'),
@@ -79,8 +79,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
               // Payment Method Section
               const PaymentWidget(),
+              const Divider(height: 60,thickness: 24,color: MyColors.white60,),
 
               const GiftWidget(),
+               const Divider(height: 60,thickness: 24,color: MyColors.white60,),
 
               CartTotalAmount(cart: widget.cart),
               verticalSpacing(16),
