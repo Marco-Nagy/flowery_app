@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
 import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
+import 'package:flowery_e_commerce/features/address_details/presentation/viewModel/add_address_action.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
@@ -19,7 +20,15 @@ class AddAddressViewModelCubit extends Cubit<AddAddressViewModelState> {
   AddAddressViewModelCubit(this._addAddressUseCase)
       : super(AddAddressViewModelInitial());
 
-  Future<void> addAddress(AddAddressRequestEntity request) async {
+  void doAction(AddAddressAction action) {
+    switch (action) {
+      case AddAddressSubmitAction():
+        _addAddress(action.request);
+        break;
+    }
+  }
+
+  Future<void> _addAddress(AddAddressRequestEntity request) async {
     emit(AddAddressViewModelLoading());
     final result = await _addAddressUseCase.addAddress(request);
     switch (result) {
