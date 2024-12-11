@@ -32,7 +32,6 @@ class _GiftWidgetState extends State<GiftWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      const Divider(height: 32),
       // Gift Option Section
       SwitchButtonWidget(
         value: isGift,
@@ -74,7 +73,6 @@ class _GiftWidgetState extends State<GiftWidget> {
             ),
       ),
 
-      const Divider(height: 32),
     ],);
   }
 }

@@ -9,13 +9,19 @@ import 'address_card.dart';
 
 class AddressesList extends StatefulWidget {
   AddressesList({Key? key}) : super(key: key);
-  late int selectedIndex = -1;
+  final int initIndex = -1;
 
   @override
   State<AddressesList> createState() => _AddressesListState();
 }
 
 class _AddressesListState extends State<AddressesList> {
+  late int selectedIndex;
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = widget.initIndex;
+  }
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -32,10 +38,10 @@ class _AddressesListState extends State<AddressesList> {
                     title: state.addresses[index].street!,
                     address:
                         '${state.addresses[index].city} - ${state.addresses[index].street}',
-                    isSelected: index == widget.selectedIndex,
+                    isSelected: index == selectedIndex,
                     onTap: () {
                       setState(() {
-                        widget.selectedIndex = index;
+                        selectedIndex = index;
                       });
                     },
                   );
