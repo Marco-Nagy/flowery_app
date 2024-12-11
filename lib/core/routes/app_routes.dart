@@ -2,6 +2,7 @@ import 'package:flowery_e_commerce/core/routes/base_routes.dart';
 import 'package:flowery_e_commerce/core/utils/screens/under_build_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/address_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/saved_address_screen.dart';
+import 'package:flowery_e_commerce/features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/email_verification.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/reset_password.dart';
@@ -134,7 +135,10 @@ class AppRoutes {
         case AppRoutes.savedAddressScreen:
         return BaseRoute(page: const SavedAddressScreen());
         case AppRoutes.addressScreen:
-        return BaseRoute(page: const AddressScreen());
+        return BaseRoute(
+            page: BlocProvider(
+                create: (context) => getIt.get<AddAddressViewModelCubit>(),
+                child: const AddressScreen()));
       case AppRoutes.aboutAppView:
         return BaseRoute(page: const AboutAppView());
       case AppRoutes.termsAndConditionsPage:
