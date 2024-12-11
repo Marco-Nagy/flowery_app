@@ -1,13 +1,15 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'update_cart_product_quantity_request_dto.dart';
+part of 'add_address_request_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$UpdateCartProductQuantityRequestDtoToJson(
-        UpdateCartProductQuantityRequestDto instance) =>
+Map<String, dynamic> _$AddAddressRequestDtoToJson(
+        AddAddressRequestDto instance) =>
     <String, dynamic>{
-      'quantity': instance.quantity,
+      'street': instance.street,
+      'phone': instance.phone,
+      'city': instance.city,
     };
