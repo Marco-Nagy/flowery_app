@@ -132,8 +132,7 @@ class _AddressScreenState extends State<AddressScreen> {
                               _checkFields();
                               fetchCities(countryList
                                       .firstWhere((item) => item.name == value)
-                                      .isoCode ??
-                                  "");
+                                  .isoCode);
                             });
                           },
                         ),
