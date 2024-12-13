@@ -5,6 +5,7 @@ import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EmptyCartScreen extends StatefulWidget {
   const EmptyCartScreen({super.key});
@@ -64,7 +65,7 @@ class EmptyCartScreenState extends State<EmptyCartScreen>
                   repeatForever: true,
                   animatedTexts: [
                     ScaleAnimatedText(
-                      'Your Cart Is Empty',
+                    AppLocalizations.of(context)!.your_cart_is_empty,
                       textStyle: MyFonts.styleBold700_24.copyWith(
                         fontFamily: 'oronteus',
                         color: MyColors.baseColor,

@@ -2,7 +2,7 @@ import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/styles/fonts/my_fonts.dart';
 import '../../../domain/entities/request/forget_password_request_entity.dart';
 import '../ViewModel/forget_password_base_actions.dart';
@@ -46,7 +46,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                                 email: widget.email)));
                       },
                       child: Text(
-                        "Resend",
+                          AppLocalizations.of(context)!.resend,
                         textAlign: TextAlign.center,
                         style: MyFonts.styleRegular400_16
                             .copyWith(color: MyColors.blue),

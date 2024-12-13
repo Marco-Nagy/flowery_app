@@ -8,6 +8,7 @@ import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/auth/data/data_sources/contracts/offline_data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void showLogoutDialog(BuildContext context) {
   final OfflineDataSource offlineDataSource = getIt<OfflineDataSource>();
@@ -24,14 +25,14 @@ void showLogoutDialog(BuildContext context) {
               content: Column(
                 children: [
                   Text(
-                    'LOGOUT',
-                    style: MyFonts.styleSemiBold600_18.copyWith(
+                  AppLocalizations.of(context)!.logout,
+                  style: MyFonts.styleSemiBold600_18.copyWith(
                       color: MyColors.blackBase,
                     ),
                   ),
                   SizedBox(height: 18.h),
                   Text(
-                    'Confirm logout!!',
+                    AppLocalizations.of(context)!.confirm_logout,
                     style: MyFonts.styleRegular400_18
                         .copyWith(color: MyColors.blackBase),
                   ),
@@ -48,7 +49,7 @@ void showLogoutDialog(BuildContext context) {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          title: 'Cancle',
+                          title: AppLocalizations.of(context)!.cancel,
                           color: MyColors.whiteBase,
                           textColor: MyColors.grey,
                           colorBorderSide: MyColors.gray,
@@ -58,15 +59,16 @@ void showLogoutDialog(BuildContext context) {
                         width: 115.w,
                         height: 55.h,
                         child: CurvedButton(
-                          title: 'Logout',
+                          title: AppLocalizations.of(context)!.logout,
                           onTap: () {
                             offlineDataSource.deleteCachedToken();
                             context.pushReplacementNamed(AppRoutes.login);
                             aweSnackBar(
-                                msg: 'Logout Successfully',
+                                msg: AppLocalizations.of(context)!.logout_successfully,
                                 context: context,
                                 type: MessageTypeConst.success,
-                                title: 'Success');
+                                title:AppLocalizations.of(context)!.success,
+                            );
                           },
                           color: MyColors.baseColor,
                           textColor: MyColors.whiteBase,

@@ -4,7 +4,7 @@ import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import '../../../../generated/assets.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class AppLogoSection extends StatelessWidget {
   const AppLogoSection({super.key});
 
@@ -27,7 +27,7 @@ class AppLogoSection extends StatelessWidget {
         FadeInUp(
           duration: const Duration(milliseconds: 1200),
           child: Text(
-            "Welcome to Flowery App",
+            AppLocalizations.of(context)!.welcome_app,
             style: MyFonts.styleMedium500_20.copyWith(
               color: MyColors.black,
               letterSpacing: 1.2,
@@ -38,11 +38,11 @@ class AppLogoSection extends StatelessWidget {
         verticalSpacing(15),
         FadeInUp(
           duration: const Duration(milliseconds: 1400),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+          child:  Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-              "Discover a wide variety of flowers for all occasions.",
-              style: TextStyle(fontSize: 16, height: 1.8, color: Colors.grey),
+               AppLocalizations.of(context)!.discover_flowers,
+              style: const TextStyle(fontSize: 16, height: 1.8, color: Colors.grey),
               textAlign: TextAlign.center,
             ),
           ),
