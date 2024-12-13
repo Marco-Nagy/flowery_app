@@ -12,6 +12,7 @@ UpdateCartProductQuantityRequestDto
           quantity: (json['quantity'] as num?)?.toInt(),
         );
 
+
 Map<String, dynamic> _$UpdateCartProductQuantityRequestDtoToJson(
         UpdateCartProductQuantityRequestDto instance) =>
     <String, dynamic>{

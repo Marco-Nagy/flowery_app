@@ -7,3 +7,11 @@ class AddAddressSubmitAction extends AddAddressAction {
 
   AddAddressSubmitAction(this.request);
 }
+
+class FetchCountriesAction extends AddAddressAction {}
+
+class FetchCitiesAction extends AddAddressAction {
+  final String countryCode;
+
+  FetchCitiesAction(this.countryCode);
+}
