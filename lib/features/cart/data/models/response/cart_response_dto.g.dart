@@ -22,6 +22,7 @@ Map<String, dynamic> _$CartResponseDtoToJson(CartResponseDto instance) =>
       'cart': instance.cart,
     };
 
+
 CartDto _$CartDtoFromJson(Map<String, dynamic> json) => CartDto(
       json['_id'] as String?,
       json['user'] as String?,
@@ -50,6 +51,7 @@ Map<String, dynamic> _$CartDtoToJson(CartDto instance) => <String, dynamic>{
       '__v': instance.v,
     };
 
+
 CartItemsDto _$CartItemsDtoFromJson(Map<String, dynamic> json) => CartItemsDto(
       json['product'] == null
           ? null
@@ -59,6 +61,7 @@ CartItemsDto _$CartItemsDtoFromJson(Map<String, dynamic> json) => CartItemsDto(
       (json['quantity'] as num?)?.toInt(),
       json['_id'] as String?,
     );
+
 
 Map<String, dynamic> _$CartItemsDtoToJson(CartItemsDto instance) =>
     <String, dynamic>{
@@ -87,6 +90,7 @@ CartItemProductDto _$CartItemProductDtoFromJson(Map<String, dynamic> json) =>
       (json['sold'] as num?)?.toInt(),
       (json['discount'] as num?)?.toInt(),
     );
+
 
 Map<String, dynamic> _$CartItemProductDtoToJson(CartItemProductDto instance) =>
     <String, dynamic>{

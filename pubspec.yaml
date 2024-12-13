@@ -51,6 +51,7 @@ dependencies:
   connectivity_plus:
   cached_network_image:
   flutter_localization:
+  country_state_city:
 
   # Ui
   lottie:
