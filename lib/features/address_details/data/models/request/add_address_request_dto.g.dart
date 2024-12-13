@@ -6,6 +6,7 @@ part of 'add_address_request_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+
 Map<String, dynamic> _$AddAddressRequestDtoToJson(
         AddAddressRequestDto instance) =>
     <String, dynamic>{
