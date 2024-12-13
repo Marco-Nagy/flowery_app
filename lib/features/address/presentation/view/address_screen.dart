@@ -1,6 +1,5 @@
 import 'package:country_state_city/models/city.dart';
 import 'package:country_state_city/models/country.dart';
-import 'package:country_state_city/utils/utils.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
@@ -41,7 +40,7 @@ class _AddressScreenState extends State<AddressScreen> {
     addressController = TextEditingController()..addListener(_checkFields);
     phoneController = TextEditingController()..addListener(_checkFields);
     recipientController = TextEditingController()..addListener(_checkFields);
-    fetchCountries();
+    context.read<AddAddressViewModelCubit>().doAction(FetchCountriesAction());
   }
 
   @override
@@ -62,21 +61,6 @@ class _AddressScreenState extends State<AddressScreen> {
     });
   }
 
-  Future<void> fetchCountries() async {
-    final countries = await getAllCountries();
-    setState(() {
-      countryList = countries;
-    });
-  }
-
-  Future<void> fetchCities(String countryCode) async {
-    final cities = await getCountryCities(countryCode);
-    debugPrint("Fetched Cities: $cities");
-    setState(() {
-      cityList = cities;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,6 +71,17 @@ class _AddressScreenState extends State<AddressScreen> {
       ),
       body: BlocConsumer<AddAddressViewModelCubit, AddAddressViewModelState>(
         builder: (context, state) {
+          switch (state) {
+            case AddAddressViewModelFetchedCountries():
+              countryList = state.countries;
+              break;
+            case AddAddressViewModelFetchedCities():
+              cityList = state.cities;
+              break;
+            default:
+              break;
+          }
+
           return SingleChildScrollView(
             child: Column(
               children: [
@@ -130,9 +125,13 @@ class _AddressScreenState extends State<AddressScreen> {
                               cityList
                                   .clear(); // Clear city list when country changes
                               _checkFields();
-                              fetchCities(countryList
-                                      .firstWhere((item) => item.name == value)
-                                  .isoCode);
+                              context.read<AddAddressViewModelCubit>().doAction(
+                                    FetchCitiesAction(
+                                      countryList
+                                          .firstWhere((item) => item.name == value)
+                                          .isoCode,
+                                    ),
+                                  );
                             });
                           },
                         ),

@@ -18,3 +18,15 @@ final class AddAddressViewModelError extends AddAddressViewModelState {
 
   AddAddressViewModelError(this.message);
 }
+
+class AddAddressViewModelFetchedCountries extends AddAddressViewModelState {
+  final List<Country> countries;
+
+  AddAddressViewModelFetchedCountries(this.countries);
+}
+
+class AddAddressViewModelFetchedCities extends AddAddressViewModelState {
+  final List<City> cities;
+
+  AddAddressViewModelFetchedCities(this.cities);
+}
