@@ -210,7 +210,13 @@
   "your_cart_is_empty": "سلة التسوق فارغة",
   "items": "العناصر",
   "deliver_sheikh_zayed": "التوصيل إلى الشيخ زايد",
-  "must_contains" : "يجب أن تحتوي على"
+  "must_contains" : "يجب أن تحتوي على",
+  "address_saved_successfully": "تم حفظ العنوان بنجاح",
+  "wrong": "حدث خطأ ما، حاول مرة أخرى",
+  "failure": "فشل",
+  "select_city": "اختر المدينة",
+  "select_country": "اختر الدولة",
+  "country": "دولة"
 
 
 

@@ -210,7 +210,14 @@
     "your_cart_is_empty": "Your cart is empty",
     "items": "Items",
     "deliver_sheikh_zayed": "Deliver to 2XVP+XC - Sheikh Zayed",
-    "must_contains" : "Must contains"
+    "must_contains" : "Must contains",
+    "address_saved_successfully": "Address saved successfully",
+    "wrong": "Something went wrong, try again",
+    "failure": "Failure",
+    "select_city": "Select City",
+    "select_country": "Select Country",
+    "country": "Country"
+
 
 
 }
