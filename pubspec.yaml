@@ -50,7 +50,6 @@ dependencies:
   awesome_snackbar_content:
   connectivity_plus:
   cached_network_image:
-  country_state_city:
 
   # Ui
   lottie:
