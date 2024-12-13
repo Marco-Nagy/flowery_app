@@ -4,7 +4,7 @@ BRANCH_NAME=$1
 
 BRANCH_NAME=$(basename "$BRANCH_NAME")
 
-PATTERN="^(feature|bugfix|release)\/[A-Za-z0-9._-]+(-[A-Za-z0-9._-]+)*$"
+PATTERN="^(feature|bugfix|release)\/[A-Za-z0-9_-]+(-[A-Za-z0-9_-]+)*$"
 
 echo "Validating branch name: $BRANCH_NAME"
 
