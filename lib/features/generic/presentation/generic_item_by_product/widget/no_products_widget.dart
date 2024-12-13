@@ -2,7 +2,7 @@ import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
 
 class NoProductsWidget extends StatelessWidget {
@@ -18,7 +18,7 @@ class NoProductsWidget extends StatelessWidget {
           Image.asset(Assets.imagesDribbleFlowers, width: 150),
           verticalSpacing(16),
           Text(
-            'No products available.',
+            AppLocalizations.of(context)!.no_products_available,
             style: MyFonts.styleMedium500_18.copyWith(color: MyColors.black),
           ),
         ],

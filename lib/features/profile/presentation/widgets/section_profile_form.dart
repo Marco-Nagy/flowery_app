@@ -6,7 +6,7 @@ import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profi
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/profile_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../di/di.dart';
 import 'custom_section_gender.dart';
 
@@ -100,21 +100,21 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                   msg: state.error.toString(),
                   context: context,
                   type: MessageTypeConst.failure,
-                  title: 'Error');
+                  title: AppLocalizations.of(context)!.error);
               break;
             case EditProfileLoading():
               aweSnackBar(
-                  msg: 'Loading...',
+                  msg: AppLocalizations.of(context)!.loading,
                   context: context,
                   type: MessageTypeConst.help,
-                  title: 'Loading');
+                  title: AppLocalizations.of(context)!.loading);
               break;
             case EditProfileSuccess():
               aweSnackBar(
-                  msg: 'Profile updated successfully',
+                  msg: AppLocalizations.of(context)!.profile_updated_successfully,
                   context: context,
                   type: MessageTypeConst.success,
-                  title: 'Success');
+                  title: AppLocalizations.of(context)!.success);
 
               setState(() {
                 oldFirstName = firstNameController.text;
@@ -130,7 +130,7 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                   msg: state.error.error.toString(),
                   context: context,
                   type: MessageTypeConst.failure,
-                  title: 'Error');
+                  title:AppLocalizations.of(context)!.error);
               break;
             default:
               break;
@@ -161,7 +161,7 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                 },
               ),
               CurvedButton(
-                title: "Update",
+                title: AppLocalizations.of(context)!.update,
                 color: MyColors.baseColor,
                 onTap: isModified
                     ? () {

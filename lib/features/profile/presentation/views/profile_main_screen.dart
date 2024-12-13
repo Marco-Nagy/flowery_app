@@ -12,6 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/models/language.dart';
 import '../../../../core/provider/language_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class ProfileMainScreen extends StatefulWidget {
@@ -53,7 +54,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                     width: 3.sp,
                   ),
                   Text(
-                    'My orders',
+                    AppLocalizations.of(context)!.my_orders,
                     style: MyFonts.styleRegular400_16.copyWith(
                       color: MyColors.blackBase,
                     ),
@@ -86,7 +87,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                     width: 3.sp,
                   ),
                   Text(
-                    'Saved address',
+                    AppLocalizations.of(context)!.saved_address,
                     style: MyFonts.styleRegular400_16.copyWith(
                       color: MyColors.blackBase,
                     ),
@@ -134,7 +135,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
               ),
               SizedBox(width: 5.w),
               Text(
-                'AppLocalizations.of(context)!.language,',
+                AppLocalizations.of(context)!.language,
                 style: MyFonts.styleRegular400_16.copyWith(
                   color: MyColors.blackBase,
                 ),
@@ -144,14 +145,14 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                 onTap: () {
                   final currentLanguage = context.read<LanguageProvider>().selectedLanguage;
                   final newLanguage = currentLanguage.code == 'en'
-                      ? Language(code: 'ar') // Switch to Arabic
-                      : Language(code: 'en'); // Switch to English
+                      ? Language(code: 'ar')
+                      : Language(code: 'en');
                   context.read<LanguageProvider>().changeLanguage(newLanguage);
                 },
                 child: Consumer<LanguageProvider>(
                   builder: (context, provider, _) {
                     return Text(
-                      provider.selectedLanguage.code == 'en' ? 'English' : 'Arabic',
+                      provider.selectedLanguage.code == 'en' ? AppLocalizations.of(context)!.english : AppLocalizations.of(context)!.arabic,
                       style: MyFonts.styleRegular400_14.copyWith(
                         color: MyColors.baseColor,
                       ),
@@ -171,7 +172,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                           context.pushNamed(AppRoutes.aboutAppView);
                         },
                         child: Text(
-                          'About App',
+                          AppLocalizations.of(context)!.about_app,
                           style: MyFonts.styleRegular400_16.copyWith(
                             color: MyColors.blackBase,
                           ),
@@ -195,7 +196,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                   Row(
                     children: [
                       Text(
-                        'Terms & conditions',
+                        AppLocalizations.of(context)!.terms_and_conditions,
                         style: MyFonts.styleRegular400_16.copyWith(
                           color: MyColors.blackBase,
                         ),
@@ -237,7 +238,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                     width: 5.w,
                   ),
                   Text(
-                    'Logout',
+                    AppLocalizations.of(context)!.logout,
                     style: MyFonts.styleRegular400_16.copyWith(
                       color: MyColors.blackBase,
                     ),
@@ -256,13 +257,6 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                   ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Text(
-              'v 6.3.0 - (446)',
-              style: MyFonts.styleRegular400_12.copyWith(color: MyColors.grey),
             ),
           ],
         ),
