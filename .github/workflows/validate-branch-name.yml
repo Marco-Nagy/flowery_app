@@ -1,23 +1,19 @@
 name: Validate Branch Name
+
 on:
-  pull_request: # Trigger on pull requests
+  pull_request:
     branches:
-      - main # Adjust based on your default branch
+      - '**'
 
 jobs:
   validate-branch-name:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
       - name: Validate Branch Name
         run: |
-          echo "Validating branch name..."
-          if [[ ! "${{ github.head_ref }}" =~ ^(feature|bugfix|hotfix|release)/[a-z0-9._-]+$ ]]; then
-            echo "Invalid branch name: ${{ github.head_ref }}"
-            echo "Branch names must follow the pattern: (feature|bugfix|hotfix|release)/<branch-name>"
-            exit 1
-          fi
-          echo "Branch name is valid."
+          chmod +x ./validate_branch_name.sh
+          ./validate_branch_name.sh "${{ github.head_ref }}"
