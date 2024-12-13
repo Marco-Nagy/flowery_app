@@ -48,6 +48,7 @@ void main() {
       var failResult = result as Fail<AddAddressResponseEntity>;
       expect(failResult.exception, isA<Exception>());
       expect(failResult.exception.toString(), 'Exception: error');
+      verify(apiManager.addAddress(any)).called(1);
     });
   });
 }

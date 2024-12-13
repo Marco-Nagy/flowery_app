@@ -1,22 +1,22 @@
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/features/address_details/data/data_sources/contracts/add_address_online_data_source.dart';
-import 'package:flowery_e_commerce/features/address_details/data/repositories/add_address_repo_impl.dart';
+import 'package:flowery_e_commerce/features/address_details/domain/contracts/add_address_repo.dart';
 import 'package:flowery_e_commerce/features/address_details/domain/entities/request/add_address_request_entity.dart';
 import 'package:flowery_e_commerce/features/address_details/domain/entities/response/add_address_response_entity.dart';
+import 'package:flowery_e_commerce/features/address_details/domain/use_cases/add_address_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'add_address_repo_impl_test.mocks.dart';
+import 'add_address_usecase_test.mocks.dart';
 
-@GenerateMocks([AddAddressOnlineDataSource])
+@GenerateMocks([AddAddressRepo])
 void main() {
-  late var dataSource;
-  late var addAddressRepoImpl;
+  late MockAddAddressRepo addAddressRepo;
+  late AddAddressUseCase addAddressUseCase;
 
   setUp(() {
-    dataSource = MockAddAddressOnlineDataSource();
-    addAddressRepoImpl = AddAddressRepoImpl(dataSource);
+    addAddressRepo = MockAddAddressRepo();
+    addAddressUseCase = AddAddressUseCase(addAddressRepo);
     provideDummy<DataResult<AddAddressResponseEntity>>(
         Success(AddAddressResponseEntity(address: [
       AddAddressResponseEntityAddress(
@@ -24,7 +24,7 @@ void main() {
     ])));
   });
 
-  group('test add address repo impl', () {
+  group('test add address use case', () {
     test('should return success when add address is successful', () async {
       var responseEntity = AddAddressResponseEntity(address: [
         AddAddressResponseEntityAddress(
@@ -33,29 +33,36 @@ void main() {
 
       var requestEntity = AddAddressRequestEntity(
           street: 'street', city: 'city', phone: 'phone');
+
       var successResult = Success<AddAddressResponseEntity>(responseEntity);
 
-      when(dataSource.addAddress(any)).thenAnswer((_) async => successResult);
+      when(addAddressRepo.addAddress(any))
+          .thenAnswer((_) async => successResult);
 
-      var result = await addAddressRepoImpl.addAddress(requestEntity);
+      var result = await addAddressUseCase.addAddress(requestEntity);
 
       expect(result, isA<Success<AddAddressResponseEntity>>());
 
       var success = result as Success<AddAddressResponseEntity>;
       expect(success.data, responseEntity);
+      verify(addAddressRepo.addAddress(requestEntity)).called(1);
     });
-    test('should return fail when add address is not successful', () async {
+
+    test('should return error when add address is unsuccessful', () async {
       var requestEntity = AddAddressRequestEntity(
           street: 'street', city: 'city', phone: 'phone');
-      var exception = Exception('error');
-      var failResult = Fail<AddAddressResponseEntity>(exception);
-      when(dataSource.addAddress(any)).thenAnswer((_) async => failResult);
-      var result = await addAddressRepoImpl.addAddress(requestEntity);
+
+      var errorResult = Fail<AddAddressResponseEntity>(Exception('error'));
+
+      when(addAddressRepo.addAddress(any)).thenAnswer((_) async => errorResult);
+
+      var result = await addAddressUseCase.addAddress(requestEntity);
+
       expect(result, isA<Fail<AddAddressResponseEntity>>());
+
       var fail = result as Fail<AddAddressResponseEntity>;
       expect(fail.exception, isA<Exception>());
-      expect(fail.exception.toString(), 'Exception: error');
-      verify(dataSource.addAddress(requestEntity)).called(1);
+      verify(addAddressRepo.addAddress(requestEntity)).called(1);
     });
   });
 }
