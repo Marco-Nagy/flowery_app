@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flowery_e_commerce/features/profile/domain/entities/request/change_password_request_entity.dart';
-import 'package:flowery_e_commerce/features/profile/domain/entities/response/change_password_respose_entity.dart';
+import 'package:flowery_e_commerce/features/profile/domain/entities/response/change_password_response_entity.dart';
 import 'package:flowery_e_commerce/features/profile/domain/repositories/profile_repo.dart';
 import 'package:injectable/injectable.dart';
 
