@@ -44,7 +44,7 @@ class ForgetPassword extends HookWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                   ForgetPasswordBlocListener(
+                  ForgetPasswordBlocListener(
                     email: emailController.text.trim(),
                   ),
                   verticalSpacing(40),
@@ -79,7 +79,6 @@ class ForgetPassword extends HookWidget {
                         context.read<ForgetPasswordViewModelCubit>().doAction(
                             ForgetPasswordAction(ForgetPasswordRequestEntity(
                                 email: emailController.text.trim())));
-
 
                         context.pushNamed(AppRoutes.emailVerification,
                             arguments: emailController.text.trim());

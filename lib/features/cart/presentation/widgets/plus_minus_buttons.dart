@@ -16,38 +16,37 @@ class PlusMinusButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Expanded(
-            child: IconButton(
-                onPressed: deleteQuantity,
-                icon: Container(
-                    height: 30,
-                    width: 30,
-                    clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        Assets.imagesRemove,
-                      ),
-                    )))),
+        IconButton(
+            onPressed: deleteQuantity,
+            icon: Container(
+                height: 30,
+                width: 30,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Center(
+                  child: Image.asset(
+                    Assets.imagesRemove,
+                  ),
+                ))),
         Center(child: Text(text, style: MyFonts.styleSemiBold600_14),),
-        Expanded(
-            child: IconButton(
-                onPressed: addQuantity,
-                icon: Container(
-                    height: 30,
-                    width: 30,
-                    clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Center(
-                      child: Image.asset(Assets.imagesAdd),
-                    ))))
+        IconButton(
+            onPressed: addQuantity,
+            icon: Container(
+                height: 30,
+                width: 30,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Center(
+                  child: Image.asset(Assets.imagesAdd),
+                )))
       ],
     );
   }

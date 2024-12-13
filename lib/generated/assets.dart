@@ -5,6 +5,7 @@ class Assets {
   static const String assetsImagesNotification = 'assets/images/notification.svg';
   static const String fontsOronteusFinaeus = 'assets/fonts/oronteus_finaeus.ttf';
   static const String generatedAssets = 'lib/generated/assets.dart';
+  static const String imagesAboutAppImage = 'assets/images/about_app_image.gif';
   static const String imagesAdd = 'assets/images/add.png';
   static const String imagesArrowBackIos = 'assets/images/arrow_back_ios.png';
   static const String imagesArrowDownIos = 'assets/images/arrow_down_ios.png';
@@ -15,7 +16,9 @@ class Assets {
   static const String imagesDribbleFlowers = 'assets/images/dribble_flowers.gif';
   static const String imagesDropDownArrow = 'assets/images/drop_down_arrow.png';
   static const String imagesEditAddress = 'assets/images/edit_address.png';
+  static const String imagesEmptyFlowersCartAnim = 'assets/images/empty_flowers_cart_anim.json';
   static const String imagesError = 'assets/images/error.png';
+  static const String imagesFallingFlowersAnim = 'assets/images/falling_flowers_anim.json';
   static const String imagesFilter = 'assets/images/filter.png';
   static const String imagesFlower = 'assets/images/flower.png';
   static const String imagesFloweryLoader = 'assets/images/flowery_loader.json';
@@ -32,7 +35,8 @@ class Assets {
   static const String imagesNetworrk = 'assets/images/networrk.png';
   static const String imagesNoNetwork = 'assets/images/noNetwork.png';
   static const String imagesNotNetwork = 'assets/images/Not_network.png';
-  static const String imagesNotification = 'assets/images/notification.png';
+  static const String imagesNotification = 'assets/images/notification.svg';
+  static const String imagesOrder = 'assets/images/order.svg';
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
   static const String imagesPen = 'assets/images/pen.png';
   static const String imagesPerson = 'assets/images/person.png';
@@ -49,4 +53,5 @@ class Assets {
   static const String imagesTrachIcon = 'assets/images/trach_icon.png';
   static const String imagesUpload = 'assets/images/upload.png';
 
+  static const String jsonFloweryLoader = 'assets/json/flowery_loader.json~';
 }

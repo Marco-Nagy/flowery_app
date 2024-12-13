@@ -30,16 +30,20 @@ class _CategoriesViewState extends State<CategoriesView> {
 
   void listClick(GlobalKey widgetKey) async {
     await addToCartAnimation(widgetKey);
+    // cartViewModelCubit.updateCartCount();
     await cartViewModelCubit.cartKey.currentState!
         .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
+    cartViewModelCubit.doAction(GetUserCartDataAction());
   }
 
   @override
   void initState() {
     super.initState();
     // Initialize the cart count to 20
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      cartViewModelCubit.updateCartCount();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      cartViewModelCubit.doAction(GetUserCartDataAction());
+     cartViewModelCubit.cartKey.currentState!
+         .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
     });
   }
 
