@@ -5,6 +5,7 @@ import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
 import 'package:flowery_e_commerce/core/networking/error/error_handler.dart';
 import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
+import 'package:flowery_e_commerce/features/cart/domain/entities/delete_from_cart_entity.dart';
 import 'package:flowery_e_commerce/features/cart/domain/use_cases/add_to_cart_use_case.dart';
 import 'package:flowery_e_commerce/features/cart/domain/use_cases/clear_user_cart_data_use_case.dart';
 import 'package:flowery_e_commerce/features/cart/domain/use_cases/get_user_cart_data_use_case.dart';
@@ -34,8 +35,8 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
   final cartKey = GlobalKey<CartIconKey>();
   bool cartVisibility = false;
   Function(GlobalKey)? addToCartAnimation;
-  int cartQuantityItems = 0;
-
+  late int cartQuantityItems;
+  CartEntity? cartData;
   Future<void> doAction(CartBaseAction action) async {
     switch (action) {
       case AddToCartAction():
@@ -43,11 +44,12 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
       case GetUserCartDataAction():
         _getCartData();
       case UpdateQuantityAction():
-      
+        _updateProductQuantity(action);
+      case RemoveFromCartAction():
+        _removeProductFromCart(action);
       case ClearCartAction():
       
-      case RemoveFromCartAction():
-      
+
     }
   }
 
@@ -56,13 +58,15 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
     var result = await addToCartUseCase(productId: action.productId);
     switch (result) {
       case Success<int>():
-        cartQuantityItems = result.data.toInt();
-        updateCartCount();
+
+     await   cartKey.currentState!
+            .runCartAnimation(result.data.toString());
+        cartQuantityItems = result.data;
         cartVisibility = true;
 
         emit(
           AddProductToCartSuccess(
-              visibility: cartVisibility, numOfCartItems: cartQuantityItems),
+              visibility: cartVisibility, numOfCartItems: result.data),
         );
       case Fail<int>():
         emit(CartViewModelError(
@@ -77,11 +81,13 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
 
       case Success<CartEntity>():
       cartVisibility = true;
-      cartQuantityItems = result.data.numOfCartItems;
-      updateCartCount();
+      if(cartKey.currentState!= null) {
+        cartKey.currentState!
+          .runCartAnimation(result.data.numOfCartItems.toString());
+      }
       emit(
         GetUserCartDataSuccess(
-             cartData: result.data),
+             cartData: cartData= result.data),
       );
      break;
       case Fail<CartEntity>():
@@ -91,12 +97,45 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
     }
   }
 
-  void updateCartCount() {
+  Future<void> _updateProductQuantity(UpdateQuantityAction action) async {
+    emit(CartViewModelLoading());
+    var result = await updateProductQuantityUseCase(
+        id: action.productId, quantity: action.quantity);
+    switch (result) {
+      case Success<CartEntity>():
+        cartData = result.data;
+
+        debugPrint('cart quantity : ${cartData!.cartList.map((e) => e.quantity,)}');
+        emit(
+          UpdateCartProductQuantitySuccess(cartData:cartData= result.data),
+        );
+
+      case Fail<CartEntity>():
+        emit(CartViewModelError(
+            errorModel: ErrorHandler.handle(result.exception!)));
+    }
+  }
+  Future<void> _removeProductFromCart(RemoveFromCartAction action) async {
+    emit(CartViewModelLoading());
+    var result = await removeProductFromCartUseCase(id: action.productId);
+    switch (result) {
+      case Success<RemoveFromCartEntity>():
+        _getCartData();
+        emit(
+          const RemoveProductFromCartSuccess(),
+        );
+      case Fail<RemoveFromCartEntity>():
+        emit(CartViewModelError(
+            errorModel: ErrorHandler.handle(result.exception!)));
+    }
+  }
+
+  void updateCartCount(cartQuantityItems) {
+
     if (cartKey.currentState != null) {
       cartKey.currentState!.runCartAnimation(
         cartQuantityItems.toString(),
       );
     }
   }
-
 }

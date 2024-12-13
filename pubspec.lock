@@ -111,7 +111,8 @@ packages:
     source: hosted
     version: "8.1.4"
   bloc_test:
-    dependency: "direct dev"
+
+    dependency: "direct main"
     description:
       name: bloc_test
       sha256: "165a6ec950d9252ebe36dc5335f2e6eb13055f33d56db0eeb7642768849b43d2"

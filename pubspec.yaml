@@ -36,6 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons:
   fluttertoast:
+  bloc_test:
   badges:
   row_item:
   dio:
@@ -49,7 +50,6 @@ dependencies:
   awesome_snackbar_content:
   connectivity_plus:
   cached_network_image:
-  animate_do:
 
   # Ui
   lottie:
@@ -61,6 +61,7 @@ dependencies:
   add_to_cart_animation:
   auto_size_text:
   image_picker:
+  animate_do:
 
   # add injectable to your dependencies
   injectable:
@@ -68,8 +69,9 @@ dependencies:
 
   # state Manager
   flutter_bloc:
-  flutter_svg: ^2.0.16
+  flutter_svg:
   bloc:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

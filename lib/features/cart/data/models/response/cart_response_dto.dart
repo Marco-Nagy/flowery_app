@@ -23,7 +23,7 @@ class CartDto {
   final List<CartItemsDto?>? cartItems;
   final int? discount;
   final int? totalPrice;
-  final double? totalPriceAfterDiscount;
+  final int? totalPriceAfterDiscount;
   final String? createdAt;
   final String? updatedAt;
   @JsonKey(name: '__v')
