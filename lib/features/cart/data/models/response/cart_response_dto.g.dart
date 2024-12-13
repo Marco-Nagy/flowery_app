@@ -15,12 +15,6 @@ CartResponseDto _$CartResponseDtoFromJson(Map<String, dynamic> json) =>
           : CartDto.fromJson(json['cart'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CartResponseDtoToJson(CartResponseDto instance) =>
-    <String, dynamic>{
-      'message': instance.message,
-      'numOfCartItems': instance.numOfCartItems,
-      'cart': instance.cart,
-    };
 
 
 CartDto _$CartDtoFromJson(Map<String, dynamic> json) => CartDto(
@@ -39,17 +33,6 @@ CartDto _$CartDtoFromJson(Map<String, dynamic> json) => CartDto(
       (json['__v'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$CartDtoToJson(CartDto instance) => <String, dynamic>{
-      '_id': instance.id,
-      'user': instance.user,
-      'cartItems': instance.cartItems,
-      'discount': instance.discount,
-      'totalPrice': instance.totalPrice,
-      'totalPriceAfterDiscount': instance.totalPriceAfterDiscount,
-      'createdAt': instance.createdAt,
-      'updatedAt': instance.updatedAt,
-      '__v': instance.v,
-    };
 
 
 CartItemsDto _$CartItemsDtoFromJson(Map<String, dynamic> json) => CartItemsDto(
@@ -63,13 +46,6 @@ CartItemsDto _$CartItemsDtoFromJson(Map<String, dynamic> json) => CartItemsDto(
     );
 
 
-Map<String, dynamic> _$CartItemsDtoToJson(CartItemsDto instance) =>
-    <String, dynamic>{
-      'product': instance.product,
-      'price': instance.price,
-      'quantity': instance.quantity,
-      '_id': instance.id,
-    };
 
 CartItemProductDto _$CartItemProductDtoFromJson(Map<String, dynamic> json) =>
     CartItemProductDto(
@@ -91,23 +67,3 @@ CartItemProductDto _$CartItemProductDtoFromJson(Map<String, dynamic> json) =>
       (json['discount'] as num?)?.toInt(),
     );
 
-
-Map<String, dynamic> _$CartItemProductDtoToJson(CartItemProductDto instance) =>
-    <String, dynamic>{
-      '_id': instance.id,
-      'title': instance.title,
-      'slug': instance.slug,
-      'description': instance.description,
-      'imgCover': instance.imgCover,
-      'images': instance.images,
-      'price': instance.price,
-      'priceAfterDiscount': instance.priceAfterDiscount,
-      'quantity': instance.quantity,
-      'category': instance.category,
-      'occasion': instance.occasion,
-      'createdAt': instance.createdAt,
-      'updatedAt': instance.updatedAt,
-      '__v': instance.v,
-      'sold': instance.sold,
-      'discount': instance.discount,
-    };
