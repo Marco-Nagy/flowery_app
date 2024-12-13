@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'core/provider/language_provider.dart';
+import 'core/provider/localization_helper.dart';
 import 'core/services/shared_preference/shared_preference_helper.dart';
 import 'core/utils/screens/no_network_screen.dart';
 import 'di/di.dart';
@@ -37,14 +38,18 @@ class FloweryEcommerce extends StatelessWidget {
                         AppLocalizations.localizationsDelegates,
                     initialRoute: _getInitialRoute(),
                     debugShowCheckedModeBanner: false,
-                    builder: (context, child) => Scaffold(
-                      body: Builder(
-                        builder: (context) {
-                          ConnectivityController.instance.init();
-                          return child!;
-                        },
-                      ),
-                    ),
+                    builder: (context, child) {
+                      LocalizationHelper.initialize(context);
+                      return Scaffold(
+                        body: Builder(
+                          builder: (context) {
+                            ConnectivityController.instance.init();
+                            return child!;
+                          },
+                        ),
+                      );
+
+                    },
                     onGenerateRoute: AppRoutes.onGenerateRoute,
                     navigatorKey: getIt<GlobalKey<NavigatorState>>(),
                   ),

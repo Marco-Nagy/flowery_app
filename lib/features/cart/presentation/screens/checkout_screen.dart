@@ -13,6 +13,7 @@ import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CheckoutScreen extends StatefulWidget {
   final CartEntity cart;
@@ -32,11 +33,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     final arriveDate =
         DateTime(now.year, now.month, now.day + 3, now.hour, now.minute);
     final formattedDate = DateFormat("dd MMM yyyy HH:mm a").format(arriveDate);
-    final arriveMessage = 'Arrive by $formattedDate';
+    final arriveMessage = '${AppLocalizations.of(context)!.arrive_by} $formattedDate';
     return Scaffold(
       backgroundColor: MyColors.white,
       appBar: customAppBar(
-        appBarTxt: 'Checkout',
+        appBarTxt: AppLocalizations.of(context)!.checkout,
         showArrow: true,
         context: context,
       ),
@@ -47,13 +48,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Delivery Time Section
-              const SectionTitle(title: 'Delivery time', action: 'Schedule'),
+               SectionTitle(title: AppLocalizations.of(context)!.delivery_time, action:AppLocalizations.of(context)!.schedule),
               const SizedBox(height: 8),
               Row(
                 children: [
                   const Icon(Icons.access_time, color: Colors.black54),
                   const SizedBox(width: 8),
-                   Text('Instant, ',style:MyFonts.styleMedium500_14,),
+                   Text(AppLocalizations.of(context)!.instant,style:MyFonts.styleMedium500_14,),
                   Text(
                     ' $arriveMessage',
                     style: const TextStyle(color: Colors.green),
@@ -63,13 +64,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               const Divider(height: 60,thickness: 24,color: MyColors.white60,),
 
               // Delivery Address Section
-              const SectionTitle(title: 'Delivery address'),
+               SectionTitle(title: AppLocalizations.of(context)!.delivery_address),
               const SizedBox(height: 8),
               AddressesList(),
               verticalSpacing(16),
 
               CurvedButton(
-                title: ' + Add New',
+                title: ' + ${AppLocalizations.of(context)!.add_new}',
                 onTap: () => context.pushNamed(AppRoutes.addressScreen),
                 color: MyColors.white,
                 textColor: MyColors.baseColor,
@@ -87,7 +88,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               CartTotalAmount(cart: widget.cart),
               verticalSpacing(16),
               CurvedButton(
-                title: 'Place Order',
+                title: AppLocalizations.of(context)!.place_order,
                 onTap: () {},
                 color: MyColors.baseColor,
               ),

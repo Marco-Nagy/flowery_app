@@ -5,6 +5,7 @@ import 'package:flowery_e_commerce/features/auth/presentation/login/widgets/cust
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddressScreen extends StatefulWidget {
   const AddressScreen({super.key});
@@ -23,7 +24,7 @@ class _AddressScreenState extends State<AddressScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-        appBarTxt: 'Address',
+        appBarTxt: AppLocalizations.of(context)!.address,
         context: context,
         showArrow: true,
       ),
@@ -38,24 +39,24 @@ class _AddressScreenState extends State<AddressScreen> {
             Container(
               margin: EdgeInsets.all(12.sp),
               child: CustomTextFormField(
-                hintText: 'Enter the address',
-                labelText: 'Address',
+                hintText: AppLocalizations.of(context)!.enter_address,
+                labelText: AppLocalizations.of(context)!.address,
                 controller: addressController,
               ),
             ),
             Container(
               margin: EdgeInsets.all(12.sp),
               child: CustomTextFormField(
-                hintText: 'Enter the phone number',
-                labelText: 'Phone number',
+                hintText: AppLocalizations.of(context)!.enter_phone_number,
+                labelText: AppLocalizations.of(context)!.phone_number,
                 controller: phoneController,
               ),
             ),
             Container(
               margin: EdgeInsets.all(12.sp),
               child: CustomTextFormField(
-                hintText: 'Enter the recipient name',
-                labelText: 'Recipient name',
+                hintText: AppLocalizations.of(context)!.enter_recipient_name,
+                labelText: AppLocalizations.of(context)!.recipient_name,
                 controller: recipientController,
               ),
             ),
@@ -66,8 +67,8 @@ class _AddressScreenState extends State<AddressScreen> {
                   margin: EdgeInsets.all(12.sp),
                   width: 160.w,
                   child: CustomTextFormField(
-                    labelText: 'City',
-                    hintText: 'Cairo',
+                    labelText: AppLocalizations.of(context)!.city,
+                    hintText: AppLocalizations.of(context)!.cairo,
                     controller: cityController,
                     suffix: SizedBox(
                         width: 16.w,
@@ -79,8 +80,8 @@ class _AddressScreenState extends State<AddressScreen> {
                   margin: EdgeInsets.all(12.sp),
                   width: 160.w,
                   child: CustomTextFormField(
-                    labelText: 'Area',
-                    hintText: 'October',
+                    labelText: AppLocalizations.of(context)!.area,
+                    hintText: AppLocalizations.of(context)!.october,
                     controller: areaController,
                     suffix: SizedBox(
                         width: 16.w,
@@ -95,7 +96,7 @@ class _AddressScreenState extends State<AddressScreen> {
             SizedBox(
               width: 340.w,
               height: 65.h,
-              child: CurvedButton(title: 'Save address ',onTap: (){},
+              child: CurvedButton(title:AppLocalizations.of(context)!.save_address,onTap: (){},
               color: MyColors.gray30,),
             ),
           ],

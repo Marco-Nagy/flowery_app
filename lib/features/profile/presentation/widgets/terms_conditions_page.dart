@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/utils/widgets/spacing.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class TermsAndConditionsPage extends StatelessWidget {
   const TermsAndConditionsPage({super.key});
 
@@ -12,36 +12,36 @@ class TermsAndConditionsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, String>> termsData = [
       {
-        'title': '1. Introduction',
+        'title': '1. ${AppLocalizations.of(context)!.introduction}',
         'description':
-        'Flowery is an online marketplace where you can purchase floral products and gifts. These terms apply to all users of the app.',
+         AppLocalizations.of(context)!.introduction_description,
       },
       {
-        'title': '2. Payment Terms',
+        'title': '2. ${AppLocalizations.of(context)!.payment_terms}',
         'description':
-        'All payments are processed securely. Please ensure that your payment details are accurate to avoid disruptions.',
+        AppLocalizations.of(context)!.payment_terms_description,
       },
       {
-        'title': '3. Refund Policy',
+        'title': '3. ${AppLocalizations.of(context)!.refund_policy}',
         'description':
-        'Refunds are issued in accordance with our refund policy. Products must be returned in their original condition.',
+        AppLocalizations.of(context)!.refund_policy_description,
       },
       {
-        'title': '4. Privacy Policy',
+        'title': '4. ${AppLocalizations.of(context)!.privacy_policy}',
         'description':
-        'We take your privacy seriously. Your data is protected and will not be shared with third parties.',
+        AppLocalizations.of(context)!.privacy_policy_description,
       },
       {
-        'title': '5. Contact Us',
+        'title': '5. ${AppLocalizations.of(context)!.contact_us}',
         'description':
-        'If you have any questions or concerns, please contact us at [Your Contact Information].',
+        AppLocalizations.of(context)!.contact_us_description,
       },
     ];
 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: customAppBar(
-        appBarTxt: 'Terms & Conditions',
+        appBarTxt: AppLocalizations.of(context)!.terms_and_conditions,
         context: context,
         showArrow: true,
       ),
@@ -55,12 +55,12 @@ class TermsAndConditionsPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 verticalSpacing(20.h),
-                Text('Welcome to Flowery App!',
+                Text(AppLocalizations.of(context)!.welcome_app,
                     style: MyFonts.styleSemiBold600_18
                         .copyWith(color: MyColors.baseColor)),
                 verticalSpacing(10.h),
                 Text(
-                  'By using our app, you agree to the following terms and conditions. Please read them carefully before proceeding.',
+                  AppLocalizations.of(context)!.welcome_app_description,
                   style: MyFonts.styleRegular400_14,
                 ),
               ],

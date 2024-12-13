@@ -6,7 +6,7 @@ import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flowery_e_commerce/features/address/presentation/widgets/custom_card_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class SavedAddressScreen extends StatefulWidget {
   const SavedAddressScreen({super.key});
 
@@ -20,7 +20,7 @@ class _SavedAddressScreenState extends State<SavedAddressScreen> {
     return Scaffold(
       backgroundColor: MyColors.whiteBase,
       appBar: customAppBar(
-        appBarTxt: 'Saved address',
+        appBarTxt: AppLocalizations.of(context)!.saved_address,
         showArrow: true,
         context: context,
       ),
@@ -30,7 +30,7 @@ class _SavedAddressScreenState extends State<SavedAddressScreen> {
           SizedBox(
             width: 340.w,
             height: 65.h,
-            child: CurvedButton(title: 'Add new address', onTap: (){
+            child: CurvedButton(title: AppLocalizations.of(context)!.add_new_address, onTap: (){
              context.pushNamed(AppRoutes.addressScreen);
             }),
           ),
