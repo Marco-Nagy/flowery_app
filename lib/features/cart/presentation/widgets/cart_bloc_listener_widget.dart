@@ -1,4 +1,3 @@
-import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +7,7 @@ class CartBlocListenerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartViewModelCubit cartViewModelCubit = getIt.get<CartViewModelCubit>();
+    CartViewModelCubit cartViewModelCubit = context.read()<CartViewModelCubit>();
     return BlocListener<CartViewModelCubit, CartViewModelState>(
       listener: (context, state) async {
         switch(state){
@@ -16,16 +15,11 @@ class CartBlocListenerWidget extends StatelessWidget {
           case AddProductToCartSuccess():
             await cartViewModelCubit.cartKey.currentState!
                 .runCartAnimation(state.numOfCartItems.toString());
-            break;
           case GetUserCartDataSuccess():
             cartViewModelCubit.cartQuantityItems =state.cartData.numOfCartItems;
-            break;
           case UpdateCartProductQuantitySuccess():
             cartViewModelCubit.cartQuantityItems =state.cartData.numOfCartItems;
-            break;
           case RemoveProductFromCartSuccess():
-            cartViewModelCubit.cartQuantityItems =state.cartData.numOfCartItems;
-            break;
           case ClearUserCartDataSuccess():
           case CartViewModelInitial():
             
