@@ -6,11 +6,6 @@ part of 'update_cart_product_quantity_request_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-UpdateCartProductQuantityRequestDto
-    _$UpdateCartProductQuantityRequestDtoFromJson(Map<String, dynamic> json) =>
-        UpdateCartProductQuantityRequestDto(
-          quantity: (json['quantity'] as num?)?.toInt(),
-        );
 
 Map<String, dynamic> _$UpdateCartProductQuantityRequestDtoToJson(
         UpdateCartProductQuantityRequestDto instance) =>
