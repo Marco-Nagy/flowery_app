@@ -107,6 +107,8 @@ flutter:
     - assets/images/
     - assets/fonts/
     - lib/generated/assets.dart
+    - lib/generated/l10n.dart
+    - lib/l10n/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
