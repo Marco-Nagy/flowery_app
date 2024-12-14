@@ -18,7 +18,6 @@ RemoveFromCartResponseDto _$RemoveFromCartResponseDtoFromJson(
     );
 
 
-
 RemoveFromCartResponse _$RemoveFromCartResponseFromJson(
         Map<String, dynamic> json) =>
     RemoveFromCartResponse(
