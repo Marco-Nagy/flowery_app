@@ -483,6 +483,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.6"
+  flutter_intl:
+    dependency: "direct dev"
+    description:
+      name: flutter_intl
+      sha256: "17b138fab0477c7d17abd8ba67d294786eef8fe80342e58b6253aef7d0ca2bad"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -500,7 +508,7 @@ packages:
     source: hosted
     version: "0.2.3"
   flutter_localizations:
-    dependency: transitive
+    dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
