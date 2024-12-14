@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomSearchCategories extends StatelessWidget {
   const CustomSearchCategories({super.key});
@@ -18,7 +18,7 @@ class CustomSearchCategories extends StatelessWidget {
       ),
       child: TextField(
         decoration: InputDecoration(
-          hintText: "Search",
+          hintText:  AppLocalizations.of(context)!.search,
           hintStyle:
               MyFonts.styleMedium500_14.copyWith(color: MyColors.placeHolder),
           border: InputBorder.none,

@@ -3,7 +3,7 @@ import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
 import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
 import 'package:flowery_e_commerce/features/address_details/domain/entities/request/add_address_request_entity.dart';
 import 'package:flowery_e_commerce/features/address_details/domain/entities/response/add_address_response_entity.dart';
-import 'package:flowery_e_commerce/features/address_details/domain/use_cases/add_address_usecase.dart';
+import 'package:flowery_e_commerce/features/address_details/domain/use_cases/add_address_use_case.dart';
 import 'package:flowery_e_commerce/features/address_details/presentation/viewModel/add_address_action.dart';
 import 'package:flowery_e_commerce/features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';

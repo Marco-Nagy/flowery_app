@@ -32,7 +32,7 @@ class ProductCard extends StatelessWidget {
 
     return SizedBox(
       width: context.width * 0.45,
-      height: context.height * 0.35, // زيادة الارتفاع لتناسب إضافة النص الجديد
+      height: context.height * 0.35,
       child: InkWell(
         borderRadius: BorderRadius.circular(16.0),
         onTap: () {},
@@ -74,7 +74,6 @@ class ProductCard extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // السعر بعد الخصم
                     FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
@@ -97,7 +96,6 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                     horizontalSpacing(10.w),
-                    // نسبة الخصم
                     FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
