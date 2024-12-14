@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
 import '../view_model/signup_action.dart';
 import '../view_model/signup_view_model_cubit.dart';
@@ -18,7 +18,7 @@ class GenderSelection extends StatelessWidget {
     return Row(
       children: [
         Text(
-          'Gender',
+          AppLocalizations.of(context)!.gender,
           style: MyFonts.styleMedium500_18.copyWith(
             color: MyColors.gray,
           ),
@@ -31,7 +31,7 @@ class GenderSelection extends StatelessWidget {
           child: RadioListTile(
             contentPadding: EdgeInsets.zero,
             title: AutoSizeText(
-              "female",
+              AppLocalizations.of(context)!.female,
               style: MyFonts.styleRegular400_14,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
@@ -49,7 +49,7 @@ class GenderSelection extends StatelessWidget {
           child: RadioListTile(
             contentPadding: EdgeInsets.zero,
             title: AutoSizeText(
-              "male",
+              AppLocalizations.of(context)!.male,
               style: MyFonts.styleRegular400_14.copyWith(
                 color: MyColors.gray,
               ),

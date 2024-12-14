@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/utils/validators.dart';
 import '../../../../../core/utils/widgets/app_text_form_field.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
@@ -20,11 +20,12 @@ class SignUpFields extends StatelessWidget {
             Expanded(
               child: AppTextFormField(
                 controller: cubit.firstNameController,
-                hintText: 'Enter first name',
-                labelText: 'First name',
+                hintText:AppLocalizations.of(context)!.hintFirstName,
+                labelText: AppLocalizations.of(context)!.first_name,
                 validator: (value) => Validators.validateNotEmpty(
-                  title: 'First name',
+                  title: AppLocalizations.of(context)!.first_name,
                   value: value,
+                  context: context,
                 ),
               ),
             ),
@@ -34,11 +35,12 @@ class SignUpFields extends StatelessWidget {
             Expanded(
               child: AppTextFormField(
                 controller: cubit.lastNameController,
-                hintText: 'Enter last name',
-                labelText: 'Last name',
+                hintText:AppLocalizations.of(context)!.hintFirstName,
+                labelText: AppLocalizations.of(context)!.last_name,
                 validator: (value) => Validators.validateNotEmpty(
-                  title: 'First name',
+                  title: AppLocalizations.of(context)!.last_name,
                   value: value,
+                  context: context,
                 ),
               ),
             ),
@@ -49,9 +51,9 @@ class SignUpFields extends StatelessWidget {
         ),
         AppTextFormField(
           controller: cubit.emailController,
-          hintText: 'Enter you email',
-          labelText: 'Email',
-          validator: (value) => Validators.validateEmail(value),
+          hintText:  AppLocalizations.of(context)!.hintEmail,
+          labelText: AppLocalizations.of(context)!.email,
+          validator: (value) => Validators.validateEmail(value, context),
         ),
         verticalSpacing(
           20,
@@ -61,9 +63,9 @@ class SignUpFields extends StatelessWidget {
             Expanded(
               child: AppTextFormField(
                 controller: cubit.passwordController,
-                hintText: 'Enter password',
-                labelText: 'Password',
-                validator: (value) => Validators.validatePassword(value),
+                hintText:  AppLocalizations.of(context)!.hintPassword,
+                labelText:  AppLocalizations.of(context)!.password,
+                validator: (value) => Validators.validatePassword(value, context),
               ),
             ),
             horizontalSpacing(
@@ -72,9 +74,9 @@ class SignUpFields extends StatelessWidget {
             Expanded(
               child: AppTextFormField(
                 controller: cubit.confirmPasswordController,
-                hintText: 'Confirm password',
-                labelText: 'Confirm password',
-                validator: (value) => Validators.validatePassword(value),
+                hintText: AppLocalizations.of(context)!.confirmPassword,
+                labelText:  AppLocalizations.of(context)!.confirmPassword,
+                validator: (value) => Validators.validatePassword(value, context),
               ),
             ),
           ],
@@ -84,9 +86,9 @@ class SignUpFields extends StatelessWidget {
         ),
         AppTextFormField(
           controller: cubit.phoneNumberController,
-          hintText: 'Enter phone number',
-          labelText: 'Phone number',
-          validator: (value) => Validators.validatePhoneNumber(value),
+          hintText: AppLocalizations.of(context)!.hintPhoneNumber,
+          labelText:  AppLocalizations.of(context)!.phone_number,
+          validator: (value) => Validators.validatePhoneNumber(value, context),
         ),
 
       ],

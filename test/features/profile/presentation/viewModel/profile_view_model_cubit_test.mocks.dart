@@ -12,7 +12,7 @@ import 'package:flowery_e_commerce/features/auth/data/data_sources/contracts/off
     as _i12;
 import 'package:flowery_e_commerce/features/profile/domain/entities/request/change_password_request_entity.dart'
     as _i11;
-import 'package:flowery_e_commerce/features/profile/domain/entities/response/change_password_respose_entity.dart'
+import 'package:flowery_e_commerce/features/profile/domain/entities/response/change_password_response_entity.dart'
     as _i10;
 import 'package:flowery_e_commerce/features/profile/domain/entities/response/edit_profile_response_entity.dart'
     as _i7;
