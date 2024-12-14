@@ -3,7 +3,7 @@ import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../spacing.dart';
 
 class AddCartButton extends StatelessWidget {
@@ -45,7 +45,7 @@ class AddCartButton extends StatelessWidget {
                   ),
                   horizontalSpacing(8.w),
                   AutoSizeText(
-                    'Add to cart',
+                      AppLocalizations.of(context)!.add_to_cart,
                     style: MyFonts.styleMedium500_13
                         .copyWith(color: MyColors.white),
                   ),
@@ -53,7 +53,7 @@ class AddCartButton extends StatelessWidget {
               )
             : Center(
                 child: AutoSizeText(
-                  'Add to cart',
+                  AppLocalizations.of(context)!.add_to_cart,
                   style:
                       MyFonts.styleMedium500_16.copyWith(color: MyColors.white),
                 ),

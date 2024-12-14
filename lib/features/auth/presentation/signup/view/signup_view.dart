@@ -1,7 +1,7 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
 import '../widgets/signup_form.dart';
 
@@ -13,7 +13,7 @@ class SignUpView extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyColors.white,
       appBar: customAppBar(
-          appBarTxt: 'Signup',
+          appBarTxt:AppLocalizations.of(context)!.signUp ,
           context: context,
           showArrow: true,
           navigation: () {

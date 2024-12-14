@@ -8,7 +8,7 @@ import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_icon_
 import 'package:flowery_e_commerce/features/generic/presentation/widgets/build_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 
 class MostSellingScreen extends StatefulWidget {
@@ -71,7 +71,7 @@ class _MostSellingScreenState extends State<MostSellingScreen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: customAppBar(
-          appBarTxt: 'Best seller',
+          appBarTxt: AppLocalizations.of(context)!.best_sellers,
           context: context,
           showArrow: true,
             actions: [
@@ -89,7 +89,7 @@ class _MostSellingScreenState extends State<MostSellingScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 40),
-                child: Text('Bloom with our exquisite best sellers',style:MyFonts.styleMedium500_14.copyWith(
+                child: Text(AppLocalizations.of(context)!.best_sellers_desc,style:MyFonts.styleMedium500_14.copyWith(
                   color: MyColors.grey,
                 ) ,),
               ),

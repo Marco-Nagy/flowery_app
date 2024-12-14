@@ -7,6 +7,7 @@ import '../../../../generic/presentation/widgets/tab_bar_widget.dart';
 import '../viewModel/generic_item_action.dart';
 import '../viewModel/generic_item_view_model_cubit.dart';
 import '../widget/generic_builder_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GenericItemScreen extends StatelessWidget {
   const GenericItemScreen(
@@ -36,7 +37,7 @@ class GenericItemScreen extends StatelessWidget {
                   children: [
                     tabBarWidget(
                       tabs: [
-                        const Tab(text: 'All'),
+                         Tab(text: AppLocalizations.of(context)!.all),
                         ...items.map((item) => Tab(text: item.name)),
                       ],
                       onTap: (index) {
