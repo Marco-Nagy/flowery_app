@@ -26,13 +26,26 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.pub-cache
-          key: ${{ runner.os }}-flutter-${{ hashFiles('pubspec.yaml') }}
+          key: ${{ runner.os }}-dart-tool-${{ hashFiles('pubspec.yaml') }}
           restore-keys: |
             ${{ runner.os }}-flutter-
 
+      - name: Cache Dart tool
+        uses: actions/cache@v3
+        with:
+          path: .dart_tool
+          key: ${{ runner.os }}-flutter-${{ hashFiles('pubspec.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-dart-tool-
 
       - name: Install dependencies
         run: flutter pub get
+
+      - name: Debug generated files
+        run: ls -R .build/flutter_gen/gen_l10n/
+
+      - name: Generate localization files
+        run: flutter gen-l10n
 
       - name: Run Dart Fix
         run: dart fix --apply
