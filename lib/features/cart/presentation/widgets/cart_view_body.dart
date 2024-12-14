@@ -12,6 +12,7 @@ import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_total
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key, required this.cart});
@@ -21,7 +22,7 @@ final CartEntity cart;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: customAppBar(
-        appBarTxt: 'Cart (${cart.numOfCartItems} Items) ',
+        appBarTxt: '${AppLocalizations.of(context)!.cart} (${cart.numOfCartItems} ${AppLocalizations.of(context)!.items}) ',
         showArrow: true,
         context: context,
       ),
@@ -40,7 +41,7 @@ final CartEntity cart;
                   width: 2.w,
                 ),
                 Text(
-                  'Deliver to 2XVP+XC - Sheikh Zayed ',
+                 AppLocalizations.of(context)!.deliver_sheikh_zayed ,
                   style: MyFonts.styleMedium500_14
                       .copyWith(color: MyColors.blackBase),
                 ),
@@ -72,7 +73,8 @@ final CartEntity cart;
            ),
           CartTotalAmount(cart: cart),
           verticalSpacing(16),
-          CurvedButton(title:'Checkout',     onTap: () => context.pushNamed(AppRoutes.checkoutScreen,
+          CurvedButton(title:AppLocalizations.of(context)!.checkout,
+            onTap: () => context.pushNamed(AppRoutes.checkoutScreen,
               arguments: cart),
             color: MyColors.baseColor,),
           verticalSpacing(16),

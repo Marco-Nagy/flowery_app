@@ -3,7 +3,7 @@ import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class CustomSwitchIcon extends StatefulWidget {
   const CustomSwitchIcon({super.key});
 
@@ -54,7 +54,7 @@ class _CustomSwitchIconState extends State<CustomSwitchIcon> {
             width: 4.sp,
           ),
           Text(
-            'Notification',
+          AppLocalizations.of(context)!.notification,
             style: MyFonts.styleRegular400_16.copyWith(
               color: MyColors.blackBase,
             ),
