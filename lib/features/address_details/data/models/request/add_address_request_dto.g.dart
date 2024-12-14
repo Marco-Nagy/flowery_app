@@ -7,7 +7,6 @@ part of 'add_address_request_dto.dart';
 // **************************************************************************
 
 
-
 Map<String, dynamic> _$AddAddressRequestDtoToJson(
         AddAddressRequestDto instance) =>
     <String, dynamic>{
