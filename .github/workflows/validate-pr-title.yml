@@ -1,0 +1,23 @@
+name: Validate PR Title
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  validate-pr-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Validate PR Title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          echo "Validating PR Title: $PR_TITLE"
+          if [[ ! "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore):\ .+ ]]; then
+            echo "❌ Invalid PR title. Must follow the pattern '<type>: <description>' where type is one of feat, fix, docs, style, refactor, test, chore."
+            exit 1
+          fi
+          echo "✅ PR title is valid."
