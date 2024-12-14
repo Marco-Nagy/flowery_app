@@ -107,7 +107,6 @@ flutter:
     - assets/images/
     - assets/fonts/
     - lib/generated/assets.dart
-    - lib/l10n/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -128,6 +127,6 @@ flutter:
 
 flutter_intl:
   enabled: true
-  localizations_preferred_language: "en"  # Set your preferred language here
-  arb_dir: lib/l10n  # Directory containing your ARB files
+  localizations_preferred_language: "en"
+  arb_dir: lib/l10n
   output_dir: lib/generated
