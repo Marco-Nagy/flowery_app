@@ -2,6 +2,7 @@ import 'package:flowery_e_commerce/core/utils/widgets/app_text_form_field.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/switch_button_widget.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GiftWidget extends StatefulWidget {
 
@@ -35,7 +36,7 @@ class _GiftWidgetState extends State<GiftWidget> {
       // Gift Option Section
       SwitchButtonWidget(
         value: isGift,
-        text: 'It is a gift',
+        text: AppLocalizations.of(context)!.gift_option,
       ),
       verticalSpacing(16),
       ValueListenableBuilder(
@@ -53,17 +54,17 @@ class _GiftWidgetState extends State<GiftWidget> {
                   children: [
                     AppTextFormField(
                       height: 50,
-                      hintText: 'Name',
+                      hintText: AppLocalizations.of(context)!.name,
                       controller: _nameController,
-                      labelText: 'Name',
+                      labelText: AppLocalizations.of(context)!.name,
                       keyboardType: TextInputType.phone,
                     ),
                     const SizedBox(height: 16),
                     AppTextFormField(
                       height: 50,
-                      hintText: 'Phone number',
+                      hintText: AppLocalizations.of(context)!.phone_number,
                       controller: _phoneController,
-                      labelText: 'Phone number',
+                      labelText: AppLocalizations.of(context)!.phone_number,
                       keyboardType: TextInputType.phone,
                     ),
                   ],

@@ -6,7 +6,7 @@ import '../widgets/app_logo_section.dart';
 import '../widgets/section_header.dart';
 import '../widgets/horizontal_card_scroll.dart';
 import '../widgets/app_info_section.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class AboutAppView extends StatelessWidget {
   const AboutAppView({super.key});
 
@@ -16,7 +16,7 @@ class AboutAppView extends StatelessWidget {
       backgroundColor: MyColors.white,
       appBar: AppBar(
         title: Text(
-          'About Flowery App',
+          AppLocalizations.of(context)!.about_flowery_app,
           style: MyFonts.styleMedium500_20.copyWith(color: MyColors.white),
         ),
         centerTitle: true,
@@ -40,24 +40,25 @@ class AboutAppView extends StatelessWidget {
             verticalSpacing(20),
             const AppLogoSection(),
             verticalSpacing(20),
-            sectionHeader(title: "Categories"),
+            sectionHeader(title:AppLocalizations.of(context)!.categories,
+            ),
             horizontalCardScroll([
-              {'title': 'Birthday Flowers', 'icon': Icons.cake},
-              {'title': 'Anniversary', 'icon': Icons.event},
-              {'title': 'Get Well Soon', 'icon': Icons.local_hospital},
+              {'title': AppLocalizations.of(context)!.birthday_flowers, 'icon': Icons.cake},
+              {'title': AppLocalizations.of(context)!.anniversary, 'icon': Icons.event},
+              {'title': AppLocalizations.of(context)!.get_well_soon, 'icon': Icons.local_hospital},
             ]),
             verticalSpacing(20),
-            sectionHeader(title: "Best Sellers"),
+            sectionHeader(title: AppLocalizations.of(context)!.best_sellers),
             horizontalCardScroll([
-              {'title': 'Rose Bouquet', 'icon': Icons.local_florist},
-              {'title': 'Lily Bunch', 'icon': Icons.spa},
+              {'title': AppLocalizations.of(context)!.rose_bouquet, 'icon': Icons.local_florist},
+              {'title': AppLocalizations.of(context)!.lily_bunch, 'icon': Icons.spa},
             ]),
             verticalSpacing(30),
             const AppInfoSection(),
             verticalSpacing(20),
-            const Text(
-              "\u00a9 2024 Flowery App. All rights reserved.",
-              style: TextStyle(fontSize: 14, color: Colors.grey),
+             Text(
+                AppLocalizations.of(context)!.copyright_notice,
+              style: const TextStyle(fontSize: 14, color: Colors.grey),
             ),
             verticalSpacing(10),
           ],
