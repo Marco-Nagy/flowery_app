@@ -2,7 +2,7 @@ import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors/my_colors.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class FilterChipButton extends StatelessWidget {
   const FilterChipButton({super.key, required this.onPressed});
 
@@ -12,18 +12,18 @@ class FilterChipButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ActionChip(
       onPressed: onPressed,
-      label: const Row(
+      label:  Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ImageIcon(
+          const ImageIcon(
             AssetImage(Assets.imagesButtonFilter),
             size: 18,
             color: MyColors.white,
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Text(
-            "Filter",
-            style: TextStyle(
+          AppLocalizations.of(context)!.filter,
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 16,
               fontWeight: FontWeight.bold,

@@ -5,6 +5,7 @@ import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../spacing.dart';
 
@@ -55,7 +56,7 @@ class AppLoaderState extends State<AppLoader> with SingleTickerProviderStateMixi
                 repeatForever: true,
                 animatedTexts: [
                   ScaleAnimatedText(
-                    'Flowery',
+                    AppLocalizations.of(context)!.app_name,
                     textStyle: MyFonts.styleBold700_24.copyWith(
                       fontFamily: 'oronteus',
                       color: MyColors.baseColor,
