@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import '../widgets/slider_image.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductDetailsWidget extends StatelessWidget {
   const ProductDetailsWidget({super.key, this.product});
@@ -36,14 +37,14 @@ class ProductDetailsWidget extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text('Status: ', style: MyFonts.styleMedium500_16),
-                      Text('In stock', style: MyFonts.styleRegular400_14),
+                      Text('${AppLocalizations.of(context)!.status}: ', style: MyFonts.styleMedium500_16),
+                      Text(AppLocalizations.of(context)!.in_stock, style: MyFonts.styleRegular400_14),
                     ],
                   ),
                 ],
               ),
               verticalSpacing(4.h),
-              Text('All prices include tax',
+              Text(AppLocalizations.of(context)!.all_prices_include_tax,
                   style: MyFonts.styleRegular400_13.copyWith(
                     color: MyColors.grey,
                   )),
@@ -54,7 +55,7 @@ class ProductDetailsWidget extends StatelessWidget {
               ),
               verticalSpacing(24.h),
               Text(
-                'Description',
+                AppLocalizations.of(context)!.description,
                 style: MyFonts.styleMedium500_16,
               ),
               verticalSpacing(8.h),
@@ -64,14 +65,14 @@ class ProductDetailsWidget extends StatelessWidget {
                   style: MyFonts.styleRegular400_14),
               verticalSpacing(24.h),
               Text(
-                'Bouquet include',
+                AppLocalizations.of(context)!.bouquet_include,
                 style: MyFonts.styleMedium500_16,
               ),
               verticalSpacing(8.h),
               Text('${product.title}:${product.quantity}',
                   style: MyFonts.styleRegular400_14),
               verticalSpacing(4.h),
-              Text('White wrap', style: MyFonts.styleRegular400_14),
+              Text(AppLocalizations.of(context)!.white_wrap, style: MyFonts.styleRegular400_14),
               verticalSpacing(24.h),
               AddCartButton(
                 onTap: () {
