@@ -4,6 +4,7 @@ import 'package:flowery_e_commerce/flowery_ecommerce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flowery_e_commerce/core/services/shared_preference/shared_preference_helper.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'core/utils/abb_bloc_observer.dart';
 import 'di/di.dart';
 import 'firebase_options.dart';
@@ -16,6 +17,7 @@ Future<void> main() async {
   Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
 
+await  dotenv.load(fileName: '.env.firebase');
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   // Pass all uncaught "fatal" errors from the framework to Crashlytics
