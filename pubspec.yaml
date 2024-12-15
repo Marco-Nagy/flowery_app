@@ -82,6 +82,10 @@ dependencies:
   firebase_core:
   firebase_crashlytics: ^4.2.0
   firebase_analytics: ^11.3.6
+  googleapis: ^13.2.0
+  googleapis_auth: ^1.6.0
+  firebase_messaging:
+  flutter_local_notifications:
 
 dev_dependencies:
   flutter_test:
