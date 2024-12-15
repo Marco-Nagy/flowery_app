@@ -44,7 +44,3 @@ app.*.map.json
 firebase.json
 android/app/google-services.json
 .env.firebase
-.env.firebase
-.env.firebase
-.env.firebase
-.env.firebase
