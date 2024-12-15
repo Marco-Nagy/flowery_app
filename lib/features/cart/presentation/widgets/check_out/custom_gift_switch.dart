@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomGiftSwitch extends StatefulWidget {
  final  bool? initialValue ;
@@ -30,9 +31,9 @@ class _CustomGiftSwitchState extends State<CustomGiftSwitch> {
               value = value;
             });
           },        ),
-        const Text(
-          'It is a gift',
-          style: TextStyle(fontWeight: FontWeight.bold),
+         Text(
+        AppLocalizations.of(context)!.gift_option,
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ],
     );
