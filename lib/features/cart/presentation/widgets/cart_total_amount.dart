@@ -2,6 +2,8 @@ import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class CartTotalAmount extends StatelessWidget {
   final CartEntity cart;
   const CartTotalAmount({super.key, required this.cart});
@@ -17,7 +19,7 @@ class CartTotalAmount extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Sub Total ',
+                    AppLocalizations.of(context)!.sub_total,
                     style: MyFonts.styleRegular400_16
                         .copyWith(color: MyColors.gray),
                   ),
@@ -31,7 +33,7 @@ class CartTotalAmount extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Delivery fee ',
+                    AppLocalizations.of(context)!.delivery_fee,
                     style: MyFonts.styleRegular400_16
                         .copyWith(color: MyColors.gray),
                   ),
@@ -47,7 +49,7 @@ class CartTotalAmount extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Total ',
+                  AppLocalizations.of(context)!.total,
                     style: MyFonts.styleMedium500_18
                         .copyWith(color: MyColors.black),
                   ),
