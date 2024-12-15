@@ -73,6 +73,11 @@ dependencies:
   flutter_svg:
   bloc:
 
+  # Firebase ML Kit
+  firebase_core:
+  firebase_crashlytics: ^4.2.0
+  firebase_analytics: ^11.3.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
