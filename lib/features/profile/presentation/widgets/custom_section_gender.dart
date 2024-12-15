@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/utils/widgets/spacing.dart';
@@ -22,7 +22,7 @@ class CustomSectionGender extends StatelessWidget {
       children: [
         Expanded(
           child: Text(
-            'Gender',
+            AppLocalizations.of(context)!.gender,
             style: MyFonts.styleMedium500_18.copyWith(
               color: MyColors.gray,
             ),
@@ -39,7 +39,7 @@ class CustomSectionGender extends StatelessWidget {
                 child: RadioListTile(
                   contentPadding: EdgeInsets.zero,
                   title: AutoSizeText(
-                    "female",
+                    AppLocalizations.of(context)!.female,
                     style: MyFonts.styleRegular400_14,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
@@ -59,7 +59,7 @@ class CustomSectionGender extends StatelessWidget {
                 child: RadioListTile(
                   contentPadding: EdgeInsets.zero,
                   title: AutoSizeText(
-                    "male",
+                    AppLocalizations.of(context)!.male,
                     style: MyFonts.styleRegular400_14.copyWith(
                       color: MyColors.gray,
                     ),

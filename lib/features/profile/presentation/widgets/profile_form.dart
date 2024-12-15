@@ -3,6 +3,8 @@ import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
 import '../../../../core/utils/validators.dart';
 import '../../../auth/presentation/login/widgets/custom_text_form_field.dart';
 import 'change_text.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ProfileForm extends StatelessWidget {
   final TextEditingController firstNameController;
@@ -34,28 +36,28 @@ class ProfileForm extends StatelessWidget {
               Expanded(
                 child: CustomTextFormField(
                     controller: firstNameController,
-                    hintText: 'First name',
-                    labelText: 'First name',
+                    hintText: AppLocalizations.of(context)!.first_name,
+                    labelText: AppLocalizations.of(context)!.first_name,
                     validator: (value) => Validators.validateNotEmpty(
-                        title: 'First name', value: value)),
+                        title: AppLocalizations.of(context)!.first_name, value: value, context: context)),
               ),
               const SizedBox(width: 20),
               Expanded(
                 child: CustomTextFormField(
                     controller: lastNameController,
-                    hintText: 'Last name',
-                    labelText: 'Last name',
+                    hintText: AppLocalizations.of(context)!.last_name,
+                    labelText: AppLocalizations.of(context)!.last_name,
                     validator: (value) => Validators.validateNotEmpty(
-                        title: 'Last name', value: value)),
+                        title: AppLocalizations.of(context)!.last_name, value: value, context: context)),
               ),
             ],
           ),
           const SizedBox(height: 20),
           CustomTextFormField(
             controller: emailController,
-            hintText: 'Email',
-            labelText: 'Email',
-            validator: (value) => Validators.validateEmail(value),
+            hintText: AppLocalizations.of(context)!.email,
+            labelText: AppLocalizations.of(context)!.email,
+            validator: (value) => Validators.validateEmail(value, context),
           ),
           verticalSpacing(20),
           CustomTextFormField(
@@ -63,15 +65,15 @@ class ProfileForm extends StatelessWidget {
             isPassword: true,
             controller: passwordController,
             hintText: '******',
-            labelText: 'Password',
+            labelText: AppLocalizations.of(context)!.password,
             // validator: (value) => Validators.validatePassword(value, context),
           ),
           verticalSpacing(20),
           CustomTextFormField(
             controller: phoneNumberController,
-            hintText: 'Phone Number',
-            labelText: 'Phone Number',
-            validator: (value) => Validators.validatePhoneNumber(value),
+            hintText: AppLocalizations.of(context)!.phone_number,
+            labelText: AppLocalizations.of(context)!.phone_number,
+            validator: (value) => Validators.validatePhoneNumber(value, context),
           ),
         ],
       ),
