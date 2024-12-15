@@ -11,7 +11,7 @@ import 'package:flowery_e_commerce/features/address_details/domain/entities/requ
     as _i6;
 import 'package:flowery_e_commerce/features/address_details/domain/entities/response/add_address_response_entity.dart'
     as _i5;
-import 'package:flowery_e_commerce/features/address_details/domain/use_cases/add_address_usecase.dart'
+import 'package:flowery_e_commerce/features/address_details/domain/use_cases/add_address_use_case.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i7;

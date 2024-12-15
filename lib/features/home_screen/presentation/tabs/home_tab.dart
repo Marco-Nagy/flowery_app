@@ -17,7 +17,7 @@ import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({super.key});
@@ -48,7 +48,7 @@ class HomeTab extends StatelessWidget {
             child: Row(
               children: [
                 Image.asset(
-                  'assets/images/logo.png',
+                  Assets.imagesLogo,
                   width: 89.w,
                   height: 35.h,
                 ),
@@ -73,7 +73,7 @@ class HomeTab extends StatelessWidget {
                       Image.asset(Assets.imagesLocationOn,height: 20.h,width: 20.w,),
                       SizedBox(width: 2.w,),
                       Text(
-                        'Deliver to 2XVP+XC - Sheikh Zayed ',
+                          AppLocalizations.of(context)!.deliver_location,
                         style: MyFonts.styleMedium500_14
                             .copyWith(color: MyColors.blackBase),
                       ),
@@ -89,7 +89,7 @@ class HomeTab extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.only(left: 8.w),
-                    child: Text('Categories',
+                    child: Text(AppLocalizations.of(context)!.categories,
                         style: MyFonts.styleMedium500_18
                             .copyWith(color: MyColors.blackBase)),
                   ),
@@ -99,7 +99,7 @@ class HomeTab extends StatelessWidget {
                     },
                     child: Container(
                       margin: EdgeInsets.only(left: 15.w, right: 15.w),
-                      child: Text('View All',
+                      child: Text(AppLocalizations.of(context)!.view_all,
                           style: MyFonts.styleMedium500_14.copyWith(
                               color: MyColors.baseColor,
                               decoration: TextDecoration.underline)),
@@ -116,7 +116,7 @@ class HomeTab extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.only(left: 8.w),
-                    child: Text('Best seller',
+                    child: Text(AppLocalizations.of(context)!.best_seller,
                         style: MyFonts.styleMedium500_18
                             .copyWith(color: MyColors.blackBase)),
                   ),
@@ -126,7 +126,7 @@ class HomeTab extends StatelessWidget {
                     },
                     child: Container(
                       margin: EdgeInsets.only(left: 15.w, right: 15.w),
-                      child: Text('View All',
+                      child: Text(AppLocalizations.of(context)!.view_all,
                           style: MyFonts.styleMedium500_12.copyWith(
                               color: MyColors.baseColor,
                               decoration: TextDecoration.underline)),
@@ -140,7 +140,7 @@ class HomeTab extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.only(left: 8.w),
-                    child: Text('Occasion',
+                    child: Text(AppLocalizations.of(context)!.occasion,
                         style: MyFonts.styleMedium500_18
                             .copyWith(color: MyColors.blackBase)),
                   ),
@@ -150,7 +150,7 @@ class HomeTab extends StatelessWidget {
                     },
                     child: Container(
                       margin: EdgeInsets.only(left: 15.w, right: 15.w),
-                      child: Text('View All',
+                      child: Text(AppLocalizations.of(context)!.view_all,
                           style: MyFonts.styleMedium500_12.copyWith(
                               color: MyColors.baseColor,
                               decoration: TextDecoration.underline)),

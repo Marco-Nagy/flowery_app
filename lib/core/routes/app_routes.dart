@@ -28,6 +28,7 @@ import '../../features/auth/presentation/forget_password/view/forget_password.da
 import '../../features/auth/presentation/login/view/login_view.dart';
 import '../../features/auth/presentation/signup/view/signup_view.dart';
 import '../../features/generic/presentation/screens/occasion_view.dart';
+import '../../features/orders/presentation/view/order_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/profile/presentation/views/reset_password_profile_view.dart';
 import '../../features/profile/presentation/widgets/terms_conditions_page.dart';
@@ -49,7 +50,7 @@ class AppRoutes {
   static const String termsAndConditionsPage = 'TermsAndConditionsPage';
   static const String savedAddressScreen = 'savedAddressScreen';
   static const String addressScreen = 'addressScreen';
-
+  static const String orderView = 'orderView';
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
   static const String checkoutScreen = 'checkoutScreen';
@@ -144,6 +145,8 @@ class AppRoutes {
         return BaseRoute(page: const AboutAppView());
       case AppRoutes.termsAndConditionsPage:
         return BaseRoute(page: const TermsAndConditionsPage());
+        case AppRoutes.orderView:
+        return BaseRoute(page: const OrderView());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

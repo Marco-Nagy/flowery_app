@@ -13,6 +13,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/widgets/custom_appbar.dart';
 import '../widgets/build_dropdown_field_widget.dart';
 import '../widgets/build_text_field_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+
 
 class AddressScreen extends StatefulWidget {
   const AddressScreen({super.key});
@@ -65,7 +68,7 @@ class _AddressScreenState extends State<AddressScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-        appBarTxt: 'Address',
+        appBarTxt: AppLocalizations.of(context)!.address,
         context: context,
         showArrow: true,
       ),
@@ -92,20 +95,20 @@ class _AddressScreenState extends State<AddressScreen> {
                   child: Image.asset(Assets.imagesRectangle, fit: BoxFit.cover),
                 ),
                 BuildTextFieldWidget(
-                  hint: "Enter the address",
-                  label: "Address",
+                  hint: AppLocalizations.of(context)!.enter_address,
+                  label: AppLocalizations.of(context)!.address,
                   controller: addressController,
                 ),
                 SizedBox(height: 10.h),
                 BuildTextFieldWidget(
-                  hint: "Enter the phone number",
-                  label: "Phone number",
+                  hint: AppLocalizations.of(context)!.enter_phone_number,
+                  label: AppLocalizations.of(context)!.phone_number,
                   controller: phoneController,
                 ),
                 SizedBox(height: 10.h),
                 BuildTextFieldWidget(
-                  hint: "Enter the recipient name",
-                  label: "Recipient name",
+                  hint:AppLocalizations.of(context)!.enter_recipient_name,
+                  label: AppLocalizations.of(context)!.recipient_name,
                   controller: recipientController,
                 ),
                 SizedBox(height: 10.h),
@@ -115,23 +118,23 @@ class _AddressScreenState extends State<AddressScreen> {
                     children: [
                       Expanded(
                         child: BuildDropdownFieldWidget(
-                          hint: "Select Country",
-                          label: "Country",
+                          hint: AppLocalizations.of(context)!.select_country,
+                          label: AppLocalizations.of(context)!.country,
                           items: countryList,
                           selectedValue: selectedCountry,
                           onChanged: (value) {
                             setState(() {
                               selectedCountry = value;
                               cityList
-                                  .clear(); // Clear city list when country changes
+                                  .clear();
                               _checkFields();
                               context.read<AddAddressViewModelCubit>().doAction(
-                                    FetchCitiesAction(
-                                      countryList
-                                          .firstWhere((item) => item.name == value)
-                                          .isoCode,
-                                    ),
-                                  );
+                                FetchCitiesAction(
+                                  countryList
+                                      .firstWhere((item) => item.name == value)
+                                      .isoCode,
+                                ),
+                              );
                             });
                           },
                         ),
@@ -139,8 +142,8 @@ class _AddressScreenState extends State<AddressScreen> {
                       SizedBox(width: 10.h),
                       Expanded(
                         child: BuildDropdownFieldWidget(
-                          hint: "Select City",
-                          label: "City",
+                          hint: AppLocalizations.of(context)!.select_city,
+                          label: AppLocalizations.of(context)!.city,
                           items: cityList,
                           selectedValue: selectedCity,
                           onChanged: (value) {
@@ -159,22 +162,22 @@ class _AddressScreenState extends State<AddressScreen> {
                   width: 340.w,
                   height: 65.h,
                   child: CurvedButton(
-                    title: 'Save address',
+                    title: AppLocalizations.of(context)!.save_address,
                     onTap: isButtonEnabled
                         ? () {
-                            context.read<AddAddressViewModelCubit>().doAction(
-                                  AddAddressSubmitAction(
-                                    AddAddressRequestEntity(
-                                      street: addressController.text.trim(),
-                                      city: selectedCity,
-                                      phone: phoneController.text.trim(),
-                                    ),
-                                  ),
-                                );
-                          }
+                      context.read<AddAddressViewModelCubit>().doAction(
+                        AddAddressSubmitAction(
+                          AddAddressRequestEntity(
+                            street: addressController.text.trim(),
+                            city: selectedCity,
+                            phone: phoneController.text.trim(),
+                          ),
+                        ),
+                      );
+                    }
                         : () {},
                     color:
-                        isButtonEnabled ? MyColors.baseColor : MyColors.gray30,
+                    isButtonEnabled ? MyColors.baseColor : MyColors.gray30,
                   ),
                 ),
               ],
@@ -185,26 +188,26 @@ class _AddressScreenState extends State<AddressScreen> {
           switch (state) {
             case AddAddressViewModelLoading():
               aweSnackBar(
-                msg: 'Loading...',
+                msg: AppLocalizations.of(context)!.loading,
                 context: context,
                 type: MessageTypeConst.help,
-                title: 'Loading',
+                title: AppLocalizations.of(context)!.loading,
               );
               break;
             case AddAddressViewModelSuccess():
               aweSnackBar(
-                msg: 'Address saved successfully!',
+                msg: AppLocalizations.of(context)!.address_saved_successfully,
                 context: context,
                 type: MessageTypeConst.success,
-                title: 'Success',
+                title: AppLocalizations.of(context)!.success,
               );
               break;
             case AddAddressViewModelError():
               aweSnackBar(
-                msg: state.message.error ?? "Something went wrong, try again",
+                msg: state.message.error ?? AppLocalizations.of(context)!.wrong,
                 context: context,
                 type: MessageTypeConst.failure,
-                title: 'Failure',
+                title: AppLocalizations.of(context)!.failure,
               );
               break;
             default:
