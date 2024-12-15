@@ -61,7 +61,9 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                   ),
                   const Spacer(),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      context.pushNamed(AppRoutes.orderView);
+                    },
                     child: SizedBox(
                         width: 20.w,
                         height: 20.w,
@@ -167,20 +169,18 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                   ),
                   Row(
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          context.pushNamed(AppRoutes.aboutAppView);
-                        },
-                        child: Text(
-                          AppLocalizations.of(context)!.about_app,
-                          style: MyFonts.styleRegular400_16.copyWith(
-                            color: MyColors.blackBase,
-                          ),
+                      Text(
+                        AppLocalizations.of(context)!.about_app,
+                        style: MyFonts.styleRegular400_16.copyWith(
+                          color: MyColors.blackBase,
                         ),
                       ),
                       const Spacer(),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamed(AppRoutes.aboutAppView);
+
+                        },
                         child: SizedBox(
                             width: 20.w,
                             height: 20.w,
