@@ -63,3 +63,4 @@ CartItemProductDto _$CartItemProductDtoFromJson(Map<String, dynamic> json) =>
       (json['sold'] as num?)?.toInt(),
       (json['discount'] as num?)?.toInt(),
     );
+

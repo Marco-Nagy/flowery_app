@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/utils/validators.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import '../../../auth/presentation/login/widgets/custom_text_form_field.dart';
@@ -36,9 +36,9 @@ class ResetPasswordFormState extends State<ResetPasswordForm> {
           CustomTextFormField(
             isPassword: !_passwordVisible,
             controller: widget.passwordController,
-            hintText: 'Current Password',
-            labelText: 'Current Password',
-            validator: (value) => Validators.validatePassword(value),
+            hintText: AppLocalizations.of(context)!.currentPassword,
+            labelText: AppLocalizations.of(context)!.currentPassword,
+            validator: (value) => Validators.validatePassword(value, context),
             suffix: InkWell(
               child: Icon(
                 _passwordVisible ? Icons.visibility : Icons.visibility_off,
@@ -54,9 +54,9 @@ class ResetPasswordFormState extends State<ResetPasswordForm> {
           CustomTextFormField(
             isPassword: !_newPasswordVisible,
             controller: widget.newPasswordController,
-            hintText: 'New Password',
-            labelText: 'New Password',
-            validator: (value) => Validators.validatePassword(value),
+            hintText:  AppLocalizations.of(context)!.newPassword,
+            labelText: AppLocalizations.of(context)!.newPassword,
+            validator: (value) => Validators.validatePassword(value, context),
             suffix: InkWell(
               child: Icon(
                 _newPasswordVisible ? Icons.visibility : Icons.visibility_off,
@@ -72,9 +72,10 @@ class ResetPasswordFormState extends State<ResetPasswordForm> {
           CustomTextFormField(
             isPassword: !_confirmPasswordVisible,
             controller: widget.confirmPasswordController,
-            hintText: 'Confirm Password',
-            labelText: 'Confirm Password',
+            hintText: AppLocalizations.of(context)!.confirmPassword,
+            labelText: AppLocalizations.of(context)!.confirmPassword,
             validator: (value) => Validators.validatePasswordConfirmation(
+              context:  context,
                 confirmPassword: value,
                 password: widget.newPasswordController.text),
             suffix: InkWell(

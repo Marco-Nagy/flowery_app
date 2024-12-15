@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../ViewModel/forget_password_view_model_cubit.dart';
 import '../widgets/screen_description.dart';
 import '../widgets/screen_title.dart';
@@ -33,7 +33,7 @@ class EmailVerification extends HookWidget {
         child: Scaffold(
       backgroundColor: MyColors.white,
       appBar: customAppBar(
-          appBarTxt: 'Password',
+          appBarTxt: AppLocalizations.of(context)!.password,
           context: context,
           showArrow: true,
           navigation: () {
@@ -53,13 +53,13 @@ class EmailVerification extends HookWidget {
                   padding: EdgeInsets.symmetric(horizontal: 50.0.w),
                   child: Column(
                     children: [
-                      const ScreenTitle(
-                        title: 'Email verification',
+                       ScreenTitle(
+                        title:AppLocalizations.of(context)!.emailVerificationTitle,
                       ),
                       verticalSpacing(16),
-                      const ScreenDescription(
-                          title:
-                              'Please enter your code that send to your email address '),
+                       ScreenDescription(
+                          title:AppLocalizations.of(context)!.emailVerificationDescription,
+          ),
                     ],
                   ),
                 ),
@@ -70,7 +70,7 @@ class EmailVerification extends HookWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Didn't receive code?",
+                      AppLocalizations.of(context)!.not_receive_code,
                       textAlign: TextAlign.center,
                       style: MyFonts.styleRegular400_16
                           .copyWith(color: MyColors.black),

@@ -12,7 +12,7 @@ import 'package:meta/meta.dart';
 import '../../../../core/networking/error/error_handler.dart';
 import '../../domain/entities/request/add_address_request_entity.dart';
 import '../../domain/entities/response/add_address_response_entity.dart';
-import '../../domain/use_cases/add_address_usecase.dart';
+import '../../domain/use_cases/add_address_use_case.dart';
 
 part 'add_address_view_model_state.dart';
 
