@@ -216,7 +216,10 @@
     "failure": "Failure",
     "select_city": "Select City",
     "select_country": "Select Country",
-    "country": "Country"
+    "country": "Country",
+    "reorder": "Reorder",
+    "active": "Active",
+    "completed": "Completed"
 
 
 

@@ -12,7 +12,7 @@ class CurvedButton extends StatelessWidget {
     this.height,
     this.width,
     this.colorBorderSide,
-    this.textColor,
+    this.textColor, this.style,
   });
 
   final Color? color;
@@ -22,6 +22,7 @@ class CurvedButton extends StatelessWidget {
   final double? width;
   final Color? colorBorderSide;
   final Color? textColor;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class CurvedButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 24),
+          //padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 24),
           backgroundColor:color ?? MyColors.baseColor ,
           shape: RoundedRectangleBorder(
             side: BorderSide(
@@ -42,7 +43,7 @@ class CurvedButton extends StatelessWidget {
         ),
         child: Text(
           title,
-          style: MyFonts.styleMedium500_16
+          style: style ?? MyFonts.styleMedium500_16
               .copyWith(color: textColor ?? MyColors.white),
         ),
       ),
