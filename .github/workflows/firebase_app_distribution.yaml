@@ -13,35 +13,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v2
-#
-#      - name: Set up Flutter
-#        uses: subosito/flutter-action@v2
-#        with:
-#          channel: 'stable'
-#          flutter-version: '3.24.4'
-#
-#      - name: Set up JDK
-#        uses: actions/setup-java@v3
-#        with:
-#          java-version: 17
-#          distribution: temurin
-#
-#      - name: Install Dependencies
-#        run: flutter pub get
-#
-#      - name: Clear Flutter Build Cache
-#        run: flutter clean
-#
-#      - name: Build APK for Production
-#        run: flutter build apk --release -v
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          flutter-version: '3.24.4'
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Clear Flutter Build Cache
+        run: flutter clean
+
+      - name: Build APK for Production
+        run: flutter build apk --release -v
 
       - name: Upload APK to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
-          appId: ${{ secrets.FIREBASE_APP_ID}}
-          token: ${{ secrets.FIREBASE_CLI_TOKEN}}
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          serviceCredentialsFileContent: ${{ secrets.SERVICE_ACCOUNT_KEY }}
           groups: maintainers
           file: android/app/build/outputs/apk/release/app-release.apk
           releaseNotes: "First GitHub Action Firebase Distribution"
