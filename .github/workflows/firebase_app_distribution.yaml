@@ -12,9 +12,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Check out the repository
+      # Step 1: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       # Step 2: Set up JDK
       - name: Set up JDK
@@ -23,25 +25,26 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      # Step 3: Cache Gradle dependencies
-      - name: Cache Gradle dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+      # Step 3: Debugging: List files to locate gradlew
+      - name: List files
+        run: ls -la
+        working-directory: android # Update if necessary
 
-      # Step 4: Build the APK
+      # Step 4: Grant execute permissions to gradlew
+      - name: Grant execute permissions
+        run: chmod +x ./gradlew
+        working-directory: android # Update if necessary
+
+      # Step 5: Build APK
       - name: Build APK
         run: ./gradlew assembleRelease
-        working-directory: ./ # Update this path if `gradlew` is not in the root
+        working-directory: android # Update if necessary
 
-      # Step 5: Upload APK to Firebase App Distribution
+      # Step 6: Upload APK to Firebase App Distribution
       - name: Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           token: ${{ secrets.FIREBASE_CLI_TOKEN }}
           groups: maintainers
-          file: app/build/outputs/apk/release/app-release.apk
+          file: android/app/build/outputs/apk/release/app-release.apk
