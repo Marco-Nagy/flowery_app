@@ -38,7 +38,7 @@ jobs:
         run: flutter build apk --release -v
 
       - name: Upload APK to Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        uses: burhankhanzada/firebase_app_distribution_github_action@main
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.SERVICE_ACCOUNT_KEY }}
