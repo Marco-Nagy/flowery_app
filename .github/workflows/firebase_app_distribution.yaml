@@ -1,6 +1,5 @@
 name: Android Fastlane with Firebase App Distribution Workflow
 
-
 on:
   pull_request:
     branches:
@@ -27,14 +26,24 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: 17
-          distribution: temurin # Specify the distribution
-          cache: gradle # Optionally enable caching for Gradle or Maven
+          distribution: temurin
+          cache: gradle
+
+      - name: Run Flutter pub get
+        run: flutter pub get
+
+      - name: Precompile Generated Plugin Registrant
+        run: flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: Flutter Clean
         run: flutter clean
 
       - name: Build APK for Production
-        run: flutter build apk --release
+        run: flutter build apk --release -v
+
+      - name: Validate Gradle Build
+        run: ./gradlew app:assembleRelease
+        working-directory: android
 
       - name: Upload APK to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
@@ -44,6 +53,3 @@ jobs:
           groups: maintainers
           file: android/app/build/outputs/apk/release/app-release.apk
           releaseNotes: "First GitHub Action Firebase Distribution"
-
-      # Optionally, you can add steps for notifications, testing, etc.
-
