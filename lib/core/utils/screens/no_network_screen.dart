@@ -1,6 +1,6 @@
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class NoNetworkScreen extends StatelessWidget {
   const NoNetworkScreen({super.key});
 
@@ -26,9 +26,9 @@ class NoNetworkScreen extends StatelessWidget {
                 height: 200,
               ),
               const SizedBox(height: 30),
-              const Text(
-                "Oops! No Internet Connection",
-                style: TextStyle(
+               Text(
+                AppLocalizations.of(context)!.no_internet_connection,
+                style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -43,9 +43,9 @@ class NoNetworkScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 15),
-              const Text(
-                "It seems like you're offline. Please check your connection and try again.",
-                style: TextStyle(
+               Text(
+                AppLocalizations.of(context)!.offline_message,
+                style: const TextStyle(
                   fontSize: 16,
                   color: Colors.black,
                 ),

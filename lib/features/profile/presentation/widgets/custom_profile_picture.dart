@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_view_model_cubit.dart';
@@ -10,6 +9,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../di/di.dart';
 import '../viewModel/profile_actions.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ProfilePic extends StatefulWidget {
   const ProfilePic({super.key});
@@ -69,7 +70,7 @@ class _ProfilePicState extends State<ProfilePic> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "Select a Photo",
+                AppLocalizations.of(context)!.select_a_photo,
                   style: TextStyle(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
@@ -81,7 +82,7 @@ class _ProfilePicState extends State<ProfilePic> {
                 ListTile(
                   leading: const Icon(Icons.camera_alt_outlined, color: Colors.green),
                   title: Text(
-                    "Take a photo",
+                    AppLocalizations.of(context)!.take_a_photo,
                     style: TextStyle(color: Colors.black, fontSize: 16.sp),
                   ),
                   onTap: () {
@@ -94,7 +95,7 @@ class _ProfilePicState extends State<ProfilePic> {
                 ListTile(
                   leading: const Icon(Icons.photo_library, color: Colors.blue),
                   title: Text(
-                    "Pick from gallery",
+                    AppLocalizations.of(context)!.pick_from_gallery,
                     style: TextStyle(color: Colors.black, fontSize: 16.sp),
                   ),
                   onTap: () {
@@ -109,7 +110,7 @@ class _ProfilePicState extends State<ProfilePic> {
                     Navigator.pop(context);
                   },
                   child: Text(
-                    "Cancel",
+                    AppLocalizations.of(context)!.cancel,
                     style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.bold,

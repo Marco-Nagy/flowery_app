@@ -12,7 +12,7 @@ import '../../../../core/networking/error/error_handler.dart';
 import '../../../../core/networking/error/error_model.dart';
 import '../../../auth/data/data_sources/contracts/offline_data_source.dart';
 import '../../domain/entities/request/change_password_request_entity.dart';
-import '../../domain/entities/response/change_password_respose_entity.dart';
+import '../../domain/entities/response/change_password_response_entity.dart';
 import '../../domain/entities/response/edit_profile_response_entity.dart';
 import '../../domain/entities/response/get_logged_user_data_response_entity.dart';
 import '../../domain/entities/response/upload_photo_response_entity.dart';

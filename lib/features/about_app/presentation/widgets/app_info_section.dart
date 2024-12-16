@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import '../widgets/list_tile_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppInfoSection extends StatelessWidget {
   const AppInfoSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return  Column(
       children: [
-        ListTileWidget(title: "Version", icon: Icons.eco, info: "1.0.0"),
+        ListTileWidget(title: AppLocalizations.of(context)!.version, icon: Icons.eco, info:AppLocalizations.of(context)!.app_version,
+        ),
         ListTileWidget(
-            title: "Developed By", icon: Icons.code, info: "Team Two"),
+            title: AppLocalizations.of(context)!.developed_by, icon: Icons.code, info: AppLocalizations.of(context)!.team_name,
+        ),
         ListTileWidget(
-            title: "Contact Us",
+            title: AppLocalizations.of(context)!.contact_us,
             icon: Icons.email,
-            info: "support@floweryapp.com"),
+            info: AppLocalizations.of(context)!.email_contact,
+        ),
       ],
     );
   }

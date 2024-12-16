@@ -8,6 +8,8 @@ import 'package:flowery_e_commerce/features/auth/presentation/forget_password/vi
 import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/signup_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_selling_cubit.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/screens/most_selling_screen.dart';
+import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/screens/checkout_screen.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
@@ -20,10 +22,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../di/di.dart';
 import '../../features/about_app/presentation/views/about_app_view.dart';
+import '../../features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
 import '../../features/auth/presentation/forget_password/view/forget_password.dart';
 import '../../features/auth/presentation/login/view/login_view.dart';
 import '../../features/auth/presentation/signup/view/signup_view.dart';
 import '../../features/generic/presentation/screens/occasion_view.dart';
+import '../../features/orders/presentation/view/order_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/profile/presentation/views/reset_password_profile_view.dart';
 import '../../features/profile/presentation/widgets/terms_conditions_page.dart';
@@ -45,9 +49,10 @@ class AppRoutes {
   static const String termsAndConditionsPage = 'TermsAndConditionsPage';
   static const String savedAddressScreen = 'savedAddressScreen';
   static const String addressScreen = 'addressScreen';
-
+  static const String orderView = 'orderView';
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
+  static const String checkoutScreen = 'checkoutScreen';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -126,14 +131,21 @@ class AppRoutes {
         return BaseRoute(page: const ProfileView());
       case AppRoutes.resetPasswordProfileView:
         return BaseRoute(page: const ResetPasswordProfileView());
+        case AppRoutes.checkoutScreen:
+        return BaseRoute(page: CheckoutScreen(cart: args as CartEntity));
         case AppRoutes.savedAddressScreen:
         return BaseRoute(page: const SavedAddressScreen());
         case AppRoutes.addressScreen:
-        return BaseRoute(page: const AddressScreen());
+        return BaseRoute(
+            page: BlocProvider(
+                create: (context) => getIt.get<AddAddressViewModelCubit>(),
+                child: const AddressScreen()));
       case AppRoutes.aboutAppView:
         return BaseRoute(page: const AboutAppView());
       case AppRoutes.termsAndConditionsPage:
         return BaseRoute(page: const TermsAndConditionsPage());
+        case AppRoutes.orderView:
+        return BaseRoute(page: const OrderView());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }
