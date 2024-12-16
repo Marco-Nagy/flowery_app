@@ -41,7 +41,8 @@ jobs:
         uses: burhankhanzada/firebase_app_distribution_github_action@main
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
-          serviceCredentialsFileContent: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
           groups: maintainers
+          apk: android/app/build/outputs/apk/release/app-release.apk
           file: android/app/build/outputs/apk/release/app-release.apk
           releaseNotes: "First GitHub Action Firebase Distribution"
