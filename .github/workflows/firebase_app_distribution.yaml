@@ -1,8 +1,11 @@
 name: Android Firebase App Distribution
 on:
+  pull_request:
+    branches:
+      - development
   push:
     branches:
-      - master
+      - development
 
   workflow_dispatch:
 
