@@ -13,34 +13,41 @@ class SectionNotificationMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
         children: [
-          ImageIcon(
-            const AssetImage(Assets.imagesNotificationList),
-            size: 20.sp,
-          ),
-          horizontalSpacing(12.w),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AutoSizeText(
-                  'New Offer',
-                  style: MyFonts.styleMedium500_16.copyWith(
-                    color: MyColors.baseColor,
-                  ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ImageIcon(
+                const AssetImage(Assets.imagesNotificationList),
+                size: 20.sp,
+              ),
+              horizontalSpacing(12.w),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AutoSizeText(
+                      'New Offer',
+                      style: MyFonts.styleMedium500_16.copyWith(
+                        color: MyColors.baseColor,
+                      ),
+                    ),
+                    verticalSpacing(4.h),
+                    AutoSizeText(
+                      'Lorem ipsum dolor sit amet consectetur. Tristique et mauris sem congue in felis id nec. Amet sed morbi bibendum vestibulum.',
+                      style: MyFonts.styleRegular400_12.copyWith(
+                        color: MyColors.gray,
+                      ),
+                    ),
+                  ],
                 ),
-                verticalSpacing(4.h),
-                AutoSizeText(
-                  'Lorem ipsum dolor sit amet consectetur. Tristique et mauris sem congue in felis id nec. Amet sed morbi bibendum vestibulum.',
-                  style: MyFonts.styleRegular400_12.copyWith(
-                    color: MyColors.gray,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
+          const Divider(
+            height: 40,
+          )
         ],
       ),
     );

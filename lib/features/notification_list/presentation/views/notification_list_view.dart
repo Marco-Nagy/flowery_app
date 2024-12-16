@@ -1,4 +1,5 @@
 import 'package:flowery_e_commerce/features/notification_list/presentation/widgets/section_notification_message.dart';
+import 'package:flowery_e_commerce/features/notification_list/presentation/widgets/sliver_list_notification_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -22,10 +23,10 @@ class NotificationView extends StatelessWidget {
                   showArrow: true,
                 ),
                 verticalSpacing(32.h),
-                const SectionNotificationMessage(),
               ],
             ),
-          )
+          ),
+          const SliverListNotificationMessage()
         ],
       ),
     );
