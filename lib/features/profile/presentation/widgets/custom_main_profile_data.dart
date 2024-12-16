@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../generated/assets.dart';
 
 class CustomMainProfileData extends StatefulWidget {
   const CustomMainProfileData({super.key});
@@ -60,7 +62,7 @@ class _CustomMainProfileDataState extends State<CustomMainProfileData> {
                        child: SizedBox(
                            width: 24.w,
                            height: 24.w,
-                           child: Image.asset('assets/images/pen.png')),
+                           child: Image.asset(Assets.imagesPen)),
                      ),
                    ],
                  ),
@@ -78,7 +80,7 @@ class _CustomMainProfileDataState extends State<CustomMainProfileData> {
            case GetLoggedUserDataError():
              SchedulerBinding.instance.addPostFrameCallback((_) {
                aweSnackBar(
-                 msg: 'Error',
+                 msg: AppLocalizations.of(context)!.error,
                  context: context,
                  type: MessageTypeConst.failure,
                );

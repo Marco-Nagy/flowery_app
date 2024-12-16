@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../di/di.dart';
 import '../../styles/animated_image.dart';
 import '../../styles/colors/my_colors.dart';
@@ -7,7 +7,7 @@ import '../../styles/fonts/my_fonts.dart';
 
 
 class AnimatedStatusDialog {
-  const AnimatedStatusDialog._(); // Private constructor to prevent instantiation
+  const AnimatedStatusDialog._();
 
   static void show({
 
@@ -34,7 +34,7 @@ class AnimatedStatusDialog {
   }
 
   static Widget _dialog(BuildContext context, Status status, String message) {
-    final statusValue = _getStatusValues(status);
+    final statusValue = _getStatusValues(status, context);
 
     return AlertDialog(
       backgroundColor: MyColors.white,
@@ -64,24 +64,24 @@ class AnimatedStatusDialog {
     );
   }
 
-  static _StatusValue _getStatusValues(Status status) {
+  static _StatusValue _getStatusValues(Status status , BuildContext context) {
     switch (status) {
       case Status.loading:
         return  _StatusValue(
           startColor: MyColors.blue,
-          title: 'Loading...',
+          title:  AppLocalizations.of(context)!.loading,
           imagePath: AnimatedImage.loading,
         );
       case Status.success:
         return  _StatusValue(
           startColor: Colors.green,
-          title: 'Success!',
+          title:  AppLocalizations.of(context)!.success,
           imagePath: AnimatedImage.success,
         );
       case Status.error:
         return  _StatusValue(
           startColor: Colors.red,
-          title: 'Error!',
+          title:  AppLocalizations.of(context)!.error,
           imagePath: AnimatedImage.error,
         );
     }
