@@ -27,23 +27,15 @@ jobs:
         with:
           java-version: 17
           distribution: temurin
-          cache: gradle
 
-      - name: Run Flutter pub get
+      - name: Install Dependencies
         run: flutter pub get
 
-      - name: Precompile Generated Plugin Registrant
-        run: flutter pub run build_runner build --delete-conflicting-outputs
-
-      - name: Flutter Clean
+      - name: Clear Flutter Build Cache
         run: flutter clean
 
       - name: Build APK for Production
         run: flutter build apk --release -v
-
-      - name: Validate Gradle Build
-        run: ./gradlew app:assembleRelease
-        working-directory: android
 
       - name: Upload APK to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
