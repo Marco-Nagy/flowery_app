@@ -12,18 +12,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the repository
+      # Step 1: Check out the repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Set up JDK (required for building Android apps)
+      # Step 2: Set up JDK
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: '17'
 
-      # Cache Gradle dependencies
+      # Step 3: Cache Gradle dependencies
       - name: Cache Gradle dependencies
         uses: actions/cache@v3
         with:
@@ -32,11 +32,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      # Build APK
+      # Step 4: Build the APK
       - name: Build APK
         run: ./gradlew assembleRelease
+        working-directory: ./ # Update this path if `gradlew` is not in the root
 
-      # Upload APK to Firebase App Distribution
+      # Step 5: Upload APK to Firebase App Distribution
       - name: Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
