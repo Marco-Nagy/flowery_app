@@ -6,17 +6,41 @@ on:
   push:
     branches:
       - development
-
   workflow_dispatch:
 
 jobs:
   build:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Firebase App Distribution
-      uses: hasretsariyer/firebase-app-distribution-github-action@v1z
-      with:
-        app_id: ${{secrets.FIREBASE_APP_ID}}
-        firebase_token: ${{secrets.FIREBASE_CLI_TOKEN}}
-        app_file: app-release.apk
-        tester_groups: maintainers
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Set up JDK (required for building Android apps)
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      # Cache Gradle dependencies
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      # Build APK
+      - name: Build APK
+        run: ./gradlew assembleRelease
+
+      # Upload APK to Firebase App Distribution
+      - name: Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          token: ${{ secrets.FIREBASE_CLI_TOKEN }}
+          groups: maintainers
+          file: app/build/outputs/apk/release/app-release.apk
