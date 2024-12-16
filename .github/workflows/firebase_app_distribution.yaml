@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+#      - name: Checkout code
+#        uses: actions/checkout@v2
 #
 #      - name: Set up Flutter
 #        uses: subosito/flutter-action@v2
@@ -37,8 +37,8 @@ jobs:
 #      - name: Build APK for Production
 #        run: flutter build apk --release -v
 
-      - name: Firebase App Distribution Github Action
-        uses: burhankhanzada/firebase_app_distribution_github_action@v0.2.1
+      - name: Upload APK to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           token: ${{ secrets.FIREBASE_CLI_TOKEN }}
