@@ -13,44 +13,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: Set up Flutter
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
           flutter-version: '3.24.4'
 
-      # Step 3: Set up Java Development Kit
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: 17
           distribution: temurin
 
-      # Step 4: Install dependencies for Flutter
       - name: Install Dependencies
         run: flutter pub get
 
-      # Step 5: Clear Flutter build cache
       - name: Clear Flutter Build Cache
         run: flutter clean
 
-      # Step 6: Build the release APK
       - name: Build APK for Production
         run: flutter build apk --release -v
 
-      # Step 7: Install Firebase CLI
-      - name: Install Firebase CLI
-        run: npm install -g firebase-tools
-
-      # Step 8: Upload APK to Firebase App Distribution
       - name: Upload APK to Firebase App Distribution
-        run: |
-          firebase appdistribution:distribute android/app/build/outputs/apk/release/app-release.apk \
-            --app ${{ secrets.FIREBASE_APP_ID }} \
-            --groups maintainers \
-            --release-notes "First GitHub Action Firebase Distribution"
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          apkPath: android/app/build/outputs/apk/release/app-release.apk
+          groups: maintainers
+          file: android/app/build/outputs/apk/release/app-release.apk
+          releaseNotes: "First GitHub Action Firebase Distribution"
