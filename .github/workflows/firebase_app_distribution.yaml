@@ -1,50 +1,46 @@
-name: Android Firebase App Distribution
+name: Android Fastlane with Firebase App Distribution Workflow
+
+
 on:
-  pull_request:
-    branches:
-      - development
   push:
     branches:
-      - development
-  workflow_dispatch:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      # Step 1: Checkout repository
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
-      # Step 2: Set up JDK
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          flutter-version: '3.24.4'
+
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'zulu'
-          java-version: '17'
+          java-version: 17
+          distribution: temurin # Specify the distribution
+          cache: gradle # Optionally enable caching for Gradle or Maven
 
-      # Step 3: Debugging: List files to locate gradlew
-      - name: List files
-        run: ls -la
-        working-directory: android # Update if necessary
+      - name: Flutter Clean
+        run: flutter clean
 
-      # Step 4: Grant execute permissions to gradlew
-      - name: Grant execute permissions
-        run: chmod +x ./gradlew
-        working-directory: android # Update if necessary
+      - name: Build APK for Production
+        run: flutter build apk --release --flavor production -t lib/main_production.dart
 
-      # Step 5: Build APK
-      - name: Build APK
-        run: ./gradlew assembleRelease
-        working-directory: android # Update if necessary
-
-      # Step 6: Upload APK to Firebase App Distribution
-      - name: Firebase App Distribution
+      - name: Upload APK to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           token: ${{ secrets.FIREBASE_CLI_TOKEN }}
           groups: maintainers
           file: android/app/build/outputs/apk/release/app-release.apk
+          releaseNotes: "First GitHub Action Firebase Distribution"
+
+      # Optionally, you can add steps for notifications, testing, etc.
+
