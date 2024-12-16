@@ -27,6 +27,7 @@ import '../../features/auth/presentation/forget_password/view/forget_password.da
 import '../../features/auth/presentation/login/view/login_view.dart';
 import '../../features/auth/presentation/signup/view/signup_view.dart';
 import '../../features/generic/presentation/screens/occasion_view.dart';
+import '../../features/notification_list/presentation/views/notification_list_view.dart';
 import '../../features/orders/presentation/view/order_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/profile/presentation/views/reset_password_profile_view.dart';
@@ -53,6 +54,7 @@ class AppRoutes {
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
   static const String checkoutScreen = 'checkoutScreen';
+  static const String notificationView = 'notificationView';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -146,6 +148,8 @@ class AppRoutes {
         return BaseRoute(page: const TermsAndConditionsPage());
         case AppRoutes.orderView:
         return BaseRoute(page: const OrderView());
+      case AppRoutes.notificationView:
+        return BaseRoute(page: const NotificationView());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }
