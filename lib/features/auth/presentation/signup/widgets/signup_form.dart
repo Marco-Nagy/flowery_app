@@ -12,6 +12,7 @@ import '../../../../../core/utils/widgets/buttons/carved_button.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
 import '../view_model/signup_action.dart';
 import 'gender_selection.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm({super.key});
@@ -41,12 +42,12 @@ class SignUpForm extends StatelessWidget {
           verticalSpacing(
             20,
           ),
-          conditionText(),
+          conditionText(context),
           verticalSpacing(
             50,
           ),
           CurvedButton(
-            title: 'Sign up',
+            title:AppLocalizations.of(context)!.signUp,
             onTap: () {
               cubit.doAction(SignupActionSelected());
             },
@@ -55,8 +56,8 @@ class SignUpForm extends StatelessWidget {
             15,
           ),
           AuthFooter(
-              question: 'Already have an account?',
-              txt: 'Login',
+              question: AppLocalizations.of(context)!.alreadyHaveAnAccount,
+              txt: AppLocalizations.of(context)!.login,
               onPressed: () {
                 context.pushNamed(AppRoutes.login);
               }),

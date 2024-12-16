@@ -5,10 +5,11 @@ import '../../../../core/styles/fonts/my_fonts.dart';
 Widget tabBarWidget({
   required List<Widget> tabs,
   required void Function(int)? onTap,
+  TabAlignment? tabAlignment,
 }) {
   return TabBar(
     isScrollable: true,
-    tabAlignment: TabAlignment.start,
+    tabAlignment: tabAlignment ?? TabAlignment.start,
     dividerColor: Colors.transparent,
     padding: EdgeInsets.zero,
     indicatorSize: TabBarIndicatorSize.label,
