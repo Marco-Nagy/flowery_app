@@ -1,20 +1,19 @@
-name: CI
+name: Android Firebase App Distribution
 on:
   push:
-    branches: master
-  pull_request:
-    branches: master
+    branches:
+      - master
 
   workflow_dispatch:
 
-  jobs:
+jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Firebase App Distribution
-        uses: hasretsariyer/firebase-app-distribution-github-action@v1
-        with:
-          app_id: ${{secrets.FIREBASE_APP_ID}}
-          firebase_token: ${{secrets.FIREBASE_CLI_TOKEN}}
-          app_file: app-release.apk
-          tester_groups: maintainers
+  runs-on: ubuntu-latest
+  steps:
+    - name: Firebase App Distribution
+      uses: hasretsariyer/firebase-app-distribution-github-action@v1z
+      with:
+        app_id: ${{secrets.FIREBASE_APP_ID}}
+        firebase_token: ${{secrets.FIREBASE_CLI_TOKEN}}
+        app_file: app-release.apk
+        tester_groups: maintainers
