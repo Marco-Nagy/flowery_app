@@ -30,7 +30,7 @@ class FirebaseCloudMessaging {
   static Future<void> _firebaseMessagingBackgroundHandler(
       RemoteMessage message) async {
     // Handle background messages here
-    //navigatorKey.currentState?.context.pushNamed(AppRoutes.notificationView);
+    navigatorKey.currentState?.context.pushNamed(AppRoutes.notificationView);
     debugPrint("Handling a background message: ${message.notification}");
   }
 
