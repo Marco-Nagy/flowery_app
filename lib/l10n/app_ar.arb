@@ -216,7 +216,10 @@
   "failure": "فشل",
   "select_city": "اختر المدينة",
   "select_country": "اختر الدولة",
-  "country": "دولة"
+  "country": "دولة",
+  "reorder": "إعادة الطلب",
+  "active": "نشط",
+  "completed": "مكتمل"
 
 
 
