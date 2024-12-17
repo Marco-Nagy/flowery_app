@@ -2,7 +2,6 @@
 class Assets {
   Assets._();
 
-  static const String assetsImagesNotification = 'assets/images/notification.svg';
   static const String fontsOronteusFinaeus = 'assets/fonts/oronteus_finaeus.ttf';
   static const String generatedAssets = 'lib/generated/assets.dart';
   static const String imagesAboutAppImage = 'assets/images/about_app_image.gif';
@@ -36,7 +35,8 @@ class Assets {
   static const String imagesNoNetwork = 'assets/images/noNetwork.png';
   static const String imagesNotNetwork = 'assets/images/Not_network.png';
   static const String imagesNotification = 'assets/images/notification.svg';
-  static const String imagesOrder = 'assets/images/order.svg';
+  static const String imagesNotificationList =
+      'assets/images/notificationList.png';
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
   static const String imagesPen = 'assets/images/pen.png';
   static const String imagesPerson = 'assets/images/person.png';
@@ -53,5 +53,4 @@ class Assets {
   static const String imagesTrachIcon = 'assets/images/trach_icon.png';
   static const String imagesUpload = 'assets/images/upload.png';
 
-  static const String jsonFloweryLoader = 'assets/json/flowery_loader.json~';
 }
