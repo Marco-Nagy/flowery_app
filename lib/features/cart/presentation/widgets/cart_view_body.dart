@@ -14,15 +14,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class CartViewBody extends StatelessWidget {
+import '../../../../core/services/shared_preference/location_helper.dart';
+import '../../../../di/di.dart';
+import '../../../auth/data/data_sources/contracts/offline_data_source.dart';
+
+class CartViewBody extends StatefulWidget {
   const CartViewBody({super.key, required this.cart});
-final CartEntity cart;
+  final CartEntity cart;
+
+  @override
+  State<CartViewBody> createState() => _CartViewBodyState();
+}
+
+class _CartViewBodyState extends State<CartViewBody> {
+  final LocationHelper _locationHelper = LocationHelper();
+  final OfflineDataSource offlineDataSource = getIt<OfflineDataSource>();
+
+  String? _locationAddress;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLocation();
+  }
+
+  Future<void> _loadLocation() async {
+    String? savedLocation = await _locationHelper.getSavedLocation();
+    setState(() {
+      _locationAddress = savedLocation ?? AppLocalizations.of(context)!.no_location;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: customAppBar(
-        appBarTxt: '${AppLocalizations.of(context)!.cart} (${cart.numOfCartItems} ${AppLocalizations.of(context)!.items}) ',
+        appBarTxt: '${AppLocalizations.of(context)!.cart} (${widget.cart.numOfCartItems} ${AppLocalizations.of(context)!.items})',
         showArrow: true,
         context: context,
       ),
@@ -37,17 +65,12 @@ final CartEntity cart;
                   height: 20.h,
                   width: 20.w,
                 ),
-                SizedBox(
-                  width: 2.w,
-                ),
+                SizedBox(width: 2.w),
                 Text(
-                 AppLocalizations.of(context)!.deliver_sheikh_zayed ,
-                  style: MyFonts.styleMedium500_14
-                      .copyWith(color: MyColors.blackBase),
+                  _locationAddress ?? AppLocalizations.of(context)!.no_location,
+                  style: MyFonts.styleMedium500_14.copyWith(color: MyColors.blackBase),
                 ),
-                SizedBox(
-                  width: 2.w,
-                ),
+                SizedBox(width: 2.w),
                 Image.asset(
                   Assets.imagesArrowDownIos,
                   height: 16.h,
@@ -56,30 +79,29 @@ final CartEntity cart;
               ],
             ),
           ),
-           Expanded(
-            child: SizedBox(
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: cart.cartList.length,
-                itemBuilder: (context, index) {
-                  return FadeInLeft(
-                      curve: Curves.linear,
-                      duration: Duration(milliseconds: 100 * (index + 5)),
-                      child: CartItem(
-                        product: cart.cartList[index],
-                      ));
-                },),
-             ),
-           ),
-          CartTotalAmount(cart: cart),
+          Expanded(
+            child: ListView.builder(
+              itemCount: widget.cart.cartList.length,
+              itemBuilder: (context, index) {
+                return FadeInLeft(
+                  curve: Curves.linear,
+                  duration: Duration(milliseconds: 100 * (index + 5)),
+                  child: CartItem(product: widget.cart.cartList[index]),
+                );
+              },
+            ),
+          ),
+          CartTotalAmount(cart: widget.cart),
           verticalSpacing(16),
-          CurvedButton(title:AppLocalizations.of(context)!.checkout,
-            onTap: () => context.pushNamed(AppRoutes.checkoutScreen,
-              arguments: cart),
-            color: MyColors.baseColor,),
+          CurvedButton(
+            title: AppLocalizations.of(context)!.checkout,
+            onTap: () => context.pushNamed(AppRoutes.checkoutScreen, arguments: widget.cart),
+            color: MyColors.baseColor,
+          ),
           verticalSpacing(16),
         ],
       ),
     );
   }
 }
+
