@@ -1,7 +1,7 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/payment_option.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/widgets/check_out/section_title.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/widgets/payment_option.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/widgets/section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
