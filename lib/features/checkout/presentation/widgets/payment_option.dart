@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class PaymentOption extends StatelessWidget {
   final String title;
   final String selectedValue;
-  final Function(String) onSelected;
+  final Function onSelected;
 
   const PaymentOption({
     super.key,

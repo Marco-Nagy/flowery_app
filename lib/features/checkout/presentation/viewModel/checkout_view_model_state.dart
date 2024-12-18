@@ -5,8 +5,5 @@ sealed class CheckoutViewModelState {}
 
 final class CheckoutViewModelInitial extends CheckoutViewModelState {}
 
-final class AddShippingAddress extends CheckoutViewModelState {
-
-
-   AddShippingAddress();
-}
+final class AddShippingAddress extends CheckoutViewModelState {}
+final class SelectPaymentOption extends CheckoutViewModelState {}
