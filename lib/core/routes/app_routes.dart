@@ -13,6 +13,7 @@ import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dar
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/checkout/presentation/view/checkout_screen.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/screens/categories_view.dart';
@@ -138,6 +139,9 @@ class AppRoutes {
           BlocProvider(
             create: (context) =>
                 getIt.get<AddressViewModel>()..getSavedAddresses(),
+          ),    BlocProvider(
+            create: (context) =>
+                getIt.get<CheckoutViewModelCubit>(),
           ),
         ], child: CheckoutScreen(cart: args as CartEntity)));
       case AppRoutes.savedAddressScreen:

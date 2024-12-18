@@ -1,6 +1,9 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view_model/address_cubit.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view_model/address_states.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_base_action.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,21 +12,17 @@ import 'address_card.dart';
 
 class AddressesList extends StatefulWidget {
   AddressesList({Key? key}) : super(key: key);
-  final int initIndex = -1;
 
   @override
   State<AddressesList> createState() => _AddressesListState();
 }
 
 class _AddressesListState extends State<AddressesList> {
-  late int selectedIndex;
-  @override
-  void initState() {
-    super.initState();
-    selectedIndex = widget.initIndex;
-  }
+
   @override
   Widget build(BuildContext context) {
+    CheckoutViewModelCubit viewModelCubit =
+        context.read<CheckoutViewModelCubit>();
     return BlocBuilder<AddressViewModel, AddressStates>(
       builder: (context, state) {
         switch (state) {
@@ -32,17 +31,19 @@ class _AddressesListState extends State<AddressesList> {
               shrinkWrap: true,
               itemCount: state.addresses.length,
               itemBuilder: (context, index) {
-                return AddressCard(
-                  title: state.addresses[index].street!,
-                  address:
-                      '${state.addresses[index].city} - ${state.addresses[index].street}',
-                  isSelected: index == selectedIndex,
-                  onTap: () {
-                    setState(() {
-                      selectedIndex = index;
-                    });
-
-                  },
+                return FadeInRight(
+                  animate: true,
+                  curve: Curves.easeIn,
+                  duration: Duration(milliseconds: 120 * (index + 1)),
+                  child: AddressCard(
+                    address: state.addresses[index],
+                    isSelected: viewModelCubit.selectedIndex == index,
+                    onTap: () {
+                      viewModelCubit.doAction(
+                          SelectAddressAction(state.addresses[index], index));
+                      setState(() {});
+                    },
+                  ),
                 );
               },
             );

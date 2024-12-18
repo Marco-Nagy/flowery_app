@@ -1,8 +1,13 @@
-import 'package:flowery_e_commerce/features/address_details/domain/entities/request/add_address_request_entity.dart';
+import 'package:flowery_e_commerce/features/address/domain/entities/response/SavedAddressResponseEntity.dart';
 
 sealed class CheckoutBaseAction {
 }
 class SelectAddressAction extends CheckoutBaseAction {
-  final AddAddressRequestEntity address;
-   SelectAddressAction(this.address);
+  final GetSavedAddressesEntity address;
+  final int index;
+   SelectAddressAction(this.address, this.index);
+}
+class SelectPaymentOptionAction extends CheckoutBaseAction {
+  final String option;
+  SelectPaymentOptionAction(this.option);
 }

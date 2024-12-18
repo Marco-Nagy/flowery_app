@@ -113,6 +113,8 @@ import '../features/categories/domain/use_cases/categories_use_case.dart'
 import '../features/categories/domain/use_cases/products_use_case.dart' as _i98;
 import '../features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart'
     as _i80;
+import '../features/checkout/presentation/viewModel/checkout_view_model_cubit.dart'
+    as _i510;
 import '../features/generic/data/data_sources/contracts/generic_online_data_source.dart'
     as _i211;
 import '../features/generic/data/data_sources/impl/generic_online_data_source_impl.dart'
@@ -168,6 +170,8 @@ extension GetItInjectableX on _i174.GetIt {
     final registerModule = _$RegisterModule();
     gh.factory<_i361.LogInterceptor>(
         () => networkFactory.providerInterceptor());
+    gh.factory<_i510.CheckoutViewModelCubit>(
+        () => _i510.CheckoutViewModelCubit());
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
