@@ -19,6 +19,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../widgets/location _widget.dart';
+
 class HomeTab extends StatelessWidget {
   const HomeTab({super.key});
 
@@ -72,11 +74,7 @@ class HomeTab extends StatelessWidget {
                     children: [
                       Image.asset(Assets.imagesLocationOn,height: 20.h,width: 20.w,),
                       SizedBox(width: 2.w,),
-                      Text(
-                          AppLocalizations.of(context)!.deliver_location,
-                        style: MyFonts.styleMedium500_14
-                            .copyWith(color: MyColors.blackBase),
-                      ),
+                      LocationPage(),
                       SizedBox(width: 2.w,),
                       Image.asset(Assets.imagesArrowDownIos,height: 16.h,width: 16.w,),
                     ],
