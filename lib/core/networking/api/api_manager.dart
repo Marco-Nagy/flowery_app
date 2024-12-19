@@ -22,6 +22,7 @@ import 'package:flowery_e_commerce/features/profile/data/models/request/change_p
 import 'package:flowery_e_commerce/features/profile/data/models/response/change_password_response_dto.dart';
 import 'package:flowery_e_commerce/features/profile/data/models/response/get_logged_user_data_response_dto.dart';
 import 'package:flowery_e_commerce/features/profile/data/models/response/upload_photo_response_dto.dart';
+import 'package:flowery_e_commerce/features/search/data/models/response/search_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -122,4 +123,7 @@ abstract class ApiManager {
   @PATCH(ApiConstants.addAddress)
   Future<AddAddressResponseDto> addAddress(
       @Body() AddAddressRequestDto request);
+
+  @GET(ApiConstants.searchProductsApi)
+  Future<SearchResponseDto> searchProducts(@Query("keyword") String keyword);
 }
