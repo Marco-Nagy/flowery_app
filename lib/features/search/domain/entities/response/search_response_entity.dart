@@ -19,7 +19,7 @@ class SearchResponseEntityProducts {
   final int? discount;
   final int? sold;
 
-  SearchResponseEntityProducts(
+  SearchResponseEntityProducts({
     this.id,
     this.title,
     this.slug,
@@ -33,5 +33,5 @@ class SearchResponseEntityProducts {
     this.occasion,
     this.discount,
     this.sold,
-  );
+  });
 }
