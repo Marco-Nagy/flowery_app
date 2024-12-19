@@ -19,5 +19,5 @@ class ApiConstants {
   static const String deleteProductFromCart = "api/v1/cart/";
   static const String addAddress = "api/v1/addresses";
   static const String getLoggedUserAddresses = "api/v1/addresses";
-
+  static const String searchProductsApi = "api/v1/products";
 }
