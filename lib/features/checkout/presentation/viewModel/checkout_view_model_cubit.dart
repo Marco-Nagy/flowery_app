@@ -51,17 +51,15 @@ class CheckoutViewModelCubit extends Cubit<CheckoutViewModelState> {
 
   Future<void> onCashPaymentSelected() async {
     emit(CheckoutLoading());
-    if(currentAddress!= null){
-      emit(CheckoutLoading());
-      var result = await cashUseCase(currentAddress);
-      switch(result) {
-        case Success<String>():
-          emit(CheckoutCashSuccess(successMessage:result.data));
-        case Fail<String>():
-          emit(CheckoutError(error: ErrorHandler.handle(result.exception!)));
-      }
+    emit(CheckoutLoading());
+    var result = await cashUseCase(currentAddress);
+    switch(result) {
+      case Success<String>():
+        emit(CheckoutCashSuccess(successMessage:result.data));
+      case Fail<String>():
+        emit(CheckoutError(error: ErrorHandler.handle(result.exception!)));
     }
-
+  
   }
 
   Future<void> onCreditCardPaymentSelected() async {
