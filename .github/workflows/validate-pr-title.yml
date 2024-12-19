@@ -15,6 +15,5 @@ jobs:
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
         run: |
-          |
           chmod +x ./validate_pr_title.sh
           ./validate_pr_title.sh "${{ github.head_ref }}"
