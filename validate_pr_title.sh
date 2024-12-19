@@ -4,7 +4,7 @@ PR_TITLE=$1
 
 PATTERN="^(feat|fix|docs|style|refactor|test|chore):\ .+"
 
-echo "Validating branch name: $PR_TITLE"
+echo "Validating PR Title : $PR_TITLE"
 
 if [[ $PR_TITLE =~ $PATTERN ]]; then
     echo "✅ PR Title is valid."
