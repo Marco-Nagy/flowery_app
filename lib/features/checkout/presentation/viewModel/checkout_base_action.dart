@@ -3,11 +3,14 @@ import 'package:flowery_e_commerce/features/address/domain/entities/response/Sav
 sealed class CheckoutBaseAction {
 }
 class SelectAddressAction extends CheckoutBaseAction {
-  final GetSavedAddressesEntity address;
+  final AddressesEntity address;
   final int index;
    SelectAddressAction(this.address, this.index);
 }
 class SelectPaymentOptionAction extends CheckoutBaseAction {
   final String option;
   SelectPaymentOptionAction(this.option);
+}
+class CheckoutAction extends CheckoutBaseAction {
+  CheckoutAction();
 }

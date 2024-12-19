@@ -15,7 +15,7 @@ class AddressViewModel extends Cubit<AddressStates> {
     emit(GetSavedAddressesLoadingState());
     var response = await addressUseCase.callSavedAddresses();
     switch (response) {
-      case Success<List<GetSavedAddressesEntity>>():
+      case Success<List<AddressesEntity>>():
         emit(GetSavedAddressesSuccessState(response.data));
       case Fail():
         emit(GetSavedAddressesErrorState(
