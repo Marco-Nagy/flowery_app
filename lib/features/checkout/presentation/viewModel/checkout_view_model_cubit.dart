@@ -1,5 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
+import 'package:flowery_e_commerce/core/networking/error/error_handler.dart';
+import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
 import 'package:flowery_e_commerce/features/address/domain/entities/response/SavedAddressResponseEntity.dart';
+import 'package:flowery_e_commerce/features/checkout/domain/use_cases/cash_use_case.dart';
+import 'package:flowery_e_commerce/features/checkout/domain/use_cases/credit_use_case.dart';
 import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_base_action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
@@ -8,10 +13,14 @@ part 'checkout_view_model_state.dart';
 
 @injectable
 class CheckoutViewModelCubit extends Cubit<CheckoutViewModelState> {
-  CheckoutViewModelCubit() : super(CheckoutViewModelInitial());
-  late GetSavedAddressesEntity currentAddress ;
-   int selectedIndex =-1;
-  String selectedValue = 'Credit card';
+  final CashUseCase cashUseCase;
+  final CreditUseCase creditUseCase;
+
+  CheckoutViewModelCubit(this.cashUseCase, this.creditUseCase)
+      : super(CheckoutViewModelInitial());
+  late AddressesEntity currentAddress;
+  int selectedAddress =-1;
+  String paymentOption = '';
 
   Future<void> doAction(CheckoutBaseAction action) async {
     switch (action) {
@@ -20,22 +29,49 @@ class CheckoutViewModelCubit extends Cubit<CheckoutViewModelState> {
         break;
       case SelectPaymentOptionAction():
        _onPaymentOptionSelected(action.option);
+      case CheckoutAction():
+        if(paymentOption=='cash') {
+          return onCashPaymentSelected();
+        }else {
+          return onCreditCardPaymentSelected();
+        }
     }
   }
 
-void _selectAddress(GetSavedAddressesEntity request,int index) async {
-    selectedIndex = index;
+  void _selectAddress(AddressesEntity request, int index) async {
+    selectedAddress = index;
    currentAddress = request;
-    debugPrint("_selectAddress : $currentAddress");
-    debugPrint("_selectAddress : ${currentAddress.street}");
-    debugPrint("_selectAddress : ${currentAddress.city}");
-    debugPrint("_selectAddress : ${currentAddress.phone}");
     emit(AddShippingAddress());
   }
-  Future<String> _onPaymentOptionSelected(String value)async {
-    debugPrint("_onPaymentOptionSelected : $value");
-    debugPrint("_onPaymentOptionSelected : $selectedValue");
+
+  void _onPaymentOptionSelected(String value) async {
+    paymentOption = await value;
     emit(SelectPaymentOption());
-return  selectedValue =await value;
+  }
+
+  Future<void> onCashPaymentSelected() async {
+    emit(CheckoutLoading());
+    if(currentAddress!= null){
+      emit(CheckoutLoading());
+      var result = await cashUseCase(currentAddress);
+      switch(result) {
+        case Success<String>():
+          emit(CheckoutCashSuccess(successMessage:result.data));
+        case Fail<String>():
+          emit(CheckoutError(error: ErrorHandler.handle(result.exception!)));
+      }
+    }
+
+  }
+
+  Future<void> onCreditCardPaymentSelected() async {
+    emit(CheckoutLoading());
+    var result = await creditUseCase(currentAddress);
+    switch(result) {
+      case Success<String>():
+        emit(CheckoutCreditSuccess(url:result.data));
+      case Fail<String>():
+        emit(CheckoutError(error: ErrorHandler.handle(result.exception!)));
+    }
   }
 }

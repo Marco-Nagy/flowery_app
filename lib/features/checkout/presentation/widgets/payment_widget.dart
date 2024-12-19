@@ -31,7 +31,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
 
         PaymentOption(
           title: AppLocalizations.of(context)!.credit_card,
-          selectedValue: viewModelCubit.selectedValue,
+          selectedValue: 'credit',
           onSelected: (value) {
             viewModelCubit.doAction(SelectPaymentOptionAction(value) );
           },
@@ -39,7 +39,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
         const SizedBox(height: 8),
         PaymentOption(
           title: AppLocalizations.of(context)!.cash_on_delivery,
-          selectedValue: viewModelCubit.selectedValue,
+          selectedValue: 'cash',
           onSelected: (value) {
             viewModelCubit.doAction(SelectPaymentOptionAction(value) );
           },

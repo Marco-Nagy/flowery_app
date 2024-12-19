@@ -113,6 +113,16 @@ import '../features/categories/domain/use_cases/categories_use_case.dart'
 import '../features/categories/domain/use_cases/products_use_case.dart' as _i98;
 import '../features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart'
     as _i80;
+import '../features/checkout/data/data_sources/contracts/checkout_online_data_source.dart'
+    as _i355;
+import '../features/checkout/data/data_sources/impl/checkout_online_data_source_impl.dart'
+    as _i710;
+import '../features/checkout/data/repositories/checkout_repository_impl.dart'
+    as _i74;
+import '../features/checkout/domain/repositories/contracts/checkout_repository.dart'
+    as _i445;
+import '../features/checkout/domain/use_cases/cash_use_case.dart' as _i779;
+import '../features/checkout/domain/use_cases/credit_use_case.dart' as _i147;
 import '../features/checkout/presentation/viewModel/checkout_view_model_cubit.dart'
     as _i510;
 import '../features/generic/data/data_sources/contracts/generic_online_data_source.dart'
@@ -170,8 +180,6 @@ extension GetItInjectableX on _i174.GetIt {
     final registerModule = _$RegisterModule();
     gh.factory<_i361.LogInterceptor>(
         () => networkFactory.providerInterceptor());
-    gh.factory<_i510.CheckoutViewModelCubit>(
-        () => _i510.CheckoutViewModelCubit());
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
@@ -187,6 +195,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i838.ProductsOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i700.AddAddressOnlineDataSource>(
         () => _i172.AddAddressOnlineDataSourceImpl(gh<_i282.ApiManager>()));
+    gh.factory<_i355.CheckoutOnlineDataSource>(
+        () => _i710.CheckoutOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.lazySingleton<_i603.HomeOnlineDataSource>(
         () => _i507.HomeApiManager(gh<_i282.ApiManager>()));
     gh.factory<_i1005.LanguageProvider>(
@@ -216,12 +226,18 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i933.ProfileRepoImpl(gh<_i46.ProfileOnlineDataSource>()));
     gh.factory<_i665.AuthRepository>(
         () => _i990.AuthRepositoryImpl(gh<_i901.AuthOnlineDataSource>()));
+    gh.factory<_i445.CheckoutRepository>(() => _i74.CheckoutRepositoryImpl(
+        dataSource: gh<_i355.CheckoutOnlineDataSource>()));
     gh.factory<_i207.AddAddressUseCase>(
         () => _i207.AddAddressUseCase(gh<_i497.AddAddressRepo>()));
     gh.factory<_i733.ProductRepo>(
         () => _i986.ProductRepoImpl(gh<_i1037.ProductOnlineDataSource>()));
     gh.factory<_i414.ProductUseCase>(
         () => _i414.ProductUseCase(gh<_i733.ProductRepo>()));
+    gh.factory<_i779.CashUseCase>(
+        () => _i779.CashUseCase(gh<_i445.CheckoutRepository>()));
+    gh.factory<_i147.CreditUseCase>(
+        () => _i147.CreditUseCase(gh<_i445.CheckoutRepository>()));
     gh.lazySingleton<_i643.MostSellingProductsRepository>(() =>
         _i221.MostSellingProductsRepoImpl(
             gh<_i475.MostSellingProductsOnlineDataSource>()));
@@ -258,6 +274,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i590.CategoriesRepository>(() =>
         _i620.CategoriesRepositoryImplementation(
             gh<_i518.CategoriesOnlineDataSource>()));
+    gh.factory<_i510.CheckoutViewModelCubit>(() => _i510.CheckoutViewModelCubit(
+          gh<_i779.CashUseCase>(),
+          gh<_i147.CreditUseCase>(),
+        ));
     gh.factory<_i972.MostSellingProductsUseCase>(() =>
         _i972.MostSellingProductsUseCase(
             gh<_i643.MostSellingProductsRepository>()));

@@ -7,13 +7,16 @@ import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_total_amount.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/checkout/presentation/widgets/addresses_list.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/widgets/checkout_consumer.dart';
 import 'package:flowery_e_commerce/features/checkout/presentation/widgets/gift_widget.dart';
 import 'package:flowery_e_commerce/features/checkout/presentation/widgets/payment_widget.dart';
 import 'package:flowery_e_commerce/features/checkout/presentation/widgets/section_title.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:intl/intl.dart';
 
 class CheckoutScreen extends StatefulWidget {
   final CartEntity cart;
@@ -29,6 +32,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     final now = DateTime.now();
     final arriveDate =
         DateTime(now.year, now.month, now.day + 3, now.hour, now.minute);
@@ -84,14 +88,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
               const GiftWidget(),
                const Divider(height: 60,thickness: 24,color: MyColors.white60,),
-
               CartTotalAmount(cart: widget.cart),
               verticalSpacing(16),
-              CurvedButton(
-                title: AppLocalizations.of(context)!.place_order,
-                onTap: () {},
-                color: MyColors.baseColor,
-              ),
+             const CheckoutConsumer(),
               verticalSpacing(16),
             ],
           ),

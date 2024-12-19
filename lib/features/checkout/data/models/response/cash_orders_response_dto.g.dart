@@ -1,66 +1,74 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'cart_response_dto.dart';
+part of 'cash_orders_response_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CartResponseDto _$CartResponseDtoFromJson(Map<String, dynamic> json) =>
-    CartResponseDto(
+CashOrdersResponseDto _$CashOrdersResponseDtoFromJson(
+        Map<String, dynamic> json) =>
+    CashOrdersResponseDto(
       json['message'] as String?,
-      (json['numOfCartItems'] as num?)?.toInt(),
-      json['cart'] == null
+      json['order'] == null
           ? null
-          : CartDto.fromJson(json['cart'] as Map<String, dynamic>),
+          : CashOrdersResponseOrderDto.fromJson(
+              json['order'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CartResponseDtoToJson(CartResponseDto instance) =>
+Map<String, dynamic> _$CashOrdersResponseDtoToJson(
+        CashOrdersResponseDto instance) =>
     <String, dynamic>{
       'message': instance.message,
-      'numOfCartItems': instance.numOfCartItems,
-      'cart': instance.cart,
+      'order': instance.order,
     };
 
-CartDto _$CartDtoFromJson(Map<String, dynamic> json) => CartDto(
-      json['_id'] as String?,
+CashOrdersResponseOrderDto _$CashOrdersResponseOrderDtoFromJson(
+        Map<String, dynamic> json) =>
+    CashOrdersResponseOrderDto(
       json['user'] as String?,
-      (json['cartItems'] as List<dynamic>?)
+      (json['orderItems'] as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : CartItemsDto.fromJson(e as Map<String, dynamic>))
+              : OrderItemsDto.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['discount'] as num?)?.toInt(),
       (json['totalPrice'] as num?)?.toInt(),
-      (json['totalPriceAfterDiscount'] as num?)?.toInt(),
+      json['paymentType'] as String?,
+      json['isPaid'] as bool?,
+      json['isDelivered'] as bool?,
+      json['_id'] as String?,
       json['createdAt'] as String?,
       json['updatedAt'] as String?,
       (json['__v'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$CartDtoToJson(CartDto instance) => <String, dynamic>{
-      '_id': instance.id,
+Map<String, dynamic> _$CashOrdersResponseOrderDtoToJson(
+        CashOrdersResponseOrderDto instance) =>
+    <String, dynamic>{
       'user': instance.user,
-      'cartItems': instance.cartItems,
-      'discount': instance.discount,
+      'orderItems': instance.orderItems,
       'totalPrice': instance.totalPrice,
-      'totalPriceAfterDiscount': instance.totalPriceAfterDiscount,
+      'paymentType': instance.paymentType,
+      'isPaid': instance.isPaid,
+      'isDelivered': instance.isDelivered,
+      '_id': instance.id,
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
       '__v': instance.v,
     };
 
-CartItemsDto _$CartItemsDtoFromJson(Map<String, dynamic> json) => CartItemsDto(
+OrderItemsDto _$OrderItemsDtoFromJson(Map<String, dynamic> json) =>
+    OrderItemsDto(
       json['product'] == null
           ? null
-          : CartItemProductDto.fromJson(
+          : OrderItemsProductDto.fromJson(
               json['product'] as Map<String, dynamic>),
       (json['price'] as num?)?.toInt(),
       (json['quantity'] as num?)?.toInt(),
       json['_id'] as String?,
     );
 
-Map<String, dynamic> _$CartItemsDtoToJson(CartItemsDto instance) =>
+Map<String, dynamic> _$OrderItemsDtoToJson(OrderItemsDto instance) =>
     <String, dynamic>{
       'product': instance.product,
       'price': instance.price,
@@ -68,8 +76,9 @@ Map<String, dynamic> _$CartItemsDtoToJson(CartItemsDto instance) =>
       '_id': instance.id,
     };
 
-CartItemProductDto _$CartItemProductDtoFromJson(Map<String, dynamic> json) =>
-    CartItemProductDto(
+OrderItemsProductDto _$OrderItemsProductDtoFromJson(
+        Map<String, dynamic> json) =>
+    OrderItemsProductDto(
       json['_id'] as String?,
       json['title'] as String?,
       json['slug'] as String?,
@@ -84,11 +93,13 @@ CartItemProductDto _$CartItemProductDtoFromJson(Map<String, dynamic> json) =>
       json['createdAt'] as String?,
       json['updatedAt'] as String?,
       (json['__v'] as num?)?.toInt(),
-      (json['sold'] as num?)?.toInt(),
       (json['discount'] as num?)?.toInt(),
+      (json['sold'] as num?)?.toInt(),
+      json['id'] as String?,
     );
 
-Map<String, dynamic> _$CartItemProductDtoToJson(CartItemProductDto instance) =>
+Map<String, dynamic> _$OrderItemsProductDtoToJson(
+        OrderItemsProductDto instance) =>
     <String, dynamic>{
       '_id': instance.id,
       'title': instance.title,
@@ -104,6 +115,7 @@ Map<String, dynamic> _$CartItemProductDtoToJson(CartItemProductDto instance) =>
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
       '__v': instance.v,
-      'sold': instance.sold,
       'discount': instance.discount,
+      'sold': instance.sold,
+      'id': instance.iD,
     };
