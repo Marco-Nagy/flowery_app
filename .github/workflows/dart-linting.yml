@@ -51,12 +51,6 @@ jobs:
       - name: Run Dart Fix
         run: dart fix --apply
 
-      - name: Prepare analysis options
-        run: |
-          echo "analyzer:" > analysis_options.yaml
-          echo "  exclude:" >> analysis_options.yaml
-          echo "    - '**/.env*'" >> analysis_options.yaml
-
       - name: Run Flutter analyzer
         run: flutter analyze
 
