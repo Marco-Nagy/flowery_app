@@ -31,6 +31,7 @@ import '../../features/orders/presentation/view/order_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/profile/presentation/views/reset_password_profile_view.dart';
 import '../../features/profile/presentation/widgets/terms_conditions_page.dart';
+import '../../features/search/presentation/views/search_view.dart';
 
 class AppRoutes {
   static const String login = '/';
@@ -53,6 +54,7 @@ class AppRoutes {
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
   static const String checkoutScreen = 'checkoutScreen';
+  static const String searchView = 'searchView';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -146,6 +148,8 @@ class AppRoutes {
         return BaseRoute(page: const TermsAndConditionsPage());
         case AppRoutes.orderView:
         return BaseRoute(page: const OrderView());
+      case AppRoutes.searchView:
+        return BaseRoute(page: const SearchView());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }
