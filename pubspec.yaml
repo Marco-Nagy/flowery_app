@@ -54,6 +54,8 @@ dependencies:
   flutter_localization:
   intl_utils:
   country_state_city:
+  flutter_dotenv:
+
 
   # Ui
   lottie:
@@ -75,6 +77,15 @@ dependencies:
   flutter_bloc:
   flutter_svg:
   bloc:
+
+  # Firebase ML Kit
+  firebase_core:
+  firebase_crashlytics: ^4.2.0
+  firebase_analytics: ^11.3.6
+  googleapis: ^13.2.0
+  googleapis_auth: ^1.6.0
+  firebase_messaging:
+  flutter_local_notifications:
 
 dev_dependencies:
   flutter_test:
@@ -107,6 +118,7 @@ flutter:
     - assets/images/
     - assets/fonts/
     - lib/generated/assets.dart
+    - .env.firebase
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
