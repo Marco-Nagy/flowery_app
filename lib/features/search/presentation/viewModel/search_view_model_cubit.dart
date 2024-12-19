@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
 import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
 import 'package:flowery_e_commerce/features/search/domain/use_cases/search_usecase.dart';
+import 'package:flowery_e_commerce/features/search/presentation/viewModel/search_action.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
@@ -17,7 +18,15 @@ class SearchViewModelCubit extends Cubit<SearchViewModelState> {
   @factoryMethod
   SearchViewModelCubit(this._useCase) : super(SearchViewModelInitial());
 
-  Future<void> searchProducts({required String keyword}) async {
+  void doAction(SearchAction action) {
+    switch (action) {
+      case SearchProductAction():
+        _searchProducts(keyword: action.keyword);
+        break;
+    }
+  }
+
+  Future<void> _searchProducts({required String keyword}) async {
     emit(SearchViewModelLoading());
     final result = await _useCase.searchProducts(keyword: keyword);
     switch (result) {
