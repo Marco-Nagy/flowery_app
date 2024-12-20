@@ -7,6 +7,7 @@ import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/categories/viewModel/categories_action.dart';
 import 'package:flowery_e_commerce/features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/generic/presentation/widgets/custom_search_categories.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/best_seller_cubit/best_seller_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/occasions_cubit/occasions_cubit.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/widgets/custom_best_seller_list.dart';
@@ -43,19 +44,22 @@ class HomeTab extends StatelessWidget {
       child: Scaffold(
         backgroundColor: MyColors.white,
         appBar: AppBar(
+          backgroundColor: MyColors.white,
           title: FadeInDown(
             duration: const Duration(milliseconds:700),
             child: Row(
               children: [
-                Image.asset(
-                  Assets.imagesLogo,
-                  width: 89.w,
-                  height: 35.h,
+                Flexible(
+                  child: Image.asset(
+                    Assets.imagesLogo,
+                    width: 89.w,
+                    height: 35.h,
+                  ),
                 ),
                 SizedBox(
                   width: 20.w,
                 ),
-                SizedBox(width: 220.w, height: 50.h, child: SearchTextField()),
+                const Expanded(flex: 3, child: CustomSearchWidget()),
               ],
             ),
           ),
