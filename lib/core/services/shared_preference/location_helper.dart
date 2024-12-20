@@ -1,19 +1,14 @@
-import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../features/auth/data/data_sources/contracts/offline_data_source.dart';
 class LocationHelper {
-  final OfflineDataSource offlineDataSource = getIt<OfflineDataSource>();
-
   Future<void> saveLocation(String location) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? token = await offlineDataSource.getToken();
-      await prefs.setString('location_$token', location);
+      await prefs.setString('location', location);
     } catch (e) {
       rethrow;
     }
@@ -22,8 +17,7 @@ class LocationHelper {
   Future<String?> getSavedLocation() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? token = await offlineDataSource.getToken();
-      return prefs.getString('location_$token');
+      return prefs.getString('location');
     } catch (e) {
       return null;
     }
@@ -37,7 +31,7 @@ class LocationHelper {
     }
   }
 
-  Future<LocationPermission> requestLocationPermission( BuildContext context) async {
+  Future<LocationPermission> requestLocationPermission(BuildContext context) async {
     try {
       LocationPermission permission = await Geolocator.checkPermission();
       if (permission == LocationPermission.denied) {
@@ -49,7 +43,7 @@ class LocationHelper {
     }
   }
 
-  Future<Position> getCurrentLocation( BuildContext context) async {
+  Future<Position> getCurrentLocation(BuildContext context) async {
     try {
       return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.best,
