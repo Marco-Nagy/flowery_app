@@ -19,7 +19,6 @@ class SearchView extends StatelessWidget {
             const CustomSearchBar(
               hintText: "Search for products ...",
             ),
-            // Popular Searches Section
             Expanded(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),

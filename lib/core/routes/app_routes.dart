@@ -31,6 +31,7 @@ import '../../features/orders/presentation/view/order_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/profile/presentation/views/reset_password_profile_view.dart';
 import '../../features/profile/presentation/widgets/terms_conditions_page.dart';
+import '../../features/search/presentation/viewModel/search_view_model_cubit.dart';
 import '../../features/search/presentation/views/search_view.dart';
 
 class AppRoutes {
@@ -149,7 +150,11 @@ class AppRoutes {
         case AppRoutes.orderView:
         return BaseRoute(page: const OrderView());
       case AppRoutes.searchView:
-        return BaseRoute(page: const SearchView());
+        return BaseRoute(
+            page: BlocProvider(
+          create: (context) => getIt.get<SearchViewModelCubit>(),
+          child: const SearchView(),
+        ));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }
