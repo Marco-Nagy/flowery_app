@@ -13,7 +13,6 @@ import 'package:flowery_e_commerce/features/home_screen/presentation/home_cubit/
 import 'package:flowery_e_commerce/features/home_screen/presentation/widgets/custom_best_seller_list.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/widgets/custom_categories_list.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/widgets/custom_occasion_list.dart';
-import 'package:flowery_e_commerce/features/home_screen/presentation/widgets/search_textfield.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
