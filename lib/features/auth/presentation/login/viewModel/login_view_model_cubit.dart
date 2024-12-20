@@ -6,8 +6,10 @@ import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../../core/services/shared_preference/location_helper.dart';
 import '../../../data/data_sources/contracts/offline_data_source.dart';
 import '../../../domain/entities/response/login_response_entity.dart';
 import '../../../domain/use_cases/login_use_case.dart';
@@ -19,6 +21,7 @@ part 'login_view_model_state.dart';
 class LoginViewModel extends Cubit<LoginViewModelState> {
   final LoginUseCase _loginUseCase;
   final OfflineDataSource _offlineDataSource = getIt<OfflineDataSource>();
+  final LocationHelper _locationHelper = LocationHelper();
 
   @factoryMethod
   LoginViewModel(this._loginUseCase) : super(LoginViewModelInitial());
@@ -32,6 +35,21 @@ class LoginViewModel extends Cubit<LoginViewModelState> {
 
   Future<void> _login(LoginAction action, BuildContext context) async {
     emit(LoginViewModelLoading());
+    // Check location permission
+    bool isServiceEnabled = await _locationHelper.isLocationServiceEnabled();
+    if (!isServiceEnabled) {
+      emit(LoginViewModelError(ErrorHandler.handle(
+          Exception(AppLocalizations.of(context)!.location_services_are_disabled))));
+      return;
+    }
+
+    LocationPermission permission = await _locationHelper.requestLocationPermission(context);
+    if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
+      emit(LoginViewModelError(ErrorHandler.handle(
+          Exception(AppLocalizations.of(context)!.location_permission_denied))));
+      return;
+    }
+
     var result = await _loginUseCase.login(action.request);
     switch (result) {
       case Success<LoginResponseEntity>():
@@ -41,7 +59,6 @@ class LoginViewModel extends Cubit<LoginViewModelState> {
             debugPrint("${_offlineDataSource.getToken()}");
           }
           emit(LoginViewModelSuccess(result.data));
-         // context.pushReplacementNamed(AppRoutes.homeScreen);
           WidgetsBinding.instance.addPostFrameCallback((_) {
             context.pushReplacementNamed(AppRoutes.homeScreen);
           });
