@@ -1,3 +1,4 @@
+import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
 import 'package:flowery_e_commerce/features/search/presentation/viewModel/search_view_model_cubit.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,7 @@ class SearchView extends StatelessWidget {
                       );
                     case SearchViewModelLoading():
                       return const Center(
-                        child: CircularProgressIndicator(),
+                        child: AppLoader(),
                       );
                     case SearchViewModelSuccess():
                       if (state.result.products == null ||
