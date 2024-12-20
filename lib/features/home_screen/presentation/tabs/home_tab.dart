@@ -73,9 +73,9 @@ class HomeTab extends StatelessWidget {
                   child: Row(
                     children: [
                       Image.asset(Assets.imagesLocationOn,height: 20.h,width: 20.w,),
-                      SizedBox(width: 2.w,),
-                      LocationPage(),
-                      SizedBox(width: 2.w,),
+                      SizedBox(width: 8.w,),
+                      LocationWidget(),
+                      SizedBox(width: 8.w,),
                       Image.asset(Assets.imagesArrowDownIos,height: 16.h,width: 16.w,),
                     ],
                   ),

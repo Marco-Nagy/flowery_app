@@ -65,12 +65,12 @@ class _CartViewBodyState extends State<CartViewBody> {
                   height: 20.h,
                   width: 20.w,
                 ),
-                SizedBox(width: 2.w),
+                SizedBox(width: 8.w),
                 Text(
                   _locationAddress ?? AppLocalizations.of(context)!.no_location,
-                  style: MyFonts.styleMedium500_14.copyWith(color: MyColors.blackBase),
+                  style: MyFonts.styleMedium500_14.copyWith(color: MyColors.blackBase ,overflow: TextOverflow.ellipsis),
                 ),
-                SizedBox(width: 2.w),
+                SizedBox(width: 8.w),
                 Image.asset(
                   Assets.imagesArrowDownIos,
                   height: 16.h,
