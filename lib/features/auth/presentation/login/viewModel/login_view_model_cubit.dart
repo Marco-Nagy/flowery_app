@@ -8,7 +8,6 @@ import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../core/services/shared_preference/location_helper.dart';
 import '../../../data/data_sources/contracts/offline_data_source.dart';
 import '../../../domain/entities/response/login_response_entity.dart';
@@ -38,15 +37,13 @@ class LoginViewModel extends Cubit<LoginViewModelState> {
     // Check location permission
     bool isServiceEnabled = await _locationHelper.isLocationServiceEnabled();
     if (!isServiceEnabled) {
-      emit(LoginViewModelError(ErrorHandler.handle(
-          Exception(AppLocalizations.of(context)!.location_services_are_disabled))));
+      emit(LocationPermissionDenied());
       return;
     }
 
     LocationPermission permission = await _locationHelper.requestLocationPermission(context);
     if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
-      emit(LoginViewModelError(ErrorHandler.handle(
-          Exception(AppLocalizations.of(context)!.location_permission_denied))));
+      emit(LocationPermissionDenied());
       return;
     }
 
