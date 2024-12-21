@@ -7,57 +7,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class CartView extends StatefulWidget {
-  const CartView({super.key});
+class CartView extends StatelessWidget {
+  const CartView({super.key, required this.backButtonVisible});
 
-  @override
-  State<CartView> createState() => _CartViewState();
-}
-
-class _CartViewState extends State<CartView> {
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  final bool backButtonVisible;
 
   @override
   Widget build(BuildContext context) {
     CartViewModelCubit cartViewModel = context.read<CartViewModelCubit>();
 
     return BlocConsumer<CartViewModelCubit, CartViewModelState>(
-
       builder: (context, state) {
-
-        switch (state) {
-          case GetUserCartDataSuccess():
-            return state.cartData.cartList.isNotEmpty? CartViewBody(
-              cart: state.cartData,
-            ):const EmptyCartScreen();
-            case UpdateCartProductQuantitySuccess():
-            break;
-          case RemoveProductFromCartSuccess():
-            return cartViewModel.cartData!.cartList.isNotEmpty? CartViewBody(
-              cart: cartViewModel.cartData!,
-            ):const EmptyCartScreen();
-          case AddProductToCartSuccess():
-            break;
-          case ClearUserCartDataSuccess():
-          case CartViewModelLoading():
-            return const AppLoader();
-          case CartViewModelError():
-            break;
-          case CartViewModelInitial():
-        }
-        return  CartViewBody(
-          cart: context.read<CartViewModelCubit>().cartData!,
-        );
-      }, listener: (BuildContext context, CartViewModelState state) {
+        return cartViewModel.cartData!= null? CartViewBody(
+          backButtonVisible: backButtonVisible,
+          cart: cartViewModel.cartData!,
+        ): const EmptyCartScreen();
+      },
+      listener: (BuildContext context, CartViewModelState state) {
         if (state is CartViewModelError) {
           return aweSnackBar(
               msg: state.errorModel.error!,
               context: context,
-              type: MessageTypeConst.failure, title: AppLocalizations.of(context)!.error);
+              type: MessageTypeConst.failure,
+              title: AppLocalizations.of(context)!.error);
         }
       },
     );
