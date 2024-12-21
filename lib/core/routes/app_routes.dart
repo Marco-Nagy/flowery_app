@@ -10,8 +10,10 @@ import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/
 import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_selling_cubit.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/screens/most_selling_screen.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/view/cart_view.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_view_body.dart';
 import 'package:flowery_e_commerce/features/checkout/presentation/view/checkout_screen.dart';
 import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
@@ -55,6 +57,7 @@ class AppRoutes {
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
   static const String checkoutScreen = 'checkoutScreen';
+  static const String cartScreen = 'cartScreen';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -127,7 +130,11 @@ class AppRoutes {
       case AppRoutes.profileMainScreen:
         return BaseRoute(page: const ProfileMainScreen());
       case AppRoutes.productsDetailsView:
-        return BaseRoute(page: ProductDetailsView(product: args  as dynamic,));
+        return BaseRoute(page:      BlocProvider(
+    create: (context) => getIt.get<CartViewModelCubit>()
+    ..doAction(
+    GetUserCartDataAction(),
+    ),child: ProductDetailsView(product: args  as dynamic,)));
 
       case AppRoutes.profileView:
         return BaseRoute(page: const ProfileView());
@@ -156,7 +163,15 @@ class AppRoutes {
       case AppRoutes.termsAndConditionsPage:
         return BaseRoute(page: const TermsAndConditionsPage());
         case AppRoutes.orderView:
-        return BaseRoute(page: const OrderView());
+        return BaseRoute(page: const OrderView()); 
+        case AppRoutes.cartScreen:
+        return BaseRoute(page:       BlocProvider(
+    create: (context) => getIt.get<CartViewModelCubit>()
+    ..doAction(
+    GetUserCartDataAction(),
+    ),
+  child: const CartView( backButtonVisible: true),
+));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }
