@@ -38,8 +38,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-dart-tool-
 
+      - name: Create placeholder .env.firebase
+        run: echo "FIREBASE_CONFIG_PLACEHOLDER=true" > .env.firebase
+
       - name: Install dependencies
         run: flutter pub get
+
 
       - name: Generate localization files
         run: flutter gen-l10n
