@@ -1,5 +1,4 @@
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/base/base_view.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_icon_badge.dart';

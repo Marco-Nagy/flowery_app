@@ -13,7 +13,6 @@ import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dar
 import 'package:flowery_e_commerce/features/cart/presentation/view/cart_view.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_view_body.dart';
 import 'package:flowery_e_commerce/features/checkout/presentation/view/checkout_screen.dart';
 import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
@@ -24,6 +23,7 @@ import 'package:flowery_e_commerce/features/product/presentation/view/product_de
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../di/di.dart';
 import '../../features/about_app/presentation/views/about_app_view.dart';
 import '../../features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
