@@ -70,15 +70,7 @@ class HomeTab extends StatelessWidget {
                 margin: EdgeInsets.all(15.sp),
                 child: FadeInDown(
                   duration: const Duration(milliseconds:700),
-                  child: Row(
-                    children: [
-                      Image.asset(Assets.imagesLocationOn,height: 20.h,width: 20.w,),
-                      SizedBox(width: 8.w,),
-                      LocationWidget(),
-                      SizedBox(width: 8.w,),
-                      Image.asset(Assets.imagesArrowDownIos,height: 16.h,width: 16.w,),
-                    ],
-                  ),
+                  child: LocationWidget(),
                 ),
               ),
               SizedBox(height: 10.h,),
