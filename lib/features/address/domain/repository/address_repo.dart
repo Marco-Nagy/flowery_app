@@ -3,5 +3,5 @@
 import 'package:flowery_e_commerce/features/address/domain/entities/response/SavedAddressResponseEntity.dart';
 
 abstract class AddressRepo{
-  Future<DataResult<List<GetSavedAddressesEntity>>> getSavedAddresses();
+  Future<DataResult<List<AddressesEntity>>> getSavedAddresses();
  }

@@ -54,7 +54,9 @@ dependencies:
   flutter_localization:
   intl_utils:
   country_state_city:
+  url_launcher: ^6.3.1
   flutter_dotenv:
+
 
 
   # Ui
