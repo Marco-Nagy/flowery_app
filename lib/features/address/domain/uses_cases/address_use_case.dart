@@ -9,7 +9,7 @@ import 'package:injectable/injectable.dart';
 
   AddressUseCase(this.addressRepo);
 
-  Future<DataResult<List<GetSavedAddressesEntity>>> callSavedAddresses(){
+  Future<DataResult<List<AddressesEntity>>> callSavedAddresses(){
     return addressRepo.getSavedAddresses();
   }
 }
