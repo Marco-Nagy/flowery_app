@@ -30,12 +30,10 @@ jobs:
       - name: Create placeholder .env.firebase
         run: echo "FIREBASE_CONFIG_PLACEHOLDER=true" > .env.firebase
 
-      # Decode and place the google-services.json file from GitHub secrets
       - name: Decode and place google-services.json
         run: |
           echo "${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}" | base64 --decode > android/app/google-services.json
 
-      # Set up Firebase credentials for authentication
       - name: Set up Firebase service account credentials
         run: |
           echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}" > $HOME/firebase-service-account.json
@@ -54,10 +52,16 @@ jobs:
         run: flutter build apk --release
 
       - name: Distribute APK to Firebase
-        uses: actions/upload-artifact@v3
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           token: ${{ secrets.FIREBASE_TOKEN }}
-          groups: maintainers
           file: build/app/outputs/flutter-apk/app-release.apk
+          groups: maintainers
           releaseNotes: "First GitHub Action Firebase Distribution"
+
+      - name: Upload APK as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
