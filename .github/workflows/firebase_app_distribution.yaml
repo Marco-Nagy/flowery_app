@@ -25,11 +25,11 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-#          channel: 'stable'
           flutter-version: '3.24.4'
 
-      - name: Create placeholder .env.firebase
-        run: echo "FIREBASE_CONFIG_PLACEHOLDER=true" > .env.firebase
+      - name: Decode and place google-services.json
+        run: |
+          echo "${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}" | base64 -d > android/app/google-services.json
 
       - name: Install Dependencies
         run: flutter pub get
@@ -43,12 +43,11 @@ jobs:
       - name: Build APK for Production
         run: flutter build apk --release
 
-      - name: Firebase App Distribution
-        uses: actions/upload-artifact@v3
-
+      - name: Distribute APK to Firebase
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
-          firebase_token: ${{ secrets.FIREBASE_TOKEN }}
-          path: build/app/outputs/flutter-apk/app-release.apk
+          token: ${{ secrets.FIREBASE_TOKEN }}
           groups: maintainers
+          file: build/app/outputs/flutter-apk/app-release.apk
           releaseNotes: "First GitHub Action Firebase Distribution"
