@@ -28,6 +28,9 @@ jobs:
 #          channel: 'stable'
           flutter-version: '3.24.4'
 
+      - name: Create placeholder .env.firebase
+        run: echo "FIREBASE_CONFIG_PLACEHOLDER=true" > .env.firebase
+
       - name: Install Dependencies
         run: flutter pub get
 
