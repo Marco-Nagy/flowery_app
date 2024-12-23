@@ -39,6 +39,7 @@ jobs:
 
       - name: Firebase App Distribution
         uses: actions/upload-artifact@v3
+
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           firebase_token: ${{ secrets.FIREBASE_TOKEN }}
