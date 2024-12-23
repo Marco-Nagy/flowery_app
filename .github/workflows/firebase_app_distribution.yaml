@@ -27,6 +27,9 @@ jobs:
         with:
           flutter-version: '3.24.4'
 
+      - name: Check Firebase CLI Version
+        run: firebase --version
+
       - name: Create placeholder .env.firebase
         run: echo "FIREBASE_CONFIG_PLACEHOLDER=true" > .env.firebase
 
@@ -59,9 +62,12 @@ jobs:
           file: build/app/outputs/flutter-apk/app-release.apk
           groups: maintainers
           releaseNotes: "First GitHub Action Firebase Distribution"
+          debug: true
 
       - name: Upload APK as Artifact
         uses: actions/upload-artifact@v3
         with:
           name: app-release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
+          debug: true
+
