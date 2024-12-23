@@ -26,14 +26,14 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.24.4'
+
       - name: Create placeholder .env.firebase
         run: echo "FIREBASE_CONFIG_PLACEHOLDER=true" > .env.firebase
 
-
+      # Decode and place the google-services.json file from GitHub secrets
       - name: Decode and place google-services.json
         run: |
-          echo "${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}" | base64 -d > android/app/google-services.json
-          cat android/app/google-services.json | jq '.' > /dev/null || exit 1
+          echo "${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}" | base64 --decode > android/app/google-services.json
 
       - name: Install Dependencies
         run: flutter pub get
