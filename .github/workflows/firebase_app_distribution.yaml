@@ -26,6 +26,8 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.24.4'
+      - name: Create placeholder .env.firebase
+        run: echo "FIREBASE_CONFIG_PLACEHOLDER=true" > .env.firebase
 
       - name: Decode and place google-services.json
         run: |
