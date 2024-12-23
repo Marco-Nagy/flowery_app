@@ -34,6 +34,9 @@ jobs:
       - name: Clear Flutter Build Cache
         run: flutter clean
 
+      - name: Generate localization files
+        run: flutter gen-l10n
+
       - name: Build APK for Production
         run: flutter build apk --release
 
