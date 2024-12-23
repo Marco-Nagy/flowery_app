@@ -1,8 +1,7 @@
 plugins {
     id "com.android.application"
-    // START: FlutterFire Configuration
+    // Apply the Google Services plugin for Firebase
     id 'com.google.gms.google-services'
-    // END: FlutterFire Configuration
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
@@ -35,13 +34,23 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // Enable code shrinking, obfuscation, and optimization for release builds
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
             signingConfig = signingConfigs.debug
         }
     }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.4' // Ensure this matches your project
+        classpath 'com.google.gms:google-services:4.4.2' // Latest version
+    }
+
 }
 
 flutter {
     source = "../.."
 }
+
+// Ensure this section is placed at the end of the file
+apply plugin: 'com.google.gms.google-services'
