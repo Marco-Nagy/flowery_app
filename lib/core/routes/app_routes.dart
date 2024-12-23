@@ -2,6 +2,7 @@ import 'package:flowery_e_commerce/core/routes/base_routes.dart';
 import 'package:flowery_e_commerce/core/utils/screens/under_build_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/address_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/saved_address_screen.dart';
+import 'package:flowery_e_commerce/features/address/presentation/view_model/address_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/email_verification.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/reset_password.dart';
@@ -9,9 +10,10 @@ import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/
 import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_selling_cubit.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/screens/most_selling_screen.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/screens/checkout_screen.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/view/checkout_screen.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/screens/categories_view.dart';
@@ -27,6 +29,7 @@ import '../../features/auth/presentation/forget_password/view/forget_password.da
 import '../../features/auth/presentation/login/view/login_view.dart';
 import '../../features/auth/presentation/signup/view/signup_view.dart';
 import '../../features/generic/presentation/screens/occasion_view.dart';
+import '../../features/orders/presentation/view/order_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/profile/presentation/views/reset_password_profile_view.dart';
 import '../../features/profile/presentation/widgets/terms_conditions_page.dart';
@@ -48,7 +51,7 @@ class AppRoutes {
   static const String termsAndConditionsPage = 'TermsAndConditionsPage';
   static const String savedAddressScreen = 'savedAddressScreen';
   static const String addressScreen = 'addressScreen';
-
+  static const String orderView = 'orderView';
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
   static const String checkoutScreen = 'checkoutScreen';
@@ -131,8 +134,17 @@ class AppRoutes {
       case AppRoutes.resetPasswordProfileView:
         return BaseRoute(page: const ResetPasswordProfileView());
         case AppRoutes.checkoutScreen:
-        return BaseRoute(page: CheckoutScreen(cart: args as CartEntity));
-        case AppRoutes.savedAddressScreen:
+        return BaseRoute(
+            page: MultiBlocProvider(providers: [
+          BlocProvider(
+            create: (context) =>
+                getIt.get<AddressViewModel>()..getSavedAddresses(),
+          ),    BlocProvider(
+            create: (context) =>
+                getIt.get<CheckoutViewModelCubit>(),
+          ),
+        ], child: CheckoutScreen(cart: args as CartEntity)));
+      case AppRoutes.savedAddressScreen:
         return BaseRoute(page: const SavedAddressScreen());
         case AppRoutes.addressScreen:
         return BaseRoute(
@@ -143,6 +155,8 @@ class AppRoutes {
         return BaseRoute(page: const AboutAppView());
       case AppRoutes.termsAndConditionsPage:
         return BaseRoute(page: const TermsAndConditionsPage());
+        case AppRoutes.orderView:
+        return BaseRoute(page: const OrderView());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }
