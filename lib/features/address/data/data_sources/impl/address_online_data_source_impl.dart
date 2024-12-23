@@ -14,7 +14,7 @@ class AddressOnlineDataSourceImpl implements AddressOnlineDataSource {
   AddressOnlineDataSourceImpl(this._apiManager);
 
   @override
-  Future<DataResult<List<GetSavedAddressesEntity>>> getSavedAddresses() {
+  Future<DataResult<List<AddressesEntity>>> getSavedAddresses() {
     return executeApi(() async {
       var response = await _apiManager.getSavedAddresses();
       return AddressMapper.toSavedAddressesMapper(response);

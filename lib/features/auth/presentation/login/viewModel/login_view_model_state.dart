@@ -18,3 +18,5 @@ final class LoginViewModelError extends LoginViewModelState {
 
   LoginViewModelError(this.errorMessage);
 }
+
+final class LocationPermissionDenied extends LoginViewModelState {}
