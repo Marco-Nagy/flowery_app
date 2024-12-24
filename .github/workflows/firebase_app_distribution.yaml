@@ -95,7 +95,7 @@ jobs:
           groups: maintainers # Firebase tester group
           releaseNotes: "First GitHub Action Firebase Distribution" # Notes for the release
           debug: true # Enables debug logging for troubleshooting
-          serviceCredentialsFile: $HOME/firebase-service-account.json # Firebase authentication using the credentials service account key
+          serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }} # Firebase authentication using the credentials service account key
         # This action uploads the built APK to Firebase App Distribution for testing.
 
       # Step 13: Upload APK as an artifact
