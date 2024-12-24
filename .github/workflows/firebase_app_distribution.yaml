@@ -90,12 +90,13 @@ jobs:
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }} # The Firebase app ID
-#          token: ${{ secrets.FIREBASE_CLI_TOKEN }} # Firebase CLI authentication token
+#          token: ${{ secrets.FIREBASE_CLI_TOKEN }} # Firebase CLI authentication token " Will be Deprecated Soon "
           file: build/app/outputs/flutter-apk/app-release.apk # Path to the APK file
           groups: maintainers # Firebase tester group
           releaseNotes: "First GitHub Action Firebase Distribution" # Notes for the release
           debug: true # Enables debug logging for troubleshooting
-          serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }} # Firebase authentication using the credentials service account key
+          # Firebase authentication using the credentials service account key [https://github.com/wzieba/Firebase-Distribution-Github-Action/wiki/FIREBASE_TOKEN-migration]
+          serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
         # This action uploads the built APK to Firebase App Distribution for testing.
 
       # Step 13: Upload APK as an artifact
