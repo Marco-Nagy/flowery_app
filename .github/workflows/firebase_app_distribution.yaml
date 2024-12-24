@@ -27,9 +27,6 @@ jobs:
         with:
           flutter-version: '3.24.4'
 
-      - name: Check Firebase CLI Version
-        run: firebase --version
-
       - name: Create placeholder .env.firebase
         run: echo "FIREBASE_CONFIG_PLACEHOLDER=true" > .env.firebase
 
