@@ -8,7 +8,11 @@ import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../generated/assets.dart';
 
 class SectionNotificationMessage extends StatelessWidget {
-  const SectionNotificationMessage({super.key});
+  const SectionNotificationMessage(
+      {super.key, required this.title, required this.body});
+
+  final String title;
+  final String body;
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +32,14 @@ class SectionNotificationMessage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AutoSizeText(
-                      'New Offer',
+                      title,
                       style: MyFonts.styleMedium500_16.copyWith(
                         color: MyColors.baseColor,
                       ),
                     ),
                     verticalSpacing(4.h),
                     AutoSizeText(
-                      'Lorem ipsum dolor sit amet consectetur. Tristique et mauris sem congue in felis id nec. Amet sed morbi bibendum vestibulum.',
+                      body,
                       style: MyFonts.styleRegular400_12.copyWith(
                         color: MyColors.gray,
                       ),
