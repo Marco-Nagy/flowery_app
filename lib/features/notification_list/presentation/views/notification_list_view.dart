@@ -5,9 +5,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/utils/widgets/base/base_view.dart';
 import '../../../../core/utils/widgets/base/custom_app_bar.dart';
 import '../../../../core/utils/widgets/spacing.dart';
+import '../model/notification_args.dart';
 
 class NotificationView extends StatelessWidget {
-  const NotificationView({super.key});
+  const NotificationView({super.key, required this.args});
+
+  final NotificationArgs args;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,10 @@ class NotificationView extends StatelessWidget {
               ],
             ),
           ),
-          const SliverListNotificationMessage()
+          SliverListNotificationMessage(
+            title: args.title.toString(),
+            body: args.body.toString(),
+          )
         ],
       ),
     );
