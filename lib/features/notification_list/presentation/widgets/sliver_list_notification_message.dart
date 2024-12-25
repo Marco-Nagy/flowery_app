@@ -2,14 +2,21 @@ import 'package:flowery_e_commerce/features/notification_list/presentation/widge
 import 'package:flutter/material.dart';
 
 class SliverListNotificationMessage extends StatelessWidget {
-  const SliverListNotificationMessage({super.key});
+  const SliverListNotificationMessage(
+      {super.key, required this.title, required this.body});
+
+  final String title;
+  final String body;
 
   @override
   Widget build(BuildContext context) {
     return SliverList.builder(
-        itemCount: 3,
+        itemCount: 1,
         itemBuilder: (context, index) {
-          return const SectionNotificationMessage();
+          return SectionNotificationMessage(
+            title: title,
+            body: body,
+          );
         });
   }
 }
