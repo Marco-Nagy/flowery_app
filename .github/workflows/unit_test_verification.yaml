@@ -13,7 +13,6 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-          flutter-version: 3.24.4
       - name: Create placeholder .env.firebase
         run: echo "FIREBASE_CONFIG_PLACEHOLDER=true" > .env.firebase
 
@@ -22,3 +21,9 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: Marco-Nagy/flowery_app
+
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
