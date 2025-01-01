@@ -17,9 +17,8 @@ jobs:
       - name: Create placeholder .env.firebase
         run: echo "FIREBASE_CONFIG_PLACEHOLDER=true" > .env.firebase
 
-      - run: flutter pub get
-      - run: flutter test --coverage
-
-      - uses: codecov/codecov-action@v4
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          slug: Marco-Nagy/flowery_app
