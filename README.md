@@ -1,4 +1,4 @@
-# flowery_e_commerce
+# Flowery App [![codecov](https://codecov.io/github/Marco-Nagy/flowery_app/graph/badge.svg?token=GVVWT7Q6N6)](https://codecov.io/github/Marco-Nagy/flowery_app)
 
 A new Flutter project.
 
