@@ -54,16 +54,25 @@ jobs:
         # This step sets up Firebase service account credentials.
         # The key is stored in GitHub Secrets to securely authenticate with Firebase.
 
-      # Step 7: Check and update app version
-      - name: Check and Update App Version
+        # Step 7: Bump version in pubspec.yaml
+      - name: Bump Version in pubspec.yaml
+        id: bump-version
         run: |
-          VERSION_CODE=$(grep 'versionCode' android/app/build.gradle | awk '{print $2}')
-          NEW_VERSION_CODE=$((VERSION_CODE + 1))
-          sed -i "s/versionCode $VERSION_CODE/versionCode $NEW_VERSION_CODE/" android/app/build.gradle
-          VERSION_NAME=$(grep 'versionName' android/app/build.gradle | awk -F\" '{print $2}')
-          NEW_VERSION_NAME="${VERSION_NAME%.*}.$((VERSION_NAME##*. + 1))"
-          sed -i "s/versionName \"$VERSION_NAME\"/versionName \"$NEW_VERSION_NAME\"/" android/app/build.gradle
-        # This step checks the current versionCode and versionName in `build.gradle`, increments them, and updates the file.
+          # Extract the current version
+          VERSION=$(grep -oP 'version:\s*\K[0-9]+\.[0-9]+\.[0-9]+(?=\+)' pubspec.yaml)
+          BUILD=$(grep -oP 'version:\s*[0-9]+\.[0-9]+\.[0-9]+\+\K[0-9]+' pubspec.yaml)
+
+          # Increment the patch version
+          NEW_VERSION=$(echo $VERSION | awk -F. '{print $1 "." $2 "." $3+1}')
+          NEW_BUILD=$((BUILD+1))
+
+          # Update the pubspec.yaml file
+          sed -i "s/version: $VERSION+$BUILD/version: $NEW_VERSION+$NEW_BUILD/" pubspec.yaml
+
+          echo "New version: $NEW_VERSION+$NEW_BUILD"
+          echo "version=$NEW_VERSION+$NEW_BUILD" >> $GITHUB_ENV
+
+
 
       # Step 8: Install project dependencies
       - name: Install Dependencies
