@@ -1,8 +1,8 @@
-import 'package:flowery_e_commerce/features/notification_list/presentation/widgets/section_notification_message.dart';
+import 'package:flowery_e_commerce/features/notification_list/presentation/widgets/notification_message_card.dart';
 import 'package:flutter/material.dart';
 
-class SliverListNotificationMessage extends StatelessWidget {
-  const SliverListNotificationMessage(
+class SliverNotificationList extends StatelessWidget {
+  const SliverNotificationList(
       {super.key, required this.title, required this.body});
 
   final String title;
@@ -13,7 +13,7 @@ class SliverListNotificationMessage extends StatelessWidget {
     return SliverList.builder(
         itemCount: 1,
         itemBuilder: (context, index) {
-          return SectionNotificationMessage(
+          return NotificationMessageCard(
             title: title,
             body: body,
           );
