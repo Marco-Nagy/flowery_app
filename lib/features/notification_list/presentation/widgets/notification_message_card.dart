@@ -7,8 +7,8 @@ import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../generated/assets.dart';
 
-class SectionNotificationMessage extends StatelessWidget {
-  const SectionNotificationMessage(
+class NotificationMessageCard extends StatelessWidget {
+  const NotificationMessageCard(
       {super.key, required this.title, required this.body});
 
   final String title;
