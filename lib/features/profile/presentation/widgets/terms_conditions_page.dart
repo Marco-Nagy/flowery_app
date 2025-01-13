@@ -55,9 +55,12 @@ class TermsAndConditionsPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 verticalSpacing(20.h),
-                Text(AppLocalizations.of(context)!.welcome_app,
-                    style: MyFonts.styleSemiBold600_18
-                        .copyWith(color: MyColors.baseColor)),
+                InkWell(
+                  onTap: () => throw Exception(),
+                  child: Text(AppLocalizations.of(context)!.welcome_app,
+                      style: MyFonts.styleSemiBold600_18
+                          .copyWith(color: MyColors.baseColor)),
+                ),
                 verticalSpacing(10.h),
                 Text(
                   AppLocalizations.of(context)!.welcome_app_description,

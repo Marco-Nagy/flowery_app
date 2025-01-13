@@ -17,12 +17,13 @@ import 'package:flowery_e_commerce/features/cart/data/models/response/cart_respo
 import 'package:flowery_e_commerce/features/cart/data/models/response/remove_from_cart_response_dto.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_products_rsponse_dto.dart';
+import 'package:flowery_e_commerce/features/checkout/data/models/request/shipping_address_request_dto.dart';
+import 'package:flowery_e_commerce/features/checkout/data/models/response/checkout_orders_response_dto.dart';
 import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart';
 import 'package:flowery_e_commerce/features/profile/data/models/request/change_password_request_dto.dart';
 import 'package:flowery_e_commerce/features/profile/data/models/response/change_password_response_dto.dart';
 import 'package:flowery_e_commerce/features/profile/data/models/response/get_logged_user_data_response_dto.dart';
 import 'package:flowery_e_commerce/features/profile/data/models/response/upload_photo_response_dto.dart';
-import 'package:flowery_e_commerce/features/search/data/models/response/search_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -124,6 +125,9 @@ abstract class ApiManager {
   Future<AddAddressResponseDto> addAddress(
       @Body() AddAddressRequestDto request);
 
-  @GET(ApiConstants.searchProductsApi)
-  Future<SearchResponseDto> searchProducts(@Query("keyword") String keyword);
+  @POST("${ApiConstants.checkOutOrders}")
+  Future<CheckoutOrdersResponseDto> checkoutOrders(@Query("url") String endpointUrl,  @Body() ShippingAddressRequestDto request);
+
+  @POST("${ApiConstants.cashOrders}")
+  Future<CheckoutOrdersResponseDto> cashOrders( @Body() ShippingAddressRequestDto request);
 }

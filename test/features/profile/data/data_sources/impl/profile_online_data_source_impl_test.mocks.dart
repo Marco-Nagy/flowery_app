@@ -50,6 +50,10 @@ import 'package:flowery_e_commerce/features/categories/data/models/response/get_
     as _i8;
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_products_rsponse_dto.dart'
     as _i10;
+import 'package:flowery_e_commerce/features/checkout/data/models/request/shipping_address_request_dto.dart'
+    as _i36;
+import 'package:flowery_e_commerce/features/checkout/data/models/response/checkout_orders_response_dto.dart'
+    as _i22;
 import 'package:flowery_e_commerce/features/generic/data/models/generic_response_dto.dart'
     as _i7;
 import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart'
@@ -304,9 +308,9 @@ class _FakeAddAddressResponseDto_19 extends _i1.SmartFake
         );
 }
 
-class _FakeSearchResponseDto_20 extends _i1.SmartFake
-    implements _i22.SearchResponseDto {
-  _FakeSearchResponseDto_20(
+class _FakeCheckoutOrdersResponseDto_20 extends _i1.SmartFake
+    implements _i22.CheckoutOrdersResponseDto {
+  _FakeCheckoutOrdersResponseDto_20(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -711,19 +715,46 @@ class MockApiManager extends _i1.Mock implements _i23.ApiManager {
       ) as _i24.Future<_i21.AddAddressResponseDto>);
 
   @override
-  _i24.Future<_i22.SearchResponseDto> searchProducts(String? keyword) =>
+  _i24.Future<_i22.CheckoutOrdersResponseDto> checkoutOrders(
+    String? endpointUrl,
+    _i36.ShippingAddressRequestDto? request,
+  ) =>
       (super.noSuchMethod(
         Invocation.method(
-          #searchProducts,
-          [keyword],
+          #checkoutOrders,
+          [
+            endpointUrl,
+            request,
+          ],
         ),
-        returnValue:
-            _i24.Future<_i22.SearchResponseDto>.value(_FakeSearchResponseDto_20(
+        returnValue: _i24.Future<_i22.CheckoutOrdersResponseDto>.value(
+            _FakeCheckoutOrdersResponseDto_20(
           this,
           Invocation.method(
-            #searchProducts,
-            [keyword],
+            #checkoutOrders,
+            [
+              endpointUrl,
+              request,
+            ],
           ),
         )),
-      ) as _i24.Future<_i22.SearchResponseDto>);
+      ) as _i24.Future<_i22.CheckoutOrdersResponseDto>);
+
+  @override
+  _i24.Future<_i22.CheckoutOrdersResponseDto> cashOrders(
+          _i36.ShippingAddressRequestDto? request) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #cashOrders,
+          [request],
+        ),
+        returnValue: _i24.Future<_i22.CheckoutOrdersResponseDto>.value(
+            _FakeCheckoutOrdersResponseDto_20(
+          this,
+          Invocation.method(
+            #cashOrders,
+            [request],
+          ),
+        )),
+      ) as _i24.Future<_i22.CheckoutOrdersResponseDto>);
 }
