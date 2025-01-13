@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ..doAction(
           GetUserCartDataAction(),
         ),
-      child: const CartView(),
+      child: const CartView(backButtonVisible: false,),
     ),
     const ProfileMainScreen(),
     const ProfileView(),
