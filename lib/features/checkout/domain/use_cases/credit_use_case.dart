@@ -5,11 +5,11 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class CreditUseCase {
-  final CheckoutRepository repository;
-  CreditUseCase(this.repository);
+  final CheckoutRepository _repository;
+  CreditUseCase(this._repository);
   
   Future<DataResult<String>> call(AddressesEntity body) async {
-    return await repository.creditCheckout(body);
+    return await _repository.creditCheckout(body);
   }
 
 

@@ -22,7 +22,7 @@ class CheckoutConsumer extends StatelessWidget {
         switch (state) {
           case CheckoutCashSuccess():
             aweSnackBar(
-                title: 'Success',
+                title:AppLocalizations.of(context)!.success,
                 msg: state.successMessage,
                 context: context,
                 type: MessageTypeConst.success);
@@ -35,7 +35,7 @@ class CheckoutConsumer extends StatelessWidget {
         }
           case CheckoutError():
             aweSnackBar(
-                title: 'Error',
+                title: AppLocalizations.of(context)!.error,
                 msg: state.error.error!,
                 context: context,
                 type: MessageTypeConst.failure);
