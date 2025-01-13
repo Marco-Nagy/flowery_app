@@ -5,18 +5,18 @@ import 'package:flowery_e_commerce/features/checkout/domain/repositories/contrac
 import 'package:injectable/injectable.dart';
 @Injectable(as:CheckoutRepository )
 class CheckoutRepositoryImpl extends CheckoutRepository{
-  final CheckoutOnlineDataSource dataSource;
-  CheckoutRepositoryImpl({required this.dataSource}) {
+  final CheckoutOnlineDataSource _dataSource;
+  CheckoutRepositoryImpl({required CheckoutOnlineDataSource dataSource}) : _dataSource = dataSource {
   }
   @override
   Future<DataResult<String>> cashCheckout(AddressesEntity entity) {
-   final result = dataSource.cashCheckout(entity);
+   final result = _dataSource.cashCheckout(entity);
     return result;
   }
 
   @override
   Future<DataResult<String>> creditCheckout(AddressesEntity entity) {
-    final result = dataSource.creditCheckout(entity);
+    final result = _dataSource.creditCheckout(entity);
     return result;
   }
 }

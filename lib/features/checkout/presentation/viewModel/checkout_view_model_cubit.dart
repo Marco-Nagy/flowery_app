@@ -13,10 +13,10 @@ part 'checkout_view_model_state.dart';
 
 @injectable
 class CheckoutViewModelCubit extends Cubit<CheckoutViewModelState> {
-  final CashUseCase cashUseCase;
-  final CreditUseCase creditUseCase;
+  final CashUseCase _cashUseCase;
+  final CreditUseCase _creditUseCase;
 
-  CheckoutViewModelCubit(this.cashUseCase, this.creditUseCase)
+  CheckoutViewModelCubit(this._cashUseCase, this._creditUseCase)
       : super(CheckoutViewModelInitial());
   late AddressesEntity currentAddress;
   int selectedAddress =-1;
@@ -52,7 +52,7 @@ class CheckoutViewModelCubit extends Cubit<CheckoutViewModelState> {
   Future<void> onCashPaymentSelected() async {
     emit(CheckoutLoading());
     emit(CheckoutLoading());
-    var result = await cashUseCase(currentAddress);
+    var result = await _cashUseCase(currentAddress);
     switch(result) {
       case Success<String>():
         emit(CheckoutCashSuccess(successMessage:result.data));
@@ -64,7 +64,7 @@ class CheckoutViewModelCubit extends Cubit<CheckoutViewModelState> {
 
   Future<void> onCreditCardPaymentSelected() async {
     emit(CheckoutLoading());
-    var result = await creditUseCase(currentAddress);
+    var result = await _creditUseCase(currentAddress);
     switch(result) {
       case Success<String>():
         emit(CheckoutCreditSuccess(url:result.data));
