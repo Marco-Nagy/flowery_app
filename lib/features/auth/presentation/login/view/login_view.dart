@@ -53,6 +53,7 @@ class _LoginViewState extends State<LoginView> {
           switch (state) {
             case LoginViewModelLoading():
               return const AppLoader();
+            case LocationPermissionDenied():
             case LoginViewModelInitial():
             case LoginViewModelSuccess():
             case LoginViewModelError():
@@ -95,6 +96,13 @@ class _LoginViewState extends State<LoginView> {
         },
         listener: (context, state) {
           switch (state) {
+            case LocationPermissionDenied():
+              aweSnackBar(
+                  msg: AppLocalizations.of(context)!.location_permission_denied,
+                  context: context,
+                  type: MessageTypeConst.failure,
+                  title: AppLocalizations.of(context)!.error);
+              break;
             case LoginViewModelSuccess():
               context.pushReplacementNamed(AppRoutes.homeScreen);
               aweSnackBar(
