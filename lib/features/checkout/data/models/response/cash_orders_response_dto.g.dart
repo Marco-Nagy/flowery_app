@@ -16,6 +16,12 @@ CashOrdersResponseDto _$CashOrdersResponseDtoFromJson(
               json['order'] as Map<String, dynamic>),
     );
 
+Map<String, dynamic> _$CashOrdersResponseDtoToJson(
+        CashOrdersResponseDto instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'order': instance.order,
+    };
 
 CashOrdersResponseOrderDto _$CashOrdersResponseOrderDtoFromJson(
         Map<String, dynamic> json) =>
@@ -36,6 +42,20 @@ CashOrdersResponseOrderDto _$CashOrdersResponseOrderDtoFromJson(
       (json['__v'] as num?)?.toInt(),
     );
 
+Map<String, dynamic> _$CashOrdersResponseOrderDtoToJson(
+        CashOrdersResponseOrderDto instance) =>
+    <String, dynamic>{
+      'user': instance.user,
+      'orderItems': instance.orderItems,
+      'totalPrice': instance.totalPrice,
+      'paymentType': instance.paymentType,
+      'isPaid': instance.isPaid,
+      'isDelivered': instance.isDelivered,
+      '_id': instance.id,
+      'createdAt': instance.createdAt,
+      'updatedAt': instance.updatedAt,
+      '__v': instance.v,
+    };
 
 OrderItemsDto _$OrderItemsDtoFromJson(Map<String, dynamic> json) =>
     OrderItemsDto(
@@ -48,6 +68,13 @@ OrderItemsDto _$OrderItemsDtoFromJson(Map<String, dynamic> json) =>
       json['_id'] as String?,
     );
 
+Map<String, dynamic> _$OrderItemsDtoToJson(OrderItemsDto instance) =>
+    <String, dynamic>{
+      'product': instance.product,
+      'price': instance.price,
+      'quantity': instance.quantity,
+      '_id': instance.id,
+    };
 
 OrderItemsProductDto _$OrderItemsProductDtoFromJson(
         Map<String, dynamic> json) =>
@@ -71,3 +98,24 @@ OrderItemsProductDto _$OrderItemsProductDtoFromJson(
       json['id'] as String?,
     );
 
+Map<String, dynamic> _$OrderItemsProductDtoToJson(
+        OrderItemsProductDto instance) =>
+    <String, dynamic>{
+      '_id': instance.id,
+      'title': instance.title,
+      'slug': instance.slug,
+      'description': instance.description,
+      'imgCover': instance.imgCover,
+      'images': instance.images,
+      'price': instance.price,
+      'priceAfterDiscount': instance.priceAfterDiscount,
+      'quantity': instance.quantity,
+      'category': instance.category,
+      'occasion': instance.occasion,
+      'createdAt': instance.createdAt,
+      'updatedAt': instance.updatedAt,
+      '__v': instance.v,
+      'discount': instance.discount,
+      'sold': instance.sold,
+      'id': instance.iD,
+    };
