@@ -2,6 +2,7 @@ import 'package:flowery_e_commerce/core/routes/base_routes.dart';
 import 'package:flowery_e_commerce/core/utils/screens/under_build_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/address_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/saved_address_screen.dart';
+import 'package:flowery_e_commerce/features/address/presentation/view_model/address_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/email_verification.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/reset_password.dart';
@@ -9,9 +10,11 @@ import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/
 import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_selling_cubit.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/screens/most_selling_screen.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/screens/checkout_screen.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/view/cart_view.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/view/checkout_screen.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/screens/categories_view.dart';
@@ -20,6 +23,7 @@ import 'package:flowery_e_commerce/features/product/presentation/view/product_de
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../di/di.dart';
 import '../../features/about_app/presentation/views/about_app_view.dart';
 import '../../features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
@@ -55,6 +59,7 @@ class AppRoutes {
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
   static const String checkoutScreen = 'checkoutScreen';
   static const String notificationView = 'notificationView';
+  static const String cartScreen = 'cartScreen';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -127,15 +132,28 @@ class AppRoutes {
       case AppRoutes.profileMainScreen:
         return BaseRoute(page: const ProfileMainScreen());
       case AppRoutes.productsDetailsView:
-        return BaseRoute(page: ProductDetailsView(product: args  as dynamic,));
+        return BaseRoute(page:      BlocProvider(
+    create: (context) => getIt.get<CartViewModelCubit>()
+    ..doAction(
+    GetUserCartDataAction(),
+    ),child: ProductDetailsView(product: args  as dynamic,)));
 
       case AppRoutes.profileView:
         return BaseRoute(page: const ProfileView());
       case AppRoutes.resetPasswordProfileView:
         return BaseRoute(page: const ResetPasswordProfileView());
         case AppRoutes.checkoutScreen:
-        return BaseRoute(page: CheckoutScreen(cart: args as CartEntity));
-        case AppRoutes.savedAddressScreen:
+        return BaseRoute(
+            page: MultiBlocProvider(providers: [
+          BlocProvider(
+            create: (context) =>
+                getIt.get<AddressViewModel>()..getSavedAddresses(),
+          ),    BlocProvider(
+            create: (context) =>
+                getIt.get<CheckoutViewModelCubit>(),
+          ),
+        ], child: CheckoutScreen(cart: args as CartEntity)));
+      case AppRoutes.savedAddressScreen:
         return BaseRoute(page: const SavedAddressScreen());
         case AppRoutes.addressScreen:
         return BaseRoute(
@@ -150,6 +168,15 @@ class AppRoutes {
         return BaseRoute(page: const OrderView());
       case AppRoutes.notificationView:
         return BaseRoute(page: const NotificationView());
+        return BaseRoute(page: const OrderView());
+        case AppRoutes.cartScreen:
+        return BaseRoute(page:       BlocProvider(
+    create: (context) => getIt.get<CartViewModelCubit>()
+    ..doAction(
+    GetUserCartDataAction(),
+    ),
+  child: const CartView( backButtonVisible: true),
+));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }
