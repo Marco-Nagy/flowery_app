@@ -175,7 +175,6 @@ class AppRoutes {
     ),
   child: const CartView( backButtonVisible: true),
 ));
-        return BaseRoute(page: const OrderView());
       case AppRoutes.notificationView:
         return BaseRoute(
             page: NotificationView(
