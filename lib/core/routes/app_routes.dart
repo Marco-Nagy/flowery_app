@@ -19,6 +19,8 @@ import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/screens/categories_view.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_screen.dart';
+import 'package:flowery_e_commerce/features/product/presentation/search/viewModel/search_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/product/presentation/search/views/search_view.dart';
 import 'package:flowery_e_commerce/features/product/presentation/view/product_details_view.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flutter/material.dart';
@@ -35,8 +37,6 @@ import '../../features/orders/presentation/view/order_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/profile/presentation/views/reset_password_profile_view.dart';
 import '../../features/profile/presentation/widgets/terms_conditions_page.dart';
-import '../../features/search/presentation/viewModel/search_view_model_cubit.dart';
-import '../../features/search/presentation/views/search_view.dart';
 
 class AppRoutes {
   static const String login = '/';

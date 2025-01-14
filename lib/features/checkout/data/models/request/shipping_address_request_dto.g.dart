@@ -7,6 +7,7 @@ part of 'shipping_address_request_dto.dart';
 // **************************************************************************
 
 
+
 Map<String, dynamic> _$ShippingAddressRequestDtoToJson(
         ShippingAddressRequestDto instance) =>
     <String, dynamic>{

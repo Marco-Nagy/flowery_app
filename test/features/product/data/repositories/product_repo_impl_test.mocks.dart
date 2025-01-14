@@ -37,11 +37,13 @@ class MockProductOnlineDataSource extends _i1.Mock
   }
 
   @override
-  _i3.Future<_i4.DataResult<_i5.ProductResponseEntity>> getAllProducts() =>
+  _i3.Future<_i4.DataResult<_i5.ProductResponseEntity>> getAllProducts(
+          {String? keyword}) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
           [],
+          {#keyword: keyword},
         ),
         returnValue:
             _i3.Future<_i4.DataResult<_i5.ProductResponseEntity>>.value(
@@ -50,6 +52,7 @@ class MockProductOnlineDataSource extends _i1.Mock
           Invocation.method(
             #getAllProducts,
             [],
+            {#keyword: keyword},
           ),
         )),
       ) as _i3.Future<_i4.DataResult<_i5.ProductResponseEntity>>);

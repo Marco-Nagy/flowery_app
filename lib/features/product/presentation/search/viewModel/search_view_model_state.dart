@@ -8,9 +8,9 @@ final class SearchViewModelInitial extends SearchViewModelState {}
 final class SearchViewModelLoading extends SearchViewModelState {}
 
 final class SearchViewModelSuccess extends SearchViewModelState {
-  final SearchResponseEntity result;
+  final ProductResponseEntity products;
 
-  SearchViewModelSuccess(this.result);
+  SearchViewModelSuccess(this.products);
 }
 
 final class SearchViewModelFailure extends SearchViewModelState {

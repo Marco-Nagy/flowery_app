@@ -74,13 +74,11 @@ abstract class ApiManager {
   @GET(ApiConstants.getHomeApi)
   Future<HomeResponseModelEntity> getHome();
 
-  @GET(ApiConstants.getAllProducts)
-  Future<GetAllProductsRsponseDto> getAllProducts();
   @GET(ApiConstants.mostSellingProductsApi)
   Future<BestSellerResponseModelEntity> getMostSellingProducts();
 
   @GET(ApiConstants.getAllProducts)
-  Future<ProductResponseDto> getProduct();
+  Future<ProductResponseDto> getProduct({@Query("keyword") String? keyword});
 
   @GET(ApiConstants.getLoggedUserData)
   Future<GetLoggedUserDataResponseDto> getLoggedUserData(
