@@ -1,10 +1,10 @@
 import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
-import 'package:flowery_e_commerce/features/search/presentation/viewModel/search_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/product/presentation/search/viewModel/search_view_model_cubit.dart';
+import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../generated/assets.dart';
 import '../viewModel/search_action.dart';
 import '../widgets/no_products_found_widget.dart';
 import '../widgets/product_grid.dart';
@@ -46,11 +46,11 @@ class SearchView extends StatelessWidget {
                         child: AppLoader(),
                       );
                     case SearchViewModelSuccess():
-                      if (state.result.products == null ||
-                          state.result.products!.isEmpty) {
+                      if (state.products.products == null ||
+                          state.products.products.isEmpty) {
                         return const Expanded(child: NoProductsFound());
                       }
-                      return ProductGrid(products: state.result.products!);
+                      return ProductGrid(products: state.products.products);
                     case SearchViewModelFailure():
                       return Center(
                         child: Text(

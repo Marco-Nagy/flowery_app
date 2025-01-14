@@ -1,7 +1,6 @@
+import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../generated/assets.dart';
 
 class NoProductsFound extends StatelessWidget {
   const NoProductsFound({super.key});
