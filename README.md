@@ -63,37 +63,15 @@ The following technologies and skills were utilized in developing Flowery App:
 - **Category:** Shopping
 - **Target Audience:** Floral enthusiasts, gift shoppers, and home decorators.
 
----
-
 ## Contributors
-
-We would like to acknowledge the contributors who made this project possible:
-
-- <kbd><a href="https://github.com/Marco-Nagy" target="_blank"><img src="https://github.com/Marco-Nagy.png" alt="Marco Nagy" width="100" style="border-radius:50%;"></a></kbd>
-  **Marco Nagy** ([GitHub Profile](https://github.com/Marco-Nagy))
-  - **Features:** Authentication, Shopping Cart, CI/CD Integration
-  - **Total Commits:** 120
-  - **Total PRs:** 15
-
-- <kbd><a href="https://github.com/YasmeenGad" target="_blank"><img src="https://github.com/YasmeenGad.png" alt="Yasmeen Gad" width="100" style="border-radius:50%;"></a></kbd>
-  **Yasmeen Gad** ([GitHub Profile](https://github.com/YasmeenGad))
-  - **Features:** Search Functionality, Notifications
-  - **Total Commits:** 85
-  - **Total PRs:** 10
-
-- <kbd><a href="https://github.com/haidyhesham95" target="_blank"><img src="https://github.com/haidyhesham95.png" alt="Haidy Hesham" width="100" style="border-radius:50%;"></a></kbd>
-  **Haidy Hesham** ([GitHub Profile](https://github.com/haidyhesham95))
-  - **Features:** UI Enhancements, Bug Fixes
-  - **Total Commits:** 60
-  - **Total PRs:** 7
-
-- <kbd><a href="https://github.com/somaya-mahmoud" target="_blank"><img src="https://github.com/somaya-mahmoud.png" alt="Somaya Mahmoud" width="100" style="border-radius:50%;"></kbd>
-  **Somaya Mahmoud** ([GitHub Profile](https://github.com/somaya-mahmoud))
-  - **Features:** Performance Optimization, Testing
-  - **Total Commits:** 55
-  - **Total PRs:** 6
-
 ---
+| Contributor                                                                                                      | GitHub Profile                              | Key Features                                  | 
+|------------------------------------------------------------------------------------------------------------------|--------------------------------------------|------------------------------------------------|
+| <kbd><a href="https://github.com/Marco-Nagy" target="_blank"><img src="https://github.com/Marco-Nagy.png" alt="Marco Nagy" width="80" style="border-radius:50%;"></a></kbd><br>**Marco Nagy** | [Profile](https://github.com/Marco-Nagy)   | Authentication, Shopping Cart, CI/CD Integration | 
+| <kbd><a href="https://github.com/YasmeenGad" target="_blank"><img src="https://github.com/YasmeenGad.png" alt="Yasmeen Gad" width="80" style="border-radius:50%;"></a></kbd><br>**Yasmeen Gad** | [Profile](https://github.com/YasmeenGad)   | Search Functionality, Notifications           | 
+| <kbd><a href="https://github.com/haidyhesham95" target="_blank"><img src="https://github.com/haidyhesham95.png" alt="Haidy Hesham" width="80" style="border-radius:50%;"></a></kbd><br>**Haidy Hesham** | [Profile](https://github.com/haidyhesham95)| UI Enhancements, Bug Fixes                   | 
+| <kbd><a href="https://github.com/somaya-mahmoud" target="_blank"><img src="https://github.com/somaya-mahmoud.png" alt="Somaya Mahmoud" width="80" style="border-radius:50%;"></a></kbd><br>**Somaya Mahmoud** | [Profile](https://github.com/somaya-mahmoud)| Performance Optimization, Testing           | 
+
 
 ## Feedback and Support
 
