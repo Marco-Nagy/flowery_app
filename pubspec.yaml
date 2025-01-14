@@ -79,13 +79,18 @@ dependencies:
   flutter_bloc:
   flutter_svg:
   bloc:
-  geolocator: ^10.0.0   # For location services and permissions
-  geocoding: ^2.1.0
+  geolocator: ^13.0.2   # For location services and permissions
+  geocoding: ^3.0.0
+
 
   # Firebase ML Kit
   firebase_core:
   firebase_crashlytics: ^4.2.0
   firebase_analytics: ^11.3.6
+  googleapis: ^13.2.0
+  googleapis_auth: ^1.6.0
+  firebase_messaging:
+  flutter_local_notifications:
 
 dev_dependencies:
   flutter_test:
