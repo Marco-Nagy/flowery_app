@@ -46,3 +46,4 @@ android/app/google-services.json
 .env.firebase
 
 
+android/app/google-services.json.base64

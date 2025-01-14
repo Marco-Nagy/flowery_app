@@ -11,7 +11,7 @@ class AddressRepoImpl implements AddressRepo {
   AddressRepoImpl(this.addressOnlineDataSource);
 
   @override
-  Future<DataResult<List<GetSavedAddressesEntity>>> getSavedAddresses() {
+  Future<DataResult<List<AddressesEntity>>> getSavedAddresses() {
     return addressOnlineDataSource.getSavedAddresses();
   }
 }
