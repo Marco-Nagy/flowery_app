@@ -168,7 +168,6 @@ class AppRoutes {
         return BaseRoute(page: const OrderView());
       case AppRoutes.notificationView:
         return BaseRoute(page: const NotificationView());
-        return BaseRoute(page: const OrderView());
         case AppRoutes.cartScreen:
         return BaseRoute(page:       BlocProvider(
     create: (context) => getIt.get<CartViewModelCubit>()
