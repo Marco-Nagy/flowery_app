@@ -29,7 +29,7 @@ final  bool backButtonVisible;
         showArrow: backButtonVisible,
         context: context,
       ),
-      body: cart!=null&&cart.cartList.isNotEmpty? Column(
+      body: cart!= null&&cart.cartList.isNotEmpty? Column(
         children: [
           Container(
             margin: EdgeInsets.all(15.sp),
