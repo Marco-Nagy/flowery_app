@@ -16,16 +16,23 @@ Flowery App is a Flutter-based e-commerce application designed to provide users 
 
 ---
 
+---
+
 ## Screenshots
 
 Below are the app's screenshots that highlight its functionality:
 
 
+<img src="https://github.com/user-attachments/assets/42b3ae64-e8ab-4c9f-87ef-4d99b1560720" alt="Choose Quiz Screenshot" width="160"> <img src="https://github.com/user-attachments/assets/460fb444-3aef-4fb4-a31a-20ec3998889a" alt="Quiz Overview Screenshot" width="160"> <img src="https://github.com/user-attachments/assets/57be62a6-f039-47d5-93f8-34239bf62e84" alt="Question Screenshot" width="160"> <img src="https://github.com/user-attachments/assets/aeefa1cd-23d3-400d-bc2f-e2b3962e04ea" alt="Results Screenshot" width="160"> <img src="https://github.com/user-attachments/assets/2d8abb2d-7878-41d9-95ca-daff068c96fb" alt="Feedback Screenshot" width="160">
+
+---
+
 ## Demo Video
 
 Watch the demo video of Flowery App below:
 
-[![Watch the Demo Video](https://i9.ytimg.com/vi_webp/bP0BNKABzG8/mq1.webp?sqp=CJikkrwG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGH8gHihIMA8=&rs=AOn4CLDqE8SmVnblvtgkv2alGvf1HpFf1A)](https://youtu.be/bP0BNKABzG8?si=MnV4__MUga5ae5cM)
+[![image](https://github.com/user-attachments/assets/28051196-9959-44bb-9f01-fedd335e3d04)
+](https://youtu.be/bP0BNKABzG8?si=MnV4__MUga5ae5cM)
 
 ---
 
@@ -46,38 +53,7 @@ The following technologies and skills were utilized in developing Flowery App:
 - **Responsive Design:** Ensures optimal user experience on all devices.
 - **Google Play Store Optimization:** Feature graphics and descriptions tailored for better visibility.
 
----
 
-## Google Play Feature Graphics
-
-To make the app visually appealing on the Google Play Store, the following feature graphics were generated:
-
-- **Graphic 1:** Highlighting product browsing and search functionality.
-- **Graphic 2:** Showcasing shopping cart and checkout process.
-- **Graphic 3:** Focusing on order tracking and status updates.
-
----
-
-## How to Run the App
-
-1. Clone this repository to your local machine.
-   ```bash
-   git clone https://github.com/Marco-Nagy/flowery_app.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd flowery_app
-   ```
-3. Install dependencies:
-   ```bash
-   flutter pub get
-   ```
-4. Run the application:
-   ```bash
-   flutter run
-   ```
-
----
 
 ## Submission Details for Google Play
 
@@ -87,37 +63,15 @@ To make the app visually appealing on the Google Play Store, the following featu
 - **Category:** Shopping
 - **Target Audience:** Floral enthusiasts, gift shoppers, and home decorators.
 
----
-
 ## Contributors
-
-We would like to acknowledge the contributors who made this project possible:
-
-- <kbd><a href="https://github.com/Marco-Nagy" target="_blank"><img src="https://github.com/Marco-Nagy.png" alt="Marco Nagy" width="100" style="border-radius:50%;"></a></kbd>
-  **Marco Nagy** ([GitHub Profile](https://github.com/Marco-Nagy))
-  - **Features:** Authentication, Shopping Cart, CI/CD Integration
-  - **Total Commits:** 120
-  - **Total PRs:** 15
-
-- <kbd><a href="https://github.com/YasmeenGad" target="_blank"><img src="https://github.com/YasmeenGad.png" alt="Yasmeen Gad" width="100" style="border-radius:50%;"></a></kbd>
-  **Yasmeen Gad** ([GitHub Profile](https://github.com/YasmeenGad))
-  - **Features:** Search Functionality, Notifications
-  - **Total Commits:** 85
-  - **Total PRs:** 10
-
-- <kbd><a href="https://github.com/haidyhesham95" target="_blank"><img src="https://github.com/haidyhesham95.png" alt="Haidy Hesham" width="100" style="border-radius:50%;"></a></kbd>
-  **Haidy Hesham** ([GitHub Profile](https://github.com/haidyhesham95))
-  - **Features:** UI Enhancements, Bug Fixes
-  - **Total Commits:** 60
-  - **Total PRs:** 7
-
-- <kbd><a href="https://github.com/somaya-mahmoud" target="_blank"><img src="https://github.com/somaya-mahmoud.png" alt="Somaya Mahmoud" width="100" style="border-radius:50%;"></kbd>
-  **Somaya Mahmoud** ([GitHub Profile](https://github.com/somaya-mahmoud))
-  - **Features:** Performance Optimization, Testing
-  - **Total Commits:** 55
-  - **Total PRs:** 6
-
 ---
+| Contributor                                                                                                      | GitHub Profile                              | Key Features                                  | 
+|------------------------------------------------------------------------------------------------------------------|--------------------------------------------|------------------------------------------------|
+| <kbd><a href="https://github.com/Marco-Nagy" target="_blank"><img src="https://github.com/Marco-Nagy.png" alt="Marco Nagy" width="80" style="border-radius:50%;"></a></kbd><br>**Marco Nagy** | [Profile](https://github.com/Marco-Nagy)   | Authentication, Shopping Cart, CI/CD Integration | 
+| <kbd><a href="https://github.com/YasmeenGad" target="_blank"><img src="https://github.com/YasmeenGad.png" alt="Yasmeen Gad" width="80" style="border-radius:50%;"></a></kbd><br>**Yasmeen Gad** | [Profile](https://github.com/YasmeenGad)   | Search Functionality, Notifications           | 
+| <kbd><a href="https://github.com/haidyhesham95" target="_blank"><img src="https://github.com/haidyhesham95.png" alt="Haidy Hesham" width="80" style="border-radius:50%;"></a></kbd><br>**Haidy Hesham** | [Profile](https://github.com/haidyhesham95)| UI Enhancements, Bug Fixes                   | 
+| <kbd><a href="https://github.com/somaya-mahmoud" target="_blank"><img src="https://github.com/somaya-mahmoud.png" alt="Somaya Mahmoud" width="80" style="border-radius:50%;"></a></kbd><br>**Somaya Mahmoud** | [Profile](https://github.com/somaya-mahmoud)| Performance Optimization, Testing           | 
+
 
 ## Feedback and Support
 
