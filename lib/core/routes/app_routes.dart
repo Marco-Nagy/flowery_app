@@ -166,8 +166,7 @@ class AppRoutes {
       case AppRoutes.termsAndConditionsPage:
         return BaseRoute(page: const TermsAndConditionsPage());
         case AppRoutes.orderView:
-        return BaseRoute(page: const OrderView());case AppRoutes.notificationView:
-        return BaseRoute(page: const NotificationView());
+        return BaseRoute(page: const OrderView());
         case AppRoutes.cartScreen:
         return BaseRoute(page:       BlocProvider(
     create: (context) => getIt.get<CartViewModelCubit>()
