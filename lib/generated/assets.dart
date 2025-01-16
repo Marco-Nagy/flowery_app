@@ -36,6 +36,8 @@ class Assets {
   static const String imagesNoNetwork = 'assets/images/noNetwork.png';
   static const String imagesNotNetwork = 'assets/images/Not_network.png';
   static const String imagesNotification = 'assets/images/notification.svg';
+  static const String imagesNotificationList =
+      'assets/images/notificationList.png';
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
   static const String imagesPen = 'assets/images/pen.png';
   static const String imagesPerson = 'assets/images/person.png';
