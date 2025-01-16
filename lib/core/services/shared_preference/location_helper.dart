@@ -46,7 +46,9 @@ class LocationHelper {
   Future<Position> getCurrentLocation(BuildContext context) async {
     try {
       return await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.best,
+        locationSettings: const LocationSettings(
+          accuracy: LocationAccuracy.best,
+        ),
       );
     } catch (e) {
       throw Exception(AppLocalizations.of(context)!.failure);
