@@ -468,12 +468,12 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<RemoveFromCartResponseDto> removeProductFromCart(String id) async {
+  Future<CartResponseDto> removeProductFromCart(String id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<RemoveFromCartResponseDto>(Options(
+    final _options = _setStreamType<CartResponseDto>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
@@ -490,9 +490,9 @@ class _ApiManager implements ApiManager {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late RemoveFromCartResponseDto _value;
+    late CartResponseDto _value;
     try {
-      _value = RemoveFromCartResponseDto.fromJson(_result.data!);
+      _value = CartResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
