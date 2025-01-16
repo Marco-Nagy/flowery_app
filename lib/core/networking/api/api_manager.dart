@@ -14,7 +14,6 @@ import 'package:flowery_e_commerce/features/cart/data/models/request/add_product
 import 'package:flowery_e_commerce/features/cart/data/models/request/update_cart_product_quantity_request_dto.dart';
 import 'package:flowery_e_commerce/features/cart/data/models/response/add_to_cart_response_dto.dart';
 import 'package:flowery_e_commerce/features/cart/data/models/response/cart_response_dto.dart';
-import 'package:flowery_e_commerce/features/cart/data/models/response/remove_from_cart_response_dto.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart';
 import 'package:flowery_e_commerce/features/checkout/data/models/request/shipping_address_request_dto.dart';
 import 'package:flowery_e_commerce/features/checkout/data/models/response/checkout_orders_response_dto.dart';
@@ -92,7 +91,7 @@ abstract class ApiManager {
       @Path("id") String id, @Body() UpdateCartProductQuantityRequestDto body);
 
   @DELETE("${ApiConstants.deleteProductFromCart}{id}")
-  Future<RemoveFromCartResponseDto> removeProductFromCart(@Path("id") String id);
+  Future<CartResponseDto> removeProductFromCart(@Path("id") String id);
 
   @GET(ApiConstants.cart)
   Future<CartResponseDto> getCartData();

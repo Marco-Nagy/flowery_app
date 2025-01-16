@@ -17,7 +17,8 @@ class CartView extends StatelessWidget {
 
     return BlocConsumer<CartViewModelCubit, CartViewModelState>(
       builder: (context, state) {
-        return cartViewModel.cartData!= null? CartViewBody(
+        return cartViewModel.cartData!= null?
+        CartViewBody(
           backButtonVisible: backButtonVisible,
           cart: cartViewModel.cartData!,
         ): const EmptyCartScreen();

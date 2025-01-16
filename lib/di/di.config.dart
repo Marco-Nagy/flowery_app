@@ -126,6 +126,8 @@ import '../features/generic/data/data_sources/impl/generic_online_data_source_im
 import '../features/generic/data/repositories/generic_repo_impl.dart' as _i284;
 import '../features/generic/domain/contracts/generic_repo.dart' as _i565;
 import '../features/generic/domain/use_cases/generic_use_case.dart' as _i559;
+import '../features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart'
+    as _i690;
 import '../features/generic/presentation/view_model/generic_view_model_cubit.dart'
     as _i1070;
 import '../features/home_screen/data/online_data_source/home_api_manager.dart'
@@ -302,6 +304,11 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i301.ForgotPasswordUseCase>(),
               gh<_i642.VerifyResetCodeUseCase>(),
               gh<_i906.ResetPasswordUseCase>(),
+            ));
+    gh.factory<_i690.GenericItemViewModelCubit>(
+        () => _i690.GenericItemViewModelCubit(
+              gh<_i559.GenericUseCase>(),
+              gh<_i414.ProductUseCase>(),
             ));
     gh.factory<_i777.CategoriesUseCase>(
         () => _i777.CategoriesUseCase(gh<_i590.CategoriesRepository>()));
