@@ -87,7 +87,7 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
             case GetBestSellerLoadingState():
               return const AppLoader();
             case BestSellerInitialState():
-            null;
+              null;
           }
           return Container();
         },
