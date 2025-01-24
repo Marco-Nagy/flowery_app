@@ -21,6 +21,7 @@ import 'package:flowery_e_commerce/features/generic/presentation/screens/categor
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_screen.dart';
 import 'package:flowery_e_commerce/features/product/presentation/search/viewModel/search_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/product/presentation/search/views/search_view.dart';
+import 'package:flowery_e_commerce/features/notification_list/presentation/model/notification_args.dart';
 import 'package:flowery_e_commerce/features/product/presentation/view/product_details_view.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flutter/material.dart';
@@ -173,9 +174,19 @@ class AppRoutes {
         return BaseRoute(page: const TermsAndConditionsPage());
       case AppRoutes.orderView:
         return BaseRoute(page: const OrderView());
-      case AppRoutes.notificationView:
-        return BaseRoute(page: const NotificationView());
         case AppRoutes.cartScreen:
+        return BaseRoute(page:       BlocProvider(
+    create: (context) => getIt.get<CartViewModelCubit>()
+    ..doAction(
+    GetUserCartDataAction(),
+    ),
+  child: const CartView( backButtonVisible: true),
+));
+      case AppRoutes.notificationView:
+        return BaseRoute(
+            page: NotificationView(
+          args: args as NotificationArgs,
+        ));
         return BaseRoute(
             page: BlocProvider(
           create: (context) => getIt.get<CartViewModelCubit>()
