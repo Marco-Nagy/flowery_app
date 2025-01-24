@@ -33,7 +33,6 @@ RemoveFromCartResponse _$RemoveFromCartResponseFromJson(
       (json['__v'] as num?)?.toInt(),
     );
 
-
 CartItemsResponse _$CartItemsResponseFromJson(Map<String, dynamic> json) =>
     CartItemsResponse(
       json['product'] as String?,

@@ -20,6 +20,8 @@ import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by
 import 'package:flowery_e_commerce/features/generic/presentation/screens/categories_view.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_screen.dart';
 import 'package:flowery_e_commerce/features/notification_list/presentation/model/notification_args.dart';
+import 'package:flowery_e_commerce/features/product/presentation/search/viewModel/search_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/product/presentation/search/views/search_view.dart';
 import 'package:flowery_e_commerce/features/product/presentation/view/product_details_view.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flutter/material.dart';
@@ -59,6 +61,7 @@ class AppRoutes {
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
   static const String checkoutScreen = 'checkoutScreen';
+  static const String searchView = 'searchView';
   static const String notificationView = 'notificationView';
   static const String cartScreen = 'cartScreen';
 
@@ -116,7 +119,7 @@ class AppRoutes {
         return BaseRoute(
           page: const CategoriesView(),
         );
-        case AppRoutes.mostSellingScreen:
+      case AppRoutes.mostSellingScreen:
         return BaseRoute(
           page: MultiBlocProvider(providers: [
             BlocProvider(
@@ -133,30 +136,34 @@ class AppRoutes {
       case AppRoutes.profileMainScreen:
         return BaseRoute(page: const ProfileMainScreen());
       case AppRoutes.productsDetailsView:
-        return BaseRoute(page:      BlocProvider(
-    create: (context) => getIt.get<CartViewModelCubit>()
-    ..doAction(
-    GetUserCartDataAction(),
-    ),child: ProductDetailsView(product: args  as dynamic,)));
+        return BaseRoute(
+            page: BlocProvider(
+                create: (context) => getIt.get<CartViewModelCubit>()
+                  ..doAction(
+                    GetUserCartDataAction(),
+                  ),
+                child: ProductDetailsView(
+                  product: args as dynamic,
+                )));
 
       case AppRoutes.profileView:
         return BaseRoute(page: const ProfileView());
       case AppRoutes.resetPasswordProfileView:
         return BaseRoute(page: const ResetPasswordProfileView());
-        case AppRoutes.checkoutScreen:
+      case AppRoutes.checkoutScreen:
         return BaseRoute(
             page: MultiBlocProvider(providers: [
           BlocProvider(
             create: (context) =>
                 getIt.get<AddressViewModel>()..getSavedAddresses(),
-          ),    BlocProvider(
-            create: (context) =>
-                getIt.get<CheckoutViewModelCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => getIt.get<CheckoutViewModelCubit>(),
           ),
         ], child: CheckoutScreen(cart: args as CartEntity)));
       case AppRoutes.savedAddressScreen:
         return BaseRoute(page: const SavedAddressScreen());
-        case AppRoutes.addressScreen:
+      case AppRoutes.addressScreen:
         return BaseRoute(
             page: BlocProvider(
                 create: (context) => getIt.get<AddAddressViewModelCubit>(),
@@ -165,20 +172,24 @@ class AppRoutes {
         return BaseRoute(page: const AboutAppView());
       case AppRoutes.termsAndConditionsPage:
         return BaseRoute(page: const TermsAndConditionsPage());
-        case AppRoutes.orderView:
+      case AppRoutes.orderView:
         return BaseRoute(page: const OrderView());
         case AppRoutes.cartScreen:
-        return BaseRoute(page:       BlocProvider(
-    create: (context) => getIt.get<CartViewModelCubit>()
-    ..doAction(
-    GetUserCartDataAction(),
-    ),
+        return BaseRoute(
+            page: BlocProvider(
+              create: (context) => getIt.get<CartViewModelCubit>()..doAction(GetUserCartDataAction(),),
   child: const CartView( backButtonVisible: true),
 ));
       case AppRoutes.notificationView:
         return BaseRoute(
             page: NotificationView(
           args: args as NotificationArgs,
+        ));
+      case AppRoutes.searchView:
+        return BaseRoute(
+            page: BlocProvider(
+          create: (context) => getIt.get<SearchViewModelCubit>(),
+          child: const SearchView(),
         ));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
