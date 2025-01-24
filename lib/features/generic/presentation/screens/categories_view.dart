@@ -89,8 +89,7 @@ class _CategoriesViewState extends State<CategoriesView> {
                     const EdgeInsets.only(top: 50, left: 16, right: 16),
                     child: Row(
                       children: [
-                        const Expanded(
-                            flex: 3, child: CustomSearchCategories()),
+                        const Expanded(flex: 3, child: CustomSearchWidget()),
                         horizontalSpacing(12),
                         const Expanded(
                             flex: 1, child: CustomFilterCategories()),
