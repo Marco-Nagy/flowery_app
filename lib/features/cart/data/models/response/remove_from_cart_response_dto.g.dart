@@ -17,7 +17,6 @@ RemoveFromCartResponseDto _$RemoveFromCartResponseDtoFromJson(
               json['cart'] as Map<String, dynamic>),
     );
 
-
 RemoveFromCartResponse _$RemoveFromCartResponseFromJson(
         Map<String, dynamic> json) =>
     RemoveFromCartResponse(
@@ -42,4 +41,3 @@ CartItemsResponse _$CartItemsResponseFromJson(Map<String, dynamic> json) =>
       (json['quantity'] as num?)?.toInt(),
       json['_id'] as String?,
     );
-
