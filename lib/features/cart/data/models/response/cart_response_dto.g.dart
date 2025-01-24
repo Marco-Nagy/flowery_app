@@ -32,7 +32,6 @@ CartDto _$CartDtoFromJson(Map<String, dynamic> json) => CartDto(
       (json['__v'] as num?)?.toInt(),
     );
 
-
 CartItemsDto _$CartItemsDtoFromJson(Map<String, dynamic> json) => CartItemsDto(
       json['product'] == null
           ? null
@@ -42,7 +41,6 @@ CartItemsDto _$CartItemsDtoFromJson(Map<String, dynamic> json) => CartItemsDto(
       (json['quantity'] as num?)?.toInt(),
       json['_id'] as String?,
     );
-
 
 CartItemProductDto _$CartItemProductDtoFromJson(Map<String, dynamic> json) =>
     CartItemProductDto(

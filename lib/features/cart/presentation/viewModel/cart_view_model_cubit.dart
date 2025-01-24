@@ -5,7 +5,6 @@ import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
 import 'package:flowery_e_commerce/core/networking/error/error_handler.dart';
 import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
-import 'package:flowery_e_commerce/features/cart/domain/entities/delete_from_cart_entity.dart';
 import 'package:flowery_e_commerce/features/cart/domain/use_cases/add_to_cart_use_case.dart';
 import 'package:flowery_e_commerce/features/cart/domain/use_cases/clear_user_cart_data_use_case.dart';
 import 'package:flowery_e_commerce/features/cart/domain/use_cases/get_user_cart_data_use_case.dart';
@@ -119,12 +118,12 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
     emit(CartViewModelLoading());
     var result = await removeProductFromCartUseCase(id: action.productId);
     switch (result) {
-      case Success<RemoveFromCartEntity>():
-        _getCartData();
+      case Success<CartEntity>():
+        cartData = result.data;
         emit(
-          const RemoveProductFromCartSuccess(),
+          RemoveProductFromCartSuccess(cartData: cartData= result.data),
         );
-      case Fail<RemoveFromCartEntity>():
+      case Fail<CartEntity>():
         emit(CartViewModelError(
             errorModel: ErrorHandler.handle(result.exception!)));
     }
