@@ -10,6 +10,8 @@ class ShippingAddressRequestDto {
 
 
   Map<String, dynamic> toJson() => _$ShippingAddressRequestDtoToJson(this);
+  factory ShippingAddressRequestDto.fromJson(Map<String, dynamic> json) =>
+      _$ShippingAddressRequestDtoFromJson(json);
 }
 
 @JsonSerializable()
@@ -23,4 +25,8 @@ class ShippingAddress {
 
   Map<String, dynamic> toJson() =>
       _$ShippingAddressToJson(this);
+  factory ShippingAddress.fromJson(Map<String, dynamic> json) =>
+      _$ShippingAddressFromJson(json);
+
+
 }

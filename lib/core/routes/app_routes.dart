@@ -36,6 +36,8 @@ import '../../features/auth/presentation/signup/view/signup_view.dart';
 import '../../features/generic/presentation/screens/occasion_view.dart';
 import '../../features/notification_list/presentation/views/notification_list_view.dart';
 import '../../features/orders/presentation/view/order_view.dart';
+import '../../features/orders/presentation/view_model/order_action.dart';
+import '../../features/orders/presentation/view_model/order_cubit.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/profile/presentation/views/reset_password_profile_view.dart';
 import '../../features/profile/presentation/widgets/terms_conditions_page.dart';
@@ -173,7 +175,10 @@ class AppRoutes {
       case AppRoutes.termsAndConditionsPage:
         return BaseRoute(page: const TermsAndConditionsPage());
       case AppRoutes.orderView:
-        return BaseRoute(page: const OrderView());
+        return BaseRoute(page: BlocProvider(
+            create: (context) => getIt.get<OrderCubit>()
+              ..doAction(GetOrders()),
+            child: const OrderView()));
         case AppRoutes.cartScreen:
         return BaseRoute(
             page: BlocProvider(
