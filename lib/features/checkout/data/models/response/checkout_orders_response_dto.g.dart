@@ -16,12 +16,6 @@ CheckoutOrdersResponseDto _$CheckoutOrdersResponseDtoFromJson(
               json['session'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CheckoutOrdersResponseDtoToJson(
-        CheckoutOrdersResponseDto instance) =>
-    <String, dynamic>{
-      'message': instance.message,
-      'session': instance.session,
-    };
 
 CheckoutSessionDto _$CheckoutSessionDtoFromJson(Map<String, dynamic> json) =>
     CheckoutSessionDto(
@@ -111,72 +105,12 @@ CheckoutSessionDto _$CheckoutSessionDtoFromJson(Map<String, dynamic> json) =>
       json['url'] as String?,
     );
 
-Map<String, dynamic> _$CheckoutSessionDtoToJson(CheckoutSessionDto instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'object': instance.object,
-      'adaptive_pricing': instance.adaptivePricing,
-      'after_expiration': instance.afterExpiration,
-      'allow_promotion_codes': instance.allowPromotionCodes,
-      'amount_subtotal': instance.amountSubtotal,
-      'amount_total': instance.amountTotal,
-      'automatic_tax': instance.automaticTax,
-      'billing_address_collection': instance.billingAddressCollection,
-      'cancel_url': instance.cancelUrl,
-      'client_reference_id': instance.clientReferenceId,
-      'client_secret': instance.clientSecret,
-      'consent': instance.consent,
-      'consent_collection': instance.consentCollection,
-      'created': instance.created,
-      'currency': instance.currency,
-      'currency_conversion': instance.currencyConversion,
-      'custom_fields': instance.customFields,
-      'custom_text': instance.customText,
-      'customer': instance.customer,
-      'customer_creation': instance.customerCreation,
-      'customer_details': instance.customerDetails,
-      'customer_email': instance.customerEmail,
-      'expires_at': instance.expiresAt,
-      'invoice': instance.invoice,
-      'invoice_creation': instance.invoiceCreation,
-      'liveMode': instance.liveMode,
-      'locale': instance.locale,
-      'metadata': instance.metadata,
-      'mode': instance.mode,
-      'payment_intent': instance.paymentIntent,
-      'payment_link': instance.paymentLink,
-      'payment_method_collection': instance.paymentMethodCollection,
-      'payment_method_configuration_details':
-          instance.paymentMethodConfigurationDetails,
-      'payment_method_options': instance.paymentMethodOptions,
-      'payment_method_types': instance.paymentMethodTypes,
-      'payment_status': instance.paymentStatus,
-      'phone_number_collection': instance.phoneNumberCollection,
-      'recovered_from': instance.recoveredFrom,
-      'saved_payment_method_options': instance.savedPaymentMethodOptions,
-      'setup_intent': instance.setupIntent,
-      'shipping_address_collection': instance.shippingAddressCollection,
-      'shipping_cost': instance.shippingCost,
-      'shipping_details': instance.shippingDetails,
-      'shipping_options': instance.shippingOptions,
-      'status': instance.status,
-      'submit_type': instance.submitType,
-      'subscription': instance.subscription,
-      'success_url': instance.successUrl,
-      'total_details': instance.totalDetails,
-      'ui_mode': instance.uiMode,
-      'url': instance.url,
-    };
 
 AdaptivePricingDto _$AdaptivePricingDtoFromJson(Map<String, dynamic> json) =>
     AdaptivePricingDto(
       json['enabled'] as bool?,
     );
 
-Map<String, dynamic> _$AdaptivePricingDtoToJson(AdaptivePricingDto instance) =>
-    <String, dynamic>{
-      'enabled': instance.enabled,
-    };
 
 AutomaticTaxDto _$AutomaticTaxDtoFromJson(Map<String, dynamic> json) =>
     AutomaticTaxDto(
@@ -185,12 +119,6 @@ AutomaticTaxDto _$AutomaticTaxDtoFromJson(Map<String, dynamic> json) =>
       json['status'],
     );
 
-Map<String, dynamic> _$AutomaticTaxDtoToJson(AutomaticTaxDto instance) =>
-    <String, dynamic>{
-      'enabled': instance.enabled,
-      'liability': instance.liability,
-      'status': instance.status,
-    };
 
 CustomTextDto _$CustomTextDtoFromJson(Map<String, dynamic> json) =>
     CustomTextDto(
@@ -200,13 +128,6 @@ CustomTextDto _$CustomTextDtoFromJson(Map<String, dynamic> json) =>
       json['terms_of_service_acceptance'],
     );
 
-Map<String, dynamic> _$CustomTextDtoToJson(CustomTextDto instance) =>
-    <String, dynamic>{
-      'after_submit': instance.afterSubmit,
-      'shipping_address': instance.shippingAddress,
-      'submit': instance.submit,
-      'terms_of_service_acceptance': instance.termsOfServiceAcceptance,
-    };
 
 CustomerDetailsDto _$CustomerDetailsDtoFromJson(Map<String, dynamic> json) =>
     CustomerDetailsDto(
@@ -218,15 +139,6 @@ CustomerDetailsDto _$CustomerDetailsDtoFromJson(Map<String, dynamic> json) =>
       json['tax_ids'],
     );
 
-Map<String, dynamic> _$CustomerDetailsDtoToJson(CustomerDetailsDto instance) =>
-    <String, dynamic>{
-      'address': instance.address,
-      'email': instance.email,
-      'name': instance.name,
-      'phone': instance.phone,
-      'tax_exempt': instance.taxExempt,
-      'tax_ids': instance.taxIds,
-    };
 
 InvoiceCreationDto _$InvoiceCreationDtoFromJson(Map<String, dynamic> json) =>
     InvoiceCreationDto(
@@ -237,11 +149,7 @@ InvoiceCreationDto _$InvoiceCreationDtoFromJson(Map<String, dynamic> json) =>
               json['invoice_data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$InvoiceCreationDtoToJson(InvoiceCreationDto instance) =>
-    <String, dynamic>{
-      'enabled': instance.enabled,
-      'invoice_data': instance.invoiceData,
-    };
+
 
 InvoiceDataDto _$InvoiceDataDtoFromJson(Map<String, dynamic> json) =>
     InvoiceDataDto(
@@ -257,24 +165,11 @@ InvoiceDataDto _$InvoiceDataDtoFromJson(Map<String, dynamic> json) =>
       json['rendering_options'],
     );
 
-Map<String, dynamic> _$InvoiceDataDtoToJson(InvoiceDataDto instance) =>
-    <String, dynamic>{
-      'account_tax_ids': instance.accountTaxIds,
-      'custom_fields': instance.customFields,
-      'description': instance.description,
-      'footer': instance.footer,
-      'issuer': instance.issuer,
-      'metadata': instance.metadata,
-      'rendering_options': instance.renderingOptions,
-    };
 
 InvoiceDataMetadataDto _$InvoiceDataMetadataDtoFromJson(
         Map<String, dynamic> json) =>
     InvoiceDataMetadataDto();
 
-Map<String, dynamic> _$InvoiceDataMetadataDtoToJson(
-        InvoiceDataMetadataDto instance) =>
-    <String, dynamic>{};
 
 SessionMetadataDto _$SessionMetadataDtoFromJson(Map<String, dynamic> json) =>
     SessionMetadataDto(
@@ -283,12 +178,6 @@ SessionMetadataDto _$SessionMetadataDtoFromJson(Map<String, dynamic> json) =>
       json['street'] as String?,
     );
 
-Map<String, dynamic> _$SessionMetadataDtoToJson(SessionMetadataDto instance) =>
-    <String, dynamic>{
-      'city': instance.city,
-      'phone': instance.phone,
-      'street': instance.street,
-    };
 
 PaymentMethodConfigurationDetailsDto
     _$PaymentMethodConfigurationDetailsDtoFromJson(Map<String, dynamic> json) =>
@@ -297,12 +186,6 @@ PaymentMethodConfigurationDetailsDto
           json['parent'],
         );
 
-Map<String, dynamic> _$PaymentMethodConfigurationDetailsDtoToJson(
-        PaymentMethodConfigurationDetailsDto instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'parent': instance.parent,
-    };
 
 PaymentMethodOptionsDto _$PaymentMethodOptionsDtoFromJson(
         Map<String, dynamic> json) =>
@@ -313,11 +196,6 @@ PaymentMethodOptionsDto _$PaymentMethodOptionsDtoFromJson(
               json['card'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$PaymentMethodOptionsDtoToJson(
-        PaymentMethodOptionsDto instance) =>
-    <String, dynamic>{
-      'card': instance.card,
-    };
 
 PaymentMethodOptionsCardDto _$PaymentMethodOptionsCardDtoFromJson(
         Map<String, dynamic> json) =>
@@ -325,11 +203,7 @@ PaymentMethodOptionsCardDto _$PaymentMethodOptionsCardDtoFromJson(
       json['request_three_d_secure'] as String?,
     );
 
-Map<String, dynamic> _$PaymentMethodOptionsCardDtoToJson(
-        PaymentMethodOptionsCardDto instance) =>
-    <String, dynamic>{
-      'request_three_d_secure': instance.requestThreeDSecure,
-    };
+
 
 PhoneNumberCollectionDto _$PhoneNumberCollectionDtoFromJson(
         Map<String, dynamic> json) =>
@@ -337,11 +211,6 @@ PhoneNumberCollectionDto _$PhoneNumberCollectionDtoFromJson(
       json['enabled'] as bool?,
     );
 
-Map<String, dynamic> _$PhoneNumberCollectionDtoToJson(
-        PhoneNumberCollectionDto instance) =>
-    <String, dynamic>{
-      'enabled': instance.enabled,
-    };
 
 TotalDetailsDto _$TotalDetailsDtoFromJson(Map<String, dynamic> json) =>
     TotalDetailsDto(
@@ -350,9 +219,3 @@ TotalDetailsDto _$TotalDetailsDtoFromJson(Map<String, dynamic> json) =>
       (json['amount_tax'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$TotalDetailsDtoToJson(TotalDetailsDto instance) =>
-    <String, dynamic>{
-      'amount_discount': instance.amountDiscount,
-      'amount_shipping': instance.amountShipping,
-      'amount_tax': instance.amountTax,
-    };
