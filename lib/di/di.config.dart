@@ -142,6 +142,14 @@ import '../features/home_screen/presentation/home_cubit/best_seller_cubit/best_s
     as _i233;
 import '../features/home_screen/presentation/home_cubit/occasions_cubit/occasions_cubit.dart'
     as _i851;
+import '../features/orders/data/data_sources/contracts/order_online_data_source.dart'
+    as _i513;
+import '../features/orders/data/data_sources/impl/order_online_data_sourse_impl.dart'
+    as _i971;
+import '../features/orders/data/repositories/order_repo_impl.dart' as _i897;
+import '../features/orders/domain/contracts/order_repo.dart' as _i544;
+import '../features/orders/domain/use_cases/order_use_case.dart' as _i411;
+import '../features/orders/presentation/view_model/order_cubit.dart' as _i716;
 import '../features/product/data/data_sources/contracts/product_online_data_source.dart'
     as _i1037;
 import '../features/product/data/data_sources/impl/product_online_data_source_impl.dart'
@@ -189,6 +197,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i326.AuthOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i345.OfflineDataSource>(
         () => _i1036.OfflineDataSourceImplementation());
+    gh.factory<_i513.OrderOnlineDataSource>(
+        () => _i971.OrderOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i700.AddAddressOnlineDataSource>(
         () => _i172.AddAddressOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i355.CheckoutOnlineDataSource>(
@@ -197,10 +207,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i507.HomeApiManager(gh<_i282.ApiManager>()));
     gh.factory<_i1005.LanguageProvider>(
         () => _i1005.LanguageProvider(gh<_i289.LanguageService>()));
+    gh.factory<_i544.OrderRepo>(
+        () => _i897.OrderRepoImpl(gh<_i513.OrderOnlineDataSource>()));
     gh.factory<_i497.AddAddressRepo>(
         () => _i925.AddAddressRepoImpl(gh<_i700.AddAddressOnlineDataSource>()));
     gh.factory<_i98.ProductsUseCase>(
         () => _i98.ProductsUseCase(gh<_i598.ProductsRepo>()));
+    gh.factory<_i411.OrderUseCase>(
+        () => _i411.OrderUseCase(gh<_i544.OrderRepo>()));
     gh.factory<_i917.AddressRepo>(
         () => _i305.AddressRepoImpl(gh<_i92.AddressOnlineDataSource>()));
     gh.lazySingleton<_i765.HomeRepository>(
@@ -237,6 +251,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i643.MostSellingProductsRepository>(() =>
         _i221.MostSellingProductsRepoImpl(
             gh<_i475.MostSellingProductsOnlineDataSource>()));
+    gh.factory<_i716.OrderCubit>(
+        () => _i716.OrderCubit(gh<_i411.OrderUseCase>()));
     gh.factory<_i526.AddAddressViewModelCubit>(
         () => _i526.AddAddressViewModelCubit(gh<_i207.AddAddressUseCase>()));
     gh.factory<_i720.HomeUseCase>(
