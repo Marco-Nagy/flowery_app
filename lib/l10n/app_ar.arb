@@ -226,7 +226,10 @@
   "location_permission_denied": "تم رفض إذن الموقع. ",
   "error_getting_location": "خطأ في الحصول على الموقع",
   "get_location": "الحصول على الموقع",
-  "address_not_found": "العنوان غير موجود"
+  "address_not_found": "العنوان غير موجود",
+  "no_orders_available": "لا تتوفر طلبات",
+  "order_number": "رقم الطلب",
+  "egp": "ج.م"
 
 
 
