@@ -22,7 +22,7 @@ class AboutAppView extends StatelessWidget {
         centerTitle: true,
         backgroundColor: MyColors.baseColor,
         elevation: 4,
-        shadowColor: MyColors.baseColor.withValues(alpha: 0.3),
+        shadowColor: MyColors.baseColor.withValues(alpha: (0.3 * 255).toDouble()),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white),
           onPressed: () => Navigator.pop(context),
