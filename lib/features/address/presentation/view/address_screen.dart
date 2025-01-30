@@ -1,5 +1,6 @@
 import 'package:country_state_city/models/city.dart';
 import 'package:country_state_city/models/country.dart';
+import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
@@ -28,6 +29,8 @@ class _AddressScreenState extends State<AddressScreen> {
   late final TextEditingController addressController;
   late final TextEditingController phoneController;
   late final TextEditingController recipientController;
+  late final TextEditingController countryController;
+  late final TextEditingController cityController;
 
   String? selectedCountry;
   String? selectedCity;
@@ -43,7 +46,25 @@ class _AddressScreenState extends State<AddressScreen> {
     addressController = TextEditingController()..addListener(_checkFields);
     phoneController = TextEditingController()..addListener(_checkFields);
     recipientController = TextEditingController()..addListener(_checkFields);
+    countryController = TextEditingController()..addListener(_checkFields);
+    cityController = TextEditingController()..addListener(_checkFields);
     context.read<AddAddressViewModelCubit>().doAction(FetchCountriesAction());
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final args =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+
+    if (args != null) {
+      setState(() {
+        addressController.text = args['address'] ?? '';
+        cityController.text = args['city'] ?? '';
+        countryController.text = args['country'] ?? '';
+      });
+    }
   }
 
   @override
@@ -59,14 +80,15 @@ class _AddressScreenState extends State<AddressScreen> {
       isButtonEnabled = addressController.text.isNotEmpty &&
           phoneController.text.isNotEmpty &&
           recipientController.text.isNotEmpty &&
-          selectedCountry != null &&
-          selectedCity != null;
+          countryController.text.isNotEmpty &&
+          cityController.text.isNotEmpty;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MyColors.white,
       appBar: customAppBar(
         appBarTxt: AppLocalizations.of(context)!.address,
         context: context,
@@ -88,11 +110,26 @@ class _AddressScreenState extends State<AddressScreen> {
           return SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  margin: EdgeInsets.only(bottom: 10.h),
-                  width: 390.w,
-                  height: 200.h,
-                  child: Image.asset(Assets.imagesRectangle, fit: BoxFit.cover),
+                GestureDetector(
+                  onTap: () async {
+                    final result =
+                        await Navigator.pushNamed(context, AppRoutes.mapView);
+
+                    if (result != null && result is Map<String, String>) {
+                      setState(() {
+                        addressController.text = result['address'] ?? '';
+                        cityController.text = result['city'] ?? '';
+                        countryController.text = result['country'] ?? '';
+                      });
+                    }
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(bottom: 10.h),
+                    width: 390.w,
+                    height: 200.h,
+                    child:
+                        Image.asset(Assets.imagesRectangle, fit: BoxFit.cover),
+                  ),
                 ),
                 BuildTextFieldWidget(
                   hint: AppLocalizations.of(context)!.enter_address,
@@ -112,50 +149,24 @@ class _AddressScreenState extends State<AddressScreen> {
                   controller: recipientController,
                 ),
                 SizedBox(height: 10.h),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12.r),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: BuildDropdownFieldWidget(
-                          hint: AppLocalizations.of(context)!.select_country,
-                          label: AppLocalizations.of(context)!.country,
-                          items: countryList,
-                          selectedValue: selectedCountry,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedCountry = value;
-                              cityList
-                                  .clear();
-                              _checkFields();
-                              context.read<AddAddressViewModelCubit>().doAction(
-                                FetchCitiesAction(
-                                  countryList
-                                      .firstWhere((item) => item.name == value)
-                                      .isoCode,
-                                ),
-                              );
-                            });
-                          },
-                        ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: BuildTextFieldWidget(
+                        hint: AppLocalizations.of(context)!.country,
+                        label: AppLocalizations.of(context)!.country,
+                        controller: countryController,
                       ),
-                      SizedBox(width: 10.h),
-                      Expanded(
-                        child: BuildDropdownFieldWidget(
-                          hint: AppLocalizations.of(context)!.select_city,
-                          label: AppLocalizations.of(context)!.city,
-                          items: cityList,
-                          selectedValue: selectedCity,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedCity = value;
-                              _checkFields();
-                            });
-                          },
-                        ),
+                    ),
+                    SizedBox(width: 10.h),
+                    Expanded(
+                      child: BuildTextFieldWidget(
+                        hint: AppLocalizations.of(context)!.city,
+                        label: AppLocalizations.of(context)!.city,
+                        controller: cityController,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 20.h),
                 SizedBox(
@@ -169,8 +180,8 @@ class _AddressScreenState extends State<AddressScreen> {
                         AddAddressSubmitAction(
                           AddAddressRequestEntity(
                             street: addressController.text.trim(),
-                            city: selectedCity,
-                            phone: phoneController.text.trim(),
+                                      city: cityController.text.trim(),
+                                      phone: phoneController.text.trim(),
                           ),
                         ),
                       );

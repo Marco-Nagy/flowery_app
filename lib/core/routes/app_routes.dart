@@ -1,6 +1,7 @@
 import 'package:flowery_e_commerce/core/routes/base_routes.dart';
 import 'package:flowery_e_commerce/core/utils/screens/under_build_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/address_screen.dart';
+import 'package:flowery_e_commerce/features/address/presentation/view/map_view.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/saved_address_screen.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/email_verification.dart';
@@ -53,6 +54,7 @@ class AppRoutes {
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
   static const String checkoutScreen = 'checkoutScreen';
+  static const String mapView = 'mapView';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -146,6 +148,8 @@ class AppRoutes {
         return BaseRoute(page: const TermsAndConditionsPage());
         case AppRoutes.orderView:
         return BaseRoute(page: const OrderView());
+      case AppRoutes.mapView:
+        return BaseRoute(page: const MapView());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }
