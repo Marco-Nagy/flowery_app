@@ -34,12 +34,11 @@ class CustomSearchBar extends StatelessWidget {
         border: Border.all(color: borderColor),
         borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: (0.1 * 255).toDouble()), // 10% opacity
-
+          const BoxShadow(
+            color: Color.fromRGBO(0, 0, 0, 0.1),
             spreadRadius: 1,
             blurRadius: 4,
-            offset: const Offset(0, 2), // Shadow position
+            offset: Offset(0, 2),
           ),
         ],
       ),
