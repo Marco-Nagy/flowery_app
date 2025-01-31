@@ -226,7 +226,9 @@
   "location_permission_denied": "تم رفض إذن الموقع. ",
   "error_getting_location": "خطأ في الحصول على الموقع",
   "get_location": "الحصول على الموقع",
-  "address_not_found": "العنوان غير موجود"
+  "address_not_found": "العنوان غير موجود",
+  "order_placed_successfully": "تم تقديم طلبك بنجاح!"
+
 
 
 

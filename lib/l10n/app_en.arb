@@ -226,7 +226,8 @@
     "location_permission_denied": "Location permission denied",
     "error_getting_location": "Error getting location",
     "get_location": "Get Location",
-    "address_not_found": "Address not found"
+    "address_not_found": "Address not found",
+    "order_placed_successfully": "Your order placed successfully!"
 
 
 
