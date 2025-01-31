@@ -14,19 +14,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'empty_cart_screen.dart';
+
 class CartViewBody extends StatelessWidget {
-  const CartViewBody({super.key, required this.cart});
+  const CartViewBody({super.key, required this.cart, required this.backButtonVisible});
 final CartEntity cart;
+final  bool backButtonVisible;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: customAppBar(
-        appBarTxt: '${AppLocalizations.of(context)!.cart} (${cart.numOfCartItems} ${AppLocalizations.of(context)!.items}) ',
-        showArrow: true,
+        appBarTxt:cart.numOfCartItems>0? '${AppLocalizations.of(context)!.cart} (${cart.numOfCartItems} ${AppLocalizations.of(context)!.items}) ':'',
+        showArrow: backButtonVisible,
         context: context,
       ),
-      body: Column(
+      body: cart.cartList.isNotEmpty? Column(
         children: [
           Container(
             margin: EdgeInsets.all(15.sp),
@@ -79,7 +82,7 @@ final CartEntity cart;
             color: MyColors.baseColor,),
           verticalSpacing(16),
         ],
-      ),
+      ): const EmptyCartScreen(),
     );
   }
 }

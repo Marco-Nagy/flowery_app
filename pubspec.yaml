@@ -60,7 +60,9 @@ dependencies:
   flutter_localization:
   intl_utils:
   country_state_city:
+  url_launcher: ^6.3.1
   flutter_dotenv:
+
 
 
   # Ui
@@ -83,6 +85,9 @@ dependencies:
   flutter_bloc:
   flutter_svg:
   bloc:
+  geolocator: ^13.0.2   # For location services and permissions
+  geocoding: ^3.0.0
+
 
   # Firebase ML Kit
   firebase_core:
