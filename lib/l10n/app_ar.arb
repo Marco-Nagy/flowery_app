@@ -222,7 +222,8 @@
   "completed": "مكتمل",
   "street": "الشارع",
   "latitude": "خط العرض",
-  "longitude": "خط الطول"
+  "longitude": "خط الطول",
+  "confirm_location": "تأكيد الموقع"
 
 
 
