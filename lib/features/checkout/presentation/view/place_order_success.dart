@@ -18,7 +18,9 @@ class PlaceOrderSuccess extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyColors.white,
       appBar: customAppBar(
-          appBarTxt: AppLocalizations.of(context)!.track_order, context: context, showArrow: true),
+          appBarTxt: AppLocalizations.of(context)!.track_order,
+          context: context,
+          showArrow: true),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
