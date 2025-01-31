@@ -219,8 +219,10 @@
     "country": "Country",
     "reorder": "Reorder",
     "active": "Active",
-    "completed": "Completed"
-
+    "completed": "Completed",
+    "street": "Street",
+    "latitude": "Latitude",
+    "longitude": "Longitude"
 
 
 }
