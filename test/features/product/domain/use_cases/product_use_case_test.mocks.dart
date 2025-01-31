@@ -36,11 +36,13 @@ class MockProductRepo extends _i1.Mock implements _i2.ProductRepo {
   }
 
   @override
-  _i3.Future<_i4.DataResult<_i5.ProductResponseEntity>> getAllProducts() =>
+  _i3.Future<_i4.DataResult<_i5.ProductResponseEntity>> getAllProducts(
+          {String? searchKey}) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
           [],
+          {#searchKey: searchKey},
         ),
         returnValue:
             _i3.Future<_i4.DataResult<_i5.ProductResponseEntity>>.value(
@@ -49,6 +51,7 @@ class MockProductRepo extends _i1.Mock implements _i2.ProductRepo {
           Invocation.method(
             #getAllProducts,
             [],
+            {#searchKey: searchKey},
           ),
         )),
       ) as _i3.Future<_i4.DataResult<_i5.ProductResponseEntity>>);

@@ -13,7 +13,7 @@ class ProductRepoImpl implements ProductRepo {
   ProductRepoImpl(this._onlineDataSource);
 
   @override
-  Future<DataResult<ProductResponseEntity>> getAllProducts() async {
-    return await _onlineDataSource.getAllProducts();
+  Future<DataResult<ProductResponseEntity>> getAllProducts({String? searchKey}) async {
+    return await _onlineDataSource.getAllProducts(keyword: searchKey);
   }
 }

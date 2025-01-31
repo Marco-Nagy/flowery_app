@@ -2,12 +2,12 @@ import 'package:flowery_e_commerce/features/address/data/models/response/saved_a
 import 'package:flowery_e_commerce/features/address/domain/entities/response/SavedAddressResponseEntity.dart';
 
 class AddressMapper {
-  static List<GetSavedAddressesEntity> toSavedAddressesMapper(
+  static List<AddressesEntity> toSavedAddressesMapper(
       SavedAddressResponseEntityDtoEntity savedAddresses) {
     if (savedAddresses.addresses == null) return [];
     return savedAddresses.addresses!
         .map(
-          (address) => GetSavedAddressesEntity(
+          (address) => AddressesEntity(
             street: address!.street,
             city: address.city,
             id: address.id,
