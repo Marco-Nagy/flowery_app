@@ -42,7 +42,6 @@ dependencies:
   badges:
   row_item:
   dio:
-  geocoding:
   flutter_map:
   latlong2:
   location:
@@ -91,7 +90,7 @@ dependencies:
 
   # Firebase ML Kit
   firebase_core:
-  firebase_crashlytics: ^4.2.0
+  firebase_crashlytics: ^4.3.1
   firebase_analytics: ^11.3.6
   googleapis: ^13.2.0
   googleapis_auth: ^1.6.0
