@@ -88,6 +88,17 @@ class MessagingHelper {
       onDidReceiveNotificationResponse: (NotificationResponse response) {
         if (response.payload != null) {
           final payload = response.payload!.split('|');
+          if(payload[1].toString().contains('order')){
+            navigatorKey.currentState?.pushNamed(
+              AppRoutes.notificationView,
+              arguments: NotificationArgs(
+                title: payload[0],
+                // Use the first part of the payload as the title
+                body: payload[1],
+                // Use the second part of the payload as the body
+              ),
+            );
+          }
           navigatorKey.currentState?.pushNamed(
             AppRoutes.notificationView,
             arguments: NotificationArgs(
