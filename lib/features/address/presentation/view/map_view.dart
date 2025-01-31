@@ -20,9 +20,10 @@ class _MapViewState extends State<MapView> with TickerProviderStateMixin {
   final MapController mapController = MapController();
   loc.LocationData? currentLocation;
   LatLng? selectedLocation;
-  String? address;
+  String? street;
   String? city;
-  String? country;
+  double? longitude;
+  double? latitude;
   bool isLoading = false;
 
   Future<void> _getCurrentLocation() async {
@@ -54,21 +55,10 @@ class _MapViewState extends State<MapView> with TickerProviderStateMixin {
         debugPrint("Placemark: $place");
 
         setState(() {
-          // Extract the necessary fields
-          address = "${place.subLocality}";
-          city = place.locality ?? 'Unknown City';
-          country = place.country ?? 'Unknown Country';
-
-          // Assigning Administrative area and Subadministrative area to city and address
-          String administrativeArea =
-              place.administrativeArea ?? 'Unknown Area';
-          String subAdministrativeArea =
-              place.subAdministrativeArea ?? 'Unknown Sub Area';
-
-          // You can decide how to combine these based on your needs
-          city = "$city, $subAdministrativeArea";
-          address = "$address$administrativeArea";
-
+          city = place.subAdministrativeArea ?? 'Unknown City';
+          street = place.street ?? 'Unknown Street';
+          longitude = latLng.longitude;
+          latitude = latLng.latitude;
           isLoading = false;
         });
       } else {
@@ -98,9 +88,10 @@ class _MapViewState extends State<MapView> with TickerProviderStateMixin {
       Navigator.pop(
         context,
         {
-          'address': address ?? '',
+          'street': street ?? '',
           'city': city ?? '',
-          'country': country ?? '',
+          'latitude': latitude.toString(),
+          'longitude': longitude.toString()
         },
       );
     }

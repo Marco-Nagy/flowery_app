@@ -219,7 +219,10 @@
   "country": "دولة",
   "reorder": "إعادة الطلب",
   "active": "نشط",
-  "completed": "مكتمل"
+  "completed": "مكتمل",
+  "street": "الشارع",
+  "latitude": "خط العرض",
+  "longitude": "خط الطول"
 
 
 
