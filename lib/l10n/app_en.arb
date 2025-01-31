@@ -222,7 +222,8 @@
     "completed": "Completed",
     "street": "Street",
     "latitude": "Latitude",
-    "longitude": "Longitude"
+    "longitude": "Longitude",
+    "confirm_location": "Confirm Location"
 
 
 }
