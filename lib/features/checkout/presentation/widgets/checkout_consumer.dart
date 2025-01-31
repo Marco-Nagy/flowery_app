@@ -23,10 +23,10 @@ class CheckoutConsumer extends StatelessWidget {
           case CheckoutCashSuccess():
             aweSnackBar(
                 title:AppLocalizations.of(context)!.success,
-                msg: state.placeOrder.orderId,
+                msg: state.placeOrder.orderStatus,
                 context: context,
                 type: MessageTypeConst.success);
-            await context.pushNamed(AppRoutes.homeScreen);
+            await context.pushNamed(AppRoutes.placeOrderSuccess, arguments: state.placeOrder.orderId);
 
           case CheckoutCreditSuccess():
         Uri url = Uri.parse(state.placeOrder.url);
