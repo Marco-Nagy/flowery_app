@@ -37,6 +37,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons:
   fluttertoast:
+  flutter_spinkit:
   bloc_test:
   badges:
   row_item:
