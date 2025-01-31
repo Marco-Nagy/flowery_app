@@ -220,6 +220,13 @@
   "reorder": "إعادة الطلب",
   "active": "نشط",
   "completed": "مكتمل",
+  "no_location": "لا يوجد موقع",
+  "no_location_saved": "لا يوجد موقع محفوظ",
+  "location_services_are_disabled": "تم تعطيل خدمات الموقع. ",
+  "location_permission_denied": "تم رفض إذن الموقع. ",
+  "error_getting_location": "خطأ في الحصول على الموقع",
+  "get_location": "الحصول على الموقع",
+  "address_not_found": "العنوان غير موجود"
   "street": "الشارع",
   "latitude": "خط العرض",
   "longitude": "خط الطول",

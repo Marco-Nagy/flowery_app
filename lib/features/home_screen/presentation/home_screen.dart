@@ -4,7 +4,7 @@ import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/screens/categories_view.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/screens/cart_view.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/view/cart_view.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/tabs/home_tab.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_view.dart';
@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ..doAction(
           GetUserCartDataAction(),
         ),
-      child: const CartView(),
+      child: const CartView(backButtonVisible: false,),
     ),
     const ProfileMainScreen(),
     const ProfileView(),
