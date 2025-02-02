@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/utils/widgets/spacing.dart';
@@ -22,7 +24,7 @@ class CustomSectionGender extends StatelessWidget {
       children: [
         Expanded(
           child: Text(
-            AppLocalizations.of(context)!.gender,
+            context.translate(LangKeys.gender),
             style: MyFonts.styleMedium500_18.copyWith(
               color: MyColors.gray,
             ),
@@ -39,7 +41,7 @@ class CustomSectionGender extends StatelessWidget {
                 child: RadioListTile(
                   contentPadding: EdgeInsets.zero,
                   title: AutoSizeText(
-                    AppLocalizations.of(context)!.female,
+                    context.translate(LangKeys.female),
                     style: MyFonts.styleRegular400_14,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
@@ -59,7 +61,7 @@ class CustomSectionGender extends StatelessWidget {
                 child: RadioListTile(
                   contentPadding: EdgeInsets.zero,
                   title: AutoSizeText(
-                    AppLocalizations.of(context)!.male,
+                    context.translate(LangKeys.male),
                     style: MyFonts.styleRegular400_14.copyWith(
                       color: MyColors.gray,
                     ),

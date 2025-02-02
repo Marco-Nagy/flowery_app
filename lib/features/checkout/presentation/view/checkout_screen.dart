@@ -13,7 +13,8 @@ import 'package:flowery_e_commerce/features/checkout/presentation/widgets/gift_w
 import 'package:flowery_e_commerce/features/checkout/presentation/widgets/payment_widget.dart';
 import 'package:flowery_e_commerce/features/checkout/presentation/widgets/section_title.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:intl/intl.dart';
 
 class CheckoutScreen extends StatefulWidget {
@@ -35,11 +36,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     final arriveDate =
         DateTime(now.year, now.month, now.day + 3, now.hour, now.minute);
     final formattedDate = DateFormat("dd MMM yyyy HH:mm a").format(arriveDate);
-    final arriveMessage = '${AppLocalizations.of(context)!.arrive_by} $formattedDate';
+    final arriveMessage = '${context.translate(LangKeys.arriveBy)} $formattedDate';
     return Scaffold(
       backgroundColor: MyColors.white,
       appBar: customAppBar(
-        appBarTxt: AppLocalizations.of(context)!.checkout,
+        appBarTxt: context.translate(LangKeys.checkout),
         showArrow: true,
         context: context,
       ),
@@ -50,13 +51,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Delivery Time Section
-               SectionTitle(title: AppLocalizations.of(context)!.delivery_time, action:AppLocalizations.of(context)!.schedule),
+               SectionTitle(title: context.translate(LangKeys.deliveryTime), action: context.translate(LangKeys.schedule)),
               const SizedBox(height: 8),
               Row(
                 children: [
                   const Icon(Icons.access_time, color: Colors.black54),
                   const SizedBox(width: 8),
-                   Text(AppLocalizations.of(context)!.instant,style:MyFonts.styleMedium500_14,),
+                   Text(context.translate(LangKeys.instant),style:MyFonts.styleMedium500_14,),
                   Text(
                     ' $arriveMessage',
                     style: const TextStyle(color: Colors.green),
@@ -66,13 +67,13 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               const Divider(height: 60,thickness: 24,color: MyColors.white60,),
 
               // Delivery Address Section
-               SectionTitle(title: AppLocalizations.of(context)!.delivery_address),
+               SectionTitle(title: context.translate(LangKeys.deliveryAddress)),
               const SizedBox(height: 8),
               AddressesList(),
               verticalSpacing(16),
 
               CurvedButton(
-                title: ' + ${AppLocalizations.of(context)!.add_new}',
+                title: ' + ${context.translate(LangKeys.addNew)}',
                 onTap: () => context.pushNamed(AppRoutes.addressScreen),
                 color: MyColors.white,
                 textColor: MyColors.baseColor,
