@@ -1,12 +1,12 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import '../../../localization/lang_keys.dart';
 import '../spacing.dart';
 
 class AppLoader extends StatefulWidget {
@@ -56,7 +56,7 @@ class AppLoaderState extends State<AppLoader> with SingleTickerProviderStateMixi
                 repeatForever: true,
                 animatedTexts: [
                   ScaleAnimatedText(
-                    AppLocalizations.of(context)!.app_name,
+                    (context.translate(LangKeys.appName)),
                     textStyle: MyFonts.styleBold700_24.copyWith(
                       fontFamily: 'oronteus',
                       color: MyColors.baseColor,

@@ -22,5 +22,6 @@ class ApiConstants {
   static const String cashOrders = "api/v1/orders";
   static const String checkOutOrders = "$cashOrders/checkout";
   static const String checkOutUrl = "http://localhost:3000";
+  static const String getUserOrders = "api/v1/orders";
 
 }

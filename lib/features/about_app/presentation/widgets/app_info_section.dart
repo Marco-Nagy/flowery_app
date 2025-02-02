@@ -1,23 +1,30 @@
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/localization/lang_keys.dart';
 import '../widgets/list_tile_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppInfoSection extends StatelessWidget {
   const AppInfoSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
-        ListTileWidget(title: AppLocalizations.of(context)!.version, icon: Icons.eco, info:AppLocalizations.of(context)!.app_version,
+        ListTileWidget(
+          title: (context.translate(LangKeys.version)),
+          icon: Icons.eco,
+          info: (context.translate(LangKeys.appVersion)),
         ),
         ListTileWidget(
-            title: AppLocalizations.of(context)!.developed_by, icon: Icons.code, info: AppLocalizations.of(context)!.team_name,
+          title: (context.translate(LangKeys.developedBy)),
+          icon: Icons.code,
+          info: (context.translate(LangKeys.teamName)),
         ),
         ListTileWidget(
-            title: AppLocalizations.of(context)!.contact_us,
-            icon: Icons.email,
-            info: AppLocalizations.of(context)!.email_contact,
+          title: (context.translate(LangKeys.contactUs)),
+          icon: Icons.email,
+          info: (context.translate(LangKeys.emailContact)),
         ),
       ],
     );
