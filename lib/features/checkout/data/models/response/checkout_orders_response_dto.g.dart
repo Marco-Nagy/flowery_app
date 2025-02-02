@@ -105,10 +105,12 @@ CheckoutSessionDto _$CheckoutSessionDtoFromJson(Map<String, dynamic> json) =>
       json['url'] as String?,
     );
 
+
 AdaptivePricingDto _$AdaptivePricingDtoFromJson(Map<String, dynamic> json) =>
     AdaptivePricingDto(
       json['enabled'] as bool?,
     );
+
 
 AutomaticTaxDto _$AutomaticTaxDtoFromJson(Map<String, dynamic> json) =>
     AutomaticTaxDto(
@@ -117,6 +119,8 @@ AutomaticTaxDto _$AutomaticTaxDtoFromJson(Map<String, dynamic> json) =>
       json['status'],
     );
 
+
+
 CustomTextDto _$CustomTextDtoFromJson(Map<String, dynamic> json) =>
     CustomTextDto(
       json['after_submit'],
@@ -124,6 +128,8 @@ CustomTextDto _$CustomTextDtoFromJson(Map<String, dynamic> json) =>
       json['submit'],
       json['terms_of_service_acceptance'],
     );
+
+
 
 CustomerDetailsDto _$CustomerDetailsDtoFromJson(Map<String, dynamic> json) =>
     CustomerDetailsDto(
@@ -134,6 +140,7 @@ CustomerDetailsDto _$CustomerDetailsDtoFromJson(Map<String, dynamic> json) =>
       json['tax_exempt'] as String?,
       json['tax_ids'],
     );
+
 
 InvoiceCreationDto _$InvoiceCreationDtoFromJson(Map<String, dynamic> json) =>
     InvoiceCreationDto(
@@ -158,9 +165,11 @@ InvoiceDataDto _$InvoiceDataDtoFromJson(Map<String, dynamic> json) =>
       json['rendering_options'],
     );
 
+
 InvoiceDataMetadataDto _$InvoiceDataMetadataDtoFromJson(
         Map<String, dynamic> json) =>
     InvoiceDataMetadataDto();
+
 
 SessionMetadataDto _$SessionMetadataDtoFromJson(Map<String, dynamic> json) =>
     SessionMetadataDto(
@@ -169,12 +178,15 @@ SessionMetadataDto _$SessionMetadataDtoFromJson(Map<String, dynamic> json) =>
       json['street'] as String?,
     );
 
+
 PaymentMethodConfigurationDetailsDto
     _$PaymentMethodConfigurationDetailsDtoFromJson(Map<String, dynamic> json) =>
         PaymentMethodConfigurationDetailsDto(
           json['id'] as String?,
           json['parent'],
         );
+
+
 
 PaymentMethodOptionsDto _$PaymentMethodOptionsDtoFromJson(
         Map<String, dynamic> json) =>
@@ -185,11 +197,15 @@ PaymentMethodOptionsDto _$PaymentMethodOptionsDtoFromJson(
               json['card'] as Map<String, dynamic>),
     );
 
+
+
 PaymentMethodOptionsCardDto _$PaymentMethodOptionsCardDtoFromJson(
         Map<String, dynamic> json) =>
     PaymentMethodOptionsCardDto(
       json['request_three_d_secure'] as String?,
     );
+
+
 
 PhoneNumberCollectionDto _$PhoneNumberCollectionDtoFromJson(
         Map<String, dynamic> json) =>
@@ -197,9 +213,11 @@ PhoneNumberCollectionDto _$PhoneNumberCollectionDtoFromJson(
       json['enabled'] as bool?,
     );
 
+
 TotalDetailsDto _$TotalDetailsDtoFromJson(Map<String, dynamic> json) =>
     TotalDetailsDto(
       (json['amount_discount'] as num?)?.toInt(),
       (json['amount_shipping'] as num?)?.toInt(),
       (json['amount_tax'] as num?)?.toInt(),
     );
+
