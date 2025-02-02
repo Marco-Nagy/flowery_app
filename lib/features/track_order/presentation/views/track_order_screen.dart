@@ -1,4 +1,6 @@
+import 'package:flowery_e_commerce/core/localization/lang_keys.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
@@ -10,7 +12,6 @@ import 'package:flowery_e_commerce/features/track_order/presentation/widgets/ste
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -37,7 +38,7 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
           final drive = orderViewModelCubit.trackOrderEntity!.driver;
           return Scaffold(
             appBar: customAppBar(
-              appBarTxt: AppLocalizations.of(context)!.track_order,
+              appBarTxt:context.translate(LangKeys.trackOrder),
               context: context,
               showArrow: true,
             ),
@@ -67,8 +68,7 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
                         AddressSection(
                           title: 'Pickup address',
                           name: '${drive.firstName} ${drive.lastName}',
-                          address:
-                              AppLocalizations.of(context)!.delivery_hero_today,
+                          address:context.translate(LangKeys.deliveryHeroToday),
                           image: drive.photo ?? '',
                           phone: drive.phone! ,
                         ),
@@ -82,7 +82,7 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
             bottomNavigationBar: Padding(
               padding: const EdgeInsets.all(8.0),
               child: CurvedButton(
-                title: AppLocalizations.of(context)!.show_map,
+                title: context.translate(LangKeys.showMap),
                 onTap: () async {},
               ),
             ),
