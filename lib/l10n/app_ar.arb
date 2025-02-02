@@ -227,7 +227,13 @@
   "error_getting_location": "خطأ في الحصول على الموقع",
   "get_location": "الحصول على الموقع",
   "address_not_found": "العنوان غير موجود",
-  "order_placed_successfully": "تم تقديم طلبك بنجاح!"
+  "order_placed_successfully": "تم تقديم طلبك بنجاح!",
+  "estimated_arrival": "الوصول المتوقع",
+  "delivery_hero_today": "بطل التوصيل الخاص بك اليوم",
+  "preparing_your_order": "يتم تحضير طلبك",
+  "out_for_delivery": "في الطريق للتوصيل",
+  "delivered": "تم التوصيل",
+  "show_map": "عرض الخريطة"
 
 
 
