@@ -1,6 +1,7 @@
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../di/di.dart';
+import '../../localization/lang_keys.dart';
 import '../../styles/animated_image.dart';
 import '../../styles/colors/my_colors.dart';
 import '../../styles/fonts/my_fonts.dart';
@@ -69,19 +70,19 @@ class AnimatedStatusDialog {
       case Status.loading:
         return  _StatusValue(
           startColor: MyColors.blue,
-          title:  AppLocalizations.of(context)!.loading,
+          title:  context.translate(LangKeys.loading),
           imagePath: AnimatedImage.loading,
         );
       case Status.success:
         return  _StatusValue(
           startColor: Colors.green,
-          title:  AppLocalizations.of(context)!.success,
+          title:  context.translate(LangKeys.success),
           imagePath: AnimatedImage.success,
         );
       case Status.error:
         return  _StatusValue(
           startColor: Colors.red,
-          title:  AppLocalizations.of(context)!.error,
+          title:  context.translate(LangKeys.error),
           imagePath: AnimatedImage.error,
         );
     }

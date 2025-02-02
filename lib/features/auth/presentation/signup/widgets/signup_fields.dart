@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import '../../../../../core/localization/lang_keys.dart';
 import '../../../../../core/utils/validators.dart';
 import '../../../../../core/utils/widgets/app_text_form_field.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
@@ -20,10 +21,10 @@ class SignUpFields extends StatelessWidget {
             Expanded(
               child: AppTextFormField(
                 controller: cubit.firstNameController,
-                hintText:AppLocalizations.of(context)!.hintFirstName,
-                labelText: AppLocalizations.of(context)!.first_name,
+                hintText:context.translate(LangKeys.hintFirstName),
+                labelText: context.translate(LangKeys.firstName),
                 validator: (value) => Validators.validateNotEmpty(
-                  title: AppLocalizations.of(context)!.first_name,
+                  title: context.translate(LangKeys.firstName),
                   value: value,
                   context: context,
                 ),
@@ -35,10 +36,10 @@ class SignUpFields extends StatelessWidget {
             Expanded(
               child: AppTextFormField(
                 controller: cubit.lastNameController,
-                hintText:AppLocalizations.of(context)!.hintFirstName,
-                labelText: AppLocalizations.of(context)!.last_name,
+                hintText:context.translate(LangKeys.hintLastName),
+                labelText: context.translate(LangKeys.lastName),
                 validator: (value) => Validators.validateNotEmpty(
-                  title: AppLocalizations.of(context)!.last_name,
+                  title: context.translate(LangKeys.lastName),
                   value: value,
                   context: context,
                 ),
@@ -51,8 +52,8 @@ class SignUpFields extends StatelessWidget {
         ),
         AppTextFormField(
           controller: cubit.emailController,
-          hintText:  AppLocalizations.of(context)!.hintEmail,
-          labelText: AppLocalizations.of(context)!.email,
+          hintText:  context.translate(LangKeys.hintEmail),
+          labelText: context.translate(LangKeys.email),
           validator: (value) => Validators.validateEmail(value, context),
         ),
         verticalSpacing(
@@ -63,8 +64,8 @@ class SignUpFields extends StatelessWidget {
             Expanded(
               child: AppTextFormField(
                 controller: cubit.passwordController,
-                hintText:  AppLocalizations.of(context)!.hintPassword,
-                labelText:  AppLocalizations.of(context)!.password,
+                hintText:  context.translate(LangKeys.hintPassword),
+                labelText:  context.translate(LangKeys.password),
                 validator: (value) => Validators.validatePassword(value, context),
               ),
             ),
@@ -74,8 +75,8 @@ class SignUpFields extends StatelessWidget {
             Expanded(
               child: AppTextFormField(
                 controller: cubit.confirmPasswordController,
-                hintText: AppLocalizations.of(context)!.confirmPassword,
-                labelText:  AppLocalizations.of(context)!.confirmPassword,
+                hintText:context.translate(LangKeys.hintConfirmPassword),
+                labelText: context.translate(LangKeys.confirmPassword),
                 validator: (value) => Validators.validatePassword(value, context),
               ),
             ),
@@ -86,8 +87,8 @@ class SignUpFields extends StatelessWidget {
         ),
         AppTextFormField(
           controller: cubit.phoneNumberController,
-          hintText: AppLocalizations.of(context)!.hintPhoneNumber,
-          labelText:  AppLocalizations.of(context)!.phone_number,
+          hintText: context.translate(LangKeys.hintPhoneNumber),
+          labelText: context.translate(LangKeys.phoneNumber),
           validator: (value) => Validators.validatePhoneNumber(value, context),
         ),
 
