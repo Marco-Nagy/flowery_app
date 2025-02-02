@@ -1,8 +1,9 @@
+import 'package:flowery_e_commerce/core/localization/lang_keys.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../view_model/map_view_model.dart';
 
 class ConfirmLocationButton extends StatelessWidget {
@@ -28,7 +29,7 @@ class ConfirmLocationButton extends StatelessWidget {
             return model.isLoading
                 ? const CircularProgressIndicator(color: Colors.white)
                 : Text(
-                    AppLocalizations.of(context)!.confirm_location,
+                context.translate(LangKeys.confirmLocation),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16.sp,
