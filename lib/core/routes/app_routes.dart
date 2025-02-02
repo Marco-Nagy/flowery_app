@@ -1,6 +1,7 @@
 import 'package:flowery_e_commerce/core/routes/base_routes.dart';
 import 'package:flowery_e_commerce/core/utils/screens/under_build_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/address_screen.dart';
+import 'package:flowery_e_commerce/features/address/presentation/view/map_view.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/saved_address_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view_model/address_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
@@ -64,6 +65,7 @@ class AppRoutes {
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
   static const String checkoutScreen = 'checkoutScreen';
+  static const String mapView = 'mapView';
   static const String searchView = 'searchView';
   static const String notificationView = 'notificationView';
   static const String cartScreen = 'cartScreen';
@@ -182,6 +184,8 @@ class AppRoutes {
             create: (context) => getIt.get<OrderCubit>()
               ..doAction(GetOrders()),
             child: const OrderView()));
+      case AppRoutes.mapView:
+        return BaseRoute(page: const MapView());
         case AppRoutes.cartScreen:
         return BaseRoute(
             page: BlocProvider(
