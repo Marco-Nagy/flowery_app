@@ -1,10 +1,11 @@
+import 'package:flowery_e_commerce/core/localization/lang_keys.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -18,7 +19,7 @@ class PlaceOrderSuccess extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyColors.white,
       appBar: customAppBar(
-          appBarTxt: AppLocalizations.of(context)!.track_order,
+          appBarTxt: context.translate(LangKeys.trackOrder),
           context: context,
           showArrow: true),
       body: Padding(
@@ -36,12 +37,12 @@ class PlaceOrderSuccess extends StatelessWidget {
             SizedBox(
                 width: 200.w,
                 child: Text(
-                  AppLocalizations.of(context)!.order_placed_successfully,
+                  context.translate(LangKeys.orderPlacedSuccessfully),
                   style: MyFonts.styleBold700_24,
                   textAlign: TextAlign.center,
                 )),
             CurvedButton(
-              title: AppLocalizations.of(context)!.track_order,
+              title:context.translate(LangKeys.trackOrder) ,
               onTap: () {},
             )
           ],
