@@ -51,9 +51,9 @@ class _ProfilePicState extends State<ProfilePic> {
       backgroundColor: Colors.transparent,
       builder: (BuildContext context) {
         return Container(
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(30),
               topRight: Radius.circular(30),
             ),
@@ -61,7 +61,7 @@ class _ProfilePicState extends State<ProfilePic> {
               BoxShadow(
                 color: Colors.black.withValues(alpha:0.1),
                 blurRadius: 20,
-                offset: Offset(0, -5),
+                offset: const Offset(0, -5),
               ),
             ],
           ),
