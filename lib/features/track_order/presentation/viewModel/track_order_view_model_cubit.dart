@@ -45,6 +45,7 @@ class TrackOrderViewModelCubit extends Cubit<TrackOrderViewModelState> {
       switch (result) {
         case Success<TrackOrderEntity>():
           trackOrderEntity = result.data;
+
           updateOrderStatus(trackOrderEntity!);
           debugPrint(' order details ${result.data.orders}');
           emit(GetTrackOrderSuccess(result.data));
