@@ -37,7 +37,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons:
   fluttertoast:
-  flutter_spinkit:
   bloc_test:
   badges:
   row_item:
@@ -63,6 +62,7 @@ dependencies:
 
 
 
+
   # Ui
   lottie:
   flutter_hooks:
@@ -77,6 +77,7 @@ dependencies:
   animate_do:
   another_stepper: ^1.2.2
 
+
   # add injectable to your dependencies
   injectable:
   get_it:
@@ -89,8 +90,8 @@ dependencies:
   geocoding: ^3.0.0
 
 
-  # Firebase
-  firebase_core: ^3.9.0
+  # Firebase ML Kit
+  firebase_core:
   firebase_crashlytics: ^4.3.1
   firebase_analytics: ^11.3.6
   cloud_firestore: ^5.6.2
@@ -99,7 +100,6 @@ dependencies:
   googleapis_auth: ^1.6.0
   firebase_messaging:
   flutter_local_notifications:
-
 
 dev_dependencies:
   flutter_test:
