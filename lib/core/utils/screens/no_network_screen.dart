@@ -1,6 +1,8 @@
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../localization/lang_keys.dart';
 class NoNetworkScreen extends StatelessWidget {
   const NoNetworkScreen({super.key});
 
@@ -27,7 +29,7 @@ class NoNetworkScreen extends StatelessWidget {
               ),
               const SizedBox(height: 30),
                Text(
-                AppLocalizations.of(context)!.no_internet_connection,
+                 context.translate(LangKeys.noInternetConnection),
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -44,7 +46,7 @@ class NoNetworkScreen extends StatelessWidget {
               ),
               const SizedBox(height: 15),
                Text(
-                AppLocalizations.of(context)!.offline_message,
+                  context.translate(LangKeys.offlineMessage),
                 style: const TextStyle(
                   fontSize: 16,
                   color: Colors.black,

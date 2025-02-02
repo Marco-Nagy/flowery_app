@@ -1,9 +1,9 @@
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/utils/widgets/base/app_loader.dart';
 import '../../../../core/utils/widgets/buttons/carved_button.dart';
@@ -30,7 +30,7 @@ class ListOrderWidget extends StatelessWidget {
             if (successState.orders == null || successState.orders!.isEmpty) {
               return Center(
                 child: Text(
-                  AppLocalizations.of(context)!.no_orders_available,
+                 context.translate(LangKeys.noOrdersAvailable),
                   style: MyFonts.styleMedium500_14,
                 ),
               );
@@ -72,10 +72,10 @@ class ListOrderWidget extends StatelessWidget {
                                 style: MyFonts.styleRegular400_12,
                               ),
                               Text(
-                                  '${AppLocalizations.of(context)!.egp} ${successState.orders![index].orderItems![index].product!.price.toString()}',
+                                  '${context.translate(LangKeys.egp)} ${successState.orders![index].orderItems![index].product!.price.toString()}',
                                   style: MyFonts.styleMedium500_12),
                               Text(
-                                  '${AppLocalizations.of(context)!.order_number} ${successState.orders![index].orderNumber}',
+                                  '${context.translate(LangKeys.orderNumber)} ${successState.orders![index].orderNumber}',
                                   style: MyFonts.styleRegular400_12
                                       .copyWith(color: MyColors.grey)),
                               verticalSpacing(8.h),

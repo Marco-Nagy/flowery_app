@@ -45,7 +45,6 @@ CartItemsDto _$CartItemsDtoFromJson(Map<String, dynamic> json) => CartItemsDto(
     );
 
 
-
 CartItemProductDto _$CartItemProductDtoFromJson(Map<String, dynamic> json) =>
     CartItemProductDto(
       json['_id'] as String?,

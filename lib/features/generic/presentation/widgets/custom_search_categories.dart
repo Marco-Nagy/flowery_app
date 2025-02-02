@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 class CustomSearchWidget extends StatelessWidget {
   const CustomSearchWidget({super.key});
 
@@ -31,7 +31,7 @@ class CustomSearchWidget extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              AppLocalizations.of(context)!.search,
+              context.translate(LangKeys.search),
               style: MyFonts.styleMedium500_14.copyWith(
                 color: MyColors.placeHolder,
               ),

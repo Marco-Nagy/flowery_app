@@ -7,7 +7,8 @@ import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import '../../../../../core/localization/lang_keys.dart';
 import '../../../../../core/utils/widgets/base/snack_bar.dart';
 import '../viewModel/login_view_model_cubit.dart';
 import '../widgets/footer_sign_up.dart';
@@ -61,7 +62,7 @@ class _LoginViewState extends State<LoginView> {
                 child: CustomScrollView(
                   slivers: [
                      SliverToBoxAdapter(
-                      child: customAppBar(appBarTxt: AppLocalizations.of(context)!.login,context: context),
+                      child: customAppBar(appBarTxt: context.translate(LangKeys.login),context: context),
                     ),
                     SliverToBoxAdapter(
                       child: verticalSpacing(20),
@@ -98,18 +99,18 @@ class _LoginViewState extends State<LoginView> {
           switch (state) {
             case LocationPermissionDenied():
               aweSnackBar(
-                  msg: AppLocalizations.of(context)!.location_permission_denied,
+                  msg: context.translate(LangKeys.locationPermissionDenied),
                   context: context,
                   type: MessageTypeConst.failure,
-                  title: AppLocalizations.of(context)!.error);
+                  title: context.translate(LangKeys.error));
               break;
             case LoginViewModelSuccess():
               context.pushReplacementNamed(AppRoutes.homeScreen);
               aweSnackBar(
-                  msg:  AppLocalizations.of(context)!.success,
+                  msg: context.translate(LangKeys.success),
                   context: context,
                   type: MessageTypeConst.success,
-                  title: AppLocalizations.of(context)!.success);
+                  title: context.translate(LangKeys.success));
               break;
             case LoginViewModelError():
               debugPrint(state.errorMessage.error);
@@ -117,7 +118,7 @@ class _LoginViewState extends State<LoginView> {
                   msg: state.errorMessage.error!,
                   context: context,
                   type: MessageTypeConst.failure,
-                  title: AppLocalizations.of(context)!.error);
+                  title: context.translate(LangKeys.error));
             case LoginViewModelLoading():
             default:
               return;

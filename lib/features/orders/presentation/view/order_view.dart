@@ -1,7 +1,8 @@
 import 'package:flowery_e_commerce/features/generic/presentation/widgets/tab_bar_widget.dart';
 import 'package:flowery_e_commerce/features/orders/presentation/widget/order_list_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/widgets/custom_appbar.dart';
@@ -14,7 +15,7 @@ class OrderView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: customAppBar(
-        appBarTxt: AppLocalizations.of(context)!.my_orders,
+        appBarTxt: context.translate(LangKeys.myOrders),
         context: context,
         showArrow: true,
       ),
@@ -24,8 +25,8 @@ class OrderView extends StatelessWidget {
           children: [
             tabBarWidget(
               tabs: [
-                Tab(text: AppLocalizations.of(context)!.active),
-                Tab(text: AppLocalizations.of(context)!.completed),
+                Tab(text: context.translate(LangKeys.active)),
+                Tab(text: context.translate(LangKeys.completed)),
               ],
               onTap: (index) {},
               tabAlignment: TabAlignment.center,
@@ -40,10 +41,10 @@ class OrderView extends StatelessWidget {
                       // price: successState.orders![0].orderItems![0].product!.price.toString(),
                       // orderNumber:successState.orders![0].orderNumber!,
                       // imageUrl: successState.orders![0].orderItems![0].product!.imgCover!,
-                      textButton: AppLocalizations.of(context)!.track_order,
+                      textButton: context.translate(LangKeys.trackOrder),
                     ),
                     ListOrderWidget(
-                      textButton: AppLocalizations.of(context)!.reorder,
+                      textButton: context.translate(LangKeys.reorder),
                     ),
                   ],
                 ),

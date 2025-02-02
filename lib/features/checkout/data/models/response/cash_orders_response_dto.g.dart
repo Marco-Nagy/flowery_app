@@ -17,7 +17,6 @@ CashOrdersResponseDto _$CashOrdersResponseDtoFromJson(
     );
 
 
-
 CashOrdersResponseOrderDto _$CashOrdersResponseOrderDtoFromJson(
         Map<String, dynamic> json) =>
     CashOrdersResponseOrderDto(
@@ -38,6 +37,7 @@ CashOrdersResponseOrderDto _$CashOrdersResponseOrderDtoFromJson(
     );
 
 
+
 OrderItemsDto _$OrderItemsDtoFromJson(Map<String, dynamic> json) =>
     OrderItemsDto(
       json['product'] == null
@@ -48,7 +48,6 @@ OrderItemsDto _$OrderItemsDtoFromJson(Map<String, dynamic> json) =>
       (json['quantity'] as num?)?.toInt(),
       json['_id'] as String?,
     );
-
 
 
 OrderItemsProductDto _$OrderItemsProductDtoFromJson(
@@ -72,4 +71,5 @@ OrderItemsProductDto _$OrderItemsProductDtoFromJson(
       (json['sold'] as num?)?.toInt(),
       json['id'] as String?,
     );
+
 

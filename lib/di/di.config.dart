@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -13,11 +14,10 @@ import 'package:flutter/material.dart' as _i409;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../core/app_cubit/app_cubit.dart' as _i693;
 import '../core/networking/api/api_manager.dart' as _i282;
 import '../core/networking/common/regestet_context_module.dart' as _i125;
 import '../core/networking/network_factory.dart' as _i377;
-import '../core/provider/language_provider.dart' as _i1005;
-import '../core/provider/language_service.dart' as _i289;
 import '../features/address/data/data_sources/contracts/address_online_data_source.dart'
     as _i92;
 import '../features/address/data/data_sources/impl/address_online_data_source_impl.dart'
@@ -184,12 +184,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final networkFactory = _$NetworkFactory();
     final registerModule = _$RegisterModule();
+    gh.factory<_i693.AppCubit>(() => _i693.AppCubit());
     gh.factory<_i361.LogInterceptor>(
         () => networkFactory.providerInterceptor());
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
-    gh.lazySingleton<_i289.LanguageService>(() => _i289.LanguageService());
     gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
     gh.factory<_i92.AddressOnlineDataSource>(
         () => _i112.AddressOnlineDataSourceImpl(gh<_i282.ApiManager>()));
@@ -205,8 +205,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i710.CheckoutOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.lazySingleton<_i603.HomeOnlineDataSource>(
         () => _i507.HomeApiManager(gh<_i282.ApiManager>()));
-    gh.factory<_i1005.LanguageProvider>(
-        () => _i1005.LanguageProvider(gh<_i289.LanguageService>()));
     gh.factory<_i544.OrderRepo>(
         () => _i897.OrderRepoImpl(gh<_i513.OrderOnlineDataSource>()));
     gh.factory<_i497.AddAddressRepo>(
