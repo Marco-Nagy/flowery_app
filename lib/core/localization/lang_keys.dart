@@ -229,5 +229,10 @@ class LangKeys {
   static const String noOrdersAvailable = 'no_orders_available';
   static const String orderNumber = 'order_number';
   static const String egp = 'egp';
+  static const String street = 'street';
+  static const String latitude = 'latitude';
+  static const String longitude = 'longitude';
+  static const String confirmLocation = 'confirm_location';
+
 
 }
