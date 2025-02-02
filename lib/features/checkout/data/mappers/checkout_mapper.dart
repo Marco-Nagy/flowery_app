@@ -15,6 +15,7 @@ class CheckoutMapper {
   }
   static CashPlaceOrderEntity toCashPlaceOrderEntity(CashOrdersResponseDto response) {
     return CashPlaceOrderEntity(
+      userId: response.order!.user??'',
       orderId: response.order!.id??'',
       orderStatus: response.message??'',
 
@@ -22,6 +23,7 @@ class CheckoutMapper {
   }
   static CreditPlaceOrderEntity toCreditPlaceOrderEntity(CheckoutOrdersResponseDto response) {
     return CreditPlaceOrderEntity(
+      userId: response.session!.clientReferenceId??'',
       orderId: response.session!.id??'',
       orderStatus: response.message??'',
       url: response.session!.url??'',
