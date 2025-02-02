@@ -1,6 +1,7 @@
 import 'package:country_state_city/models/city.dart';
 import 'package:country_state_city/models/country.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flowery_e_commerce/features/address_details/domain/entities/request/add_address_request_entity.dart';
@@ -10,10 +11,10 @@ import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/utils/widgets/custom_appbar.dart';
 import '../widgets/build_dropdown_field_widget.dart';
 import '../widgets/build_text_field_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 
@@ -68,7 +69,7 @@ class _AddressScreenState extends State<AddressScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-        appBarTxt: AppLocalizations.of(context)!.address,
+        appBarTxt: (context.translate(LangKeys.address)),
         context: context,
         showArrow: true,
       ),
@@ -95,20 +96,20 @@ class _AddressScreenState extends State<AddressScreen> {
                   child: Image.asset(Assets.imagesRectangle, fit: BoxFit.cover),
                 ),
                 BuildTextFieldWidget(
-                  hint: AppLocalizations.of(context)!.enter_address,
-                  label: AppLocalizations.of(context)!.address,
+                  hint: context.translate(LangKeys.enterAddress),
+                  label: context.translate(LangKeys.address),
                   controller: addressController,
                 ),
                 SizedBox(height: 10.h),
                 BuildTextFieldWidget(
-                  hint: AppLocalizations.of(context)!.enter_phone_number,
-                  label: AppLocalizations.of(context)!.phone_number,
+                  hint: context.translate(LangKeys.enterPhoneNumber),
+                  label: context.translate(LangKeys.phoneNumber),
                   controller: phoneController,
                 ),
                 SizedBox(height: 10.h),
                 BuildTextFieldWidget(
-                  hint:AppLocalizations.of(context)!.enter_recipient_name,
-                  label: AppLocalizations.of(context)!.recipient_name,
+                  hint: context.translate(LangKeys.enterRecipientName),
+                  label: context.translate(LangKeys.recipientName),
                   controller: recipientController,
                 ),
                 SizedBox(height: 10.h),
@@ -118,8 +119,8 @@ class _AddressScreenState extends State<AddressScreen> {
                     children: [
                       Expanded(
                         child: BuildDropdownFieldWidget(
-                          hint: AppLocalizations.of(context)!.select_country,
-                          label: AppLocalizations.of(context)!.country,
+                          hint: context.translate(LangKeys.selectCountry),
+                          label: context.translate(LangKeys.country),
                           items: countryList,
                           selectedValue: selectedCountry,
                           onChanged: (value) {
@@ -142,8 +143,8 @@ class _AddressScreenState extends State<AddressScreen> {
                       SizedBox(width: 10.h),
                       Expanded(
                         child: BuildDropdownFieldWidget(
-                          hint: AppLocalizations.of(context)!.select_city,
-                          label: AppLocalizations.of(context)!.city,
+                          hint:context.translate(LangKeys.selectCity),
+                          label: context.translate(LangKeys.city),
                           items: cityList,
                           selectedValue: selectedCity,
                           onChanged: (value) {
@@ -162,7 +163,7 @@ class _AddressScreenState extends State<AddressScreen> {
                   width: 340.w,
                   height: 65.h,
                   child: CurvedButton(
-                    title: AppLocalizations.of(context)!.save_address,
+                    title: context.translate(LangKeys.savedAddress),
                     onTap: isButtonEnabled
                         ? () {
                       context.read<AddAddressViewModelCubit>().doAction(
@@ -188,26 +189,26 @@ class _AddressScreenState extends State<AddressScreen> {
           switch (state) {
             case AddAddressViewModelLoading():
               aweSnackBar(
-                msg: AppLocalizations.of(context)!.loading,
+                msg: context.translate(LangKeys.loading),
                 context: context,
                 type: MessageTypeConst.help,
-                title: AppLocalizations.of(context)!.loading,
+                title: context.translate(LangKeys.loading),
               );
               break;
             case AddAddressViewModelSuccess():
               aweSnackBar(
-                msg: AppLocalizations.of(context)!.address_saved_successfully,
+                msg: context.translate(LangKeys.addressSavedSuccessfully),
                 context: context,
                 type: MessageTypeConst.success,
-                title: AppLocalizations.of(context)!.success,
+                title: context.translate(LangKeys.success),
               );
               break;
             case AddAddressViewModelError():
               aweSnackBar(
-                msg: state.message.error ?? AppLocalizations.of(context)!.wrong,
+                msg: state.message.error ?? context.translate(LangKeys.wrong),
                 context: context,
                 type: MessageTypeConst.failure,
-                title: AppLocalizations.of(context)!.failure,
+                title: context.translate(LangKeys.failure),
               );
               break;
             default:

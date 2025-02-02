@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flowery_e_commerce/core/utils/validators.dart';
 import 'custom_text_form_field.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import '../../../../../core/localization/lang_keys.dart';
 class EmailField extends StatelessWidget {
   final TextEditingController emailController;
 
@@ -13,8 +13,8 @@ class EmailField extends StatelessWidget {
     return CustomTextFormField(
       controller: emailController,
       validator: (value) => Validators.validateEmail(value, context),
-      hintText: AppLocalizations.of(context)!.hintEmail,
-      labelText: AppLocalizations.of(context)!.email,
+      hintText: context.translate(LangKeys.hintEmail),
+      labelText: context.translate(LangKeys.email),
     );
   }
 }

@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/services/shared_preference/location_helper.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import '../../../../generated/assets.dart';
 import '../home_cubit/location_cubit/location_cubit.dart';
 
@@ -26,7 +26,7 @@ class LocationWidget extends StatelessWidget {
             builder: (context, state) {
               if (state is LocationLoading) {
                 return Center(
-                  child: Text(AppLocalizations.of(context)!.loading),
+                  child: Text(context.translate(LangKeys.loading)),
                 );
               } else if (state is LocationLoaded) {
                 return Center(
@@ -42,7 +42,7 @@ class LocationWidget extends StatelessWidget {
                   child: TextButton(
                     onPressed: () => context.read<LocationCubit>().detectLocation(context),
                     child: Text(
-                      AppLocalizations.of(context)!.get_location,
+                   context.translate(LangKeys.getLocation),
                       style: MyFonts.styleMedium500_14.copyWith(
                         decoration: TextDecoration.underline,
                         color: MyColors.blackBase,
@@ -55,7 +55,7 @@ class LocationWidget extends StatelessWidget {
                 child: TextButton(
                   onPressed: () => context.read<LocationCubit>().detectLocation(context),
                   child: Text(
-                    AppLocalizations.of(context)!.get_location,
+                    context.translate(LangKeys.getLocation),
                     style: MyFonts.styleMedium500_14.copyWith(
                       decoration: TextDecoration.underline,
                       color: MyColors.blackBase,
