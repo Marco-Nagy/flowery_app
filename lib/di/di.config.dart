@@ -18,6 +18,7 @@ import '../core/networking/common/regestet_context_module.dart' as _i125;
 import '../core/networking/network_factory.dart' as _i377;
 import '../core/provider/language_provider.dart' as _i1005;
 import '../core/provider/language_service.dart' as _i289;
+import '../core/services/firebase_helper/fire_store_helper.dart' as _i357;
 import '../features/address/data/data_sources/contracts/address_online_data_source.dart'
     as _i92;
 import '../features/address/data/data_sources/impl/address_online_data_source_impl.dart'
@@ -162,6 +163,18 @@ import '../features/profile/domain/repositories/profile_repo.dart' as _i49;
 import '../features/profile/domain/use_cases/profile_use_case.dart' as _i804;
 import '../features/profile/presentation/viewModel/profile_view_model_cubit.dart'
     as _i907;
+import '../features/track_order/data/data_sources/contracts/track_order_online_data_source.dart'
+    as _i13;
+import '../features/track_order/data/data_sources/impl/track_order_online_data_source_impl.dart'
+    as _i291;
+import '../features/track_order/data/repositories/track_order_repo_impl.dart'
+    as _i472;
+import '../features/track_order/domain/repositories/contract/track_order_repo.dart'
+    as _i147;
+import '../features/track_order/domain/use_cases/get_order_by_order_id_case.dart'
+    as _i398;
+import '../features/track_order/presentation/viewModel/track_order_view_model_cubit.dart'
+    as _i465;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -180,8 +193,11 @@ extension GetItInjectableX on _i174.GetIt {
         () => networkFactory.providerInterceptor());
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
         () => registerModule.navigatorKey);
+    gh.singleton<_i357.FireStoreService>(() => _i357.FireStoreService());
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
     gh.lazySingleton<_i289.LanguageService>(() => _i289.LanguageService());
+    gh.factory<_i13.TrackOrderOnlineDataSource>(
+        () => _i291.TrackOrderOnlineDataSourceImpl());
     gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
     gh.factory<_i92.AddressOnlineDataSource>(
         () => _i112.AddressOnlineDataSourceImpl(gh<_i282.ApiManager>()));
@@ -209,6 +225,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i74.ProfileOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.lazySingleton<_i475.MostSellingProductsOnlineDataSource>(
         () => _i480.MostSellingProductsApiManager(gh<_i282.ApiManager>()));
+    gh.factory<_i147.TrackOrderRepo>(
+        () => _i472.TrackOrderRepoImpl(gh<_i13.TrackOrderOnlineDataSource>()));
     gh.factory<_i1037.ProductOnlineDataSource>(
         () => _i877.ProductOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i211.GenericOnlineDataSource>(
@@ -255,6 +273,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i253.AddressViewModel(gh<_i87.AddressUseCase>()));
     gh.factory<_i147.CreditUseCase>(
         () => _i147.CreditUseCase(gh<_i445.CheckoutRepository>()));
+    gh.factory<_i398.GetOrderByOrderIdCase>(
+        () => _i398.GetOrderByOrderIdCase(gh<_i147.TrackOrderRepo>()));
     gh.factory<_i496.LoginUseCase>(
         () => _i496.LoginUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i853.SignUpUseCase>(
@@ -287,6 +307,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i804.ProfileUseCase>(),
           gh<_i345.OfflineDataSource>(),
         ));
+    gh.factory<_i465.TrackOrderViewModelCubit>(() =>
+        _i465.TrackOrderViewModelCubit(gh<_i398.GetOrderByOrderIdCase>()));
     gh.factory<_i559.GenericUseCase>(
         () => _i559.GenericUseCase(gh<_i565.GenericRepo>()));
     gh.factory<_i426.AddToCartUseCase>(

@@ -64,12 +64,14 @@ dependencies:
   flutter_hooks:
   equatable:
   shimmer:
+  flutter_spinkit: ^5.2.1
   animated_text_kit:
   flutter_image_slideshow:
   add_to_cart_animation:
   auto_size_text:
   image_picker:
   animate_do:
+  another_stepper: ^1.2.2
 
   # add injectable to your dependencies
   injectable:
@@ -83,14 +85,17 @@ dependencies:
   geocoding: ^3.0.0
 
 
-  # Firebase ML Kit
-  firebase_core:
+  # Firebase
+  firebase_core: ^3.9.0
   firebase_crashlytics: ^4.2.0
   firebase_analytics: ^11.3.6
+  cloud_firestore: ^5.6.2
+  firebase_database: ^11.3.1
   googleapis: ^13.2.0
   googleapis_auth: ^1.6.0
   firebase_messaging:
   flutter_local_notifications:
+
 
 dev_dependencies:
   flutter_test:
