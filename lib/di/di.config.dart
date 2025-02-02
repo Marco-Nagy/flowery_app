@@ -18,8 +18,6 @@ import '../core/app_cubit/app_cubit.dart' as _i693;
 import '../core/networking/api/api_manager.dart' as _i282;
 import '../core/networking/common/regestet_context_module.dart' as _i125;
 import '../core/networking/network_factory.dart' as _i377;
-import '../core/provider/language_provider.dart' as _i1005;
-import '../core/provider/language_service.dart' as _i289;
 import '../core/services/firebase_helper/fire_store_helper.dart' as _i357;
 import '../features/address/data/data_sources/contracts/address_online_data_source.dart'
     as _i92;
@@ -206,7 +204,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => registerModule.navigatorKey);
     gh.singleton<_i357.FireStoreService>(() => _i357.FireStoreService());
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
-    gh.lazySingleton<_i289.LanguageService>(() => _i289.LanguageService());
     gh.factory<_i13.TrackOrderOnlineDataSource>(
         () => _i291.TrackOrderOnlineDataSourceImpl());
     gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
