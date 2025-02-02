@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 class CustomGiftSwitch extends StatefulWidget {
  final  bool? initialValue ;
 
@@ -32,7 +32,7 @@ class _CustomGiftSwitchState extends State<CustomGiftSwitch> {
             });
           },        ),
          Text(
-        AppLocalizations.of(context)!.gift_option,
+        context.translate(LangKeys.giftOption),
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ],

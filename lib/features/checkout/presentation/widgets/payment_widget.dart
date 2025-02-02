@@ -6,8 +6,8 @@ import 'package:flowery_e_commerce/features/checkout/presentation/widgets/paymen
 import 'package:flowery_e_commerce/features/checkout/presentation/widgets/section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 class PaymentWidget extends StatefulWidget {
   const PaymentWidget({super.key});
 
@@ -26,11 +26,11 @@ class _PaymentWidgetState extends State<PaymentWidget> {
     return Column(
       children: [
         const Divider(height: 60,thickness: 24,color: MyColors.white60,),
-         SectionTitle(title: AppLocalizations.of(context)!.payment_method),
+         SectionTitle(title: context.translate(LangKeys.paymentMethod)),
         verticalSpacing(16),
 
         PaymentOption(
-          title: AppLocalizations.of(context)!.credit_card,
+          title: context.translate(LangKeys.creditCard),
           selectedValue: 'credit',
           onSelected: (value) {
             viewModelCubit.doAction(SelectPaymentOptionAction(value) );
@@ -38,7 +38,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
         ),
         const SizedBox(height: 8),
         PaymentOption(
-          title: AppLocalizations.of(context)!.cash_on_delivery,
+          title: context.translate(LangKeys.cashOnDelivery),
           selectedValue: 'cash',
           onSelected: (value) {
             viewModelCubit.doAction(SelectPaymentOptionAction(value) );

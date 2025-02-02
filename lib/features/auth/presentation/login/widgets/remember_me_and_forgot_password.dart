@@ -4,8 +4,8 @@ import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/login/widgets/remember_me_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import '../../../../../core/localization/lang_keys.dart';
 class RememberMeAndForgotPassword extends StatelessWidget {
   final ValueChanged<bool> onRememberMeChanged;
 
@@ -25,7 +25,7 @@ class RememberMeAndForgotPassword extends StatelessWidget {
           InkWell(
             onTap: () => context.pushNamed(AppRoutes.forgetPassword),
             child: Text(
-              AppLocalizations.of(context)!.forget_password,
+             context.translate(LangKeys.forgetPassword),
               style: MyFonts.styleRegular400_12.copyWith(
                 color: MyColors.black,
                 decoration: TextDecoration.underline,

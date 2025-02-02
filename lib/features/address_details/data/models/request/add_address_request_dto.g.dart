@@ -17,6 +17,7 @@ AddAddressRequestDto _$AddAddressRequestDtoFromJson(
       json['username'] as String?,
     );
 
+
 Map<String, dynamic> _$AddAddressRequestDtoToJson(
         AddAddressRequestDto instance) =>
     <String, dynamic>{

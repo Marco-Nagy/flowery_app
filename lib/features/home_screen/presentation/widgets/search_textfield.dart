@@ -1,8 +1,8 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 class SearchTextField extends StatelessWidget {
   SearchTextField({super.key});
 
@@ -13,7 +13,7 @@ class SearchTextField extends StatelessWidget {
     return TextField(
       controller: searchController,
       decoration: InputDecoration(
-        hintText:  AppLocalizations.of(context)!.search,
+        hintText:  context.translate(LangKeys.search),
         hintStyle: TextStyle(
           fontWeight: FontWeight.w300,
           fontSize: 16.sp,

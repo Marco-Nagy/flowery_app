@@ -1,8 +1,10 @@
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../localization/lang_keys.dart';
 
 class LocationHelper {
   Future<void> saveLocation(String location) async {
@@ -31,7 +33,8 @@ class LocationHelper {
     }
   }
 
-  Future<LocationPermission> requestLocationPermission(BuildContext context) async {
+  Future<LocationPermission> requestLocationPermission(
+      BuildContext context) async {
     try {
       LocationPermission permission = await Geolocator.checkPermission();
       if (permission == LocationPermission.denied) {
@@ -39,7 +42,7 @@ class LocationHelper {
       }
       return permission;
     } catch (e) {
-      throw Exception(AppLocalizations.of(context)!.failure);
+      throw Exception(context.translate(LangKeys.failure));
     }
   }
 
@@ -51,19 +54,20 @@ class LocationHelper {
         ),
       );
     } catch (e) {
-      throw Exception(AppLocalizations.of(context)!.failure);
+      throw Exception(context.translate(LangKeys.failure));
     }
   }
 
-  Future<String> getAddressFromLatLng(double latitude, double longitude, BuildContext context) async {
+  Future<String> getAddressFromLatLng(
+      double latitude, double longitude, BuildContext context) async {
     try {
-      List<Placemark> placeMarks = await placemarkFromCoordinates(latitude, longitude);
+      List<Placemark> placeMarks =
+          await placemarkFromCoordinates(latitude, longitude);
       if (placeMarks.isNotEmpty) {
         Placemark place = placeMarks[0];
         return "${place.street}, ${place.locality}, ${place.country}";
       }
-    } catch (e) {
-    }
-    return AppLocalizations.of(context)!.address_not_found;
+    } catch (e) {}
+    return (context.translate(LangKeys.addressNotFound));
   }
 }

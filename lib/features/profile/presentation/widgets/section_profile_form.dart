@@ -1,4 +1,5 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_actions.dart';
@@ -6,7 +7,7 @@ import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profi
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/profile_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/localization/lang_keys.dart';
 import '../../../../di/di.dart';
 import 'custom_section_gender.dart';
 
@@ -100,21 +101,21 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                   msg: state.error.toString(),
                   context: context,
                   type: MessageTypeConst.failure,
-                  title: AppLocalizations.of(context)!.error);
+                  title: context.translate(LangKeys.error));
               break;
             case EditProfileLoading():
               aweSnackBar(
-                  msg: AppLocalizations.of(context)!.loading,
+                  msg: context.translate(LangKeys.loading),
                   context: context,
                   type: MessageTypeConst.help,
-                  title: AppLocalizations.of(context)!.loading);
+                  title: context.translate(LangKeys.loading));
               break;
             case EditProfileSuccess():
               aweSnackBar(
-                  msg: AppLocalizations.of(context)!.profile_updated_successfully,
+                  msg: context.translate(LangKeys.profileUpdatedSuccessfully),
                   context: context,
                   type: MessageTypeConst.success,
-                  title: AppLocalizations.of(context)!.success);
+                  title: context.translate(LangKeys.success));
 
               setState(() {
                 oldFirstName = firstNameController.text;
@@ -130,7 +131,7 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                   msg: state.error.error.toString(),
                   context: context,
                   type: MessageTypeConst.failure,
-                  title:AppLocalizations.of(context)!.error);
+                  title:context.translate(LangKeys.error));
               break;
             default:
               break;
@@ -161,7 +162,7 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                 },
               ),
               CurvedButton(
-                title: AppLocalizations.of(context)!.update,
+                title: context.translate(LangKeys.update),
                 color: MyColors.baseColor,
                 onTap: isModified
                     ? () {

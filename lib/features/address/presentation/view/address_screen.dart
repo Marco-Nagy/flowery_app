@@ -1,19 +1,21 @@
 import 'package:country_state_city/models/city.dart';
 import 'package:country_state_city/models/country.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flowery_e_commerce/features/address_details/domain/entities/request/add_address_request_entity.dart';
 import 'package:flowery_e_commerce/features/address_details/presentation/viewModel/add_address_action.dart';
 import 'package:flowery_e_commerce/features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
+import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/utils/widgets/custom_appbar.dart';
-import '../widgets/address_image_picker.dart';
-import '../widgets/address_input_fields.dart';
-import '../widgets/address_save_button.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../widgets/build_dropdown_field_widget.dart';
+import '../widgets/build_text_field_widget.dart';
+
 
 
 class AddressScreen extends StatefulWidget {
@@ -24,12 +26,9 @@ class AddressScreen extends StatefulWidget {
 }
 
 class _AddressScreenState extends State<AddressScreen> {
-  late final TextEditingController usernameController;
+  late final TextEditingController addressController;
   late final TextEditingController phoneController;
-  late final TextEditingController streetController;
-  late final TextEditingController cityController;
-  late final TextEditingController longitudeController;
-  late final TextEditingController latitudeController;
+  late final TextEditingController recipientController;
 
   String? selectedCountry;
   String? selectedCity;
@@ -42,114 +41,178 @@ class _AddressScreenState extends State<AddressScreen> {
   @override
   void initState() {
     super.initState();
-    usernameController = TextEditingController()..addListener(_checkFields);
+    addressController = TextEditingController()..addListener(_checkFields);
     phoneController = TextEditingController()..addListener(_checkFields);
-    streetController = TextEditingController()..addListener(_checkFields);
-    cityController = TextEditingController()..addListener(_checkFields);
-    longitudeController = TextEditingController()..addListener(_checkFields);
-    latitudeController = TextEditingController()..addListener(_checkFields);
+    recipientController = TextEditingController()..addListener(_checkFields);
     context.read<AddAddressViewModelCubit>().doAction(FetchCountriesAction());
   }
 
   @override
   void dispose() {
-    streetController.dispose();
+    addressController.dispose();
     phoneController.dispose();
-    longitudeController.dispose();
-    latitudeController.dispose();
-    usernameController.dispose();
-    cityController.dispose();
+    recipientController.dispose();
     super.dispose();
   }
 
   void _checkFields() {
     setState(() {
-      isButtonEnabled = streetController.text.isNotEmpty &&
+      isButtonEnabled = addressController.text.isNotEmpty &&
           phoneController.text.isNotEmpty &&
-          usernameController.text.isNotEmpty &&
-          cityController.text.isNotEmpty &&
-          latitudeController.text.isNotEmpty &&
-          longitudeController.text.isNotEmpty;
+          recipientController.text.isNotEmpty &&
+          selectedCountry != null &&
+          selectedCity != null;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.white,
       appBar: customAppBar(
-        appBarTxt: AppLocalizations.of(context)!.address,
+        appBarTxt: (context.translate(LangKeys.address)),
         context: context,
         showArrow: true,
       ),
       body: BlocConsumer<AddAddressViewModelCubit, AddAddressViewModelState>(
         builder: (context, state) {
-          if (state is AddAddressViewModelFetchedCountries) {
-            countryList = state.countries;
-          } else if (state is AddAddressViewModelFetchedCities) {
-            cityList = state.cities;
+          switch (state) {
+            case AddAddressViewModelFetchedCountries():
+              countryList = state.countries;
+              break;
+            case AddAddressViewModelFetchedCities():
+              cityList = state.cities;
+              break;
+            default:
+              break;
           }
 
           return SingleChildScrollView(
             child: Column(
               children: [
-                AddressImagePickerWidget(
-                    streetController: streetController,
-                    cityController: cityController,
-                    longitudeController: longitudeController,
-                    latitudeController: latitudeController),
-                AddressInputFieldsWidget(
-                  usernameController: usernameController,
-                  phoneController: phoneController,
-                  streetController: streetController,
-                  cityController: cityController,
-                  latitudeController: latitudeController,
-                  longitudeController: longitudeController,
+                Container(
+                  margin: EdgeInsets.only(bottom: 10.h),
+                  width: 390.w,
+                  height: 200.h,
+                  child: Image.asset(Assets.imagesRectangle, fit: BoxFit.cover),
                 ),
-                AddressSaveButton(
-                  isButtonEnabled: isButtonEnabled,
-                  onTap: () {
-                    context.read<AddAddressViewModelCubit>().doAction(
-                          AddAddressSubmitAction(
-                            AddAddressRequestEntity(
-                              street: streetController.text.trim(),
-                              city: cityController.text.trim(),
-                              phone: phoneController.text.trim(),
-                              lat: latitudeController.text.trim(),
-                              long: longitudeController.text.trim(),
-                              username: usernameController.text.trim(),
-                            ),
+                BuildTextFieldWidget(
+                  hint: context.translate(LangKeys.enterAddress),
+                  label: context.translate(LangKeys.address),
+                  controller: addressController,
+                ),
+                SizedBox(height: 10.h),
+                BuildTextFieldWidget(
+                  hint: context.translate(LangKeys.enterPhoneNumber),
+                  label: context.translate(LangKeys.phoneNumber),
+                  controller: phoneController,
+                ),
+                SizedBox(height: 10.h),
+                BuildTextFieldWidget(
+                  hint: context.translate(LangKeys.enterRecipientName),
+                  label: context.translate(LangKeys.recipientName),
+                  controller: recipientController,
+                ),
+                SizedBox(height: 10.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12.r),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: BuildDropdownFieldWidget(
+                          hint: context.translate(LangKeys.selectCountry),
+                          label: context.translate(LangKeys.country),
+                          items: countryList,
+                          selectedValue: selectedCountry,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedCountry = value;
+                              cityList
+                                  .clear();
+                              _checkFields();
+                              context.read<AddAddressViewModelCubit>().doAction(
+                                FetchCitiesAction(
+                                  countryList
+                                      .firstWhere((item) => item.name == value)
+                                      .isoCode,
+                                ),
+                              );
+                            });
+                          },
+                        ),
+                      ),
+                      SizedBox(width: 10.h),
+                      Expanded(
+                        child: BuildDropdownFieldWidget(
+                          hint:context.translate(LangKeys.selectCity),
+                          label: context.translate(LangKeys.city),
+                          items: cityList,
+                          selectedValue: selectedCity,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedCity = value;
+                              _checkFields();
+                            });
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20.h),
+                SizedBox(
+                  width: 340.w,
+                  height: 65.h,
+                  child: CurvedButton(
+                    title: context.translate(LangKeys.savedAddress),
+                    onTap: isButtonEnabled
+                        ? () {
+                      context.read<AddAddressViewModelCubit>().doAction(
+                        AddAddressSubmitAction(
+                          AddAddressRequestEntity(
+                            street: addressController.text.trim(),
+                            city: selectedCity,
+                            phone: phoneController.text.trim(),
                           ),
-                        );
-                  },
+                        ),
+                      );
+                    }
+                        : () {},
+                    color:
+                    isButtonEnabled ? MyColors.baseColor : MyColors.gray30,
+                  ),
                 ),
-                verticalSpacing(16.h),
               ],
             ),
           );
         },
         listener: (context, state) {
-          if (state is AddAddressViewModelLoading) {
-            aweSnackBar(
-              msg: AppLocalizations.of(context)!.loading,
-              context: context,
-              type: MessageTypeConst.help,
-              title: AppLocalizations.of(context)!.loading,
-            );
-          } else if (state is AddAddressViewModelSuccess) {
-            aweSnackBar(
-              msg: AppLocalizations.of(context)!.address_saved_successfully,
-              context: context,
-              type: MessageTypeConst.success,
-              title: AppLocalizations.of(context)!.success,
-            );
-          } else if (state is AddAddressViewModelError) {
-            aweSnackBar(
-              msg: state.message.error ?? AppLocalizations.of(context)!.wrong,
-              context: context,
-              type: MessageTypeConst.failure,
-              title: AppLocalizations.of(context)!.failure,
-            );
+          switch (state) {
+            case AddAddressViewModelLoading():
+              aweSnackBar(
+                msg: context.translate(LangKeys.loading),
+                context: context,
+                type: MessageTypeConst.help,
+                title: context.translate(LangKeys.loading),
+              );
+              break;
+            case AddAddressViewModelSuccess():
+              aweSnackBar(
+                msg: context.translate(LangKeys.addressSavedSuccessfully),
+                context: context,
+                type: MessageTypeConst.success,
+                title: context.translate(LangKeys.success),
+              );
+              break;
+            case AddAddressViewModelError():
+              aweSnackBar(
+                msg: state.message.error ?? context.translate(LangKeys.wrong),
+                context: context,
+                type: MessageTypeConst.failure,
+                title: context.translate(LangKeys.failure),
+              );
+              break;
+            default:
+              break;
           }
         },
       ),
