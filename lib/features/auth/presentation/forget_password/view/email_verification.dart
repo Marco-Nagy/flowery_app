@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import '../../../../../core/localization/lang_keys.dart';
 import '../ViewModel/forget_password_view_model_cubit.dart';
 import '../widgets/screen_description.dart';
 import '../widgets/screen_title.dart';
@@ -33,7 +34,7 @@ class EmailVerification extends HookWidget {
         child: Scaffold(
       backgroundColor: MyColors.white,
       appBar: customAppBar(
-          appBarTxt: AppLocalizations.of(context)!.password,
+          appBarTxt: context.translate(LangKeys.password),
           context: context,
           showArrow: true,
           navigation: () {
@@ -54,11 +55,11 @@ class EmailVerification extends HookWidget {
                   child: Column(
                     children: [
                        ScreenTitle(
-                        title:AppLocalizations.of(context)!.emailVerificationTitle,
+                        title:context.translate(LangKeys.emailVerificationTitle),
                       ),
                       verticalSpacing(16),
                        ScreenDescription(
-                          title:AppLocalizations.of(context)!.emailVerificationDescription,
+                          title: context.translate(LangKeys.emailVerificationDescription)
           ),
                     ],
                   ),
@@ -70,7 +71,7 @@ class EmailVerification extends HookWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      AppLocalizations.of(context)!.not_receive_code,
+                      context.translate(LangKeys.notReceiveCode),
                       textAlign: TextAlign.center,
                       style: MyFonts.styleRegular400_16
                           .copyWith(color: MyColors.black),

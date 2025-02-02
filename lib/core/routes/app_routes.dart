@@ -1,6 +1,7 @@
 import 'package:flowery_e_commerce/core/routes/base_routes.dart';
 import 'package:flowery_e_commerce/core/utils/screens/under_build_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/address_screen.dart';
+import 'package:flowery_e_commerce/features/address/presentation/view/map_view.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/saved_address_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view_model/address_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
@@ -40,6 +41,8 @@ import '../../features/auth/presentation/signup/view/signup_view.dart';
 import '../../features/generic/presentation/screens/occasion_view.dart';
 import '../../features/notification_list/presentation/views/notification_list_view.dart';
 import '../../features/orders/presentation/view/order_view.dart';
+import '../../features/orders/presentation/view_model/order_action.dart';
+import '../../features/orders/presentation/view_model/order_cubit.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/profile/presentation/views/reset_password_profile_view.dart';
 import '../../features/profile/presentation/widgets/terms_conditions_page.dart';
@@ -65,6 +68,7 @@ class AppRoutes {
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
   static const String checkoutScreen = 'checkoutScreen';
+  static const String mapView = 'mapView';
   static const String searchView = 'searchView';
   static const String notificationView = 'notificationView';
   static const String cartScreen = 'cartScreen';
@@ -180,7 +184,12 @@ class AppRoutes {
       case AppRoutes.termsAndConditionsPage:
         return BaseRoute(page: const TermsAndConditionsPage());
       case AppRoutes.orderView:
-        return BaseRoute(page: const OrderView());
+        return BaseRoute(page: BlocProvider(
+            create: (context) => getIt.get<OrderCubit>()
+              ..doAction(GetOrders()),
+            child: const OrderView()));
+      case AppRoutes.mapView:
+        return BaseRoute(page: const MapView());
         case AppRoutes.cartScreen:
         return BaseRoute(
             page: BlocProvider(

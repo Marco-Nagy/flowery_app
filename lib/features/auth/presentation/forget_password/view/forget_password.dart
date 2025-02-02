@@ -4,7 +4,8 @@ import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import '../../../../../core/localization/lang_keys.dart';
 import '../../../../../core/styles/colors/my_colors.dart';
 import '../../../../../core/utils/validators.dart';
 import '../../../../../core/utils/widgets/app_text_form_field.dart';
@@ -30,7 +31,7 @@ class ForgetPassword extends HookWidget {
       child: Scaffold(
         backgroundColor: MyColors.white,
         appBar: customAppBar(
-            appBarTxt:AppLocalizations.of(context)!.password,
+            appBarTxt:context.translate(LangKeys.password),
             context: context,
             showArrow: true,
             navigation: () {
@@ -53,11 +54,11 @@ class ForgetPassword extends HookWidget {
                     child: Column(
                       children: [
                          ScreenTitle(
-                          title: AppLocalizations.of(context)!.forgetPassword,
+                          title: context.translate(LangKeys.forgetPassword),
                         ),
                         verticalSpacing(16),
                          ScreenDescription(
-                            title: AppLocalizations.of(context)!.pleaseEnterYourEmailAssociatedToYourAccount,
+                            title:  context.translate(LangKeys.pleaseEnterYourEmailAssociatedToYourAccount),
                                 ),
                       ],
                     ),
@@ -65,15 +66,15 @@ class ForgetPassword extends HookWidget {
                   verticalSpacing(32),
                   AppTextFormField(
                     controller: emailController,
-                    hintText: AppLocalizations.of(context)!.hintEmail,
-                    labelText: AppLocalizations.of(context)!.email,
+                    hintText: context.translate(LangKeys.hintEmail),
+                    labelText: context.translate(LangKeys.email),
                     validator: (value) => Validators.validateNotEmpty(
-                        title: AppLocalizations.of(context)!.email, value: value,context: context),
+                        title: context.translate(LangKeys.email), value: value,context: context),
                   ),
                   verticalSpacing(48),
                   CurvedButton(
                     color: MyColors.baseColor,
-                    title: AppLocalizations.of(context)!.labelContinue,
+                    title: context.translate(LangKeys.labelContinue),
                     onTap: () {
                       if (formKye.currentState!.validate()) {
                         context.read<ForgetPasswordViewModelCubit>().doAction(

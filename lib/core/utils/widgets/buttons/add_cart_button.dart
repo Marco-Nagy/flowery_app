@@ -1,9 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../localization/lang_keys.dart';
 import '../spacing.dart';
 
 class AddCartButton extends StatelessWidget {
@@ -11,7 +12,7 @@ class AddCartButton extends StatelessWidget {
     super.key,
     required this.onTap,
     this.showRow = true,
-    this.height ,
+    this.height,
   });
 
   final VoidCallback onTap;
@@ -45,7 +46,7 @@ class AddCartButton extends StatelessWidget {
                   ),
                   horizontalSpacing(8.w),
                   AutoSizeText(
-                      AppLocalizations.of(context)!.add_to_cart,
+                    (context.translate(LangKeys.addToCart)),
                     style: MyFonts.styleMedium500_13
                         .copyWith(color: MyColors.white),
                   ),
@@ -53,7 +54,7 @@ class AddCartButton extends StatelessWidget {
               )
             : Center(
                 child: AutoSizeText(
-                  AppLocalizations.of(context)!.add_to_cart,
+                  (context.translate(LangKeys.addToCart)),
                   style:
                       MyFonts.styleMedium500_16.copyWith(color: MyColors.white),
                 ),

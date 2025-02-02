@@ -1,9 +1,10 @@
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
+import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/utils/validators.dart';
 import '../../../auth/presentation/login/widgets/custom_text_form_field.dart';
 import 'change_text.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class ProfileForm extends StatelessWidget {
@@ -36,27 +37,27 @@ class ProfileForm extends StatelessWidget {
               Expanded(
                 child: CustomTextFormField(
                     controller: firstNameController,
-                    hintText: AppLocalizations.of(context)!.first_name,
-                    labelText: AppLocalizations.of(context)!.first_name,
+                    hintText: context.translate(LangKeys.firstName),
+                    labelText: context.translate(LangKeys.firstName),
                     validator: (value) => Validators.validateNotEmpty(
-                        title: AppLocalizations.of(context)!.first_name, value: value, context: context)),
+                        title: context.translate(LangKeys.firstName), value: value, context: context)),
               ),
               const SizedBox(width: 20),
               Expanded(
                 child: CustomTextFormField(
                     controller: lastNameController,
-                    hintText: AppLocalizations.of(context)!.last_name,
-                    labelText: AppLocalizations.of(context)!.last_name,
+                    hintText: context.translate(LangKeys.lastName),
+                    labelText: context.translate(LangKeys.lastName),
                     validator: (value) => Validators.validateNotEmpty(
-                        title: AppLocalizations.of(context)!.last_name, value: value, context: context)),
+                        title: context.translate(LangKeys.lastName), value: value, context: context)),
               ),
             ],
           ),
           const SizedBox(height: 20),
           CustomTextFormField(
             controller: emailController,
-            hintText: AppLocalizations.of(context)!.email,
-            labelText: AppLocalizations.of(context)!.email,
+            hintText: context.translate(LangKeys.email),
+            labelText: context.translate(LangKeys.email),
             validator: (value) => Validators.validateEmail(value, context),
           ),
           verticalSpacing(20),
@@ -65,14 +66,14 @@ class ProfileForm extends StatelessWidget {
             isPassword: true,
             controller: passwordController,
             hintText: '******',
-            labelText: AppLocalizations.of(context)!.password,
+            labelText: context.translate(LangKeys.password),
             // validator: (value) => Validators.validatePassword(value, context),
           ),
           verticalSpacing(20),
           CustomTextFormField(
             controller: phoneNumberController,
-            hintText: AppLocalizations.of(context)!.phone_number,
-            labelText: AppLocalizations.of(context)!.phone_number,
+            hintText: context.translate(LangKeys.phoneNumber),
+            labelText: context.translate(LangKeys.phoneNumber),
             validator: (value) => Validators.validatePhoneNumber(value, context),
           ),
         ],
