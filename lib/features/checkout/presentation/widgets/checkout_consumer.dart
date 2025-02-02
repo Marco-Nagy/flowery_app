@@ -16,24 +16,32 @@ class CheckoutConsumer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final CheckoutViewModelCubit viewModelCubit = context.read<CheckoutViewModelCubit>();
+    final CheckoutViewModelCubit viewModelCubit =
+        context.read<CheckoutViewModelCubit>();
 
-    return  BlocConsumer<CheckoutViewModelCubit, CheckoutViewModelState>(
+    return BlocConsumer<CheckoutViewModelCubit, CheckoutViewModelState>(
       listener: (context, state) async {
         switch (state) {
           case CheckoutCashSuccess():
             aweSnackBar(
-                title:context.translate(LangKeys.success),
+                title: context.translate(LangKeys.success),
                 msg: state.placeOrder.orderStatus,
                 context: context,
                 type: MessageTypeConst.success);
-            await context.pushNamed(AppRoutes.placeOrderSuccess, arguments: state.placeOrder.orderId);
+            await context.pushNamed(AppRoutes.placeOrderSuccess, arguments: {
+              'orderId': state.placeOrder.orderId,
+              'userId': state.placeOrder.userId,
+            });
 
           case CheckoutCreditSuccess():
-        Uri url = Uri.parse(state.placeOrder.url);
-        if(await launchUrl(url)) {
-        await launchUrl(url,mode: LaunchMode.inAppBrowserView);
-        }
+            Uri url = Uri.parse(state.placeOrder.url);
+            if (await launchUrl(url)) {
+              await launchUrl(url, mode: LaunchMode.inAppBrowserView);
+              await context.pushNamed(AppRoutes.placeOrderSuccess, arguments: {
+                'orderId': state.placeOrder.orderId,
+                'userId': state.placeOrder.userId,
+              });
+            }
           case CheckoutError():
             aweSnackBar(
                 title: context.translate(LangKeys.error),
@@ -54,22 +62,22 @@ class CheckoutConsumer extends StatelessWidget {
         return CurvedButton(
           title: context.translate(LangKeys.placeOrder),
           onTap: () async {
-            if(viewModelCubit.selectedAddress<0) {
+            if (viewModelCubit.selectedAddress < 0) {
               aweSnackBar(
                   title: 'Warning',
                   msg: 'Please add a shipping address',
                   context: context,
                   type: MessageTypeConst.help);
               return;
-            }else if(viewModelCubit.paymentOption.isEmpty){
+            } else if (viewModelCubit.paymentOption.isEmpty) {
               aweSnackBar(
                   title: 'Warning',
                   msg: 'Please select a payment option',
                   context: context,
                   type: MessageTypeConst.help);
               return;
-            }else{
-             await viewModelCubit.doAction(CheckoutAction());
+            } else {
+              await viewModelCubit.doAction(CheckoutAction());
             }
           },
           color: MyColors.baseColor,
