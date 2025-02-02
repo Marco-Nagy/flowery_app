@@ -84,9 +84,7 @@ jobs:
         run: flutter clean
         # Ensures the build starts with a clean slate to avoid caching issues.
 
-      # Step 10: Generate localization files
-      - name: Generate localization files
-        run: flutter gen-l10n
+
         # Generates files for internationalization/localization support in the app.
 
       # Step 11: Build the release APK
