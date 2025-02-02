@@ -1,6 +1,7 @@
+import 'package:flowery_e_commerce/core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'build_text_field_widget.dart';
 
 class AddressInputFieldsWidget extends StatelessWidget {
@@ -25,26 +26,26 @@ class AddressInputFieldsWidget extends StatelessWidget {
     return Column(
       children: [
         BuildTextFieldWidget(
-          hint: AppLocalizations.of(context)!.hintUserName,
-          label: AppLocalizations.of(context)!.labelUserName,
+          hint: context.translate(LangKeys.hintUserName),
+          label: context.translate(LangKeys.labelUserName),
           controller: usernameController,
         ),
         SizedBox(height: 10.h),
         BuildTextFieldWidget(
-          hint: AppLocalizations.of(context)!.enter_phone_number,
-          label: AppLocalizations.of(context)!.phone_number,
+          hint:context.translate(LangKeys.enterPhoneNumber) ,
+          label: context.translate(LangKeys.phoneNumber),
           controller: phoneController,
         ),
         SizedBox(height: 10.h),
         BuildTextFieldWidget(
-          hint: AppLocalizations.of(context)!.street,
-          label: AppLocalizations.of(context)!.street,
+          hint: context.translate(LangKeys.street),
+          label: context.translate(LangKeys.street),
           controller: streetController,
         ),
         SizedBox(height: 10.h),
         BuildTextFieldWidget(
-          hint: AppLocalizations.of(context)!.city,
-          label: AppLocalizations.of(context)!.select_city,
+          hint: context.translate(LangKeys.city),
+          label: context.translate(LangKeys.selectCity),
           controller: cityController,
         ),
         SizedBox(height: 10.h),
@@ -52,16 +53,16 @@ class AddressInputFieldsWidget extends StatelessWidget {
           children: [
             Expanded(
               child: BuildTextFieldWidget(
-                hint: AppLocalizations.of(context)!.latitude,
-                label: AppLocalizations.of(context)!.latitude,
+                hint: context.translate(LangKeys.latitude),
+                label: context.translate(LangKeys.latitude),
                 controller: latitudeController,
               ),
             ),
             SizedBox(width: 10.h),
             Expanded(
               child: BuildTextFieldWidget(
-                hint: AppLocalizations.of(context)!.longitude,
-                label: AppLocalizations.of(context)!.longitude,
+                hint: context.translate(LangKeys.longitude),
+                label: context.translate(LangKeys.longitude),
                 controller: longitudeController,
               ),
             ),

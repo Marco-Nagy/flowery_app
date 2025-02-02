@@ -223,5 +223,9 @@
     "address_not_found": "العنوان غير موجود",
     "no_orders_available": "لا توجد طلبات متاحة",
     "order_number": "رقم الطلب",
+    "street": "الشارع",
+    "latitude": "خط العرض",
+    "longitude": "خط الطول",
+    "confirm_location": "تأكيد الموقع",
     "egp": "ج.م"
 }
