@@ -2,8 +2,8 @@ import 'package:flowery_e_commerce/core/utils/widgets/app_text_form_field.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/switch_button_widget.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 class GiftWidget extends StatefulWidget {
 
   const GiftWidget({super.key});
@@ -36,7 +36,7 @@ class _GiftWidgetState extends State<GiftWidget> {
       // Gift Option Section
       SwitchButtonWidget(
         value: isGift,
-        text: AppLocalizations.of(context)!.gift_option,
+        text: context.translate(LangKeys.giftOption),
       ),
       verticalSpacing(16),
       ValueListenableBuilder(
@@ -54,17 +54,17 @@ class _GiftWidgetState extends State<GiftWidget> {
                   children: [
                     AppTextFormField(
                       height: 50,
-                      hintText: AppLocalizations.of(context)!.name,
+                      hintText: context.translate(LangKeys.name),
                       controller: _nameController,
-                      labelText: AppLocalizations.of(context)!.name,
+                      labelText: context.translate(LangKeys.name),
                       keyboardType: TextInputType.phone,
                     ),
                     const SizedBox(height: 16),
                     AppTextFormField(
                       height: 50,
-                      hintText: AppLocalizations.of(context)!.phone_number,
+                      hintText: context.translate(LangKeys.phoneNumber),
                       controller: _phoneController,
-                      labelText: AppLocalizations.of(context)!.phone_number,
+                      labelText: context.translate(LangKeys.phoneNumber),
                       keyboardType: TextInputType.phone,
                     ),
                   ],

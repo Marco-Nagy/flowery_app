@@ -1,8 +1,8 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import '../../../../../core/localization/lang_keys.dart';
 class RememberMeWidget extends StatefulWidget {
   final ValueChanged<bool> onChanged;
   final bool initialValue;
@@ -59,7 +59,7 @@ class RememberMeWidgetState extends State<RememberMeWidget> {
           ),
           const SizedBox(width: 8),
           Text(
-            AppLocalizations.of(context)!.remember_me,
+           context.translate(LangKeys.rememberMe),
             style: MyFonts.styleRegular400_13.copyWith(color: MyColors.black),
           ),
         ],

@@ -2,7 +2,8 @@ import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors/my_colors.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 class FilterChipButton extends StatelessWidget {
   const FilterChipButton({super.key, required this.onPressed});
 
@@ -22,7 +23,7 @@ class FilterChipButton extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           Text(
-          AppLocalizations.of(context)!.filter,
+         context.translate(LangKeys.filter),
             style: const TextStyle(
               color: Colors.white,
               fontSize: 16,
