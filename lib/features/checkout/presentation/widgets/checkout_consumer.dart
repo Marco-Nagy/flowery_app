@@ -7,7 +7,8 @@ import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/chec
 import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CheckoutConsumer extends StatelessWidget {
@@ -22,7 +23,7 @@ class CheckoutConsumer extends StatelessWidget {
         switch (state) {
           case CheckoutCashSuccess():
             aweSnackBar(
-                title:AppLocalizations.of(context)!.success,
+                title:context.translate(LangKeys.success),
                 msg: state.successMessage,
                 context: context,
                 type: MessageTypeConst.success);
@@ -35,7 +36,7 @@ class CheckoutConsumer extends StatelessWidget {
         }
           case CheckoutError():
             aweSnackBar(
-                title: AppLocalizations.of(context)!.error,
+                title: context.translate(LangKeys.error),
                 msg: state.error.error!,
                 context: context,
                 type: MessageTypeConst.failure);
@@ -51,7 +52,7 @@ class CheckoutConsumer extends StatelessWidget {
       },
       builder: (context, state) {
         return CurvedButton(
-          title: AppLocalizations.of(context)!.place_order,
+          title: context.translate(LangKeys.placeOrder),
           onTap: () async {
             if(viewModelCubit.selectedAddress<0) {
               aweSnackBar(

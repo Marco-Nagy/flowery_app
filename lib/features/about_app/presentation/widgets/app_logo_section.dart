@@ -1,10 +1,11 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import '../../../../generated/assets.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class AppLogoSection extends StatelessWidget {
   const AppLogoSection({super.key});
 
@@ -27,7 +28,7 @@ class AppLogoSection extends StatelessWidget {
         FadeInUp(
           duration: const Duration(milliseconds: 1200),
           child: Text(
-            AppLocalizations.of(context)!.welcome_app,
+            (context.translate(LangKeys.welcomeApp)),
             style: MyFonts.styleMedium500_20.copyWith(
               color: MyColors.black,
               letterSpacing: 1.2,
@@ -41,7 +42,7 @@ class AppLogoSection extends StatelessWidget {
           child:  Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-               AppLocalizations.of(context)!.discover_flowers,
+              (context.translate(LangKeys.discoverFlowers)),
               style: const TextStyle(fontSize: 16, height: 1.8, color: Colors.grey),
               textAlign: TextAlign.center,
             ),
