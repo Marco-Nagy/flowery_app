@@ -2,7 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import '../../../../../core/localization/lang_keys.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
 import '../view_model/signup_action.dart';
 import '../view_model/signup_view_model_cubit.dart';
@@ -18,7 +19,7 @@ class GenderSelection extends StatelessWidget {
     return Row(
       children: [
         Text(
-          AppLocalizations.of(context)!.gender,
+          context.translate(LangKeys.gender),
           style: MyFonts.styleMedium500_18.copyWith(
             color: MyColors.gray,
           ),
@@ -31,7 +32,7 @@ class GenderSelection extends StatelessWidget {
           child: RadioListTile(
             contentPadding: EdgeInsets.zero,
             title: AutoSizeText(
-              AppLocalizations.of(context)!.female,
+              context.translate(LangKeys.female),
               style: MyFonts.styleRegular400_14,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
@@ -49,7 +50,7 @@ class GenderSelection extends StatelessWidget {
           child: RadioListTile(
             contentPadding: EdgeInsets.zero,
             title: AutoSizeText(
-              AppLocalizations.of(context)!.male,
+              context.translate(LangKeys.male),
               style: MyFonts.styleRegular400_14.copyWith(
                 color: MyColors.gray,
               ),

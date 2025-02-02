@@ -1,5 +1,6 @@
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/utils/validators.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import '../../../auth/presentation/login/widgets/custom_text_form_field.dart';
@@ -36,8 +37,8 @@ class ResetPasswordFormState extends State<ResetPasswordForm> {
           CustomTextFormField(
             isPassword: !_passwordVisible,
             controller: widget.passwordController,
-            hintText: AppLocalizations.of(context)!.currentPassword,
-            labelText: AppLocalizations.of(context)!.currentPassword,
+            hintText: context.translate(LangKeys.currentPassword),
+            labelText: context.translate(LangKeys.currentPassword),
             validator: (value) => Validators.validatePassword(value, context),
             suffix: InkWell(
               child: Icon(
@@ -54,8 +55,8 @@ class ResetPasswordFormState extends State<ResetPasswordForm> {
           CustomTextFormField(
             isPassword: !_newPasswordVisible,
             controller: widget.newPasswordController,
-            hintText:  AppLocalizations.of(context)!.newPassword,
-            labelText: AppLocalizations.of(context)!.newPassword,
+            hintText:  context.translate(LangKeys.newPassword),
+            labelText: context.translate(LangKeys.newPassword),
             validator: (value) => Validators.validatePassword(value, context),
             suffix: InkWell(
               child: Icon(
@@ -72,8 +73,8 @@ class ResetPasswordFormState extends State<ResetPasswordForm> {
           CustomTextFormField(
             isPassword: !_confirmPasswordVisible,
             controller: widget.confirmPasswordController,
-            hintText: AppLocalizations.of(context)!.confirmPassword,
-            labelText: AppLocalizations.of(context)!.confirmPassword,
+            hintText: context.translate(LangKeys.confirmPassword),
+            labelText: context.translate(LangKeys.confirmPassword),
             validator: (value) => Validators.validatePasswordConfirmation(
               context:  context,
                 confirmPassword: value,

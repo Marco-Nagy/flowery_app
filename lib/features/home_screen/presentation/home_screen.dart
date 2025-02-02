@@ -11,8 +11,8 @@ import 'package:flowery_e_commerce/features/profile/presentation/views/profile_v
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
               width: 24.w,
               height: 24.h,
             ),
-            label:  AppLocalizations.of(context)!.home,
+            label: context.translate(LangKeys.home),
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
               width: 24.w,
               height: 24.h,
             ),
-            label:  AppLocalizations.of(context)!.categories,
+            label:  context.translate(LangKeys.categories),
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               width: 24.w,
               height: 24.h,
             ),
-            label:  AppLocalizations.of(context)!.cart,
+            label:  context.translate(LangKeys.cart),
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
               width: 24.w,
               height: 24.h,
             ),
-            label: AppLocalizations.of(context)!.profile,
+            label: context.translate(LangKeys.profile),
           ),
         ],
         currentIndex: currentTabIndex,

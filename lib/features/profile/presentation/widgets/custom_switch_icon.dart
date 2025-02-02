@@ -1,11 +1,11 @@
+import 'package:flowery_e_commerce/core/localization/lang_keys.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import '../../../../core/routes/app_routes.dart';
 
 class CustomSwitchIcon extends StatefulWidget {
@@ -58,7 +58,7 @@ class _CustomSwitchIconState extends State<CustomSwitchIcon> {
             width: 4.sp,
           ),
           Text(
-          AppLocalizations.of(context)!.notification,
+            context.translate(LangKeys.notification),
             style: MyFonts.styleRegular400_16.copyWith(
               color: MyColors.blackBase,
             ),
