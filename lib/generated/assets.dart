@@ -36,8 +36,7 @@ class Assets {
   static const String imagesNoNetwork = 'assets/images/noNetwork.png';
   static const String imagesNotNetwork = 'assets/images/Not_network.png';
   static const String imagesNotification = 'assets/images/notification.svg';
-  static const String imagesNotificationList =
-      'assets/images/notificationList.png';
+  static const String imagesNotificationList = 'assets/images/notificationList.png';
   static const String imagesPageUnderBuild = 'assets/images/page_under_build.jpg';
   static const String imagesPen = 'assets/images/pen.png';
   static const String imagesPerson = 'assets/images/person.png';
@@ -50,6 +49,7 @@ class Assets {
   static const String imagesSearchImage = 'assets/images/search_image.png';
   static const String imagesShoppingCart = 'assets/images/shopping_cart.png';
   static const String imagesSplash = 'assets/images/splash.png';
+  static const String imagesSuccessImg = 'assets/images/success_img.svg';
   static const String imagesSwitch = 'assets/images/switch.png';
   static const String imagesTermsConditions = 'assets/images/terms_conditions.png';
   static const String imagesTrachIcon = 'assets/images/trach_icon.png';

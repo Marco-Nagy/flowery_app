@@ -7,14 +7,14 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../di/di.dart';
 
-class FirebaseCloudMessaging {
-  factory FirebaseCloudMessaging() => _instance;
-  static final FirebaseCloudMessaging _instance =
-      FirebaseCloudMessaging._internal();
+class MessagingHelper {
+  factory MessagingHelper() => _instance;
+  static final MessagingHelper _instance =
+      MessagingHelper._internal();
   static final GlobalKey<NavigatorState> navigatorKey =
       getIt<GlobalKey<NavigatorState>>();
 
-  FirebaseCloudMessaging._internal();
+  MessagingHelper._internal();
 
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -88,13 +88,24 @@ class FirebaseCloudMessaging {
       onDidReceiveNotificationResponse: (NotificationResponse response) {
         if (response.payload != null) {
           final payload = response.payload!.split('|');
+          if(payload[1].toString().contains('order')){
+            navigatorKey.currentState?.pushNamed(
+              AppRoutes.notificationView,
+              arguments: NotificationArgs(
+                title: payload[0],
+                // Use the first part of the payload as the title
+                body: payload[1],
+                // Use the second part of the payload as the body
+              ),
+            );
+          }
           navigatorKey.currentState?.pushNamed(
             AppRoutes.notificationView,
             arguments: NotificationArgs(
               title: payload[0],
               // Use the first part of the payload as the title
-              body:
-                  payload[1], // Use the second part of the payload as the body
+              body: payload[1],
+              // Use the second part of the payload as the body
             ),
           );
         }
@@ -109,7 +120,8 @@ class FirebaseCloudMessaging {
       'flowery_id',
       'flowery',
       importance: Importance.max,
-      priority: Priority.high,
+      priority: Priority.high,icon: '@mipmap/ic_launcher',
+      ticker: 'ticker',
     );
 
     const NotificationDetails platformChannelSpecifics =
@@ -122,5 +134,16 @@ class FirebaseCloudMessaging {
       platformChannelSpecifics,
       payload: '$title|$body',
     );
+  }
+  //* Subscribe Notification
+  Future<void> subscribeToTopic(String topic) async {
+    await messaging.subscribeToTopic(topic);
+    debugPrint('🔔🔔 Subscribed to $topic🔔🔔');
+  }
+
+  //* Unsubscribe Notification
+  Future<void> unsubscribeFromTopic(String topic) async {
+    await messaging.unsubscribeFromTopic(topic);
+    debugPrint('🔕🔕 Unsubscribed from $topic 🔕🔕 ');
   }
 }
