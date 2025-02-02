@@ -233,6 +233,12 @@ class LangKeys {
   static const String latitude = 'latitude';
   static const String longitude = 'longitude';
   static const String confirmLocation = 'confirm_location';
-
+  static const String orderPlacedSuccessfully = 'order_placed_successfully';
+  static const String estimatedArrival = 'estimated_arrival';
+  static const String deliveryHeroToday = 'delivery_hero_today';
+  static const String preparingYourOrder = 'preparing_your_order';
+  static const String outForDelivery = 'out_for_delivery';
+  static const String delivered = 'delivered';
+  static const String showMap = 'show_map';
 
 }

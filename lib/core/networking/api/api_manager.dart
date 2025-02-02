@@ -16,6 +16,7 @@ import 'package:flowery_e_commerce/features/cart/data/models/response/add_to_car
 import 'package:flowery_e_commerce/features/cart/data/models/response/cart_response_dto.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart';
 import 'package:flowery_e_commerce/features/checkout/data/models/request/shipping_address_request_dto.dart';
+import 'package:flowery_e_commerce/features/checkout/data/models/response/cash_orders_response_dto.dart';
 import 'package:flowery_e_commerce/features/checkout/data/models/response/checkout_orders_response_dto.dart';
 import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart';
 import 'package:flowery_e_commerce/features/profile/data/models/request/change_password_request_dto.dart';
@@ -126,7 +127,7 @@ abstract class  ApiManager {
   Future<CheckoutOrdersResponseDto> checkoutOrders(@Query("url") String endpointUrl,  @Body() ShippingAddressRequestDto request);
 
   @POST("${ApiConstants.cashOrders}")
-  Future<CheckoutOrdersResponseDto> cashOrders( @Body() ShippingAddressRequestDto request);
+  Future<CashOrdersResponseDto> cashOrders( @Body() ShippingAddressRequestDto request);
 
   @GET(ApiConstants.getUserOrders)
   Future<OrderResponseDto> getUserOrders();

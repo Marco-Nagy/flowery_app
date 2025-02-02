@@ -656,7 +656,7 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<CheckoutOrdersResponseDto> cashOrders(
+  Future<CashOrdersResponseDto> cashOrders(
     ShippingAddressRequestDto request,
   ) async {
     final _extra = <String, dynamic>{};
@@ -664,7 +664,7 @@ class _ApiManager implements ApiManager {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
-    final _options = _setStreamType<CheckoutOrdersResponseDto>(
+    final _options = _setStreamType<CashOrdersResponseDto>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -675,9 +675,9 @@ class _ApiManager implements ApiManager {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CheckoutOrdersResponseDto _value;
+    late CashOrdersResponseDto _value;
     try {
-      _value = CheckoutOrdersResponseDto.fromJson(_result.data!);
+      _value = CashOrdersResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

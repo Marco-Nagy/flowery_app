@@ -9,13 +9,13 @@ final class AddShippingAddress extends CheckoutViewModelState {}
 final class SelectPaymentOption extends CheckoutViewModelState {}
 final class CheckoutLoading extends CheckoutViewModelState {}
 final class CheckoutCashSuccess extends CheckoutViewModelState {
-  final String successMessage;
-  CheckoutCashSuccess({required this.successMessage });
+  final CashPlaceOrderEntity placeOrder;
+  CheckoutCashSuccess({required this.placeOrder });
 }
 
 final class CheckoutCreditSuccess extends CheckoutViewModelState {
-  final String url;
-  CheckoutCreditSuccess({required this.url });
+  final CreditPlaceOrderEntity placeOrder;
+  CheckoutCreditSuccess({required this.placeOrder });
 }
 final class CheckoutError extends CheckoutViewModelState {
   final ErrorModel error;
