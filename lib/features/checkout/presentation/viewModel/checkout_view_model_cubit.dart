@@ -2,7 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
 import 'package:flowery_e_commerce/core/networking/error/error_handler.dart';
 import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
+import 'package:flowery_e_commerce/core/services/firebase_notification/messaging_helper.dart';
 import 'package:flowery_e_commerce/features/address/domain/entities/response/SavedAddressResponseEntity.dart';
+import 'package:flowery_e_commerce/features/checkout/domain/entities/cash_place_order_entity.dart';
+import 'package:flowery_e_commerce/features/checkout/domain/entities/credit_place_order_entity.dart';
 import 'package:flowery_e_commerce/features/checkout/domain/use_cases/cash_use_case.dart';
 import 'package:flowery_e_commerce/features/checkout/domain/use_cases/credit_use_case.dart';
 import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_base_action.dart';
@@ -54,9 +57,10 @@ class CheckoutViewModelCubit extends Cubit<CheckoutViewModelState> {
     emit(CheckoutLoading());
     var result = await _cashUseCase(currentAddress);
     switch(result) {
-      case Success<String>():
-        emit(CheckoutCashSuccess(successMessage:result.data));
-      case Fail<String>():
+      case Success<CashPlaceOrderEntity>():
+        MessagingHelper().subscribeToTopic(result.data.orderId);
+        emit(CheckoutCashSuccess(placeOrder:result.data));
+      case Fail<CashPlaceOrderEntity>():
         emit(CheckoutError(error: ErrorHandler.handle(result.exception!)));
     }
   
@@ -66,9 +70,10 @@ class CheckoutViewModelCubit extends Cubit<CheckoutViewModelState> {
     emit(CheckoutLoading());
     var result = await _creditUseCase(currentAddress);
     switch(result) {
-      case Success<String>():
-        emit(CheckoutCreditSuccess(url:result.data));
-      case Fail<String>():
+      case Success<CreditPlaceOrderEntity>():
+        MessagingHelper().subscribeToTopic(result.data.orderId);
+        emit(CheckoutCreditSuccess(placeOrder:result.data));
+      case Fail<CreditPlaceOrderEntity>():
         emit(CheckoutError(error: ErrorHandler.handle(result.exception!)));
     }
   }

@@ -17,16 +17,12 @@ Widget horizontalCardScroll(List<Map<String, dynamic>> items) {
             width: 160,
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [
-                  Colors.white,
-                  MyColors.lightBlue
-                    ],
-
+              gradient: LinearGradient(
+                colors: [Colors.white, MyColors.lightBlue.withValues(alpha:0.3)],
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.shade200,
+                  color: Colors.grey.withValues(alpha:0.2),
                   blurRadius: 2,
                   offset: const Offset(2, 4),
                 ),

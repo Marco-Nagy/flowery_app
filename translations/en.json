@@ -225,6 +225,7 @@
     "latitude": "Latitude",
     "longitude": "Longitude",
     "confirm_location": "Confirm Location",
+    "order_placed_successfully": "Your order placed successfully!",
     "no_orders_available": "No orders available",
     "order_number": "Order number",
     "egp": "EGP"
