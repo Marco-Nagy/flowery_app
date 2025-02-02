@@ -14,6 +14,7 @@ import 'package:flowery_e_commerce/features/cart/presentation/view/cart_view.dar
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/checkout/presentation/view/checkout_screen.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/view/place_order_success.dart';
 import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
@@ -66,6 +67,8 @@ class AppRoutes {
   static const String searchView = 'searchView';
   static const String notificationView = 'notificationView';
   static const String cartScreen = 'cartScreen';
+  static const String placeOrderSuccess= 'placeOrderSuccess';
+
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -196,6 +199,8 @@ class AppRoutes {
           create: (context) => getIt.get<SearchViewModelCubit>(),
           child: const SearchView(),
         ));
+      case AppRoutes.placeOrderSuccess:
+        return BaseRoute(page: PlaceOrderSuccess(orderId: args as String));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

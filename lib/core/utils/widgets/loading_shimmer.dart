@@ -23,7 +23,7 @@ class LoadingShimmer extends StatelessWidget {
         width: width,
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: Colors.grey.shade300,
+          color: Colors.grey.withValues(alpha: 0.3),
           borderRadius: BorderRadius.all(
             Radius.circular(borderRadius ?? 14),
           ),

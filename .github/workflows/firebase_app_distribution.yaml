@@ -31,7 +31,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.4'
+          channel: 'stable'
         # This action installs Flutter and ensures the correct version is available for building.
 
       # Step 4: Create placeholder .env.firebase file
@@ -110,7 +110,7 @@ jobs:
 
       # Step 13: Upload APK as an artifact
       - name: Upload APK as Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: app-release-apk # Artifact name for the uploaded APK
           path: build/app/outputs/flutter-apk/app-release.apk # Path to the APK file
