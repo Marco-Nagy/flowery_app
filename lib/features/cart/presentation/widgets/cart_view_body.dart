@@ -12,8 +12,8 @@ import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_total
 import 'package:flowery_e_commerce/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'empty_cart_screen.dart';
 
 class CartViewBody extends StatelessWidget {
@@ -25,7 +25,7 @@ final  bool backButtonVisible;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: customAppBar(
-        appBarTxt:cart.numOfCartItems>0? '${AppLocalizations.of(context)!.cart} (${cart.numOfCartItems} ${AppLocalizations.of(context)!.items}) ':'',
+        appBarTxt:cart.numOfCartItems>0? '${context.translate(LangKeys.cart)} (${cart.numOfCartItems} ${context.translate(LangKeys.items)}) ':'',
         showArrow: backButtonVisible,
         context: context,
       ),
@@ -44,7 +44,7 @@ final  bool backButtonVisible;
                   width: 2.w,
                 ),
                 Text(
-                 AppLocalizations.of(context)!.deliver_sheikh_zayed ,
+                  context.translate(LangKeys.deliverSheikhZayed),
                   style: MyFonts.styleMedium500_14
                       .copyWith(color: MyColors.blackBase),
                 ),
@@ -76,7 +76,7 @@ final  bool backButtonVisible;
            ),
           CartTotalAmount(cart: cart),
           verticalSpacing(16),
-          CurvedButton(title:AppLocalizations.of(context)!.checkout,
+          CurvedButton(title: context.translate(LangKeys.checkout),
             onTap: () => context.pushNamed(AppRoutes.checkoutScreen,
               arguments: cart),
             color: MyColors.baseColor,),

@@ -1,9 +1,10 @@
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/reset_password_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/utils/widgets/base/snack_bar.dart';
 import '../../../../di/di.dart';
@@ -56,7 +57,7 @@ class _SectionResetPasswordFormState extends State<SectionResetPasswordForm> {
                   height: 55,
                 ),
                 CurvedButton(
-                    title: AppLocalizations.of(context)!.update,
+                    title: context.translate(LangKeys.update),
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         profileViewModel.doAction(ChangePassword(
@@ -72,31 +73,31 @@ class _SectionResetPasswordFormState extends State<SectionResetPasswordForm> {
             switch (state) {
               case ChangePasswordLoading():
                 aweSnackBar(
-                    msg: AppLocalizations.of(context)!.loading,
+                    msg: context.translate(LangKeys.loading),
                     context: context,
                     type: MessageTypeConst.help,
-                    title: AppLocalizations.of(context)!.loading,);
+                    title: context.translate(LangKeys.loading));
                 break;
               case ChangePasswordSuccess():
                 aweSnackBar(
-                    msg: AppLocalizations.of(context)!.password_changed_successfully,
+                    msg: context.translate(LangKeys.passwordChangedSuccessfully),
                     context: context,
                     type: MessageTypeConst.success,
-                    title: AppLocalizations.of(context)!.success);
+                    title: context.translate(LangKeys.success));
                 context.pushReplacementNamed(AppRoutes.profileView);
                 break;
               case ChangePasswordError():
                 state.error.error.toString() == 'incorrect email or password'
                     ? aweSnackBar(
-                        msg: AppLocalizations.of(context)!.old_password_incorrect,
+                        msg: context.translate(LangKeys.oldPasswordIncorrect),
                         context: context,
                         type: MessageTypeConst.failure,
-                        title: AppLocalizations.of(context)!.error)
+                        title: context.translate(LangKeys.error))
                     : aweSnackBar(
                         msg: state.error.error.toString(),
                         context: context,
                         type: MessageTypeConst.success,
-                        title: AppLocalizations.of(context)!.error);
+                        title: context.translate(LangKeys.error));
 
                 break;
               default:

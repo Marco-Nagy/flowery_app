@@ -1,4 +1,6 @@
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/utils/widgets/spacing.dart';
@@ -6,7 +8,6 @@ import '../widgets/app_logo_section.dart';
 import '../widgets/section_header.dart';
 import '../widgets/horizontal_card_scroll.dart';
 import '../widgets/app_info_section.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class AboutAppView extends StatelessWidget {
   const AboutAppView({super.key});
 
@@ -16,7 +17,7 @@ class AboutAppView extends StatelessWidget {
       backgroundColor: MyColors.white,
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context)!.about_flowery_app,
+          (context.translate(LangKeys.aboutFloweryApp)),
           style: MyFonts.styleMedium500_20.copyWith(color: MyColors.white),
         ),
         centerTitle: true,
@@ -40,24 +41,24 @@ class AboutAppView extends StatelessWidget {
             verticalSpacing(20),
             const AppLogoSection(),
             verticalSpacing(20),
-            sectionHeader(title:AppLocalizations.of(context)!.categories,
+            sectionHeader(title:(context.translate(LangKeys.categories)),
             ),
             horizontalCardScroll([
-              {'title': AppLocalizations.of(context)!.birthday_flowers, 'icon': Icons.cake},
-              {'title': AppLocalizations.of(context)!.anniversary, 'icon': Icons.event},
-              {'title': AppLocalizations.of(context)!.get_well_soon, 'icon': Icons.local_hospital},
+              {'title': (context.translate(LangKeys.birthdayFlowers)), 'icon': Icons.cake},
+              {'title': (context.translate(LangKeys.anniversary)), 'icon': Icons.event},
+              {'title': (context.translate(LangKeys.getWellSoon)), 'icon': Icons.local_hospital},
             ]),
             verticalSpacing(20),
-            sectionHeader(title: AppLocalizations.of(context)!.best_sellers),
+            sectionHeader(title: (context.translate(LangKeys.bestSeller)),),
             horizontalCardScroll([
-              {'title': AppLocalizations.of(context)!.rose_bouquet, 'icon': Icons.local_florist},
-              {'title': AppLocalizations.of(context)!.lily_bunch, 'icon': Icons.spa},
+              {'title': (context.translate(LangKeys.roseBouquet)), 'icon': Icons.local_florist},
+              {'title': (context.translate(LangKeys.lilyBunch)), 'icon': Icons.spa},
             ]),
             verticalSpacing(30),
             const AppInfoSection(),
             verticalSpacing(20),
              Text(
-                AppLocalizations.of(context)!.copyright_notice,
+              (context.translate(LangKeys.copyrightNotice)),
               style: const TextStyle(fontSize: 14, color: Colors.grey),
             ),
             verticalSpacing(10),
