@@ -7,7 +7,8 @@ import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_vie
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_icon_badge.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import '../generic_item_by_product/views/generic_item_screen.dart';
 
@@ -70,7 +71,7 @@ class _OccasionViewState extends State<OccasionView> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: customAppBar(
-            appBarTxt:  AppLocalizations.of(context)!.occasion,
+            appBarTxt: context.translate(LangKeys.occasion),
             context: context,
             showArrow: true,
             actions: [
@@ -88,7 +89,7 @@ class _OccasionViewState extends State<OccasionView> {
             Padding(
               padding: const EdgeInsets.only(left: 40),
               child: Text(
-                AppLocalizations.of(context)!.best_sellers_desc,
+                context.translate(LangKeys.bestSellersDesc),
                 style: MyFonts.styleMedium500_14.copyWith(color: MyColors.gray),
               ),
             ),

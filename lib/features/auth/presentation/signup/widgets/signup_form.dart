@@ -12,8 +12,8 @@ import '../../../../../core/utils/widgets/buttons/carved_button.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
 import '../view_model/signup_action.dart';
 import 'gender_selection.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import '../../../../../core/localization/lang_keys.dart';
 class SignUpForm extends StatelessWidget {
   const SignUpForm({super.key});
 
@@ -47,7 +47,7 @@ class SignUpForm extends StatelessWidget {
             50,
           ),
           CurvedButton(
-            title:AppLocalizations.of(context)!.signUp,
+            title:context.translate(LangKeys.signUp),
             onTap: () {
               cubit.doAction(SignupActionSelected());
             },
@@ -56,8 +56,8 @@ class SignUpForm extends StatelessWidget {
             15,
           ),
           AuthFooter(
-              question: AppLocalizations.of(context)!.alreadyHaveAnAccount,
-              txt: AppLocalizations.of(context)!.login,
+              question: context.translate(LangKeys.alreadyHaveAnAccount),
+              txt: context.translate(LangKeys.login),
               onPressed: () {
                 context.pushNamed(AppRoutes.login);
               }),

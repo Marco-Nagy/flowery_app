@@ -1,5 +1,6 @@
 import 'package:flowery_e_commerce/core/routes/app_routes.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import '../../../../../core/localization/lang_keys.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
@@ -30,7 +31,7 @@ class LoginButtons extends StatelessWidget {
         children: [
           CurvedButton(
             color: MyColors.baseColor,
-            title: AppLocalizations.of(context)!.login,
+            title: context.translate(LangKeys.login),
             onTap: () {
               if (formKey.currentState!.validate()) {
                 viewModel.doAction(LoginAction(
@@ -47,7 +48,7 @@ class LoginButtons extends StatelessWidget {
           const SizedBox(height: 16),
           CurvedButton(
             color: MyColors.white,
-            title: AppLocalizations.of(context)!.guest,
+            title: context.translate(LangKeys.guest),
             onTap: () {
               context.pushReplacementNamed(AppRoutes.homeScreen);
             },

@@ -8,9 +8,9 @@ import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_bas
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import '../widgets/slider_image.dart';
@@ -44,14 +44,14 @@ class ProductDetailsWidget extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text('${AppLocalizations.of(context)!.status}: ', style: MyFonts.styleMedium500_16),
-                      Text(AppLocalizations.of(context)!.in_stock, style: MyFonts.styleRegular400_14),
+                      Text('${context.translate(LangKeys.status)}: ', style: MyFonts.styleMedium500_16),
+                      Text(context.translate(LangKeys.inStock), style: MyFonts.styleRegular400_14),
                     ],
                   ),
                 ],
               ),
               verticalSpacing(4.h),
-              Text(AppLocalizations.of(context)!.all_prices_include_tax,
+              Text(context.translate(LangKeys.allPricesIncludeTax),
                   style: MyFonts.styleRegular400_13.copyWith(
                     color: MyColors.grey,
                   )),
@@ -62,7 +62,7 @@ class ProductDetailsWidget extends StatelessWidget {
               ),
               verticalSpacing(24.h),
               Text(
-                AppLocalizations.of(context)!.description,
+                context.translate(LangKeys.description),
                 style: MyFonts.styleMedium500_16,
               ),
               verticalSpacing(8.h),
@@ -72,14 +72,14 @@ class ProductDetailsWidget extends StatelessWidget {
                   style: MyFonts.styleRegular400_14),
               verticalSpacing(24.h),
               Text(
-                AppLocalizations.of(context)!.bouquet_include,
+                context.translate(LangKeys.bouquetInclude),
                 style: MyFonts.styleMedium500_16,
               ),
               verticalSpacing(8.h),
               Text('${product.title}:${product.quantity}',
                   style: MyFonts.styleRegular400_14),
               verticalSpacing(4.h),
-              Text(AppLocalizations.of(context)!.white_wrap, style: MyFonts.styleRegular400_14),
+              Text(context.translate(LangKeys.whiteWrap), style: MyFonts.styleRegular400_14),
               verticalSpacing(24.h),
               AddCartButton(
                 onTap: () {
