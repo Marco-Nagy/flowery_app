@@ -1,9 +1,10 @@
 import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/localization/lang_keys.dart';
 class ChangeText extends StatelessWidget {
   const ChangeText({super.key});
 
@@ -14,7 +15,7 @@ class ChangeText extends StatelessWidget {
         context.pushNamed(AppRoutes.resetPasswordProfileView);
       },
       child: Text(
-          AppLocalizations.of(context)!.change,
+        context.translate(LangKeys.change),
         style: MyFonts.styleMedium500_14.copyWith(color: MyColors.baseColor),
       ),
     );

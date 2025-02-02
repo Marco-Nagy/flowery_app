@@ -33,6 +33,7 @@ import '../../../features/auth/data/models/request/signup_request_dto.dart';
 import '../../../features/auth/data/models/response/login_response_dto.dart';
 import '../../../features/generic/data/models/generic_response_dto.dart';
 import '../../../features/auth/data/models/response/signup_response_dto.dart';
+import '../../../features/orders/data/models/order_response_dto.dart';
 import '../../../features/product/data/models/response/product_response_dto.dart';
 import '../../../features/profile/data/models/response/edit_profile_response_dto.dart';
 import 'api_constants.dart';
@@ -42,7 +43,7 @@ part 'api_manager.g.dart';
 @singleton
 @injectable
 @RestApi(baseUrl: ApiConstants.baseUrl)
-abstract class ApiManager {
+abstract class  ApiManager {
   @factoryMethod
   factory ApiManager(Dio dio) = _ApiManager;
 
@@ -127,4 +128,7 @@ abstract class ApiManager {
 
   @POST("${ApiConstants.cashOrders}")
   Future<CashOrdersResponseDto> cashOrders( @Body() ShippingAddressRequestDto request);
+
+  @GET(ApiConstants.getUserOrders)
+  Future<OrderResponseDto> getUserOrders();
 }
