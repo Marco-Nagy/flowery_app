@@ -26,6 +26,9 @@ import 'package:flowery_e_commerce/features/product/presentation/search/viewMode
 import 'package:flowery_e_commerce/features/product/presentation/search/views/search_view.dart';
 import 'package:flowery_e_commerce/features/product/presentation/view/product_details_view.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
+import 'package:flowery_e_commerce/features/track_order/presentation/viewModel/track_order_actions.dart';
+import 'package:flowery_e_commerce/features/track_order/presentation/viewModel/track_order_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/track_order/presentation/views/track_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -70,6 +73,7 @@ class AppRoutes {
   static const String notificationView = 'notificationView';
   static const String cartScreen = 'cartScreen';
   static const String placeOrderSuccess= 'placeOrderSuccess';
+  static const String trackOrder = 'trackOrder';
 
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
@@ -204,7 +208,17 @@ class AppRoutes {
           child: const SearchView(),
         ));
       case AppRoutes.placeOrderSuccess:
-        return BaseRoute(page: PlaceOrderSuccess(orderId: args as String));
+        final arguments = settings.arguments as Map<String, String>?;
+        return BaseRoute(page: PlaceOrderSuccess(orderId: arguments!['orderId']!, userId: arguments['userId']!));
+
+        case AppRoutes.trackOrder:
+          final arguments = settings.arguments as Map<String, String>?;
+
+          return BaseRoute(page: BlocProvider(
+    create: (context) => getIt.get<TrackOrderViewModelCubit>()
+    ..doAction(GetOrderDetails(
+    orderId: arguments!['orderId']!, userId: arguments['userId']!)),
+   child: const TrackOrderScreen()));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

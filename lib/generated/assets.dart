@@ -10,7 +10,9 @@ class Assets {
   static const String imagesArrowBackIos = 'assets/images/arrow_back_ios.png';
   static const String imagesArrowDownIos = 'assets/images/arrow_down_ios.png';
   static const String imagesButtonFilter = 'assets/images/button_filter.png';
+  static const String imagesCall = 'assets/images/call.svg';
   static const String imagesCancel = 'assets/images/cancel.png';
+  static const String imagesCar = 'assets/images/Car.svg';
   static const String imagesCategory = 'assets/images/category.png';
   static const String imagesDelete = 'assets/images/delete.png';
   static const String imagesDribbleFlowers = 'assets/images/dribble_flowers.gif';
@@ -54,5 +56,6 @@ class Assets {
   static const String imagesTermsConditions = 'assets/images/terms_conditions.png';
   static const String imagesTrachIcon = 'assets/images/trach_icon.png';
   static const String imagesUpload = 'assets/images/upload.png';
+  static const String imagesWhatsapp = 'assets/images/whatsapp.svg';
 
 }

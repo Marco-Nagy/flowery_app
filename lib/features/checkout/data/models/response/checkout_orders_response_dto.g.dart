@@ -120,7 +120,6 @@ AutomaticTaxDto _$AutomaticTaxDtoFromJson(Map<String, dynamic> json) =>
     );
 
 
-
 CustomTextDto _$CustomTextDtoFromJson(Map<String, dynamic> json) =>
     CustomTextDto(
       json['after_submit'],
@@ -128,7 +127,6 @@ CustomTextDto _$CustomTextDtoFromJson(Map<String, dynamic> json) =>
       json['submit'],
       json['terms_of_service_acceptance'],
     );
-
 
 
 CustomerDetailsDto _$CustomerDetailsDtoFromJson(Map<String, dynamic> json) =>
@@ -150,6 +148,7 @@ InvoiceCreationDto _$InvoiceCreationDtoFromJson(Map<String, dynamic> json) =>
           : InvoiceDataDto.fromJson(
               json['invoice_data'] as Map<String, dynamic>),
     );
+
 
 InvoiceDataDto _$InvoiceDataDtoFromJson(Map<String, dynamic> json) =>
     InvoiceDataDto(
@@ -187,7 +186,6 @@ PaymentMethodConfigurationDetailsDto
         );
 
 
-
 PaymentMethodOptionsDto _$PaymentMethodOptionsDtoFromJson(
         Map<String, dynamic> json) =>
     PaymentMethodOptionsDto(
@@ -198,13 +196,11 @@ PaymentMethodOptionsDto _$PaymentMethodOptionsDtoFromJson(
     );
 
 
-
 PaymentMethodOptionsCardDto _$PaymentMethodOptionsCardDtoFromJson(
         Map<String, dynamic> json) =>
     PaymentMethodOptionsCardDto(
       json['request_three_d_secure'] as String?,
     );
-
 
 
 PhoneNumberCollectionDto _$PhoneNumberCollectionDtoFromJson(
