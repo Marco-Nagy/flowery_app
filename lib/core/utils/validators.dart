@@ -1,38 +1,39 @@
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../localization/lang_keys.dart';
 
 class Validators {
   static String? validateNotEmpty({String? title, String? value , required BuildContext context}) {
     if (_isEmpty(value)) {
-      return ("$title ${AppLocalizations.of(context)!.is_required}");
+      return ("$title ${(context.translate(LangKeys.isRequired))}");
     }
     return null;
   }
 
   static String? validateEmail(String? value ,  BuildContext context) {
     if (_isEmpty(value)) {
-      return ("${AppLocalizations.of(context)!.email_is_required}");
+      return ("${context.translate(LangKeys.emailIsRequired)}");
     }
 
     var regex = RegExp(
         r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
     if (!regex.hasMatch(value!)) {
-      return '${AppLocalizations.of(context)!.invalid_email_address}';
+      return '${context.translate(LangKeys.invalidEmailAddress)}';
     }
     return null;
   }
 
   static String? validatePassword(String? value , BuildContext context) {
     if (_isEmpty(value)) {
-      return '${AppLocalizations.of(context)!.password_is_required}';
+      return '${context.translate(LangKeys.passwordIsRequired)}';
     }
 
     var regex = RegExp(
         r"(?=^.{8,}$)(?=.*[!@#$%^&*]+)(?![.\\n])(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$");
 
     if (!regex.hasMatch(value!)) {
-      return '${AppLocalizations.of(context)!.must_contains} A-Z, a-z, @-#-&.. , 1-9';
+      return '${context.translate(LangKeys.mustContains)} A-Z, a-z, @-#-&.. , 1-9';
     }
 
     return null;
@@ -41,14 +42,14 @@ class Validators {
   static String? validatePasswordConfirmation(
       {String? password, String? confirmPassword , required BuildContext context}) {
     if (_isEmpty(password)) {
-      return '${AppLocalizations.of(context)!.password_is_required}';
+      return '${context.translate(LangKeys.passwordIsRequired)}';
     }
     if (_isEmpty(confirmPassword)) {
-      return '${AppLocalizations.of(context)!.confirm_password_is_required}';
+      return '${context.translate(LangKeys.confirmPasswordIsRequired)}';
     }
 
     if (password != confirmPassword) {
-      return '${AppLocalizations.of(context)!.passwords_do_not_match}';
+      return '${context.translate(LangKeys.passwordsDoNotMatch)}';
     }
 
     return null;
@@ -56,7 +57,7 @@ class Validators {
 
   static String? validatePhoneNumber(String? value , BuildContext context) {
     if (_isEmpty(value)) {
-      return '${AppLocalizations.of(context)!.phone_number_is_required}';
+      return '${context.translate(LangKeys.phoneNumberIsRequired)}';
     }
 
     var regex = RegExp(
@@ -64,7 +65,7 @@ class Validators {
     );
 
     if (!regex.hasMatch(value!)) {
-      return "${AppLocalizations.of(context)!.phone_number_validation_hint}";
+      return "${context.translate(LangKeys.phoneNumberValidationHint)}";
     }
 
     return null;

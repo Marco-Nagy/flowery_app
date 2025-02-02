@@ -4,8 +4,8 @@ import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_view_
 import 'package:flowery_e_commerce/features/cart/presentation/widgets/empty_cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 class CartView extends StatelessWidget {
   const CartView({super.key, required this.backButtonVisible});
 
@@ -29,7 +29,7 @@ class CartView extends StatelessWidget {
               msg: state.errorModel.error!,
               context: context,
               type: MessageTypeConst.failure,
-              title: AppLocalizations.of(context)!.error);
+              title:context.translate(LangKeys.error));
         }
       },
     );

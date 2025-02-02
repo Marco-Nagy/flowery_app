@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import '../../../../../core/localization/lang_keys.dart';
 import '../../../../../core/services/shared_preference/location_helper.dart';
 
 part 'location_state.dart';
@@ -21,7 +22,7 @@ class LocationCubit extends Cubit<LocationState> {
         emit(LocationNotAvailable());
       }
     } catch (e) {
-      emit(LocationError(AppLocalizations.of(context)!.error_getting_location));
+      emit(LocationError(context.translate(LangKeys.errorGettingLocation)));
     }
   }
 
@@ -30,13 +31,13 @@ class LocationCubit extends Cubit<LocationState> {
     try {
       bool isServiceEnabled = await locationHelper.isLocationServiceEnabled();
       if (!isServiceEnabled) {
-        emit(LocationError(AppLocalizations.of(context)!.location_services_are_disabled));
+        emit(LocationError(context.translate(LangKeys.locationServicesAreDisabled)));
         return;
       }
 
       LocationPermission permission = await locationHelper.requestLocationPermission(context);
       if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
-        emit(LocationError(AppLocalizations.of(context)!.location_permission_denied));
+        emit(LocationError(context.translate(LangKeys.locationPermissionDenied)));
         return;
       }
 
@@ -50,7 +51,7 @@ class LocationCubit extends Cubit<LocationState> {
       await locationHelper.saveLocation(address);
       emit(LocationLoaded(address));
     } catch (e) {
-      emit(LocationError(AppLocalizations.of(context)!.error_getting_location));
+      emit(LocationError(context.translate(LangKeys.errorGettingLocation)));
     }
   }
 }

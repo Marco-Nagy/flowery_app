@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/localization/lang_keys.dart';
 import '../../../../../core/utils/widgets/base/app_loader.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
 import '../widget/no_products_widget.dart';
@@ -7,8 +8,7 @@ import '../../../../generic/presentation/widgets/tab_bar_widget.dart';
 import '../viewModel/generic_item_action.dart';
 import '../viewModel/generic_item_view_model_cubit.dart';
 import '../widget/generic_builder_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 class GenericItemScreen extends StatelessWidget {
   const GenericItemScreen(
       {super.key, required this.resourceName, required this.field,  this.onClick});
@@ -37,7 +37,7 @@ class GenericItemScreen extends StatelessWidget {
                   children: [
                     tabBarWidget(
                       tabs: [
-                         Tab(text: AppLocalizations.of(context)!.all),
+                         Tab(text: context.translate(LangKeys.all),),
                         ...items.map((item) => Tab(text: item.name)),
                       ],
                       onTap: (index) {

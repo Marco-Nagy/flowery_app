@@ -7,7 +7,8 @@ import '../models/response/add_address_response_dto.dart';
 class AddAddressMappers {
   static AddAddressRequestDto toAddAddressRequestDto(
       AddAddressRequestEntity entity) {
-    return AddAddressRequestDto(entity.street, entity.phone, entity.city);
+    return AddAddressRequestDto(entity.street, entity.phone, entity.city,
+        entity.lat, entity.long, entity.username);
   }
 
   static AddAddressResponseEntity toAddAddressResponseEntity(

@@ -1,6 +1,7 @@
 import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
@@ -12,7 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/localization/lang_keys.dart';
 import '../../../../generated/assets.dart';
 
 class CustomMainProfileData extends StatefulWidget {
@@ -80,7 +81,7 @@ class _CustomMainProfileDataState extends State<CustomMainProfileData> {
            case GetLoggedUserDataError():
              SchedulerBinding.instance.addPostFrameCallback((_) {
                aweSnackBar(
-                 msg: AppLocalizations.of(context)!.error,
+                 msg: context.translate(LangKeys.error),
                  context: context,
                  type: MessageTypeConst.failure,
                );
