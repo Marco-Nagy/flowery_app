@@ -18,7 +18,7 @@ class MapView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.white.withOpacity(0.95),
+          backgroundColor: Colors.white.withValues(alpha: 0.95),
           elevation: 3,
           centerTitle: true,
           title: Text(
