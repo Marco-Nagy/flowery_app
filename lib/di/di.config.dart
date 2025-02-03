@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -13,11 +14,11 @@ import 'package:flutter/material.dart' as _i409;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../core/app_cubit/app_cubit.dart' as _i693;
 import '../core/networking/api/api_manager.dart' as _i282;
 import '../core/networking/common/regestet_context_module.dart' as _i125;
 import '../core/networking/network_factory.dart' as _i377;
-import '../core/provider/language_provider.dart' as _i1005;
-import '../core/provider/language_service.dart' as _i289;
+import '../core/services/firebase_helper/fire_store_helper.dart' as _i357;
 import '../features/address/data/data_sources/contracts/address_online_data_source.dart'
     as _i92;
 import '../features/address/data/data_sources/impl/address_online_data_source_impl.dart'
@@ -95,16 +96,10 @@ import '../features/cart/presentation/viewModel/cart_view_model_cubit.dart'
     as _i1043;
 import '../features/categories/data/data_sources/contracts/categories_online_data_source.dart'
     as _i518;
-import '../features/categories/data/data_sources/contracts/products_online_data_source.dart'
-    as _i937;
 import '../features/categories/data/data_sources/impl/categories_online_data_source_impl.dart'
     as _i1059;
-import '../features/categories/data/data_sources/impl/products_online_data_source_impl.dart'
-    as _i838;
 import '../features/categories/data/repositories/categories_repo_impl.dart'
     as _i620;
-import '../features/categories/data/repositories/products_repo_impl.dart'
-    as _i160;
 import '../features/categories/domain/repositories/categories_repo.dart'
     as _i590;
 import '../features/categories/domain/repositories/products_repo.dart' as _i598;
@@ -113,6 +108,18 @@ import '../features/categories/domain/use_cases/categories_use_case.dart'
 import '../features/categories/domain/use_cases/products_use_case.dart' as _i98;
 import '../features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart'
     as _i80;
+import '../features/checkout/data/data_sources/contracts/checkout_online_data_source.dart'
+    as _i355;
+import '../features/checkout/data/data_sources/impl/checkout_online_data_source_impl.dart'
+    as _i710;
+import '../features/checkout/data/repositories/checkout_repository_impl.dart'
+    as _i74;
+import '../features/checkout/domain/repositories/contracts/checkout_repository.dart'
+    as _i445;
+import '../features/checkout/domain/use_cases/cash_use_case.dart' as _i779;
+import '../features/checkout/domain/use_cases/credit_use_case.dart' as _i147;
+import '../features/checkout/presentation/viewModel/checkout_view_model_cubit.dart'
+    as _i510;
 import '../features/generic/data/data_sources/contracts/generic_online_data_source.dart'
     as _i211;
 import '../features/generic/data/data_sources/impl/generic_online_data_source_impl.dart'
@@ -136,6 +143,14 @@ import '../features/home_screen/presentation/home_cubit/best_seller_cubit/best_s
     as _i233;
 import '../features/home_screen/presentation/home_cubit/occasions_cubit/occasions_cubit.dart'
     as _i851;
+import '../features/orders/data/data_sources/contracts/order_online_data_source.dart'
+    as _i513;
+import '../features/orders/data/data_sources/impl/order_online_data_sourse_impl.dart'
+    as _i971;
+import '../features/orders/data/repositories/order_repo_impl.dart' as _i897;
+import '../features/orders/domain/contracts/order_repo.dart' as _i544;
+import '../features/orders/domain/use_cases/order_use_case.dart' as _i411;
+import '../features/orders/presentation/view_model/order_cubit.dart' as _i716;
 import '../features/product/data/data_sources/contracts/product_online_data_source.dart'
     as _i1037;
 import '../features/product/data/data_sources/impl/product_online_data_source_impl.dart'
@@ -143,6 +158,10 @@ import '../features/product/data/data_sources/impl/product_online_data_source_im
 import '../features/product/data/repositories/product_repo_impl.dart' as _i986;
 import '../features/product/domain/repositories/product_repo.dart' as _i733;
 import '../features/product/domain/use_cases/product_use_case.dart' as _i414;
+import '../features/product/domain/use_cases/search_product_use_case.dart'
+    as _i930;
+import '../features/product/presentation/search/viewModel/search_view_model_cubit.dart'
+    as _i884;
 import '../features/profile/data/data_sources/contracts/profile_online_data_source.dart'
     as _i46;
 import '../features/profile/data/data_sources/impl/profile_online_data_source_impl.dart'
@@ -152,6 +171,18 @@ import '../features/profile/domain/repositories/profile_repo.dart' as _i49;
 import '../features/profile/domain/use_cases/profile_use_case.dart' as _i804;
 import '../features/profile/presentation/viewModel/profile_view_model_cubit.dart'
     as _i907;
+import '../features/track_order/data/data_sources/contracts/track_order_online_data_source.dart'
+    as _i13;
+import '../features/track_order/data/data_sources/impl/track_order_online_data_source_impl.dart'
+    as _i291;
+import '../features/track_order/data/repositories/track_order_repo_impl.dart'
+    as _i472;
+import '../features/track_order/domain/repositories/contract/track_order_repo.dart'
+    as _i147;
+import '../features/track_order/domain/use_cases/get_order_by_order_id_case.dart'
+    as _i398;
+import '../features/track_order/presentation/viewModel/track_order_view_model_cubit.dart'
+    as _i465;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -166,12 +197,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final networkFactory = _$NetworkFactory();
     final registerModule = _$RegisterModule();
+    gh.factory<_i693.AppCubit>(() => _i693.AppCubit());
     gh.factory<_i361.LogInterceptor>(
         () => networkFactory.providerInterceptor());
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
         () => registerModule.navigatorKey);
+    gh.singleton<_i357.FireStoreService>(() => _i357.FireStoreService());
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
-    gh.lazySingleton<_i289.LanguageService>(() => _i289.LanguageService());
+    gh.factory<_i13.TrackOrderOnlineDataSource>(
+        () => _i291.TrackOrderOnlineDataSourceImpl());
     gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
     gh.factory<_i92.AddressOnlineDataSource>(
         () => _i112.AddressOnlineDataSourceImpl(gh<_i282.ApiManager>()));
@@ -179,26 +213,32 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i326.AuthOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i345.OfflineDataSource>(
         () => _i1036.OfflineDataSourceImplementation());
-    gh.factory<_i937.ProductsOnlineDataSource>(
-        () => _i838.ProductsOnlineDataSourceImpl(gh<_i282.ApiManager>()));
+    gh.factory<_i513.OrderOnlineDataSource>(
+        () => _i971.OrderOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i700.AddAddressOnlineDataSource>(
         () => _i172.AddAddressOnlineDataSourceImpl(gh<_i282.ApiManager>()));
+    gh.factory<_i355.CheckoutOnlineDataSource>(
+        () => _i710.CheckoutOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.lazySingleton<_i603.HomeOnlineDataSource>(
         () => _i507.HomeApiManager(gh<_i282.ApiManager>()));
-    gh.factory<_i1005.LanguageProvider>(
-        () => _i1005.LanguageProvider(gh<_i289.LanguageService>()));
+    gh.factory<_i544.OrderRepo>(
+        () => _i897.OrderRepoImpl(gh<_i513.OrderOnlineDataSource>()));
     gh.factory<_i497.AddAddressRepo>(
         () => _i925.AddAddressRepoImpl(gh<_i700.AddAddressOnlineDataSource>()));
+    gh.factory<_i98.ProductsUseCase>(
+        () => _i98.ProductsUseCase(gh<_i598.ProductsRepo>()));
+    gh.factory<_i411.OrderUseCase>(
+        () => _i411.OrderUseCase(gh<_i544.OrderRepo>()));
     gh.factory<_i917.AddressRepo>(
         () => _i305.AddressRepoImpl(gh<_i92.AddressOnlineDataSource>()));
     gh.lazySingleton<_i765.HomeRepository>(
         () => _i178.HomeRepoImpl(gh<_i603.HomeOnlineDataSource>()));
     gh.factory<_i46.ProfileOnlineDataSource>(
         () => _i74.ProfileOnlineDataSourceImpl(gh<_i282.ApiManager>()));
-    gh.factory<_i598.ProductsRepo>(
-        () => _i160.ProductsRepoImpl(gh<_i937.ProductsOnlineDataSource>()));
     gh.lazySingleton<_i475.MostSellingProductsOnlineDataSource>(
         () => _i480.MostSellingProductsApiManager(gh<_i282.ApiManager>()));
+    gh.factory<_i147.TrackOrderRepo>(
+        () => _i472.TrackOrderRepoImpl(gh<_i13.TrackOrderOnlineDataSource>()));
     gh.factory<_i1037.ProductOnlineDataSource>(
         () => _i877.ProductOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i211.GenericOnlineDataSource>(
@@ -212,17 +252,23 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i933.ProfileRepoImpl(gh<_i46.ProfileOnlineDataSource>()));
     gh.factory<_i665.AuthRepository>(
         () => _i990.AuthRepositoryImpl(gh<_i901.AuthOnlineDataSource>()));
+    gh.factory<_i445.CheckoutRepository>(() => _i74.CheckoutRepositoryImpl(
+        dataSource: gh<_i355.CheckoutOnlineDataSource>()));
     gh.factory<_i207.AddAddressUseCase>(
         () => _i207.AddAddressUseCase(gh<_i497.AddAddressRepo>()));
     gh.factory<_i733.ProductRepo>(
         () => _i986.ProductRepoImpl(gh<_i1037.ProductOnlineDataSource>()));
     gh.factory<_i414.ProductUseCase>(
         () => _i414.ProductUseCase(gh<_i733.ProductRepo>()));
+    gh.factory<_i930.SearchProductUseCase>(
+        () => _i930.SearchProductUseCase(gh<_i733.ProductRepo>()));
+    gh.factory<_i779.CashUseCase>(
+        () => _i779.CashUseCase(gh<_i445.CheckoutRepository>()));
     gh.lazySingleton<_i643.MostSellingProductsRepository>(() =>
         _i221.MostSellingProductsRepoImpl(
             gh<_i475.MostSellingProductsOnlineDataSource>()));
-    gh.factory<_i98.ProductsUseCase>(
-        () => _i98.ProductsUseCase(gh<_i598.ProductsRepo>()));
+    gh.factory<_i716.OrderCubit>(
+        () => _i716.OrderCubit(gh<_i411.OrderUseCase>()));
     gh.factory<_i526.AddAddressViewModelCubit>(
         () => _i526.AddAddressViewModelCubit(gh<_i207.AddAddressUseCase>()));
     gh.factory<_i720.HomeUseCase>(
@@ -235,8 +281,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i804.ProfileUseCase(gh<_i49.ProfileRepo>()));
     gh.factory<_i647.CartRepository>(
         () => _i625.CartRepositoryImpl(gh<_i181.CartOnlineDataSource>()));
+    gh.factory<_i884.SearchViewModelCubit>(
+        () => _i884.SearchViewModelCubit(gh<_i930.SearchProductUseCase>()));
     gh.factory<_i253.AddressViewModel>(
         () => _i253.AddressViewModel(gh<_i87.AddressUseCase>()));
+    gh.factory<_i147.CreditUseCase>(
+        () => _i147.CreditUseCase(gh<_i445.CheckoutRepository>()));
+    gh.factory<_i398.GetOrderByOrderIdCase>(
+        () => _i398.GetOrderByOrderIdCase(gh<_i147.TrackOrderRepo>()));
     gh.factory<_i496.LoginUseCase>(
         () => _i496.LoginUseCase(gh<_i665.AuthRepository>()));
     gh.factory<_i853.SignUpUseCase>(
@@ -254,6 +306,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i590.CategoriesRepository>(() =>
         _i620.CategoriesRepositoryImplementation(
             gh<_i518.CategoriesOnlineDataSource>()));
+    gh.factory<_i510.CheckoutViewModelCubit>(() => _i510.CheckoutViewModelCubit(
+          gh<_i779.CashUseCase>(),
+          gh<_i147.CreditUseCase>(),
+        ));
     gh.factory<_i972.MostSellingProductsUseCase>(() =>
         _i972.MostSellingProductsUseCase(
             gh<_i643.MostSellingProductsRepository>()));
@@ -265,6 +321,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i804.ProfileUseCase>(),
           gh<_i345.OfflineDataSource>(),
         ));
+    gh.factory<_i465.TrackOrderViewModelCubit>(() =>
+        _i465.TrackOrderViewModelCubit(gh<_i398.GetOrderByOrderIdCase>()));
     gh.factory<_i559.GenericUseCase>(
         () => _i559.GenericUseCase(gh<_i565.GenericRepo>()));
     gh.factory<_i426.AddToCartUseCase>(

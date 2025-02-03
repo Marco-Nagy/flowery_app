@@ -1,7 +1,6 @@
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
 import 'package:flowery_e_commerce/features/cart/data/data_sources/contracts/cart_online_data_source.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
-import 'package:flowery_e_commerce/features/cart/domain/entities/delete_from_cart_entity.dart';
 import 'package:flowery_e_commerce/features/cart/domain/repositories/contracts/cart_repository.dart';
 import 'package:injectable/injectable.dart';
 
@@ -30,7 +29,7 @@ class CartRepositoryImpl implements CartRepository {
   }
 
   @override
-  Future<DataResult<RemoveFromCartEntity>> removeProductFromCart(
+  Future<DataResult<CartEntity>> removeProductFromCart(
       {required String id}) async {
     var result = await _dataSource.removeProductFromCart(id: id);
     return result;

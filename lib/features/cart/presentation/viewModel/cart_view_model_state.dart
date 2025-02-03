@@ -30,7 +30,6 @@ final class AddProductToCartSuccess extends CartViewModelState {
   const AddProductToCartSuccess(
      {required this.visibility, required this.numOfCartItems,});
   @override
-  // TODO: implement props
   List<Object?> get props => [visibility, numOfCartItems];
 }
 
@@ -40,7 +39,6 @@ final class GetUserCartDataSuccess extends CartViewModelState {
   const GetUserCartDataSuccess({required this.cartData});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [cartData];
 }
 
@@ -50,13 +48,12 @@ final class UpdateCartProductQuantitySuccess extends CartViewModelState {
   const UpdateCartProductQuantitySuccess({required this.cartData});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [cartData];
 }
 
 final class RemoveProductFromCartSuccess extends CartViewModelState {
-
-  const RemoveProductFromCartSuccess();
+  final CartEntity cartData;
+  const RemoveProductFromCartSuccess({required this.cartData});
 
   @override
   List<Object?> get props => [];
@@ -68,6 +65,5 @@ class ClearUserCartDataSuccess extends CartViewModelState {
   const ClearUserCartDataSuccess({required this.message});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [message];
 }

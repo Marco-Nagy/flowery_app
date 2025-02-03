@@ -14,9 +14,10 @@ import 'package:flowery_e_commerce/features/cart/data/models/request/add_product
 import 'package:flowery_e_commerce/features/cart/data/models/request/update_cart_product_quantity_request_dto.dart';
 import 'package:flowery_e_commerce/features/cart/data/models/response/add_to_cart_response_dto.dart';
 import 'package:flowery_e_commerce/features/cart/data/models/response/cart_response_dto.dart';
-import 'package:flowery_e_commerce/features/cart/data/models/response/remove_from_cart_response_dto.dart';
 import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_categories_response_dto.dart';
-import 'package:flowery_e_commerce/features/categories/data/models/response/get_all_products_rsponse_dto.dart';
+import 'package:flowery_e_commerce/features/checkout/data/models/request/shipping_address_request_dto.dart';
+import 'package:flowery_e_commerce/features/checkout/data/models/response/cash_orders_response_dto.dart';
+import 'package:flowery_e_commerce/features/checkout/data/models/response/checkout_orders_response_dto.dart';
 import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart';
 import 'package:flowery_e_commerce/features/profile/data/models/request/change_password_request_dto.dart';
 import 'package:flowery_e_commerce/features/profile/data/models/response/change_password_response_dto.dart';
@@ -32,6 +33,7 @@ import '../../../features/auth/data/models/request/signup_request_dto.dart';
 import '../../../features/auth/data/models/response/login_response_dto.dart';
 import '../../../features/generic/data/models/generic_response_dto.dart';
 import '../../../features/auth/data/models/response/signup_response_dto.dart';
+import '../../../features/orders/data/models/order_response_dto.dart';
 import '../../../features/product/data/models/response/product_response_dto.dart';
 import '../../../features/profile/data/models/response/edit_profile_response_dto.dart';
 import 'api_constants.dart';
@@ -41,7 +43,7 @@ part 'api_manager.g.dart';
 @singleton
 @injectable
 @RestApi(baseUrl: ApiConstants.baseUrl)
-abstract class ApiManager {
+abstract class  ApiManager {
   @factoryMethod
   factory ApiManager(Dio dio) = _ApiManager;
 
@@ -72,13 +74,11 @@ abstract class ApiManager {
   @GET(ApiConstants.getHomeApi)
   Future<HomeResponseModelEntity> getHome();
 
-  @GET(ApiConstants.getAllProducts)
-  Future<GetAllProductsRsponseDto> getAllProducts();
   @GET(ApiConstants.mostSellingProductsApi)
   Future<BestSellerResponseModelEntity> getMostSellingProducts();
 
   @GET(ApiConstants.getAllProducts)
-  Future<ProductResponseDto> getProduct();
+  Future<ProductResponseDto> getProduct({@Query("keyword") String? keyword});
 
   @GET(ApiConstants.getLoggedUserData)
   Future<GetLoggedUserDataResponseDto> getLoggedUserData(
@@ -93,7 +93,7 @@ abstract class ApiManager {
       @Path("id") String id, @Body() UpdateCartProductQuantityRequestDto body);
 
   @DELETE("${ApiConstants.deleteProductFromCart}{id}")
-  Future<RemoveFromCartResponseDto> removeProductFromCart(@Path("id") String id);
+  Future<CartResponseDto> removeProductFromCart(@Path("id") String id);
 
   @GET(ApiConstants.cart)
   Future<CartResponseDto> getCartData();
@@ -122,4 +122,13 @@ abstract class ApiManager {
   @PATCH(ApiConstants.addAddress)
   Future<AddAddressResponseDto> addAddress(
       @Body() AddAddressRequestDto request);
+
+  @POST("${ApiConstants.checkOutOrders}")
+  Future<CheckoutOrdersResponseDto> checkoutOrders(@Query("url") String endpointUrl,  @Body() ShippingAddressRequestDto request);
+
+  @POST("${ApiConstants.cashOrders}")
+  Future<CashOrdersResponseDto> cashOrders( @Body() ShippingAddressRequestDto request);
+
+  @GET(ApiConstants.getUserOrders)
+  Future<OrderResponseDto> getUserOrders();
 }
