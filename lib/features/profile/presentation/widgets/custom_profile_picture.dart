@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_view_model_cubit.dart';
 import 'package:flowery_e_commerce/generated/assets.dart';
@@ -7,9 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../../../core/localization/lang_keys.dart';
 import '../../../../di/di.dart';
 import '../viewModel/profile_actions.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class ProfilePic extends StatefulWidget {
@@ -50,7 +51,7 @@ class _ProfilePicState extends State<ProfilePic> {
       backgroundColor: Colors.transparent,
       builder: (BuildContext context) {
         return Container(
-          decoration: BoxDecoration(
+          decoration:  BoxDecoration(
             color: Colors.white,
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(30),
@@ -58,7 +59,7 @@ class _ProfilePicState extends State<ProfilePic> {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.1),
+                color: Colors.black.withValues(alpha:0.1),
                 blurRadius: 20,
                 offset: const Offset(0, -5),
               ),
@@ -70,7 +71,7 @@ class _ProfilePicState extends State<ProfilePic> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                AppLocalizations.of(context)!.select_a_photo,
+                  context.translate(LangKeys.selectAPhoto),
                   style: TextStyle(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
@@ -82,7 +83,7 @@ class _ProfilePicState extends State<ProfilePic> {
                 ListTile(
                   leading: const Icon(Icons.camera_alt_outlined, color: Colors.green),
                   title: Text(
-                    AppLocalizations.of(context)!.take_a_photo,
+                    context.translate(LangKeys.takeAPhoto),
                     style: TextStyle(color: Colors.black, fontSize: 16.sp),
                   ),
                   onTap: () {
@@ -95,7 +96,7 @@ class _ProfilePicState extends State<ProfilePic> {
                 ListTile(
                   leading: const Icon(Icons.photo_library, color: Colors.blue),
                   title: Text(
-                    AppLocalizations.of(context)!.pick_from_gallery,
+                    context.translate(LangKeys.pickFromGallery),
                     style: TextStyle(color: Colors.black, fontSize: 16.sp),
                   ),
                   onTap: () {
@@ -110,7 +111,7 @@ class _ProfilePicState extends State<ProfilePic> {
                     Navigator.pop(context);
                   },
                   child: Text(
-                    AppLocalizations.of(context)!.cancel,
+                    context.translate(LangKeys.cancel),
                     style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.bold,

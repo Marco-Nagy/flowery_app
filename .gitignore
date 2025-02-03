@@ -44,5 +44,7 @@ app.*.map.json
 firebase.json
 android/app/google-services.json
 .env.firebase
+android/app/google-services.json.base64
+lib/core/Services/push_notifications/firebase_server_token.dart
 
-
+lib/core/services/firebase_notification/firebase_server_token.dart

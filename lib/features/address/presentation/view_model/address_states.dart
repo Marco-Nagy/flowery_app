@@ -7,7 +7,7 @@ class GetSavedAddressesInitialState extends AddressStates {}
 class GetSavedAddressesLoadingState extends AddressStates {}
 
 class GetSavedAddressesSuccessState extends AddressStates {
-  final List<GetSavedAddressesEntity> addresses;
+  final List<AddressesEntity> addresses;
 
   GetSavedAddressesSuccessState(this.addresses);
 }

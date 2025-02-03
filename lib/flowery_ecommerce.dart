@@ -1,11 +1,13 @@
+import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/services/connectivity_controller.dart';
 import 'package:flowery_e_commerce/core/services/shared_preference/shared_pref_keys.dart';
-import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'core/provider/language_provider.dart';
+
+import 'core/app_cubit/app_cubit.dart';
+import 'core/app_cubit/app_state.dart';
+import 'core/localization/app_localizations_setup.dart';
 import 'core/services/shared_preference/shared_preference_helper.dart';
 import 'core/utils/screens/no_network_screen.dart';
 import 'di/di.dart';
@@ -22,19 +24,25 @@ class FloweryEcommerce extends StatelessWidget {
       valueListenable: ConnectivityController.instance.isConnected,
       builder: (context, value, child) {
         if (value) {
-          return ScreenUtilInit(
-            designSize: const Size(375, 812),
-            minTextAdapt: true,
-            splitScreenMode: true,
-            child: ChangeNotifierProvider(
-                create: (context) =>
-                    getIt<LanguageProvider>()..loadSelectedLanguage(),
-                child: Consumer<LanguageProvider>(
-                  builder: (context, languageProvider, _) => MaterialApp(
-                    supportedLocales: AppLocalizations.supportedLocales,
-                    locale: Locale(languageProvider.selectedLanguage.code),
+          return BlocProvider(
+            create: (context) => getIt<AppCubit>()..getSavedLanguage(),
+            child: ScreenUtilInit(
+              designSize: const Size(375, 812),
+              minTextAdapt: true,
+              splitScreenMode: true,
+              child: BlocBuilder<AppCubit, AppStates>(
+                buildWhen: (previous, current) {
+                  return previous != current;
+                },
+                builder: (context, state) {
+                  final cubit = context.read<AppCubit>();
+                  return MaterialApp(
+                    locale: Locale(cubit.currentLanguage),
+                    supportedLocales: AppLocalizationsSetup.supportedLocales,
+                    localeResolutionCallback:
+                        AppLocalizationsSetup.localeResolutionCallback,
                     localizationsDelegates:
-                        AppLocalizations.localizationsDelegates,
+                        AppLocalizationsSetup.localizationsDelegates,
                     initialRoute: _getInitialRoute(),
                     debugShowCheckedModeBanner: false,
                     builder: (context, child) {
@@ -46,12 +54,13 @@ class FloweryEcommerce extends StatelessWidget {
                           },
                         ),
                       );
-
                     },
                     onGenerateRoute: AppRoutes.onGenerateRoute,
                     navigatorKey: getIt<GlobalKey<NavigatorState>>(),
-                  ),
-                )),
+                  );
+                },
+              ),
+            ),
           );
         } else {
           return const MaterialApp(

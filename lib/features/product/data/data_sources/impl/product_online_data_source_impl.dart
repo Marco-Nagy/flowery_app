@@ -14,9 +14,9 @@ class ProductOnlineDataSourceImpl implements ProductOnlineDataSource {
   ProductOnlineDataSourceImpl(this._apiManager);
 
   @override
-  Future<DataResult<ProductResponseEntity>> getAllProducts() {
+  Future<DataResult<ProductResponseEntity>> getAllProducts( {String? keyword}) {
     return executeApi(() async {
-      final response = await _apiManager.getProduct();
+      final response = await _apiManager.getProduct(keyword: keyword);
       return ProductMapper.toEntity(response);
     });
   }
