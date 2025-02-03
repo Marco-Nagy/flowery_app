@@ -1,8 +1,10 @@
 import 'package:flowery_e_commerce/core/routes/base_routes.dart';
 import 'package:flowery_e_commerce/core/utils/screens/under_build_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/address_screen.dart';
+import 'package:flowery_e_commerce/features/address/presentation/view/map_view.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/saved_address_screen.dart';
 import 'package:flowery_e_commerce/features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/address/presentation/view_model/address_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/email_verification.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/reset_password.dart';
@@ -10,17 +12,27 @@ import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/
 import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_selling_cubit.dart';
 import 'package:flowery_e_commerce/features/best_seller/presentation/screens/most_selling_screen.dart';
 import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/screens/checkout_screen.dart';
+import 'package:flowery_e_commerce/features/cart/presentation/view/cart_view.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/view/checkout_screen.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/view/place_order_success.dart';
+import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/generic/presentation/screens/categories_view.dart';
 import 'package:flowery_e_commerce/features/home_screen/presentation/home_screen.dart';
+import 'package:flowery_e_commerce/features/notification_list/presentation/model/notification_args.dart';
+import 'package:flowery_e_commerce/features/product/presentation/search/viewModel/search_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/product/presentation/search/views/search_view.dart';
 import 'package:flowery_e_commerce/features/product/presentation/view/product_details_view.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
+import 'package:flowery_e_commerce/features/track_order/presentation/viewModel/track_order_actions.dart';
+import 'package:flowery_e_commerce/features/track_order/presentation/viewModel/track_order_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/track_order/presentation/views/track_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../di/di.dart';
 import '../../features/about_app/presentation/views/about_app_view.dart';
 import '../../features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
@@ -28,7 +40,10 @@ import '../../features/auth/presentation/forget_password/view/forget_password.da
 import '../../features/auth/presentation/login/view/login_view.dart';
 import '../../features/auth/presentation/signup/view/signup_view.dart';
 import '../../features/generic/presentation/screens/occasion_view.dart';
+import '../../features/notification_list/presentation/views/notification_list_view.dart';
 import '../../features/orders/presentation/view/order_view.dart';
+import '../../features/orders/presentation/view_model/order_action.dart';
+import '../../features/orders/presentation/view_model/order_cubit.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/profile/presentation/views/reset_password_profile_view.dart';
 import '../../features/profile/presentation/widgets/terms_conditions_page.dart';
@@ -54,6 +69,13 @@ class AppRoutes {
   static const String profileView = "profileView";
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
   static const String checkoutScreen = 'checkoutScreen';
+  static const String mapView = 'mapView';
+  static const String searchView = 'searchView';
+  static const String notificationView = 'notificationView';
+  static const String cartScreen = 'cartScreen';
+  static const String placeOrderSuccess= 'placeOrderSuccess';
+  static const String trackOrder = 'trackOrder';
+
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -109,7 +131,7 @@ class AppRoutes {
         return BaseRoute(
           page: const CategoriesView(),
         );
-        case AppRoutes.mostSellingScreen:
+      case AppRoutes.mostSellingScreen:
         return BaseRoute(
           page: MultiBlocProvider(providers: [
             BlocProvider(
@@ -126,17 +148,34 @@ class AppRoutes {
       case AppRoutes.profileMainScreen:
         return BaseRoute(page: const ProfileMainScreen());
       case AppRoutes.productsDetailsView:
-        return BaseRoute(page: ProductDetailsView(product: args  as dynamic,));
+        return BaseRoute(
+            page: BlocProvider(
+                create: (context) => getIt.get<CartViewModelCubit>()
+                  ..doAction(
+                    GetUserCartDataAction(),
+                  ),
+                child: ProductDetailsView(
+                  product: args as dynamic,
+                )));
 
       case AppRoutes.profileView:
         return BaseRoute(page: const ProfileView());
       case AppRoutes.resetPasswordProfileView:
         return BaseRoute(page: const ResetPasswordProfileView());
-        case AppRoutes.checkoutScreen:
-        return BaseRoute(page: CheckoutScreen(cart: args as CartEntity));
-        case AppRoutes.savedAddressScreen:
+      case AppRoutes.checkoutScreen:
+        return BaseRoute(
+            page: MultiBlocProvider(providers: [
+          BlocProvider(
+            create: (context) =>
+                getIt.get<AddressViewModel>()..getSavedAddresses(),
+          ),
+          BlocProvider(
+            create: (context) => getIt.get<CheckoutViewModelCubit>(),
+          ),
+        ], child: CheckoutScreen(cart: args as CartEntity)));
+      case AppRoutes.savedAddressScreen:
         return BaseRoute(page: const SavedAddressScreen());
-        case AppRoutes.addressScreen:
+      case AppRoutes.addressScreen:
         return BaseRoute(
             page: BlocProvider(
                 create: (context) => getIt.get<AddAddressViewModelCubit>(),
@@ -145,8 +184,42 @@ class AppRoutes {
         return BaseRoute(page: const AboutAppView());
       case AppRoutes.termsAndConditionsPage:
         return BaseRoute(page: const TermsAndConditionsPage());
-        case AppRoutes.orderView:
-        return BaseRoute(page: const OrderView());
+      case AppRoutes.orderView:
+        return BaseRoute(page: BlocProvider(
+            create: (context) => getIt.get<OrderCubit>()
+              ..doAction(GetOrders()),
+            child: const OrderView()));
+      case AppRoutes.mapView:
+        return BaseRoute(page: const MapView());
+        case AppRoutes.cartScreen:
+        return BaseRoute(
+            page: BlocProvider(
+              create: (context) => getIt.get<CartViewModelCubit>()..doAction(GetUserCartDataAction(),),
+  child: const CartView( backButtonVisible: true),
+));
+      case AppRoutes.notificationView:
+        return BaseRoute(
+            page: NotificationView(
+          args: args as NotificationArgs,
+        ));
+      case AppRoutes.searchView:
+        return BaseRoute(
+            page: BlocProvider(
+          create: (context) => getIt.get<SearchViewModelCubit>(),
+          child: const SearchView(),
+        ));
+      case AppRoutes.placeOrderSuccess:
+        final arguments = settings.arguments as Map<String, String>?;
+        return BaseRoute(page: PlaceOrderSuccess(orderId: arguments!['orderId']!, userId: arguments['userId']!));
+
+        case AppRoutes.trackOrder:
+          final arguments = settings.arguments as Map<String, String>?;
+
+          return BaseRoute(page: BlocProvider(
+    create: (context) => getIt.get<TrackOrderViewModelCubit>()
+    ..doAction(GetOrderDetails(
+    orderId: arguments!['orderId']!, userId: arguments['userId']!)),
+   child: const TrackOrderScreen()));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

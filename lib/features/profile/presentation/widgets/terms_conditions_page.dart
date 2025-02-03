@@ -1,10 +1,11 @@
 import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/utils/widgets/spacing.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class TermsAndConditionsPage extends StatelessWidget {
   const TermsAndConditionsPage({super.key});
 
@@ -12,36 +13,36 @@ class TermsAndConditionsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, String>> termsData = [
       {
-        'title': '1. ${AppLocalizations.of(context)!.introduction}',
+        'title': '1. ${context.translate(LangKeys.introduction)}',
         'description':
-         AppLocalizations.of(context)!.introduction_description,
+         context.translate(LangKeys.introductionDescription),
       },
       {
-        'title': '2. ${AppLocalizations.of(context)!.payment_terms}',
+        'title': '2. ${context.translate(LangKeys.paymentTerms)}',
         'description':
-        AppLocalizations.of(context)!.payment_terms_description,
+         context.translate(LangKeys.paymentTermsDescription),
       },
       {
-        'title': '3. ${AppLocalizations.of(context)!.refund_policy}',
+        'title': '3. ${context.translate(LangKeys.refundPolicy)}',
         'description':
-        AppLocalizations.of(context)!.refund_policy_description,
+          context.translate(LangKeys.refundPolicyDescription),
       },
       {
-        'title': '4. ${AppLocalizations.of(context)!.privacy_policy}',
+        'title': '4. ${context.translate(LangKeys.privacyPolicy)}',
         'description':
-        AppLocalizations.of(context)!.privacy_policy_description,
+          context.translate(LangKeys.privacyPolicyDescription),
       },
       {
-        'title': '5. ${AppLocalizations.of(context)!.contact_us}',
+        'title': '5. ${context.translate(LangKeys.contactUs)}',
         'description':
-        AppLocalizations.of(context)!.contact_us_description,
+          context.translate(LangKeys.contactUsDescription),
       },
     ];
 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: customAppBar(
-        appBarTxt: AppLocalizations.of(context)!.terms_and_conditions,
+        appBarTxt: context.translate(LangKeys.termsAndConditions),
         context: context,
         showArrow: true,
       ),
@@ -57,13 +58,13 @@ class TermsAndConditionsPage extends StatelessWidget {
                 verticalSpacing(20.h),
                 InkWell(
                   onTap: () => throw Exception(),
-                  child: Text(AppLocalizations.of(context)!.welcome_app,
+                  child: Text(context.translate(LangKeys.welcomeApp),
                       style: MyFonts.styleSemiBold600_18
                           .copyWith(color: MyColors.baseColor)),
                 ),
                 verticalSpacing(10.h),
                 Text(
-                  AppLocalizations.of(context)!.welcome_app_description,
+                  context.translate(LangKeys.welcomeAppDescription),
                   style: MyFonts.styleRegular400_14,
                 ),
               ],

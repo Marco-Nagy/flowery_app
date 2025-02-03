@@ -1,0 +1,116 @@
+name: Android Fastlane with Firebase App Distribution Workflow
+
+# Trigger this workflow on push or pull requests to the 'development' branch
+on:
+  pull_request:
+    branches:
+      - development
+  push:
+    branches:
+      - development
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Use the latest Ubuntu runner
+
+    steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+        # This ensures the workflow has access to the source code to build and distribute.
+
+      # Step 2: Setup Java 17
+      - name: Setup Java 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin # Use the Temurin JDK distribution
+          java-version: 17
+        # Required because Android builds need Java, and Flutter requires Java 17 for compatibility.
+
+      # Step 3: Set up Flutter environment
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+        # This action installs Flutter and ensures the correct version is available for building.
+
+      # Step 4: Create placeholder .env.firebase file
+      - name: Create placeholder .env.firebase
+        run: echo "FIREBASE_CONFIG_PLACEHOLDER=true" > .env.firebase
+        # This step creates a placeholder `.env.firebase` file, which may be used for Firebase configurations.
+
+      # Step 5: Decode and place google-services.json
+      - name: Decode and place google-services.json
+        run: |
+          echo "${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}" | base64 --decode > android/app/google-services.json
+        # The google-services.json file is required for Firebase integration.
+        # It's stored in GitHub Secrets as a base64-encoded string to maintain security.
+
+      # Step 6: Set up Firebase service account credentials
+      - name: Set up Firebase service account credentials
+        run: |
+          echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}" > $HOME/firebase-service-account.json
+          export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase-service-account.json"
+        # This step sets up Firebase service account credentials.
+        # The key is stored in GitHub Secrets to securely authenticate with Firebase.
+
+        # Step 7: Bump version in pubspec.yaml
+      - name: Bump Version in pubspec.yaml
+        id: bump-version
+        run: |
+          # Extract the current version
+          VERSION=$(grep -oP 'version:\s*\K[0-9]+\.[0-9]+\.[0-9]+(?=\+)' pubspec.yaml)
+          BUILD=$(grep -oP 'version:\s*[0-9]+\.[0-9]+\.[0-9]+\+\K[0-9]+' pubspec.yaml)
+
+          # Increment the patch version
+          NEW_VERSION=$(echo $VERSION | awk -F. '{print $1 "." $2 "." $3+1}')
+          NEW_BUILD=$((BUILD+1))
+
+          # Update the pubspec.yaml file
+          sed -i "s/version: $VERSION+$BUILD/version: $NEW_VERSION+$NEW_BUILD/" pubspec.yaml
+
+          echo "New version: $NEW_VERSION+$NEW_BUILD"
+          echo "version=$NEW_VERSION+$NEW_BUILD" >> $GITHUB_ENV
+
+
+
+      # Step 8: Install project dependencies
+      - name: Install Dependencies
+        run: flutter pub get
+        # Fetches all the dependencies required by the Flutter project.
+
+      # Step 9: Clear Flutter build cache
+      - name: Clear Flutter Build Cache
+        run: flutter clean
+        # Ensures the build starts with a clean slate to avoid caching issues.
+
+
+        # Generates files for internationalization/localization support in the app.
+
+      # Step 11: Build the release APK
+      - name: Build APK for Production
+        run: flutter build apk --release
+        # Builds the release APK for Android, which is ready for production use.
+
+      # Step 12: Distribute APK to Firebase
+      - name: Distribute APK to Firebase
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }} # The Firebase app ID
+#          token: ${{ secrets.FIREBASE_CLI_TOKEN }} # Firebase CLI authentication token " Will be Deprecated Soon "
+          file: build/app/outputs/flutter-apk/app-release.apk # Path to the APK file
+          groups: maintainers # Firebase tester group
+          releaseNotes: "First GitHub Action Firebase Distribution" # Notes for the release
+          debug: true # Enables debug logging for troubleshooting
+          # Firebase authentication using the credentials service account key [https://github.com/wzieba/Firebase-Distribution-Github-Action/wiki/FIREBASE_TOKEN-migration]
+          serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+        # This action uploads the built APK to Firebase App Distribution for testing.
+
+      # Step 13: Upload APK as an artifact
+      - name: Upload APK as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk # Artifact name for the uploaded APK
+          path: build/app/outputs/flutter-apk/app-release.apk # Path to the APK file
+          debug: true # Enables debug logging for troubleshooting
+        # This step uploads the APK to GitHub Actions as an artifact for later download or use.

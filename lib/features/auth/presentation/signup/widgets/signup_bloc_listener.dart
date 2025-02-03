@@ -1,7 +1,8 @@
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import '../../../../../core/localization/lang_keys.dart';
 import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/utils/widgets/base/app_loader.dart';
 import '../../../../../core/utils/widgets/base/snack_bar.dart';
@@ -23,7 +24,7 @@ class SignUpBlocListener extends StatelessWidget {
                 msg: state.response.message!,
                 context: context,
                 type: MessageTypeConst.success,
-                title:  AppLocalizations.of(context)!.success);
+                title: context.translate(LangKeys.success));
             context.pushNamed(AppRoutes.login);
             break;
           case SignupError():
@@ -31,7 +32,7 @@ class SignUpBlocListener extends StatelessWidget {
                 msg: state.message.error!,
                 context: context,
                 type: MessageTypeConst.failure,
-                title:  AppLocalizations.of(context)!.error);
+                title: context.translate(LangKeys.error));
             default:
             return ;
         }

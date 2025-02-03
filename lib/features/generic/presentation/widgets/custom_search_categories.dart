@@ -1,39 +1,42 @@
+import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-class CustomSearchCategories extends StatelessWidget {
-  const CustomSearchCategories({super.key});
+import '../../../../core/localization/lang_keys.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+class CustomSearchWidget extends StatelessWidget {
+  const CustomSearchWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 48.h,
-      decoration: BoxDecoration(
-        border: Border.all(color: MyColors.placeHolder),
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: TextField(
-        decoration: InputDecoration(
-          hintText:  AppLocalizations.of(context)!.search,
-          hintStyle:
-              MyFonts.styleMedium500_14.copyWith(color: MyColors.placeHolder),
-          border: InputBorder.none,
-          prefixIcon: const Icon(
-            Icons.search,
-            color: MyColors.placeHolder,
-          ),
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 14,
-            horizontal: 16,
-          ),
+    return GestureDetector(
+      onTap: () {
+        context.pushNamed(AppRoutes.searchView);
+      },
+      child: Container(
+        height: 48.h,
+        decoration: BoxDecoration(
+          border: Border.all(color: MyColors.placeHolder),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
         ),
-        style: const TextStyle(
-          fontSize: 16,
-          color: Colors.black,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: Row(
+          children: [
+            const Icon(
+              Icons.search,
+              color: MyColors.placeHolder,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              context.translate(LangKeys.search),
+              style: MyFonts.styleMedium500_14.copyWith(
+                color: MyColors.placeHolder,
+              ),
+            ),
+          ],
         ),
       ),
     );
