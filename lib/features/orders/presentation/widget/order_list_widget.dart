@@ -8,7 +8,6 @@ import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/utils/widgets/base/app_loader.dart';
 import '../../../../core/utils/widgets/buttons/carved_button.dart';
 import '../../../../core/utils/widgets/spacing.dart';
-import '../../../../generated/assets.dart';
 import '../../../generic/presentation/widgets/cached_network_widget.dart';
 import '../view_model/order_cubit.dart';
 
@@ -53,8 +52,7 @@ class ListOrderWidget extends StatelessWidget {
                         Expanded(
                             child: CachedNetworkWidget(
                           imageUrl: successState.orders![index]
-                                  .orderItems![index].product!.imgCover ??
-                              Assets.imagesFlower,
+                                  .orderItems!.first.product!.imgCover! ,
                           fit: BoxFit.cover,
                           height: 109.h,
                           //  width: 127.w,
@@ -67,12 +65,12 @@ class ListOrderWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Text(
-                                successState.orders![index].orderItems![index]
+                                successState.orders![index].orderItems!.first
                                     .product!.title!,
                                 style: MyFonts.styleRegular400_12,
                               ),
                               Text(
-                                  '${context.translate(LangKeys.egp)} ${successState.orders![index].orderItems![index].product!.price.toString()}',
+                                  '${context.translate(LangKeys.egp)} ${successState.orders![index].orderItems!.first.product!.price.toString()}',
                                   style: MyFonts.styleMedium500_12),
                               Text(
                                   '${context.translate(LangKeys.orderNumber)} ${successState.orders![index].orderNumber}',
