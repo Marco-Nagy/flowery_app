@@ -35,7 +35,7 @@ class FloweryEcommerce extends StatelessWidget {
                     locale: Locale(languageProvider.selectedLanguage.code),
                     localizationsDelegates:
                         AppLocalizations.localizationsDelegates,
-                    initialRoute: AppRoutes.addressScreen,
+                    initialRoute: _getInitialRoute(),
                     debugShowCheckedModeBanner: false,
                     builder: (context, child) {
                       return Scaffold(
