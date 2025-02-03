@@ -29,6 +29,7 @@ class AddressImagePickerWidget extends StatelessWidget {
           longitudeController.text = result['longitude'] ?? '';
           latitudeController.text = result['latitude'] ?? '';
         }
+        //
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 10.h),
