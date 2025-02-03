@@ -33,7 +33,7 @@ class OrderView extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 24.h),
+                padding: EdgeInsets.symmetric(vertical: 12.h),
                 child: TabBarView(
                   children: [
                     ListOrderWidget(
