@@ -59,7 +59,7 @@ class MapViewModel extends ChangeNotifier {
     selectedLocation = point;
     getAddressFromLatLng(point);
   }
-
+//
   Map<String, String> getLocationData() {
     return {
       'street': street ?? '',
