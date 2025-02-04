@@ -1,6 +1,8 @@
 import 'package:country_state_city/models/city.dart';
 import 'package:country_state_city/models/country.dart';
+import 'package:flowery_e_commerce/core/localization/lang_keys.dart';
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
 import 'package:flowery_e_commerce/features/address_details/domain/entities/request/add_address_request_entity.dart';
@@ -8,7 +10,6 @@ import 'package:flowery_e_commerce/features/address_details/presentation/viewMod
 import 'package:flowery_e_commerce/features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/widgets/custom_appbar.dart';
@@ -78,7 +79,7 @@ class _AddressScreenState extends State<AddressScreen> {
     return Scaffold(
       backgroundColor: MyColors.white,
       appBar: customAppBar(
-        appBarTxt: AppLocalizations.of(context)!.address,
+        appBarTxt: context.translate(LangKeys.address),
         context: context,
         showArrow: true,
       ),
@@ -134,24 +135,24 @@ class _AddressScreenState extends State<AddressScreen> {
         listener: (context, state) {
           if (state is AddAddressViewModelLoading) {
             aweSnackBar(
-              msg: AppLocalizations.of(context)!.loading,
+              msg: context.translate(LangKeys.loading),
               context: context,
               type: MessageTypeConst.help,
-              title: AppLocalizations.of(context)!.loading,
+              title: context.translate(LangKeys.loading),
             );
           } else if (state is AddAddressViewModelSuccess) {
             aweSnackBar(
-              msg: AppLocalizations.of(context)!.address_saved_successfully,
+              msg: context.translate(LangKeys.addressSavedSuccessfully),
               context: context,
               type: MessageTypeConst.success,
-              title: AppLocalizations.of(context)!.success,
+              title: context.translate(LangKeys.success),
             );
           } else if (state is AddAddressViewModelError) {
             aweSnackBar(
-              msg: state.message.error ?? AppLocalizations.of(context)!.wrong,
+              msg: state.message.error ?? context.translate(LangKeys.wrong),
               context: context,
               type: MessageTypeConst.failure,
-              title: AppLocalizations.of(context)!.failure,
+              title: context.translate(LangKeys.failure),
             );
           }
         },
