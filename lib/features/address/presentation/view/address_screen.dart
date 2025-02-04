@@ -98,6 +98,7 @@ class _AddressScreenState extends State<AddressScreen> {
                     cityController: cityController,
                     longitudeController: longitudeController,
                     latitudeController: latitudeController),
+
                 AddressInputFieldsWidget(
                   usernameController: usernameController,
                   phoneController: phoneController,
@@ -128,6 +129,8 @@ class _AddressScreenState extends State<AddressScreen> {
             ),
           );
         },
+
+
         listener: (context, state) {
           if (state is AddAddressViewModelLoading) {
             aweSnackBar(
