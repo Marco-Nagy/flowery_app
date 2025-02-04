@@ -94,6 +94,10 @@ dependencies:
   firebase_core:
   firebase_crashlytics: ^4.3.1
   firebase_analytics: ^11.3.6
+  cloud_firestore:
+  firebase_database:
+  firebase_messaging:
+  flutter_local_notifications: ^18.0.1
 
 dev_dependencies:
   flutter_test:
