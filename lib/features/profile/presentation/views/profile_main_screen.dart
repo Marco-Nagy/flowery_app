@@ -215,7 +215,6 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                   Row(
                     children: [
                       Text(
-                        // AppLocalizations.of(context)!.terms_and_conditions,
                         context.translate(LangKeys.termsAndConditions),
                         style: MyFonts.styleRegular400_16.copyWith(
                           color: MyColors.blackBase,
