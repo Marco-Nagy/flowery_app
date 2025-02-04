@@ -50,7 +50,7 @@ dependencies:
   pretty_dio_logger:
   json_annotation:
   flutter_screenutil:
-  shared_preferences:
+  shared_preferences: ^2.5.1
   build_runner:
   awesome_snackbar_content:
   connectivity_plus:
