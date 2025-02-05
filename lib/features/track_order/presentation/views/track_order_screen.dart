@@ -17,8 +17,10 @@ import 'package:flutter_svg/svg.dart';
 import 'map_screen.dart';
 
 class TrackOrderScreen extends StatefulWidget {
+  final String userId;
+  final String orderId;
   const TrackOrderScreen({
-    super.key,
+    super.key, required this.userId, required this.orderId,
   });
 
   @override
