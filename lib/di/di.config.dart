@@ -196,12 +196,12 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final networkFactory = _$NetworkFactory();
-    final registerModule = _$RegisterModule();
+    final appModule = _$AppModule();
     gh.factory<_i693.AppCubit>(() => _i693.AppCubit());
     gh.factory<_i361.LogInterceptor>(
         () => networkFactory.providerInterceptor());
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
-        () => registerModule.navigatorKey);
+        () => appModule.navigatorKey);
     gh.singleton<_i357.FireStoreService>(() => _i357.FireStoreService());
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
     gh.factory<_i13.TrackOrderOnlineDataSource>(
@@ -367,4 +367,4 @@ extension GetItInjectableX on _i174.GetIt {
 
 class _$NetworkFactory extends _i377.NetworkFactory {}
 
-class _$RegisterModule extends _i125.RegisterModule {}
+class _$AppModule extends _i125.AppModule {}

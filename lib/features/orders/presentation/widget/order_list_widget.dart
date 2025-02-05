@@ -1,9 +1,12 @@
+import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/localization/lang_keys.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/utils/widgets/base/app_loader.dart';
 import '../../../../core/utils/widgets/buttons/carved_button.dart';
@@ -29,7 +32,7 @@ class ListOrderWidget extends StatelessWidget {
             if (successState.orders == null || successState.orders!.isEmpty) {
               return Center(
                 child: Text(
-                 context.translate(LangKeys.noOrdersAvailable),
+                  context.translate(LangKeys.noOrdersAvailable),
                   style: MyFonts.styleMedium500_14,
                 ),
               );
@@ -51,8 +54,8 @@ class ListOrderWidget extends StatelessWidget {
                       children: [
                         Expanded(
                             child: CachedNetworkWidget(
-                          imageUrl: successState.orders![index]
-                                  .orderItems!.first.product!.imgCover! ,
+                          imageUrl: successState.orders![index].orderItems!
+                              .first.product!.imgCover!,
                           fit: BoxFit.cover,
                           height: 109.h,
                           //  width: 127.w,
@@ -85,7 +88,17 @@ class ListOrderWidget extends StatelessWidget {
                                       .copyWith(color: MyColors.white),
                                   color: MyColors.baseColor,
                                   title: textButton,
-                                  onTap: () {},
+                                  onTap: () {
+                                    // if (textButton
+                                    //     .contains(LangKeys.trackOrder)) {
+                                      context.pushNamed(AppRoutes.trackOrder,
+                                          arguments:
+                                          {"orderId": successState
+                                              .orders![index].Id!,
+                                            "userId": successState
+                                                .orders![index].user!});
+                                    // }
+                                  },
                                 ),
                               )
                             ],

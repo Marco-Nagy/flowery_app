@@ -1,86 +1,47 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flowery_e_commerce/core/routes/app_routes.dart';
-import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'dart:convert';
 
+import 'package:dio/dio.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import '../../../di/di.dart';
+import 'firebase_server_token.dart';
+import '../../../core/routes/app_routes.dart';
 
 class MessagingHelper {
+  /// Singleton instance
   factory MessagingHelper() => _instance;
   static final MessagingHelper _instance = MessagingHelper._internal();
-  static final GlobalKey<NavigatorState> navigatorKey =
-      getIt<GlobalKey<NavigatorState>>();
+  // static final GlobalKey<NavigatorState> navigatorKey = getIt<GlobalKey<NavigatorState>>();
+
+  /// Firebase Messaging instance
+  final FirebaseMessaging messaging = FirebaseMessaging.instance;
+  final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
   MessagingHelper._internal();
 
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
-
+  /// Initialize Firebase Messaging and Local Notifications
   Future<void> initialize() async {
     await _requestPermissions();
-
     await _setupLocalNotifications();
-
-    await FirebaseMessaging.instance.setAutoInitEnabled(true);
+    await messaging.setAutoInitEnabled(true);
 
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    FirebaseMessaging.onMessage.listen(_handleForegroundMessage);
+    FirebaseMessaging.onMessageOpenedApp.listen(_handleNotificationClick);
 
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      debugPrint('Received a foreground message!');
-      debugPrint('Message Data: ${message.data}');
+    // Handle terminated state notifications
+    RemoteMessage? initialMessage = await messaging.getInitialMessage();
+    if (initialMessage != null) {
+      _handleNavigation(initialMessage);
+    }
 
-      if (message.notification != null) {
-        debugPrint(
-            'Notification Title: ${message.notification?.title}, Body: ${message.notification?.body}');
-
-        _showNotification(
-          title: message.notification!.title ?? '',
-          body: message.notification!.body ?? '',
-          orderId: message.data['orderId'],
-          userId: message.data['userId'],
-        );
-      }
+    messaging.onTokenRefresh.listen((newToken) {
+      debugPrint('📲 New Device FCM Token: $newToken');
     });
 
     await getDeviceToken();
-  }
-
-  static Future<void> _firebaseMessagingBackgroundHandler(
-      RemoteMessage message) async {
-    if (message.notification != null) {
-      // if (message.notification!.body!.contains('order')) {
-      // final String? title = message.notification?.title;
-      // final String? body = message.notification?.body;
-      final String? orderId = message.data['orderId'];
-      final String? userId = message.data['userId'];
-      navigatorKey.currentState?.context.pushNamed(
-        AppRoutes.trackOrder,
-        arguments: {
-          {
-            'orderId': orderId,
-            'userId': userId,
-          }
-        },
-      );
-      // }
-      // else {
-      //   final notificationArgs = NotificationArgs(
-      //     title: message.notification?.title ?? '',
-      //     body: message.notification?.body ?? '',
-      //   );
-      //
-      //   navigatorKey.currentState?.context.pushNamed(
-      //     AppRoutes.notificationView,
-      //     arguments: notificationArgs,
-      //   );
-      // }
-
-      debugPrint("Handling background message: ${message.notification}");
-    }
-
-    debugPrint("Handling background message: ${message.data.toString()}");
   }
 
   Future<NotificationSettings> _requestPermissions() async {
@@ -91,81 +52,178 @@ class MessagingHelper {
     );
   }
 
-  // Get the device token
+  static Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+    debugPrint("Handling background message: ${message.data}");
+    debugPrint("Extracted userId: ${message.data['userId']}"); // ✅ طباعة userId المستلمة
+
+    // تأكد من أن البيانات تحتوي على `route`, `orderId`, `userId`
+    if (message.data.containsKey('route') &&
+        message.data.containsKey('orderId') &&
+        message.data.containsKey('userId')) {
+      _handleNavigation(message);
+    }
+  }
+
+
+  void _handleForegroundMessage(RemoteMessage message) {
+    debugPrint('Received foreground notification: ${message.data}');
+    debugPrint("Extracted userId: ${message.data['userId']}"); // ✅ طباعة userId المستلمة
+
+    if (message.notification != null) {
+      _showNotification(
+        title: message.notification!.title ?? 'New Notification',
+        body: message.notification!.body ?? '',
+        payload: message.data, // ✅ تمرير البيانات إلى الإشعار المحلي
+      );
+    }
+
+    // ✅ تنقل مباشر عند استقبال الإشعار في الـ foreground
+    _handleNavigation(message);
+  }
+
+
+  void _handleNotificationClick(RemoteMessage message) {
+    debugPrint("Notification clicked: ${message.data}");
+    debugPrint("Notification clicked: ${message.data}");
+    debugPrint("Extracted userId: ${message.data['userId']}"); // ✅ طباعة userId المستلمة
+
+    if (message.data.containsKey('route') &&
+        message.data.containsKey('orderId') &&
+        message.data.containsKey('userId')) {
+      _handleNavigation(message);
+    }
+  }
+
+  static void _handleNavigation(RemoteMessage message) {
+    final Map<String, dynamic> data = message.data;
+    final String? route = data['route'];
+    final String? orderId = data['orderId'];
+    final String? userId = data['userId'];
+    debugPrint("Extracted userId: ${message.data['userId']}"); // ✅ طباعة userId المستلمة
+
+    debugPrint("Navigating to: $route with orderId: $orderId and userId: $userId");
+
+    if (route == "trackOrder") {
+      if (orderId != null && userId != null) {
+        getIt<GlobalKey<NavigatorState>>().currentState?.pushNamed(
+          AppRoutes.trackOrder,
+          arguments: {
+            'orderId': orderId,
+            'userId': userId,
+          },
+        );
+      } else {
+        debugPrint("⚠️ Missing required parameters: orderId or userId is null");
+      }
+    }
+  }
+
+  Future<void> subscribeToTopic(String topic) async {
+    await messaging.subscribeToTopic(topic);
+    debugPrint('✅ Subscribed to topic: $topic');
+  }
+
+  Future<void> unsubscribeFromTopic(String topic) async {
+    await messaging.unsubscribeFromTopic(topic);
+    debugPrint('❌ Unsubscribed from topic: $topic');
+  }
+
+  Future<void> sendNotification({
+    String? topic,
+    String? token,
+    required String title,
+    required String body,
+    required Map<String, dynamic> data,
+  }) async {
+    final String serverToken = await FirebaseServerToken().getAccessToken();
+
+    final Map<String, dynamic> notificationPayload = {
+      "message": {
+        if (topic != null) "topic": topic else "token": token,
+        "notification": {
+          "title": title,
+          "body": body,
+        },
+        "data": data,
+      },
+    };
+
+    try {
+      final response = await Dio().post(
+        dotenv.get('NOTIFICATION_BASE_URL'),
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $serverToken',
+            'Content-Type': 'application/json',
+          },
+        ),
+        data: notificationPayload,
+      );
+
+      if (response.statusCode == 200) {
+        debugPrint('✅ Notification sent successfully: ${response.data}');
+      } else {
+        debugPrint('❌ Failed to send notification: ${response.statusCode}');
+      }
+    } catch (e) {
+      debugPrint('❌ Error sending notification: ${e.toString()}');
+    }
+  }
+
   Future<String?> getDeviceToken() async {
     final deviceToken = await messaging.getToken();
-    debugPrint('FCM Token: $deviceToken');
+    debugPrint('📲 Device FCM Token: $deviceToken');
     return deviceToken;
   }
 
   Future<void> _setupLocalNotifications() async {
     const AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
+    AndroidInitializationSettings('@mipmap/ic_launcher');
+
+    const DarwinInitializationSettings initializationSettingsIOS =
+    DarwinInitializationSettings();
 
     const InitializationSettings initializationSettings =
-        InitializationSettings(android: initializationSettingsAndroid);
+    InitializationSettings(
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsIOS,
+    );
 
-    await flutterLocalNotificationsPlugin.initialize(
+    await _flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
       onDidReceiveNotificationResponse: (NotificationResponse response) {
+        debugPrint('🔔 Local Notification Clicked: ${response.payload}');
+
         if (response.payload != null) {
-          final payload = response.payload!.split('|');
-          // if (payload[1].toString().contains('order')) {
-          navigatorKey.currentState?.pushNamed(
-            AppRoutes.trackOrder,
-            arguments: {'userId': payload[2], 'orderId': payload[3]},
-          );
-          // }
-          // navigatorKey.currentState?.pushNamed(
-          //   AppRoutes.notificationView,
-          //   arguments: NotificationArgs(
-          //     title: payload[0],
-          //     // Use the first part of the payload as the title
-          //     body: payload[1],
-          //     // Use the second part of the payload as the body
-          //   ),
-          // );
+          final Map<String, dynamic> data = jsonDecode(response.payload!);
+          final RemoteMessage message = RemoteMessage(data: data);
+          _handleNavigation(message);
         }
       },
     );
   }
 
-  Future<void> _showNotification(
-      {required String title,
-      required String body,
-      String? userId,
-      String? orderId}) async {
+  Future<void> _showNotification({
+    required String title,
+    required String body,
+    Map<String, dynamic>? payload, // ✅ تمرير بيانات الإشعار
+  }) async {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
-        AndroidNotificationDetails(
-      'flowery_id',
-      'flowery',
+    AndroidNotificationDetails(
+      'high_importance_channel',
+      'High Importance Notifications',
       importance: Importance.max,
       priority: Priority.high,
-      icon: '@mipmap/ic_launcher',
-      ticker: 'ticker',
     );
 
     const NotificationDetails platformChannelSpecifics =
-        NotificationDetails(android: androidPlatformChannelSpecifics);
+    NotificationDetails(android: androidPlatformChannelSpecifics);
 
-    await flutterLocalNotificationsPlugin.show(
-      0,
-      title,
-      body,
-      platformChannelSpecifics,
-      payload: '$title|$body|$userId|$orderId',
+    await _flutterLocalNotificationsPlugin.show(
+      0, title, body, platformChannelSpecifics,
+      payload: payload != null ? payload.toString() : null, // ✅ تخزين البيانات كـ `String`
     );
   }
 
-  //* Subscribe Notification
-  Future<void> subscribeToTopic(String topic) async {
-    await messaging.subscribeToTopic(topic);
-    debugPrint('🔔🔔 Subscribed to $topic🔔🔔');
-  }
-
-  //* Unsubscribe Notification
-  Future<void> unsubscribeFromTopic(String topic) async {
-    await messaging.unsubscribeFromTopic(topic);
-    debugPrint('🔕🔕 Unsubscribed from $topic 🔕🔕 ');
-  }
 }
+
