@@ -28,6 +28,7 @@ import 'package:flowery_e_commerce/features/product/presentation/view/product_de
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flowery_e_commerce/features/track_order/presentation/viewModel/track_order_actions.dart';
 import 'package:flowery_e_commerce/features/track_order/presentation/viewModel/track_order_view_model_cubit.dart';
+import 'package:flowery_e_commerce/features/track_order/presentation/views/map_screen.dart';
 import 'package:flowery_e_commerce/features/track_order/presentation/views/track_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -74,6 +75,7 @@ class AppRoutes {
   static const String cartScreen = 'cartScreen';
   static const String placeOrderSuccess= 'placeOrderSuccess';
   static const String trackOrder = 'trackOrder';
+  static const String mapScreen = 'mapScreen';
 
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
@@ -219,6 +221,8 @@ class AppRoutes {
     ..doAction(GetOrderDetails(
     orderId: arguments!['orderId']!, userId: arguments['userId']!)),
    child: const TrackOrderScreen()));
+      // case AppRoutes.mapScreen:
+      //   return BaseRoute(page: const MapScreen());
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }
