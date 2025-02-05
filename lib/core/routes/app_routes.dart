@@ -29,7 +29,6 @@ import 'package:flowery_e_commerce/features/product/presentation/view/product_de
 import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flowery_e_commerce/features/track_order/presentation/viewModel/track_order_actions.dart';
 import 'package:flowery_e_commerce/features/track_order/presentation/viewModel/track_order_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/track_order/presentation/views/map_screen.dart';
 import 'package:flowery_e_commerce/features/track_order/presentation/views/track_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -76,7 +75,6 @@ class AppRoutes {
   static const String cartScreen = 'cartScreen';
   static const String placeOrderSuccess= 'placeOrderSuccess';
   static const String trackOrder = 'trackOrder';
-  static const String mapScreen = 'mapScreen';
 
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
@@ -101,9 +99,9 @@ class AppRoutes {
       case AppRoutes.emailVerification:
         return BaseRoute(
             page: BlocProvider(
-          create: (context) => getIt.get<ForgetPasswordViewModelCubit>(),
-          child: EmailVerification(args as String),
-        ));
+              create: (context) => getIt.get<ForgetPasswordViewModelCubit>(),
+              child: EmailVerification(args as String),
+            ));
 
       case AppRoutes.resetPassWord:
         return BaseRoute(
@@ -138,7 +136,7 @@ class AppRoutes {
           page: MultiBlocProvider(providers: [
             BlocProvider(
               create: (context) =>
-                  getIt.get<MostSellerCubit>()..getMostSellers(),
+              getIt.get<MostSellerCubit>()..getMostSellers(),
             ),
             BlocProvider(
                 create: (context) => getIt.get<CartViewModelCubit>()
@@ -167,14 +165,14 @@ class AppRoutes {
       case AppRoutes.checkoutScreen:
         return BaseRoute(
             page: MultiBlocProvider(providers: [
-          BlocProvider(
-            create: (context) =>
+              BlocProvider(
+                create: (context) =>
                 getIt.get<AddressViewModel>()..getSavedAddresses(),
-          ),
-          BlocProvider(
-            create: (context) => getIt.get<CheckoutViewModelCubit>(),
-          ),
-        ], child: CheckoutScreen(cart: args as CartEntity)));
+              ),
+              BlocProvider(
+                create: (context) => getIt.get<CheckoutViewModelCubit>(),
+              ),
+            ], child: CheckoutScreen(cart: args as CartEntity)));
       case AppRoutes.savedAddressScreen:
         return BaseRoute(page: const SavedAddressScreen());
       case AppRoutes.addressScreen:
@@ -189,43 +187,39 @@ class AppRoutes {
       case AppRoutes.orderView:
         return BaseRoute(page: BlocProvider(
             create: (context) => getIt.get<OrderCubit>()
-    ..doAction(GetOrders('inProgress') ),
+              ..doAction(GetOrders('inProgress') ),
             child: const OrderView()));
       case AppRoutes.mapView:
         return BaseRoute(page: const MapView());
-        case AppRoutes.cartScreen:
+      case AppRoutes.cartScreen:
         return BaseRoute(
             page: BlocProvider(
               create: (context) => getIt.get<CartViewModelCubit>()..doAction(GetUserCartDataAction(),),
-  child: const CartView( backButtonVisible: true),
-));
+              child: const CartView( backButtonVisible: true),
+            ));
       case AppRoutes.notificationView:
         return BaseRoute(
             page: NotificationView(
-          args: args as NotificationArgs,
-        ));
+              args: args as NotificationArgs,
+            ));
       case AppRoutes.searchView:
         return BaseRoute(
             page: BlocProvider(
-          create: (context) => getIt.get<SearchViewModelCubit>(),
-          child: const SearchView(),
-        ));
+              create: (context) => getIt.get<SearchViewModelCubit>(),
+              child: const SearchView(),
+            ));
       case AppRoutes.placeOrderSuccess:
         final arguments = settings.arguments as Map<String, String>?;
         return BaseRoute(page: PlaceOrderSuccess(orderId: arguments!['orderId']!, userId: arguments['userId']!));
 
-        case AppRoutes.trackOrder:
-          final arguments = settings.arguments as Map<String, String>?;
+      case AppRoutes.trackOrder:
+        final arguments = settings.arguments as Map<String, String>?;
 
-          return BaseRoute(page: BlocProvider(
-    create: (context) => getIt.get<TrackOrderViewModelCubit>()
-    ..doAction(GetOrderDetails(
-    orderId: arguments!['orderId']!, userId: arguments['userId']!)),
-   child: const TrackOrderScreen()));
-      // case AppRoutes.mapScreen:
-      //   return BaseRoute(page: const MapScreen());
-    orderId: arguments['orderId']!, userId: arguments['userId']!)),
-   child: TrackOrderScreen(orderId: arguments!['orderId']!, userId: arguments['userId']!)));
+        return BaseRoute(page: BlocProvider(
+            create: (context) => getIt.get<TrackOrderViewModelCubit>()
+              ..doAction(GetOrderDetails(
+                  orderId: arguments['orderId']!, userId: arguments['userId']!)),
+            child: TrackOrderScreen(orderId: arguments!['orderId']!, userId: arguments['userId']!)));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }
