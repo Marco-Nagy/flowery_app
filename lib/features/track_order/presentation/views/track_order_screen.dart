@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'map_screen.dart';
 
 class TrackOrderScreen extends StatefulWidget {
   const TrackOrderScreen({
@@ -83,7 +84,15 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
               padding: const EdgeInsets.all(8.0),
               child: CurvedButton(
                 title: context.translate(LangKeys.showMap),
-                onTap: () async {},
+
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const MapScreen(
+                          name: 'haidy',
+                          phone: '01116443128',
+                          image: 'https://i.pravatar.cc/150?img=1',
+                        )));},
               ),
             ),
           );
