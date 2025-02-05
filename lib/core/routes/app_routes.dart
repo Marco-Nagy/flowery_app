@@ -3,6 +3,7 @@ import 'package:flowery_e_commerce/core/utils/screens/under_build_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/address_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/map_view.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/saved_address_screen.dart';
+import 'package:flowery_e_commerce/features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view_model/address_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/email_verification.dart';
@@ -188,7 +189,7 @@ class AppRoutes {
       case AppRoutes.orderView:
         return BaseRoute(page: BlocProvider(
             create: (context) => getIt.get<OrderCubit>()
-              ..doAction(GetOrders()),
+    ..doAction(GetOrders('inProgress') ),
             child: const OrderView()));
       case AppRoutes.mapView:
         return BaseRoute(page: const MapView());
@@ -223,6 +224,8 @@ class AppRoutes {
    child: const TrackOrderScreen()));
       // case AppRoutes.mapScreen:
       //   return BaseRoute(page: const MapScreen());
+    orderId: arguments['orderId']!, userId: arguments['userId']!)),
+   child: TrackOrderScreen(orderId: arguments!['orderId']!, userId: arguments['userId']!)));
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }
