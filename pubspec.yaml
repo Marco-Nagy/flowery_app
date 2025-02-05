@@ -50,7 +50,7 @@ dependencies:
   pretty_dio_logger:
   json_annotation:
   flutter_screenutil:
-  shared_preferences:
+  shared_preferences: ^2.5.1
   build_runner:
   awesome_snackbar_content:
   connectivity_plus:
@@ -59,8 +59,8 @@ dependencies:
   country_state_city:
   url_launcher: ^6.3.1
   flutter_dotenv:
-  google_maps_flutter:
-  flutter_polyline_points:
+
+
 
 
 
@@ -95,12 +95,10 @@ dependencies:
   firebase_core:
   firebase_crashlytics: ^4.3.1
   firebase_analytics: ^11.3.6
-  cloud_firestore: ^5.6.2
-  firebase_database: ^11.3.1
-  googleapis: ^13.2.0
-  googleapis_auth: ^1.6.0
+  cloud_firestore:
+  firebase_database:
   firebase_messaging:
-  flutter_local_notifications:
+  flutter_local_notifications: ^18.0.1
 
 dev_dependencies:
   flutter_test:
@@ -153,4 +151,3 @@ flutter:
     - family: oronteus
       fonts:
         - asset: assets/fonts/oronteus_finaeus.ttf
-
