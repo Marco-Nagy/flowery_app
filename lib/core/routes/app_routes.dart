@@ -187,7 +187,7 @@ class AppRoutes {
       case AppRoutes.orderView:
         return BaseRoute(page: BlocProvider(
             create: (context) => getIt.get<OrderCubit>()
-              ..doAction(GetOrders()),
+    ..doAction(GetOrders('inProgress') ),
             child: const OrderView()));
       case AppRoutes.mapView:
         return BaseRoute(page: const MapView());
