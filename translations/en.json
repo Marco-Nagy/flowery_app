@@ -229,13 +229,13 @@
     "no_orders_available": "No orders available",
     "order_number": "Order number",
     "egp": "EGP",
-    "order_placed_successfully": "Your order placed successfully!",
     "estimated_arrival": "Estimated arrival",
     "delivery_hero_today": "Is your delivery hero for today",
     "preparing_your_order": "Preparing your order",
     "out_for_delivery": "Out for delivery",
     "delivered": "Delivered",
-    "show_map": "Show map"
+    "show_map": "Show map",
+    "order_details": "Order details"
 
 
 

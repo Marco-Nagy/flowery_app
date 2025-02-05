@@ -1,4 +1,5 @@
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/features/track_order/presentation/views/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/localization/lang_keys.dart';
@@ -90,7 +91,15 @@ class ListOrderWidget extends StatelessWidget {
                                         .copyWith(color: MyColors.white),
                                     color: MyColors.baseColor,
                                     title: textButton,
-                                    onTap: () {},
+                                    onTap: () {
+                                   Navigator.push(
+                                   context,
+                                   MaterialPageRoute(builder: (context) => const MapScreen(
+                                      name: 'haidy',
+                                      phone: '01116443128',
+                                      image: 'https://i.pravatar.cc/150?img=1',
+                    )));},
+
                                   ),
                                 ),
                               ],
