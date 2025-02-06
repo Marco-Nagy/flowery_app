@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flowery_e_commerce/core/services/firebase_notification/messaging_helper.dart';
 import 'package:flowery_e_commerce/core/services/shared_preference/shared_preference_helper.dart';
 import 'package:flowery_e_commerce/flowery_ecommerce.dart';
@@ -13,13 +14,19 @@ import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await SharedPrefHelper().instantiatePreferences();
   Bloc.observer = MyBlocObserver();
 
   await dotenv.load(fileName: '.env.firebase');
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await MessagingHelper().initialize();
   configureDependencies();
+  setupLocator();
+  // ✅ Fetch the initial notification message
+  await FirebaseMessaging.instance.getInitialMessage();
+
+  // ✅ Initialize MessagingHelper with the initial message
+   MessagingHelper().initialize();// ✅ تسجيل `GetIt` هنا أولًا لتجنب الأخطاء
 
 
   // Pass all uncaught "fatal" errors from the framework to Crashlytics
