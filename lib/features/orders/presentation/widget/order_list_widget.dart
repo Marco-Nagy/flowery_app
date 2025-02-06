@@ -1,17 +1,19 @@
-import 'package:flowery_e_commerce/core/routes/app_routes.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
-import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/localization/lang_keys.dart';
+import '../../../../core/networking/common/regestet_context_module.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/utils/widgets/base/app_loader.dart';
 import '../../../../core/utils/widgets/buttons/carved_button.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import '../../../generic/presentation/widgets/cached_network_widget.dart';
+import '../../../track_order/presentation/viewModel/map/map_action.dart';
+import '../../../track_order/presentation/viewModel/map/map_view_model_cubit.dart';
+import '../../../track_order/presentation/views/map_screen.dart';
 import '../view_model/order_cubit.dart';
 
 class ListOrderWidget extends StatelessWidget {
@@ -89,16 +91,26 @@ class ListOrderWidget extends StatelessWidget {
                                   color: MyColors.baseColor,
                                   title: textButton,
                                   onTap: () {
-                                    // if (textButton
-                                    //     .contains(LangKeys.trackOrder)) {
-                                      context.pushNamed(AppRoutes.trackOrder,
-                                          arguments:
-                                          {"orderId": successState
-                                              .orders![index].Id!,
-                                            "userId": successState
-                                                .orders![index].user!});
-                                    // }
-                                  },
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => BlocProvider(
+                                        create: (context) => getIt.get<MapViewModelCubit>()
+                                          ..doAction(GetOrderDetails(
+                                            userId: successState.orders![index].user!,
+                                            orderId: successState.orders![index].Id!,
+                                          )),
+                                          child: const MapScreen(
+
+                                          ),
+                                        )));},
+                                  // onTap: () {
+                                  //     context.pushNamed(AppRoutes.trackOrder,
+                                  //         arguments:
+                                  //         {"orderId": successState
+                                  //             .orders![index].Id!,
+                                  //           "userId": successState
+                                  //               .orders![index].user!});
+                                  // },
                                 ),
                               )
                             ],
