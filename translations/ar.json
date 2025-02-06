@@ -235,5 +235,6 @@
     "preparing_your_order": "نحن نعد طلبك",
     "out_for_delivery": "خارج للتوصيل",
     "delivered": "تم التوصيل",
-    "show_map": "عرض الخريطة"
+    "show_map": "عرض الخريطة",
+    "Pickup_address": "عنوان الاستلام"
 }
