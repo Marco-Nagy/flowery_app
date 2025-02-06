@@ -36,7 +36,6 @@ class Assets {
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesLogout = 'assets/images/logout.png';
   static const String imagesLogoutBlack = 'assets/images/logout_black.png';
-  static const String imagesMap = 'assets/images/map.png';
   static const String imagesNetwork = 'assets/images/network.jpg';
   static const String imagesNetworrk = 'assets/images/networrk.png';
   static const String imagesNoNetwork = 'assets/images/noNetwork.png';
