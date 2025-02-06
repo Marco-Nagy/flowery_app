@@ -31,24 +31,23 @@ class OrderView extends StatelessWidget {
                 Tab(text: context.translate(LangKeys.active)),
                 Tab(text: context.translate(LangKeys.completed)),
               ],
+
               onTap: (index) {
                 switch (index) {
                   case 0:
-                    // setState(() {
                 context.read<OrderCubit>()
                 ..doAction(GetOrders('inProgress') );
-                    // });
                     break;
                   case 1:
                     context.read<OrderCubit>()
                       ..doAction(GetOrders('completed') );
-                    // setState(() {
-                    //   _completedOrders = _orders.where((order) => order.state == OrderState.completed).toList();
-                    // });
+
                     break;
                 }
               },
+
               tabAlignment: TabAlignment.center,
+
             ),
             Expanded(
               child: Padding(
@@ -56,10 +55,6 @@ class OrderView extends StatelessWidget {
                 child: TabBarView(
                   children: [
                     ListOrderWidget(
-                      // title: successState.orders![0].state.toString(),
-                      // price: successState.orders![0].orderItems![0].product!.price.toString(),
-                      // orderNumber:successState.orders![0].orderNumber!,
-                      // imageUrl: successState.orders![0].orderItems![0].product!.imgCover!,
                       textButton: context.translate(LangKeys.trackOrder),
                     ),
                     ListOrderWidget(
