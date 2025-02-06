@@ -20,7 +20,6 @@ class MessagingHelper {
   final FirebaseMessaging messaging = FirebaseMessaging.instance;
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   /// ✅ استرجاع الـ `navigatorKey` بدلاً من إنشائه
-  GlobalKey<NavigatorState> get navigatorKey => getIt<GlobalKey<NavigatorState>>();
 
   /// Initialize Firebase Messaging and Local Notifications
   Future<void> initialize() async {
@@ -31,7 +30,7 @@ class MessagingHelper {
     // ✅ التعامل مع إشعار التطبيق في حالة terminated
     RemoteMessage? initialMessage = await messaging.getInitialMessage();
     if (initialMessage != null) {
-      _handleNavigation(navigatorKey.currentContext!,initialMessage);
+      _handleNavigation(initialMessage);
     }
 
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
@@ -60,10 +59,10 @@ class MessagingHelper {
     debugPrint("Extracted userId: ${message.data['userId']}"); // ✅ طباعة userId المستلمة
 
     // تأكد من أن البيانات تحتوي على `route`, `orderId`, `userId`
-    if (navigatorKey.currentContext != null &&message.data.containsKey('route') &&
+    if (message.data.containsKey('route') &&
         message.data.containsKey('orderId') &&
         message.data.containsKey('userId')) {
-      _handleNavigation(navigatorKey.currentContext!,message);
+      _handleNavigation(message);
     }
   }
 
@@ -81,7 +80,7 @@ class MessagingHelper {
     }
 
     // ✅ تنقل مباشر عند استقبال الإشعار في الـ foreground
-    _handleNavigation(navigatorKey.currentContext!,message);
+    _handleNavigation(message);
   }
 
 
@@ -93,11 +92,11 @@ class MessagingHelper {
     if (message.data.containsKey('route') &&
         message.data.containsKey('orderId') &&
         message.data.containsKey('userId')) {
-      _handleNavigation(navigatorKey.currentContext!,message);
+      _handleNavigation(message);
     }
   }
 
-   void  _handleNavigation(BuildContext context, RemoteMessage message) {
+   void  _handleNavigation( RemoteMessage message) {
     final Map<String, dynamic> data = message.data;
 
 
@@ -110,8 +109,8 @@ class MessagingHelper {
 
     if (route == "trackOrder") {
       // final navigatorKey = getIt<GlobalKey<NavigatorState>>();
-      if (orderId != null && userId != null ) {
-        context.pushNamed(
+      if (orderId != null && userId != null &&getIt<GlobalKey<NavigatorState>>().currentState != null) {
+        getIt<GlobalKey<NavigatorState>>().currentState!.context.pushNamed(
           AppRoutes.trackOrder,
           arguments: {
             'orderId': orderId,
@@ -203,7 +202,7 @@ class MessagingHelper {
         if (response.payload != null) {
           final Map<String, dynamic> data = jsonDecode(response.payload!);
           final RemoteMessage message = RemoteMessage(data: data);
-          _handleNavigation(navigatorKey.currentContext!,message);
+          _handleNavigation(message);
         }
       },
     );
