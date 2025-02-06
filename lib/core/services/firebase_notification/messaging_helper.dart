@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -6,6 +7,7 @@ import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:injectable/injectable.dart';
 import '../../../di/di.dart';
 import 'firebase_server_token.dart';
@@ -108,8 +110,7 @@ class MessagingHelper {
 
     if (route == "trackOrder") {
       // final navigatorKey = getIt<GlobalKey<NavigatorState>>();
-      final context = navigatorKey.currentContext;
-      if (orderId != null && userId != null &&context != null) {
+      if (orderId != null && userId != null ) {
         context.pushNamed(
           AppRoutes.trackOrder,
           arguments: {
@@ -228,6 +229,19 @@ class MessagingHelper {
       0, title, body, platformChannelSpecifics,
       payload: payload != null ? payload.toString() : null, // ✅ تخزين البيانات كـ `String`
     );
+  }
+  @pragma('vm:entry-point')
+  static Future<void> messageHandler(RemoteMessage message) async {
+    log('background message ${message.notification!.body}');
+     Fluttertoast.showToast(
+          msg:  message.notification!.title.toString() + "\n" + message.notification!.body.toString(),
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+           backgroundColor: Colors.greenAccent,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
   }
 
 }
