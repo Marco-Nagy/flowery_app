@@ -16,6 +16,7 @@ class Assets {
   static const String imagesCar = 'assets/images/Car.svg';
   static const String imagesCategory = 'assets/images/category.png';
   static const String imagesDelete = 'assets/images/delete.png';
+  static const String imagesDelivery = 'assets/images/delivery.png';
   static const String imagesDribbleFlowers = 'assets/images/dribble_flowers.gif';
   static const String imagesDropDownArrow = 'assets/images/drop_down_arrow.png';
   static const String imagesEditAddress = 'assets/images/edit_address.png';
@@ -25,7 +26,7 @@ class Assets {
   static const String imagesFilter = 'assets/images/filter.png';
   static const String imagesFlower = 'assets/images/flower.png';
   static const String imagesFloweryLoader = 'assets/images/flowery_loader.json';
-  static const String imagesFloweryLocation  = 'assets/images/FloweryLocation .png';
+  static const String imagesFloweryLocation = 'assets/images/FloweryLocation.png';
   static const String imagesGift = 'assets/images/gift.png';
   static const String imagesHome = 'assets/images/home.png';
   static const String imagesLanguage = 'assets/images/language.png';

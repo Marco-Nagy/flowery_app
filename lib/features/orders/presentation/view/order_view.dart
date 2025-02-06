@@ -56,10 +56,6 @@ class OrderView extends StatelessWidget {
                 child: TabBarView(
                   children: [
                     ListOrderWidget(
-                      // title: successState.orders![0].state.toString(),
-                      // price: successState.orders![0].orderItems![0].product!.price.toString(),
-                      // orderNumber:successState.orders![0].orderNumber!,
-                      // imageUrl: successState.orders![0].orderItems![0].product!.imgCover!,
                       textButton: context.translate(LangKeys.trackOrder),
                     ),
                     ListOrderWidget(

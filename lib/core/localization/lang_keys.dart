@@ -241,6 +241,7 @@ class LangKeys {
   static const String delivered = 'delivered';
   static const String showMap = 'show_map';
   static const String orderDetails = 'order_details';
+  static const String PickupAddress = 'Pickup_address';
 
 
 }

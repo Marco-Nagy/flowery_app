@@ -181,6 +181,8 @@ import '../features/track_order/domain/repositories/contract/track_order_repo.da
     as _i147;
 import '../features/track_order/domain/use_cases/get_order_by_order_id_case.dart'
     as _i398;
+import '../features/track_order/presentation/viewModel/map/map_view_model_cubit.dart'
+    as _i872;
 import '../features/track_order/presentation/viewModel/track_order_view_model_cubit.dart'
     as _i465;
 
@@ -321,6 +323,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i804.ProfileUseCase>(),
           gh<_i345.OfflineDataSource>(),
         ));
+    gh.factory<_i872.MapViewModelCubit>(
+        () => _i872.MapViewModelCubit(gh<_i398.GetOrderByOrderIdCase>()));
     gh.factory<_i465.TrackOrderViewModelCubit>(() =>
         _i465.TrackOrderViewModelCubit(gh<_i398.GetOrderByOrderIdCase>()));
     gh.factory<_i559.GenericUseCase>(

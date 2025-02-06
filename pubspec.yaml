@@ -59,8 +59,8 @@ dependencies:
   country_state_city:
   url_launcher: ^6.3.1
   flutter_dotenv:
-
-
+  google_maps_flutter:
+  flutter_polyline_points:
 
 
 
@@ -151,3 +151,4 @@ flutter:
     - family: oronteus
       fonts:
         - asset: assets/fonts/oronteus_finaeus.ttf
+
