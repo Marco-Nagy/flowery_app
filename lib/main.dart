@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flowery_e_commerce/core/services/firebase_notification/messaging_helper.dart';
 import 'package:flowery_e_commerce/core/services/shared_preference/shared_preference_helper.dart';
 import 'package:flowery_e_commerce/flowery_ecommerce.dart';
@@ -21,12 +20,13 @@ Future<void> main() async {
   await dotenv.load(fileName: '.env.firebase');
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   configureDependencies();
-  setupLocator();
-  // ✅ Fetch the initial notification message
-  await FirebaseMessaging.instance.getInitialMessage();
+  // setupLocator();
 
-  // ✅ Initialize MessagingHelper with the initial message
-   MessagingHelper().initialize();// ✅ تسجيل `GetIt` هنا أولًا لتجنب الأخطاء
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    MessagingHelper().initialize();
+
+
+  });
 
 
   // Pass all uncaught "fatal" errors from the framework to Crashlytics
