@@ -19,6 +19,7 @@ import '../core/networking/api/api_manager.dart' as _i282;
 import '../core/networking/common/regestet_context_module.dart' as _i125;
 import '../core/networking/network_factory.dart' as _i377;
 import '../core/services/firebase_helper/fire_store_helper.dart' as _i357;
+import '../core/services/firebase_notification/messaging_helper.dart' as _i930;
 import '../features/address/data/data_sources/contracts/address_online_data_source.dart'
     as _i92;
 import '../features/address/data/data_sources/impl/address_online_data_source_impl.dart'
@@ -200,9 +201,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i693.AppCubit>(() => _i693.AppCubit());
     gh.factory<_i361.LogInterceptor>(
         () => networkFactory.providerInterceptor());
-    gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
-        () => appModule.navigatorKey);
     gh.singleton<_i357.FireStoreService>(() => _i357.FireStoreService());
+    gh.singleton<_i930.MessagingHelper>(() => _i930.MessagingHelper());
+    gh.lazySingleton<_i409.GlobalKey<_i409.NavigatorState>>(
+        () => appModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
     gh.factory<_i13.TrackOrderOnlineDataSource>(
         () => _i291.TrackOrderOnlineDataSourceImpl());

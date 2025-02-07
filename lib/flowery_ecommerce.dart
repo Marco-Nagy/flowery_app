@@ -15,8 +15,6 @@ import 'di/di.dart';
 class FloweryEcommerce extends StatelessWidget {
   FloweryEcommerce({super.key});
 
-  final GlobalKey<NavigatorState> navigatorKey =
-      getIt<GlobalKey<NavigatorState>>();
 
   @override
   Widget build(BuildContext context) {
