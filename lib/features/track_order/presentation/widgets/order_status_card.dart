@@ -1,6 +1,9 @@
 import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/localization/lang_keys.dart';
 
 class OrderStatusCard extends StatelessWidget {
   final String status, orderId, date;
@@ -17,14 +20,12 @@ class OrderStatusCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Estimated arrival', style: MyFonts.styleMedium500_14.copyWith(color: MyColors.grey)),
+          Text(context.translate(LangKeys.estimatedArrival), style: MyFonts.styleMedium500_14.copyWith(color: MyColors.grey)),
           const SizedBox(height: 4),
           Text(date, style: MyFonts.styleMedium500_16),
           const Divider(
-            color: Colors.grey, // لون الخط
-            thickness: 2, // سمك الخط
-           // المسافة من اليمين
-          )
+            color: MyColors.placeHolder,
+          ),
 
         ],
       ),
