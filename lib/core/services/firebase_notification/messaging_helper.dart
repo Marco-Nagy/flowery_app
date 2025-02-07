@@ -1,25 +1,25 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:injectable/injectable.dart';
 import '../../../di/di.dart';
 import 'firebase_server_token.dart';
 import '../../../core/routes/app_routes.dart';
-
+@singleton
 class MessagingHelper {
   /// Singleton instance
-  factory MessagingHelper() => _instance;
-  static final MessagingHelper _instance = MessagingHelper._internal();
-  // static final GlobalKey<NavigatorState> navigatorKey = getIt<GlobalKey<NavigatorState>>();
 
   /// Firebase Messaging instance
   final FirebaseMessaging messaging = FirebaseMessaging.instance;
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-
-  MessagingHelper._internal();
+  /// ✅ استرجاع الـ `navigatorKey` بدلاً من إنشائه
 
   /// Initialize Firebase Messaging and Local Notifications
   Future<void> initialize() async {
@@ -27,15 +27,15 @@ class MessagingHelper {
     await _setupLocalNotifications();
     await messaging.setAutoInitEnabled(true);
 
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-    FirebaseMessaging.onMessage.listen(_handleForegroundMessage);
-    FirebaseMessaging.onMessageOpenedApp.listen(_handleNotificationClick);
-
-    // Handle terminated state notifications
+    // ✅ التعامل مع إشعار التطبيق في حالة terminated
     RemoteMessage? initialMessage = await messaging.getInitialMessage();
     if (initialMessage != null) {
       _handleNavigation(initialMessage);
     }
+
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    FirebaseMessaging.onMessage.listen(_handleForegroundMessage);
+    FirebaseMessaging.onMessageOpenedApp.listen(_handleNotificationClick);
 
     messaging.onTokenRefresh.listen((newToken) {
       debugPrint('📲 New Device FCM Token: $newToken');
@@ -43,6 +43,8 @@ class MessagingHelper {
 
     await getDeviceToken();
   }
+
+
 
   Future<NotificationSettings> _requestPermissions() async {
     return await messaging.requestPermission(
@@ -52,7 +54,7 @@ class MessagingHelper {
     );
   }
 
-  static Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+   Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     debugPrint("Handling background message: ${message.data}");
     debugPrint("Extracted userId: ${message.data['userId']}"); // ✅ طباعة userId المستلمة
 
@@ -94,18 +96,21 @@ class MessagingHelper {
     }
   }
 
-  static void _handleNavigation(RemoteMessage message) {
+   void  _handleNavigation( RemoteMessage message) {
     final Map<String, dynamic> data = message.data;
+
+
     final String? route = data['route'];
     final String? orderId = data['orderId'];
     final String? userId = data['userId'];
-    debugPrint("Extracted userId: ${message.data['userId']}"); // ✅ طباعة userId المستلمة
+    debugPrint("Extracted userId: ${data['userId']}"); // ✅ طباعة userId المستلمة
 
     debugPrint("Navigating to: $route with orderId: $orderId and userId: $userId");
 
     if (route == "trackOrder") {
-      if (orderId != null && userId != null) {
-        getIt<GlobalKey<NavigatorState>>().currentState?.pushNamed(
+      // final navigatorKey = getIt<GlobalKey<NavigatorState>>();
+      if (orderId != null && userId != null &&getIt<GlobalKey<NavigatorState>>().currentState != null) {
+        getIt<GlobalKey<NavigatorState>>().currentState!.context.pushNamed(
           AppRoutes.trackOrder,
           arguments: {
             'orderId': orderId,
@@ -223,6 +228,19 @@ class MessagingHelper {
       0, title, body, platformChannelSpecifics,
       payload: payload != null ? payload.toString() : null, // ✅ تخزين البيانات كـ `String`
     );
+  }
+  @pragma('vm:entry-point')
+  static Future<void> messageHandler(RemoteMessage message) async {
+    log('background message ${message.notification!.body}');
+     Fluttertoast.showToast(
+          msg:  message.notification!.title.toString() + "\n" + message.notification!.body.toString(),
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+           backgroundColor: Colors.greenAccent,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
   }
 
 }

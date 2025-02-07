@@ -6,6 +6,7 @@ final GetIt getIt = GetIt.instance;
 
 @module
 abstract class AppModule {
-  @singleton
+  @lazySingleton
   GlobalKey<NavigatorState> get navigatorKey => GlobalKey<NavigatorState>();
 }
+
