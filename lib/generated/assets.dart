@@ -7,6 +7,7 @@ class Assets {
   static const String imagesAboutAppImage = 'assets/images/about_app_image.gif';
   static const String imagesAdd = 'assets/images/add.png';
   static const String imagesAnimatedSearch = 'assets/images/animated_search.gif';
+  static const String imagesApartmentLocation = 'assets/images/ApartmentLocation.png';
   static const String imagesArrowBackIos = 'assets/images/arrow_back_ios.png';
   static const String imagesArrowDownIos = 'assets/images/arrow_down_ios.png';
   static const String imagesButtonFilter = 'assets/images/button_filter.png';
@@ -15,6 +16,7 @@ class Assets {
   static const String imagesCar = 'assets/images/Car.svg';
   static const String imagesCategory = 'assets/images/category.png';
   static const String imagesDelete = 'assets/images/delete.png';
+  static const String imagesDelivery = 'assets/images/delivery.png';
   static const String imagesDribbleFlowers = 'assets/images/dribble_flowers.gif';
   static const String imagesDropDownArrow = 'assets/images/drop_down_arrow.png';
   static const String imagesEditAddress = 'assets/images/edit_address.png';
@@ -24,6 +26,7 @@ class Assets {
   static const String imagesFilter = 'assets/images/filter.png';
   static const String imagesFlower = 'assets/images/flower.png';
   static const String imagesFloweryLoader = 'assets/images/flowery_loader.json';
+  static const String imagesFloweryLocation = 'assets/images/FloweryLocation.png';
   static const String imagesGift = 'assets/images/gift.png';
   static const String imagesHome = 'assets/images/home.png';
   static const String imagesLanguage = 'assets/images/language.png';
@@ -57,5 +60,7 @@ class Assets {
   static const String imagesTrachIcon = 'assets/images/trach_icon.png';
   static const String imagesUpload = 'assets/images/upload.png';
   static const String imagesWhatsapp = 'assets/images/whatsapp.svg';
+  static const String translationsAr = 'translations/ar.json';
+  static const String translationsEn = 'translations/en.json';
 
 }
