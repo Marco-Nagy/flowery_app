@@ -18,6 +18,8 @@ class FloweryEcommerce extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final navigatorKey = getIt<GlobalKey<NavigatorState>>(); // ✅ Correct usage
+
     return ValueListenableBuilder(
       valueListenable: ConnectivityController.instance.isConnected,
       builder: (context, value, child) {
@@ -54,7 +56,7 @@ class FloweryEcommerce extends StatelessWidget {
                       );
                     },
                     onGenerateRoute: AppRoutes.onGenerateRoute,
-                    navigatorKey: getIt<GlobalKey<NavigatorState>>(),
+                    navigatorKey: navigatorKey, // ✅ Only use one instance
                   );
                 },
               ),
