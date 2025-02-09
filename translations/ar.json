@@ -227,5 +227,14 @@
     "latitude": "خط العرض",
     "longitude": "خط الطول",
     "confirm_location": "تأكيد الموقع",
-    "egp": "ج.م"
+    "order_placed_successfully": "تم تقديم الطلب بنجاح!",
+    "egp": "ج.م",
+    "order_details": "تفاصيل الطلب",
+    "estimated_arrival": "الوصول المقدر",
+    "delivery_hero_today": "هل بطل التوصيل الخاص بك اليوم",
+    "preparing_your_order": "نحن نعد طلبك",
+    "out_for_delivery": "خارج للتوصيل",
+    "delivered": "تم التوصيل",
+    "show_map": "عرض الخريطة",
+    "Pickup_address": "عنوان الاستلام"
 }

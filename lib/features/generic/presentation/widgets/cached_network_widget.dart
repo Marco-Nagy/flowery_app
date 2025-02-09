@@ -6,9 +6,9 @@ import '../../../../generated/assets.dart';
 
 class CachedNetworkWidget extends StatelessWidget {
   const CachedNetworkWidget(
-      {super.key, required this.imageUrl, this.height, this.fit});
+      {super.key, required this.imageUrl, this.height, this.fit , this.width});
   final String imageUrl;
-  final double? height;
+  final double? height ,width;
   final BoxFit? fit;
 
   @override
@@ -16,7 +16,7 @@ class CachedNetworkWidget extends StatelessWidget {
     return  CachedNetworkImage(
       height: height,
       imageUrl: imageUrl,
-      width: double.infinity,
+      width: width ?? double.infinity,
       fit: fit ?? BoxFit.fitWidth,
       placeholder: (context, url) => Lottie.asset(Assets.imagesLoading),
       errorWidget: (context, url, error) => const Icon(Icons.error),
