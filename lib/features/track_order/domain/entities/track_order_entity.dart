@@ -160,7 +160,17 @@ class Store extends Equatable {
   final String? latLong;
 
   const Store({this.name, this.image, this.address, this.phoneNumber, this.latLong});
+  double get latitude {
+    if (latLong == null) return 0.0;
+    final parts = latLong!.split(',');
+    return double.tryParse(parts[0].trim()) ?? 0.0;
+  }
 
+  double get longitude {
+    if (latLong == null) return 0.0;
+    final parts = latLong!.split(',');
+    return double.tryParse(parts[1].trim()) ?? 0.0;
+  }
   @override
   
   List<Object?> get props => [name, image, address, phoneNumber, latLong];
