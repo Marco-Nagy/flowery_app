@@ -99,6 +99,7 @@ dependencies:
   googleapis: ^13.2.0
   googleapis_auth: ^1.6.0
   firebase_messaging:
+  awesome_notifications: ^0.10.0
   flutter_local_notifications:
 
 dev_dependencies:
