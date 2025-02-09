@@ -98,7 +98,7 @@ dependencies:
   cloud_firestore:
   firebase_database:
   firebase_messaging:
-  flutter_local_notifications: ^18.0.1
+  flutter_local_notifications:
 
 dev_dependencies:
   flutter_test:
