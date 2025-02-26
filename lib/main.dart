@@ -1,6 +1,7 @@
+import 'dart:async'; // Import Completer
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flowery_e_commerce/core/services/firebase_notification/local_notification_service.dart';
 import 'package:flowery_e_commerce/core/services/firebase_notification/notification_helper.dart';
 import 'package:flowery_e_commerce/core/services/shared_preference/shared_preference_helper.dart';
 import 'package:flowery_e_commerce/flowery_ecommerce.dart';
@@ -12,13 +13,11 @@ import 'core/utils/abb_bloc_observer.dart';
 import 'di/di.dart';
 import 'firebase_options.dart';
 
-import 'dart:async'; // Import Completer
-
 
 // ✅ Completer to track initialization state
  final Completer<bool> appInitialized = Completer<bool>();
 
-Future<void> main() async {
+Future<void>  main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await SharedPrefHelper().instantiatePreferences();
@@ -28,7 +27,7 @@ Future<void> main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .whenComplete(() {
     NotificationHelper().initialize();
-    LocalNotificationService.setupLocalNotifications();
+
   });
 
   configureDependencies();

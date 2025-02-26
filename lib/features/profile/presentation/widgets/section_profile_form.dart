@@ -2,6 +2,7 @@ import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
 import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_actions.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/profile/presentation/widgets/profile_form.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/localization/lang_keys.dart';
 import '../../../../di/di.dart';
+import 'custom_profile_picture.dart';
 import 'custom_section_gender.dart';
 
 class SectionProfileForm extends StatefulWidget {
@@ -34,6 +36,7 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
   String? oldEmail;
   String? oldPhone;
   String? selectedGender;
+  String? oldPhoto;
 
   @override
   void initState() {
@@ -86,7 +89,7 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
               oldEmail = state.data.user?.email ?? "";
               oldPhone = state.data.user?.phone ?? "";
               selectedGender = state.data.user?.gender ?? "";
-
+              oldPhoto = state.data.user?.photo ?? "";
               firstNameController.text = oldFirstName!;
               lastNameController.text = oldLastName!;
               emailController.text = oldEmail!;
@@ -123,6 +126,7 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                 oldEmail = emailController.text;
                 oldPhone = phoneNumberController.text;
                 selectedGender = state.data.user?.gender ?? "";
+                oldPhoto = state.data.user?.photo ?? "";
                 isModified = false;
               });
               break;
@@ -140,9 +144,12 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
         builder: (context, state) {
           if (state is GetLoggedUserDataSuccess) {
             selectedGender = state.data.user?.gender ?? "";
+            oldPhoto = state.data.user?.photo ?? "";
           }
           return Column(
             children: [
+               ProfilePic(photo: oldPhoto??'',),
+              verticalSpacing(24),
               ProfileForm(
                 firstNameController: firstNameController,
                 lastNameController: lastNameController,
@@ -151,7 +158,7 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                 phoneNumberController: phoneNumberController,
                 formKey: formKey,
               ),
-              const SizedBox(height: 24),
+              verticalSpacing(24),
               CustomSectionGender(
                 selectedGender: selectedGender ?? "",
                 onChanged: (value) {

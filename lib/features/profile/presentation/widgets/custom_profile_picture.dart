@@ -14,7 +14,8 @@ import '../viewModel/profile_actions.dart';
 
 
 class ProfilePic extends StatefulWidget {
-  const ProfilePic({super.key});
+  final String photo;
+  const ProfilePic({super.key, required this.photo});
 
   @override
   State<ProfilePic> createState() => _ProfilePicState();
@@ -136,7 +137,7 @@ class _ProfilePicState extends State<ProfilePic> {
   Widget build(BuildContext context) {
     return BlocProvider<ProfileViewModelCubit>(
       create: (context) => profileViewModel,
-      child: BlocListener<ProfileViewModelCubit, ProfileViewModelState>(
+      child: BlocConsumer<ProfileViewModelCubit, ProfileViewModelState>(
         listener: (context, state) {
           switch (state) {
             case UploadPhotoLoading():
@@ -163,19 +164,26 @@ class _ProfilePicState extends State<ProfilePic> {
             default:
           }
         },
-        child: SizedBox(
+        builder:(context, state) =>  SizedBox(
           height: 115.h,
           width: 115.w,
           child: Stack(
             fit: StackFit.expand,
             clipBehavior: Clip.none,
             children: [
-              _image == null
-                  ? const CircleAvatar(
-                      backgroundImage: AssetImage(Assets.imagesProfile),
-                    )
-                  : CircleAvatar(
-                      backgroundImage: FileImage(_image!) as ImageProvider),
+
+              // _image == null
+              //     ? const CircleAvatar(
+              //         backgroundImage: AssetImage(Assets.imagesProfile),
+              //       )
+              //     : CircleAvatar(
+              //         backgroundImage: FileImage(_image!) as ImageProvider),
+         widget.photo == null || widget.photo.isEmpty
+                    ? const CircleAvatar(
+                  backgroundImage: AssetImage(Assets.imagesProfile),
+                )
+                    : CircleAvatar(
+                    backgroundImage: NetworkImage(widget.photo) as ImageProvider),
               Positioned(
                 right: -18.w,
                 bottom: 2.h,

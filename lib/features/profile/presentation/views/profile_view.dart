@@ -1,8 +1,8 @@
-import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_profile_app_bar.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
+import 'package:flowery_e_commerce/features/profile/presentation/widgets/custom_profile_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../widgets/custom_profile_picture.dart';
+
 import '../widgets/section_profile_form.dart';
 
 class ProfileView extends StatelessWidget {
@@ -18,8 +18,7 @@ class ProfileView extends StatelessWidget {
           children: [
             const CustomProfileAppBar(),
             verticalSpacing(24),
-            const ProfilePic(),
-            verticalSpacing(24),
+
             const SectionProfileForm(),
           ],
         ),

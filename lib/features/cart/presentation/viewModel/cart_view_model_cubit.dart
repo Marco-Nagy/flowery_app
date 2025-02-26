@@ -79,7 +79,10 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
     switch (result) {
 
       case Success<CartEntity>():
+      cartData = result.data;
+      cartQuantityItems = result.data.numOfCartItems;
       cartVisibility = true;
+
       if(cartKey.currentState!= null) {
         cartKey.currentState!
           .runCartAnimation(result.data.numOfCartItems.toString());
@@ -103,6 +106,7 @@ class CartViewModelCubit extends Cubit<CartViewModelState> {
     switch (result) {
       case Success<CartEntity>():
         cartData = result.data;
+        cartQuantityItems = result.data.numOfCartItems;
 
         debugPrint('cart quantity : ${cartData!.cartList.map((e) => e.quantity,)}');
         emit(

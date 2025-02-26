@@ -32,7 +32,7 @@ class NotificationHelper {
     // terminated
     await FirebaseMessaging.instance
         .getInitialMessage()
-        .then(NotificationNavigationHelper.terminatedHandler);
+        .then((RemoteMessage? message) => NotificationNavigationHelper.terminatedHandler,);
 
     // background
     FirebaseMessaging.onMessageOpenedApp

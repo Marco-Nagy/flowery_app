@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 part of 'api_manager.dart';
 
 // **************************************************************************
@@ -537,6 +537,7 @@ class _ApiManager implements ApiManager {
         MultipartFile.fromFileSync(
           photo.path,
           filename: photo.path.split(Platform.pathSeparator).last,
+          contentType: DioMediaType('image',photo.path.split('.').last), // Specify the media type here
         ),
       ),
     );
@@ -548,11 +549,11 @@ class _ApiManager implements ApiManager {
         contentType: 'multipart/form-data',
       )
           .compose(
-            _dio.options,
-            'api/v1/auth/upload-photo',
-            queryParameters: queryParameters,
-            data: _data,
-          )
+        _dio.options,
+        'api/v1/auth/upload-photo',
+        queryParameters: queryParameters,
+        data: _data,
+      )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
@@ -565,7 +566,6 @@ class _ApiManager implements ApiManager {
     }
     return _value;
   }
-
   @override
   Future<ChangePasswordResponseDto> changePassword(
     ChangePasswordRequestDto request,

@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:flowery_e_commerce/core/networking/common/regestet_context_module.dart';
-import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
@@ -42,15 +40,9 @@ class LocalNotificationService {
 
           if (orderId != null &&
               userId != null &&
-              route != null &&
-              getIt<GlobalKey<NavigatorState>>().currentState != null) {
-            getIt<GlobalKey<NavigatorState>>().currentState!.context.pushNamed(
-              route,
-              arguments: {
-                'orderId': orderId,
-                'userId': userId,
-              },
-            );
+              route != null ) {
+            // NotificationNavigationHelper.navigate(navigatorKey.currentContext!,data, false);
+
           } else {
             debugPrint(
                 "⚠️ Missing required parameters: orderId or userId is null");
@@ -75,21 +67,18 @@ class LocalNotificationService {
           // final navigatorKey = getIt<GlobalKey<NavigatorState>>();
           if (orderId != null &&
               userId != null &&
-              route != null &&
-              getIt<GlobalKey<NavigatorState>>().currentState != null) {
-            getIt<GlobalKey<NavigatorState>>().currentState!.context.pushNamed(
-              route,
-              arguments: {
-                'orderId': orderId,
-                'userId': userId,
-              },
-            );
+              route != null
+             ) {
+
+            // NotificationNavigationHelper.navigate(navigator.currentContext!,data, false);
+
           } else {
             debugPrint(
                 "⚠️ Missing required parameters: orderId or userId is null");
           }
         }
       },
+
     );
   }
 

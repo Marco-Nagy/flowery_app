@@ -43,12 +43,12 @@ class _CustomMainProfileDataState extends State<CustomMainProfileData> {
            case GetLoggedUserDataSuccess():
              return Column(
                children: [
-                 const CustomPictureMainScreen(),
+                  CustomPictureMainScreen(user: state.data.user!,),
                  Row(
                    mainAxisAlignment: MainAxisAlignment.center,
                    children: [
                      Text(
-                       '${state.data.user!.firstName}',
+                       '${state.data.user!.firstName} ${state.data.user!.lastName}',
                        style: MyFonts.styleMedium500_18.copyWith(
                          color: MyColors.blackBase,
                        ),

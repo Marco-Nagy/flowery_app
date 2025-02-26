@@ -23,7 +23,7 @@ part 'profile_view_model_state.dart';
 class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
   final ProfileUseCase _useCase;
   final OfflineDataSource _offlineDataSource;
-
+ GetLoggedUserDataResponseEntity? data;
   @factoryMethod
   ProfileViewModelCubit(this._useCase, this._offlineDataSource ) : super(ProfileViewModelInitial());
 
@@ -45,6 +45,7 @@ class ProfileViewModelCubit extends Cubit<ProfileViewModelState> {
     final result = await _useCase.getProfileData();
     switch (result) {
       case Success<GetLoggedUserDataResponseEntity>():
+        data = result.data;
         emit(GetLoggedUserDataSuccess(data: result.data));
         debugPrint('returnedData : ${result.data}');
       case Fail<GetLoggedUserDataResponseEntity>():
