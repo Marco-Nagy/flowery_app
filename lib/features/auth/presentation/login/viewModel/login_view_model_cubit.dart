@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:flowery_e_commerce/core/localization/lang_keys.dart';
 import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
 import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
 import 'package:flowery_e_commerce/core/networking/error/error_handler.dart';
 import 'package:flowery_e_commerce/core/routes/app_routes.dart';
+import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
 import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flutter/cupertino.dart';
@@ -41,7 +43,7 @@ class LoginViewModel extends Cubit<LoginViewModelState> {
       return;
     }
 
-    LocationPermission permission = await _locationHelper.requestLocationPermission(context);
+    final permission = await _locationHelper.requestLocationPermission(context);
     if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
       emit(LocationPermissionDenied());
       return;

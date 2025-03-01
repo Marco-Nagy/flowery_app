@@ -1,3 +1,4 @@
+import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
 import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
@@ -33,18 +34,35 @@ class LocationHelper {
     }
   }
 
-  Future<LocationPermission> requestLocationPermission(
-      BuildContext context) async {
+
+  Future<DataResult<LocationPermission>> requestLocationPermission(BuildContext context) async {
     try {
+      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) {
+        return Fail( Exception(context.translate('LangKeys.locationServicesDisabled')));
+      }
+
       LocationPermission permission = await Geolocator.checkPermission();
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+           return Fail(Exception(context.translate('LangKeys.permissionDenied')));
+        }
       }
-      return permission;
+
+      if (permission == LocationPermission.deniedForever) {
+
+
+        throw Fail(Exception(context.translate('LangKeys.permissionDeniedForever')));
+      }
+
+      return Success(permission);
     } catch (e) {
-      throw Exception(context.translate(LangKeys.failure));
+
+      return Fail(Exception(context.translate(LangKeys.failure)));
     }
   }
+
 
   Future<Position> getCurrentLocation(BuildContext context) async {
     try {

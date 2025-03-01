@@ -52,6 +52,8 @@ class NotificationHelper {
       alert: true,
       badge: true,
       sound: true,
+      criticalAlert: true,
+
     );
   }
 
@@ -108,9 +110,9 @@ class NotificationHelper {
   }
 
   Future<String?> getDeviceToken() async {
-    final deviceToken = await messaging.getToken();
-    debugPrint('📲 Device FCM Token: $deviceToken');
-    return deviceToken;
+    // final deviceToken = await messaging.getToken();
+    // debugPrint('📲 Device FCM Token: $deviceToken');
+    // return deviceToken;
   }
 
 

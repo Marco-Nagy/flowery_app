@@ -52,10 +52,10 @@ class _LoginViewState extends State<LoginView> {
         // buildWhen: (previous, current) => current is LoginViewModelInitial,
         builder: (context, state) {
           switch (state) {
-            case LoginViewModelLoading():
-              return const AppLoader();
-            case LocationPermissionDenied():
             case LoginViewModelInitial():
+            case LoginViewModelLoading():
+              // return const AppLoader();
+            case LocationPermissionDenied():
             case LoginViewModelSuccess():
             case LoginViewModelError():
               return BaseView(
@@ -119,6 +119,7 @@ class _LoginViewState extends State<LoginView> {
                   context: context,
                   type: MessageTypeConst.failure,
                   title: context.translate(LangKeys.error));
+
             case LoginViewModelLoading():
             default:
               return;

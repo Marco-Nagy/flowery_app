@@ -35,7 +35,7 @@ class LocationCubit extends Cubit<LocationState> {
         return;
       }
 
-      LocationPermission permission = await locationHelper.requestLocationPermission(context);
+      final permission = await locationHelper.requestLocationPermission(context);
       if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
         emit(LocationError(context.translate(LangKeys.locationPermissionDenied)));
         return;

@@ -11,8 +11,9 @@ extension MediaQueryValues on BuildContext {
       MediaQuery.of(this).orientation == Orientation.portrait;
   String  translate(String text) {
     if (AppLocalizations.of(this) != null) {
-      return AppLocalizations.of(this )!.translate(text)
-          .toString();
+      final localizations = AppLocalizations.of(this);
+      return localizations?.translate(text).toString() ?? '';
+
     }else {
       return '';
     }
