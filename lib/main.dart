@@ -25,8 +25,10 @@ Future<void>  main() async {
 
   await dotenv.load(fileName: '.env.firebase');
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-      .whenComplete(() {
-    NotificationHelper().initialize();
+      .whenComplete(() async {
+   await NotificationHelper().initialize();
+    await LocalNotificationService.setupLocalNotifications();
+
 
   });
 

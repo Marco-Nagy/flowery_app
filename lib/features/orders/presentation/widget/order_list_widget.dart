@@ -1,11 +1,11 @@
 import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_e_commerce/di/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/localization/lang_keys.dart';
-import '../../../../core/networking/common/regestet_context_module.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/utils/widgets/base/app_loader.dart';
 import '../../../../core/utils/widgets/buttons/carved_button.dart';

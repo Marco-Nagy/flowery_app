@@ -1,5 +1,6 @@
 import 'package:flowery_e_commerce/core/routes/base_routes.dart';
 import 'package:flowery_e_commerce/core/utils/screens/under_build_screen.dart';
+import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/address_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/map_view.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/saved_address_screen.dart';
@@ -213,13 +214,19 @@ class AppRoutes {
       case AppRoutes.trackOrder:
         final arguments = settings.arguments as Map<String, String>?;
 
-        return BaseRoute(page: BlocProvider(
-            create: (context) => getIt.get<TrackOrderViewModelCubit>()
-              ..doAction(GetOrderDetails(
-                  orderId: arguments['orderId']!, userId: arguments['userId']!)),
-            child: TrackOrderScreen(orderId: arguments!['orderId']!, userId: arguments['userId']!)));
+        if (arguments == null || !arguments.containsKey('orderId') || !arguments.containsKey('userId')) {
+          return BaseRoute(page: const PageUnderBuildScreen()); // Handle missing data safely
+        }
+
+        return BaseRoute(
+            page: BlocProvider(
+                create: (context) => getIt.get<TrackOrderViewModelCubit>()
+                  ..doAction(GetOrderDetails(
+                      orderId: arguments['orderId']!, userId: arguments['userId']!)),
+                child: TrackOrderScreen(orderId: arguments['orderId']!, userId: arguments['userId']!))
+        );
       default:
-        return BaseRoute(page: const PageUnderBuildScreen());
+        return BaseRoute(page: const AppLoader());
     }
   }
 }

@@ -10,13 +10,11 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i361;
-import 'package:flutter/material.dart' as _i409;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
 import '../core/app_cubit/app_cubit.dart' as _i693;
 import '../core/networking/api/api_manager.dart' as _i282;
-import '../core/networking/common/regestet_context_module.dart' as _i125;
 import '../core/networking/network_factory.dart' as _i377;
 import '../core/services/firebase_helper/fire_store_helper.dart' as _i357;
 import '../core/services/firebase_notification/notification_helper.dart'
@@ -200,7 +198,6 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final networkFactory = _$NetworkFactory();
-    final appModule = _$AppModule();
     gh.factory<_i693.AppCubit>(() => _i693.AppCubit());
     gh.factory<_i361.LogInterceptor>(
         () => networkFactory.providerInterceptor());
@@ -373,5 +370,3 @@ extension GetItInjectableX on _i174.GetIt {
 }
 
 class _$NetworkFactory extends _i377.NetworkFactory {}
-
-class _$AppModule extends _i125.AppModule {}
