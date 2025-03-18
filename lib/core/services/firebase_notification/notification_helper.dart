@@ -24,7 +24,6 @@ class NotificationHelper {
 
 
 
-
     // for ground
     FirebaseMessaging.onMessage
         .listen(NotificationNavigationHelper.forGroundHandler);
