@@ -11,6 +11,7 @@ import 'core/localization/app_localizations_setup.dart';
 import 'core/services/shared_preference/shared_preference_helper.dart';
 import 'core/utils/screens/no_network_screen.dart';
 import 'di/di.dart';
+final navigatorKey = GlobalKey<NavigatorState>(); // ✅ Correct usage
 
 class FloweryEcommerce extends StatelessWidget {
   FloweryEcommerce({super.key});
@@ -18,7 +19,6 @@ class FloweryEcommerce extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final navigatorKey = getIt<GlobalKey<NavigatorState>>(); // ✅ Correct usage
 
     return ValueListenableBuilder(
       valueListenable: ConnectivityController.instance.isConnected,
