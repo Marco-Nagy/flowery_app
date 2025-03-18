@@ -17,15 +17,15 @@ class MapScreen extends StatelessWidget {
   const MapScreen({super.key});
 
   Future<Map<String, BitmapDescriptor>> _loadMarkerIcons() async {
-    final userIcon = await BitmapDescriptor.fromAssetImage(
+    final userIcon = await BitmapDescriptor.asset(
       const ImageConfiguration(size: Size(60, 60)),
       'assets/images/ApartmentLocation.png',
     );
-    final storeIcon = await BitmapDescriptor.fromAssetImage(
+    final storeIcon = await BitmapDescriptor.asset(
       const ImageConfiguration(size: Size(60, 60)),
       'assets/images/FloweryLocation.png',
     );
-    final driverIcon = await BitmapDescriptor.fromAssetImage(
+    final driverIcon = await BitmapDescriptor.asset(
       const ImageConfiguration(size: Size(60, 60)),
       'assets/images/delivery.png',
     );
