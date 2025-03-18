@@ -16,7 +16,6 @@ CartResponseDto _$CartResponseDtoFromJson(Map<String, dynamic> json) =>
     );
 
 
-
 CartDto _$CartDtoFromJson(Map<String, dynamic> json) => CartDto(
       json['_id'] as String?,
       json['user'] as String?,

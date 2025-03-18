@@ -7,7 +7,6 @@ part of 'update_cart_product_quantity_request_dto.dart';
 // **************************************************************************
 
 
-
 Map<String, dynamic> _$UpdateCartProductQuantityRequestDtoToJson(
         UpdateCartProductQuantityRequestDto instance) =>
     <String, dynamic>{

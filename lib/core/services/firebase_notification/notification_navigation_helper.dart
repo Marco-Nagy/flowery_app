@@ -1,8 +1,8 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flowery_e_commerce/flowery_ecommerce.dart';
 import 'package:flowery_e_commerce/main.dart';
 import 'package:flutter/material.dart';
 
-import '../../../di/di.dart';
 import 'local_notification_service.dart';
 
 class NotificationNavigationHelper {
@@ -47,7 +47,7 @@ class NotificationNavigationHelper {
     debugPrint(
         "Navigating to: $route with orderId: $orderId and userId: $userId");
 
-    final navigatorKey = getIt<GlobalKey<NavigatorState>>();
+    // final navigatorKey = getIt<GlobalKey<NavigatorState>>();
 
     if (orderId != null &&
         userId != null &&
