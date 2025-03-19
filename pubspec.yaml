@@ -61,7 +61,6 @@ dependencies:
   flutter_dotenv:
   google_maps_flutter:
   flutter_polyline_points:
-  googleapis_auth: ^1.6.0
 
 
 

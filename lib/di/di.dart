@@ -11,18 +11,5 @@ final getIt = GetIt.instance;
 )
 void configureDependencies() {
   getIt.init();
-
-  // Check if GlobalKey<NavigatorState> is already registered before adding it
-  if (!getIt.isRegistered<GlobalKey<NavigatorState>>()) {
-    getIt.registerLazySingleton<GlobalKey<NavigatorState>>(() => GlobalKey<NavigatorState>());
-  }
 }
 
-
-// void setupLocator() {
-//   if (!getIt.isRegistered<GlobalKey<NavigatorState>>()) {
-//     getIt.registerLazySingleton<GlobalKey<NavigatorState>>(
-//           () => GlobalKey<NavigatorState>(),
-//     );
-//   }
-// }

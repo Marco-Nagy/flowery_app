@@ -1,6 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flowery_e_commerce/flowery_ecommerce.dart';
-import 'package:flowery_e_commerce/flowery_ecommerce.dart';
 import 'package:flutter/material.dart';
 
 import 'local_notification_service.dart';
@@ -13,19 +12,19 @@ class NotificationNavigationHelper {
         body: message.notification?.body ?? '',
         payload: message.data,
       );
-      navigate(navigator.currentState!.context, message.data, false);
+      navigate(navigatorKey.currentState!.context, message.data, false);
     }
   }
 
   static void backGroundHandler(RemoteMessage? message) {
     if (message != null) {
-      navigate(navigator.currentState!.context, message.data, false);
+      navigate(navigatorKey.currentState!.context, message.data, false);
     }
   }
 
   static void terminatedHandler(RemoteMessage? message) {
     if (message != null) {
-      navigate(navigator.currentState!.context, message.data, true);
+      navigate(navigatorKey.currentState!.context, message.data, true);
     }
   }
 }

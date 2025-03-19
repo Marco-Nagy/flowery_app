@@ -1,11 +1,10 @@
 import 'package:flowery_e_commerce/core/routes/base_routes.dart';
-import 'package:flowery_e_commerce/core/utils/screens/under_build_screen.dart';
 import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/address_screen.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/map_view.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view/saved_address_screen.dart';
-import 'package:flowery_e_commerce/features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/address/presentation/view_model/address_cubit.dart';
+import 'package:flowery_e_commerce/features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/email_verification.dart';
 import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/reset_password.dart';
@@ -33,6 +32,7 @@ import 'package:flowery_e_commerce/features/track_order/presentation/viewModel/t
 import 'package:flowery_e_commerce/features/track_order/presentation/views/track_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../di/di.dart';
 import '../../features/about_app/presentation/views/about_app_view.dart';
 import '../../features/auth/presentation/forget_password/view/forget_password.dart';
@@ -215,7 +215,7 @@ class AppRoutes {
         final arguments = settings.arguments as Map<String, String>?;
 
         if (arguments == null || !arguments.containsKey('orderId') || !arguments.containsKey('userId')) {
-          return BaseRoute(page: const PageUnderBuildScreen()); // Handle missing data safely
+          return BaseRoute(page: const AppLoader()); // Handle missing data safely
         }
 
         return BaseRoute(

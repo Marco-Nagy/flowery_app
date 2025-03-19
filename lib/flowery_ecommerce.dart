@@ -11,7 +11,7 @@ import 'core/localization/app_localizations_setup.dart';
 import 'core/services/shared_preference/shared_preference_helper.dart';
 import 'core/utils/screens/no_network_screen.dart';
 import 'di/di.dart';
-final navigator = GlobalKey<NavigatorState>();
+final navigatorKey = GlobalKey<NavigatorState>();
 
 class FloweryEcommerce extends StatelessWidget {
   FloweryEcommerce({super.key});
@@ -56,7 +56,7 @@ class FloweryEcommerce extends StatelessWidget {
                       );
                     },
                     onGenerateRoute: AppRoutes.onGenerateRoute,
-                    navigatorKey: navigator, // ✅ Only use one instance
+                    navigatorKey: navigatorKey, // ✅ Only use one instance
                   );
                 },
               ),

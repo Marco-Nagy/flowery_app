@@ -201,8 +201,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i693.AppCubit>(() => _i693.AppCubit());
     gh.factory<_i361.LogInterceptor>(
         () => networkFactory.providerInterceptor());
-    gh.lazySingleton<_i409.GlobalKey<_i409.NavigatorState>>(
-        () => appModule.navigatorKey);
+
     gh.singleton<_i357.FireStoreService>(() => _i357.FireStoreService());
     gh.singleton<_i220.NotificationHelper>(() => _i220.NotificationHelper());
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
