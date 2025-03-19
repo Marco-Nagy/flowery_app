@@ -50,21 +50,24 @@ class AppLoaderState extends State<AppLoader> with SingleTickerProviderStateMixi
               fit: BoxFit.scaleDown,
             ),
             verticalSpacing(15),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedTextKit(
-                repeatForever: true,
-                animatedTexts: [
-                  ScaleAnimatedText(
-                    (context.translate(LangKeys.appName)),
-                    textStyle: MyFonts.styleBold700_24.copyWith(
-                      fontFamily: 'oronteus',
-                      color: MyColors.baseColor,
+            SizedBox(
+              height: 50.h,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: AnimatedTextKit(
+                  repeatForever: true,
+                  animatedTexts: [
+                    ScaleAnimatedText(
+                      (context.translate(LangKeys.appName)),
+                      textStyle: MyFonts.styleBold700_24.copyWith(
+                        fontFamily: 'oronteus',
+                        color: MyColors.baseColor,
+                      ),
+                      scalingFactor: 1.5,
+                      textAlign: TextAlign.center,
                     ),
-                    scalingFactor: 1.5,
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

@@ -54,7 +54,7 @@ class CustomBestSellerListState extends State<CustomBestSellerList> {
                               ),
                             ),
                             SizedBox(
-                              height: 8.h,
+                              height: 5.h,
                             ),
                             SizedBox(
                               width: 170.w,
