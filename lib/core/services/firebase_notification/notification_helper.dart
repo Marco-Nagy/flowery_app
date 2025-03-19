@@ -1,14 +1,13 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:injectable/injectable.dart';
-
 import 'firebase_server_token.dart';
 import 'notification_navigation_helper.dart';
+
 @singleton
 class NotificationHelper {
   /// Singleton instance
