@@ -21,6 +21,9 @@ jobs:
         with:
           channel: 'stable'
 
+      - name: Remove Flutter cache (Force refresh)
+        run: rm -rf ~/.pub-cache .dart_tool
+
       - name: Cache Flutter dependencies
         uses: actions/cache@v3
         with:
@@ -40,6 +43,9 @@ jobs:
       - name: Create placeholder .env.firebase
         run: echo "FIREBASE_CONFIG_PLACEHOLDER=true" > .env.firebase
 
+      - name: Create placeholder firebase_server_token.dart
+        run: echo "// Placeholder file" > lib/core/services/firebase_notification/firebase_server_token.dart
+
       - name: Install dependencies
         run: flutter pub get
 
@@ -48,4 +54,3 @@ jobs:
 
       - name: Run Flutter analyzer
         run: flutter analyze
-
