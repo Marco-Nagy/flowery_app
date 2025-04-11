@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:flowery_e_commerce/features/track_order/data/models/track_order_model.dart';
-import 'package:flowery_e_commerce/features/track_order/domain/entities/track_order_entity.dart';
+import 'package:flowery_store/features/track_order/data/models/track_order_model.dart';
+import 'package:flowery_store/features/track_order/domain/entities/track_order_entity.dart';
 import 'package:geocoding/geocoding.dart';
 
 class TrackOrderMapper {

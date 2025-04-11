@@ -1,9 +1,9 @@
-import 'package:flowery_e_commerce/core/networking/api/api_manager.dart';
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/features/address_details/data/data_sources/impl/add_address_online_data_source_impl.dart';
-import 'package:flowery_e_commerce/features/address_details/data/models/response/add_address_response_dto.dart';
-import 'package:flowery_e_commerce/features/address_details/domain/entities/request/add_address_request_entity.dart';
-import 'package:flowery_e_commerce/features/address_details/domain/entities/response/add_address_response_entity.dart';
+import 'package:flowery_store/core/networking/api/api_manager.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/features/address_details/data/data_sources/impl/add_address_online_data_source_impl.dart';
+import 'package:flowery_store/features/address_details/data/models/response/add_address_response_dto.dart';
+import 'package:flowery_store/features/address_details/domain/entities/request/add_address_request_entity.dart';
+import 'package:flowery_store/features/address_details/domain/entities/response/add_address_response_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

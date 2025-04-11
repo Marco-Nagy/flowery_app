@@ -1,5 +1,5 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_store/core/styles/fonts/my_fonts.dart';
 import 'package:flutter/material.dart';
 
 void aweSnackBar({
@@ -10,11 +10,14 @@ void aweSnackBar({
 }) {
   final snackBar = SnackBar(
     /// need to set following properties for best effect of awesome_snackbar_content
-    elevation: 0,
+    elevation: 0,duration: const Duration(seconds: 2),
     behavior: SnackBarBehavior.floating,
     backgroundColor: Colors.transparent,
+
     content: AwesomeSnackbarContent(
-      messageTextStyle: MyFonts.styleBold700_18.copyWith(),
+      titleTextStyle:MyFonts.styleBold700_14.copyWith() ,
+      inMaterialBanner: true,
+      messageTextStyle: MyFonts.styleBold700_12.copyWith(),
       title: title.toString(),
       message: msg,
 

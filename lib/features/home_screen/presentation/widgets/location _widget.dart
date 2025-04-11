@@ -5,7 +5,7 @@ import '../../../../core/services/shared_preference/location_helper.dart';
 import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/localization/lang_keys.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import '../../../../generated/assets.dart';
 import '../home_cubit/location_cubit/location_cubit.dart';
 

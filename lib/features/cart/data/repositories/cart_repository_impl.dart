@@ -1,7 +1,7 @@
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/features/cart/data/data_sources/contracts/cart_online_data_source.dart';
-import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
-import 'package:flowery_e_commerce/features/cart/domain/repositories/contracts/cart_repository.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/features/cart/data/data_sources/contracts/cart_online_data_source.dart';
+import 'package:flowery_store/features/cart/domain/entities/cart_entity.dart';
+import 'package:flowery_store/features/cart/domain/repositories/contracts/cart_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: CartRepository)

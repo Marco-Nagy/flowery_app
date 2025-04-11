@@ -1,6 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flowery_e_commerce/flowery_ecommerce.dart';
-import 'package:flowery_e_commerce/main.dart';
+import 'package:flowery_store/flowery_store.dart';
+import 'package:flowery_store/main.dart';
 import 'package:flutter/material.dart';
 
 import 'local_notification_service.dart';

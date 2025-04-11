@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flowery_e_commerce/core/services/firebase_notification/local_notification_service.dart';
-import 'package:flowery_e_commerce/core/services/firebase_notification/notification_helper.dart';
-import 'package:flowery_e_commerce/core/services/shared_preference/shared_preference_helper.dart';
-import 'package:flowery_e_commerce/flowery_ecommerce.dart';
+import 'package:flowery_store/core/services/firebase_notification/local_notification_service.dart';
+import 'package:flowery_store/core/services/firebase_notification/notification_helper.dart';
+import 'package:flowery_store/core/services/shared_preference/shared_preference_helper.dart';
+import 'package:flowery_store/flowery_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -39,6 +39,6 @@ Future<void> main() async {
   appInitialized.complete(true);
 
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-  runApp(FloweryEcommerce());
+  runApp(FloweryStore());
 }
 

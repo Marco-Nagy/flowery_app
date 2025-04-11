@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/features/profile/domain/entities/response/get_logged_user_data_response_entity.dart';
-import 'package:flowery_e_commerce/features/profile/domain/entities/response/upload_photo_response_entity.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/features/profile/domain/entities/response/get_logged_user_data_response_entity.dart';
+import 'package:flowery_store/features/profile/domain/entities/response/upload_photo_response_entity.dart';
 
 import '../../../domain/entities/request/change_password_request_entity.dart';
 import '../../../domain/entities/response/change_password_response_entity.dart';

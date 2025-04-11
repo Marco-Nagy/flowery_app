@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/features/auth/data/models/response/reset_password_response_dto.dart';
-import 'package:flowery_e_commerce/features/auth/data/models/response/verify_reset_code_response.dart';
-import 'package:flowery_e_commerce/features/auth/domain/entities/response/forget_password_response_entity.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_state.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/features/auth/data/models/response/reset_password_response_dto.dart';
+import 'package:flowery_store/features/auth/data/models/response/verify_reset_code_response.dart';
+import 'package:flowery_store/features/auth/domain/entities/response/forget_password_response_entity.dart';
+import 'package:flowery_store/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 

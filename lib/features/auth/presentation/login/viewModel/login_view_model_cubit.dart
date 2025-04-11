@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
-import 'package:flowery_e_commerce/core/networking/error/error_handler.dart';
-import 'package:flowery_e_commerce/core/routes/app_routes.dart';
-import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
-import 'package:flowery_e_commerce/di/di.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/core/networking/error/error_model.dart';
+import 'package:flowery_store/core/networking/error/error_handler.dart';
+import 'package:flowery_store/core/routes/app_routes.dart';
+import 'package:flowery_store/core/utils/extension/navigation.dart';
+import 'package:flowery_store/di/di.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
