@@ -1,6 +1,8 @@
 import 'package:flowery_store/core/localization/lang_keys.dart';
+import 'package:flowery_store/core/routes/app_routes.dart';
 import 'package:flowery_store/core/styles/colors/my_colors.dart';
 import 'package:flowery_store/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/navigation.dart';
 import 'package:flowery_store/core/utils/widgets/base/app_loader.dart';
 import 'package:flowery_store/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flowery_store/core/utils/widgets/custom_appbar.dart';
@@ -18,8 +20,11 @@ import 'package:flutter_svg/svg.dart';
 class TrackOrderScreen extends StatefulWidget {
   final String userId;
   final String orderId;
+
   const TrackOrderScreen({
-    super.key, required this.userId, required this.orderId,
+    super.key,
+    required this.userId,
+    required this.orderId,
   });
 
   @override
@@ -40,7 +45,7 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
           final drive = orderViewModelCubit.trackOrderEntity!.driver;
           return Scaffold(
             appBar: customAppBar(
-              appBarTxt:context.translate(LangKeys.trackOrder),
+              appBarTxt: context.translate(LangKeys.trackOrder),
               context: context,
               showArrow: true,
             ),
@@ -70,12 +75,14 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
                         AddressSection(
                           title: 'Pickup address',
                           name: '${drive.firstName} ${drive.lastName}',
-                          address:context.translate(LangKeys.deliveryHeroToday),
+                          address:
+                              context.translate(LangKeys.deliveryHeroToday),
                           image: drive.photo ?? '',
-                          phone: drive.phone! ,
+                          phone: drive.phone!,
                         ),
                       verticalSpacing(16),
-                       StepperIndicator(currentStep: orderViewModelCubit.currentStep)
+                      StepperIndicator(
+                          currentStep: orderViewModelCubit.currentStep)
                     ],
                   ),
                 ),
@@ -85,8 +92,36 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
               padding: const EdgeInsets.all(8.0),
               child: CurvedButton(
                 title: context.translate(LangKeys.showMap),
-                  onTap: () {}
-,
+                onTap: () {
+                  debugPrint(
+                      'orderId ${widget.orderId} - userId ${widget.userId}');
+                  context.pushNamed(AppRoutes.trackOrderMap, arguments: {
+                    "orderId": widget.orderId,
+                    "userId": widget.userId,
+                  });
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder:
+                  //             (context) => BlocProvider(
+                  //                   create: (context) =>
+                  //                       getIt.get<
+                  //                           MapViewModelCubit>()
+                  //                         ..doAction(
+                  //                             GetOrderDetails(
+                  //                           userId: successState
+                  //                                   .orders[index]
+                  //                                   .user ??
+                  //                               '',
+                  //                           orderId: successState
+                  //                                   .orders[index]
+                  //                                   .Id ??
+                  //                               '',
+                  //                         )),
+                  //                   child:
+                  //                       const MapScreen(),
+                  //                 )));
+                },
               ),
             ),
           );

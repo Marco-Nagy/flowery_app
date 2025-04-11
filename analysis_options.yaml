@@ -27,6 +27,9 @@ linter:
     prefer_const_constructors: true
     avoid_unused_constructor_parameters: true
     prefer_final_fields: true
+analyzer:
+  errors:
+    unnecessary_null_comparison: ignore
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
