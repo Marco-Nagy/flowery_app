@@ -1,5 +1,5 @@
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/features/product/data/data_sources/contracts/product_online_data_source.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/features/product/data/data_sources/contracts/product_online_data_source.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/entities/product_response_entity.dart';

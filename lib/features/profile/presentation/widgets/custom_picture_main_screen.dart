@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:flowery_e_commerce/di/di.dart';
-import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_view_model_cubit.dart';
-import 'package:flowery_e_commerce/generated/assets.dart';
+import 'package:flowery_store/di/di.dart';
+import 'package:flowery_store/features/profile/presentation/viewModel/profile_view_model_cubit.dart';
+import 'package:flowery_store/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -1,8 +1,8 @@
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/widgets/tab_bar_widget.dart';
-import 'package:flowery_e_commerce/features/orders/presentation/view_model/order_action.dart';
-import 'package:flowery_e_commerce/features/orders/presentation/view_model/order_cubit.dart';
-import 'package:flowery_e_commerce/features/orders/presentation/widget/order_list_widget.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/features/generic/presentation/widgets/tab_bar_widget.dart';
+import 'package:flowery_store/features/orders/presentation/view_model/order_action.dart';
+import 'package:flowery_store/features/orders/presentation/view_model/order_cubit.dart';
+import 'package:flowery_store/features/orders/presentation/widget/order_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

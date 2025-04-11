@@ -1,6 +1,6 @@
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/features/address/domain/entities/response/SavedAddressResponseEntity.dart';
-import 'package:flowery_e_commerce/features/address/domain/repository/address_repo.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/features/address/domain/entities/response/SavedAddressResponseEntity.dart';
+import 'package:flowery_store/features/address/domain/repository/address_repo.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

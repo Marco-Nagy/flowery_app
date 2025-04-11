@@ -1,6 +1,6 @@
-import 'package:flowery_e_commerce/features/home_screen/data/models/home_response_model_entity.dart';
-import 'package:flowery_e_commerce/features/home_screen/domain/entities/best_seller_entity.dart';
-import 'package:flowery_e_commerce/features/home_screen/domain/entities/occasions_entity.dart';
+import 'package:flowery_store/features/home_screen/data/models/home_response_model_entity.dart';
+import 'package:flowery_store/features/home_screen/domain/entities/best_seller_entity.dart';
+import 'package:flowery_store/features/home_screen/domain/entities/occasions_entity.dart';
 
 class HomeMappers {
 

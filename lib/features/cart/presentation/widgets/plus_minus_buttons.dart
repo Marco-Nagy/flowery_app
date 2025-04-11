@@ -1,5 +1,5 @@
-import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
-import 'package:flowery_e_commerce/generated/assets.dart';
+import 'package:flowery_store/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_store/generated/assets.dart';
 import 'package:flutter/material.dart';
 
 class PlusMinusButtons extends StatelessWidget {

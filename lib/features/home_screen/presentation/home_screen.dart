@@ -1,18 +1,18 @@
-import 'package:flowery_e_commerce/core/styles/app_images.dart';
-import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/di/di.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/screens/categories_view.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/view/cart_view.dart';
-import 'package:flowery_e_commerce/features/home_screen/presentation/tabs/home_tab.dart';
-import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
-import 'package:flowery_e_commerce/features/profile/presentation/views/profile_view.dart';
+import 'package:flowery_store/core/styles/app_images.dart';
+import 'package:flowery_store/core/styles/colors/my_colors.dart';
+import 'package:flowery_store/di/di.dart';
+import 'package:flowery_store/features/cart/presentation/viewModel/cart_base_action.dart';
+import 'package:flowery_store/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
+import 'package:flowery_store/features/generic/presentation/screens/categories_view.dart';
+import 'package:flowery_store/features/cart/presentation/view/cart_view.dart';
+import 'package:flowery_store/features/home_screen/presentation/tabs/home_tab.dart';
+import 'package:flowery_store/features/profile/presentation/views/profile_main_screen.dart';
+import 'package:flowery_store/features/profile/presentation/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/localization/lang_keys.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 

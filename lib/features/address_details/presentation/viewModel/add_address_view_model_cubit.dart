@@ -3,9 +3,9 @@ import 'package:country_state_city/models/city.dart';
 import 'package:country_state_city/models/country.dart';
 import 'package:country_state_city/utils/utils.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
-import 'package:flowery_e_commerce/features/address_details/presentation/viewModel/add_address_action.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/core/networking/error/error_model.dart';
+import 'package:flowery_store/features/address_details/presentation/viewModel/add_address_action.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 

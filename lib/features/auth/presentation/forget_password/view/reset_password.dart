@@ -1,11 +1,11 @@
-import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/core/utils/validators.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
-import 'package:flowery_e_commerce/features/auth/domain/entities/request/reset_password_request_entity.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_base_actions.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
+import 'package:flowery_store/core/styles/colors/my_colors.dart';
+import 'package:flowery_store/core/utils/validators.dart';
+import 'package:flowery_store/core/utils/widgets/buttons/carved_button.dart';
+import 'package:flowery_store/core/utils/widgets/custom_appbar.dart';
+import 'package:flowery_store/core/utils/widgets/spacing.dart';
+import 'package:flowery_store/features/auth/domain/entities/request/reset_password_request_entity.dart';
+import 'package:flowery_store/features/auth/presentation/forget_password/ViewModel/forget_password_base_actions.dart';
+import 'package:flowery_store/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -13,7 +13,7 @@ import '../../../../../core/utils/widgets/app_text_form_field.dart';
 import '../widgets/screen_description.dart';
 import '../widgets/screen_title.dart';
 import 'forget_password_bloc_listener.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import '../../../../../core/localization/lang_keys.dart';
 class ResetPassword extends HookWidget {
   ResetPassword({super.key});
