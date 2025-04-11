@@ -1,4 +1,6 @@
+import 'package:flowery_store/core/routes/app_routes.dart';
 import 'package:flowery_store/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/navigation.dart';
 import 'package:flowery_store/core/utils/widgets/base/app_loader.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,8 +46,8 @@ class MapScreen extends StatelessWidget {
         if (state is TrackOrderViewModelLoading) {
           return const Center(child: AppLoader());
         } else {
-          final order = orderViewModelCubit.trackOrderEntity!.orders;
-          final drive = orderViewModelCubit.trackOrderEntity!.driver;
+          final order = orderViewModelCubit.trackOrderEntity?.orders ;
+          final drive = orderViewModelCubit.trackOrderEntity?.driver;
 
           return Scaffold(
             backgroundColor: MyColors.white,
@@ -65,12 +67,12 @@ class MapScreen extends StatelessWidget {
                         child: GoogleMap(
                           initialCameraPosition: CameraPosition(
                             target: _calculateCenter(
-                              userLat: order!.user!.location!.latitude,
-                              userLng: order.user!.location!.longitude,
-                              storeLat: order.store!.latitude,
-                              storeLng: order.store!.longitude,
-                              driverLat: drive!.location!.latitude,
-                              driverLng: drive.location!.longitude,
+                              userLat: order?.user?.location!.latitude ?? 30.0566,
+                              userLng: order?.user!.location!.longitude ?? 31.3301,
+                              storeLat: order?.store!.latitude ?? 30.0566,
+                              storeLng: order?.store!.longitude ?? 31.3301,
+                              driverLat: drive?.location!.latitude ?? 30.0566,
+                              driverLng: drive?.location!.longitude ?? 31.3301,
                             ),
                             zoom: 14,
                           ),
@@ -94,7 +96,7 @@ class MapScreen extends StatelessWidget {
                               color: MyColors.gray,
                             )),
                         SizedBox(height: 8.h),
-                        Text(order!.updatedAt ?? "03 Sep 2024, 11:00 AM",
+                        Text(order?.updatedAt ?? "03 Sep 2024, 11:00 AM",
                             style: MyFonts.styleMedium500_16),
                       ],
                     ),
@@ -104,17 +106,19 @@ class MapScreen extends StatelessWidget {
                   SizedBox(height: 10.h),
                   AddressSection(
                     title: context.translate(LangKeys.PickupAddress),
-                    name: '${order.user!.firstName} ${order.user!.lastName}',
+                    name: '${order?.user!.firstName} ${order?.user!.lastName}',
                     address: context.translate(LangKeys.deliveryHeroToday),
-                    image: order.user!.photo ?? '',
-                    phone: order.user!.phone!,
+                    image: order?.user!.photo ?? '',
+                    phone: order?.user!.phone ?? '',
                   ),
                   SizedBox(height: 40.h),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: CurvedButton(
                       title: context.translate(LangKeys.orderDetails),
-                      onTap: () {},
+                      onTap: () {
+                        context.pushNamed(AppRoutes.orderView , arguments: order);
+                      },
                     ),
                   ),
                 ],
@@ -127,8 +131,8 @@ class MapScreen extends StatelessWidget {
   }
 
   Set<Marker> _buildMarkers(
-      OrderData order, Driver drive, Map<String, BitmapDescriptor> icons) {
-    return {
+      OrderData? order, Driver? drive, Map<String, BitmapDescriptor> icons) {
+    return order == null || drive == null ? {} : {
       Marker(
         markerId: const MarkerId('user'),
         position: LatLng(
@@ -159,8 +163,8 @@ class MapScreen extends StatelessWidget {
     };
   }
 
-  Set<Polyline> _buildPolylines(OrderData order, Driver driver) {
-    return {
+  Set<Polyline> _buildPolylines(OrderData? order, Driver? driver) {
+    return order == null || driver == null ? {} : {
       Polyline(
         polylineId: const PolylineId('route'),
         color: MyColors.baseColor,
@@ -199,10 +203,13 @@ class MapScreen extends StatelessWidget {
 
   Future<void> _adjustCameraToFitMarkers(
     GoogleMapController controller,
-    OrderData order,
-    Driver driver,
+    OrderData? order,
+    Driver? driver,
   ) async {
-    final bounds = LatLngBounds(
+    final bounds = order == null || driver == null ? LatLngBounds(
+      southwest: const LatLng(30.0566, 31.3301),
+      northeast: const LatLng(30.0566, 31.3301),
+    ) : LatLngBounds(
       southwest: LatLng(
         _min(
           order.user!.location!.latitude,
@@ -230,7 +237,7 @@ class MapScreen extends StatelessWidget {
     );
 
     await controller.animateCamera(
-      CameraUpdate.newLatLngBounds(bounds, 100),
+      CameraUpdate.newLatLngBounds(bounds, 15),
     );
   }
 
