@@ -1,6 +1,6 @@
-import 'package:flowery_e_commerce/features/address_details/data/models/request/add_address_request_dto.dart';
-import 'package:flowery_e_commerce/features/address_details/domain/entities/request/add_address_request_entity.dart';
-import 'package:flowery_e_commerce/features/address_details/domain/entities/response/add_address_response_entity.dart';
+import 'package:flowery_store/features/address_details/data/models/request/add_address_request_dto.dart';
+import 'package:flowery_store/features/address_details/domain/entities/request/add_address_request_entity.dart';
+import 'package:flowery_store/features/address_details/domain/entities/response/add_address_response_entity.dart';
 
 import '../models/response/add_address_response_dto.dart';
 

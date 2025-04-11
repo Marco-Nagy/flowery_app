@@ -1,6 +1,6 @@
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/features/auth/domain/entities/request/signup_request_entity.dart';
-import 'package:flowery_e_commerce/features/auth/domain/entities/response/forget_password_response_entity.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/features/auth/domain/entities/request/signup_request_entity.dart';
+import 'package:flowery_store/features/auth/domain/entities/response/forget_password_response_entity.dart';
 
 import '../../data/models/response/reset_password_response_dto.dart';
 import '../../data/models/response/verify_reset_code_response.dart';

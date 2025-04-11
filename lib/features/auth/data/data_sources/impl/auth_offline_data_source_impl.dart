@@ -1,5 +1,5 @@
-import 'package:flowery_e_commerce/core/services/shared_preference/shared_preference_helper.dart';
-import 'package:flowery_e_commerce/core/services/shared_preference/shared_pref_keys.dart';
+import 'package:flowery_store/core/services/shared_preference/shared_preference_helper.dart';
+import 'package:flowery_store/core/services/shared_preference/shared_pref_keys.dart';
 import 'package:injectable/injectable.dart';
 import '../contracts/offline_data_source.dart';
 

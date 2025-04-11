@@ -1,5 +1,5 @@
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
-import 'package:flowery_e_commerce/generated/assets.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/generated/assets.dart';
 import 'package:flutter/material.dart';
 
 import '../../localization/lang_keys.dart';

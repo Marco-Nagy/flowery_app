@@ -1,14 +1,14 @@
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
-import 'package:flowery_e_commerce/di/di.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_icon_badge.dart';
-import 'package:flowery_e_commerce/features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/views/generic_item_screen.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/widgets/filter_chip_button.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/di/di.dart';
+import 'package:flowery_store/features/cart/presentation/viewModel/cart_base_action.dart';
+import 'package:flowery_store/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
+import 'package:flowery_store/features/cart/presentation/widgets/cart_icon_badge.dart';
+import 'package:flowery_store/features/categories/presentation/categories/viewModel/categories_view_model_cubit.dart';
+import 'package:flowery_store/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
+import 'package:flowery_store/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
+import 'package:flowery_store/features/generic/presentation/generic_item_by_product/views/generic_item_screen.dart';
+import 'package:flowery_store/features/generic/presentation/widgets/filter_chip_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

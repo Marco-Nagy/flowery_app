@@ -1,11 +1,11 @@
-import 'package:flowery_e_commerce/features/cart/data/models/request/add_product_to_cart_request_dto.dart';
-import 'package:flowery_e_commerce/features/cart/data/models/request/update_cart_product_quantity_request_dto.dart';
-import 'package:flowery_e_commerce/features/cart/data/models/response/add_to_cart_response_dto.dart';
-import 'package:flowery_e_commerce/features/cart/data/models/response/cart_response_dto.dart';
-import 'package:flowery_e_commerce/features/cart/data/models/response/remove_from_cart_response_dto.dart';
-import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
-import 'package:flowery_e_commerce/features/cart/domain/entities/cart_response_entity.dart';
-import 'package:flowery_e_commerce/features/cart/domain/entities/delete_from_cart_entity.dart';
+import 'package:flowery_store/features/cart/data/models/request/add_product_to_cart_request_dto.dart';
+import 'package:flowery_store/features/cart/data/models/request/update_cart_product_quantity_request_dto.dart';
+import 'package:flowery_store/features/cart/data/models/response/add_to_cart_response_dto.dart';
+import 'package:flowery_store/features/cart/data/models/response/cart_response_dto.dart';
+import 'package:flowery_store/features/cart/data/models/response/remove_from_cart_response_dto.dart';
+import 'package:flowery_store/features/cart/domain/entities/cart_entity.dart';
+import 'package:flowery_store/features/cart/domain/entities/cart_response_entity.dart';
+import 'package:flowery_store/features/cart/domain/entities/delete_from_cart_entity.dart';
 
 class CartMappers {
   AddProductToCartRequestDto toCrtRequestDto(String id) {

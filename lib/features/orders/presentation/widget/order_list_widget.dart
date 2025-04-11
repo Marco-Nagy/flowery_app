@@ -1,6 +1,8 @@
-import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
-import 'package:flowery_e_commerce/di/di.dart';
+// ignore_for_file: unnecessary_null_comparison
+
+import 'package:flowery_store/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/di/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,7 +33,7 @@ class ListOrderWidget extends StatelessWidget {
         switch (state.runtimeType) {
           case OrderSuccess:
             final successState = state as OrderSuccess;
-            if (successState.orders == null || successState.orders!.isEmpty) {
+            if (successState.orders == null || successState.orders.isEmpty) {
               return Center(
                 child: Text(
                   context.translate(LangKeys.noOrdersAvailable),
@@ -39,13 +41,15 @@ class ListOrderWidget extends StatelessWidget {
                 ),
               );
             }
-            return ListView.separated(
+            return  ListView.separated(
                 padding: EdgeInsets.symmetric(horizontal: 25.w),
                 separatorBuilder: (context, index) => SizedBox(height: 16.h),
-                itemCount: successState.orders!.length,
+                itemCount: successState.orders.length,
+                reverse: true,
                 itemBuilder: (context, index) {
-                  return Container(
-                    height: 125.h,
+                  return     successState.orders[index].orderItems!
+                      .first.product!=null?Container(
+                    height: null,
                     padding: const EdgeInsets.all(8.0),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -54,9 +58,10 @@ class ListOrderWidget extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
+
                         Expanded(
                             child: CachedNetworkWidget(
-                          imageUrl: successState.orders![index].orderItems!
+                          imageUrl: successState.orders[index].orderItems!
                               .first.product!.imgCover!,
                           fit: BoxFit.cover,
                           height: 109.h,
@@ -70,15 +75,15 @@ class ListOrderWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Text(
-                                successState.orders![index].orderItems!.first
+                                successState.orders[index].orderItems!.first
                                     .product!.title!,
                                 style: MyFonts.styleRegular400_12,
                               ),
                               Text(
-                                  '${context.translate(LangKeys.egp)} ${successState.orders![index].orderItems!.first.product!.price.toString()}',
+                                  '${context.translate(LangKeys.egp)} ${successState.orders[index].orderItems!.first.product!.price.toString()}',
                                   style: MyFonts.styleMedium500_12),
                               Text(
-                                  '${context.translate(LangKeys.orderNumber)} ${successState.orders![index].orderNumber}',
+                                  '${context.translate(LangKeys.orderNumber)} ${successState.orders[index].orderNumber}',
                                   style: MyFonts.styleRegular400_12
                                       .copyWith(color: MyColors.grey)),
                               verticalSpacing(8.h),
@@ -91,13 +96,14 @@ class ListOrderWidget extends StatelessWidget {
                                   color: MyColors.baseColor,
                                   title: textButton,
                                   onTap: () {
+                                    debugPrint('orderId ${successState.orders[index].Id} - userId ${successState.orders[index].user}');
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(builder: (context) => BlocProvider(
                                         create: (context) => getIt.get<MapViewModelCubit>()
                                           ..doAction(GetOrderDetails(
-                                            userId: successState.orders![index].user!,
-                                            orderId: successState.orders![index].Id!,
+                                            userId: successState.orders[index].user??'',
+                                            orderId: successState.orders[index].Id??'',
                                           )),
                                           child: const MapScreen(
 
@@ -118,7 +124,7 @@ class ListOrderWidget extends StatelessWidget {
                         )
                       ],
                     ),
-                  );
+                  ):const SizedBox();
                 });
           case OrderError:
             final errorState = state as OrderError;

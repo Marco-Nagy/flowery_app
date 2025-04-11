@@ -1,6 +1,6 @@
-import 'package:flowery_e_commerce/core/routes/app_routes.dart';
-import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
-import 'package:flowery_e_commerce/features/product/domain/entities/product_response_entity.dart';
+import 'package:flowery_store/core/routes/app_routes.dart';
+import 'package:flowery_store/core/utils/extension/navigation.dart';
+import 'package:flowery_store/features/product/domain/entities/product_response_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

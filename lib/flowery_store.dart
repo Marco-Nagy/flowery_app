@@ -1,6 +1,6 @@
-import 'package:flowery_e_commerce/core/routes/app_routes.dart';
-import 'package:flowery_e_commerce/core/services/connectivity_controller.dart';
-import 'package:flowery_e_commerce/core/services/shared_preference/shared_pref_keys.dart';
+import 'package:flowery_store/core/routes/app_routes.dart';
+import 'package:flowery_store/core/services/connectivity_controller.dart';
+import 'package:flowery_store/core/services/shared_preference/shared_pref_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,8 +13,8 @@ import 'core/utils/screens/no_network_screen.dart';
 import 'di/di.dart';
 final navigatorKey = GlobalKey<NavigatorState>(); // ✅ Correct usage
 
-class FloweryEcommerce extends StatelessWidget {
-  FloweryEcommerce({super.key});
+class FloweryStore extends StatelessWidget {
+  FloweryStore({super.key});
 
 
   @override
