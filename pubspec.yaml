@@ -1,4 +1,4 @@
-name: flowery_e_commerce
+name: flowery_store
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -113,6 +113,8 @@ dev_dependencies:
   test:
   flutter_native_splash:
   mockito:
+  rename: ^3.0.2
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

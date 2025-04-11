@@ -1,4 +1,4 @@
-import 'package:flowery_e_commerce/features/generic/presentation/widgets/filter_chip_button.dart';
+import 'package:flowery_store/features/generic/presentation/widgets/filter_chip_button.dart';
 import 'package:flutter/material.dart';
 
 class FilterChipButtonWidget extends StatelessWidget {

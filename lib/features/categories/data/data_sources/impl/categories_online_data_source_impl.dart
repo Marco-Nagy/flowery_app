@@ -1,8 +1,8 @@
-import 'package:flowery_e_commerce/core/networking/api_execute.dart';
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/features/categories/data/mappers/categories_mappers.dart';
+import 'package:flowery_store/core/networking/api_execute.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/features/categories/data/mappers/categories_mappers.dart';
 
-import 'package:flowery_e_commerce/features/categories/domain/entities/response/get_all_categories_response_entity.dart';
+import 'package:flowery_store/features/categories/domain/entities/response/get_all_categories_response_entity.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/networking/api/api_manager.dart';

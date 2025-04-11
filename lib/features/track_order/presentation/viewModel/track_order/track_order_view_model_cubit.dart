@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/core/networking/error/error_handler.dart';
-import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
-import 'package:flowery_e_commerce/core/services/firebase_helper/fire_store_ref_key.dart';
-import 'package:flowery_e_commerce/features/track_order/domain/entities/track_order_entity.dart';
-import 'package:flowery_e_commerce/features/track_order/domain/use_cases/get_order_by_order_id_case.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/core/networking/error/error_handler.dart';
+import 'package:flowery_store/core/networking/error/error_model.dart';
+import 'package:flowery_store/core/services/firebase_helper/fire_store_ref_key.dart';
+import 'package:flowery_store/features/track_order/domain/entities/track_order_entity.dart';
+import 'package:flowery_store/features/track_order/domain/use_cases/get_order_by_order_id_case.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 
@@ -41,6 +41,7 @@ class TrackOrderViewModelCubit extends Cubit<TrackOrderViewModelState> {
     emit(TrackOrderViewModelLoading());
     final resultStream = await getOrderByOrderIdCase(
         orderId: action.orderId, userId: action.userId);
+    debugPrint(' action getOrderDetails ${action.orderId} - ${action.userId}');
     resultStream.listen((result) {
       switch (result) {
         case Success<TrackOrderEntity>():

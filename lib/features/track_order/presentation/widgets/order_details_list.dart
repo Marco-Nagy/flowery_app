@@ -1,4 +1,4 @@
-import 'package:flowery_e_commerce/features/track_order/domain/entities/track_order_entity.dart';
+import 'package:flowery_store/features/track_order/domain/entities/track_order_entity.dart';
 import 'package:flutter/material.dart';
 
 import 'order_item_card.dart';

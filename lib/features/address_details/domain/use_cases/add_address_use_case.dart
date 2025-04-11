@@ -1,4 +1,4 @@
-import 'package:flowery_e_commerce/features/address_details/domain/contracts/add_address_repo.dart';
+import 'package:flowery_store/features/address_details/domain/contracts/add_address_repo.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/networking/common/api_result.dart';

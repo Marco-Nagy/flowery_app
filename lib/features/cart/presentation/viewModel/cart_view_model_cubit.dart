@@ -1,15 +1,15 @@
 import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/core/networking/error/error_handler.dart';
-import 'package:flowery_e_commerce/core/networking/error/error_model.dart';
-import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
-import 'package:flowery_e_commerce/features/cart/domain/use_cases/add_to_cart_use_case.dart';
-import 'package:flowery_e_commerce/features/cart/domain/use_cases/clear_user_cart_data_use_case.dart';
-import 'package:flowery_e_commerce/features/cart/domain/use_cases/get_user_cart_data_use_case.dart';
-import 'package:flowery_e_commerce/features/cart/domain/use_cases/remove_product_from_cart_use_case.dart';
-import 'package:flowery_e_commerce/features/cart/domain/use_cases/update_product_quantity_use_case.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/core/networking/error/error_handler.dart';
+import 'package:flowery_store/core/networking/error/error_model.dart';
+import 'package:flowery_store/features/cart/domain/entities/cart_entity.dart';
+import 'package:flowery_store/features/cart/domain/use_cases/add_to_cart_use_case.dart';
+import 'package:flowery_store/features/cart/domain/use_cases/clear_user_cart_data_use_case.dart';
+import 'package:flowery_store/features/cart/domain/use_cases/get_user_cart_data_use_case.dart';
+import 'package:flowery_store/features/cart/domain/use_cases/remove_product_from_cart_use_case.dart';
+import 'package:flowery_store/features/cart/domain/use_cases/update_product_quantity_use_case.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 

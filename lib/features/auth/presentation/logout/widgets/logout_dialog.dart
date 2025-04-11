@@ -1,14 +1,14 @@
-import 'package:flowery_e_commerce/core/routes/app_routes.dart';
-import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
-import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
-import 'package:flowery_e_commerce/di/di.dart';
-import 'package:flowery_e_commerce/features/auth/data/data_sources/contracts/offline_data_source.dart';
+import 'package:flowery_store/core/routes/app_routes.dart';
+import 'package:flowery_store/core/styles/colors/my_colors.dart';
+import 'package:flowery_store/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_store/core/utils/extension/navigation.dart';
+import 'package:flowery_store/core/utils/widgets/base/snack_bar.dart';
+import 'package:flowery_store/core/utils/widgets/buttons/carved_button.dart';
+import 'package:flowery_store/di/di.dart';
+import 'package:flowery_store/features/auth/data/data_sources/contracts/offline_data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import '../../../../../core/localization/lang_keys.dart';
 void showLogoutDialog(BuildContext context) {
   final OfflineDataSource offlineDataSource = getIt<OfflineDataSource>();

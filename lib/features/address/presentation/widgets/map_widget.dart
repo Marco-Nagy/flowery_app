@@ -1,4 +1,4 @@
-import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
+import 'package:flowery_store/core/styles/colors/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:provider/provider.dart';
