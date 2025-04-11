@@ -1,10 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flowery_e_commerce/features/cart/domain/entities/cart_response_entity.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/widgets/plus_minus_buttons.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/widgets/cached_network_widget.dart';
-import 'package:flowery_e_commerce/generated/assets.dart';
+import 'package:flowery_store/features/cart/domain/entities/cart_response_entity.dart';
+import 'package:flowery_store/features/cart/presentation/viewModel/cart_base_action.dart';
+import 'package:flowery_store/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
+import 'package:flowery_store/features/cart/presentation/widgets/plus_minus_buttons.dart';
+import 'package:flowery_store/features/generic/presentation/widgets/cached_network_widget.dart';
+import 'package:flowery_store/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

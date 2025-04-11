@@ -1,7 +1,7 @@
-import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_store/core/styles/colors/my_colors.dart';
+import 'package:flowery_store/core/styles/fonts/my_fonts.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import '../../../../../core/localization/lang_keys.dart';
 Widget conditionText(BuildContext context) {
   return RichText(

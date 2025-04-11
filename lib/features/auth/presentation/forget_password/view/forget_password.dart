@@ -1,10 +1,10 @@
-import 'package:flowery_e_commerce/core/routes/app_routes.dart';
-import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
+import 'package:flowery_store/core/routes/app_routes.dart';
+import 'package:flowery_store/core/utils/extension/navigation.dart';
+import 'package:flowery_store/core/utils/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import '../../../../../core/localization/lang_keys.dart';
 import '../../../../../core/styles/colors/my_colors.dart';
 import '../../../../../core/utils/validators.dart';

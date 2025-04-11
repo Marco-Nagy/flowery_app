@@ -1,5 +1,5 @@
-import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/widgets/cached_network_widget.dart';
+import 'package:flowery_store/core/styles/colors/my_colors.dart';
+import 'package:flowery_store/features/generic/presentation/widgets/cached_network_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

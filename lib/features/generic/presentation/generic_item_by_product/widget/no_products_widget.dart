@@ -1,7 +1,7 @@
-import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
-import 'package:flowery_e_commerce/generated/assets.dart';
+import 'package:flowery_store/core/styles/colors/my_colors.dart';
+import 'package:flowery_store/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/generated/assets.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/localization/lang_keys.dart';
 import '../../../../../core/utils/widgets/spacing.dart';

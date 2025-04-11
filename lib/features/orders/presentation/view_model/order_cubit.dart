@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flowery_e_commerce/features/orders/domain/entities/order_response_entity.dart';
+import 'package:flowery_store/features/orders/domain/entities/order_response_entity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';

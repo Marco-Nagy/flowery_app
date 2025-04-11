@@ -1,5 +1,5 @@
-import 'package:flowery_e_commerce/features/orders/data/models/order_response_dto.dart';
-import 'package:flowery_e_commerce/features/orders/domain/entities/order_response_entity.dart';
+import 'package:flowery_store/features/orders/data/models/order_response_dto.dart';
+import 'package:flowery_store/features/orders/domain/entities/order_response_entity.dart';
 
 
 class OrderMapper {

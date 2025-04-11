@@ -242,6 +242,7 @@ class LangKeys {
   static const String showMap = 'show_map';
   static const String orderDetails = 'order_details';
   static const String PickupAddress = 'Pickup_address';
-
+  static const String subscribedToNotifications = 'subscribed_to_notifications';
+  static const String unsubscribedToNotifications = 'unsubscribed_to_notifications';
 
 }

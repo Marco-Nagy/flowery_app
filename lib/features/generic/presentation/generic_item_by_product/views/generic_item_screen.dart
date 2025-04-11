@@ -8,7 +8,7 @@ import '../../../../generic/presentation/widgets/tab_bar_widget.dart';
 import '../viewModel/generic_item_action.dart';
 import '../viewModel/generic_item_view_model_cubit.dart';
 import '../widget/generic_builder_widget.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 class GenericItemScreen extends StatelessWidget {
   const GenericItemScreen(
       {super.key, required this.resourceName, required this.field,  this.onClick});
