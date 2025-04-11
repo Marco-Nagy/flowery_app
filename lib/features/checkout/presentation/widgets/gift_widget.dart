@@ -1,9 +1,9 @@
-import 'package:flowery_e_commerce/core/utils/widgets/app_text_form_field.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/buttons/switch_button_widget.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
+import 'package:flowery_store/core/utils/widgets/app_text_form_field.dart';
+import 'package:flowery_store/core/utils/widgets/buttons/switch_button_widget.dart';
+import 'package:flowery_store/core/utils/widgets/spacing.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/localization/lang_keys.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 class GiftWidget extends StatefulWidget {
 
   const GiftWidget({super.key});

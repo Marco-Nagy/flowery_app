@@ -236,5 +236,7 @@
     "out_for_delivery": "خارج للتوصيل",
     "delivered": "تم التوصيل",
     "show_map": "عرض الخريطة",
-    "Pickup_address": "عنوان الاستلام"
+    "Pickup_address": "عنوان الاستلام",
+    "subscribed_to_notifications": "تم الاشتراك في إشعارات",
+    "unsubscribed_to_notifications": "تم إلغاء الاشتراك في إشعارات"
 }

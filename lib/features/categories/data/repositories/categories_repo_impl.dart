@@ -1,7 +1,7 @@
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/features/categories/data/data_sources/contracts/categories_online_data_source.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/features/categories/data/data_sources/contracts/categories_online_data_source.dart';
 
-import 'package:flowery_e_commerce/features/categories/domain/entities/response/get_all_categories_response_entity.dart';
+import 'package:flowery_store/features/categories/domain/entities/response/get_all_categories_response_entity.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/repositories/categories_repo.dart';

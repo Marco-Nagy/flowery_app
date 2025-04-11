@@ -1,4 +1,4 @@
-import 'package:flowery_e_commerce/generated/assets.dart';
+import 'package:flowery_store/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

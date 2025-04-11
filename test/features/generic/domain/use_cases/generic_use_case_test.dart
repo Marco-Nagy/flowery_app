@@ -1,7 +1,7 @@
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/features/generic/domain/contracts/generic_repo.dart';
-import 'package:flowery_e_commerce/features/generic/domain/entity/generic_response_entity.dart';
-import 'package:flowery_e_commerce/features/generic/domain/use_cases/generic_use_case.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/features/generic/domain/contracts/generic_repo.dart';
+import 'package:flowery_store/features/generic/domain/entity/generic_response_entity.dart';
+import 'package:flowery_store/features/generic/domain/use_cases/generic_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

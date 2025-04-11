@@ -1,7 +1,7 @@
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/features/address/domain/entities/response/SavedAddressResponseEntity.dart';
-import 'package:flowery_e_commerce/features/checkout/domain/entities/cash_place_order_entity.dart';
-import 'package:flowery_e_commerce/features/checkout/domain/repositories/contracts/checkout_repository.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/features/address/domain/entities/response/SavedAddressResponseEntity.dart';
+import 'package:flowery_store/features/checkout/domain/entities/cash_place_order_entity.dart';
+import 'package:flowery_store/features/checkout/domain/repositories/contracts/checkout_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

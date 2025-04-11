@@ -1,4 +1,4 @@
-import 'package:flowery_e_commerce/features/categories/domain/repositories/categories_repo.dart';
+import 'package:flowery_store/features/categories/domain/repositories/categories_repo.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/networking/common/api_result.dart';

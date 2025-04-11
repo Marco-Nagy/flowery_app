@@ -1,4 +1,4 @@
-package com.example.flowery_e_commerce
+package com.elevate.flowery_store
 
 import io.flutter.embedding.android.FlutterActivity
 

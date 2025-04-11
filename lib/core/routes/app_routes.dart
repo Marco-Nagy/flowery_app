@@ -1,37 +1,40 @@
-import 'package:flowery_e_commerce/core/routes/base_routes.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
-import 'package:flowery_e_commerce/features/address/presentation/view/address_screen.dart';
-import 'package:flowery_e_commerce/features/address/presentation/view/map_view.dart';
-import 'package:flowery_e_commerce/features/address/presentation/view/saved_address_screen.dart';
-import 'package:flowery_e_commerce/features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/address/presentation/view_model/address_cubit.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/email_verification.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/forget_password/view/reset_password.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/signup_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/best_seller/presentation/cubit/most_selling_cubit.dart';
-import 'package:flowery_e_commerce/features/best_seller/presentation/screens/most_selling_screen.dart';
-import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/view/cart_view.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_base_action.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/checkout/presentation/view/checkout_screen.dart';
-import 'package:flowery_e_commerce/features/checkout/presentation/view/place_order_success.dart';
-import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/screens/categories_view.dart';
-import 'package:flowery_e_commerce/features/home_screen/presentation/home_screen.dart';
-import 'package:flowery_e_commerce/features/notification_list/presentation/model/notification_args.dart';
-import 'package:flowery_e_commerce/features/product/presentation/search/viewModel/search_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/product/presentation/search/views/search_view.dart';
-import 'package:flowery_e_commerce/features/product/presentation/view/product_details_view.dart';
-import 'package:flowery_e_commerce/features/profile/presentation/views/profile_main_screen.dart';
-import 'package:flowery_e_commerce/features/track_order/presentation/viewModel/track_order/track_order_actions.dart';
-import 'package:flowery_e_commerce/features/track_order/presentation/viewModel/track_order/track_order_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/track_order/presentation/views/track_order_screen.dart';
+import 'package:flowery_store/core/routes/base_routes.dart';
+import 'package:flowery_store/core/utils/widgets/base/app_loader.dart';
+import 'package:flowery_store/features/address/presentation/view/address_screen.dart';
+import 'package:flowery_store/features/address/presentation/view/map_view.dart';
+import 'package:flowery_store/features/address/presentation/view/saved_address_screen.dart';
+import 'package:flowery_store/features/address/presentation/view_model/address_cubit.dart';
+import 'package:flowery_store/features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
+import 'package:flowery_store/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
+import 'package:flowery_store/features/auth/presentation/forget_password/view/email_verification.dart';
+import 'package:flowery_store/features/auth/presentation/forget_password/view/reset_password.dart';
+import 'package:flowery_store/features/auth/presentation/signup/view_model/signup_view_model_cubit.dart';
+import 'package:flowery_store/features/best_seller/presentation/cubit/most_selling_cubit.dart';
+import 'package:flowery_store/features/best_seller/presentation/screens/most_selling_screen.dart';
+import 'package:flowery_store/features/cart/domain/entities/cart_entity.dart';
+import 'package:flowery_store/features/cart/presentation/view/cart_view.dart';
+import 'package:flowery_store/features/cart/presentation/viewModel/cart_base_action.dart';
+import 'package:flowery_store/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
+import 'package:flowery_store/features/checkout/presentation/view/checkout_screen.dart';
+import 'package:flowery_store/features/checkout/presentation/view/place_order_success.dart';
+import 'package:flowery_store/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
+import 'package:flowery_store/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
+import 'package:flowery_store/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
+import 'package:flowery_store/features/generic/presentation/screens/categories_view.dart';
+import 'package:flowery_store/features/home_screen/presentation/home_screen.dart';
+import 'package:flowery_store/features/notification_list/presentation/model/notification_args.dart';
+import 'package:flowery_store/features/product/presentation/search/viewModel/search_view_model_cubit.dart';
+import 'package:flowery_store/features/product/presentation/search/views/search_view.dart';
+import 'package:flowery_store/features/product/presentation/view/product_details_view.dart';
+import 'package:flowery_store/features/profile/presentation/views/profile_main_screen.dart';
+import 'package:flowery_store/features/track_order/presentation/viewModel/map/map_view_model_cubit.dart';
+import 'package:flowery_store/features/track_order/presentation/viewModel/track_order/track_order_actions.dart';
+import 'package:flowery_store/features/track_order/presentation/viewModel/track_order/track_order_view_model_cubit.dart';
+import 'package:flowery_store/features/track_order/presentation/views/map_screen.dart';
+import 'package:flowery_store/features/track_order/presentation/views/track_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../di/di.dart';
 import '../../features/about_app/presentation/views/about_app_view.dart';
 import '../../features/auth/presentation/forget_password/view/forget_password.dart';
@@ -71,9 +74,9 @@ class AppRoutes {
   static const String searchView = 'searchView';
   static const String notificationView = 'notificationView';
   static const String cartScreen = 'cartScreen';
-  static const String placeOrderSuccess= 'placeOrderSuccess';
+  static const String placeOrderSuccess = 'placeOrderSuccess';
   static const String trackOrder = 'trackOrder';
-
+  static const String trackOrderMap = 'trackOrderMap';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -97,9 +100,9 @@ class AppRoutes {
       case AppRoutes.emailVerification:
         return BaseRoute(
             page: BlocProvider(
-              create: (context) => getIt.get<ForgetPasswordViewModelCubit>(),
-              child: EmailVerification(args as String),
-            ));
+          create: (context) => getIt.get<ForgetPasswordViewModelCubit>(),
+          child: EmailVerification(args as String),
+        ));
 
       case AppRoutes.resetPassWord:
         return BaseRoute(
@@ -134,7 +137,7 @@ class AppRoutes {
           page: MultiBlocProvider(providers: [
             BlocProvider(
               create: (context) =>
-              getIt.get<MostSellerCubit>()..getMostSellers(),
+                  getIt.get<MostSellerCubit>()..getMostSellers(),
             ),
             BlocProvider(
                 create: (context) => getIt.get<CartViewModelCubit>()
@@ -163,14 +166,14 @@ class AppRoutes {
       case AppRoutes.checkoutScreen:
         return BaseRoute(
             page: MultiBlocProvider(providers: [
-              BlocProvider(
-                create: (context) =>
+          BlocProvider(
+            create: (context) =>
                 getIt.get<AddressViewModel>()..getSavedAddresses(),
-              ),
-              BlocProvider(
-                create: (context) => getIt.get<CheckoutViewModelCubit>(),
-              ),
-            ], child: CheckoutScreen(cart: args as CartEntity)));
+          ),
+          BlocProvider(
+            create: (context) => getIt.get<CheckoutViewModelCubit>(),
+          ),
+        ], child: CheckoutScreen(cart: args as CartEntity)));
       case AppRoutes.savedAddressScreen:
         return BaseRoute(page: const SavedAddressScreen());
       case AppRoutes.addressScreen:
@@ -183,47 +186,79 @@ class AppRoutes {
       case AppRoutes.termsAndConditionsPage:
         return BaseRoute(page: const TermsAndConditionsPage());
       case AppRoutes.orderView:
-        return BaseRoute(page: BlocProvider(
-            create: (context) => getIt.get<OrderCubit>()
-              ..doAction(GetOrders('inProgress') ),
-            child: const OrderView()));
+        return BaseRoute(
+            page: BlocProvider(
+                create: (context) =>
+                    getIt.get<OrderCubit>()..doAction(GetOrders('inProgress')),
+                child: const OrderView()));
       case AppRoutes.mapView:
         return BaseRoute(page: const MapView());
       case AppRoutes.cartScreen:
         return BaseRoute(
             page: BlocProvider(
-              create: (context) => getIt.get<CartViewModelCubit>()..doAction(GetUserCartDataAction(),),
-              child: const CartView( backButtonVisible: true),
-            ));
+          create: (context) => getIt.get<CartViewModelCubit>()
+            ..doAction(
+              GetUserCartDataAction(),
+            ),
+          child: const CartView(backButtonVisible: true),
+        ));
       case AppRoutes.notificationView:
         return BaseRoute(
             page: NotificationView(
-              args: args as NotificationArgs,
-            ));
+          args: args as NotificationArgs,
+        ));
       case AppRoutes.searchView:
         return BaseRoute(
             page: BlocProvider(
-              create: (context) => getIt.get<SearchViewModelCubit>(),
-              child: const SearchView(),
-            ));
+          create: (context) => getIt.get<SearchViewModelCubit>(),
+          child: const SearchView(),
+        ));
       case AppRoutes.placeOrderSuccess:
         final arguments = settings.arguments as Map<String, String>?;
-        return BaseRoute(page: PlaceOrderSuccess(orderId: arguments!['orderId']!, userId: arguments['userId']!));
+        return BaseRoute(
+            page: PlaceOrderSuccess(
+                orderId: arguments!['orderId']!, userId: arguments['userId']!));
 
       case AppRoutes.trackOrder:
         final arguments = settings.arguments as Map<String, String>?;
 
-        if (arguments == null || !arguments.containsKey('orderId') || !arguments.containsKey('userId')) {
-          return BaseRoute(page: const AppLoader()); // Handle missing data safely
+        if (arguments == null ||
+            !arguments.containsKey('orderId') ||
+            !arguments.containsKey('userId')) {
+          return BaseRoute(
+              page: const AppLoader()); // Handle missing data safely
         }
 
         return BaseRoute(
             page: BlocProvider(
                 create: (context) => getIt.get<TrackOrderViewModelCubit>()
                   ..doAction(GetOrderDetails(
-                      orderId: arguments['orderId']!, userId: arguments['userId']!)),
-                child: TrackOrderScreen(orderId: arguments['orderId']!, userId: arguments['userId']!))
-        );
+                      orderId: arguments['orderId']!,
+                      userId: arguments['userId']!)),
+                child: TrackOrderScreen(
+                    orderId: arguments['orderId']!,
+                    userId: arguments['userId']!)));
+      case AppRoutes.trackOrderMap:
+        final arguments = settings.arguments as Map<String, String>?;
+
+        if (arguments == null ||
+            !arguments.containsKey('orderId') ||
+            !arguments.containsKey('userId')) {
+          return BaseRoute(
+              page: const AppLoader()); // Handle missing data safely
+        }
+        return BaseRoute(
+            page: MultiBlocProvider(providers: [
+          BlocProvider(
+            create: (context) => getIt.get<TrackOrderViewModelCubit>()
+              ..doAction(GetOrderDetails(
+                  orderId: arguments['orderId']!,
+                  userId: arguments['userId']!)),
+          ),
+          BlocProvider(
+            create: (_) => getIt.get<MapViewModelCubit>(),
+          ),
+        ], child: const MapScreen()));
       default:
         return BaseRoute(page: const AppLoader());
     }

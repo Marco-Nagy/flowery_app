@@ -1,13 +1,13 @@
-import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
-import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_base_action.dart';
-import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/checkout/presentation/widgets/payment_option.dart';
-import 'package:flowery_e_commerce/features/checkout/presentation/widgets/section_title.dart';
+import 'package:flowery_store/core/styles/colors/my_colors.dart';
+import 'package:flowery_store/core/utils/widgets/spacing.dart';
+import 'package:flowery_store/features/checkout/presentation/viewModel/checkout_base_action.dart';
+import 'package:flowery_store/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
+import 'package:flowery_store/features/checkout/presentation/widgets/payment_option.dart';
+import 'package:flowery_store/features/checkout/presentation/widgets/section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/localization/lang_keys.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 class PaymentWidget extends StatefulWidget {
   const PaymentWidget({super.key});
 

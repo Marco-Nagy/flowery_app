@@ -1,6 +1,6 @@
 {
-    "name": "flowery_e_commerce",
-    "short_name": "flowery_e_commerce",
+    "name": "flowery_store",
+    "short_name": "flowery_store",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

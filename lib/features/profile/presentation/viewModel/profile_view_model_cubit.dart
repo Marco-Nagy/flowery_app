@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/features/profile/domain/use_cases/profile_use_case.dart';
-import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_actions.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/features/profile/domain/use_cases/profile_use_case.dart';
+import 'package:flowery_store/features/profile/presentation/viewModel/profile_actions.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 

@@ -1,7 +1,7 @@
 
 
- import 'package:flowery_e_commerce/features/best_seller/data/models/best_seller_response_model_entity.dart';
-import 'package:flowery_e_commerce/features/best_seller/domain/entities/most_selling_entity.dart';
+ import 'package:flowery_store/features/best_seller/data/models/best_seller_response_model_entity.dart';
+import 'package:flowery_store/features/best_seller/domain/entities/most_selling_entity.dart';
 
 class MostSellingMapper{
    static List<MostSellingProducts> toBestSellerEntity(

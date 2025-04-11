@@ -1,6 +1,9 @@
-import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
-import 'package:flowery_e_commerce/di/di.dart';
+// ignore_for_file: unnecessary_null_comparison
+
+import 'package:flowery_store/core/routes/app_routes.dart';
+import 'package:flowery_store/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,9 +14,6 @@ import '../../../../core/utils/widgets/base/app_loader.dart';
 import '../../../../core/utils/widgets/buttons/carved_button.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 import '../../../generic/presentation/widgets/cached_network_widget.dart';
-import '../../../track_order/presentation/viewModel/map/map_action.dart';
-import '../../../track_order/presentation/viewModel/map/map_view_model_cubit.dart';
-import '../../../track_order/presentation/views/map_screen.dart';
 import '../view_model/order_cubit.dart';
 
 class ListOrderWidget extends StatelessWidget {
@@ -31,7 +31,7 @@ class ListOrderWidget extends StatelessWidget {
         switch (state.runtimeType) {
           case OrderSuccess:
             final successState = state as OrderSuccess;
-            if (successState.orders == null || successState.orders!.isEmpty) {
+            if (successState.orders == null || successState.orders.isEmpty) {
               return Center(
                 child: Text(
                   context.translate(LangKeys.noOrdersAvailable),
@@ -42,83 +42,109 @@ class ListOrderWidget extends StatelessWidget {
             return ListView.separated(
                 padding: EdgeInsets.symmetric(horizontal: 25.w),
                 separatorBuilder: (context, index) => SizedBox(height: 16.h),
-                itemCount: successState.orders!.length,
+                itemCount: successState.orders.length,
+                reverse: true,
                 itemBuilder: (context, index) {
-                  return Container(
-                    height: 125.h,
-                    padding: const EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                      border: Border.all(color: MyColors.white70),
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                            child: CachedNetworkWidget(
-                          imageUrl: successState.orders![index].orderItems!
-                              .first.product!.imgCover!,
-                          fit: BoxFit.cover,
-                          height: 109.h,
-                          //  width: 127.w,
-                        )),
-                        horizontalSpacing(16.w),
-                        Expanded(
-                          flex: 2,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  return successState.orders[index].orderItems!.first.product !=
+                          null
+                      ? Container(
+                          height: null,
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(color: MyColors.white70),
+                          ),
+                          child: Row(
                             children: [
-                              Text(
-                                successState.orders![index].orderItems!.first
-                                    .product!.title!,
-                                style: MyFonts.styleRegular400_12,
-                              ),
-                              Text(
-                                  '${context.translate(LangKeys.egp)} ${successState.orders![index].orderItems!.first.product!.price.toString()}',
-                                  style: MyFonts.styleMedium500_12),
-                              Text(
-                                  '${context.translate(LangKeys.orderNumber)} ${successState.orders![index].orderNumber}',
-                                  style: MyFonts.styleRegular400_12
-                                      .copyWith(color: MyColors.grey)),
-                              verticalSpacing(8.h),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: CurvedButton(
-                                  height: 30.h,
-                                  style: MyFonts.styleMedium500_13
-                                      .copyWith(color: MyColors.white),
-                                  color: MyColors.baseColor,
-                                  title: textButton,
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(builder: (context) => BlocProvider(
-                                        create: (context) => getIt.get<MapViewModelCubit>()
-                                          ..doAction(GetOrderDetails(
-                                            userId: successState.orders![index].user!,
-                                            orderId: successState.orders![index].Id!,
-                                          )),
-                                          child: const MapScreen(
-
-                                          ),
-                                        )));},
-                                  // onTap: () {
-                                  //     context.pushNamed(AppRoutes.trackOrder,
-                                  //         arguments:
-                                  //         {"orderId": successState
-                                  //             .orders![index].Id!,
-                                  //           "userId": successState
-                                  //               .orders![index].user!});
-                                  // },
+                              Expanded(
+                                  child: CachedNetworkWidget(
+                                imageUrl: successState.orders[index].orderItems!
+                                    .first.product!.imgCover!,
+                                fit: BoxFit.cover,
+                                height: 109.h,
+                                //  width: 127.w,
+                              )),
+                              horizontalSpacing(16.w),
+                              Expanded(
+                                flex: 2,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(
+                                      successState.orders[index].orderItems!
+                                          .first.product!.title!,
+                                      style: MyFonts.styleRegular400_12,
+                                    ),
+                                    Text(
+                                        '${context.translate(LangKeys.egp)} ${successState.orders[index].orderItems!.first.product!.price.toString()}',
+                                        style: MyFonts.styleMedium500_12),
+                                    Text(
+                                        '${context.translate(LangKeys.orderNumber)} ${successState.orders[index].orderNumber}',
+                                        style: MyFonts.styleRegular400_12
+                                            .copyWith(color: MyColors.grey)),
+                                    verticalSpacing(8.h),
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: CurvedButton(
+                                        height: 30.h,
+                                        style: MyFonts.styleMedium500_13
+                                            .copyWith(color: MyColors.white),
+                                        color: MyColors.baseColor,
+                                        title: textButton,
+                                        onTap: () {
+                                          debugPrint(
+                                              'orderId ${successState.orders[index].Id} - userId ${successState.orders[index].user}');
+                                          context.pushNamed(
+                                              AppRoutes.trackOrderMap,
+                                              arguments: {
+                                                "orderId": successState
+                                                    .orders[index].Id!,
+                                                "userId": successState
+                                                    .orders[index].user!,
+                                              });
+                                          // Navigator.push(
+                                          //     context,
+                                          //     MaterialPageRoute(
+                                          //         builder:
+                                          //             (context) => BlocProvider(
+                                          //                   create: (context) =>
+                                          //                       getIt.get<
+                                          //                           MapViewModelCubit>()
+                                          //                         ..doAction(
+                                          //                             GetOrderDetails(
+                                          //                           userId: successState
+                                          //                                   .orders[index]
+                                          //                                   .user ??
+                                          //                               '',
+                                          //                           orderId: successState
+                                          //                                   .orders[index]
+                                          //                                   .Id ??
+                                          //                               '',
+                                          //                         )),
+                                          //                   child:
+                                          //                       const MapScreen(),
+                                          //                 )));
+                                        },
+                                        // onTap: () {
+                                        //     context.pushNamed(AppRoutes.trackOrder,
+                                        //         arguments:
+                                        //         {"orderId": successState
+                                        //             .orders![index].Id!,
+                                        //           "userId": successState
+                                        //               .orders![index].user!});
+                                        // },
+                                      ),
+                                    )
+                                  ],
                                 ),
                               )
                             ],
                           ),
                         )
-                      ],
-                    ),
-                  );
+                      : const SizedBox();
                 });
           case OrderError:
             final errorState = state as OrderError;

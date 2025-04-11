@@ -1,6 +1,6 @@
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import 'package:flutter/material.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
+import 'package:flowery_store/core/utils/widgets/spacing.dart';
 import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/utils/validators.dart';
 import '../../../auth/presentation/login/widgets/custom_text_form_field.dart';
