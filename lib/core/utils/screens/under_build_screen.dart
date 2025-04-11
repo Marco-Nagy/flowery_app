@@ -1,4 +1,4 @@
-import 'package:flowery_e_commerce/core/styles/app_images.dart';
+import 'package:flowery_store/core/styles/app_images.dart';
 import 'package:flutter/material.dart';
 
 class PageUnderBuildScreen extends StatelessWidget {

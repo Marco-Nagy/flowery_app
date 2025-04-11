@@ -1,8 +1,8 @@
-import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/widgets/custom_filter_categories.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/widgets/custom_search_categories.dart';
-import 'package:flowery_e_commerce/features/generic/presentation/widgets/filter_chip_button.dart';
+import 'package:flowery_store/core/styles/colors/my_colors.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/features/generic/presentation/widgets/custom_filter_categories.dart';
+import 'package:flowery_store/features/generic/presentation/widgets/custom_search_categories.dart';
+import 'package:flowery_store/features/generic/presentation/widgets/filter_chip_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/widgets/spacing.dart';

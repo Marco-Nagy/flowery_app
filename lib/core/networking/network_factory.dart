@@ -1,6 +1,6 @@
-import 'package:flowery_e_commerce/core/services/shared_preference/shared_pref_keys.dart';
-import 'package:flowery_e_commerce/core/services/shared_preference/shared_preference_helper.dart';
-import 'package:flowery_e_commerce/di/di.dart';
+import 'package:flowery_store/core/services/shared_preference/shared_pref_keys.dart';
+import 'package:flowery_store/core/services/shared_preference/shared_preference_helper.dart';
+import 'package:flowery_store/di/di.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
 

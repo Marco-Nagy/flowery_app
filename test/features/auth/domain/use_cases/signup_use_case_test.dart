@@ -1,9 +1,9 @@
-import 'package:flowery_e_commerce/features/auth/domain/contracts/auth_repo.dart';
-import 'package:flowery_e_commerce/features/auth/domain/use_cases/signup_use_case.dart';
+import 'package:flowery_store/features/auth/domain/contracts/auth_repo.dart';
+import 'package:flowery_store/features/auth/domain/use_cases/signup_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flowery_e_commerce/features/auth/domain/entities/request/signup_request_entity.dart';
-import 'package:flowery_e_commerce/features/auth/domain/entities/response/signup_response_entity.dart';
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
+import 'package:flowery_store/features/auth/domain/entities/request/signup_request_entity.dart';
+import 'package:flowery_store/features/auth/domain/entities/response/signup_response_entity.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 

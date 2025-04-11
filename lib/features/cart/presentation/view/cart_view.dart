@@ -1,11 +1,11 @@
-import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_view_body.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/widgets/empty_cart_screen.dart';
+import 'package:flowery_store/core/utils/widgets/base/snack_bar.dart';
+import 'package:flowery_store/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
+import 'package:flowery_store/features/cart/presentation/widgets/cart_view_body.dart';
+import 'package:flowery_store/features/cart/presentation/widgets/empty_cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/localization/lang_keys.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 class CartView extends StatelessWidget {
   const CartView({super.key, required this.backButtonVisible});
 

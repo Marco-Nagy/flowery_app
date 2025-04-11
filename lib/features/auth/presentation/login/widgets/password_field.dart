@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flowery_e_commerce/core/utils/validators.dart';
-import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/validators.dart';
+import 'package:flowery_store/core/styles/colors/my_colors.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import '../../../../../core/localization/lang_keys.dart';
 import 'custom_text_form_field.dart';
 

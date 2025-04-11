@@ -1,5 +1,5 @@
 
-# Flowery App [![codecov](https://codecov.io/github/Marco-Nagy/flowery_app/graph/badge.svg?token=GVVWT7Q6N6)](https://codecov.io/github/Marco-Nagy/flowery_app)
+# Flowery Store [![codecov](https://codecov.io/github/Marco-Nagy/flowery_app/graph/badge.svg?token=GVVWT7Q6N6)](https://codecov.io/github/Marco-Nagy/flowery_app)
 
 
 Flowery App is a Flutter-based e-commerce application designed to provide users with a seamless shopping experience for floral products.

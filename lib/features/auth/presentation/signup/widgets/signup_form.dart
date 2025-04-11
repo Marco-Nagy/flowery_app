@@ -1,9 +1,9 @@
-import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/signup/view_model/signup_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/signup/widgets/auth_footer.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/signup/widgets/condition_text.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/signup/widgets/signup_bloc_listener.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/signup/widgets/signup_fields.dart';
+import 'package:flowery_store/core/utils/extension/navigation.dart';
+import 'package:flowery_store/features/auth/presentation/signup/view_model/signup_view_model_cubit.dart';
+import 'package:flowery_store/features/auth/presentation/signup/widgets/auth_footer.dart';
+import 'package:flowery_store/features/auth/presentation/signup/widgets/condition_text.dart';
+import 'package:flowery_store/features/auth/presentation/signup/widgets/signup_bloc_listener.dart';
+import 'package:flowery_store/features/auth/presentation/signup/widgets/signup_fields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +12,7 @@ import '../../../../../core/utils/widgets/buttons/carved_button.dart';
 import '../../../../../core/utils/widgets/spacing.dart';
 import '../view_model/signup_action.dart';
 import 'gender_selection.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import '../../../../../core/localization/lang_keys.dart';
 class SignUpForm extends StatelessWidget {
   const SignUpForm({super.key});

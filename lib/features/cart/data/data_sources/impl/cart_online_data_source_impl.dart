@@ -1,9 +1,9 @@
- import 'package:flowery_e_commerce/core/networking/api/api_manager.dart';
-import 'package:flowery_e_commerce/core/networking/api_execute.dart';
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
-import 'package:flowery_e_commerce/features/cart/data/data_sources/contracts/cart_online_data_source.dart';
-import 'package:flowery_e_commerce/features/cart/data/mappers/cart_mappers.dart';
-import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
+ import 'package:flowery_store/core/networking/api/api_manager.dart';
+import 'package:flowery_store/core/networking/api_execute.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
+import 'package:flowery_store/features/cart/data/data_sources/contracts/cart_online_data_source.dart';
+import 'package:flowery_store/features/cart/data/mappers/cart_mappers.dart';
+import 'package:flowery_store/features/cart/domain/entities/cart_entity.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: CartOnlineDataSource)

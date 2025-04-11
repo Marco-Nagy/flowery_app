@@ -1,20 +1,20 @@
-import 'package:flowery_e_commerce/core/routes/app_routes.dart';
-import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
-import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/custom_appbar.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/spacing.dart';
-import 'package:flowery_e_commerce/features/cart/domain/entities/cart_entity.dart';
-import 'package:flowery_e_commerce/features/cart/presentation/widgets/cart_total_amount.dart';
-import 'package:flowery_e_commerce/features/checkout/presentation/widgets/addresses_list.dart';
-import 'package:flowery_e_commerce/features/checkout/presentation/widgets/checkout_consumer.dart';
-import 'package:flowery_e_commerce/features/checkout/presentation/widgets/gift_widget.dart';
-import 'package:flowery_e_commerce/features/checkout/presentation/widgets/payment_widget.dart';
-import 'package:flowery_e_commerce/features/checkout/presentation/widgets/section_title.dart';
+import 'package:flowery_store/core/routes/app_routes.dart';
+import 'package:flowery_store/core/styles/colors/my_colors.dart';
+import 'package:flowery_store/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_store/core/utils/extension/navigation.dart';
+import 'package:flowery_store/core/utils/widgets/buttons/carved_button.dart';
+import 'package:flowery_store/core/utils/widgets/custom_appbar.dart';
+import 'package:flowery_store/core/utils/widgets/spacing.dart';
+import 'package:flowery_store/features/cart/domain/entities/cart_entity.dart';
+import 'package:flowery_store/features/cart/presentation/widgets/cart_total_amount.dart';
+import 'package:flowery_store/features/checkout/presentation/widgets/addresses_list.dart';
+import 'package:flowery_store/features/checkout/presentation/widgets/checkout_consumer.dart';
+import 'package:flowery_store/features/checkout/presentation/widgets/gift_widget.dart';
+import 'package:flowery_store/features/checkout/presentation/widgets/payment_widget.dart';
+import 'package:flowery_store/features/checkout/presentation/widgets/section_title.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/localization/lang_keys.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import 'package:intl/intl.dart';
 
 class CheckoutScreen extends StatefulWidget {

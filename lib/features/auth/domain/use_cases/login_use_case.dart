@@ -1,4 +1,4 @@
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
 import 'package:injectable/injectable.dart';
 import '../contracts/auth_repo.dart';
 import '../entities/request/login_request_entity.dart';
