@@ -29,6 +29,7 @@ import 'package:flowery_store/features/product/presentation/view/product_details
 import 'package:flowery_store/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flowery_store/features/track_order/presentation/viewModel/track_order/track_order_actions.dart';
 import 'package:flowery_store/features/track_order/presentation/viewModel/track_order/track_order_view_model_cubit.dart';
+import 'package:flowery_store/features/track_order/presentation/views/map_screen.dart';
 import 'package:flowery_store/features/track_order/presentation/views/track_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -73,6 +74,7 @@ class AppRoutes {
   static const String cartScreen = 'cartScreen';
   static const String placeOrderSuccess= 'placeOrderSuccess';
   static const String trackOrder = 'trackOrder';
+  static const String trackOrderMap = 'trackOrderMap';
 
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
@@ -223,6 +225,19 @@ class AppRoutes {
                   ..doAction(GetOrderDetails(
                       orderId: arguments['orderId']!, userId: arguments['userId']!)),
                 child: TrackOrderScreen(orderId: arguments['orderId']!, userId: arguments['userId']!))
+        );
+        case AppRoutes.trackOrderMap:
+        final arguments = settings.arguments as Map<String, String>?;
+
+        if (arguments == null || !arguments.containsKey('orderId') || !arguments.containsKey('userId')) {
+          return BaseRoute(page: const AppLoader()); // Handle missing data safely
+        }
+        return BaseRoute(
+            page: BlocProvider(
+                create: (context) => getIt.get<TrackOrderViewModelCubit>()
+                  ..doAction(GetOrderDetails(
+                      orderId: arguments['orderId']!, userId: arguments['userId']!)),
+                child: const MapScreen())
         );
       default:
         return BaseRoute(page: const AppLoader());
