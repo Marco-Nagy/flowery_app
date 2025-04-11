@@ -1,4 +1,4 @@
-import 'package:flowery_e_commerce/features/notification_list/presentation/widgets/notification_message_card.dart';
+import 'package:flowery_store/features/notification_list/presentation/widgets/notification_message_card.dart';
 import 'package:flutter/material.dart';
 
 class SliverNotificationList extends StatelessWidget {

@@ -1,8 +1,8 @@
-import 'package:flowery_e_commerce/core/routes/app_routes.dart';
-import 'package:flowery_e_commerce/core/utils/extension/navigation.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/app_text_form_field.dart';
-import 'package:flowery_e_commerce/features/auth/domain/entities/request/verify_reset_code_request_entity.dart';
-import 'package:flowery_e_commerce/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
+import 'package:flowery_store/core/routes/app_routes.dart';
+import 'package:flowery_store/core/utils/extension/navigation.dart';
+import 'package:flowery_store/core/utils/widgets/app_text_form_field.dart';
+import 'package:flowery_store/features/auth/domain/entities/request/verify_reset_code_request_entity.dart';
+import 'package:flowery_store/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

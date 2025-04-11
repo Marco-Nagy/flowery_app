@@ -1,5 +1,5 @@
-import 'package:flowery_e_commerce/features/address/data/models/response/saved_address_response_entity_dto_entity.dart';
-import 'package:flowery_e_commerce/features/address/domain/entities/response/SavedAddressResponseEntity.dart';
+import 'package:flowery_store/features/address/data/models/response/saved_address_response_entity_dto_entity.dart';
+import 'package:flowery_store/features/address/domain/entities/response/SavedAddressResponseEntity.dart';
 
 class AddressMapper {
   static List<AddressesEntity> toSavedAddressesMapper(

@@ -1,10 +1,10 @@
-import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/core/styles/fonts/my_fonts.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/base/app_loader.dart';
-import 'package:flowery_e_commerce/di/di.dart';
-import 'package:flowery_e_commerce/features/address/presentation/view_model/address_cubit.dart';
-import 'package:flowery_e_commerce/features/address/presentation/view_model/address_states.dart';
-import 'package:flowery_e_commerce/generated/assets.dart';
+import 'package:flowery_store/core/styles/colors/my_colors.dart';
+import 'package:flowery_store/core/styles/fonts/my_fonts.dart';
+import 'package:flowery_store/core/utils/widgets/base/app_loader.dart';
+import 'package:flowery_store/di/di.dart';
+import 'package:flowery_store/features/address/presentation/view_model/address_cubit.dart';
+import 'package:flowery_store/features/address/presentation/view_model/address_states.dart';
+import 'package:flowery_store/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

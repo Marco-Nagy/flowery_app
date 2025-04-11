@@ -1,10 +1,10 @@
-import 'package:flowery_e_commerce/core/styles/colors/my_colors.dart';
-import 'package:flowery_e_commerce/core/utils/extension/media_query_values.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/base/snack_bar.dart';
-import 'package:flowery_e_commerce/core/utils/widgets/buttons/carved_button.dart';
-import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_actions.dart';
-import 'package:flowery_e_commerce/features/profile/presentation/viewModel/profile_view_model_cubit.dart';
-import 'package:flowery_e_commerce/features/profile/presentation/widgets/profile_form.dart';
+import 'package:flowery_store/core/styles/colors/my_colors.dart';
+import 'package:flowery_store/core/utils/extension/media_query_values.dart';
+import 'package:flowery_store/core/utils/widgets/base/snack_bar.dart';
+import 'package:flowery_store/core/utils/widgets/buttons/carved_button.dart';
+import 'package:flowery_store/features/profile/presentation/viewModel/profile_actions.dart';
+import 'package:flowery_store/features/profile/presentation/viewModel/profile_view_model_cubit.dart';
+import 'package:flowery_store/features/profile/presentation/widgets/profile_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/localization/lang_keys.dart';

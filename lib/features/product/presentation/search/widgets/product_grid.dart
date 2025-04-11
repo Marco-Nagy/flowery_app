@@ -1,4 +1,4 @@
-import 'package:flowery_e_commerce/features/categories/presentation/products/widgets/product_card.dart';
+import 'package:flowery_store/features/categories/presentation/products/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

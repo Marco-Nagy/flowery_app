@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flowery_e_commerce/core/networking/common/api_result.dart';
+import 'package:flowery_store/core/networking/common/api_result.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/networking/error/error_handler.dart';

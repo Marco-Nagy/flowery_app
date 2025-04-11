@@ -1,5 +1,5 @@
-import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_base_action.dart';
-import 'package:flowery_e_commerce/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
+import 'package:flowery_store/features/checkout/presentation/viewModel/checkout_base_action.dart';
+import 'package:flowery_store/features/checkout/presentation/viewModel/checkout_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

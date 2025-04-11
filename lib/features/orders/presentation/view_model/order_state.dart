@@ -7,7 +7,7 @@ final class OrderInitial extends OrderState {}
 final class OrderLoading extends OrderState {}
 
 final class OrderSuccess extends OrderState {
-  final List<Orders>? orders;
+  final List<Orders> orders;
 
   OrderSuccess({required this.orders});
 }
