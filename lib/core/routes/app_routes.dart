@@ -186,11 +186,15 @@ class AppRoutes {
       case AppRoutes.termsAndConditionsPage:
         return BaseRoute(page: const TermsAndConditionsPage());
       case AppRoutes.orderView:
+        final arguments = settings.arguments as Map<String, String?>;
+
         return BaseRoute(
-            page: BlocProvider(
+    page: BlocProvider(
                 create: (context) =>
-                    getIt.get<OrderCubit>()..doAction(GetOrders('inProgress')),
-                child: const OrderView()));
+                    getIt.get<OrderCubit>()..doAction(GetOrdersByUser( arguments['userId']!,'Accepted' ,)),
+                child:  OrderView(
+                  userId: arguments['userId']!,
+                )));
       case AppRoutes.mapView:
         return BaseRoute(page: const MapView());
       case AppRoutes.cartScreen:

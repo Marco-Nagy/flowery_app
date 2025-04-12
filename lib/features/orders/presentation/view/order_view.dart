@@ -11,7 +11,9 @@ import '../../../../core/localization/lang_keys.dart';
 import '../../../../core/utils/widgets/custom_appbar.dart';
 
 class OrderView extends StatelessWidget {
-  const OrderView({super.key});
+  const OrderView({super.key, required this.userId});
+
+  final String userId;
 
   @override
   Widget build(BuildContext context) {
@@ -31,23 +33,19 @@ class OrderView extends StatelessWidget {
                 Tab(text: context.translate(LangKeys.active)),
                 Tab(text: context.translate(LangKeys.completed)),
               ],
-
               onTap: (index) {
                 switch (index) {
                   case 0:
-                context.read<OrderCubit>()
-                ..doAction(GetOrders('inProgress') );
+                    context.read<OrderCubit>()
+                      ..doAction(GetOrdersByUser(userId, 'Accepted'));
                     break;
                   case 1:
                     context.read<OrderCubit>()
-                      ..doAction(GetOrders('completed') );
-
+                      ..doAction(GetOrdersByUser(userId, 'Delivered'));
                     break;
                 }
               },
-
               tabAlignment: TabAlignment.center,
-
             ),
             Expanded(
               child: Padding(
