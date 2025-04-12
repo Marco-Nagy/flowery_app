@@ -4,6 +4,7 @@ import 'package:flowery_store/core/routes/app_routes.dart';
 import 'package:flowery_store/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import 'package:flowery_store/core/utils/extension/navigation.dart';
+import 'package:flowery_store/core/utils/extension/string_exetension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,8 +30,8 @@ class ListOrderWidget extends StatelessWidget {
     return BlocBuilder<OrderCubit, OrderState>(
       builder: (context, state) {
         switch (state.runtimeType) {
-          case OrderSuccess:
-            final successState = state as OrderSuccess;
+           case GetOrderByUserSuccess:
+             final successState = state as GetOrderByUserSuccess;
             if (successState.orders == null || successState.orders.isEmpty) {
               return Center(
                 child: Text(
@@ -43,9 +44,9 @@ class ListOrderWidget extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 25.w),
                 separatorBuilder: (context, index) => SizedBox(height: 16.h),
                 itemCount: successState.orders.length,
-                reverse: true,
+                //reverse: true,
                 itemBuilder: (context, index) {
-                  return successState.orders[index].orderItems!.first.product !=
+                  return successState.orders[index]. orders!.orderItems!.first!.product !=
                           null
                       ? Container(
                           height: null,
@@ -59,8 +60,7 @@ class ListOrderWidget extends StatelessWidget {
                             children: [
                               Expanded(
                                   child: CachedNetworkWidget(
-                                imageUrl: successState.orders[index].orderItems!
-                                    .first.product!.imgCover!,
+                                    imageUrl: successState.orders[index].orders!.orderItems!.first!.product!.imgCover!.toFullImageUrl,
                                 fit: BoxFit.cover,
                                 height: 109.h,
                                 //  width: 127.w,
@@ -74,15 +74,14 @@ class ListOrderWidget extends StatelessWidget {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     Text(
-                                      successState.orders[index].orderItems!
-                                          .first.product!.title!,
+                                      successState.orders[index].orders!.orderItems!.first!.product!.title!,
                                       style: MyFonts.styleRegular400_12,
                                     ),
                                     Text(
-                                        '${context.translate(LangKeys.egp)} ${successState.orders[index].orderItems!.first.product!.price.toString()}',
+                                        '${context.translate(LangKeys.egp)} ${successState.orders[index].orders!.orderItems!.first!.price.toString()}',
                                         style: MyFonts.styleMedium500_12),
                                     Text(
-                                        '${context.translate(LangKeys.orderNumber)} ${successState.orders[index].orderNumber}',
+                                        '${context.translate(LangKeys.orderNumber)} ${successState.orders[index].orders!.orderNumber}',
                                         style: MyFonts.styleRegular400_12
                                             .copyWith(color: MyColors.grey)),
                                     verticalSpacing(8.h),
@@ -96,46 +95,17 @@ class ListOrderWidget extends StatelessWidget {
                                         title: textButton,
                                         onTap: () {
                                           debugPrint(
-                                              'orderId ${successState.orders[index].Id} - userId ${successState.orders[index].user}');
+                                              'orderId ${successState.orders[index].orders!.id} - userId ${successState
+                                                  .orders[index].orders!.user!.id}');
                                           context.pushNamed(
                                               AppRoutes.trackOrderMap,
                                               arguments: {
-                                                "orderId": successState
-                                                    .orders[index].Id!,
+                                                "orderId": successState.orders[index].orders!.id,
                                                 "userId": successState
-                                                    .orders[index].user!,
+                                                    .orders[index].orders!.user!.id,
                                               });
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder:
-                                          //             (context) => BlocProvider(
-                                          //                   create: (context) =>
-                                          //                       getIt.get<
-                                          //                           MapViewModelCubit>()
-                                          //                         ..doAction(
-                                          //                             GetOrderDetails(
-                                          //                           userId: successState
-                                          //                                   .orders[index]
-                                          //                                   .user ??
-                                          //                               '',
-                                          //                           orderId: successState
-                                          //                                   .orders[index]
-                                          //                                   .Id ??
-                                          //                               '',
-                                          //                         )),
-                                          //                   child:
-                                          //                       const MapScreen(),
-                                          //                 )));
                                         },
-                                        // onTap: () {
-                                        //     context.pushNamed(AppRoutes.trackOrder,
-                                        //         arguments:
-                                        //         {"orderId": successState
-                                        //             .orders![index].Id!,
-                                        //           "userId": successState
-                                        //               .orders![index].user!});
-                                        // },
+
                                       ),
                                     )
                                   ],
