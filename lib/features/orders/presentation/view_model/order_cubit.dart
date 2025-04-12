@@ -7,6 +7,7 @@ import 'package:meta/meta.dart';
 import '../../../../core/networking/common/api_result.dart';
 import '../../../../core/networking/error/error_handler.dart';
 import '../../../../core/networking/error/error_model.dart';
+import '../../../track_order/domain/entities/track_order_entity.dart';
 import '../../domain/use_cases/order_use_case.dart';
 import 'order_action.dart';
 
@@ -16,31 +17,42 @@ part 'order_state.dart';
 class OrderCubit extends Cubit<OrderState> {
   final OrderUseCase _orderUseCase;
   @factoryMethod
-  List<Orders> orders = [];
+   List<Orders> orders = [];
 
   OrderCubit(this._orderUseCase) : super(OrderInitial());
 
   void doAction(OrderAction action) {
     switch (action) {
-      case GetOrders():
-        _getAUserOrders(action);
+      case GetOrdersByUser():
+        _getOrdersByUser (action);
     }
   }
 
-  Future<void> _getAUserOrders(GetOrders action) async {
+
+  Future<void> _getOrdersByUser(GetOrdersByUser action) async {
     emit(OrderLoading());
-    final result = await _orderUseCase.getOrders();
+
+    final result = await _orderUseCase(userId: action.userId);
+
     switch (result) {
-      case Success<OrderResponseEntity>():
-        orders.clear();
-        orders.addAll(
-          result.data.orders!.where(
-            (element) => element.state!.contains(action.orderState),
-          ),
-        );
-        emit(OrderSuccess(orders: orders));
-      case Fail<OrderResponseEntity>():
+      case Success<List<TrackOrderEntity>>():
+        final allOrders = result.data;
+
+        final filteredOrders = allOrders.where((order) {
+          return order.orders?.state == action.status;
+        }).toList();
+
+        emit(GetOrderByUserSuccess(filteredOrders));
+        break;
+
+      case Fail<List<TrackOrderEntity>>():
         emit(OrderError(error: ErrorHandler.handle(result.exception!)));
+        break;
     }
   }
+
+
+
+
+
 }

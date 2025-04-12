@@ -1,6 +1,7 @@
 import '../../../../../core/networking/common/api_result.dart';
-import '../../../domain/entities/order_response_entity.dart';
+import '../../../../track_order/domain/entities/track_order_entity.dart';
 
 abstract class OrderOnlineDataSource {
-  Future<DataResult<OrderResponseEntity>> getOrders();
+  Future<DataResult<List<TrackOrderEntity>>> getOrderByUser({required String userId});
+
 }
