@@ -1,6 +1,7 @@
 sealed class OrderAction {}
 
-class GetOrders extends OrderAction {
-  final String orderState;
-  GetOrders(this.orderState);
+class GetOrdersByUser extends OrderAction {
+  final String userId;
+  final String status;
+  GetOrdersByUser(this.userId , this.status);
 }

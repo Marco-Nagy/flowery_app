@@ -5,8 +5,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 
-import 'package:flowery_store/core/networking/common/api_result.dart'
-    as _i4;
+import 'package:flowery_store/core/networking/common/api_result.dart' as _i4;
 import 'package:flowery_store/features/address_details/domain/contracts/add_address_repo.dart'
     as _i2;
 import 'package:flowery_store/features/address_details/domain/entities/request/add_address_request_entity.dart'

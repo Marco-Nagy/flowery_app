@@ -38,44 +38,46 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const CustomMainProfileData(),
-            SizedBox(
-              height: 20.h,
-            ),
-            Container(
-              margin: EdgeInsets.all(30.sp),
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 20.w,
-                    height: 20.h,
-                    child: Image.asset(
-                      Assets.imagesTermsConditions,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 3.sp,
-                  ),
-                  Text(
-                    context.translate(LangKeys.myOrders),
-                    style: MyFonts.styleRegular400_16.copyWith(
-                      color: MyColors.blackBase,
-                    ),
-                  ),
-                  const Spacer(),
-                  InkWell(
-                    onTap: () {
-                      context.pushNamed(AppRoutes.orderView);
-                    },
-                    child: SizedBox(
-                        width: 20.w,
-                        height: 20.w,
-                        child: Image.asset(
-                          Assets.imagesDropDownArrow,
-                        )),
-                  ),
-                ],
-              ),
-            ),
+            // SizedBox(
+            //   height: 20.h,
+            // ),
+            // Container(
+            //   margin: EdgeInsets.all(30.sp),
+            //   child: Row(
+            //     children: [
+            //       SizedBox(
+            //         width: 20.w,
+            //         height: 20.h,
+            //         child: Image.asset(
+            //           Assets.imagesTermsConditions,
+            //         ),
+            //       ),
+            //       SizedBox(
+            //         width: 3.sp,
+            //       ),
+            //       Text(
+            //         context.translate(LangKeys.myOrders),
+            //         style: MyFonts.styleRegular400_16.copyWith(
+            //           color: MyColors.blackBase,
+            //         ),
+            //       ),
+            //       const Spacer(),
+            //       InkWell(
+            //         onTap: () {
+            //           context.pushNamed(AppRoutes.orderView,
+            //               arguments: {
+            //                 'userId': order!.user!.id,
+            //               });                     },
+            //         child: SizedBox(
+            //             width: 20.w,
+            //             height: 20.w,
+            //             child: Image.asset(
+            //               Assets.imagesDropDownArrow,
+            //             )),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             Container(
               margin: EdgeInsets.only(right: 30.sp, left: 29.sp),
               child: Row(
