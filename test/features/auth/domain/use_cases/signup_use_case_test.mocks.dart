@@ -5,8 +5,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 
-import 'package:flowery_store/core/networking/common/api_result.dart'
-    as _i4;
+import 'package:flowery_store/core/networking/common/api_result.dart' as _i4;
 import 'package:flowery_store/features/auth/data/models/response/reset_password_response_dto.dart'
     as _i14;
 import 'package:flowery_store/features/auth/data/models/response/verify_reset_code_response.dart'

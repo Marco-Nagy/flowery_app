@@ -6,8 +6,7 @@
 import 'dart:async' as _i24;
 import 'dart:io' as _i33;
 
-import 'package:flowery_store/core/networking/api/api_manager.dart'
-    as _i23;
+import 'package:flowery_store/core/networking/api/api_manager.dart' as _i23;
 import 'package:flowery_store/features/address/data/models/response/saved_address_response_entity_dto_entity.dart'
     as _i15;
 import 'package:flowery_store/features/address_details/data/models/request/add_address_request_dto.dart'
