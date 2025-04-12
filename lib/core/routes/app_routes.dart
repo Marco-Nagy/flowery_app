@@ -27,10 +27,10 @@ import 'package:flowery_store/features/product/presentation/search/viewModel/sea
 import 'package:flowery_store/features/product/presentation/search/views/search_view.dart';
 import 'package:flowery_store/features/product/presentation/view/product_details_view.dart';
 import 'package:flowery_store/features/profile/presentation/views/profile_main_screen.dart';
-import 'package:flowery_store/features/track_order/presentation/viewModel/map/map_view_model_cubit.dart';
+import 'package:flowery_store/features/track_order/domain/entities/track_order_entity.dart';
 import 'package:flowery_store/features/track_order/presentation/viewModel/track_order/track_order_actions.dart';
 import 'package:flowery_store/features/track_order/presentation/viewModel/track_order/track_order_view_model_cubit.dart';
-import 'package:flowery_store/features/track_order/presentation/views/map_screen.dart';
+import 'package:flowery_store/features/track_order/presentation/views/location_view.dart';
 import 'package:flowery_store/features/track_order/presentation/views/track_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -239,26 +239,14 @@ class AppRoutes {
                     orderId: arguments['orderId']!,
                     userId: arguments['userId']!)));
       case AppRoutes.trackOrderMap:
-        final arguments = settings.arguments as Map<String, String>?;
-
-        if (arguments == null ||
-            !arguments.containsKey('orderId') ||
-            !arguments.containsKey('userId')) {
-          return BaseRoute(
-              page: const AppLoader()); // Handle missing data safely
-        }
+        final entity = settings.arguments as TrackOrderEntity;
         return BaseRoute(
-            page: MultiBlocProvider(providers: [
-          BlocProvider(
-            create: (context) => getIt.get<TrackOrderViewModelCubit>()
-              ..doAction(GetOrderDetails(
-                  orderId: arguments['orderId']!,
-                  userId: arguments['userId']!)),
+          page: BlocProvider.value(
+            value: getIt<TrackOrderViewModelCubit>()..setEntityAndStartTracking(entity),
+            child:  const LocationView(),
           ),
-          BlocProvider(
-            create: (_) => getIt.get<MapViewModelCubit>(),
-          ),
-        ], child: const MapScreen()));
+        );
+
       default:
         return BaseRoute(page: const AppLoader());
     }
