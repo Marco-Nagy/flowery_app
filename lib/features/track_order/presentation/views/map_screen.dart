@@ -118,8 +118,10 @@ class MapScreen extends StatelessWidget {
                     child: CurvedButton(
                       title: context.translate(LangKeys.orderDetails),
                       onTap: () {
-                        context.pushNamed(AppRoutes.orderView , arguments: order);
-                      },
+                        context.pushNamed(AppRoutes.orderView,
+                            arguments: {
+                              'userId':order!.user!.id,
+                            });                      },
                     ),
                   ),
                 ],

@@ -6,8 +6,7 @@
 import 'dart:async' as _i3;
 import 'dart:io' as _i9;
 
-import 'package:flowery_store/core/networking/common/api_result.dart'
-    as _i4;
+import 'package:flowery_store/core/networking/common/api_result.dart' as _i4;
 import 'package:flowery_store/features/profile/domain/entities/request/change_password_request_entity.dart'
     as _i11;
 import 'package:flowery_store/features/profile/domain/entities/response/change_password_response_entity.dart'

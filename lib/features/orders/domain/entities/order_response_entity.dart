@@ -91,3 +91,4 @@ class Product {
     this.id,
   });
 }
+
