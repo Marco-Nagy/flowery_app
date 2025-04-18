@@ -19,6 +19,11 @@ final class GetTrackOrderSuccess extends TrackOrderViewModelState {
   GetTrackOrderSuccess(this.trackOrderEntity);
 }
 
+final class UpdateDriverLocation extends TrackOrderViewModelState {
+
+
+}
+
 
 
 final class UpdateStatus extends TrackOrderViewModelState {

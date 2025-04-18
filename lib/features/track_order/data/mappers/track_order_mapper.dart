@@ -23,8 +23,8 @@ class TrackOrderMapper {
         photo: model.driver.photo,
         createdAt: model.driver.createdAt,
         location: Location(
-            latitude: model.orders.user.location.latitude,
-            longitude: model.orders.user.location.longitude,
+            latitude: model.driver.location.latitude,
+            longitude: model.driver.location.longitude,
             timestamp: DateTime.now()),
       ),
       orders: OrderData(
@@ -101,6 +101,11 @@ class TrackOrderMapper {
       phone: driver.phone,
       photo: driver.photo,
       createdAt: driver.createdAt,
+      location: Location(
+        latitude: driver.location!.latitude,
+        longitude: driver.location!.longitude,
+        timestamp: DateTime.now(),
+      )
     );
   }
 
