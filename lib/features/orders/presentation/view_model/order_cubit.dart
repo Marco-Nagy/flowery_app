@@ -41,6 +41,7 @@ class OrderCubit extends Cubit<OrderState> {
         final filteredOrders = allOrders.where((order) {
           return order.orders?.state == action.status;
         }).toList();
+        filteredOrders.sort((a, b) => b.orders!.createdAt!.compareTo(a.orders!.createdAt!));
 
         emit(GetOrderByUserSuccess(filteredOrders));
         break;
