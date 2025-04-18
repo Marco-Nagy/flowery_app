@@ -41,9 +41,6 @@ dependencies:
   badges:
   row_item:
   dio:
-  flutter_map:
-  latlong2:
-  location:
   http:
   retrofit:
   logger:   # for logging purpose
@@ -59,8 +56,6 @@ dependencies:
   country_state_city:
   url_launcher: ^6.3.1
   flutter_dotenv:
-  google_maps_flutter:
-  flutter_polyline_points:
   googleapis_auth: ^1.6.0
 
 
@@ -88,8 +83,18 @@ dependencies:
   flutter_bloc:
   flutter_svg:
   bloc:
-  geolocator: ^13.0.2   # For location services and permissions
+
+  # Maps
+  geolocator: ^13.0.2
   geocoding: ^3.0.0
+  location: ^8.0.0
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.1
+  flutter_map_animated_marker: ^2.0.0
+  flutter_map_animations: ^0.6.0
+  custom_map_markers: ^0.0.2+1
+  google_maps_flutter: ^2.12.1
+  flutter_polyline_points: ^2.1.0
 
 
   # Firebase ML Kit
