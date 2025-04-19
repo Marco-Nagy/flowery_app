@@ -31,7 +31,7 @@ class UpdateDriverLocationProvider with ChangeNotifier {
   UpdateDriverLocationProvider(this.viewModel) {
     viewModel.locationUpdateCallback = (LatLng newLocation) async {
       driverLatLng = newLocation;
-      await initMarkers([driverLatLng!, destinationLatLng!]);
+      // await initMarkers([driverLatLng!, destinationLatLng!]);
 
       if (mapController.isCompleted) {
         final controller = await mapController.future;
@@ -73,11 +73,10 @@ class UpdateDriverLocationProvider with ChangeNotifier {
 
       driverLatLng = current;
       // ✅ Store it directly
-      syncDriverLocationFromCubit();
+      // syncDriverLocationFromCubit();
 _updateDriverLocation(current);
       debugPrint('✅ driverLatLng initialized: $driverLatLng');
 
-      await initMarkers([driverLatLng!, destinationLatLng!]);
 
       notifyListeners(); // ✅ Very important!
     } catch (e) {
@@ -85,20 +84,6 @@ _updateDriverLocation(current);
     }
   }
 
-  void syncDriverLocationFromCubit() {
-    Timer.periodic(const Duration(seconds: 3), (timer) {
-      final latestLocation = viewModel.driverLatLng;
-      if (latestLocation != null &&
-          (driverLatLng == null ||
-              latestLocation.latitude != driverLatLng!.latitude ||
-              latestLocation.longitude != driverLatLng!.longitude)) {
-        driverLatLng = latestLocation;
-        debugPrint("📍 Updated from Firestore: $driverLatLng");
-        initMarkers([driverLatLng!, destinationLatLng!]);
-        notifyListeners();
-      }
-    });
-  }
   void _updateDriverLocation( LatLng currentLocation) async {
     _timer = Timer.periodic(const Duration(seconds: 5), (timer) async {
       driverLatLng =currentLocation;
@@ -106,16 +91,6 @@ _updateDriverLocation(current);
       ///  I/flutter (18609):  📍 Driver: 31.219606, 29.941762
       debugPrint(' 📍 Driver: ${driverLatLng?.latitude}, ${driverLatLng?.longitude}');
       await initMarkers([driverLatLng!, destinationLatLng!]);
-
-
-      // _locationSubscription =
-      //     driverCurrentLocation.onLocationChanged.listen((newLocation) async {
-      //       carDegree = newLocation.heading ?? carDegree;
-      //       carDegree = (newLocation.heading != null && newLocation.heading! >= 0)
-      //           ? newLocation.heading!
-      //           : calculateDegrees(driverLatLng, LatLng(newLocation.latitude!, newLocation.longitude!));
-      //
-      //       currentLocation = newLocation;
 
             if (mapController.isCompleted) {
               final controller = await mapController.future;
