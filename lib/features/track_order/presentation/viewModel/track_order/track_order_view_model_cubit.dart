@@ -21,7 +21,8 @@ part 'track_order_view_model_state.dart';
 class TrackOrderViewModelCubit extends Cubit<TrackOrderViewModelState> {
   final GetOrderByOrderIdCase getOrderByOrderIdCase;
 
-  TrackOrderViewModelCubit(this.getOrderByOrderIdCase) : super(TrackOrderViewModelInitial()) {
+  TrackOrderViewModelCubit(this.getOrderByOrderIdCase)
+      : super(TrackOrderViewModelInitial()) {
     debugPrint('📦 TrackOrderViewModelCubit initialized');
   }
 
@@ -55,7 +56,8 @@ class TrackOrderViewModelCubit extends Cubit<TrackOrderViewModelState> {
 
   Future<void> _getOrderDetails(GetOrderDetails action) async {
     emit(TrackOrderViewModelLoading());
-    Stream<DataResult<TrackOrderEntity>> resultStream = await getOrderByOrderIdCase(
+    Stream<DataResult<TrackOrderEntity>> resultStream =
+        await getOrderByOrderIdCase(
       orderId: action.orderId,
       userId: action.userId,
     );
@@ -64,23 +66,34 @@ class TrackOrderViewModelCubit extends Cubit<TrackOrderViewModelState> {
       switch (result) {
         case Success<TrackOrderEntity>():
           trackOrderEntity = result.data;
-          final latitude = trackOrderEntity?.driver?.location?.latitude;
-          final longitude = trackOrderEntity?.driver?.location?.longitude;
-          if (latitude != null && longitude != null) {
-            final newLatLng = LatLng(latitude, longitude);
-            _updateDriverLocation(newLatLng);
-          }
+
+          _updateDriverLocation(trackOrderEntity!);
+
           _updateOrderStatus(trackOrderEntity!);
           emit(GetTrackOrderSuccess(result.data));
         case Fail<TrackOrderEntity>():
-          emit(TrackOrderViewModelError(ErrorHandler.handle(result.exception!)));
+          emit(
+              TrackOrderViewModelError(ErrorHandler.handle(result.exception!)));
       }
     });
   }
 
-  void _updateDriverLocation(LatLng driverLatLng) {
-    this.driverLatLng = driverLatLng;
-    locationUpdateCallback?.call(driverLatLng); // 🔁 Notify location listener
+  void _updateDriverLocation(TrackOrderEntity entity) {
+    if (entity.driver?.location != null) {
+      double? latitude = trackOrderEntity?.driver?.location?.latitude;
+      double? longitude = trackOrderEntity?.driver?.location?.longitude;
+
+      if (latitude != null && longitude != null) {
+        LatLng newLatLng = LatLng(latitude, longitude);
+        debugPrint(' 📍 Driver location updated: $newLatLng');
+        this.driverLatLng = newLatLng;
+        locationUpdateCallback?.call(newLatLng);
+        emit(UpdateDriverLocation());
+      } else {
+        debugPrint('⚠️ Latitude or Longitude is null');
+      }// 🔁 Notify location listener
+    }
+
     emit(UpdateDriverLocation());
   }
 

@@ -6,7 +6,6 @@ import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import 'package:flowery_store/core/utils/extension/navigation.dart';
 import 'package:flowery_store/core/utils/extension/string_exetension.dart';
 import 'package:flowery_store/core/utils/widgets/buttons/carved_button.dart';
-import 'package:flowery_store/di/di.dart';
 import 'package:flowery_store/features/track_order/domain/entities/track_order_entity.dart';
 import 'package:flowery_store/features/track_order/presentation/viewModel/track_order/track_order_actions.dart';
 import 'package:flowery_store/features/track_order/presentation/viewModel/track_order/track_order_view_model_cubit.dart';
@@ -47,7 +46,7 @@ class _LocationViewState extends State<LocationView> {
   }
 
   Future<void> getData() async {
-    viewModel = await getIt<TrackOrderViewModelCubit>();
+    viewModel = context.read<TrackOrderViewModelCubit>();
     locationProvider = UpdateDriverLocationProvider(viewModel);
 
     await viewModel.doAction(
@@ -61,13 +60,13 @@ class _LocationViewState extends State<LocationView> {
 
 
     if (mounted) {
-      final driverLocation = viewModel.trackOrderEntity?.driver?.location;
+      final driverLocation = viewModel.driverLatLng;
       if (driverLocation != null) {
         locationProvider.getCurrentLocation(
           LatLng(driverLocation.latitude, driverLocation.longitude),
 
         );
-        locationProvider.syncDriverLocationFromCubit();
+        // locationProvider.syncDriverLocationFromCubit();
       }
 
       setState(() => isInitialized = true);
@@ -99,7 +98,7 @@ class _LocationViewState extends State<LocationView> {
         ChangeNotifierProvider<UpdateDriverLocationProvider>(
           create: (_) {
             final provider = UpdateDriverLocationProvider(viewModel);
-            final driverLocation = viewModel.trackOrderEntity?.driver?.location;
+            final driverLocation = viewModel.driverLatLng;
             if (driverLocation != null) {
               provider.getCurrentLocation(
                 LatLng(driverLocation.latitude, driverLocation.longitude),
@@ -116,16 +115,16 @@ class _LocationViewState extends State<LocationView> {
             listener: (context, state) {
 
 
-              if (state is GetTrackOrderSuccess) {
-                final driverLocation = state.trackOrderEntity.driver?.location;
-                if (driverLocation != null) {
-                  locationProvider.getCurrentLocation(
-                    LatLng(driverLocation.latitude, driverLocation.longitude),
-                  );
-                  locationProvider.syncDriverLocationFromCubit();
-
-                }
-              }
+              // if (state is GetTrackOrderSuccess) {
+              //   final driverLocation = viewModel.driverLatLng;
+              //   if (driverLocation != null) {
+              //     locationProvider.getCurrentLocation(
+              //       LatLng(driverLocation.latitude, driverLocation.longitude),
+              //     );
+              //     locationProvider.syncDriverLocationFromCubit();
+              //
+              //   }
+              // }
             },
             child: Consumer<UpdateDriverLocationProvider>(
               builder: (context, state, _) {
