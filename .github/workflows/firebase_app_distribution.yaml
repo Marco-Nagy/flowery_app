@@ -47,20 +47,9 @@ jobs:
           export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase-service-account.json"
 
       # Step 7: Save Firebase Server Token into firebase_server_token.dart
-      - name: Save Firebase Server Token
+      - name: Save firebase_server_token.dart
         run: |
-          echo "import 'package:googleapis_auth/auth_io.dart';" > lib/core/services/firebase_notification/firebase_server_token.dart
-          echo "class FirebaseServerToken {" >> lib/core/services/firebase_notification/firebase_server_token.dart
-          echo "  static String firebaseMessagingScope = 'https://www.googleapis.com/auth/firebase.messaging';" >> lib/core/services/firebase_notification/firebase_server_token.dart
-          echo "  Future<String> getAccessToken() async {" >> lib/core/services/firebase_notification/firebase_server_token.dart
-          echo "    final client = await clientViaServiceAccount(" >> lib/core/services/firebase_notification/firebase_server_token.dart
-          echo "        ServiceAccountCredentials.fromJson('${{ secrets.FIREBASE_SERVER_TOKEN_BASE64 }}')," >> lib/core/services/firebase_notification/firebase_server_token.dart
-          echo "        firebaseMessagingScope);" >> lib/core/services/firebase_notification/firebase_server_token.dart
-          echo "    final accessToken = client.credentials.accessToken.data;" >> lib/core/services/firebase_notification/firebase_server_token.dart
-          echo "    return accessToken;" >> lib/core/services/firebase_notification/firebase_server_token.dart
-          echo "  }" >> lib/core/services/firebase_notification/firebase_server_token.dart
-          echo "}" >> lib/core/services/firebase_notification/firebase_server_token.dart
-          echo "Firebase Server Token saved to firebase_server_token.dart"
+          echo "${{ secrets.FIREBASE_SERVER_TOKEN_RAW }}" > lib/core/services/firebase_notification/firebase_server_token.dart
 
       # Step 8: Bump version in pubspec.yaml
       - name: Bump Version in pubspec.yaml
