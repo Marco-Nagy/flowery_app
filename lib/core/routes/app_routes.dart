@@ -27,10 +27,10 @@ import 'package:flowery_store/features/product/presentation/search/viewModel/sea
 import 'package:flowery_store/features/product/presentation/search/views/search_view.dart';
 import 'package:flowery_store/features/product/presentation/view/product_details_view.dart';
 import 'package:flowery_store/features/profile/presentation/views/profile_main_screen.dart';
-import 'package:flowery_store/features/track_order/presentation/viewModel/map/map_view_model_cubit.dart';
+import 'package:flowery_store/features/track_order/domain/entities/track_order_entity.dart';
 import 'package:flowery_store/features/track_order/presentation/viewModel/track_order/track_order_actions.dart';
 import 'package:flowery_store/features/track_order/presentation/viewModel/track_order/track_order_view_model_cubit.dart';
-import 'package:flowery_store/features/track_order/presentation/views/map_screen.dart';
+import 'package:flowery_store/features/track_order/presentation/views/location_view.dart';
 import 'package:flowery_store/features/track_order/presentation/views/track_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -189,10 +189,13 @@ class AppRoutes {
         final arguments = settings.arguments as Map<String, String?>;
 
         return BaseRoute(
-    page: BlocProvider(
-                create: (context) =>
-                    getIt.get<OrderCubit>()..doAction(GetOrdersByUser( arguments['userId']!,'Accepted' ,)),
-                child:  OrderView(
+            page: BlocProvider(
+                create: (context) => getIt.get<OrderCubit>()
+                  ..doAction(GetOrdersByUser(
+                    arguments['userId']!,
+                    'Accepted',
+                  )),
+                child: OrderView(
                   userId: arguments['userId']!,
                 )));
       case AppRoutes.mapView:
@@ -224,7 +227,7 @@ class AppRoutes {
                 orderId: arguments!['orderId']!, userId: arguments['userId']!));
 
       case AppRoutes.trackOrder:
-        final arguments = settings.arguments as Map<String, String>?;
+        final arguments = settings.arguments as Map<String, String?>;
 
         if (arguments == null ||
             !arguments.containsKey('orderId') ||
@@ -243,26 +246,13 @@ class AppRoutes {
                     orderId: arguments['orderId']!,
                     userId: arguments['userId']!)));
       case AppRoutes.trackOrderMap:
-        final arguments = settings.arguments as Map<String, String>?;
+        final arguments = settings.arguments as TrackOrderEntity;
 
-        if (arguments == null ||
-            !arguments.containsKey('orderId') ||
-            !arguments.containsKey('userId')) {
-          return BaseRoute(
-              page: const AppLoader()); // Handle missing data safely
-        }
         return BaseRoute(
-            page: MultiBlocProvider(providers: [
-          BlocProvider(
-            create: (context) => getIt.get<TrackOrderViewModelCubit>()
-              ..doAction(GetOrderDetails(
-                  orderId: arguments['orderId']!,
-                  userId: arguments['userId']!)),
-          ),
-          BlocProvider(
-            create: (_) => getIt.get<MapViewModelCubit>(),
-          ),
-        ], child: const MapScreen()));
+            page: BlocProvider(
+                create: (context) => getIt.get<TrackOrderViewModelCubit>(),
+
+                child: LocationView(trackOrderEntity: arguments,)));
       default:
         return BaseRoute(page: const AppLoader());
     }
