@@ -98,12 +98,7 @@ class ListOrderWidget extends StatelessWidget {
                                               'orderId ${successState.orders[index].orders!.id} - userId ${successState
                                                   .orders[index].orders!.user!.id}');
                                           context.pushNamed(
-                                              AppRoutes.trackOrderMap,
-                                              arguments: {
-                                                "orderId": successState.orders[index].orders!.id,
-                                                "userId": successState
-                                                    .orders[index].orders!.user!.id,
-                                              });
+                                              AppRoutes.trackOrderMap, arguments: successState.orders[index]);
                                         },
 
                                       ),

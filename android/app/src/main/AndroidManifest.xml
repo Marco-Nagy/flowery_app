@@ -48,6 +48,7 @@
             android:value="channel_id" />
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCrWlfEnk9MKGLcWkW8ynjsHisHYZwi7xo"/>
+
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
