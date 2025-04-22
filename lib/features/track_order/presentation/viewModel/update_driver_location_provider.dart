@@ -121,8 +121,8 @@ _updateDriverLocation(current);
   }
 
   Future<void> drawPolyLine(LatLng location) async {
-    print('🟡 Source: ${sourceLatLng?.latitude}, ${sourceLatLng?.longitude}');
-    print('🟡 Destination: ${destinationLatLng?.latitude}, ${destinationLatLng?.longitude}');
+    debugPrint('🟡 Source: ${sourceLatLng?.latitude}, ${sourceLatLng?.longitude}');
+    debugPrint('🟡 Destination: ${destinationLatLng?.latitude}, ${destinationLatLng?.longitude}');
     try {
       for (final elem in listLocations) {
         final polyline = await PolylineService().drawPolyline(from: location, to: elem);
