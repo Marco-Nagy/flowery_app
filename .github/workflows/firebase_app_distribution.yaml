@@ -46,12 +46,8 @@ jobs:
           echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}" > $HOME/firebase-service-account.json
           export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase-service-account.json"
 
-      # Step 7: Save Firebase Server Token into firebase_server_token.dart
-      - name: Save firebase_server_token.dart
-        run: |
-          echo "${{ secrets.FIREBASE_SERVER_TOKEN }}" > lib/core/services/firebase_notification/firebase_server_token.dart
 
-      # Step 8: Bump version in pubspec.yaml
+      # Step 7: Bump version in pubspec.yaml
       - name: Bump Version in pubspec.yaml
         id: bump-version
         run: |
@@ -66,19 +62,19 @@ jobs:
           echo "New version: $NEW_VERSION+$NEW_BUILD"
           echo "version=$NEW_VERSION+$NEW_BUILD" >> $GITHUB_ENV
 
-      # Step 9: Install project dependencies
+      # Step 8: Install project dependencies
       - name: Install Dependencies
         run: flutter pub get
 
-      # Step 10: Clear Flutter build cache
+      # Step 9: Clear Flutter build cache
       - name: Clear Flutter Build Cache
         run: flutter clean
 
-      # Step 11: Build the release APK for production
+      # Step 10: Build the release APK for production
       - name: Build APK for Production
         run: flutter build apk --release
 
-      # Step 12: Distribute APK to Firebase App Distribution
+      # Step 11: Distribute APK to Firebase App Distribution
       - name: Distribute APK to Firebase
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
@@ -90,7 +86,7 @@ jobs:
           serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
           firebaseServerToken: ${{ secrets.FIREBASE_SERVER_TOKEN }}
 
-      # Step 13: Upload APK as an artifact for later use
+      # Step 12: Upload APK as an artifact for later use
       - name: Upload APK as Artifact
         uses: actions/upload-artifact@v4
         with:
