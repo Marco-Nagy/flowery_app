@@ -4,6 +4,7 @@ import 'package:flowery_store/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_store/core/utils/widgets/custom_appbar.dart';
 import 'package:flowery_store/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_store/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
+import 'package:flowery_store/features/cart/presentation/widgets/cart_bloc_listener_widget.dart';
 import 'package:flowery_store/features/cart/presentation/widgets/cart_icon_badge.dart';
 import 'package:flowery_store/features/generic/presentation/widgets/build_item.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import '../../../../core/utils/widgets/spacing.dart';
 
 class MostSellingScreen extends StatefulWidget {
-   const MostSellingScreen({super.key});
+  const MostSellingScreen({super.key});
 
   @override
   State<MostSellingScreen> createState() => _MostSellingScreenState();
@@ -21,7 +22,7 @@ class MostSellingScreen extends StatefulWidget {
 
 class _MostSellingScreenState extends State<MostSellingScreen> {
 
-   late Function(GlobalKey) addToCartAnimation;
+  late Function(GlobalKey) addToCartAnimation;
 
   void listClick(GlobalKey widgetKey) async {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -32,24 +33,22 @@ class _MostSellingScreenState extends State<MostSellingScreen> {
       addToCartAnimation(widgetKey);
 
       cartViewModelCubit.cartKey.currentState!
-          .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
+          .runCartAnimation(cartViewModelCubit.cartQuantityItems?.toString() ?? '0');
     });
-
   }
 
-   @override
-   void initState() {
-     super.initState();
-     CartViewModelCubit cartViewModelCubit = context.read<CartViewModelCubit>();
+  @override
+  void initState() {
+    super.initState();
+    CartViewModelCubit cartViewModelCubit = context.read<CartViewModelCubit>();
 
-     // Initialize the cart count to 20
-     WidgetsBinding.instance.addPostFrameCallback((_) async {
-       cartViewModelCubit.doAction(GetUserCartDataAction());
-       cartViewModelCubit.cartKey.currentState!
-           .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
-
-     });
-   }
+    // Initialize the cart count to 0 initially
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      cartViewModelCubit.doAction(GetUserCartDataAction());
+      cartViewModelCubit.cartKey.currentState!
+          .runCartAnimation(cartViewModelCubit.cartQuantityItems?.toString() ?? '0');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,36 +71,38 @@ class _MostSellingScreenState extends State<MostSellingScreen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: customAppBar(
-          appBarTxt: context.translate(LangKeys.bestSellers),
-          context: context,
-          showArrow: true,
+            appBarTxt: context.translate(LangKeys.bestSellers),
+            context: context,
+            showArrow: true,
             actions: [
               const SizedBox(width: 16),
+
               CartIconBadge(
                 cartKey: cartViewModelCubit.cartKey,
               ),
+
               const SizedBox(
                 width: 16,
               )
-            ]),
+            ]
+        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const CartBlocListenerWidget(),
               Padding(
                 padding: const EdgeInsets.only(left: 40),
-                child: Text(context.translate(LangKeys.bestSellersDesc),style:MyFonts.styleMedium500_14.copyWith(
+                child: Text(context.translate(LangKeys.bestSellersDesc), style: MyFonts.styleMedium500_14.copyWith(
                   color: MyColors.grey,
-                ) ,),
+                )),
               ),
               verticalSpacing(20),
-
-              BuildItem(onClick:(widgetKey)=>listClick(widgetKey)),
+              BuildItem(onClick: (widgetKey) => listClick(widgetKey)),
             ],
           ),
         ),
       ),
     );
-            }
+  }
 }
-
