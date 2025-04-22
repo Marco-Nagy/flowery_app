@@ -2,6 +2,7 @@ import 'package:flowery_store/core/routes/app_routes.dart';
 import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import 'package:flowery_store/core/utils/extension/navigation.dart';
 import 'package:flowery_store/core/utils/widgets/base/app_loader.dart';
+import 'package:flowery_store/features/track_order/presentation/viewModel/track_order/track_order_view_model_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/localization/lang_keys.dart';
@@ -9,13 +10,13 @@ import '../../../../core/styles/colors/my_colors.dart';
 import '../../../../core/styles/fonts/my_fonts.dart';
 import '../../../../core/utils/widgets/buttons/carved_button.dart';
 import '../../domain/entities/track_order_entity.dart';
-import '../viewModel/map/map_view_model_cubit.dart';
 import '../widgets/address_section.dart';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreen extends StatelessWidget {
+
   const MapScreen({super.key});
 
   Future<Map<String, BitmapDescriptor>> _loadMarkerIcons() async {
@@ -40,12 +41,12 @@ class MapScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MapViewModelCubit, MapViewModelState>(
+    return BlocBuilder<TrackOrderViewModelCubit, TrackOrderViewModelState>(
       builder: (context, state) {
-        final orderViewModelCubit = context.read<MapViewModelCubit>();
-        if (state is TrackOrderViewModelLoading) {
-          return const Center(child: AppLoader());
-        } else {
+        final orderViewModelCubit = context.read<TrackOrderViewModelCubit>();
+        // if (state is TrackOrderViewModelLoading) {
+        //   return const Center(child: AppLoader());
+        // } else {
           final order = orderViewModelCubit.trackOrderEntity?.orders ;
           final drive = orderViewModelCubit.trackOrderEntity?.driver;
 
@@ -127,7 +128,7 @@ class MapScreen extends StatelessWidget {
               ),
             ),
           );
-        }
+        // }
       },
     );
   }
@@ -156,8 +157,8 @@ class MapScreen extends StatelessWidget {
       Marker(
         markerId: const MarkerId('driver'),
         position: LatLng(
-          drive.location?.latitude ?? 30.0566,
-          drive.location?.longitude ?? 31.3301,
+          drive.location!.latitude ,
+          drive.location!.longitude ,
         ),
         icon: icons['driver']!,
         infoWindow: InfoWindow(title: 'driver: ${drive.lastName}'),

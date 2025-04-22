@@ -3,7 +3,7 @@
 
   extension StringFormat on String {
   String get toFullImageUrl {
-    return "https://flower.elevateegy.com/uploads/$this";
+    return "https://flower.elevateegy.com/uploads/${this.split("https://flower.elevateegy.com/uploads/").last}";
   }
 }
 
