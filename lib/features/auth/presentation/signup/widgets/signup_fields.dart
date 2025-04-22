@@ -22,9 +22,9 @@ class SignUpFields extends StatelessWidget {
               child: AppTextFormField(
                 controller: cubit.firstNameController,
                 hintText:context.translate(LangKeys.hintFirstName),
-                labelText: context.translate(LangKeys.firstName),
+                labelText: context.translate(LangKeys.hintFirstName),
                 validator: (value) => Validators.validateNotEmpty(
-                  title: context.translate(LangKeys.firstName),
+                  title: context.translate(LangKeys.hintFirstName),
                   value: value,
                   context: context,
                 ),
@@ -37,9 +37,9 @@ class SignUpFields extends StatelessWidget {
               child: AppTextFormField(
                 controller: cubit.lastNameController,
                 hintText:context.translate(LangKeys.hintLastName),
-                labelText: context.translate(LangKeys.lastName),
+                labelText: context.translate(LangKeys.labelLastName),
                 validator: (value) => Validators.validateNotEmpty(
-                  title: context.translate(LangKeys.lastName),
+                  title: context.translate(LangKeys.labelLastName),
                   value: value,
                   context: context,
                 ),
@@ -53,7 +53,7 @@ class SignUpFields extends StatelessWidget {
         AppTextFormField(
           controller: cubit.emailController,
           hintText:  context.translate(LangKeys.hintEmail),
-          labelText: context.translate(LangKeys.email),
+          labelText: context.translate(LangKeys.labelEmail),
           validator: (value) => Validators.validateEmail(value, context),
         ),
         verticalSpacing(
