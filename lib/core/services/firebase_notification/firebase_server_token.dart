@@ -20,6 +20,7 @@ class FirebaseServerToken {
       "client_x509_cert_url": dotenv.env['CLIENT_CERT_URL'],
       "universe_domain": dotenv.env['UNIVERSE_DOMAIN']
     };
+
     final client = await clientViaServiceAccount(
       ServiceAccountCredentials.fromJson(credentialsJson),
       [firebaseMessagingScope],
