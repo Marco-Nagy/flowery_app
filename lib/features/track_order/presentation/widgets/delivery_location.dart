@@ -33,7 +33,7 @@ class DeliveryLocation extends StatelessWidget {
           Container(
             width: 50.w,
             height: 30.h,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: MyColors.white,
             ),

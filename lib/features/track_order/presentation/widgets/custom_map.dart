@@ -12,7 +12,7 @@ class CustomMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlutterMap(
       options: MapOptions(
-        initialCenter: LatLng(37.42796133580664, -122.085749655962),
+        initialCenter: const LatLng(37.42796133580664, -122.085749655962),
         initialZoom: 12.0,
         onTap: (tapPosition, point) {
           debugPrint("Tapped at: $point");
@@ -47,7 +47,7 @@ class CustomMap extends StatelessWidget {
                       Container(
                         width: 22.w,
                         height: 22.h,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.red,
                           boxShadow: [

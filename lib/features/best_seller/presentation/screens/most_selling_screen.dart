@@ -33,7 +33,7 @@ class _MostSellingScreenState extends State<MostSellingScreen> {
       addToCartAnimation(widgetKey);
 
       cartViewModelCubit.cartKey.currentState!
-          .runCartAnimation(cartViewModelCubit.cartQuantityItems?.toString() ?? '0');
+          .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
     });
   }
 
@@ -46,7 +46,7 @@ class _MostSellingScreenState extends State<MostSellingScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       cartViewModelCubit.doAction(GetUserCartDataAction());
       cartViewModelCubit.cartKey.currentState!
-          .runCartAnimation(cartViewModelCubit.cartQuantityItems?.toString() ?? '0');
+          .runCartAnimation(cartViewModelCubit.cartQuantityItems.toString());
     });
   }
 
