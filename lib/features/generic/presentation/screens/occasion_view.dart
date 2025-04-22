@@ -4,6 +4,7 @@ import 'package:flowery_store/core/styles/fonts/my_fonts.dart';
 import 'package:flowery_store/core/utils/widgets/custom_appbar.dart';
 import 'package:flowery_store/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_store/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
+import 'package:flowery_store/features/cart/presentation/widgets/cart_bloc_listener_widget.dart';
 import 'package:flowery_store/features/cart/presentation/widgets/cart_icon_badge.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -76,6 +77,7 @@ class _OccasionViewState extends State<OccasionView> {
             showArrow: true,
             actions: [
               const SizedBox(width: 16),
+              const CartBlocListenerWidget(),
               CartIconBadge(
                 cartKey: cartViewModelCubit.cartKey,
               ),

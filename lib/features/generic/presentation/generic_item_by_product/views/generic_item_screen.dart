@@ -1,3 +1,4 @@
+import 'package:flowery_store/features/cart/presentation/widgets/cart_bloc_listener_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/localization/lang_keys.dart';
@@ -48,6 +49,8 @@ class GenericItemScreen extends StatelessWidget {
                       },
                     ),
                     verticalSpacing(20),
+                    const CartBlocListenerWidget(),
+
                     Expanded(
                       child: filteredProducts.isEmpty
                           ? const NoProductsWidget()
