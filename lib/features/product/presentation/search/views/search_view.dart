@@ -5,6 +5,7 @@ import 'package:flowery_store/core/utils/widgets/spacing.dart';
 import 'package:flowery_store/di/di.dart';
 import 'package:flowery_store/features/cart/presentation/viewModel/cart_base_action.dart';
 import 'package:flowery_store/features/cart/presentation/viewModel/cart_view_model_cubit.dart';
+import 'package:flowery_store/features/cart/presentation/widgets/cart_bloc_listener_widget.dart';
 import 'package:flowery_store/features/cart/presentation/widgets/cart_icon_badge.dart';
 import 'package:flowery_store/features/generic/presentation/generic_item_by_product/viewModel/generic_item_action.dart';
 import 'package:flowery_store/features/generic/presentation/generic_item_by_product/viewModel/generic_item_view_model_cubit.dart';
@@ -81,16 +82,19 @@ class _SearchViewState extends State<SearchView> {
         child: Scaffold(
           backgroundColor: const Color(0xFFffffff),
           body: Padding(
-            padding: EdgeInsets.only(top: 50.h, left: 16.w, right: 16.w),
+            padding: EdgeInsets.only(top: 50.h, ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Padding(padding:
+                EdgeInsets.symmetric(horizontal: 16.w),
+          child:
                 Row(
                   children: [
                     GestureDetector(
                       onTap: () {
 
-                          Navigator.pop(context);
+                        Navigator.pop(context);
                       },
                       child: const Icon(
                         Icons.arrow_back_ios,
@@ -111,8 +115,12 @@ class _SearchViewState extends State<SearchView> {
                       cartKey: cartViewModelCubit.cartKey,
                     ),
                   ],
-                ),
+                ),),
+
+
                 verticalSpacing(16.h),
+                const CartBlocListenerWidget(),
+
                 Expanded(
                   child:
                       BlocBuilder<SearchViewModelCubit, SearchViewModelState>(
