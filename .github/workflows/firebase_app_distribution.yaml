@@ -49,7 +49,7 @@ jobs:
       # Step 7: Save Firebase Server Token into firebase_server_token.dart
       - name: Save firebase_server_token.dart
         run: |
-          echo "${{ secrets.FIREBASE_SERVER_TOKEN_RAW }}" > lib/core/services/firebase_notification/firebase_server_token.dart
+          echo "${{ secrets.FIREBASE_SERVER_TOKEN }}" > lib/core/services/firebase_notification/firebase_server_token.dart
 
       # Step 8: Bump version in pubspec.yaml
       - name: Bump Version in pubspec.yaml
