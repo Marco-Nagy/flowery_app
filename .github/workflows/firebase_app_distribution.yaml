@@ -84,7 +84,6 @@ jobs:
           releaseNotes: "First GitHub Action Firebase Distribution"
           debug: true
           serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
-          firebaseServerToken: ${{ secrets.FIREBASE_SERVER_TOKEN }}
 
       # Step 12: Upload APK as an artifact for later use
       - name: Upload APK as Artifact
