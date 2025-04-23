@@ -15,8 +15,10 @@ class _ApiManager implements ApiManager {
 
   final Dio _dio;
 
+  // ignore: unused_element_parameter
   String? baseUrl;
 
+  // ignore: unused_element_parameter
   final ParseErrorLogger? errorLogger;
 
   @override
