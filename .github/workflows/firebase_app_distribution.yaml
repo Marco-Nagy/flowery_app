@@ -78,13 +78,13 @@ jobs:
       - name: Distribute APK to Firebase
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
-          appId: ${{ secrets.FIREBASE_APP_ID }}
+          appId: ${{ secrets.STORE_ANDROID_APP_ID }}
           file: build/app/outputs/flutter-apk/app-release.apk
           groups: maintainers
           releaseNotes: "First GitHub Action Firebase Distribution"
           debug: true
           serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
-          firebaseServerToken: ${{ secrets.FIREBASE_SERVER_TOKEN }}
+
 
       # Step 12: Upload APK as an artifact for later use
       - name: Upload APK as Artifact

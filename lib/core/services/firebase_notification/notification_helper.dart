@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flowery_store/core/localization/lang_keys.dart';
+import 'package:flowery_store/core/services/firebase_notification/firebase_server_token.dart';
 import 'package:flowery_store/core/services/shared_preference/shared_pref_keys.dart';
 import 'package:flowery_store/core/services/shared_preference/shared_preference_helper.dart';
 import 'package:flowery_store/core/utils/extension/media_query_values.dart';
@@ -14,7 +15,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:injectable/injectable.dart';
 
-import 'firebase_server_token.dart';
 import 'notification_navigation_helper.dart';
 
 @LazySingleton()
