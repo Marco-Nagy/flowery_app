@@ -3,15 +3,25 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
-import 'package:flowery_store/core/networking/common/api_result.dart' as _i4;
-import 'package:flowery_store/features/address_details/domain/entities/request/add_address_request_entity.dart'
+import 'package:flowery_store/core/networking/common/api_result.dart' as _i5;
+import 'package:flowery_store/features/address/domain/entities/request/add_address_request_entity.dart'
+    as _i10;
+import 'package:flowery_store/features/address/domain/entities/response/add_address_response_entity.dart'
+    as _i9;
+import 'package:flowery_store/features/address/domain/entities/response/SavedAddressResponseEntity.dart'
     as _i6;
-import 'package:flowery_store/features/address_details/domain/entities/response/add_address_response_entity.dart'
-    as _i5;
-import 'package:flowery_store/features/address_details/domain/use_cases/add_address_use_case.dart'
+import 'package:flowery_store/features/address/domain/repository/address_repo.dart'
     as _i2;
+import 'package:flowery_store/features/address/domain/uses_cases/add_address_use_case.dart'
+    as _i8;
+import 'package:flowery_store/features/address/domain/uses_cases/delete_address_use_case.dart'
+    as _i11;
+import 'package:flowery_store/features/address/domain/uses_cases/get_saved_address_use_case.dart'
+    as _i3;
+import 'package:flowery_store/features/address/domain/uses_cases/update_address_use_case.dart'
+    as _i12;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i7;
 
@@ -29,27 +39,177 @@ import 'package:mockito/src/dummies.dart' as _i7;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeAddressRepo_0 extends _i1.SmartFake implements _i2.AddressRepo {
+  _FakeAddressRepo_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+/// A class which mocks [GetSavedAddressUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetSavedAddressUseCase extends _i1.Mock
+    implements _i3.GetSavedAddressUseCase {
+  MockGetSavedAddressUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i2.AddressRepo get addressRepo =>
+      (super.noSuchMethod(
+            Invocation.getter(#addressRepo),
+            returnValue: _FakeAddressRepo_0(
+              this,
+              Invocation.getter(#addressRepo),
+            ),
+          )
+          as _i2.AddressRepo);
+
+  @override
+  set addressRepo(_i2.AddressRepo? _addressRepo) => super.noSuchMethod(
+    Invocation.setter(#addressRepo, _addressRepo),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i4.Future<_i5.DataResult<List<_i6.AddressesEntity>>> call() =>
+      (super.noSuchMethod(
+            Invocation.method(#call, []),
+            returnValue:
+                _i4.Future<_i5.DataResult<List<_i6.AddressesEntity>>>.value(
+                  _i7.dummyValue<_i5.DataResult<List<_i6.AddressesEntity>>>(
+                    this,
+                    Invocation.method(#call, []),
+                  ),
+                ),
+          )
+          as _i4.Future<_i5.DataResult<List<_i6.AddressesEntity>>>);
+}
+
 /// A class which mocks [AddAddressUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAddAddressUseCase extends _i1.Mock implements _i2.AddAddressUseCase {
+class MockAddAddressUseCase extends _i1.Mock implements _i8.AddAddressUseCase {
   MockAddAddressUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<_i4.DataResult<_i5.AddAddressResponseEntity>> addAddress(
-    _i6.AddAddressRequestEntity? request,
+  _i2.AddressRepo get addressRepo =>
+      (super.noSuchMethod(
+            Invocation.getter(#addressRepo),
+            returnValue: _FakeAddressRepo_0(
+              this,
+              Invocation.getter(#addressRepo),
+            ),
+          )
+          as _i2.AddressRepo);
+
+  @override
+  set addressRepo(_i2.AddressRepo? _addressRepo) => super.noSuchMethod(
+    Invocation.setter(#addressRepo, _addressRepo),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i4.Future<_i5.DataResult<_i9.AddAddressResponseEntity>> addAddress(
+    _i10.AddAddressRequestEntity? request,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#addAddress, [request]),
             returnValue:
-                _i3.Future<_i4.DataResult<_i5.AddAddressResponseEntity>>.value(
-                  _i7.dummyValue<_i4.DataResult<_i5.AddAddressResponseEntity>>(
+                _i4.Future<_i5.DataResult<_i9.AddAddressResponseEntity>>.value(
+                  _i7.dummyValue<_i5.DataResult<_i9.AddAddressResponseEntity>>(
                     this,
                     Invocation.method(#addAddress, [request]),
                   ),
                 ),
           )
-          as _i3.Future<_i4.DataResult<_i5.AddAddressResponseEntity>>);
+          as _i4.Future<_i5.DataResult<_i9.AddAddressResponseEntity>>);
+}
+
+/// A class which mocks [DeleteAddressUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockDeleteAddressUseCase extends _i1.Mock
+    implements _i11.DeleteAddressUseCase {
+  MockDeleteAddressUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i2.AddressRepo get addressRepo =>
+      (super.noSuchMethod(
+            Invocation.getter(#addressRepo),
+            returnValue: _FakeAddressRepo_0(
+              this,
+              Invocation.getter(#addressRepo),
+            ),
+          )
+          as _i2.AddressRepo);
+
+  @override
+  set addressRepo(_i2.AddressRepo? _addressRepo) => super.noSuchMethod(
+    Invocation.setter(#addressRepo, _addressRepo),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i4.Future<_i5.DataResult<List<_i6.AddressesEntity>>> call({
+    required String? id,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#call, [], {#id: id}),
+            returnValue:
+                _i4.Future<_i5.DataResult<List<_i6.AddressesEntity>>>.value(
+                  _i7.dummyValue<_i5.DataResult<List<_i6.AddressesEntity>>>(
+                    this,
+                    Invocation.method(#call, [], {#id: id}),
+                  ),
+                ),
+          )
+          as _i4.Future<_i5.DataResult<List<_i6.AddressesEntity>>>);
+}
+
+/// A class which mocks [UpdateAddressUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockUpdateAddressUseCase extends _i1.Mock
+    implements _i12.UpdateAddressUseCase {
+  MockUpdateAddressUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i2.AddressRepo get addressRepo =>
+      (super.noSuchMethod(
+            Invocation.getter(#addressRepo),
+            returnValue: _FakeAddressRepo_0(
+              this,
+              Invocation.getter(#addressRepo),
+            ),
+          )
+          as _i2.AddressRepo);
+
+  @override
+  set addressRepo(_i2.AddressRepo? _addressRepo) => super.noSuchMethod(
+    Invocation.setter(#addressRepo, _addressRepo),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i4.Future<_i5.DataResult<List<_i6.AddressesEntity>>> call({
+    required String? id,
+    required _i10.AddAddressRequestEntity? request,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#call, [], {#id: id, #request: request}),
+            returnValue:
+                _i4.Future<_i5.DataResult<List<_i6.AddressesEntity>>>.value(
+                  _i7.dummyValue<_i5.DataResult<List<_i6.AddressesEntity>>>(
+                    this,
+                    Invocation.method(#call, [], {#id: id, #request: request}),
+                  ),
+                ),
+          )
+          as _i4.Future<_i5.DataResult<List<_i6.AddressesEntity>>>);
 }

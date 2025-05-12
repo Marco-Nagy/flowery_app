@@ -52,7 +52,7 @@ class AddressCard extends StatelessWidget {
           ],),
             subtitle: Text('${address.city!} - ${address.street!}'),
             trailing: InkWell(
-                onTap: () => context.pushNamed(AppRoutes.addressScreen),
+                onTap: () => context.pushNamed(AppRoutes.addressScreen ,arguments: address),
                 child: Image.asset(
                   Assets.imagesEditAddress,
                   height: 20,

@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flowery_store/features/address_details/data/models/response/add_address_response_dto.dart';
+import 'package:flowery_store/features/address/data/models/request/add_address_request_dto.dart';
+import 'package:flowery_store/features/address/data/models/response/add_address_response_dto.dart';
 import 'package:flowery_store/features/address/data/models/response/saved_address_response_entity_dto_entity.dart';
 import 'package:flowery_store/features/auth/data/models/request/forget_password_request_dto.dart';
 import 'package:flowery_store/features/auth/data/models/request/reset_password_request_dto.dart';
@@ -27,7 +28,6 @@ import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
-import '../../../features/address_details/data/models/request/add_address_request_dto.dart';
 import '../../../features/auth/data/models/request/login_request_dto.dart';
 import '../../../features/auth/data/models/request/signup_request_dto.dart';
 import '../../../features/auth/data/models/response/login_response_dto.dart';
@@ -122,6 +122,14 @@ abstract class  ApiManager {
   @PATCH(ApiConstants.addAddress)
   Future<AddAddressResponseDto> addAddress(
       @Body() AddAddressRequestDto request);
+
+  @PATCH("${ApiConstants.editAddress}{id}")
+  Future<SavedAddressResponseEntityDtoEntity> editAddress( @Path("id") String id,
+      @Body() AddAddressRequestDto request
+  );
+
+  @DELETE("${ApiConstants.deleteAddress}{id}")
+  Future<SavedAddressResponseEntityDtoEntity> deleteAddress(@Path("id") String id);
 
   @POST("${ApiConstants.checkOutOrders}")
   Future<CheckoutOrdersResponseDto> checkoutOrders(@Query("url") String endpointUrl,  @Body() ShippingAddressRequestDto request);

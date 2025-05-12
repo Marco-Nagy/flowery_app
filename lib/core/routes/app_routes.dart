@@ -1,10 +1,11 @@
 import 'package:flowery_store/core/routes/base_routes.dart';
 import 'package:flowery_store/core/utils/widgets/base/app_loader.dart';
+import 'package:flowery_store/features/address/domain/entities/response/SavedAddressResponseEntity.dart';
 import 'package:flowery_store/features/address/presentation/view/address_screen.dart';
 import 'package:flowery_store/features/address/presentation/view/map_view.dart';
 import 'package:flowery_store/features/address/presentation/view/saved_address_screen.dart';
+import 'package:flowery_store/features/address/presentation/view_model/address_action.dart';
 import 'package:flowery_store/features/address/presentation/view_model/address_cubit.dart';
-import 'package:flowery_store/features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
 import 'package:flowery_store/features/auth/presentation/forget_password/ViewModel/forget_password_view_model_cubit.dart';
 import 'package:flowery_store/features/auth/presentation/forget_password/view/email_verification.dart';
 import 'package:flowery_store/features/auth/presentation/forget_password/view/reset_password.dart';
@@ -26,6 +27,8 @@ import 'package:flowery_store/features/notification_list/presentation/model/noti
 import 'package:flowery_store/features/product/presentation/search/viewModel/search_view_model_cubit.dart';
 import 'package:flowery_store/features/product/presentation/search/views/search_view.dart';
 import 'package:flowery_store/features/product/presentation/view/product_details_view.dart';
+import 'package:flowery_store/features/profile/presentation/viewModel/profile_actions.dart';
+import 'package:flowery_store/features/profile/presentation/viewModel/profile_view_model_cubit.dart';
 import 'package:flowery_store/features/profile/presentation/views/profile_main_screen.dart';
 import 'package:flowery_store/features/track_order/domain/entities/track_order_entity.dart';
 import 'package:flowery_store/features/track_order/presentation/viewModel/track_order/track_order_actions.dart';
@@ -160,7 +163,11 @@ class AppRoutes {
                 )));
 
       case AppRoutes.profileView:
-        return BaseRoute(page: const ProfileView());
+        return BaseRoute(
+            page:  BlocProvider(
+  create: (context) => getIt.get<ProfileViewModelCubit>()..doAction(GetLoggedUserData()),
+  child: const ProfileView(),
+));
       case AppRoutes.resetPasswordProfileView:
         return BaseRoute(page: const ResetPasswordProfileView());
       case AppRoutes.checkoutScreen:
@@ -168,7 +175,7 @@ class AppRoutes {
             page: MultiBlocProvider(providers: [
           BlocProvider(
             create: (context) =>
-                getIt.get<AddressViewModel>()..getSavedAddresses(),
+                getIt.get<AddressViewModel>()..doAction(FetchSavedAddressesAction()),
           ),
           BlocProvider(
             create: (context) => getIt.get<CheckoutViewModelCubit>(),
@@ -179,8 +186,8 @@ class AppRoutes {
       case AppRoutes.addressScreen:
         return BaseRoute(
             page: BlocProvider(
-                create: (context) => getIt.get<AddAddressViewModelCubit>(),
-                child: const AddressScreen()));
+                create: (context) => getIt.get<AddressViewModel>(),
+                child: AddressScreen(address: args as  AddressesEntity ,)));
       case AppRoutes.aboutAppView:
         return BaseRoute(page: const AboutAppView());
       case AppRoutes.termsAndConditionsPage:
@@ -227,24 +234,26 @@ class AppRoutes {
                 orderId: arguments!['orderId']!, userId: arguments['userId']!));
 
       case AppRoutes.trackOrder:
-        final arguments = settings.arguments as Map<String, String?>;
 
-        if (arguments == null ||
-            !arguments.containsKey('orderId') ||
-            !arguments.containsKey('userId')) {
-          return BaseRoute(
-              page: const AppLoader()); // Handle missing data safely
+        if (args == null || !(args is Map<String, String?>)
+            || args['orderId'] == null|| args['userId'] == null) {
+          return BaseRoute(page: const AppLoader()); // Handle missing data safely
         }
 
         return BaseRoute(
-            page: BlocProvider(
-                create: (context) => getIt.get<TrackOrderViewModelCubit>()
-                  ..doAction(GetOrderDetails(
-                      orderId: arguments['orderId']!,
-                      userId: arguments['userId']!)),
-                child: TrackOrderScreen(
-                    orderId: arguments['orderId']!,
-                    userId: arguments['userId']!)));
+          page: BlocProvider(
+            create: (context) => getIt.get<TrackOrderViewModelCubit>()
+              ..doAction(GetOrderDetails(
+                orderId: args['orderId']!,
+                userId: args['userId']!,
+              )),
+            child: TrackOrderScreen(
+              orderId: args['orderId']!,
+              userId: args['userId']!,
+            ),
+          ),
+        );
+
       case AppRoutes.trackOrderMap:
         final arguments = settings.arguments as TrackOrderEntity;
 

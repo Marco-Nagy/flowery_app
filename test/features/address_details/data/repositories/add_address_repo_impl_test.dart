@@ -1,22 +1,23 @@
 import 'package:flowery_store/core/networking/common/api_result.dart';
-import 'package:flowery_store/features/address_details/data/data_sources/contracts/add_address_online_data_source.dart';
-import 'package:flowery_store/features/address_details/data/repositories/add_address_repo_impl.dart';
-import 'package:flowery_store/features/address_details/domain/entities/request/add_address_request_entity.dart';
-import 'package:flowery_store/features/address_details/domain/entities/response/add_address_response_entity.dart';
+import 'package:flowery_store/features/address/data/data_sources/contracts/address_online_data_source.dart';
+import 'package:flowery_store/features/address/data/repository/address_repo_impl.dart';
+import 'package:flowery_store/features/address/domain/entities/request/add_address_request_entity.dart';
+import 'package:flowery_store/features/address/domain/entities/response/add_address_response_entity.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'add_address_repo_impl_test.mocks.dart';
 
-@GenerateMocks([AddAddressOnlineDataSource])
+@GenerateMocks([AddressOnlineDataSource])
 void main() {
   late var dataSource;
   late var addAddressRepoImpl;
 
   setUp(() {
-    dataSource = MockAddAddressOnlineDataSource();
-    addAddressRepoImpl = AddAddressRepoImpl(dataSource);
+    dataSource = MockAddressOnlineDataSource();
+    addAddressRepoImpl = AddressRepoImpl(dataSource);
     provideDummy<DataResult<AddAddressResponseEntity>>(
         Success(AddAddressResponseEntity(address: [
       AddAddressResponseEntityAddress(

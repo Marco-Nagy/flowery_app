@@ -5,9 +5,11 @@ import 'package:flowery_store/core/styles/colors/my_colors.dart';
 import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import 'package:flowery_store/core/utils/widgets/base/snack_bar.dart';
 import 'package:flowery_store/core/utils/widgets/spacing.dart';
-import 'package:flowery_store/features/address_details/domain/entities/request/add_address_request_entity.dart';
-import 'package:flowery_store/features/address_details/presentation/viewModel/add_address_action.dart';
-import 'package:flowery_store/features/address_details/presentation/viewModel/add_address_view_model_cubit.dart';
+import 'package:flowery_store/features/address/domain/entities/request/add_address_request_entity.dart';
+import 'package:flowery_store/features/address/domain/entities/response/SavedAddressResponseEntity.dart';
+import 'package:flowery_store/features/address/presentation/view_model/address_action.dart';
+import 'package:flowery_store/features/address/presentation/view_model/address_cubit.dart';
+import 'package:flowery_store/features/address/presentation/view_model/address_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,19 +20,21 @@ import '../widgets/address_input_fields.dart';
 import '../widgets/address_save_button.dart';
 
 class AddressScreen extends StatefulWidget {
-  const AddressScreen({super.key});
+  final AddressesEntity address;
+
+  const AddressScreen({super.key, required this.address});
 
   @override
   State<AddressScreen> createState() => _AddressScreenState();
 }
 
 class _AddressScreenState extends State<AddressScreen> {
-  late final TextEditingController usernameController;
-  late final TextEditingController phoneController;
-  late final TextEditingController streetController;
-  late final TextEditingController cityController;
-  late final TextEditingController longitudeController;
-  late final TextEditingController latitudeController;
+  TextEditingController? usernameController;
+  TextEditingController? phoneController;
+  TextEditingController? streetController;
+  TextEditingController? cityController;
+  TextEditingController? longitudeController;
+  TextEditingController? latitudeController;
 
   String? selectedCountry;
   String? selectedCity;
@@ -43,34 +47,55 @@ class _AddressScreenState extends State<AddressScreen> {
   @override
   void initState() {
     super.initState();
+    if (widget.address.id != null) {
+      setState(() {
+        usernameController?.text = widget.address.username ?? '';
+        phoneController?.text = widget.address.phone ?? '';
+        streetController?.text = widget.address.street ?? '';
+        cityController?.text = widget.address.city ?? '';
+        longitudeController?.text = widget.address.long ?? '';
+        latitudeController?.text = widget.address.lat ?? '';
+      });
+
+    }else{
+      setState(() {
+        usernameController?.text = '';
+        phoneController?.text = '';
+        streetController?.text = '';
+        cityController?.text = '';
+        longitudeController?.text = '';
+        latitudeController?.text = '';
+      });
+      }
+
     usernameController = TextEditingController()..addListener(_checkFields);
     phoneController = TextEditingController()..addListener(_checkFields);
     streetController = TextEditingController()..addListener(_checkFields);
     cityController = TextEditingController()..addListener(_checkFields);
     longitudeController = TextEditingController()..addListener(_checkFields);
     latitudeController = TextEditingController()..addListener(_checkFields);
-    context.read<AddAddressViewModelCubit>().doAction(FetchCountriesAction());
+    context.read<AddressViewModel>()..doAction(FetchCountriesAction());
   }
 
   @override
   void dispose() {
-    streetController.dispose();
-    phoneController.dispose();
-    longitudeController.dispose();
-    latitudeController.dispose();
-    usernameController.dispose();
-    cityController.dispose();
+    streetController?.dispose();
+    phoneController?.dispose();
+    longitudeController?.dispose();
+    latitudeController?.dispose();
+    usernameController?.dispose();
+    cityController?.dispose();
     super.dispose();
   }
 
   void _checkFields() {
     setState(() {
-      isButtonEnabled = streetController.text.isNotEmpty &&
-          phoneController.text.isNotEmpty &&
-          usernameController.text.isNotEmpty &&
-          cityController.text.isNotEmpty &&
-          latitudeController.text.isNotEmpty &&
-          longitudeController.text.isNotEmpty;
+      isButtonEnabled = streetController!.text.isNotEmpty &&
+          phoneController!.text.isNotEmpty &&
+          usernameController!.text.isNotEmpty &&
+          cityController!.text.isNotEmpty &&
+          latitudeController!.text.isNotEmpty &&
+          longitudeController!.text.isNotEmpty;
     });
   }
 
@@ -83,43 +108,52 @@ class _AddressScreenState extends State<AddressScreen> {
         context: context,
         showArrow: true,
       ),
-      body: BlocConsumer<AddAddressViewModelCubit, AddAddressViewModelState>(
+      body: BlocConsumer<AddressViewModel, AddressStates>(
         builder: (context, state) {
           if (state is AddAddressViewModelFetchedCountries) {
             countryList = state.countries;
           } else if (state is AddAddressViewModelFetchedCities) {
             cityList = state.cities;
           }
+          if (widget.address.id != null) {
+              usernameController!.text = widget.address.username ?? '';
+              phoneController!.text = widget.address.phone ?? '';
+              streetController?.text = widget.address.street ?? '';
+              cityController?.text = widget.address.city ?? '';
+              longitudeController?.text = widget.address.long ?? '';
+              latitudeController?.text = widget.address.lat ?? '';
+
+
+          }
 
           return SingleChildScrollView(
             child: Column(
               children: [
                 AddressImagePickerWidget(
-                    streetController: streetController,
-                    cityController: cityController,
-                    longitudeController: longitudeController,
-                    latitudeController: latitudeController),
-
+                    streetController: streetController ?? TextEditingController(),
+                    cityController: cityController ?? TextEditingController(),
+                    longitudeController: longitudeController ?? TextEditingController(),
+                    latitudeController: latitudeController ?? TextEditingController(),),
                 AddressInputFieldsWidget(
-                  usernameController: usernameController,
-                  phoneController: phoneController,
-                  streetController: streetController,
-                  cityController: cityController,
-                  latitudeController: latitudeController,
-                  longitudeController: longitudeController,
+                  usernameController: usernameController ?? TextEditingController(),
+                  phoneController: phoneController  ?? TextEditingController(),
+                  streetController: streetController ?? TextEditingController(),
+                  cityController: cityController ?? TextEditingController(),
+                  latitudeController: latitudeController  ?? TextEditingController(),
+                  longitudeController: longitudeController ?? TextEditingController(),
                 ),
                 AddressSaveButton(
                   isButtonEnabled: isButtonEnabled,
                   onTap: () {
-                    context.read<AddAddressViewModelCubit>().doAction(
+                    context.read<AddressViewModel>().doAction(
                           AddAddressSubmitAction(
                             AddAddressRequestEntity(
-                              street: streetController.text.trim(),
-                              city: cityController.text.trim(),
-                              phone: phoneController.text.trim(),
-                              lat: latitudeController.text.trim(),
-                              long: longitudeController.text.trim(),
-                              username: usernameController.text.trim(),
+                              street: streetController?.text.trim(),
+                              city: cityController?.text.trim(),
+                              phone: phoneController?.text.trim(),
+                              lat: latitudeController?.text.trim(),
+                              long: longitudeController?.text.trim(),
+                              username: usernameController?.text.trim(),
                             ),
                           ),
                         );
@@ -130,8 +164,6 @@ class _AddressScreenState extends State<AddressScreen> {
             ),
           );
         },
-
-
         listener: (context, state) {
           if (state is AddAddressViewModelLoading) {
             aweSnackBar(

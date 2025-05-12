@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'address_card.dart';
 
-
 class AddressesList extends StatefulWidget {
   AddressesList({Key? key}) : super(key: key);
 
@@ -16,12 +15,15 @@ class AddressesList extends StatefulWidget {
 }
 
 class _AddressesListState extends State<AddressesList> {
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddressViewModel, AddressStates>(
       builder: (context, state) {
         switch (state) {
+          case AddAddressViewModelSuccess():
+            break;
+          case DeleteAddressSuccessState():
+            break;
           case GetSavedAddressesSuccessState():
             return ListView.builder(
               shrinkWrap: true,
@@ -33,16 +35,25 @@ class _AddressesListState extends State<AddressesList> {
                   duration: Duration(milliseconds: 120 * (index + 1)),
                   child: AddressCard(
                     address: state.addresses[index],
-                   index: index,
+                    index: index,
                   ),
                 );
               },
             );
-
           case GetSavedAddressesLoadingState():
             return const AppLoader();
           case GetSavedAddressesInitialState():
           case GetSavedAddressesErrorState():
+          case AddAddressViewModelInitial():
+          case AddAddressViewModelLoading():
+          case AddAddressViewModelError():
+          case AddAddressViewModelFetchedCountries():
+          case AddAddressViewModelFetchedCities():
+          case DeleteAddressLoadingState():
+          case DeleteAddressErrorState():
+          case UpdateAddressLoadingState():
+          case UpdateAddressSuccessState():
+          case UpdateAddressErrorState():
         }
         return Container();
       },
