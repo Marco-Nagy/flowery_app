@@ -2,7 +2,8 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flowery_store/core/services/maps/polyline_service.dart';
+import 'package:flowery_store/core/services/maps/open_route_service.dart';
+import 'package:flowery_store/core/styles/colors/my_colors.dart';
 import 'package:flowery_store/features/track_order/presentation/viewModel/track_order/track_order_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -123,13 +124,37 @@ _updateDriverLocation(current);
   Future<void> drawPolyLine(LatLng location) async {
     debugPrint('🟡 Source: ${sourceLatLng?.latitude}, ${sourceLatLng?.longitude}');
     debugPrint('🟡 Destination: ${destinationLatLng?.latitude}, ${destinationLatLng?.longitude}');
+    // try {
+    //   for (final elem in listLocations) {
+    //     final polyline = await PolylineService().drawPolyline(from: location, to: elem);
+    //     finalDistance = PolylineService.totalDistance;
+    //     polyLinesSet.add(polyline);
+    //   }
+    //   if (!hasListeners) return;
+    //   notifyListeners();
+    // } catch (e) {
+    //   debugPrint('❌ Failed to draw polyline: $e');
+    // }
+    debugPrint('🟡 Source: ${location.latitude}, ${location.longitude}');
+    debugPrint('🟡 Destination: ${destinationLatLng?.latitude}, ${destinationLatLng?.longitude}');
     try {
-      for (final elem in listLocations) {
-        final polyline = await PolylineService().drawPolyline(from: location, to: elem);
-        finalDistance = PolylineService.totalDistance;
-        polyLinesSet.add(polyline);
-      }
-      if (!hasListeners) return;
+      final service = OpenRouteService();
+      final route = await service.getRouteCoordinates(start: location, end: destinationLatLng!);
+      final polyline = Polyline(
+          polylineId:  PolylineId('polyline_${DateTime.now().millisecondsSinceEpoch}'),
+          color: MyColors.baseColor,
+          width: 4,
+          points: route,
+          startCap: Cap.roundCap,
+          endCap: Cap.roundCap,
+          jointType: JointType.bevel,
+          geodesic: true,
+      consumeTapEvents: true
+      );
+
+      finalDistance = await service.getDistanceInKm(start: location, end: destinationLatLng!);
+      polyLinesSet.clear();
+      polyLinesSet.add(polyline);
       notifyListeners();
     } catch (e) {
       debugPrint('❌ Failed to draw polyline: $e');

@@ -129,7 +129,7 @@ class _LocationViewState extends State<LocationView> {
             child: Consumer<UpdateDriverLocationProvider>(
               builder: (context, state, _) {
                 // print("📌 driverLatLng from provider: ${state.driverLatLng}");
-                if (state.driverLatLng == null) {
+                if (state.driverLatLng == null || state.destinationLatLng == null) {
 
                 return  const Center(
                     child: SpinKitThreeInOut(

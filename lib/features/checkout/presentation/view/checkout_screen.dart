@@ -6,6 +6,7 @@ import 'package:flowery_store/core/utils/extension/navigation.dart';
 import 'package:flowery_store/core/utils/widgets/buttons/carved_button.dart';
 import 'package:flowery_store/core/utils/widgets/custom_appbar.dart';
 import 'package:flowery_store/core/utils/widgets/spacing.dart';
+import 'package:flowery_store/features/address/domain/entities/response/SavedAddressResponseEntity.dart';
 import 'package:flowery_store/features/cart/domain/entities/cart_entity.dart';
 import 'package:flowery_store/features/cart/presentation/widgets/cart_total_amount.dart';
 import 'package:flowery_store/features/checkout/presentation/widgets/addresses_list.dart';
@@ -84,7 +85,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
               CurvedButton(
                 title: ' + ${context.translate(LangKeys.addNew)}',
-                onTap: () => context.pushNamed(AppRoutes.addressScreen),
+                onTap: () => context.pushNamed(AppRoutes.addressScreen ,arguments: AddressesEntity()),
                 color: MyColors.white,
                 textColor: MyColors.baseColor,
                 colorBorderSide: MyColors.gray30,
