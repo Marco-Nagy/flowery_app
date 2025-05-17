@@ -67,9 +67,9 @@ class ForgetPassword extends HookWidget {
                   AppTextFormField(
                     controller: emailController,
                     hintText: context.translate(LangKeys.hintEmail),
-                    labelText: context.translate(LangKeys.email),
+                    labelText: context.translate(LangKeys.labelEmail),
                     validator: (value) => Validators.validateNotEmpty(
-                        title: context.translate(LangKeys.email), value: value,context: context),
+                        title: context.translate(LangKeys.labelEmail), value: value,context: context),
                   ),
                   verticalSpacing(48),
                   CurvedButton(

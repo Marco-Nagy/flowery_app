@@ -14,7 +14,7 @@ class EmailField extends StatelessWidget {
       controller: emailController,
       validator: (value) => Validators.validateEmail(value, context),
       hintText: context.translate(LangKeys.hintEmail),
-      labelText: context.translate(LangKeys.email),
+      labelText: context.translate(LangKeys.labelEmail),
     );
   }
 }
