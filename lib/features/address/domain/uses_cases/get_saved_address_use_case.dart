@@ -4,12 +4,12 @@ import 'package:flowery_store/features/address/domain/repository/address_repo.da
 import 'package:injectable/injectable.dart';
 
 @injectable
- class AddressUseCase{
+ class GetSavedAddressUseCase{
   AddressRepo addressRepo;
 
-  AddressUseCase(this.addressRepo);
+  GetSavedAddressUseCase(this.addressRepo);
 
-  Future<DataResult<List<AddressesEntity>>> callSavedAddresses(){
+  Future<DataResult<List<AddressesEntity>>> call(){
     return addressRepo.getSavedAddresses();
   }
 }

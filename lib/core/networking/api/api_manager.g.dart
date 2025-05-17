@@ -6,7 +6,7 @@ part of 'api_manager.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_local_variable,unused_element_parameter
 
 class _ApiManager implements ApiManager {
   _ApiManager(this._dio, {this.baseUrl, this.errorLogger}) {
@@ -537,6 +537,7 @@ class _ApiManager implements ApiManager {
         MultipartFile.fromFileSync(
           photo.path,
           filename: photo.path.split(Platform.pathSeparator).last,
+          contentType: DioMediaType('image', _detectImageType(photo.path)), // ✅
         ),
       ),
     );
@@ -548,11 +549,11 @@ class _ApiManager implements ApiManager {
         contentType: 'multipart/form-data',
       )
           .compose(
-            _dio.options,
-            'api/v1/auth/upload-photo',
-            queryParameters: queryParameters,
-            data: _data,
-          )
+        _dio.options,
+        'api/v1/auth/upload-photo',
+        queryParameters: queryParameters,
+        data: _data,
+      )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
@@ -564,6 +565,20 @@ class _ApiManager implements ApiManager {
       rethrow;
     }
     return _value;
+  }
+  String _detectImageType(String path) {
+    final ext = path.split('.').last.toLowerCase();
+    switch (ext) {
+      case 'jpg':
+      case 'jpeg':
+        return 'jpeg';
+      case 'png':
+        return 'png';
+      case 'gif':
+        return 'gif';
+      default:
+        return 'jpeg'; // fallback
+    }
   }
 
   @override
@@ -617,6 +632,64 @@ class _ApiManager implements ApiManager {
     late AddAddressResponseDto _value;
     try {
       _value = AddAddressResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<SavedAddressResponseEntityDtoEntity> editAddress(
+    String id,
+    AddAddressRequestDto request,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _options = _setStreamType<SavedAddressResponseEntityDtoEntity>(
+      Options(method: 'PATCH', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'api/v1/addresses/${id}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late SavedAddressResponseEntityDtoEntity _value;
+    try {
+      _value = SavedAddressResponseEntityDtoEntity.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<SavedAddressResponseEntityDtoEntity> deleteAddress(String id) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<SavedAddressResponseEntityDtoEntity>(
+      Options(method: 'DELETE', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'api/v1/addresses/${id}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late SavedAddressResponseEntityDtoEntity _value;
+    try {
+      _value = SavedAddressResponseEntityDtoEntity.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

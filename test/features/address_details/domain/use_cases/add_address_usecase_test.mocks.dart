@@ -6,14 +6,16 @@
 import 'dart:async' as _i3;
 
 import 'package:flowery_store/core/networking/common/api_result.dart' as _i4;
-import 'package:flowery_store/features/address_details/domain/contracts/add_address_repo.dart'
-    as _i2;
-import 'package:flowery_store/features/address_details/domain/entities/request/add_address_request_entity.dart'
-    as _i6;
-import 'package:flowery_store/features/address_details/domain/entities/response/add_address_response_entity.dart'
+import 'package:flowery_store/features/address/domain/entities/request/add_address_request_entity.dart'
+    as _i8;
+import 'package:flowery_store/features/address/domain/entities/response/add_address_response_entity.dart'
+    as _i7;
+import 'package:flowery_store/features/address/domain/entities/response/SavedAddressResponseEntity.dart'
     as _i5;
+import 'package:flowery_store/features/address/domain/repository/address_repo.dart'
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i7;
+import 'package:mockito/src/dummies.dart' as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -29,27 +31,77 @@ import 'package:mockito/src/dummies.dart' as _i7;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-/// A class which mocks [AddAddressRepo].
+/// A class which mocks [AddressRepo].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAddAddressRepo extends _i1.Mock implements _i2.AddAddressRepo {
-  MockAddAddressRepo() {
+class MockAddressRepo extends _i1.Mock implements _i2.AddressRepo {
+  MockAddressRepo() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<_i4.DataResult<_i5.AddAddressResponseEntity>> addAddress(
-    _i6.AddAddressRequestEntity? request,
+  _i3.Future<_i4.DataResult<List<_i5.AddressesEntity>>> getSavedAddresses() =>
+      (super.noSuchMethod(
+            Invocation.method(#getSavedAddresses, []),
+            returnValue:
+                _i3.Future<_i4.DataResult<List<_i5.AddressesEntity>>>.value(
+                  _i6.dummyValue<_i4.DataResult<List<_i5.AddressesEntity>>>(
+                    this,
+                    Invocation.method(#getSavedAddresses, []),
+                  ),
+                ),
+          )
+          as _i3.Future<_i4.DataResult<List<_i5.AddressesEntity>>>);
+
+  @override
+  _i3.Future<_i4.DataResult<_i7.AddAddressResponseEntity>> addAddress(
+    _i8.AddAddressRequestEntity? request,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#addAddress, [request]),
             returnValue:
-                _i3.Future<_i4.DataResult<_i5.AddAddressResponseEntity>>.value(
-                  _i7.dummyValue<_i4.DataResult<_i5.AddAddressResponseEntity>>(
+                _i3.Future<_i4.DataResult<_i7.AddAddressResponseEntity>>.value(
+                  _i6.dummyValue<_i4.DataResult<_i7.AddAddressResponseEntity>>(
                     this,
                     Invocation.method(#addAddress, [request]),
                   ),
                 ),
           )
-          as _i3.Future<_i4.DataResult<_i5.AddAddressResponseEntity>>);
+          as _i3.Future<_i4.DataResult<_i7.AddAddressResponseEntity>>);
+
+  @override
+  _i3.Future<_i4.DataResult<List<_i5.AddressesEntity>>> updateAddress({
+    required String? id,
+    required _i8.AddAddressRequestEntity? request,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#updateAddress, [], {#id: id, #request: request}),
+            returnValue:
+                _i3.Future<_i4.DataResult<List<_i5.AddressesEntity>>>.value(
+                  _i6.dummyValue<_i4.DataResult<List<_i5.AddressesEntity>>>(
+                    this,
+                    Invocation.method(#updateAddress, [], {
+                      #id: id,
+                      #request: request,
+                    }),
+                  ),
+                ),
+          )
+          as _i3.Future<_i4.DataResult<List<_i5.AddressesEntity>>>);
+
+  @override
+  _i3.Future<_i4.DataResult<List<_i5.AddressesEntity>>> deleteAddress({
+    required String? id,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#deleteAddress, [], {#id: id}),
+            returnValue:
+                _i3.Future<_i4.DataResult<List<_i5.AddressesEntity>>>.value(
+                  _i6.dummyValue<_i4.DataResult<List<_i5.AddressesEntity>>>(
+                    this,
+                    Invocation.method(#deleteAddress, [], {#id: id}),
+                  ),
+                ),
+          )
+          as _i3.Future<_i4.DataResult<List<_i5.AddressesEntity>>>);
 }

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flowery_store/core/styles/colors/my_colors.dart';
 import 'package:flowery_store/core/utils/extension/media_query_values.dart';
 import 'package:flowery_store/core/utils/widgets/base/snack_bar.dart';
@@ -9,7 +10,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../core/localization/lang_keys.dart';
-import '../../../../di/di.dart';
 import '../viewModel/profile_actions.dart';
 
 
@@ -23,12 +23,15 @@ class ProfilePic extends StatefulWidget {
 class _ProfilePicState extends State<ProfilePic> {
   File? _image;
   final ImagePicker _picker = ImagePicker();
-  late final ProfileViewModelCubit profileViewModel;
+  // late final EditProfileCubit editProfileViewModel;
+  late final ProfileViewModelCubit profileViewModelCubit;
 
   @override
- void initState() {
+  void initState() {
     super.initState();
-    profileViewModel = getIt.get<ProfileViewModelCubit>();
+    // editProfileViewModel = getIt.get<EditProfileCubit>();
+    profileViewModelCubit = context.read<ProfileViewModelCubit>()
+      ..doAction(GetLoggedUserData());
   }
 
   Future<void> _pickImage(ImageSource imageSource) async {
@@ -36,11 +39,8 @@ class _ProfilePicState extends State<ProfilePic> {
     if (pickedFile != null) {
       setState(() {
         _image = File(pickedFile.path);
-        profileViewModel.doAction(UploadPhoto(_image!));
-        debugPrint("*******************************************");
-        debugPrint(_image.toString());
-        debugPrint("*******************************************");
       });
+      profileViewModelCubit.doAction(UploadPhoto(_image!));
     }
   }
 
@@ -51,17 +51,17 @@ class _ProfilePicState extends State<ProfilePic> {
       backgroundColor: Colors.transparent,
       builder: (BuildContext context) {
         return Container(
-          decoration:  BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
-            borderRadius: const BorderRadius.only(
+            borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30),
               topRight: Radius.circular(30),
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha:0.1),
+                color: Colors.black,
                 blurRadius: 20,
-                offset: const Offset(0, -5),
+                offset: Offset(0, -5),
               ),
             ],
           ),
@@ -88,7 +88,6 @@ class _ProfilePicState extends State<ProfilePic> {
                   ),
                   onTap: () {
                     _pickImage(ImageSource.camera);
-                    setState(() {});
                     Navigator.pop(context);
                   },
                 ),
@@ -100,7 +99,6 @@ class _ProfilePicState extends State<ProfilePic> {
                     style: TextStyle(color: Colors.black, fontSize: 16.sp),
                   ),
                   onTap: () {
-                    setState(() {});
                     _pickImage(ImageSource.gallery);
                     Navigator.pop(context);
                   },
@@ -126,86 +124,103 @@ class _ProfilePicState extends State<ProfilePic> {
       },
     );
   }
-  // void _setImage(File? image) {
-  //   setState(() {
-  //     _image = image;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ProfileViewModelCubit>(
-      create: (context) => profileViewModel,
-      child: BlocListener<ProfileViewModelCubit, ProfileViewModelState>(
-        listener: (context, state) {
-          switch (state) {
-            case UploadPhotoLoading():
-              aweSnackBar(
-                  msg: 'Loading...',
-                  context: context,
-                  type: MessageTypeConst.help,
-                  title: 'Loading');
-              break;
-            case UploadPhotoSuccess():
-              aweSnackBar(
-                  msg: state.data.message.toString(),
-                  context: context,
-                  type: MessageTypeConst.success,
-                  title: 'Success');
-              break;
-            case UploadPhotoError():
-              aweSnackBar(
-                  msg: state.error.error.toString(),
-                  context: context,
-                  type: MessageTypeConst.failure,
-                  title: 'Error');
-              break;
-            default:
-          }
-        },
-        child: SizedBox(
-          height: 115.h,
-          width: 115.w,
-          child: Stack(
-            fit: StackFit.expand,
-            clipBehavior: Clip.none,
-            children: [
-              _image == null
-                  ? const CircleAvatar(
-                      backgroundImage: AssetImage(Assets.imagesProfile),
-                    )
-                  : CircleAvatar(
-                      backgroundImage: FileImage(_image!) as ImageProvider),
-              Positioned(
-                right: -18.w,
-                bottom: 2.h,
-                child: SizedBox(
-                  height: 46.h,
-                  width: 46.w,
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      foregroundColor: MyColors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
-                        side: const BorderSide(color: MyColors.white),
-                      ),
-                      backgroundColor: MyColors.lightPink,
+    return BlocListener<ProfileViewModelCubit, ProfileViewModelState>(
+      listener: (context, state) {
+        switch (state) {
+          case UploadPhotoLoading():
+            aweSnackBar(
+              msg: 'Loading...',
+              context: context,
+              type: MessageTypeConst.help,
+              title: 'Loading',
+            );
+            break;
+
+          case UploadPhotoSuccess():
+            profileViewModelCubit.doAction(GetLoggedUserData());
+            aweSnackBar(
+              msg: state.data.message.toString(),
+              context: context,
+              type: MessageTypeConst.success,
+              title: 'Success',
+            );
+            break;
+
+          case UploadPhotoError():
+            aweSnackBar(
+              msg: state.error.error.toString(),
+              context: context,
+              type: MessageTypeConst.failure,
+              title: 'Error',
+            );
+            break;
+
+          default:
+            break;
+        }
+      },
+      child: SizedBox(
+        height: 115.h,
+        width: 115.w,
+        child: Stack(
+          fit: StackFit.expand,
+          clipBehavior: Clip.none,
+          children: [
+            BlocBuilder<ProfileViewModelCubit, ProfileViewModelState>(
+              builder: (context, state) {
+                String? photoUrl;
+                if (state is GetLoggedUserDataSuccess) {
+                  photoUrl = state.data.user?.photo;
+                }
+
+                ImageProvider imageProvider;
+
+                if (_image != null) {
+                  imageProvider = FileImage(_image!);
+                } else if (photoUrl != null && photoUrl.isNotEmpty) {
+                  imageProvider = CachedNetworkImageProvider(photoUrl);
+                } else {
+                  imageProvider = const AssetImage(Assets.imagesProfile);
+                }
+
+                return CircleAvatar(
+                  backgroundImage: imageProvider,
+                );
+              },
+            ),
+            Positioned(
+              right: -18.w,
+              bottom: 2.h,
+              child: SizedBox(
+                height: 46.h,
+                width: 46.w,
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    foregroundColor: MyColors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6),
+                      side: const BorderSide(color: MyColors.white),
                     ),
-                    onPressed: () {
-                      _showCustomBottomSheet(context);
-                    },
-                    child: Icon(
-                      Icons.camera_alt_outlined,
-                      color: MyColors.gray,
-                      size: 22.sp,
-                    ),
+                    backgroundColor: MyColors.lightPink,
+                  ),
+                  onPressed: () {
+                    _showCustomBottomSheet(context);
+                  },
+                  child: Icon(
+                    Icons.camera_alt_outlined,
+                    color: MyColors.gray,
+                    size: 22.sp,
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
+

@@ -32,6 +32,9 @@ SavedAddressResponseEntityDtoAddressesEntity
           json['street'] as String?,
           json['phone'] as String?,
           json['city'] as String?,
+          json['lat'] as String?,
+          json['long'] as String?,
+          json['username'] as String?,
           json['_id'] as String?,
         );
 
@@ -41,5 +44,8 @@ Map<String, dynamic> _$SavedAddressResponseEntityDtoAddressesEntityToJson(
       'street': instance.street,
       'phone': instance.phone,
       'city': instance.city,
+      'lat': instance.lat,
+      'long': instance.long,
+      'username': instance.username,
       '_id': instance.id,
     };

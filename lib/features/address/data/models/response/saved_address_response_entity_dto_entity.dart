@@ -22,11 +22,21 @@ class SavedAddressResponseEntityDtoAddressesEntity {
   String? street;
   String? phone;
   String? city;
+  String? lat;
+  String? long;
+  String? username;
   @JsonKey(name: '_id')
   String? id;
 
   SavedAddressResponseEntityDtoAddressesEntity(
-      this.street, this.phone, this.city, this.id);
+      this.street,
+      this.phone,
+      this.city,
+      this.lat,
+      this.long,
+      this.username,
+      this.id
+      );
 
   factory SavedAddressResponseEntityDtoAddressesEntity.fromJson(
           Map<String, dynamic> json) =>

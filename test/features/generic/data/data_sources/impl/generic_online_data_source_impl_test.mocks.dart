@@ -7,12 +7,12 @@ import 'dart:async' as _i24;
 import 'dart:io' as _i33;
 
 import 'package:flowery_store/core/networking/api/api_manager.dart' as _i23;
+import 'package:flowery_store/features/address/data/models/request/add_address_request_dto.dart'
+    as _i35;
+import 'package:flowery_store/features/address/data/models/response/add_address_response_dto.dart'
+    as _i19;
 import 'package:flowery_store/features/address/data/models/response/saved_address_response_entity_dto_entity.dart'
     as _i15;
-import 'package:flowery_store/features/address_details/data/models/request/add_address_request_dto.dart'
-    as _i35;
-import 'package:flowery_store/features/address_details/data/models/response/add_address_response_dto.dart'
-    as _i19;
 import 'package:flowery_store/features/auth/data/models/request/forget_password_request_dto.dart'
     as _i27;
 import 'package:flowery_store/features/auth/data/models/request/login_request_dto.dart'
@@ -516,6 +516,39 @@ class MockApiManager extends _i1.Mock implements _i23.ApiManager {
             ),
           )
           as _i24.Future<_i19.AddAddressResponseDto>);
+
+  @override
+  _i24.Future<_i15.SavedAddressResponseEntityDtoEntity> editAddress(
+    String? id,
+    _i35.AddAddressRequestDto? request,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#editAddress, [id, request]),
+            returnValue:
+                _i24.Future<_i15.SavedAddressResponseEntityDtoEntity>.value(
+                  _FakeSavedAddressResponseEntityDtoEntity_13(
+                    this,
+                    Invocation.method(#editAddress, [id, request]),
+                  ),
+                ),
+          )
+          as _i24.Future<_i15.SavedAddressResponseEntityDtoEntity>);
+
+  @override
+  _i24.Future<_i15.SavedAddressResponseEntityDtoEntity> deleteAddress(
+    String? id,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#deleteAddress, [id]),
+            returnValue:
+                _i24.Future<_i15.SavedAddressResponseEntityDtoEntity>.value(
+                  _FakeSavedAddressResponseEntityDtoEntity_13(
+                    this,
+                    Invocation.method(#deleteAddress, [id]),
+                  ),
+                ),
+          )
+          as _i24.Future<_i15.SavedAddressResponseEntityDtoEntity>);
 
   @override
   _i24.Future<_i20.CheckoutOrdersResponseDto> checkoutOrders(

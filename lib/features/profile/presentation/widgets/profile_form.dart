@@ -37,27 +37,27 @@ class ProfileForm extends StatelessWidget {
               Expanded(
                 child: CustomTextFormField(
                     controller: firstNameController,
-                    hintText: context.translate(LangKeys.firstName),
-                    labelText: context.translate(LangKeys.firstName),
+                    hintText: context.translate(LangKeys.hintFirstName),
+                    labelText: context.translate(LangKeys.labelFirstName),
                     validator: (value) => Validators.validateNotEmpty(
-                        title: context.translate(LangKeys.firstName), value: value, context: context)),
+                        title: context.translate(LangKeys.labelFirstName), value: value, context: context)),
               ),
               const SizedBox(width: 20),
               Expanded(
                 child: CustomTextFormField(
                     controller: lastNameController,
-                    hintText: context.translate(LangKeys.lastName),
-                    labelText: context.translate(LangKeys.lastName),
+                    hintText: context.translate(LangKeys.hintFirstName),
+                    labelText: context.translate(LangKeys.labelLastName),
                     validator: (value) => Validators.validateNotEmpty(
-                        title: context.translate(LangKeys.lastName), value: value, context: context)),
+                        title: context.translate(LangKeys.labelLastName), value: value, context: context)),
               ),
             ],
           ),
           const SizedBox(height: 20),
           CustomTextFormField(
             controller: emailController,
-            hintText: context.translate(LangKeys.email),
-            labelText: context.translate(LangKeys.email),
+            hintText: context.translate(LangKeys.hintEmail),
+            labelText: context.translate(LangKeys.labelEmail),
             validator: (value) => Validators.validateEmail(value, context),
           ),
           verticalSpacing(20),

@@ -1,21 +1,21 @@
 import 'package:flowery_store/core/networking/common/api_result.dart';
-import 'package:flowery_store/features/address_details/domain/contracts/add_address_repo.dart';
-import 'package:flowery_store/features/address_details/domain/entities/request/add_address_request_entity.dart';
-import 'package:flowery_store/features/address_details/domain/entities/response/add_address_response_entity.dart';
-import 'package:flowery_store/features/address_details/domain/use_cases/add_address_use_case.dart';
+import 'package:flowery_store/features/address/domain/entities/request/add_address_request_entity.dart';
+import 'package:flowery_store/features/address/domain/entities/response/add_address_response_entity.dart';
+import 'package:flowery_store/features/address/domain/repository/address_repo.dart';
+import 'package:flowery_store/features/address/domain/uses_cases/add_address_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'add_address_usecase_test.mocks.dart';
 
-@GenerateMocks([AddAddressRepo])
+@GenerateMocks([AddressRepo])
 void main() {
-  late MockAddAddressRepo addAddressRepo;
+  late MockAddressRepo addAddressRepo;
   late AddAddressUseCase addAddressUseCase;
 
   setUp(() {
-    addAddressRepo = MockAddAddressRepo();
+    addAddressRepo = MockAddressRepo();
     addAddressUseCase = AddAddressUseCase(addAddressRepo);
     provideDummy<DataResult<AddAddressResponseEntity>>(
         Success(AddAddressResponseEntity(address: [

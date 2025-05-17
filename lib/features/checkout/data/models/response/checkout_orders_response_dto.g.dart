@@ -16,7 +16,6 @@ CheckoutOrdersResponseDto _$CheckoutOrdersResponseDtoFromJson(
               json['session'] as Map<String, dynamic>),
     );
 
-
 CheckoutSessionDto _$CheckoutSessionDtoFromJson(Map<String, dynamic> json) =>
     CheckoutSessionDto(
       json['id'] as String?,
@@ -184,7 +183,6 @@ PaymentMethodConfigurationDetailsDto
           json['id'] as String?,
           json['parent'],
         );
-
 
 PaymentMethodOptionsDto _$PaymentMethodOptionsDtoFromJson(
         Map<String, dynamic> json) =>

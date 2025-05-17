@@ -25,21 +25,16 @@ import '../features/address/data/data_sources/impl/address_online_data_source_im
     as _i112;
 import '../features/address/data/repository/address_repo_impl.dart' as _i305;
 import '../features/address/domain/repository/address_repo.dart' as _i917;
-import '../features/address/domain/uses_cases/address_use_case.dart' as _i87;
+import '../features/address/domain/uses_cases/add_address_use_case.dart'
+    as _i246;
+import '../features/address/domain/uses_cases/delete_address_use_case.dart'
+    as _i263;
+import '../features/address/domain/uses_cases/get_saved_address_use_case.dart'
+    as _i824;
+import '../features/address/domain/uses_cases/update_address_use_case.dart'
+    as _i109;
 import '../features/address/presentation/view_model/address_cubit.dart'
     as _i253;
-import '../features/address_details/data/data_sources/contracts/add_address_online_data_source.dart'
-    as _i700;
-import '../features/address_details/data/data_sources/impl/add_address_online_data_source_impl.dart'
-    as _i172;
-import '../features/address_details/data/repositories/add_address_repo_impl.dart'
-    as _i925;
-import '../features/address_details/domain/contracts/add_address_repo.dart'
-    as _i497;
-import '../features/address_details/domain/use_cases/add_address_use_case.dart'
-    as _i207;
-import '../features/address_details/presentation/viewModel/add_address_view_model_cubit.dart'
-    as _i526;
 import '../features/auth/data/data_sources/contracts/auth_online_data_source.dart'
     as _i901;
 import '../features/auth/data/data_sources/contracts/offline_data_source.dart'
@@ -253,8 +248,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i178.HomeRepoImpl(gh<_i603.HomeOnlineDataSource>()));
     gh.factory<_i733.ProductRepo>(
         () => _i986.ProductRepoImpl(gh<_i1037.ProductOnlineDataSource>()));
-    gh.factory<_i700.AddAddressOnlineDataSource>(
-        () => _i172.AddAddressOnlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i647.CartRepository>(
         () => _i625.CartRepositoryImpl(gh<_i181.CartOnlineDataSource>()));
     gh.factory<_i804.ProfileUseCase>(
@@ -295,10 +288,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i590.CategoriesRepository>(() =>
         _i620.CategoriesRepositoryImplementation(
             gh<_i518.CategoriesOnlineDataSource>()));
-    gh.factory<_i497.AddAddressRepo>(
-        () => _i925.AddAddressRepoImpl(gh<_i700.AddAddressOnlineDataSource>()));
-    gh.factory<_i87.AddressUseCase>(
-        () => _i87.AddressUseCase(gh<_i917.AddressRepo>()));
+    gh.factory<_i246.AddAddressUseCase>(
+        () => _i246.AddAddressUseCase(gh<_i917.AddressRepo>()));
+    gh.factory<_i824.GetSavedAddressUseCase>(
+        () => _i824.GetSavedAddressUseCase(gh<_i917.AddressRepo>()));
+    gh.factory<_i109.UpdateAddressUseCase>(
+        () => _i109.UpdateAddressUseCase(gh<_i917.AddressRepo>()));
+    gh.factory<_i263.DeleteAddressUseCase>(
+        () => _i263.DeleteAddressUseCase(gh<_i917.AddressRepo>()));
     gh.factory<_i690.GenericItemViewModelCubit>(
         () => _i690.GenericItemViewModelCubit(
               gh<_i559.GenericUseCase>(),
@@ -335,25 +332,25 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i872.MapViewModelCubit(gh<_i398.GetOrderByOrderIdCase>()));
     gh.factory<_i804.TrackOrderViewModelCubit>(() =>
         _i804.TrackOrderViewModelCubit(gh<_i398.GetOrderByOrderIdCase>()));
-    gh.factory<_i207.AddAddressUseCase>(
-        () => _i207.AddAddressUseCase(gh<_i497.AddAddressRepo>()));
     gh.factory<_i508.SignUpViewModel>(
         () => _i508.SignUpViewModel(gh<_i853.SignUpUseCase>()));
+    gh.factory<_i253.AddressViewModel>(() => _i253.AddressViewModel(
+          gh<_i824.GetSavedAddressUseCase>(),
+          gh<_i246.AddAddressUseCase>(),
+          gh<_i263.DeleteAddressUseCase>(),
+          gh<_i109.UpdateAddressUseCase>(),
+        ));
     gh.factory<_i60.ForgetPasswordViewModelCubit>(
         () => _i60.ForgetPasswordViewModelCubit(
               gh<_i301.ForgotPasswordUseCase>(),
               gh<_i642.VerifyResetCodeUseCase>(),
               gh<_i906.ResetPasswordUseCase>(),
             ));
-    gh.factory<_i526.AddAddressViewModelCubit>(
-        () => _i526.AddAddressViewModelCubit(gh<_i207.AddAddressUseCase>()));
     gh.factory<_i972.MostSellingProductsUseCase>(() =>
         _i972.MostSellingProductsUseCase(
             gh<_i643.MostSellingProductsRepository>()));
     gh.factory<_i690.LoginViewModel>(
         () => _i690.LoginViewModel(gh<_i496.LoginUseCase>()));
-    gh.factory<_i253.AddressViewModel>(
-        () => _i253.AddressViewModel(gh<_i87.AddressUseCase>()));
     gh.factory<_i510.CheckoutViewModelCubit>(() => _i510.CheckoutViewModelCubit(
           gh<_i779.CashUseCase>(),
           gh<_i147.CreditUseCase>(),
