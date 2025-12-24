@@ -25,62 +25,55 @@ class CustomSectionGender extends StatelessWidget {
         Expanded(
           child: Text(
             context.translate(LangKeys.gender),
-            style: MyFonts.styleMedium500_18.copyWith(
-              color: MyColors.gray,
-            ),
+            style: MyFonts.styleMedium500_18.copyWith(color: MyColors.gray),
           ),
         ),
         horizontalSpacing(15),
         Expanded(
           flex: 3,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Flexible(
-                flex: 2,
-                child: RadioListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: AutoSizeText(
-                    context.translate(LangKeys.female),
-                    style: MyFonts.styleRegular400_14,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                  ),
-                  value: "female",
-                  groupValue: selectedGender,
-                  onChanged: (value) {
-                    if (value != null) {
-                      onChanged(value);
-                    }
-                  },
-                  activeColor: MyColors.baseColor,
-                ),
-              ),
-              Flexible(
-                flex: 2,
-                child: RadioListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: AutoSizeText(
-                    context.translate(LangKeys.male),
-                    style: MyFonts.styleRegular400_14.copyWith(
-                      color: MyColors.gray,
+          child: RadioGroup<String>(
+            groupValue: selectedGender,
+            onChanged: (value) {
+              if (value == null) return;
+              onChanged(value);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Flexible(
+                  flex: 2,
+                  child: RadioListTile<String>(
+                    contentPadding: EdgeInsets.zero,
+                    title: AutoSizeText(
+                      context.translate(LangKeys.female),
+                      style: MyFonts.styleRegular400_14,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                    value: "female",
+                    activeColor: MyColors.baseColor,
                   ),
-                  value: "male",
-                  groupValue: selectedGender,
-                  onChanged: (value) {
-                    if (value != null) {
-                      onChanged(value);
-                    }
-                  },
-                  activeColor: MyColors.baseColor,
                 ),
-              ),
-            ],
+                Flexible(
+                  flex: 2,
+                  child: RadioListTile<String>(
+                    contentPadding: EdgeInsets.zero,
+                    title: AutoSizeText(
+                      context.translate(LangKeys.male),
+                      style: MyFonts.styleRegular400_14.copyWith(
+                        color: MyColors.gray,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    value: "male",
+                    activeColor: MyColors.baseColor,
+                  ),
+                ),
+              ],
+            ),
           ),
-        )
+        ),
       ],
     );
   }

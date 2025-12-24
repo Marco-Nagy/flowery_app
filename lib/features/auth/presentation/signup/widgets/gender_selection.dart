@@ -20,49 +20,52 @@ class GenderSelection extends StatelessWidget {
       children: [
         Text(
           context.translate(LangKeys.gender),
-          style: MyFonts.styleMedium500_18.copyWith(
-            color: MyColors.gray,
-          ),
+          style: MyFonts.styleMedium500_18.copyWith(color: MyColors.gray),
         ),
-        horizontalSpacing(
-          15,
-        ),
-        Flexible(
-          flex: 2,
-          child: RadioListTile(
-            contentPadding: EdgeInsets.zero,
-            title: AutoSizeText(
-              context.translate(LangKeys.female),
-              style: MyFonts.styleRegular400_14,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-            ),
-            value: "female",
+        horizontalSpacing(15),
+
+        // ✅ New API: RadioGroup manages groupValue + onChanged
+        Expanded(
+          child: RadioGroup<String>(
             groupValue: cubit?.selectedGender,
             onChanged: (value) {
-              cubit?.doAction(GenderSelected(value!));
+              if (value == null) return;
+              cubit?.doAction(GenderSelected(value));
             },
-            activeColor: MyColors.baseColor,
-          ),
-        ),
-        Flexible(
-          flex: 2,
-          child: RadioListTile(
-            contentPadding: EdgeInsets.zero,
-            title: AutoSizeText(
-              context.translate(LangKeys.male),
-              style: MyFonts.styleRegular400_14.copyWith(
-                color: MyColors.gray,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            child: Row(
+              children: [
+                Flexible(
+                  flex: 2,
+                  child: RadioListTile<String>(
+                    contentPadding: EdgeInsets.zero,
+                    title: AutoSizeText(
+                      context.translate(LangKeys.female),
+                      style: MyFonts.styleRegular400_14,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                    value: "female",
+                    activeColor: MyColors.baseColor,
+                  ),
+                ),
+                Flexible(
+                  flex: 2,
+                  child: RadioListTile<String>(
+                    contentPadding: EdgeInsets.zero,
+                    title: AutoSizeText(
+                      context.translate(LangKeys.male),
+                      style: MyFonts.styleRegular400_14.copyWith(
+                        color: MyColors.gray,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    value: "male",
+                    activeColor: MyColors.baseColor,
+                  ),
+                ),
+              ],
             ),
-            value: "male",
-            groupValue: cubit?.selectedGender,
-            onChanged: (value) {
-              cubit?.doAction(GenderSelected(value!));
-            },
-            activeColor: MyColors.baseColor,
           ),
         ),
       ],

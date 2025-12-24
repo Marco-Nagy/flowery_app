@@ -3,17 +3,20 @@ import 'package:flowery_store/core/styles/fonts/my_fonts.dart';
 import 'package:flutter/material.dart';
 
 class SwitchButtonWidget extends StatefulWidget {
-final  String text;
-late final ValueNotifier<bool> value;
+  final String text;
+  final ValueNotifier<bool> value;
 
-
-    SwitchButtonWidget({super.key, required this.text, required this.value,});
+  const SwitchButtonWidget({
+    super.key,
+    required this.text,
+    required this.value,
+  });
 
   @override
-  _SwitchButtonWidgetState createState() => _SwitchButtonWidgetState();
+  SwitchButtonWidgetState createState() => SwitchButtonWidgetState();
 }
 
-class _SwitchButtonWidgetState extends State<SwitchButtonWidget> {
+class SwitchButtonWidgetState extends State<SwitchButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -28,17 +31,14 @@ class _SwitchButtonWidgetState extends State<SwitchButtonWidget> {
             alignment: Alignment.centerLeft,
             child: Switch(
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              inactiveTrackColor:  MyColors.white ,
+              inactiveTrackColor: MyColors.white,
               inactiveThumbColor: MyColors.baseColor,
-              activeColor:   MyColors.white,
+              activeThumbColor: MyColors.white,
               activeTrackColor: MyColors.baseColor,
-              // trackOutlineColor: const WidgetStatePropertyAll(MyColors.white70),
               value: widget.value.value,
-              // trackOutlineWidth: WidgetStateProperty.all(0),
               onChanged: (value) {
                 setState(() {
                   widget.value.value = value;
-
                 });
               },
             ),
@@ -54,3 +54,4 @@ class _SwitchButtonWidgetState extends State<SwitchButtonWidget> {
     );
   }
 }
+

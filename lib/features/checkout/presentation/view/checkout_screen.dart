@@ -34,8 +34,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   Widget build(BuildContext context) {
     final now = DateTime.now();
-    final arriveDate =
-        DateTime(now.year, now.month, now.day + 3, now.hour, now.minute);
+    final arriveDate = DateTime(now.year, now.month, now.day + 3, now.hour, now.minute);
     final formattedDate = DateFormat("dd MMM yyyy HH:mm a").format(arriveDate);
     final arriveMessage =
         '${context.translate(LangKeys.arriveBy)} $formattedDate';
